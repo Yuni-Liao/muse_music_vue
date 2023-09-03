@@ -1,0 +1,33 @@
+// 此頁為Yuni測試,可以修改編輯
+
+header {
+    z-index: 100;
+    background-color: $dark;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    img {
+        width: 60px;
+        padding: 5px;
+        background-color: $dark;
+    }
+    nav {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: $dark;
+        width: 50%;
+        a {
+            font-weight: bold;
+            color: #2c3e50;
+            &.router-link-exact-active {
+            color: #42b983;
+            }
+        }
+    }
+}

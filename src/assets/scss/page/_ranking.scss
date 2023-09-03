@@ -1,0 +1,8 @@
+* {
+    background-color: yellow;
+}
+
+h1{
+    @include mini_Tag(h1)
+}
+//測試用,這裡的內容都可以刪除

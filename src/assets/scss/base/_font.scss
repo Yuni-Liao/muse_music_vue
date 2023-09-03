@@ -1,0 +1,20 @@
+// 網站文字規範
+$theme-fonts: (
+    "big_Title" : 2rem, // 大標題 h1 32px
+    "medium_Title" : 1.5rem, // 中標題 h2 24px
+    "small_Title" : 1.25rem, // 小標題 h3 20px
+    "default_Text" : 1.125rem,  // 內文 18px
+    "tag" : 1rem,  //不重要資訊,文字請使用mixin(有搭配#aaa)
+);
+
+//抓變數只要抓標題就好,不用重新map-get, 例:  font-size: $big
+$big: map-get($theme-fonts, big_Title);
+$medium: map-get($theme-fonts, medium_Title);
+$small: map-get($theme-fonts, small_Title);
+$default: map-get($theme-fonts, default_Text);
+$tag: map-get($theme-fonts, tag);
+// --------------------
+
+// 行高區
+
+// --------------------

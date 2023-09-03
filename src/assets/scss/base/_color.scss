@@ -1,0 +1,19 @@
+// 網站色彩規範
+$theme-colors: (
+    "primary" : #252525, 
+    "secondary" : #fff, 
+    "btn_color" : #74EBD5,  
+    "accent_pri" : #FE1C6C, 
+    "accent_sec" : #5D5DDB, 
+);
+
+//抓變數只要抓標題就好,不用重新map-get, 例:  color: $dark
+$dark: map-get($theme-colors, primary);
+$white: map-get($theme-colors, secondary);
+$green: map-get($theme-colors, btn_color);
+$pink: map-get($theme-colors, accent_pri);
+$blue: map-get($theme-colors, accent_sec);
+// --------------------
+
+//透明色
+$tp : transparent; 
