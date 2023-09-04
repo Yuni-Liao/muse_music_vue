@@ -1,7 +1,22 @@
 <template>
+    <h1>這是商城頁面</h1>
     <div class="shop">
-        <h1>這是商城頁面
-        </h1>
+        <Breadcrumb separator=">">
+            <BreadcrumbItem><router-link to="/">首頁</router-link></BreadcrumbItem>
+            <BreadcrumbItem>周邊商品</BreadcrumbItem>
+        </Breadcrumb>
+        <select class="obj_Radius btn_S_Border">
+            <option selected>商品排序</option>
+            <option>新貨上架</option>
+            <option>價格低到高</option>
+            <option>價格高到低</option>
+        </select>
+        <select class="obj_Radius btn_M_Border">
+            <option selected>每頁顯示20個</option>
+            <option>每頁顯示16個</option>
+            <option>每頁顯示12個</option>
+            <option>每頁顯示8個</option>
+        </select>
         <div class="prod">
             <!-- 此處為測試文字,可以改掉重新編輯 -->
             <!-- 非v-bind的圖片載入方式 -->
