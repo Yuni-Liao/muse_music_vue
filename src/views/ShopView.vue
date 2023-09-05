@@ -98,8 +98,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/shop.scss";
 </style>
-<<<<<<< HEAD
-
-=======
 <script src="./js/ShopView"></script>
->>>>>>> 80e4ba173a555321b09f08bb44159c9ecfb01347
