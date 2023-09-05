@@ -9,3 +9,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/find.scss";
 </style>
+<script src="./js/FindView"></script>
