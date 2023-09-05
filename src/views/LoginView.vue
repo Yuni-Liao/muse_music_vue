@@ -2,6 +2,7 @@
 <template>
     <div class="login">
         <h1>這是登入頁面</h1>
+        123
         <!-- 此處為測試文字,可以改掉重新編輯 -->
     </div>
 </template>
