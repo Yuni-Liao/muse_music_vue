@@ -9,3 +9,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/backend.scss";
 </style>
+<script src="./js/BackendView"></script>

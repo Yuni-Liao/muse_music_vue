@@ -30,3 +30,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/shop.scss";
 </style>
+<script src="./js/ShopView"></script>

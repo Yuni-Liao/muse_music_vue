@@ -10,3 +10,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/layout/login.scss";
 </style>
+<script src="./js/LoginView"></script>
