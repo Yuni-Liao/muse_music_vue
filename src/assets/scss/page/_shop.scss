@@ -1,10 +1,34 @@
-h1{
-    font-size: $big;
+*{
+    background-color: $white;
 }
 
+// h1{
+//     font-size: $big;
+// }
+
 .shop{
+    max-width: 1200px;
+    border: 1px solid;
+    margin: auto;
+    position: relative;
+    .prodtype{
+position: absolute;
+    }
     select{
         font-size:$default;
         color: $green;
+    }
+    .prod{
+        .prodcount{
+            display: flex;
+            justify-content: center;
+            .prodbtn{
+                background: none;
+                border: none;
+                color: inherit;
+                font: inherit;
+                padding: 0 10px;
+            }
+        }
     }
 }
