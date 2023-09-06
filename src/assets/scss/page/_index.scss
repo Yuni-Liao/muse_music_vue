@@ -4,7 +4,7 @@
     // -moz-osx-font-smoothing: grayscale;
     text-align: center;
     position: relative;
-    height: 500vh;
+    //height: 500vh;
     //這裡是系統內建的
   }
   
@@ -13,7 +13,7 @@
     h1{
       font-size: $big;
     }
-    margin: 10% 0;
+    margin: 4% 0;
     .demo-carousel{
       width: 400px;
       height: 20rem;
