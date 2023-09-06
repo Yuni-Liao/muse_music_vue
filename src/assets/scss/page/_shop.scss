@@ -1,9 +1,13 @@
 *{
     background-color: $white;
 }
+
 .bannerpic{
     margin-bottom: 20px;
-    @include layout(100%)
+    @include layout(100%);
+    img{
+        width: 100%;
+    }
 }
 
 .selectArea {
@@ -26,6 +30,10 @@
     margin-bottom:70px;
 }
 
+.ivu-page{
+    margin-bottom: 90px;
+}
+
 select {
     font-size: $default;
     color: $dark;
@@ -34,14 +42,13 @@ select {
     margin-bottom: 125px;
 }
 .shop{
-    max-width: 1920px;
     margin: auto;
     display: flex;
     .prodType {
         font-size: $medium;
         display: flex;
         flex-direction: column;
-        margin-left: 5%;
+        margin: 0 1% 0 4%;
         h2 {
             color: $dark;
             text-align: left;
@@ -80,9 +87,7 @@ select {
         }
     }
     .inner{
-        max-width:1380px;
-        margin: auto;
-
+        @include layout(1300px);
     .prod{
         display: flex;
         flex-wrap: wrap;

@@ -150,7 +150,7 @@ export default {
                 '每頁顯示12個': 12,
                 '每頁顯示8個': 8,
             },
-            selectedPerPage: '每頁顯示20個',// 初始选择
+            selectedPerPage: '每頁顯示20個',
             typeOptions: [
                 '商品排序',
                 '上架時間(新>舊)',
@@ -158,7 +158,31 @@ export default {
                 '價格:由高到低',
                 '價格:由低到高',
             ],
-              selectedType: '商品排序', // 初始选择
+            selectedType: '商品排序',
         }
-    }
+    }, computed: {
+        // 计算属性，根据当前的每页显示数量和当前页数计算应该显示的商品
+        displayedProducts() {
+            // 计算应该显示的商品数量
+            const startIdx = (this.currentPage - 1) * this.selectedPerPage;
+            const endIdx = startIdx + this.selectedPerPage;
+
+            // 使用数组的 slice 方法来获取对应范围的商品
+            return this.products.slice(startIdx, endIdx);
+        },
+    },
+    methods: {
+        // 增加商品数量
+        incrementItem(item) {
+            if (item.inCart >= 0) {
+                item.inCart++;
+            }
+        },
+        // 减少商品数量
+        decrementItem(item) {
+            if (item.inCart > 0) {
+                item.inCart--;
+            }
+        },
+    },
 };
