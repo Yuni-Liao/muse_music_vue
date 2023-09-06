@@ -35,7 +35,7 @@
         <swiper-slide v-for="(item, index) in songs" :key="index">
           <router-link to="/shopProd/1">
             <div class="card">
-              <img :src="require(`@/assets/image/${item.image}`)" />
+              <img :src="require(`@/assets/image/index/${item.image}`)" />
               <div class="text">
                 <h3>{{ item.title }}</h3>
                 <p>
@@ -75,7 +75,7 @@
         <swiper-slide v-for="(item, index) in songs" :key="index">
           <router-link to="/shopProd/1">
             <div class="card">
-              <img :src="require(`@/assets/image/${item.image}`)" />
+              <img :src="require(`@/assets/image/index/${item.image}`)" />
               <div class="text">
                 <h3>{{ item.title }}</h3>
                 <p>

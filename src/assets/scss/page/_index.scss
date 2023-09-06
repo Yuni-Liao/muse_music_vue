@@ -1,25 +1,4 @@
 #app {
-<<<<<<< HEAD
-    // -webkit-font-smoothing: antialiased;
-    // -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    position: relative;
-    //height: 500vh;
-    //這裡是系統內建的
-  }
-  
-  
-  main {
-    h1{
-      font-size: $big;
-    }
-    margin: 4% 0;
-    .demo-carousel{
-      width: 400px;
-      height: 20rem;
-    }
-          //測試用,這裡的內容都可以刪除
-=======
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -27,7 +6,6 @@
   height: 500vh;
   //這裡是系統內建的
 }
->>>>>>> peggy
 
 main {
   h1 {
@@ -111,32 +89,3 @@ main {
     }
   }
 }
-
-// .swiper {
-//   width: 100%;
-//   padding-top: 50px;
-//   padding-bottom: 50px;
-// }
-// .swiper-wrapper {
-//   background-color: transparent;
-// }
-// .swiper-slide {
-//   width: 300px;
-// }
-
-// .swiper-slide img {
-//   margin: auto;
-//   display: block;
-//   width: 100%;
-//   object-fit: cover;
-//   object-position: center center;
-// }
-// .swiper-pagination-bullet {
-//   width: 30px;
-//   border-radius: 2px;
-//   height: 3px;
-// }
-// .swiper-pagination-bullet-active {
-//   width: 60px;
-//   height: 5px;
-// }
