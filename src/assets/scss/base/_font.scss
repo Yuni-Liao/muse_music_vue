@@ -1,5 +1,6 @@
 // 網站文字規範
 $theme-fonts: (
+    "banner_Text" : 3rem, // Banner專用 48px
     "big_Title" : 2rem, // 大標題 h1 32px
     "medium_Title" : 1.5rem, // 中標題 h2 24px
     "small_Title" : 1.25rem, // 小標題 h3 20px
@@ -8,6 +9,7 @@ $theme-fonts: (
 );
 
 //抓變數只要抓標題就好,不用重新map-get, 例:  font-size: $big
+$superBig: map-get($theme-fonts, banner_Text);
 $big: map-get($theme-fonts, big_Title);
 $medium: map-get($theme-fonts, medium_Title);
 $small: map-get($theme-fonts, small_Title);
