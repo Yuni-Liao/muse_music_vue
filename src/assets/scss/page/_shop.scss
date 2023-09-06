@@ -4,7 +4,6 @@
 
 .bannerpic{
     padding-bottom: 20px;
-    // margin-bottom: 20px; //這裡導致黑底
     @include layout(100%);
     img{
         width: 100%;
@@ -15,7 +14,6 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 5%;
-    // margin-right: 5%; //這裡導致黑底
     text-align-last: center;
     .prodQuantity{
         margin-left: 25px;
@@ -28,9 +26,6 @@
 .ivu-breadcrumb {
     text-align: left;
     padding-left: 5%; 
-    // margin-left: 5%; //這裡導致黑底
-    // padding-left: 0;
-    // margin-bottom:70px; //這裡導致黑底
     padding-bottom: 70px;
 }
 
@@ -42,7 +37,7 @@ select {
     margin-bottom: 125px;
 }
 .shop{
-    max-width: 1920px;
+    @include layout(100%);
     margin: auto;
     display: flex;
     .prodType {
@@ -88,7 +83,7 @@ select {
         }
     }
     .inner{
-        max-width:1380px;
+        @include layout(1380px);
         margin: auto;
 
     .prod{
