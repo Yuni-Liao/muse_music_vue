@@ -1,10 +1,22 @@
 <template>
-    <div class="ranking">
-        <h1>這是排行榜頁面</h1>
-        <!-- 此處為測試文字,可以改掉重新編輯 -->
-    </div>
+  <div class="ranking">
+    <swiper
+      :direction="'vertical'"
+      :slidesPerView="1"
+      :spaceBetween="0"
+      :mousewheel="true"
+      :pagination="{
+        clickable: true,
+      }"
+      :modules="modules"
+      class="mySwiper"
+    >
+      <swiper-slide><p>section1</p></swiper-slide>
+      <swiper-slide><p>section2</p> </swiper-slide>
+      <swiper-slide><p>section3</p> </swiper-slide>
+    </swiper>
+  </div>
 </template>
-
 
 <style scoped lang="scss">
 @import "~@/assets/scss/page/ranking.scss";
