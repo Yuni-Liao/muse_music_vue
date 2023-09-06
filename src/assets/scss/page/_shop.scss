@@ -1,8 +1,10 @@
 *{
     background-color: $white;
 }
+
 .bannerpic{
-    margin-bottom: 20px;
+    padding-bottom: 20px;
+    // margin-bottom: 20px; //這裡導致黑底
     @include layout(100%);
     img{
         width: 100%;
@@ -12,7 +14,8 @@
 .selectArea {
     display: flex;
     justify-content: flex-end;
-    margin-right: 5%;
+    padding-right: 5%;
+    // margin-right: 5%; //這裡導致黑底
     text-align-last: center;
     .prodQuantity{
         margin-left: 25px;
@@ -24,9 +27,11 @@
 
 .ivu-breadcrumb {
     text-align: left;
-    margin-left: 5%;
-    padding-left: 0;
-    margin-bottom:70px;
+    padding-left: 5%; 
+    // margin-left: 5%; //這裡導致黑底
+    // padding-left: 0;
+    // margin-bottom:70px; //這裡導致黑底
+    padding-bottom: 70px;
 }
 
 select {
