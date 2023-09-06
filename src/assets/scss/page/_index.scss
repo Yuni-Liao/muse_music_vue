@@ -1,39 +1,120 @@
-
 #app {
-    // -webkit-font-smoothing: antialiased;
-    // -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    position: relative;
-    height: 500vh;
-    //這裡是系統內建的
-  }
-  
-  
-  main {
-    h1{
-      font-size: $big;
-    }
-    margin: 10% 0;
-    .demo-carousel{
-      width: 400px;
-      height: 20rem;
-    }
-          //測試用,這裡的內容都可以刪除
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  position: relative;
+  height: 500vh;
+  //這裡是系統內建的
+}
 
+main {
+  h1 {
+    font-size: $big;
   }
+  margin: 10% 0;
+  .demo-carousel {
+    width: 400px;
+    height: 20rem;
+  }
+  //測試用,這裡的內容都可以刪除
+}
 
-  .testbth{
-    display: flex;
-    justify-content: space-evenly;  
-    flex-wrap: wrap;
-    
-    margin: 0 auto;
+.testbth {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  margin: 0 auto;
+  width: 100%;
+}
+
+.end #angle-right {
+  background-color: transparent;
+  font-size: $medium;
+  //測試用,這裡的內容都可以刪除
+}
+
+// 新歌推薦輪播 - 黃珮菁
+.index_newMusic,
+.index_WeekTopusic {
+  h2 {
+    font-size: $big;
+    text-align: start;
+    margin: 40px;
+  }
+  .swiper {
     width: 100%;
-  }
+    padding-top: 50px;
+    padding-bottom: 50px;
 
-  .end #angle-right{
-    background-color: transparent;
-    font-size: $medium;
-      //測試用,這裡的內容都可以刪除
-  }
+    .swiper-wrapper {
+      background-color: transparent;
+      margin-bottom: 30px;
 
+      .swiper-slide {
+        // width: 300px;
+        background-color: transparent;
+        .card {
+          width: 315px;
+          margin: auto;
+          img {
+            @include rect(315px);
+            // display: block;
+            object-fit: cover;
+            object-position: top center;
+          }
+          .text {
+            h3 {
+              text-align: start;
+              font-size: $small;
+            }
+            p {
+              @include mini_Tag($tag);
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
+    .swiper-pagination-bullet {
+      width: 30px;
+      border-radius: 2px;
+      height: 3px;
+    }
+    .swiper-pagination-bullet-active {
+      width: 60px;
+      height: 5px;
+      background-color: $green;
+    }
+  }
+}
+
+// .swiper {
+//   width: 100%;
+//   padding-top: 50px;
+//   padding-bottom: 50px;
+// }
+// .swiper-wrapper {
+//   background-color: transparent;
+// }
+// .swiper-slide {
+//   width: 300px;
+// }
+
+// .swiper-slide img {
+//   margin: auto;
+//   display: block;
+//   width: 100%;
+//   object-fit: cover;
+//   object-position: center center;
+// }
+// .swiper-pagination-bullet {
+//   width: 30px;
+//   border-radius: 2px;
+//   height: 3px;
+// }
+// .swiper-pagination-bullet-active {
+//   width: 60px;
+//   height: 5px;
+// }
