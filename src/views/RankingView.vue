@@ -11,7 +11,7 @@
       :modules="modules"
       class="mySwiper"
     >
-      <swiper-slide><p>section1</p> </swiper-slide>
+      <swiper-slide><p>section1</p></swiper-slide>
       <swiper-slide><p>section2</p> </swiper-slide>
       <swiper-slide><p>section3</p> </swiper-slide>
     </swiper>

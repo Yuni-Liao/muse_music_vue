@@ -1,20 +1,8 @@
-//測試用,這裡的內容都可以刪除
-.ranking {
-  .swiper {
-    width: 100%;
-    height: 90vh;
-    .swiper-slide {
-      background-image: url("https://picsum.photos/300/200");
-      background-repeat: no-repeat;
-      background-size: cover;
-
-      /* Center slide text vertically */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .swiper-pagination {
-      background-color: $tp;
-    }
-  }
+* {
+    background-color: yellow;
 }
+
+h1{
+    @include mini_Tag(h1)
+}
+//測試用,這裡的內容都可以刪除
