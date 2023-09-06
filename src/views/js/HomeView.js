@@ -1,3 +1,7 @@
 export default {
-    //  script寫這
+    data() {
+        return {
+            value: 0
+        }
+    }
 }

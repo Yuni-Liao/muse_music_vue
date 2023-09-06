@@ -1,12 +1,23 @@
 <template>
-  <div class="index">
-    <h1>Hi 首頁~~中間是主要內容區塊喔~</h1>
-    <!-- <HelloWorld msg="Welcome~~" /> -->
-
-    <fontAwesome :icon="['fa', 'lock-open']" />
-    <fontAwesome :icon="['fa', 'lock']" />
-    <fontAwesome :icon="['fa', 'cake-candles']" />
-  </div>
+  <!-- <div class="login">
+    1234
+  </div> -->
+  <!-- 輪播區開始 -->
+  <Carousel class="index_carousel" autoplay v-model="value" loop>
+    <CarouselItem>
+      <div class="index_carousel_item">1</div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="index_carousel_item">2</div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="index_carousel_item">3</div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="index_carousel_item">4</div>
+    </CarouselItem>
+  </Carousel>
+  <!-- 輪播區結束 -->
 </template>
 
 <!-- <script>
