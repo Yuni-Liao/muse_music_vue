@@ -3,7 +3,10 @@
 }
 .bannerpic{
     margin-bottom: 20px;
-    @include layout(100%)
+    @include layout(100%);
+    img{
+        width: 100%;
+    }
 }
 
 .selectArea {
