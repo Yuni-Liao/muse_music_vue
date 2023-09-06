@@ -1,34 +1,136 @@
 *{
     background-color: $white;
 }
+.bannerpic{
+    margin-bottom: 20px;
+    @include layout(100%)
+}
 
-// h1{
-//     font-size: $big;
-// }
+.selectArea {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+    text-align-last: center;
+    .prodQuantity{
+        margin-left: 25px;
+    }
+    .prodSort{
+        width: 120px;
+    }
+}
 
+.ivu-breadcrumb {
+    text-align: left;
+    margin-left: 5%;
+    padding-left: 0;
+    margin-bottom:70px;
+}
+
+select {
+    font-size: $default;
+    color: $dark;
+    border-color: $dark;
+    height: 35px;
+    margin-bottom: 125px;
+}
 .shop{
-    max-width: 1200px;
-    border: 1px solid;
+    max-width: 1920px;
     margin: auto;
-    position: relative;
-    .prodtype{
-position: absolute;
-    }
-    select{
-        font-size:$default;
-        color: $green;
-    }
-    .prod{
-        .prodcount{
-            display: flex;
-            justify-content: center;
-            .prodbtn{
-                background: none;
-                border: none;
-                color: inherit;
-                font: inherit;
-                padding: 0 10px;
+    display: flex;
+    .prodType {
+        font-size: $medium;
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+        h2 {
+            color: $dark;
+            text-align: left;
+            font-weight: 700;
+            margin-left: 0; 
+            display: block;
+    
+        &::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 1px;
+            background-color: $dark;
+            margin: 10px 0 30px -10px;
+        }
+        }
+        ul {
+            text-align: left;
+            margin-left: 0;
+            display: block; 
+            padding-left: 0;
+            list-style: none;
+            li {
+                margin-bottom: 30px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    font-weight: 400;
+                    color: #333;
+                    &::after{
+                        color: $green;
+                    }
+                }
             }
         }
     }
+    .inner{
+        max-width:1380px;
+        margin: auto;
+
+    .prod{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6.5%;
+        .prodCard{
+            width: calc(22% - 2%);
+            height: 400px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            padding: 40px 0;
+            margin: 0 0 110px;
+            .prodPic{
+                img{
+                    width: 86.666666%;
+                }
+            }
+        .prodTxt{
+            font-size: $small;
+            padding: 10px;
+            .prodName{
+                padding-bottom: 10px;
+            }
+            .prodPrice{
+                padding-bottom: 10px;
+            }
+        .prodCount{
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            .prodBtn{
+                background: none;
+                border: none;
+                color: inherit;
+                padding: 0 10px;
+                cursor: pointer;
+                img{
+                    vertical-align: middle;
+                }
+                p{
+                    vertical-align: middle;
+                }
+            }
+        }
+        button{
+            cursor: pointer;
+        }
+    }
+}
+}
+}
 }
