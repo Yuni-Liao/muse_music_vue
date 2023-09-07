@@ -1,10 +1,53 @@
-// 此頁為Yuni測試,可以修改編輯
+.login_logo{
+    padding-top: 100px;
+}
 
-.login{
+.login-container {
+    @include layout(300px);
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+}
+
+.logininput {
+    border: #74EBD5 3px solid;
     width: 100%;
-    padding: 10%;
-    background-color: $white;
-    h1{
-        background-color: $white;
-    }
+    height: 40px;
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+    font-size: 10px;
+}
+
+
+button {
+    background-color: #74EBD5;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.links {
+    text-align: right;
+    margin: 10px;
+
+}
+
+.links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 10px;
 }

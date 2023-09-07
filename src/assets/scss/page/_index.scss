@@ -245,4 +245,25 @@
     text-align: start;
     margin: 40px;
   }
+  .index_emoQue{
+    @include rect(600px, 335px);
+    background-image: url(~@/assets/image/index/index_emo_01.jpg);
+    background-size: contain;
+    @include center(335px);
+    p{
+      font-size: $medium;
+      color: $pink;
+      text-align: left;
+      padding: 20px 0px 20px 10px;
+    }
+    .index_emoAns{
+      input{
+        @include rect(20px, 20px)
+      }
+      span{
+        font-size: $small;
+        width: 20%;
+      }
+    }
+  }
 }
