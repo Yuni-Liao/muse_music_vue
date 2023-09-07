@@ -1,6 +1,5 @@
 
 <template>
-<<<<<<< HEAD
     <router-link to="/find"><img alt="Vue logo" src="~@/assets/image/muse_logo.png"></router-link>
     <div class="login-container">
         
@@ -19,12 +18,6 @@
             <button type="submit">登入</button>
         </form>
         
-=======
-    <div class="login">
-        <h1>這是登入頁面</h1>
-        <!-- 此處為測試文字,可以改掉重新編輯 -->
-        <router-link to="/register" >To Register</router-link>
->>>>>>> 40b30ae1d1c6df835cb5e50d56b95b11d3b1627d
     </div>
 </template>
 
