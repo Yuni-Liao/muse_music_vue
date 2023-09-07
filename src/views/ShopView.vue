@@ -10,10 +10,10 @@
         <select class="prodSort obj_Radius" v-model="selectedType">
             <option v-for="(type, index) in typeOptions" :value="type" :key="index">{{ type }}</option>
         </select>
-
-        <select class="prodQuantity obj_Radius" v-model="selectedPerPage">
+        <!-- 以下是自己打的顯示數量下拉選單 先不要刪除-->
+        <!-- <select class="prodQuantity obj_Radius" v-model="selectedPerPage">
             <option v-for="(quantity, option) in perPageOptions" :value="option">{{ option }}</option>
-        </select>
+        </select> -->
 
     </div>
 
@@ -31,7 +31,7 @@
         </div>
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item, index) in products" :key="index">
+                <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
                     <div class="prodPic">
                         <img :src="require(`@/assets/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </div>
@@ -51,7 +51,8 @@
                 </div>
             </div>
             <!-- 以下是分頁面區 -->
-            <Page :total="totalItems" :current.sync="currentPage" :page-size="pageSize" />
+            <Page :total="products.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
+                :page-size-texts="pageTexts" @on-change="handlePageChange" />
         </div>
     </div>
 </template>
