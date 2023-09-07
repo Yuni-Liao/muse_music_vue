@@ -1,15 +1,19 @@
 *{
     background-color: $white;
 }
+
 .bannerpic{
-    margin-bottom: 20px;
-    @include layout(100%)
+    padding-bottom: 20px;
+    @include layout(100%);
+    img{
+        width: 100%;
+    }
 }
 
 .selectArea {
     display: flex;
     justify-content: flex-end;
-    margin-right: 5%;
+    padding-right: 5%;
     text-align-last: center;
     .prodQuantity{
         margin-left: 25px;
@@ -21,9 +25,12 @@
 
 .ivu-breadcrumb {
     text-align: left;
-    margin-left: 5%;
-    padding-left: 0;
-    margin-bottom:70px;
+    padding-left: 5%; 
+    padding-bottom: 70px;
+}
+
+.ivu-page{
+    margin-bottom: 90px;
 }
 
 select {
@@ -34,14 +41,14 @@ select {
     margin-bottom: 125px;
 }
 .shop{
-    max-width: 1920px;
+    @include layout(100%);
     margin: auto;
     display: flex;
     .prodType {
         font-size: $medium;
         display: flex;
         flex-direction: column;
-        margin-left: 5%;
+        margin: 0 1% 0 4%;
         h2 {
             color: $dark;
             text-align: left;
@@ -80,7 +87,7 @@ select {
         }
     }
     .inner{
-        max-width:1380px;
+        @include layout(1380px);
         margin: auto;
 
     .prod{

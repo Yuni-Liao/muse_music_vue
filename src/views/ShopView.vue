@@ -1,7 +1,4 @@
 <template>
-    <!-- <h1>這是商城頁面</h1> -->
-    <!-- 注意:: 點擊商品>查看商品詳情的內頁跳轉要用router-link to="___" 這方式套才不會404, 用<a>沒辦法 -->
-    <!-- <router-link to="/shopProd/1"><img alt="Vue logo" src="~@/assets/image/muse_logo.png"></router-link> -->
     <div class="bannerpic">
         <img src="~@/assets/image/ShopImage/shopbanner.png" alt="周邊販售">
     </div>
@@ -17,6 +14,7 @@
         <select class="prodQuantity obj_Radius" v-model="selectedPerPage">
             <option v-for="(quantity, option) in perPageOptions" :value="option">{{ option }}</option>
         </select>
+
     </div>
 
 
@@ -42,10 +40,11 @@
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>
                         <span class="prodCount">
                             <button class="prodBtn" @click="decrementItem(item)"><img
-                                    src="~@/assets/image/ShopImage/down.png"></button>
+                                    src="~@/assets/image/ShopImage/up.png"></button>
+
                             <p>{{ item.inCart }}</p>
                             <button class="prodBtn" @click="incrementItem(item)"><img
-                                    src="~@/assets/image/ShopImage/up.png"></button>
+                                    src="~@/assets/image/ShopImage/down.png"></button>
                         </span>
                         <button class="obj_Radius btn_Shop_Border">加入購物車</button>
                     </div>
