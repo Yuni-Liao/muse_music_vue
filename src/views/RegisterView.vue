@@ -9,6 +9,7 @@
         <p>当前正在进行第 {{ current + 1 }} 步</p>
         
         <div class="step">
+            
             <Steps :current="current">
                 <Step title="忘記密碼"></Step>
                 <Step title="信箱驗證"></Step>
