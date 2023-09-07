@@ -2,8 +2,8 @@
 <template>
     <div class="login">
         <h1>這是登入頁面</h1>
-        1234
         <!-- 此處為測試文字,可以改掉重新編輯 -->
+        <router-link to="/register" >To Register</router-link>
     </div>
 </template>
 
