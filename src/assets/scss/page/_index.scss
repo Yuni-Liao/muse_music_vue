@@ -1,39 +1,248 @@
-
 #app {
     // -webkit-font-smoothing: antialiased;
     // -moz-osx-font-smoothing: grayscale;
     text-align: center;
     position: relative;
-    height: 500vh;
     //這裡是系統內建的
   }
-  
-  
-  main {
-    h1{
-      font-size: $big;
-    }
-    margin: 10% 0;
-    .demo-carousel{
-      width: 400px;
-      height: 20rem;
-    }
-          //測試用,這裡的內容都可以刪除
 
+  main{
+    //網站主要漸層背景色
+    background-image: linear-gradient(#000, $dark 70%);
+    // overflow-x: hidden; //水平跑版--隱藏
   }
 
-  .testbth{
+// 頂部輪播區 -廖妍榛
+.index_topCarousel{
+  @include layout(100%);
+  .topSwiper{
+    width: 100%;
+    height: 100vh;
+    img{
+      width: 100%;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 30px;
+    border-radius: 2px;
+    height: 3px;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 60px;
+    height: 5px;
+    background-color: $green;
+  }
+}
+
+// 音樂謬思就是音樂的發生地 -廖妍榛
+.index_centerSlogn{
+  @include layout(100%);
+  height: 200px;
+  background-image: url('~@/assets/image/index/index_makingWave.png');
+  background-size: contain;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+    .index_centerH1,
+    .index_centerP{
+      width: 800px;
+    }
+    h1,p{
+      color: $white;
+    // -webkit-text-fill-color: $white;
+      letter-spacing: 1px;
+      text-shadow:
+      5px 5px 0 #000,
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+      // background-image: linear-gradient(#5D5DDB, #74EBD5 80%);
+      // -webkit-background-clip: text;
+      // background-clip: text;
+  }
+    h1{
+      font-size: $superBig;
+      -webkit-text-stroke: 2px $tp;
+      text-align: left;
+      span{
+        text-align: right;
+      }
+    }
+    p{
+      font-size: $big;
+      -webkit-text-stroke: 1px $tp;
+      text-align: right;
+    }
+    .index_joinUs{
+      width: 90%;
+      text-align: right;
+      color: $white;
+      span{
+        position: relative;
+      }
+    }
+    & span::after{
+      content: '';
+      background-image: url('~@/assets/image/index/index_joinus.png'); //這張圖要重做
+      background-size: contain;
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      width: 130px;
+      height: 130px;
+      transform-origin: center;
+      animation: rotate360 7s 0s linear infinite;
+      z-index: 2;
+    }
+}
+
+@keyframes rotate360 {
+  0%{transform: translate(50% ,-50%) rotate(0deg);}
+  100%{transform:translate(50% ,-50%)  rotate(360deg);}
+}
+
+// 新歌推薦輪播 - 黃珮菁
+.index_newMusic,
+.index_WeekTopusic {
+  h2 {
+    font-size: $big;
+    text-align: start;
+    margin: 40px;
+  }
+  .swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    .swiper-wrapper {
+      background-color: transparent;
+      margin-bottom: 30px;
+
+      .swiper-slide {
+        // width: 300px;
+        background-color: transparent;
+        .card {
+          width: 315px;
+          margin: auto;
+          img {
+            @include rect(315px);
+            // display: block;
+            object-fit: cover;
+            object-position: top center;
+          }
+          .text {
+            h3 {
+              text-align: start;
+              font-size: $small;
+            }
+            p {
+              @include mini_Tag($tag);
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
+    .swiper-pagination-bullet {
+      width: 30px;
+      border-radius: 2px;
+      height: 3px;
+    }
+    .swiper-pagination-bullet-active {
+      width: 60px;
+      height: 5px;
+      background-color: $green;
+    }
+  }
+}
+
+// 本週熱門專輯 - 廖妍榛
+.index_WeekTopAlbum{
+  @include layout(100%);
+  margin: 5% 0;
+  h2 {
+    font-size: $big;
+    color: $white;
+    text-align: start;
+    margin: 40px;
+  }
+  .index_albumGrid{
+    width: 60%;
+    margin: auto;
     display: flex;
-    justify-content: space-evenly;  
-    flex-wrap: wrap;
-    
-    margin: 0 auto;
+    justify-content: space-evenly;
+    .index_potLeft{
+      width: 100px;
+      align-self: flex-start;
+    }
+    .index_potRight{
+      width: 100px;
+      align-self: flex-end;
+    }
+  }
+}
+
+//專輯下方閃電線 - 廖妍榛
+.hr{
+  @include layout(100%);
+  img{
     width: 100%;
   }
+}
 
-  .end #angle-right{
-    background-color: transparent;
-    font-size: $medium;
-      //測試用,這裡的內容都可以刪除
+//音樂轉盤 - 廖妍榛
+.index_revolve{
+  @include layout(100%);
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column wrap;
+  h2 {
+    width: 80%;
+    font-size: $big;
+    color: $white;
+    text-align: start;
+    margin: 40px;
   }
+  .step{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+      .pic{
+      width: 150px;
+      height: 110px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .txt{
+      p{
+        @include mini_Tag($tag);
+      }
+    }
+  }
+  .index_loop{
+    @include layout(50%);
+    display: inline-block;
+    margin: auto;
+  }
+}
 
+//情緒歌單  - 廖妍榛
+
+.index_emo{
+  @include layout(100%);
+  padding-bottom: 5%;
+  h2 {
+    width: 80%;
+    font-size: $big;
+    color: $white;
+    text-align: start;
+    margin: 40px;
+  }
+}
