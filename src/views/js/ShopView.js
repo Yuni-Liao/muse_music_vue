@@ -143,14 +143,24 @@ export default {
                     inCart: 0,
                 }
             ],
-            //切換數量功能還在研究中QQ
-            perPageOptions: {
-                '每頁顯示20個': 20,
-                '每頁顯示16個': 16,
-                '每頁顯示12個': 12,
-                '每頁顯示8個': 8,
+            //以下是自己打的顯示數量下拉選單 先不要刪除
+            // perPageOptions: {
+            //     '每頁顯示20個': 20,
+            //     '每頁顯示16個': 16,
+            //     '每頁顯示12個': 12,
+            //     '每頁顯示8個': 8,
+            // },
+            // selectedPerPage: '每頁顯示20個',
+
+            //下面這個改不了下拉選單內的簡體字QQ
+            pageTexts: {
+                '20': '每頁顯示20個',
+                '16': '每頁顯示16個',
+                '12': '每頁顯示12個',
+                '8': '每頁顯示8個',
             },
-            selectedPerPage: '每頁顯示20個',
+            selectedPageSize: 20, 
+            currentPage: 1,
             typeOptions: [
                 '商品排序',
                 '上架時間(新>舊)',
@@ -160,29 +170,32 @@ export default {
             ],
             selectedType: '商品排序',
         }
-    }, computed: {
-        // 计算属性，根据当前的每页显示数量和当前页数计算应该显示的商品
-        displayedProducts() {
-            // 计算应该显示的商品数量
-            const startIdx = (this.currentPage - 1) * this.selectedPerPage;
-            const endIdx = startIdx + this.selectedPerPage;
-
-            // 使用数组的 slice 方法来获取对应范围的商品
-            return this.products.slice(startIdx, endIdx);
-        },
     },
     methods: {
-        // 增加商品数量
+        // 增加商品數量
         incrementItem(item) {
             if (item.inCart >= 0) {
                 item.inCart++;
             }
         },
-        // 减少商品数量
+        // 減少商品數量
         decrementItem(item) {
             if (item.inCart > 0) {
                 item.inCart--;
             }
         },
+        // 以下想做分頁顯示商品數量 但是失敗QQ
+        handlePageChange(page) {
+            this.currentPage = page;
+            // 算出起始跟結束頁面
+            const startIndex = (page - 1) * this.pageSize;
+            const endIndex = page * this.pageSize;
+            // 要顯示的產品數量
+            this.displayedProducts = this.products.slice(startIndex, endIndex);
+        },
     },
-};
+    created() {
+        // 顯示第一頁商品數量
+        this.displayedProducts = this.products.slice(0, this.pageSize);
+    },
+}
