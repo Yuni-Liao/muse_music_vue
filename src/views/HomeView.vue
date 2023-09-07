@@ -183,4 +183,4 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/page/index.scss";
 </style>
-<script src="./js/HomeView"></script>
+<script src="./js/HomeView.js"></script>

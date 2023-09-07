@@ -41,6 +41,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ '../views/RegisterView.vue')
   },
   {
+    path: '/forgetpsw',
+    name: 'forgetpsw',
+    component: () => import(/* webpackChunkName: "forgetpsw" */ '../views/ForgetPsw.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
