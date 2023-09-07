@@ -146,8 +146,20 @@
   <!-- 情緒歌單 -廖妍榛 -->
   <section class="index_emo">
     <h2>情緒歌單．Find Your Emotion</h2>
-    <div class="pic">
-      <img class="index_loop" src="~@/assets/image/index/index_emo.png" alt="情緒選擇題">
+    <div class="index_emoQue">
+      <p>Q: 今天是星期一，鬧鐘一響，剛醒來你的想法是什麼？</p>
+      <div class="index_emoAns">
+        <input type="radio" name="hi">
+        <span>全新的一週，動力滿滿活力滿滿！</span><br>
+      </div>
+      <div class="index_emoAns">
+        <input type="radio" name="hi">
+        <span>好累，好想繼續睡</span><br>
+      </div>
+      <div class="index_emoAns">
+        <input type="radio" name="hi">
+        <span>沒有特別感受，腦袋空空</span><br>
+      </div>
     </div>
   </section>
 </template>
