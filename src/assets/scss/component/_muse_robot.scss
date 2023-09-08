@@ -1,1 +1,14 @@
 // 這裡是機器人
+.pageTop_robot{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    img{
+        width: 40%;
+        margin: 10px 0px;
+        cursor: pointer;
+    }
+     
+     
+}

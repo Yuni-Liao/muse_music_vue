@@ -6,28 +6,57 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-evenly;
     width: 100%;
-    img {
-        width: 60px;
-        padding: 5px;
-        background-color: $dark;
-    }
-    nav {
-        display: inline-flex;
+    box-shadow: 0px 1px 3px #aaa;
+    nav{
+        display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px;
-        background-color: $dark;
-        width: 50%;
+    }
+    .header_nav_left{
+        display: inline-flex;
+        align-items: center;
         a {
-            font-weight: bold;
-            color: #2c3e50;
+            color: $white;
+            padding: 10px;
+            letter-spacing: 1px;
             &.router-link-exact-active {
-            color: #42b983;
+            color: $green;
             }
         }
+        .logo_header{
+        width: 50px;
+        padding: 5px;
+        background-color: $dark;
+        }
     }
+    
+    .header_nav_right{
+        display: inline-flex;
+        align-items: center;
+        img {
+            width: 35px;
+            padding: 0px 5px;
+            margin: 0px 5px;
+            cursor: pointer;
+        }
+        .dropdown{
+            position: absolute;
+            right: 50px;
+            margin-top: 10px;
+            width: 200px;
+            height: 300px;
+            border-radius: 10px;
+            background-color: #000000;
+            box-shadow: 1px 1px 5px $white;
+        }
+        .dropdown p{
+            color: $white;
+            border-radius: 10px;
+            background-color: #000000;
+            margin: 5px;
+            
+        }
+    }
+   
 }
