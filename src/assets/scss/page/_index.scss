@@ -118,14 +118,12 @@
       margin-bottom: 30px;
 
       .swiper-slide {
-        // width: 300px;
         background-color: transparent;
         .card {
           width: 315px;
           margin: auto;
           img {
             @include rect(315px);
-            // display: block;
             object-fit: cover;
             object-position: top center;
           }
@@ -156,7 +154,7 @@
   }
 }
 
-// 本週熱門專輯 - 廖妍榛
+// // 本週熱門專輯 - 廖妍榛
 .index_WeekTopAlbum{
   @include layout(100%);
   margin: 5% 0;
@@ -166,19 +164,32 @@
     text-align: start;
     margin: 40px;
   }
-  .index_albumGrid{
-    width: 60%;
+  .index_albumBox{
+    @include rect(70%);
     margin: auto;
-    display: flex;
-    justify-content: space-evenly;
-    .index_potLeft{
-      width: 100px;
-      align-self: flex-start;
+    position: relative;
+    img{
+      @include layout(100%);
     }
-    .index_potRight{
-      width: 100px;
-      align-self: flex-end;
-    }
+  }
+  
+  .index_albumBox::before{
+    content: '';
+    background-image: url('~@/assets/image/index/index_ablumPot.svg');
+    background-size: contain;
+    @include rect(120px);
+    position:absolute;
+    left: -130px;
+    top: 30px;
+  }
+  .index_albumBox::after{
+    content: '';
+    background-image: url('~@/assets/image/index/index_ablumPot.svg');
+    background-size: contain;
+    @include rect(120px);
+    position:absolute;
+    right: -130px;
+    bottom: 120px;
   }
 }
 

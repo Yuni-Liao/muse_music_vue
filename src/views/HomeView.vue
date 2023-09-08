@@ -90,27 +90,14 @@
   <!-- 本週熱門專輯 -廖妍榛 -->
   <section class="index_WeekTopAlbum">
     <h2>本週熱門專輯．Popular Album This Week</h2>
-    <div class="index_albumGrid" v-for="(item, index) in album" :key="index">
-      <!-- 這裡還在調整 -->
-      <!-- <img class="index_potRight" :src="item.pot"> -->
-      <img class="index_potLeft" src="~@/assets/image/index/index_ablumPot.svg" alt="">
-      <img class="index_potLeft" src="~@/assets/image/index/index_ablumPot.svg" alt="">
-      <Grid>
-        <GridItem>1</GridItem>
-        <GridItem>2</GridItem>
-        <GridItem>3</GridItem>
-        <GridItem>4</GridItem>
-        <GridItem>5</GridItem>
-        <GridItem>6</GridItem>
-        <GridItem>7</GridItem>
-        <GridItem>8</GridItem>
-        <GridItem>9</GridItem>
+    <div class="index_albumBox">
+      <Grid center square>
+        <GridItem v-for="(item, index) in album" :key="index"><img :src="require(`@/assets/image/index/${item.image}`)" />
+        </GridItem>
       </Grid>
-      <!-- <img class="index_potRight" :src="item.pot"> -->
-      <img class="index_potRight" src="~@/assets/image/index/index_ablumPot.svg" alt="">
-      <img class="index_potRight" src="~@/assets/image/index/index_ablumPot.svg" alt="">
     </div>
   </section>
+
 
   <!-- 專輯下方閃電線 -廖妍榛 -->
   <div class="hr">
