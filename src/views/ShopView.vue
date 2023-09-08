@@ -32,7 +32,7 @@
         </div>
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item, index) in sortedProducts" :key="index">
+                <div class="prodCard" v-for="(item, index) in products" :key="index">
                     <div class="prodPic">
                         <img :src="require(`@/assets/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </div>
@@ -40,12 +40,12 @@
                         <p class="prodName">{{ item.prodName }}</p>
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>
                         <span class="prodCount">
-                            <button class="prodBtn" @click="decrementItem(item)"><img
-                                    src="~@/assets/image/ShopImage/up.png"></button>
+                            <button class="prodBtn" @click="decrementItem(item)">
+                                <img src="~@/assets/image/ShopImage/up.png"></button>
 
                             <p>{{ item.inCart }}</p>
-                            <button class="prodBtn" @click="incrementItem(item)"><img
-                                    src="~@/assets/image/ShopImage/down.png"></button>
+                            <button class="prodBtn" @click="incrementItem(item)">
+                                <img src="~@/assets/image/ShopImage/down.png"></button>
                         </span>
                         <button class="obj_Radius btn_Shop_Border">加入購物車</button>
                     </div>

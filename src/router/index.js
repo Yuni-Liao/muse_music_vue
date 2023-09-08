@@ -83,6 +83,7 @@ const routes = [
     name: 'NotFound',
     component: () => import(/* webpackChunkName: "error" */ '../views/NotFoundView.vue')
   },
+  
 ]
 
 
