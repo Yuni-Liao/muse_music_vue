@@ -13,6 +13,29 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      .weekTopSongs {
+        display: flex;
+        .ranking {
+          display: flex;
+          flex-direction: row;
+          li {
+            display: flex;
+            flex-direction: row;
+            img {
+              width: 50px;
+              height: 50px;
+              // 尚未調整CSS
+            }
+            .txt {
+              button {
+                background-color: transparent;
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

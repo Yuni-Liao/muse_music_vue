@@ -36,18 +36,27 @@
     }
 }
 
+// 垂直置中 --- //原理:取父層 100% 高, 除以自身高
+@mixin center($h){
+    position: relative;
+    top:calc((100% - $h) / 2); 
+    margin:auto;
+}
+
 // --------------- 斷點控制
 // $s 是 414px ,  
 // $l 是 1920px,
+// 從 大  ------- >  小
 
-@mixin s(){
-    @media screen and (min-width: $s) {
+@mixin l(){
+    @media screen and (max-width: $l) {
         @content;
     }
 }
 
-@mixin l(){
-    @media screen and (min-width: $l) {
+
+@mixin s(){
+    @media screen and (max-width: $s) {
         @content;
     }
 }
