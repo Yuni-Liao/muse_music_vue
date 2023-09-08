@@ -242,9 +242,8 @@ export default {
         //郭凱芸 - 下拉數量選單:計算商品數量
         displayedProducts() {
             //計算商品數量
-            const startIdx = (this.currentPage - 1) * this.selectedPerPage;
-            const endIdx = startIdx + this.selectedPerPage;
-
+            const startIdx = (this.currentPage - 1) * this.selectedPageSize;
+            const endIdx = startIdx + this.selectedPageSize;
             //取得對應範圍商品
             return this.products.slice(startIdx, endIdx);
         },
@@ -282,30 +281,26 @@ export default {
         // }
     },
     methods: {
-        // 增加商品数量
+        // 增加商品數量
         incrementItem(item) {
             if (item.inCart >= 0) {
                 item.inCart++;
             }
         },
-        // 减少商品数量
+        // 減少商品數量
         decrementItem(item) {
             if (item.inCart > 0) {
                 item.inCart--;
             }
         },
+        // 郭凱芸 - 以下想做分頁顯示商品數量 但是失敗
+        handlePageChange(page) {
+            console.log('handlePageChange', page)
+            this.currentPage = page;
+        },
+        handlePageSize(page) {
+            console.log('handlePageSize', page)
+            this.selectedPageSize = page;
+        },
     },
-    // 郭凱芸 - 以下想做分頁顯示商品數量 但是失敗
-    handlePageChange(page) {
-        this.currentPage = page;
-        // 算出起始跟結束頁面
-        const startIndex = (page - 1) * this.pageSize;
-        const endIndex = page * this.pageSize;
-        // 要顯示的產品數量
-        this.displayedProducts = this.products.slice(startIndex, endIndex);
-    },
-    created() {
-        // 顯示第一頁商品數量
-        this.displayedProducts = this.products.slice(0, this.pageSize);
-    }
 }
