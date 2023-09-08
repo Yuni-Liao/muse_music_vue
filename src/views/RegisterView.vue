@@ -59,7 +59,7 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/register.scss";
 </style>
-<script src="./js/RegisterView"></script>
+<script src="./js/RegisterView.js"></script>
 
 <style>
 /* 步驟條 */

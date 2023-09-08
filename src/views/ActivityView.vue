@@ -9,4 +9,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/activity.scss";
 </style>
-<script src="./js/ActivityView"></script>
+<script src="./js/ActivityView.js"></script>
