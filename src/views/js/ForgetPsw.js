@@ -2,7 +2,7 @@ export default {
     data() {
         return {
             current: 0,
-            email1: '',
+            email: '',
             verificationCode: '',
             password: '',
             confirmPassword: ''
