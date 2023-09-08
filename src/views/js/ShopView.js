@@ -267,22 +267,7 @@ export default {
             // 將第一个选项（'商品排序'）重新添加到已排序的选项数组开头
             sortedOptions.unshift(this.typeOptions[0]);
             return sortedOptions;
-        },
-
-        methods: {
-            // 增加商品数量
-            incrementItem(item) {
-                if (item.inCart >= 0) {
-                    item.inCart++;
-                }
-            },
-            // 减少商品数量
-            decrementItem(item) {
-                if (item.inCart > 0) {
-                    item.inCart--;
-                }
-            },
-        },
+        }
         // mounted() {
         //     //最一開始初始化
         //     fetch('https://fakestoreapi.com/products')
@@ -295,6 +280,20 @@ export default {
         //         this.productDisplay = json
         //     })
         // }
+    },
+    methods: {
+        // 增加商品数量
+        incrementItem(item) {
+            if (item.inCart >= 0) {
+                item.inCart++;
+            }
+        },
+        // 减少商品数量
+        decrementItem(item) {
+            if (item.inCart > 0) {
+                item.inCart--;
+            }
+        },
     },
     // 郭凱芸 - 以下想做分頁顯示商品數量 但是失敗
     handlePageChange(page) {
