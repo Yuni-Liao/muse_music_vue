@@ -4,26 +4,31 @@ export default {
             items: [
                 {
                     id: 1,
-                    kind: '所有商品',
+                    label: '所有商品',
+                    kind: 'All',
                     link: '#'
                 },
                 {
                     id: 2,
+                    label: '黑膠唱片',
                     kind: '黑膠唱片',
                     link: '#'
                 },
                 {
                     id: 3,
+                    label: '男藝人',
                     kind: '男藝人',
                     link: '#'
                 },
                 {
                     id: 4,
+                    label: '女藝人',
                     kind: '女藝人',
                     link: '#'
                 },
                 {
                     id: 5,
+                    label: '樂團團體',
                     kind: '樂團團體',
                     link: '#'
                 }
@@ -210,24 +215,11 @@ export default {
                     kind: "樂團團體黑膠唱片",
                 }
             ],
-            //郭凱芸 - 以下是自己打的顯示數量下拉選單 先不要刪除
-            // perPageOptions: {
-            //     '每頁顯示20個': 20,
-            //     '每頁顯示16個': 16,
-            //     '每頁顯示12個': 12,
-            //     '每頁顯示8個': 8,
-            // },
-            // selectedPerPage: '每頁顯示20個',
 
-            //郭凱芸 - 改不了下拉選單內的簡體字
-            pageTexts: {
-                '20': '每頁顯示20個',
-                '16': '每頁顯示16個',
-                '12': '每頁顯示12個',
-                '8': '每頁顯示8個',
-            },
-            selectedPageSize: 20,
             currentPage: 1,
+            //劉宜靜 - 商品篩選
+            currentKind: "All",
+            //劉宜靜 - 商品排序
             typeOptions: [
                 '商品排序',
                 '上架時間(新>舊)',
@@ -236,76 +228,67 @@ export default {
                 '價格:由低到高',
             ],
             selectedType: '商品排序',
+            selectedPageSize: 20,
         }
     },
+
     computed: {
+        //劉宜靜 - 商品篩選(All)
+        catList() {
+            if (this.currentKind === 'All') return this.products;
+            return this.products.filter((v, i) => v.kind.includes(this.currentKind))
+        },
         //郭凱芸 - 下拉數量選單:計算商品數量
         displayedProducts() {
-            //計算商品數量
-            const startIdx = (this.currentPage - 1) * this.selectedPerPage;
-            const endIdx = startIdx + this.selectedPerPage;
-
-            //取得對應範圍商品
-            return this.products.slice(startIdx, endIdx);
+            const startIdx = (this.currentPage - 1) * this.selectedPageSize;
+            const endIdx = startIdx + this.selectedPageSize;
+            return this.sortedTypeOptions.slice(startIdx, endIdx);
         },
 
+        //劉宜靜 - 商品排序
         sortedTypeOptions() {
-            // 克隆原始的typeOptions数组
-            const sortedOptions = [...this.typeOptions];
-            // 移除第一个选项（'商品排序'）
-            sortedOptions.shift();
-            // 根据选择的排序方式重新排序选项
-            if (this.selectedType === '上架時間(新>舊)') {
-                sortedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            } else if (this.selectedType === '上架時間(舊>新)') {
-                sortedProducts.sort((a, b) => new Date(a.date) - new Date(b.date));
-            } else if (this.selectedType === '價格:由高到低') {
-                sortedProducts.sort((a, b) => b.prodPrice - a.prodPrice);
-            } else if (this.selectedType === '價格:由低到高') {
-                sortedProducts.sort((a, b) => a.prodPrice - b.prodPrice);
+            const sortedProducts = [...this.catList];
+            let func = (a, b) => new Date(b.date) - new Date(a.date)
+
+            if (this.selectedType === '上架時間(舊>新)') {
+                func = (a, b) => new Date(a.date) - new Date(b.date)
             }
-            // 將第一个选项（'商品排序'）重新添加到已排序的选项数组开头
-            sortedOptions.unshift(this.typeOptions[0]);
-            return sortedOptions;
+
+            if (this.selectedType === '價格:由高到低') {
+                func = (a, b) => b.prodPrice - a.prodPrice
+            }
+
+            if (this.selectedType === '價格:由低到高') {
+                func = (a, b) => a.prodPrice - b.prodPrice
+            }
+            return sortedProducts.sort(func);
         }
-        // mounted() {
-        //     //最一開始初始化
-        //     fetch('https://fakestoreapi.com/products')
-        //     // .then(res=>res.json())
-        //     .then(res=>{
-        //         return res.json()
-        //     })
-        //     .then(json=>{
-        //         this.products = json
-        //         this.productDisplay = json
-        //     })
-        // }
+    },
+    //郭凱芸 - 下拉數量預設
+    mounted() {
+        this.handlePageSize(20)
     },
     methods: {
-        // 增加商品数量
+        // 郭凱芸 - 增加商品數量
         incrementItem(item) {
             if (item.inCart >= 0) {
                 item.inCart++;
             }
         },
-        // 减少商品数量
+        // 郭凱芸 - 減少商品數量
         decrementItem(item) {
             if (item.inCart > 0) {
                 item.inCart--;
             }
         },
+        // 郭凱芸 - 分頁顯示商品數量
+        handlePageChange(page) {
+            console.log('handlePageChange', page)
+            this.currentPage = page;
+        },
+        handlePageSize(page) {
+            console.log('handlePageSize', page)
+            this.selectedPageSize = page;
+        },
     },
-    // 郭凱芸 - 以下想做分頁顯示商品數量 但是失敗
-    handlePageChange(page) {
-        this.currentPage = page;
-        // 算出起始跟結束頁面
-        const startIndex = (page - 1) * this.pageSize;
-        const endIndex = page * this.pageSize;
-        // 要顯示的產品數量
-        this.displayedProducts = this.products.slice(startIndex, endIndex);
-    },
-    created() {
-        // 顯示第一頁商品數量
-        this.displayedProducts = this.products.slice(0, this.pageSize);
-    }
 }
