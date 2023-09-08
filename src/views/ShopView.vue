@@ -31,7 +31,7 @@
         </div>
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
+                <div class="prodCard" v-for="(item, index) in products" :key="index">
                     <div class="prodPic">
                         <img :src="require(`@/assets/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </div>
