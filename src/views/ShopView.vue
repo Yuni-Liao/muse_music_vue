@@ -8,7 +8,8 @@
     </Breadcrumb>
     <div class="selectArea">
         <select class="prodSort obj_Radius" v-model="selectedType">
-            <option v-for="(type, index) in sortedTypeOptions" :value="type" :key="index" @click="sortedTypeOptions">{{ type
+            <option v-for="(type, index) in typeOptions" :value="type" :key="index">{{
+                type
             }}
             </option>
         </select>
@@ -24,8 +25,8 @@
         <div class="prodType ">
             <h2>商品類型</h2>
             <ul>
-                <li v-for="item in items" :key="item.id">
-                    <a :href="item.link" @click="filterByKind(item.kind)">{{ item.kind }}</a>
+                <li v-for="item in kindItems" :key="item.id">
+                    <a :href="item.link">{{ item.kind }}</a>
                 </li>
             </ul>
         </div>
@@ -54,6 +55,8 @@
             <Page :total="products.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
                 :page-size-texts="pageTexts" @on-change="handlePageChange" />
         </div>
+
+        <pre>{{ sortProducts2 }}</pre>
     </div>
 </template>
 
