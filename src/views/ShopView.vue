@@ -8,7 +8,9 @@
     </Breadcrumb>
     <div class="selectArea">
         <select class="prodSort obj_Radius" v-model="selectedType">
-            <option v-for="(type, index) in typeOptions" :value="type" :key="index">{{ type }}</option>
+            <option v-for="(type, index) in sortedTypeOptions" :value="type" :key="index" @click="sortedTypeOptions">{{ type
+            }}
+            </option>
         </select>
         <!-- 以下是自己打的顯示數量下拉選單 先不要刪除-->
         <!-- <select class="prodQuantity obj_Radius" v-model="selectedPerPage">
@@ -22,16 +24,14 @@
         <div class="prodType ">
             <h2>商品類型</h2>
             <ul>
-                <li><a href="#">新貨上架</a></li>
-                <li><a href="#">黑膠唱片</a></li>
-                <li><a href="#">男藝人</a></li>
-                <li><a href="#">女藝人</a></li>
-                <li><a href="#">樂團團體</a></li>
+                <li v-for="item in items" :key="item.id">
+                    <a :href="item.link" @click="filterByKind(item.kind)">{{ item.kind }}</a>
+                </li>
             </ul>
         </div>
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
+                <div class="prodCard" v-for="(item, index) in products" :key="index">
                     <div class="prodPic">
                         <img :src="require(`@/assets/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </div>
@@ -39,12 +39,12 @@
                         <p class="prodName">{{ item.prodName }}</p>
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>
                         <span class="prodCount">
-                            <button class="prodBtn" @click="decrementItem(item)"><img
-                                    src="~@/assets/image/ShopImage/up.png"></button>
+                            <button class="prodBtn" @click="decrementItem(item)">
+                                <img src="~@/assets/image/ShopImage/up.png"></button>
 
                             <p>{{ item.inCart }}</p>
-                            <button class="prodBtn" @click="incrementItem(item)"><img
-                                    src="~@/assets/image/ShopImage/down.png"></button>
+                            <button class="prodBtn" @click="incrementItem(item)">
+                                <img src="~@/assets/image/ShopImage/down.png"></button>
                         </span>
                         <button class="obj_Radius btn_Shop_Border">加入購物車</button>
                     </div>
