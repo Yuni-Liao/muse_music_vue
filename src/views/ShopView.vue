@@ -8,7 +8,7 @@
     </Breadcrumb>
     <div class="selectArea">
         <select class="prodSort obj_Radius" v-model="selectedType">
-            <option v-for="(type, index) in sortedTypeOptions" :value="type" :key="index" @click="sortedTypeOptions">{{ type
+            <option v-for="(type, index) in typeOptions" :value="type" :key="index">{{ type
             }}
             </option>
         </select>
@@ -309,27 +309,30 @@ export default {
             const startIdx = (this.currentPage - 1) * this.selectedPageSize;
             const endIdx = startIdx + this.selectedPageSize;
             //取得對應範圍商品
-            return this.catList.slice(startIdx, endIdx);
+            return this.sortedTypeOptions.slice(startIdx, endIdx);
         },
 
         sortedTypeOptions() {
             // 克隆原始的typeOptions数组
-            const sortedOptions = [...this.typeOptions];
-            // 移除第一个选项（'商品排序'）
-            sortedOptions.shift();
+            const sortedProducts = [...this.catList];
             // 根据选择的排序方式重新排序选项
-            if (this.selectedType === '上架時間(新>舊)') {
-                sortedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            } else if (this.selectedType === '上架時間(舊>新)') {
-                sortedProducts.sort((a, b) => new Date(a.date) - new Date(b.date));
-            } else if (this.selectedType === '價格:由高到低') {
-                sortedProducts.sort((a, b) => b.prodPrice - a.prodPrice);
-            } else if (this.selectedType === '價格:由低到高') {
-                sortedProducts.sort((a, b) => a.prodPrice - b.prodPrice);
+            let func = (a, b) => new Date(b.date) - new Date(a.date)
+
+            if (this.selectedType === '上架時間(舊>新)') {
+                func = (a, b) => new Date(a.date) - new Date(b.date)
+                // return sortedProducts.sort((a, b) => new Date(a.date) - new Date(b.date));
             }
-            // 將第一个选项（'商品排序'）重新添加到已排序的选项数组开头
-            sortedOptions.unshift(this.typeOptions[0]);
-            return sortedOptions;
+
+            if (this.selectedType === '價格:由高到低') {
+                func = (a, b) => b.prodPrice - a.prodPrice
+                // return sortedProducts.sort((a, b) => b.prodPrice - a.prodPrice);
+            }
+
+            if (this.selectedType === '價格:由低到高') {
+                func = (a, b) => a.prodPrice - b.prodPrice
+                // return sortedProducts.sort((a, b) => a.prodPrice - b.prodPrice);
+            }
+            return sortedProducts.sort(func);
         }
         // mounted() {
         //     //最一開始初始化
