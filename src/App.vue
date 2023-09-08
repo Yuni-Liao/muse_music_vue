@@ -35,23 +35,25 @@
           </div>
         </div>
         <div class="user_dropdown_reaction">
-          <img style="margin-top: -1px;" alt="user_icon" src="~@/assets/image/icon/user.png">
+          <router-link to="/login"><img style="margin-top: -1px;" alt="user_icon" src="~@/assets/image/icon/user.png"></router-link>
 
           <div class="user_dropdown" >
-            <div class="user_info_top" v-for="user in userTopList">
-              <!-- <img :src="require(`@/assets/image/icon/${user.src}`)" alt=""> -->
-              <router-link to="/activity">{{user.nav1}}</router-link>
-            </div>
+            <router-link to=""><img src="~@/assets/image/icon/clipboard.png" alt="">訂單資訊</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/settingicon.png" alt="">帳號設定</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/personalPage.png" alt="">個人主頁</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/development.png" alt="">個人管理頁面</router-link><br>
             <p>我的音樂庫</p>
-            <div class="user_info_down" v-for="item in userDownList">
-              <!-- <img :src="require(`@/assets/image/creator/${item.srcc}`)" alt=""> -->
-              <router-link to="/activity">{{item.nav2}}</router-link>
-            </div>
-            <hr>
+            <router-link to=""><img src="~@/assets/image/icon/clock.png" alt="">播放紀錄</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/list.png" alt="">我的歌單</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/heart.png" alt="">我的最愛</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/targeticon.png" alt="">我的追蹤</router-link>
+            <hr style="margin: 10px 0px;">
             <div class="loginbtn">登出</div>
+            
           </div>
-      </div>
+            
         </div>
+      </div>
         
       
     </nav>
@@ -106,44 +108,10 @@ export default{
       },
       ],
 
-      userTopList:[{
-        src: 'clipboard.png',
-        nav1: '訂單資訊',
-      },
-      {
-        src: 'setting.png',
-        nav1: '帳號設定',
-      },
-      {
-        src: 'clipboard.png',
-        nav1: '個人主頁',
-       
-      },
-      {
-        src: 'personalPagesetting.png',
-        nav1: '個人管理頁面',
-        
-      }
-    ],
-    userDownList:[{
-        srcc: 'clock.png',
-        nav2: '播放紀錄',
-      },
-      {
-        srcc: 'list.png',
-        nav2: '我的歌單',
-      },
-      {
-        srcc: 'heart.png',
-        nav2: '我的最愛',
-       
-      },
-      {
-        srcc: 'target.png',
-        nav2: '我的追蹤',
-        
-      }
-    ],
+      
+     
+     
+    
     }
   },
 }
