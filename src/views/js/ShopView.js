@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            items: [
+            kindItems: [
                 {
                     id: 1,
                     kind: '所有商品',
@@ -235,7 +235,8 @@ export default {
                 '價格:由高到低',
                 '價格:由低到高',
             ],
-            selectedType: '商品排序',
+            selectedTypeOptions: '商品排序',
+            sortedProducts: [],
         }
     },
     computed: {
@@ -248,52 +249,56 @@ export default {
             // 使用数组的 slice 方法来获取对应范围的商品
             return this.products.slice(startIdx, endIdx);
         },
-
-        sortedTypeOptions() {
-            // 克隆原始的typeOptions数组
-            const sortedOptions = [...this.typeOptions];
-            // 移除第一个选项（'商品排序'）
-            sortedOptions.shift();
-            // 根据选择的排序方式重新排序选项
+        sortProducts2() {
+            const sortedProducts = [...this.products];
             if (this.selectedType === '上架時間(新>舊)') {
-                sortedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            } else if (this.selectedType === '上架時間(舊>新)') {
-                sortedProducts.sort((a, b) => new Date(a.date) - new Date(b.date));
-            } else if (this.selectedType === '價格:由高到低') {
-                sortedProducts.sort((a, b) => b.prodPrice - a.prodPrice);
-            } else if (this.selectedType === '價格:由低到高') {
-                sortedProducts.sort((a, b) => a.prodPrice - b.prodPrice);
+                return sortedProducts.sort((a, b) => new Date(b.date) > new Date(a.date));
             }
-            // 将第一个选项（'商品排序'）重新添加到已排序的选项数组开头
-            sortedOptions.unshift(this.typeOptions[0]);
-            return sortedOptions;
+
+            if (this.selectedType === '上架時間(舊>新)') {
+                return sortedProducts.sort((a, b) => new Date(a.date) > new Date(b.date));
+            }
+
+            if (this.selectedType === '價格:由高到低') {
+                return sortedProducts.sort((a, b) => b.prodPrice > a.prodPrice);
+            }
+
+            if (this.selectedType === '價格:由低到高') {
+                return sortedProducts.sort((a, b) => a.prodPrice > b.prodPrice);
+            }
         },
 
-        methods: {
-            // 增加商品数量
-            incrementItem(item) {
-                if (item.inCart >= 0) {
-                    item.inCart++;
-                }
-            },
-            // 减少商品数量
-            decrementItem(item) {
-                if (item.inCart > 0) {
-                    item.inCart--;
-                }
-            },
-        },
-        // mounted() {
-        //     //最一開始初始化
-        //     fetch('https://fakestoreapi.com/products')
-        //     // .then(res=>res.json())
-        //     .then(res=>{
-        //         return res.json()
-        //     })
-        //     .then(json=>{
-        //         this.products = json
-        //         this.productDisplay = json
-        //     })
-        // }
     },
+    methods: {
+        // 增加商品数量
+        incrementItem(item) {
+            if (item.inCart >= 0) {
+                item.inCart++;
+            }
+        },
+        // 减少商品数量
+        decrementItem(item) {
+            if (item.inCart > 0) {
+                item.inCart--;
+            }
+        },
+        handleSortChange() {
+            this.sortProducts();
+        },
+        sortProducts() {
+            const sortedProducts = [...this.products];
+            if (this.selectedType === '上架時間(新>舊)') {
+                sortedProducts.sort((a, b) => new Date(b.date) > new Date(a.date));
+            }
+            else if (this.selectedType === '上架時間(舊>新)') {
+                sortedProducts.sort((a, b) => new Date(a.date) > new Date(b.date));
+            } else if (this.selectedType === '價格:由高到低') {
+                sortedProducts.sort((a, b) => b.prodPrice > a.prodPrice);
+            } else if (this.selectedType === '價格:由低到高') {
+                sortedProducts.sort((a, b) => a.prodPrice > b.prodPrice);
+            }
+            this.sortedProducts = sortedProducts;
+        },
+    },
+
 }
