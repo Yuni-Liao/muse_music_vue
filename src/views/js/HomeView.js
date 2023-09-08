@@ -12,11 +12,13 @@ import 'swiper/css/effect-fade';
 import 'swiper/swiper-bundle.css';
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import 'swiper/swiper-bundle.css';
+import "swiper/css/effect-cards";
+
 
 
 // import required modules
-import { Autoplay, EffectCoverflow, Pagination, EffectFade } from "swiper/modules";
-
+import { Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards } from "swiper/modules";
 // -----------------------------------
 
 export default {
@@ -134,7 +136,7 @@ export default {
             {
                 name: '你看不見',
                 image: "index_grid_01.png"
-            }]
+            }],
         };
     },
     components: {
@@ -145,8 +147,9 @@ export default {
     },
     setup() {
         return {
-            modules: [Autoplay, EffectCoverflow, Pagination, EffectFade],
+            modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
             EffectFade,
         };
     },
+
 };

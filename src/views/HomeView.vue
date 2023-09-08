@@ -161,7 +161,24 @@
   <!-- 情緒歌單 -廖妍榛 -->
   <section class="index_emo">
     <h2>情緒歌單．Find Your Emotion</h2>
-    <div class="index_emoQue">
+    <div class="swiper my_swiper index_emo_card" :effect="'cards'" :grabCursor="true" :modules="modules">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">還在寫 1</div>
+        <div class="swiper-slide">還在寫 2</div>
+        <div class="swiper-slide">還在寫 3</div>
+        <div class="swiper-slide">還在寫 4</div>
+        <div class="swiper-slide">還在寫 5</div>
+        <div class="swiper-slide">還在寫 6</div>
+        <div class="swiper-slide">還在寫 7</div>
+        <div class="swiper-slide">還在寫 8</div>
+        <div class="swiper-slide">還在寫 9</div>
+        <div class="swiper-slide">還在寫 10</div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<!-- <div class="index_emoQue">
       <p>Q: 今天是星期一，鬧鐘一響，剛醒來你的想法是什麼？</p>
       <div class="index_emoAns">
         <div class="index_input"><input type="radio" name="hi" /></div>
@@ -175,9 +192,7 @@
         <div class="index_input"><input type="radio" name="hi" /></div>
         <span>沒有特別感受，腦袋空空</span>
       </div>
-    </div>
-  </section>
-</template>
+    </div> -->
 
 <!-- <script>
 import HelloWorld from '@/components/HelloWorld.vue'

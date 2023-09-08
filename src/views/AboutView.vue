@@ -59,4 +59,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/about.scss";
 </style>
-<script src="./js/AboutView"></script>
+<script src="./js/AboutView.js"></script>
