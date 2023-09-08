@@ -210,7 +210,7 @@ export default {
                     kind: "樂團團體黑膠唱片",
                 }
             ],
-            //以下是自己打的顯示數量下拉選單 先不要刪除
+            //郭凱芸 - 以下是自己打的顯示數量下拉選單 先不要刪除
             // perPageOptions: {
             //     '每頁顯示20個': 20,
             //     '每頁顯示16個': 16,
@@ -219,7 +219,7 @@ export default {
             // },
             // selectedPerPage: '每頁顯示20個',
 
-            //下面這個改不了下拉選單內的簡體字QQ
+            //郭凱芸 - 改不了下拉選單內的簡體字
             pageTexts: {
                 '20': '每頁顯示20個',
                 '16': '每頁顯示16個',
@@ -239,13 +239,13 @@ export default {
         }
     },
     computed: {
-        // 计算属性，根据当前的每页显示数量和当前页数计算应该显示的商品
+        //郭凱芸 - 下拉數量選單:計算商品數量
         displayedProducts() {
-            // 计算应该显示的商品数量
+            //計算商品數量
             const startIdx = (this.currentPage - 1) * this.selectedPerPage;
             const endIdx = startIdx + this.selectedPerPage;
 
-            // 使用数组的 slice 方法来获取对应范围的商品
+            //取得對應範圍商品
             return this.products.slice(startIdx, endIdx);
         },
 
@@ -264,7 +264,7 @@ export default {
             } else if (this.selectedType === '價格:由低到高') {
                 sortedProducts.sort((a, b) => a.prodPrice - b.prodPrice);
             }
-            // 将第一个选项（'商品排序'）重新添加到已排序的选项数组开头
+            // 將第一个选项（'商品排序'）重新添加到已排序的选项数组开头
             sortedOptions.unshift(this.typeOptions[0]);
             return sortedOptions;
         },
@@ -296,4 +296,17 @@ export default {
         //     })
         // }
     },
+    // 郭凱芸 - 以下想做分頁顯示商品數量 但是失敗
+    handlePageChange(page) {
+        this.currentPage = page;
+        // 算出起始跟結束頁面
+        const startIndex = (page - 1) * this.pageSize;
+        const endIndex = page * this.pageSize;
+        // 要顯示的產品數量
+        this.displayedProducts = this.products.slice(startIndex, endIndex);
+    },
+    created() {
+        // 顯示第一頁商品數量
+        this.displayedProducts = this.products.slice(0, this.pageSize);
+    }
 }
