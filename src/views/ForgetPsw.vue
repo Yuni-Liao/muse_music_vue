@@ -12,12 +12,12 @@
                 <input 
                 type="email" 
                 placeholder="請輸入電子信箱"
-                v-model="email1"
+                v-model="email"
                 required
                 >
                 <br>
-                <button class="btn_L_NoBorder obj_Radius submit" @click="next" :disabled="!email1">信箱收取重設信件</button>
-                <!-- <div class="error-message" v-if="!email1">請輸入電子信箱</div> -->
+                <button class="btn_L_NoBorder obj_Radius submit" @click="next" :disabled="!email">信箱收取重設信件</button>
+                <!-- <div class="error-message" v-if="!email">請輸入電子信箱</div> -->
             </form>
             <form class="step_2" action="" v-if="current === 1">
                 <h2>信箱驗證</h2>
@@ -65,15 +65,6 @@
         </div>
     </div>
 </template>
-
-<script>
-</script>
-
-<style scoped lang="scss">
-@import "~@/assets/scss/page/forgetpsw.scss";
-</style>
-<script src="./js/ForgetPsw.js"></script>
-
 <style>
 /* 步驟條 */
 .ivu-steps {
@@ -118,3 +109,7 @@
     color: white;
 }
 </style>
+<style scoped lang="scss">
+@import "~@/assets/scss/page/forgetpsw.scss";
+</style>
+<script src="./js/ForgetPsw.js"></script>
