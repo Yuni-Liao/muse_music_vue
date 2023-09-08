@@ -18,10 +18,10 @@ label {
 }
 
 .logininput {
-    border: #74EBD5 3px solid;
+    border: $green 3px solid;
     width: 100%;
     height: 40px;
-    background-color: white;
+    background-color: $white;
     margin: 5px;
     padding: 5px;
     font-size: 10px;
@@ -29,8 +29,8 @@ label {
 
 
 button {
-    background-color: #74EBD5;
-    color: black;
+    background-color: $green;
+    color: $dark;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -48,6 +48,6 @@ button {
 .links a {
     margin-right: 10px;
     text-decoration: none;
-    color: white;
+    color: $white;
     font-size: 10px;
 }
