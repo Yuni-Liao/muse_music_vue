@@ -10,6 +10,8 @@
     </swiper>
   </section>
 
+  <!-- 音樂謬思就是音樂的發生地 -廖妍榛 -->
+
   <div class="index_centerSlogn">
     <div class="index_centerH1">
       <h1>Making Waves</h1>
@@ -22,7 +24,6 @@
       <p>音樂謬思，就是音樂的發生地</p>
     </div>
   </div>
-
 
   <!--新歌推薦輪播 - 黃珮菁 -->
   <section class="index_newMusic">
