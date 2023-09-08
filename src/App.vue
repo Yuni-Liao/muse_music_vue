@@ -14,17 +14,45 @@
       </div>
       
       <div class="header_nav_right">
-        <img alt="search_icon" src="~@/assets/image/icon/search.png">
-        <div class="dropdown_reaction" >
-          <img alt="bell_icon" src="~@/assets/image/icon/bell.png">
+        
+        <div class="search_reaction">
+          <div class="search_show">
+            <input type="text">
+          </div>
+          <img alt="search_icon" src="~@/assets/image/icon/search.png">
+        </div>
+       
+        <div class="notify_dropdown_reaction" >
+          <img :alt="'bell_icon'" src="~@/assets/image/icon/bell.png">
 
-          <!-- <div class="dropdown" >
+          <div class="notify_dropdown" >
             <p>通知中心</p>
             <hr>
-          </div> -->
+            <div class="notify" v-for="item in notifyList" >
+              <img :src="require(`@/assets/image/creator/${item.src}`)" alt="">
+              <p>{{ item.notifytxt }}</p>
+            </div>
+          </div>
         </div>
-        <img alt="user_icon" src="~@/assets/image/icon/user.png">
+        <div class="user_dropdown_reaction">
+          <img style="margin-top: -1px;" alt="user_icon" src="~@/assets/image/icon/user.png">
+
+          <div class="user_dropdown" >
+            <div class="user_info_top" v-for="user in userTopList">
+              <!-- <img :src="require(`@/assets/image/icon/${user.src}`)" alt=""> -->
+              <router-link to="/activity">{{user.nav1}}</router-link>
+            </div>
+            <p>我的音樂庫</p>
+            <div class="user_info_down" v-for="item in userDownList">
+              <!-- <img :src="require(`@/assets/image/creator/${item.srcc}`)" alt=""> -->
+              <router-link to="/activity">{{item.nav2}}</router-link>
+            </div>
+            <hr>
+            <div class="loginbtn">登出</div>
+          </div>
       </div>
+        </div>
+        
       
     </nav>
   </header>
@@ -64,3 +92,59 @@
 @import "~@/assets/scss/component/muse_robot.scss";
 </style>
 
+<script>
+export default{
+  data(){
+    return{
+      notifyList:[{
+        src: 'creator01.jpg',
+        notifytxt: 'Lucy 上傳了一首新歌，馬上來聽聽看吧!',
+      },
+      {
+        src: 'creator02.jpg',
+        notifytxt: 'Toby 上傳了一首新歌，馬上來聽聽看吧!',
+      },
+      ],
+
+      userTopList:[{
+        src: 'clipboard.png',
+        nav1: '訂單資訊',
+      },
+      {
+        src: 'setting.png',
+        nav1: '帳號設定',
+      },
+      {
+        src: 'clipboard.png',
+        nav1: '個人主頁',
+       
+      },
+      {
+        src: 'personalPagesetting.png',
+        nav1: '個人管理頁面',
+        
+      }
+    ],
+    userDownList:[{
+        srcc: 'clock.png',
+        nav2: '播放紀錄',
+      },
+      {
+        srcc: 'list.png',
+        nav2: '我的歌單',
+      },
+      {
+        srcc: 'heart.png',
+        nav2: '我的最愛',
+       
+      },
+      {
+        srcc: 'target.png',
+        nav2: '我的追蹤',
+        
+      }
+    ],
+    }
+  },
+}
+</script>
