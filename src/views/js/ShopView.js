@@ -4,7 +4,8 @@ export default {
             items: [
                 {
                     id: 1,
-                    kind: '所有商品',
+                    label: '所有商品',
+                    kind: 'all',
                     link: '#'
                 },
                 {
@@ -219,15 +220,16 @@ export default {
             // },
             // selectedPerPage: '每頁顯示20個',
 
-            //郭凱芸 - 改不了下拉選單內的簡體字
-            pageTexts: {
-                '20': '每頁顯示20個',
-                '16': '每頁顯示16個',
-                '12': '每頁顯示12個',
-                '8': '每頁顯示8個',
-            },
+            //劉宜靜 - 商品排序
             selectedPageSize: 20,
             currentPage: 1,
+            //currentKind: "唱片",
+            currentKind: [
+                "黑膠唱片",
+                "男藝人",
+                "女藝人",
+                "樂團團體"
+            ],
             typeOptions: [
                 '商品排序',
                 '上架時間(新>舊)',
@@ -239,33 +241,41 @@ export default {
         }
     },
     computed: {
+        catList() {
+            if (this.currentKind === 'all') return this.products;
+            return this.products.filter((v, i) => v.kind.includes(this.currentKind))
+        },
         //郭凱芸 - 下拉數量選單:計算商品數量
         displayedProducts() {
             //計算商品數量
             const startIdx = (this.currentPage - 1) * this.selectedPageSize;
             const endIdx = startIdx + this.selectedPageSize;
             //取得對應範圍商品
-            return this.products.slice(startIdx, endIdx);
+            return this.sortedTypeOptions.slice(startIdx, endIdx);
         },
 
+        //劉宜靜 - 商品排序
         sortedTypeOptions() {
             // 克隆原始的typeOptions数组
-            const sortedOptions = [...this.typeOptions];
-            // 移除第一个选项（'商品排序'）
-            sortedOptions.shift();
+            const sortedProducts = [...this.catList];
             // 根据选择的排序方式重新排序选项
-            if (this.selectedType === '上架時間(新>舊)') {
-                sortedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            } else if (this.selectedType === '上架時間(舊>新)') {
-                sortedProducts.sort((a, b) => new Date(a.date) - new Date(b.date));
-            } else if (this.selectedType === '價格:由高到低') {
-                sortedProducts.sort((a, b) => b.prodPrice - a.prodPrice);
-            } else if (this.selectedType === '價格:由低到高') {
-                sortedProducts.sort((a, b) => a.prodPrice - b.prodPrice);
+            let func = (a, b) => new Date(b.date) - new Date(a.date)
+
+            if (this.selectedType === '上架時間(舊>新)') {
+                func = (a, b) => new Date(a.date) - new Date(b.date)
+                // return sortedProducts.sort((a, b) => new Date(a.date) - new Date(b.date));
             }
-            // 將第一个选项（'商品排序'）重新添加到已排序的选项数组开头
-            sortedOptions.unshift(this.typeOptions[0]);
-            return sortedOptions;
+
+            if (this.selectedType === '價格:由高到低') {
+                func = (a, b) => b.prodPrice - a.prodPrice
+                // return sortedProducts.sort((a, b) => b.prodPrice - a.prodPrice);
+            }
+
+            if (this.selectedType === '價格:由低到高') {
+                func = (a, b) => a.prodPrice - b.prodPrice
+                // return sortedProducts.sort((a, b) => a.prodPrice - b.prodPrice);
+            }
+            return sortedProducts.sort(func);
         }
         // mounted() {
         //     //最一開始初始化
@@ -279,6 +289,9 @@ export default {
         //         this.productDisplay = json
         //     })
         // }
+    },
+    mounted() {
+        this.handlePageSize()
     },
     methods: {
         // 增加商品數量
