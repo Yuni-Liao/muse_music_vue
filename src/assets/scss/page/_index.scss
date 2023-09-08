@@ -40,7 +40,7 @@
 .index_centerSlogn{
   @include layout(100%);
   height: 200px;
-  background-image: url('~@/assets/image/index/index_makingWave.png');
+  background-image: url('/public/image/index/index_makingWave.png');
   background-size: contain;
   display: flex;
   flex-flow: column wrap;
@@ -82,7 +82,7 @@
     }
     & span::after{
       content: '';
-      background-image: url('~@/assets/image/index/index_joinus.png'); //這張圖要重做
+      background-image: url('/public/image/index/index_joinus.png');
       background-size: contain;
       position: absolute;
       top: 50%;
@@ -175,7 +175,7 @@
   
   .index_albumBox::before{
     content: '';
-    background-image: url('~@/assets/image/index/index_ablumPot.svg');
+    background-image: url('/public/image/index/index_ablumPot.svg');
     background-size: contain;
     @include rect(120px);
     position:absolute;
@@ -184,7 +184,7 @@
   }
   .index_albumBox::after{
     content: '';
-    background-image: url('~@/assets/image/index/index_ablumPot.svg');
+    background-image: url('/public/image/index/index_ablumPot.svg');
     background-size: contain;
     @include rect(120px);
     position:absolute;
@@ -254,7 +254,7 @@
   }
   .index_emoQue{
     @include rect(600px, 335px);
-    background-image: url(~@/assets/image/index/index_emo_01.jpg);
+    background-image: url(/public/image/index/index_emo_01.jpg);
     background-size: contain;
     @include center(335px);
     p{
