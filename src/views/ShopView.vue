@@ -8,7 +8,9 @@
     </Breadcrumb>
     <div class="selectArea">
         <select class="prodSort obj_Radius" v-model="selectedType">
-            <option v-for="(type, index) in typeOptions" :value="type" :key="index">{{ type }}</option>
+            <option v-for="(type, index) in sortedTypeOptions" :value="type" :key="index" @click="sortedTypeOptions">{{ type
+            }}
+            </option>
         </select>
 
         <select class="prodQuantity obj_Radius" v-model="selectedPerPage">
@@ -22,11 +24,9 @@
         <div class="prodType ">
             <h2>商品類型</h2>
             <ul>
-                <li><a href="#">新貨上架</a></li>
-                <li><a href="#">黑膠唱片</a></li>
-                <li><a href="#">男藝人</a></li>
-                <li><a href="#">女藝人</a></li>
-                <li><a href="#">樂團團體</a></li>
+                <li v-for="item in items" :key="item.id">
+                    <a :href="item.link" @click="filterByKind(item.kind)">{{ item.kind }}</a>
+                </li>
             </ul>
         </div>
         <div class="inner">
