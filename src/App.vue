@@ -11,6 +11,7 @@
       <router-link to="/shop">周邊販售</router-link> |
       <router-link to="/activity">音樂快訊</router-link> |
       <router-link to="/login">Login</router-link>
+      
     </nav>
   </header>
   <main>
