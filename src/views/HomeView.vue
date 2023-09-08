@@ -16,7 +16,6 @@
     </div>
     <div class="index_joinUs">
       <span>
-        <fontAwesome :icon="['fa', 'fa-circle']" />
       </span>
     </div>
     <div class="index_centerP">
