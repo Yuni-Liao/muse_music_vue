@@ -1,27 +1,57 @@
 <template>
-    <h1>這是商城頁面</h1>
+    <div class="bannerpic">
+        <img src="~@/assets/image/ShopImage/shopbanner.png" alt="周邊販售">
+    </div>
+    <Breadcrumb separator="/">
+        <BreadcrumbItem><router-link to="/">首頁</router-link></BreadcrumbItem>
+        <BreadcrumbItem>周邊商品</BreadcrumbItem>
+    </Breadcrumb>
+    <div class="selectArea">
+        <select class="prodSort obj_Radius" v-model="selectedType">
+            <option v-for="(type, index) in typeOptions" :value="type" :key="index">{{ type }}</option>
+        </select>
+
+        <select class="prodQuantity obj_Radius" v-model="selectedPerPage">
+            <option v-for="(quantity, option) in perPageOptions" :value="option">{{ option }}</option>
+        </select>
+
+    </div>
+
+
     <div class="shop">
-        <Breadcrumb separator=">">
-            <BreadcrumbItem><router-link to="/">首頁</router-link></BreadcrumbItem>
-            <BreadcrumbItem>周邊商品</BreadcrumbItem>
-        </Breadcrumb>
-        <select class="obj_Radius btn_S_Border">
-            <option selected>商品排序</option>
-            <option>新貨上架</option>
-            <option>價格低到高</option>
-            <option>價格高到低</option>
-        </select>
-        <select class="obj_Radius btn_M_Border">
-            <option selected>每頁顯示20個</option>
-            <option>每頁顯示16個</option>
-            <option>每頁顯示12個</option>
-            <option>每頁顯示8個</option>
-        </select>
-        <div class="prod">
-            <!-- 此處為測試文字,可以改掉重新編輯 -->
-            <!-- 非v-bind的圖片載入方式 -->
-            <!-- 注意:: 點擊商品>查看商品詳情的內頁跳轉要用router-link to="___" 這方式套才不會404, 用<a>沒辦法 -->
-            <router-link to="/shopProd/1"><img alt="Vue logo" src="~@/assets/image/muse_logo.png"></router-link>
+        <div class="prodType ">
+            <h2>商品類型</h2>
+            <ul>
+                <li><a href="#">新貨上架</a></li>
+                <li><a href="#">黑膠唱片</a></li>
+                <li><a href="#">男藝人</a></li>
+                <li><a href="#">女藝人</a></li>
+                <li><a href="#">樂團團體</a></li>
+            </ul>
+        </div>
+        <div class="inner">
+            <div class="prod">
+                <div class="prodCard" v-for="(item, index) in products" :key="index">
+                    <div class="prodPic">
+                        <img :src="require(`@/assets/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
+                    </div>
+                    <div class="prodTxt">
+                        <p class="prodName">{{ item.prodName }}</p>
+                        <p class="prodPrice">$ {{ item.prodPrice }}</p>
+                        <span class="prodCount">
+                            <button class="prodBtn" @click="decrementItem(item)"><img
+                                    src="~@/assets/image/ShopImage/up.png"></button>
+
+                            <p>{{ item.inCart }}</p>
+                            <button class="prodBtn" @click="incrementItem(item)"><img
+                                    src="~@/assets/image/ShopImage/down.png"></button>
+                        </span>
+                        <button class="obj_Radius btn_Shop_Border">加入購物車</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 以下是分頁面區 -->
+            <Page :total="totalItems" :current.sync="currentPage" :page-size="pageSize" />
         </div>
     </div>
 </template>
@@ -30,4 +60,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/shop.scss";
 </style>
-<script src="./js/ShopView"></script>
+<script src="./js/ShopView.js"></script>
