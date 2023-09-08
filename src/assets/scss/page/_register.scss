@@ -1,4 +1,129 @@
-<<<<<<< HEAD
-=======
-// 此為註冊頁的scss
->>>>>>> 8317f86a36ef0b63be2f91f920939c616256730c
+.wrapper {
+    @include layout(100%);
+
+    .inner {
+        width: 62.5%;
+        margin: auto;
+        padding: 13% 0;
+
+        form {
+            font-size: $small;
+            width: 35%;
+            background-color: $white;
+            margin: 5% auto;
+            padding: 5% 0;
+
+            h2 {
+                font-size: $medium;
+                padding: 5% 0;
+            }
+
+            input {
+                width: 75%;
+                margin: 5% 0;
+                padding: 2%;
+                border: 2px solid $green;
+                font-size: $tag;
+            }
+
+            button {
+                width: 75%;
+                padding: 2%;
+                font-size: $tag;
+                margin: 3% 0;
+                background-color: $white;
+                color: $dark;
+                cursor: pointer;
+            }
+
+            .submit {
+                background-color: $green;
+            }
+
+            .error-message {
+                @include mini_Tag($tag);
+                margin-top: 1%;
+            }
+
+            label {
+                font-size: 12px;
+                text-align: left;
+                justify-content: center;
+                width: 280px;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+            }
+
+
+        }
+
+        .step_2,
+        .step_3,
+        .step_4 {
+            button {
+                border: 2px solid rgb(207, 207, 207);
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 3px;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 步驟條 */
+.ivu-steps {
+    display: flex;
+    width: 100%;
+}
+
+/* 步驟區塊 */
+.ivu-steps-item {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 文字 */
+.ivu-steps-item.ivu-steps-status-wait .ivu-steps-title,
+.ivu-steps .ivu-steps-title,
+.ivu-steps-item.ivu-steps-status-finish .ivu-steps-title {
+    color: white;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+/* 勾圖區塊 */
+.ivu-steps .ivu-steps-head,
+.ivu-steps-horizontal .ivu-steps-item:not(:first-child) .ivu-steps-head {
+    background: transparent;
+    margin: auto;
+}
+
+/* 勾勾圖片
+.ivu-steps-horizontal div :nth-child(2){
+    
+} */
+/* 文字底線 */
+.ivu-steps .ivu-steps-tail {
+    display: none;
+}
+
+/* 當前進度文字 */
+.ivu-steps-item.ivu-steps-status-process .ivu-steps-title {
+    color: white;
+}

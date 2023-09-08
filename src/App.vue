@@ -3,14 +3,6 @@
     <!-- 非v-bind的圖片載入方式 -->
     <!-- 注意:: 點擊logo>返回首頁的跳轉要用router-link to="___" 這方式套才不會404, 用<a>沒辦法 -->
     <nav>
-<<<<<<< HEAD
-      <router-link to="/find">探索</router-link> |
-      <router-link to="/ranking">排行榜</router-link> |
-      <router-link to="/shop">周邊販售</router-link> |
-      <router-link to="/activity">音樂快訊</router-link> |
-      <router-link to="/login">Login</router-link>
-      
-=======
       <div class="header_nav_left">
         <router-link to="/">
           <img class="logo_header" alt="Vue logo" src="~@/assets/image/muse_logo.png">
@@ -34,7 +26,6 @@
         <router-link to="/login"><img alt="user_icon" src="~@/assets/image/icon/user.png"></router-link>
       </div>
 
->>>>>>> 8317f86a36ef0b63be2f91f920939c616256730c
     </nav>
   </header>
   <main>
