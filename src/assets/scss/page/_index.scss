@@ -1,16 +1,16 @@
 #app {
-    // -webkit-font-smoothing: antialiased;
-    // -moz-osx-font-smoothing: grayscale;
+    //網站字體
+    font-family: 'Noto Sans TC', 'Noto Sans', 'Tahoma';
+    //網站主要漸層背景色
+    background-image: linear-gradient(#000, $dark 70%);
     text-align: center;
     position: relative;
     //這裡是系統內建的
   }
 
-  main{
-    //網站主要漸層背景色
-    background-image: linear-gradient(#000, $dark 70%);
-    // overflow-x: hidden; //水平跑版--隱藏
-  }
+  // main{
+  //   // overflow-x: hidden; //水平跑版--隱藏
+  // }
 
 // 頂部輪播區 -廖妍榛
 .index_topCarousel{
@@ -83,6 +83,7 @@
       color: $white;
       span{
         position: relative;
+        right: 2%;
       }
     }
     & span::after{
@@ -109,6 +110,7 @@
 .index_newMusic,
 .index_WeekTopusic {
   h2 {
+    color: $white;
     font-size: $big;
     text-align: start;
     margin: 40px;
@@ -254,15 +256,28 @@
       font-size: $medium;
       color: $pink;
       text-align: left;
+      text-shadow: 3px 3px 3px $white;
       padding: 20px 0px 20px 10px;
     }
     .index_emoAns{
-      input{
-        @include rect(20px, 20px)
+      display: flex;
+      .index_input{
+        display: inline;
+        padding: 1%;
+        margin-left: 5%;
+        input{
+          @include rect(20px);
+        }
       }
       span{
+        display: block;
+        width: 55%;
         font-size: $small;
-        width: 20%;
+        text-align: left;
+        text-shadow: 3px 3px 3px $white;
+        color: $dark;
+        background-image: linear-gradient(transparent 20%, $green 50%);
+        margin-bottom: 5%;
       }
     }
   }
