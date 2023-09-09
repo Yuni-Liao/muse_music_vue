@@ -86,7 +86,6 @@ const routes = [
     name: "shop_prod_1",
     component: () =>
       import(/* webpackChunkName: "shop_prod_1" */ "../views/shopProd/1.vue"),
-<<<<<<< HEAD
   },
 
   //以下是我的音樂庫-我的歌單
@@ -95,8 +94,6 @@ const routes = [
     name: "mysonglist",
     component: () =>
       import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
-=======
->>>>>>> origin/dev
   },
 
   //以下是我的音樂庫-我的歌單

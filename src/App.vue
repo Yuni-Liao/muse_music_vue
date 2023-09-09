@@ -53,7 +53,7 @@
           </div>
             
         </div>
-        <router-link to="/login"><img alt="user_icon" src="~@/assets/image/icon/user.png"></router-link>
+        
       </div>
 
     </nav>
