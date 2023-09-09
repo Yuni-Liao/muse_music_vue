@@ -104,6 +104,22 @@ const routes = [
       import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
   },
 
+  //以下是我的音樂庫-我的歌單
+  {
+    path: "/mysonglist",
+    name: "mysonglist",
+    component: () =>
+      import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
+  },
+
+    //以下是單曲頁面
+    {
+      path: "/singlemusic",
+      name: "singlemusic",
+      component: () =>
+        import(/* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"),
+    },
+
   //若網址列亂輸入,就會跳到404頁面,此區塊請固定放最下方
   {
     path: "/:pathMatch(.*)*",

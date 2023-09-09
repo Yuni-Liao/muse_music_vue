@@ -25,95 +25,279 @@ export default {
     return {
       weekTopSongs: [
         {
-          title: "宇宙飛行1",
+          order: 1,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行2",
+          order: 2,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行3",
+          order: 3,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行4",
+          order: 4,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行5",
+          order: 5,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行6",
+          order: 6,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行7",
+          order: 7,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行8",
+          order: 8,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行9",
+          order: 9,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
         {
-          title: "宇宙飛行10",
+          order: 10,
+          title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
-          // micsrc:"",
           singer: "桌子樂團",
           views: 0,
         },
       ],
+      topAlbums:[
+        {
+          order: 1,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 2,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 3,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 4,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 5,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {order: 6,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 7,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 8,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 9,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 10,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+
+      ],
+      topSongList:[
+        {
+          order: 1,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 2,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 3,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 4,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 5,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 6,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 7,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 8,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 9,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        {
+          order: 10,
+          title: "宇宙飛行",
+          image: "song01.jpg",
+          link: "/shopProd/1",
+          singer: "桌子樂團",
+          views: 0,
+        },
+        
+      ],
     };
   },
   computed: {
-    firstFiveSongs() {
+    weekFirstFiveSongs() {
       return this.weekTopSongs.slice(0, 5);
     },
-    lastFiveSongs() {
+    weekLastFiveSongs() {
       const total = this.weekTopSongs.length;
       return this.weekTopSongs.slice(total - 5, total);
     },
+    albumsFirstFiveSongs(){
+      return this.topAlbums.slice(0, 5);
+    },
+    albumsLastFiveSongs(){
+      const total = this.topAlbums.length;
+      return this.topAlbums.slice(total - 5, total);
+    },
+    songListFirstFiveSongs(){
+      return this.topSongList.slice(0, 5);
+    },
+    songListLastFiveSongs(){
+      const total = this.topSongList.length;
+      return this.topSongList.slice(total - 5, total);
+    },
+  },
+  methods: {
+    hearted(){
+    
+    }
   },
 };
