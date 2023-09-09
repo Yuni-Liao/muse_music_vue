@@ -1,27 +1,74 @@
 .mysonglist {
-  @include layout(100%);
+  @include layout(1400px);
   padding-top: 90px;
-  button {
-    cursor: pointer;
+
+  h1 {
+    font-size: $big;
+    text-align: left;
   }
-  .sl-list {
-    margin: auto;
+  .tabs {
+    padding: 10px;
     display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    .sl-item {
-      width: 250px;
-      margin: 20px;
-      .pic {
-        width: 250px;
-        position: relative;
-        img {
+    justify-content: space-evenly;
+    .tab {
+      border: none;
+      background-color: transparent;
+      color: $white;
+    }
+    .tab:hover {
+      color: $blue;
+    }
+  }
+  .line {
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, $blue, transparent);
+  }
+  :root {
+    --gap: 50px;
+    --container-max-width: 1400px;
+  }
+  //內容
+  .container {
+    padding: 0px;
+    .sl-list {
+      //row
+      margin: 20px 0;
+
+      .sl-item {
+        color: $white;
+        //單一歌單
+        margin: 20px 0;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: black;
+        box-shadow: 0px 4px 4px 0px rgba(109, 109, 109, 0.25);
+        .pic {
           width: 100%;
+          position: relative;
+          img {
+            width: 100%;
+          }
+          #PlayBtnBig {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+          }
         }
-        #PlayBtnBig {
-          position: absolute;
-          right: 10px;
-          bottom: 10px;
+        .txt {
+          display: flex;
+          align-items: baseline;
+          padding: 10px 0;
+          h3 {
+            font-size: $medium;
+          }
+          span {
+            margin-left: 20px;
+          }
+        }
+        p {
+          // @include mini_Tag($tag);
+          text-align: left;
         }
       }
     }

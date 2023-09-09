@@ -65,6 +65,14 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "faq" */ "../views/AboutView.vue"),
   },
+  {
+    //faq的component還沒改還沒導,試試看能不能用茅點
+    path: "/faq",
+    name: "faq",
+    component: () =>
+      import(/* webpackChunkName: "faq" */ "../views/AboutView.vue"),
+  },
+
   // {
   //   //隱私權政策還沒導,之後再確認看是不是直接寫彈窗就好
   //   path: '/policy',
