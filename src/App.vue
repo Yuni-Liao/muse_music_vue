@@ -11,6 +11,7 @@
         <router-link to="/ranking">排行榜</router-link>
         <router-link to="/shop">周邊販售</router-link>
         <router-link to="/activity">音樂快訊</router-link>
+        <router-link to="/singlemusic">之後拔/單曲頁面</router-link>
       </div>
 
       <div class="header_nav_right">
@@ -21,7 +22,10 @@
           </div>
           <img alt="search_icon" src="~@/assets/image/icon/search.png">
         </div>
+<<<<<<< HEAD
        
+=======
+>>>>>>> origin/dev
         <div class="notify_dropdown_reaction" >
           <img :alt="'bell_icon'" src="~@/assets/image/icon/bell.png">
 
@@ -33,6 +37,7 @@
               <p>{{ item.notifytxt }}</p>
             </div>
           </div>
+<<<<<<< HEAD
         </div>
         <div class="user_dropdown_reaction">
           <router-link to="/login"><img style="margin-top: -1px;" alt="user_icon" src="~@/assets/image/icon/user.png"></router-link>
@@ -56,6 +61,31 @@
         <router-link to="/login"><img alt="user_icon" src="~@/assets/image/icon/user.png"></router-link>
       </div>
 
+=======
+        </div>
+        <div class="user_dropdown_reaction">
+          <router-link to="/login"><img style="margin-top: -1px;" alt="user_icon" src="~@/assets/image/icon/user.png"></router-link>
+
+          <div class="user_dropdown" >
+            <router-link to=""><img src="~@/assets/image/icon/clipboard.png" alt="">訂單資訊</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/settingicon.png" alt="">帳號設定</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/personalPage.png" alt="">個人主頁</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/development.png" alt="">個人管理頁面</router-link><br>
+            <p>我的音樂庫</p>
+            <router-link to=""><img src="~@/assets/image/icon/clock.png" alt="">播放紀錄</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/list.png" alt="">我的歌單</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/heart.png" alt="">我的最愛</router-link><br>
+            <router-link to=""><img src="~@/assets/image/icon/targeticon.png" alt="">我的追蹤</router-link>
+            <hr style="margin: 10px 0px;">
+            <div class="loginbtn">登出</div>
+            
+          </div>
+            
+        </div>
+      </div>
+        
+      
+>>>>>>> origin/dev
     </nav>
   </header>
   <main>
