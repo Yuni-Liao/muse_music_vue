@@ -90,7 +90,7 @@
 @mixin music_btn_circle($w, $h:$w) {
     background: none;
     border: none;
-    background-color: #fff;
+    background-color: $white;
     width: $w;
     height: $h;
     vertical-align: middle;
