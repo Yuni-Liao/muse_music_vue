@@ -2,10 +2,10 @@
     <main class="singleMusic">
         <!-- 上方大圖 -->
         <div class="banner">
-            <img class="backPic" src="/image/SingleMusic/banner_songPic.png" alt="這裡放單曲名稱">
-            <div class="frontPic"></div>
+            <div class="overlay"></div>
+            <img class="backPic" src="/image/SingleMusic/banner_songPic2.png" alt="這裡放單曲名稱">
         </div>
-        <!-- 以下是1200內容區 -->
+        <!-- 以下是 1200px 內容區 -->
         <section class="inner">
             <div class="topInf">
                 <div class="singlePic">
@@ -14,7 +14,7 @@
                 <div class="singleInf">
                     <div class="song">
                         <h1 class="songName">Say It</h1>
-                        <h2 class="singer">George Makridis, Hannah Hamh2ton</h2>
+                        <h2 class="singer">George Makridis, Hannah Hampton</h2>
                     </div>
                     <div class="iconBar">
                         <div class="countArea">
@@ -46,7 +46,7 @@
                                 <fontAwesome :icon="['fa', 'heart']" style="color:#252525" />
                             </button>
                             <button class="play">
-                                <fontAwesome :icon="['fa', 'play']" style="color:#252525;" />
+                                <fontAwesome :icon="['fa', 'play']" size="xl" style="color:#252525" />
                             </button>
 
                         </div>
