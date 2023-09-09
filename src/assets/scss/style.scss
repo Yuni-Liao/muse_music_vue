@@ -16,12 +16,11 @@
 @import "component/muse_robot";
 @import "component/spacing";
 @import "component/title";
+@import "component/grid";
 
 //layout
-@import "layout/header"; 
+@import "layout/header";
 @import "layout/footer";
-@import "layout/login";
-
 
 //plugin
 @import "plugin/fontAwe";

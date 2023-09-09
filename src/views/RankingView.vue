@@ -172,4 +172,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/ranking.scss";
 </style>
-<script src="./js/RankingView"></script>
+<script src="./js/RankingView.js"></script>

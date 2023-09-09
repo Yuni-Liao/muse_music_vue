@@ -1,0 +1,29 @@
+.mysonglist {
+  @include layout(100%);
+  padding-top: 90px;
+  button {
+    cursor: pointer;
+  }
+  .sl-list {
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    .sl-item {
+      width: 250px;
+      margin: 20px;
+      .pic {
+        width: 250px;
+        position: relative;
+        img {
+          width: 100%;
+        }
+        #PlayBtnBig {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+        }
+      }
+    }
+  }
+}

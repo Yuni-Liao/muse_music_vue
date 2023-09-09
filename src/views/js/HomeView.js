@@ -1,7 +1,9 @@
 //引入swiper-------------------------
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
-// import { Autoplay } from 'swiper';
+//引入viewUI Grid系統-------------------------
+import { Grid, GridItem } from 'view-ui-plus';
+
 
 // Import Swiper styles
 import "swiper/css";
@@ -10,11 +12,13 @@ import 'swiper/css/effect-fade';
 import 'swiper/swiper-bundle.css';
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import 'swiper/swiper-bundle.css';
+import "swiper/css/effect-cards";
+
 
 
 // import required modules
-import { Autoplay, EffectCoverflow, Pagination, EffectFade } from "swiper/modules";
-
+import { Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards } from "swiper/modules";
 // -----------------------------------
 
 export default {
@@ -97,17 +101,55 @@ export default {
                     views: 0,
                 },
             ],
-            album: [{ pot: "~@/assets/image/index/index_ablumPot.svg" }]
+            album: [{
+                name: 'RockYou',
+                image: "index_grid_01.png"
+            },
+            {
+                name: '藍色',
+                image: "index_grid_01.png"
+            },
+            {
+                name: 'LOVE',
+                image: "index_grid_01.png"
+            },
+            {
+                name: 'Faded',
+                image: "index_grid_01.png"
+            },
+            {
+                name: '有個念頭',
+                image: "index_grid_01.png"
+            },
+            {
+                name: '作夢的顏色',
+                image: "index_grid_01.png"
+            },
+            {
+                name: '花火',
+                image: "index_grid_01.png"
+            },
+            {
+                name: '你看不見',
+                image: "index_grid_01.png"
+            },
+            {
+                name: '你看不見',
+                image: "index_grid_01.png"
+            }],
         };
     },
     components: {
         Swiper,
         SwiperSlide,
+        Grid,
+        GridItem,
     },
     setup() {
         return {
-            modules: [Autoplay, EffectCoverflow, Pagination, EffectFade],
+            modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
             EffectFade,
         };
     },
+
 };
