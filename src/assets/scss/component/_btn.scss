@@ -1,79 +1,82 @@
 // 按鈕基本結構
-.default_Btn{
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    letter-spacing: .43px;
-    font-size: $default;
+.default_Btn {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.43px;
+  font-size: $default;
 }
 
 //按鈕尺寸樣式
-.btn_XS_NoBorder{
-    @include rect(110px, 30px);
-    @include btnColor($green, false);
-    font-size: $tag;
-    padding: 10px;
+.btn_XS_NoBorder {
+  @include rect(110px, 30px);
+  @include btnColor($green, false);
+  font-size: $tag;
+  padding: 10px;
 }
 
-.btn_XS_Border{
-    @include rect(110px, 30px);
-    @include btnColor($green);
-    font-size: $tag;
-    padding: 10px;
+.btn_XS_Border {
+  @include rect(110px, 30px);
+  @include btnColor($green);
+  font-size: $tag;
+  padding: 10px;
 }
 
-.btn_S_NoBorder{
-    @include rect(100px, 50px);
-    @include btnColor($green, false);
-    padding: 6px;
+.btn_S_NoBorder {
+  @include rect(100px, 50px);
+  @include btnColor($green, false);
+  padding: 6px;
 }
 
-.btn_S_Border{
-    @include rect(100px, 50px);
-    @include btnColor($green);
-    padding: 6px;
+.btn_S_Border {
+  @include rect(100px, 50px);
+  @include btnColor($green);
+  padding: 6px;
 }
 
-
-.btn_M_NoBorder{
-    @include rect(180px, 50px);
-    padding: 6px;
-    @include btnColor($green,false);
+.btn_M_NoBorder {
+  @include rect(180px, 50px);
+  padding: 6px;
+  @include btnColor($green, false);
 }
 
-.btn_M_Border{
-    @include rect(180px, 50px);
-    padding: 6px;
-    @include btnColor($green);
+.btn_M_Border {
+  @include rect(180px, 50px);
+  padding: 6px;
+  @include btnColor($green);
 }
 
-.btn_L_NoBorder{
-    @include rect(200px, 50px);
-    @include btnColor($green, false);
-    padding: 6px;
+.btn_L_NoBorder {
+  @include rect(200px, 50px);
+  @include btnColor($green, false);
+  padding: 6px;
 }
 
-.btn_L_Border{
-    @include rect(200px, 50px);
-    @include btnColor($green);
-    padding: 6px;
+.btn_L_Border {
+  @include rect(200px, 50px);
+  @include btnColor($green);
+  padding: 6px;
 }
 
 //圓角樣式
-.obj_Radius{
-    border-radius: 6px;
+.obj_Radius {
+  border-radius: 6px;
 }
 
-.obj_Rounded{
-    border-radius: 30px;
+.obj_Rounded {
+  border-radius: 30px;
 }
 
 //周邊販售 加入購物車按鈕
-.btn_Shop_Border{
-    @include rect(130px, 36px);
-    @include btnColor($green, false);
-    font-size: $tag;
-    padding: 10px;
-    line-height:$tag/2 ;
+.btn_Shop_Border {
+  @include rect(130px, 36px);
+  @include btnColor($green, false);
+  font-size: $tag;
+  padding: 10px;
+  line-height: $tag/2;
+}
+
+button {
+  cursor: pointer;
 }

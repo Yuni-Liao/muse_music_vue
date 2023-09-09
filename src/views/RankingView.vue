@@ -1,60 +1,169 @@
 <template>
   <div class="ranking">
-    <swiper :direction="'vertical'" :slidesPerView="1" :spaceBetween="0" :mousewheel="true" :pagination="{
-      clickable: true,
-    }" :modules="modules" class="mySwiper">
+    <swiper
+      :direction="'vertical'"
+      :slidesPerView="1"
+      :spaceBetween="0"
+      :mousewheel="true"
+      :pagination="{
+        clickable: true,
+      }"
+      :modules="modules"
+      class="mySwiper"
+    >
       <swiper-slide>
         <div class="weekTopSongs">
-          <section>
-            <h2>當週單曲排行榜</h2>
-          </section>
-          <section class="ranking">
+          <div class="weekTopTitle">
+            <h1>當週單曲排行榜</h1>
+            <section></section>
+          </div>
+          <section class="weekRanking">
             <!-- 1-5名 -->
-            <ol>
-              <li v-for="(item, intex) in firstFiveSongs" :key="index">
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
-                <!-- <button id="playBtn">PLAY</button> -->
+           
+            <ol >
+              <li v-for="(item, intex) in weekFirstFiveSongs" :key="index" >
+                <div class="order">{{item.order}}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
+                
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
-                    {{ item.singer }}<span>{{ item.views }}</span>
+                    {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
                   </p>
-                  <div>
-                    <button>愛</button>
-                    <button>+</button>
-                  </div>
+                </div>
+                <div class="icon">
+                  <img :src="require(`@/assets/image/icon/smallHeart.svg`)" alt="">
+                  <img :src="require(`@/assets/image/icon/smallPlus.svg`)" alt="">
                 </div>
               </li>
             </ol>
             <!-- 6-10名 -->
             <ol>
-              <li v-for="(item, intex) in lastFiveSongs" :key="index">
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+              <li v-for="(item, intex) in weekLastFiveSongs" :key="index">
+                <div class="order">{{item.order}}</div>
+                <img
+                  :src="require(`@/assets/image/index/${item.image}`)"
+                  alt=""
+                />
                 <!-- <button>PLAY</button> -->
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
-                    {{ item.singer }}<span>{{ item.views }}</span>
+                    {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
                   </p>
-                  <div>
-                    <button>愛</button>
-                    <button>+</button>
-                  </div>
+                </div>
+                <div class="icon">
+                  <img @click="hearted" :src="require(`@/assets/image/icon/smallHeart.svg`)" alt="">
+                  <img @click="plused" :src="require(`@/assets/image/icon/smallPlus.svg`)" alt="">
                 </div>
               </li>
             </ol>
-            <div>
-              <button>前五</button>
-              <button>後五</button>
-            </div>
           </section>
         </div>
+
+        
       </swiper-slide>
+
       <swiper-slide>
-        <p>section2</p>
+        <div class="topAlbums">
+
+          <div class="topAlbumsTitle">
+            <h1>專輯排行榜</h1>
+            <section></section>
+          </div>
+          <div class="topAlbumsRanking">
+            <!-- 1-5名 -->
+            
+            <ol >
+              <li v-for="(item, intex) in albumsFirstFiveSongs" :key="index" >
+                <div class="order">{{item.order}}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
+                
+                <div class="txt">
+                  <h3>{{ item.title }}</h3>
+                  <p>
+                    {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
+                  </p>
+                </div>
+                <div class="icon">
+                  <img :src="require(`@/assets/image/icon/smallHeart.svg`)" alt="">
+                  <img :src="require(`@/assets/image/icon/smallPlus.svg`)" alt="">
+                </div>
+              </li>
+            </ol>
+             <!-- 6-10名 -->
+             <ol>
+              <li v-for="(item, intex) in albumsLastFiveSongs" :key="index">
+                <div class="order">{{item.order}}</div>
+                <img
+                  :src="require(`@/assets/image/index/${item.image}`)"
+                  alt=""
+                />
+                <div class="txt">
+                  <h3>{{ item.title }}</h3>
+                  <p>
+                    {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
+                  </p>
+                </div>
+                <div class="icon">
+                  <img :src="require(`@/assets/image/icon/smallHeart.svg`)" alt="">
+                  <img :src="require(`@/assets/image/icon/smallPlus.svg`)" alt="">
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
       </swiper-slide>
+
       <swiper-slide>
-        <p>section3</p>
+        <div class="topSongList">
+          <div class="topSongListTitle">
+            <h1>歌單排行榜</h1>
+            <section></section>
+          </div>
+          <div class="topSongListRanking">
+            <!-- 1-5名 -->
+            <ol >
+              <li v-for="(item, intex) in songListFirstFiveSongs" :key="index" >
+                <div class="order">{{item.order}}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
+                
+                <div class="txt">
+                  <h3>{{ item.title }}</h3>
+                  <p>
+                    {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
+                  </p>
+                </div>
+                <div class="icon">
+                  <img :src="require(`@/assets/image/icon/smallHeart.svg`)" alt="">
+                  <img :src="require(`@/assets/image/icon/smallPlus.svg`)" alt="">
+                </div>
+              </li>
+            </ol>
+            <!-- 6-10名 -->
+            <ol>
+              <li v-for="(item, intex) in songListLastFiveSongs" :key="index">
+                <div class="order">{{item.order}}</div>
+                <img
+                  :src="require(`@/assets/image/index/${item.image}`)"
+                  alt=""
+                />
+                <div class="txt">
+                  <h3>{{ item.title }}</h3>
+                  <p>
+                    {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
+                  </p>
+                </div>
+                <div class="icon">
+                  <img :src="require(`@/assets/image/icon/smallHeart.svg`)" alt="">
+                  <img :src="require(`@/assets/image/icon/smallPlus.svg`)" alt="">
+                </div>
+              </li>
+            </ol>
+          </div>
+
+        </div>
       </swiper-slide>
     </swiper>
   </div>
