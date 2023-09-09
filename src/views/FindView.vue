@@ -1,7 +1,38 @@
 <template>
     <div class="find">
-        <h1>這是探索頁面</h1>
-        <!-- 此處為測試文字,可以改掉重新編輯 -->
+        <h1>探索．Find Your MUSE</h1>
+    </div>
+    <div class="language">
+        <div class="space" v-for="(item, index) in languages" :key="index">
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+            <div class="txt">
+                <a :href="item.link">
+                    {{ item.name }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="style">
+        <div class="space" v-for="(item, index) in styles" :key="index">
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+            <div class="txt">
+                <a :href="item.link">
+                    {{ item.name }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion">
+        <div class="space" v-for="(item, index) in emotion" :key="index">
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+            <div class="txt">
+                <a :href="item.link">
+                    {{ item.name }}
+                </a>
+            </div>
+        </div>
     </div>
 </template>
 

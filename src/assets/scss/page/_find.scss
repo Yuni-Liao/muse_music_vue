@@ -1,6 +1,112 @@
+*{
+  color: $white;
+}
 h1{
   font-size: $big;
-  background-color: lightblue;
+  padding: 5% 0;
+  text-align: left ;
+  margin:3% 0 3% 7%;
 }
+.language,
+.style,
+.emotion{
+  @include layout(100%);
 
-//測試用,這裡的內容都可以刪除
+  background-color: $tp;
+  margin: 3% 0;
+  border-top:1px solid ;
+  border-bottom:1px solid ;
+}
+.language{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+  .space{
+    transform: skewX(45deg);
+    width: 20%;
+    border-left:2px solid ;
+    position: relative;
+    img{
+      position: absolute;
+      display: none;
+      width: 100%;
+    }
+    .txt{
+      transform: skewX(-45deg);
+      padding: 5%;
+      a{
+        padding: 30% ;
+        font-size: $medium;
+      }
+    }
+  }
+  :hover img{
+    display: block;
+  }
+  :first-child{
+    border-left:0 ;
+  }
+}
+.style{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+  .space{
+    transform: skewX(45deg);
+    width: 20%;
+    border-left:2px solid ;
+    position: relative;
+    img{
+      position: absolute;
+      display: none;
+      width: 100%;
+    }
+    .txt{
+      transform: skewX(-45deg);
+      padding: 5%;
+      a{
+        padding: 30% ;
+        font-size: $medium;
+      }
+    }
+  }
+  :hover img{
+    display: block;
+  }
+  :first-child{
+    border-left:0 ;
+  }
+}
+.emotion{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+  .space{
+    transform: skewX(45deg);
+    width: 20%;
+    border-left:2px solid ;
+    position: relative;
+    img{
+      position: absolute;
+      display: none;
+      width: 100%;
+    }
+    .txt{
+      transform: skewX(-45deg);
+      padding: 5%;
+      a{
+        padding: 30% ;
+        font-size: $medium;
+      }
+    }
+  }
+  :hover img{
+    display: block;
+  }
+  :first-child{
+    border-left:0 ;
+  }
+}

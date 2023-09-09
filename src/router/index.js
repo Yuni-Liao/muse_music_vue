@@ -65,6 +65,14 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "faq" */ "../views/AboutView.vue"),
   },
+  {
+    //faq的component還沒改還沒導,試試看能不能用茅點
+    path: "/faq",
+    name: "faq",
+    component: () =>
+      import(/* webpackChunkName: "faq" */ "../views/AboutView.vue"),
+  },
+
   // {
   //   //隱私權政策還沒導,之後再確認看是不是直接寫彈窗就好
   //   path: '/policy',
@@ -95,6 +103,22 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
   },
+
+  //以下是我的音樂庫-我的歌單
+  {
+    path: "/mysonglist",
+    name: "mysonglist",
+    component: () =>
+      import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
+  },
+
+    //以下是單曲頁面
+    {
+      path: "/singlemusic",
+      name: "singlemusic",
+      component: () =>
+        import(/* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"),
+    },
 
   //若網址列亂輸入,就會跳到404頁面,此區塊請固定放最下方
   {
