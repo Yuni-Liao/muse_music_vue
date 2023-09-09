@@ -2,7 +2,8 @@
     <main class="singleMusic">
         <!-- 上方大圖 -->
         <div class="banner">
-            <img class="backpic" src="/image/SingleMusic/banner_songPic.png" alt="這裡放單曲名稱">
+            <img class="backPic" src="/image/SingleMusic/banner_songPic.png" alt="這裡放單曲名稱">
+            <div class="frontPic"></div>
         </div>
         <!-- 以下是1200內容區 -->
         <section class="inner">
@@ -71,24 +72,24 @@
                         <p>發布時間</p>
                         <p class="releasDate"></p>
                     </div>
-                    <div class="albumInf">
+                    <p class="albumInf">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus
                         veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio
                         mollitia explicabo natus quidem sequi illo?
-                    </div>
+                    </p>
                 </div>
                 <div class="songInf">
                     <h3>歌曲介紹</h3>
-                    <div class="aboutSong">
+                    <p class="aboutSong">
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum
                         ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum
                         placeat quia?
-                    </div>
+                    </p>
                     <div class="songCat">
                         <fontAwesome :icon="['fa', 'tags']" style="color:#fff;" />
-                        <div class="categorize lang">西洋語系</div>
-                        <div class="categorize style">嘻哈</div>
-                        <div class="categorize mood">派對</div>
+                        <p class="categorize lang">西洋語系</p>
+                        <p class="categorize style">嘻哈</p>
+                        <p class="categorize mood">派對</p>
                     </div>
                 </div>
                 <div class="messageBoard">
@@ -107,17 +108,17 @@
                                     <p>Euterpe</p>
                                 </div>
                             </div>
-                            <div class="date">
+                            <p class="date">
                                 2023-08-23
-                            </div>
+                            </p>
                             <button class="more">
                                 <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
                             </button>
                         </div>
-                        <div class="txt">
+                        <p class="txt">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor
                             ipsum dolore, facilis nam tenetur unde.
-                        </div>
+                        </p>
                         <div class="likeMes">
                             <p class="likeCount">12</p>
                             <button>
@@ -135,9 +136,9 @@
                     <div class="songPic">
                         <img src="/image/SingleMusic/othaersong1.png" alt="othersong1">
                     </div>
-                    <div class="songName">
+                    <p class="songName">
                         Fly Like
-                    </div>
+                    </p>
                     <button>
                         <fontAwesome :icon="['fa', 'share']" style="color:#252525;" />
                     </button>

@@ -1,0 +1,47 @@
+h1,
+h2,
+h3,
+p {
+    color: $white;
+}
+
+.banner {
+    padding-bottom: 20px;
+    @include layout(100%);
+
+    img {
+        width: 100%;
+    }
+}
+
+.inner {
+    @include layout(1200px);
+
+    .topInf {
+        .singlePic {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #333;
+            box-shadow: 4px 4px 4px 0px rgba(255, 255, 255, 0.25);
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .singleInf {
+            .song{
+                .songName{
+                    font-size: $big;
+                }
+                .singer{
+                    font-size: $small;
+                }
+            }
+            .iconBar{
+                .countArea{}
+                
+            }
+        }
+    }
+}
