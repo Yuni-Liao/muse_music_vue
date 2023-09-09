@@ -11,7 +11,6 @@
         <router-link to="/ranking">排行榜</router-link>
         <router-link to="/shop">周邊販售</router-link>
         <router-link to="/activity">音樂快訊</router-link>
-        <router-link to="/singlemusic">之後拔/單曲頁面</router-link>
       </div>
 
       <div class="header_nav_right">
