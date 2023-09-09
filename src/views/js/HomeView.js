@@ -9,7 +9,6 @@ import { Grid, GridItem } from 'view-ui-plus';
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import 'swiper/css/effect-fade';
-import 'swiper/swiper-bundle.css';
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import 'swiper/swiper-bundle.css';
