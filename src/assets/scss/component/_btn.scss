@@ -1,20 +1,3 @@
-//消除按鈕預設背景色 & 邊框
-@mixin btnBgNone {
-  background: none;
-  border: none;
-}
-
-//音樂播放 圓形按鈕背景設定
-@mixin music_btn_circle($w, $h:$w) {
-  background: none;
-  border: none;
-  background-color: #fff;
-  width: $w;
-  height: $h;
-  vertical-align: middle;
-  border-radius: 50%;
-}
-
 // 按鈕基本結構
 .default_Btn {
   cursor: pointer;
