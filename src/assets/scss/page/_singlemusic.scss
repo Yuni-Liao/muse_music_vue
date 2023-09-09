@@ -1,3 +1,8 @@
+@mixin center($w) {
+    width: $w;
+    margin: auto;
+}
+
 h1,
 h2,
 h3,
@@ -107,6 +112,191 @@ p {
                     .play {
                         @include music_btn_circle(55px);
                     }
+                }
+            }
+        }
+    }
+
+    .mainInf {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border: red 1px solid;
+
+        .singerInf {
+            flex: 0.9;
+            text-align: left;
+            border: rgb(255, 166, 0) 1px solid;
+
+            .singer {
+                display: flex;
+
+                align-items: center;
+                margin-top: 60px;
+
+                .singerPic {
+                    width: 70px;
+                    border: 1px solid #FFF;
+                    border-radius: 50%;
+
+                    img {
+                        width: 100%;
+                        vertical-align: top;
+                    }
+                }
+
+                .singerName {
+                    flex: 1;
+                    margin-left: 20px;
+                    font-size: $small;
+                }
+            }
+
+            .album {
+                display: flex;
+                align-items: center;
+                margin-top: 30px;
+                padding-bottom: 50px;
+                border-bottom: #FFF 1px solid;
+
+                .albumPic {
+                    width: 69px;
+                    border: 1px solid #FFF;
+
+                    img {
+                        width: 100%;
+                        vertical-align: top;
+                    }
+                }
+
+                p {
+                    margin-left: 20px;
+                    font-size: $small;
+                }
+
+                .albumName {
+                    flex: 1;
+                    margin-left: 20px;
+                    font-size: $small;
+                }
+            }
+
+            .date {
+                p {
+                    font-size: $tag;
+                    display: inline-block;
+                    padding: 50px 20px 20px 0;
+                }
+            }
+
+            .albumInf {
+                font-size: $default;
+            }
+        }
+
+        .detail {
+            flex: 2.1;
+
+            .songInf {
+                @include center(70%);
+                border: rgb(195, 255, 0) 1px solid;
+                text-align: left;
+                margin-bottom: 100px;
+
+                h3 {
+                    font-size: $medium;
+                    margin-bottom: 20px;
+                }
+
+                .aboutSong {
+                    font-size: $default;
+                    margin-bottom: 20px;
+
+                }
+
+                .songCat {
+                    display: flex;
+
+                    .categorize {
+                        padding: 0 10px 0px 0;
+                        line-height: $default/1.5;
+                    }
+                }
+            }
+
+            .messageBoard {
+                border: rgb(0, 255, 8) 1px solid;
+                @include center(70%);
+                margin-bottom: 100px;
+
+                .board {
+                    @include center(85%);
+
+                    h3 {
+                        font-size: $big;
+                        color: $green;
+                        text-align: left;
+                        font-weight: 700;
+                        margin: 30px 0;
+                    }
+
+                    .sendArea {
+                        position: relative;
+                        margin: 30px 0;
+
+                        input {
+                            width: 100%;
+                            height: 50px;
+
+                        }
+
+                        .send {
+                            @include btnBgNone;
+                            position: absolute;
+                            right: 25px;
+                            top: 10px;
+                        }
+                    }
+
+                    .message {
+                        .infBar {
+                            .user {
+                                .pic {
+                                    img {}
+                                }
+
+                                .userName {}
+                            }
+
+                            .date {}
+
+                            .more {
+                                //...檢舉按鈕
+                            }
+                        }
+
+                        .txt {}
+
+                        .likeMes {
+                            .likeCount {}
+
+                            .likeMesBtn {}
+                        }
+
+                    }
+
+                    .readMore {}
+
+                }
+            }
+
+            .otherSong {
+                border: rgb(0, 60, 255) 1px solid;
+                @include center(70%);
+
+                h3 {
+                    font-size: $medium;
+                    text-align: left;
                 }
             }
         }
