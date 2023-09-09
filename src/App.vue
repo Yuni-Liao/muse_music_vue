@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header headroom headroom--unpinned>
     <!-- 非v-bind的圖片載入方式 -->
     <!-- 注意:: 點擊logo>返回首頁的跳轉要用router-link to="___" 這方式套才不會404, 用<a>沒辦法 -->
     <nav>
@@ -115,4 +115,8 @@ export default{
     }
   },
 }
+
 </script>
+
+
+
