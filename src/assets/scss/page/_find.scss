@@ -11,8 +11,6 @@ h1{
 .style,
 .emotion{
   @include layout(100%);
-
-  background-color: $tp;
   margin: 3% 0;
   border-top:1px solid ;
   border-bottom:1px solid ;
@@ -25,7 +23,8 @@ h1{
   .space{
     transform: skewX(45deg);
     width: 20%;
-    border-left:2px solid ;
+    border-left: 2px solid;
+    border-right: 2px solid;
     position: relative;
     img{
       position: absolute;
@@ -44,9 +43,9 @@ h1{
   :hover img{
     display: block;
   }
-  :first-child{
-    border-left:0 ;
-  }
+  // :first-child{
+  //   border-left:0 ;
+  // }
 }
 .style{
   width: 100%;
