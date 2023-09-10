@@ -1,38 +1,38 @@
 <template>
     <main class="singleMusic">
         <!-- 上方大圖 -->
-        <div class="banner">
+        <div class="banner" v-for="(songItem, songIndex) in songs" :key="songIndex">
             <div class="overlay"></div>
-            <img class="backPic" src="/image/SingleMusic/banner_songPic2.png" alt="這裡放單曲名稱">
+            <img class="backPic" :src="require(`/public/image/SingleMusic/${songItem.bannerPic}`)" alt="songItem.bannerPic">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
-            <div class="topInf">
+            <div class="topInf" v-for="(songItem, songIndex) in songs" :key="songIndex">
                 <div class="singlePic">
-                    <img src="/image/SingleMusic/songPic.png" alt="這裡放單曲名稱">
+                    <img :src="require(`/public/image/SingleMusic/${songItem.songPic}`)" alt="songItem.songName">
                 </div>
                 <div class="singleInf">
                     <div class="song">
-                        <h1 class="songName">Say It</h1>
-                        <h2 class="singer">George Makridis, Hannah Hampton</h2>
+                        <h1 class="songName">{{ songItem.songName }}</h1>
+                        <h2 class="singer">{{ songItem.singer }}</h2>
                     </div>
                     <div class="iconBar">
                         <div class="countArea">
                             <div class="timeline">
                                 <p>時長</p>
-                                <p>03:58</p>
+                                <p>{{ songItem.time }}</p>
                             </div>
                             <div class="played">
                                 <p>播放次數</p>
-                                <p>5,223</p>
+                                <p>{{ songItem.played }}</p>
                             </div>
                             <div class="liked">
                                 <fontAwesome :icon="['fa', 'heart']" style="color:  #fff;" />
-                                <p>68</p>
+                                <p>{{ songItem.liked }}</p>
                             </div>
                             <div class="shared">
                                 <fontAwesome :icon="['fa', 'share']" style="color: #fff;" />
-                                <p>39</p>
+                                <p>{{ songItem.shared }}</p>
                             </div>
                         </div>
                         <div class="buttonArea">
@@ -44,47 +44,40 @@
                     </div>
                 </div>
             </div>
-            <div class="mainInf">
+            <div class="mainInf" v-for="(songItem, songIndex) in songs" :key="songIndex">
                 <div class="singerInf">
                     <div class="singer">
                         <div class="singerPic">
-                            <img src="/image/SingleMusic/singerPic.png" alt="singer">
+                            <img :src="require(`/public/image/SingleMusic/${songItem.singerPic}`)" alt="songItem.singer">
                         </div>
-                        <p class="singerName">George Makridis, Hannah Hampton</p>
+                        <p class="singerName">{{ songItem.singer }}</p>
                     </div>
                     <div class="album">
                         <div class="albumPic">
-                            <img src="/image/SingleMusic/albumPic.png" alt="album">
+                            <img :src="require(`/public/image/SingleMusic/${songItem.albumPic}`)" alt="songItem.album">
                         </div>
                         <p>專輯</p>
-                        <p class="albumName">Countlary</p>
+                        <p class="albumName">{{ songItem.album }}</p>
                     </div>
                     <div class="date">
                         <p>發布時間</p>
-                        <p class="releasDate"> 2023-08-22</p>
+                        <p class="releasDate">{{ songItem.date }}</p>
                     </div>
                     <p class="albumInf">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus
-                        veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio
-                        mollitia explicabo natus quidem sequi illo?
+                        {{ songItem.albumInf }}
                     </p>
                 </div>
                 <div class="detail">
                     <div class="songInf">
                         <h3>歌曲介紹</h3>
                         <p class="aboutSong">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum
-                            ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum
-                            placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum
-                            corporis eum
-                            ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum
-                            placeat quia?
+                            {{ songItem.songInf }}
                         </p>
                         <div class="songCat">
                             <fontAwesome :icon="['fa', 'tags']" style="color:#fff;padding-right:10px;" />
-                            <p class="categorize lang">西洋語系</p>
-                            <p class="categorize style">嘻哈</p>
-                            <p class="categorize mood">派對</p>
+                            <a class="categorize lang">{{ songItem.type1 }}</a>
+                            <a class="categorize style">{{ songItem.type2 }}</a>
+                            <a class="categorize mood">{{ songItem.type3 }}</a>
                         </div>
                     </div>
                     <div class="messageBoard">
@@ -96,51 +89,63 @@
                                     <fontAwesome :icon="['fa', 'paper-plane']" style="color:#74EBD5;" size="2xl" />
                                 </button>
                             </div>
-                            <div class="message">
+                            <div class="message" v-for="(messageItem, messageIndex) in messages" :key="messageIndex"
+                                v-if="showAllMessages || messageIndex < 3">
                                 <div class="infBar">
                                     <div class="user">
                                         <div class="pic">
-                                            <img src="/image/SingleMusic/userpic1.png" alt="user">
-                                            <p class="userName">Euterpe</p>
+                                            <img :src="require(`/public/image/SingleMusic/${messageItem.userPic}`)"
+                                                alt="messageItem.userName">
                                         </div>
+                                        <p class="userName">{{ messageItem.userName }}</p>
                                     </div>
                                     <p class="date">
-                                        2023-08-23
+                                        {{ messageItem.date }}
+                                        <button class="more">
+                                            <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
+                                        </button>
                                     </p>
-                                    <button class="more">
-                                        <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
-                                    </button>
+
                                 </div>
                                 <p class="txt">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem
-                                    dolor
-                                    ipsum dolore, facilis nam tenetur unde.
+                                    {{ messageItem.message }}
                                 </p>
                                 <div class="likeMes">
-                                    <p class="likeCount">12</p>
-                                    <button class="likeMesBtn">
-                                        <fontAwesome :icon="['fa', 'thumbs-up']" style="color:#aaa;" />
+                                    <p class="likeCount">{{ messageItem.like }}</p>
+                                    <button class="btn_likeMes">
+                                        <fontAwesome :icon="['fa', 'thumbs-up']" style="color:#fff;" />
                                     </button>
                                 </div>
                             </div>
-                            <p class="readMore">
-                                查看更多
+
+                            <a href="#" class="readMore" @click="showAllMessages = !showAllMessages">
+                                {{ showAllMessages ? '收起' : '查看更多' }}
                                 <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
-                            </p>
+                            </a>
                         </div>
                     </div>
                     <div class="otherSong">
                         <h3>專輯其他歌曲</h3>
-                        <div class="number">1</div>
-                        <div class="songPic">
-                            <img src="/image/SingleMusic/othaersong1.png" alt="othersong1">
+                        <div class="song" v-for="(item, index) in otherSongs" :key="index">
+                            <div class="list">
+                                <div class="number">{{ item.id }}</div>
+
+                                <div class="songPic">
+                                    <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
+                                </div>
+                                <p class="songName">
+                                    {{ item.name }}
+                                </p>
+                            </div>
+                            <div class="btnArea">
+                                <ShareBtn></ShareBtn>
+                                <AddSlBtn></AddSlBtn>
+                                <AddFavBtn></AddFavBtn>
+                            </div>
                         </div>
-                        <p class="songName">
-                            Fly Like
-                        </p>
-                        <ShareBtn></ShareBtn>
-                        <AddSlBtn></AddSlBtn>
-                        <AddFavBtn></AddFavBtn>
+                        <a href="#" class="readMore">
+                            <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
+                        </a>
                     </div>
                 </div>
             </div>
