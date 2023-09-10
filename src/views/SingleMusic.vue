@@ -101,46 +101,61 @@
                                     <div class="user">
                                         <div class="pic">
                                             <img src="/image/SingleMusic/userpic1.png" alt="user">
-                                            <p class="userName">Euterpe</p>
                                         </div>
+                                        <p class="userName">Euterpe</p>
                                     </div>
                                     <p class="date">
                                         2023-08-23
+                                        <button class="more">
+                                            <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
+                                        </button>
                                     </p>
-                                    <button class="more">
-                                        <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
-                                    </button>
+
                                 </div>
                                 <p class="txt">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem
+                                    dolor
+                                    ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Cum tempora aliquam quo rem
                                     dolor
                                     ipsum dolore, facilis nam tenetur unde.
                                 </p>
                                 <div class="likeMes">
                                     <p class="likeCount">12</p>
-                                    <button class="likeMesBtn">
-                                        <fontAwesome :icon="['fa', 'thumbs-up']" style="color:#aaa;" />
+                                    <button class="btn_likeMes">
+                                        <fontAwesome :icon="['fa', 'thumbs-up']" style="color:#fff;" />
                                     </button>
                                 </div>
                             </div>
-                            <p class="readMore">
+                            
+                            <a href="" class="readMore">
                                 查看更多
                                 <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
-                            </p>
+                            </a>
                         </div>
                     </div>
                     <div class="otherSong">
                         <h3>專輯其他歌曲</h3>
-                        <div class="number">1</div>
-                        <div class="songPic">
-                            <img src="/image/SingleMusic/othaersong1.png" alt="othersong1">
+                        <div class="song">
+                            <div class="list">
+                                <div class="number">1</div>
+
+                                <div class="songPic">
+                                    <img src="/image/SingleMusic/othaersong1.png" alt="othersong1">
+                                </div>
+                                <p class="songName">
+                                    Fly Like
+                                </p>
+                            </div>
+                            <div class="btnArea">
+                                <ShareBtn></ShareBtn>
+                                <AddSlBtn></AddSlBtn>
+                                <AddFavBtn></AddFavBtn>
+                            </div>
                         </div>
-                        <p class="songName">
-                            Fly Like
-                        </p>
-                        <ShareBtn></ShareBtn>
-                        <AddSlBtn></AddSlBtn>
-                        <AddFavBtn></AddFavBtn>
+                        <a href="" class="readMore">
+                                <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
+                            </a>
                     </div>
                 </div>
             </div>
