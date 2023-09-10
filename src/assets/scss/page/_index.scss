@@ -299,8 +299,6 @@
       .index_input{
         display: inline-block;
         @include layout(100%);
-        padding: 1%;
-        margin-left: 5%;
         input {
           @include rect(20px);
         }
