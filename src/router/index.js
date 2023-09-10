@@ -88,12 +88,16 @@ const routes = [
       import(/* webpackChunkName: "backend" */ "../views/Backend.vue"),
   },
 
+<<<<<<< HEAD
   // 以下是商城商品詳情頁面,動態改變內容
+=======
+  // 以下是商城商品詳情共用頁面
+>>>>>>> dev
   {
-    path: "/shopProd/1",
-    name: "shop_prod_1",
+    path: "/shopProdDetail",
+    name: "shopProdDetail",
     component: () =>
-      import(/* webpackChunkName: "shop_prod_1" */ "../views/shopProd/1.vue"),
+      import(/* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"),
   },
 
   //以下是我的音樂庫-我的歌單

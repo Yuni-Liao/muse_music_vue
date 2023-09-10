@@ -36,19 +36,10 @@
                             </div>
                         </div>
                         <div class="buttonArea">
-                            <button class="share">
-                                <fontAwesome :icon="['fa', 'share']" style="color:#252525;" />
-                            </button>
-                            <button class="add">
-                                <fontAwesome :icon="['fa', 'plus']" style="color:#252525" />
-                            </button>
-                            <button class="like">
-                                <fontAwesome :icon="['fa', 'heart']" style="color:#252525" />
-                            </button>
-                            <button class="play">
-                                <fontAwesome :icon="['fa', 'play']" size="xl" style="color:#252525" />
-                            </button>
-
+                            <ShareBtn></ShareBtn>
+                            <AddSlBtn></AddSlBtn>
+                            <AddFavBtn></AddFavBtn>
+                            <PlayBtnBig></PlayBtnBig>
                         </div>
                     </div>
                 </div>
@@ -147,15 +138,9 @@
                         <p class="songName">
                             Fly Like
                         </p>
-                        <button>
-                            <fontAwesome :icon="['fa', 'share']" style="color:#252525;" />
-                        </button>
-                        <button class="add">
-                            <fontAwesome :icon="['fa', 'plus']" style="color:#252525" />
-                        </button>
-                        <button class="like">
-                            <fontAwesome :icon="['fa', 'heart']" style="color:#252525" />
-                        </button>
+                        <ShareBtn></ShareBtn>
+                        <AddSlBtn></AddSlBtn>
+                        <AddFavBtn></AddFavBtn>
                     </div>
                 </div>
             </div>
