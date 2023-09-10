@@ -7,6 +7,9 @@ h1{
   text-align: left ;
   margin:3% 0 3% 7%;
 }
+a:hover{
+  color: $green;
+}
 .language,
 .style,
 .emotion{
@@ -47,37 +50,7 @@ h1{
   //   border-left:0 ;
   // }
 }
-.style{
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  overflow: hidden;
-  .space{
-    transform: skewX(45deg);
-    width: 20%;
-    border-left:2px solid ;
-    position: relative;
-    img{
-      position: absolute;
-      display: none;
-      width: 100%;
-    }
-    .txt{
-      transform: skewX(-45deg);
-      padding: 5%;
-      a{
-        padding: 30% ;
-        font-size: $medium;
-      }
-    }
-  }
-  :hover img{
-    display: block;
-  }
-  :first-child{
-    border-left:0 ;
-  }
-}
+.style,
 .emotion{
   width: 100%;
   display: flex;
