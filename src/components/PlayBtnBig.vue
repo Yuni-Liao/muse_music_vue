@@ -1,6 +1,6 @@
 <template>
   <button id="PlayBtnBig" @click="playsong">
-    <fontAwesome :icon="['fa', 'play']" />
+    <fontAwesome :icon="['fa', 'play']" size="xl" style="color: #252525" />
   </button>
 </template>
 
@@ -9,19 +9,15 @@ export default {
   name: "PlayBtnBig",
   methods: {
     playsong() {
+      // 此處撰寫功能code，測試用內容可清除
       alert("播放歌單/專輯");
     },
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #PlayBtnBig {
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  border: none;
-  background-color: #ffffff;
-  border-radius: 50%;
+  @include music_btn_circle(55px);
 }
 </style>

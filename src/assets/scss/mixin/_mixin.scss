@@ -1,46 +1,52 @@
 // 請小心不要誤動到mixin !!!!
 
 // 文字 - 不重要資訊,固定 1rem, #aaa ;
-@mixin mini_Tag($tag){
-        font-size: $tag;
-        color: #aaa;
+@mixin mini_Tag($tag) {
+    font-size: $tag;
+    color: #aaa;
 }
 
 // 外觀形狀(按鈕、卡片都可用)
-@mixin rect($w, $h:$w){  
+@mixin rect($w, $h:$w) {
     width: $w;
     height: $h;
 }
 
 // 按鈕顏色與框線, border=true走if, 若false走else
-@mixin btnColor($color, $border: true){
-    @if $border{
+@mixin btnColor($color, $border: true) {
+    @if $border {
         border: 2px solid $color;
         transition: 1s;
         color: $color;
-        &:hover{
+
+        &:hover {
             border: 2px solid $color;
             background-color: $color;
             color: $dark;
             transition: .5s;
         }
-    }@else{
+    }
+
+    @else {
         border: 0px; //要留著,不可以刪
         background-color: $color;
         color: $dark;
         transition: 1s;
-        &:hover{
+
+        &:hover {
             background-color: darken($color, 25);
             transition: .3s
         }
     }
 }
 
+
+
 // 垂直置中 --- //原理:取父層 100% 高, 除以自身高
-@mixin center($h){
+@mixin center($h) {
     position: relative;
-    top:calc((100% - $h) / 2); 
-    margin:auto;
+    top: calc((100% - $h) / 2);
+    margin: auto;
 }
 
 // --------------- 斷點控制
@@ -48,26 +54,45 @@
 // $l 是 1920px,
 // 從 大  ------- >  小
 
-@mixin l(){
+@mixin l() {
     @media screen and (max-width: $l) {
         @content;
     }
 }
 
 
-@mixin s(){
+@mixin s() {
     @media screen and (max-width: $s) {
         @content;
     }
 }
 
 //最小width是100%,若有填值則以賦值為主 (方便RWD)
-@mixin layout($w){
-    @if $w == 100%{
+@mixin layout($w) {
+    @if $w==100% {
         width: 100%;
-    }@else{
+    }
+
+    @else {
         max-width: $w;
         margin: 0 auto;
-        width: 100%;  
+        width: 100%;
     }
+}
+
+//消除按鈕預設背景色 & 邊框
+@mixin btnBgNone {
+    background: none;
+    border: none;
+}
+
+//音樂播放 圓形按鈕背景設定
+@mixin music_btn_circle($w, $h:$w) {
+    background: none;
+    border: none;
+    background-color: $white;
+    width: $w;
+    height: $h;
+    vertical-align: middle;
+    border-radius: 50%;
 }

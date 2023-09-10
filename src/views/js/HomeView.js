@@ -1,9 +1,8 @@
 //引入swiper-------------------------
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
+import { Swiper, SwiperSlide } from 'swiper/vue';
 //引入viewUI Grid系統-------------------------
 import { Grid, GridItem } from 'view-ui-plus';
-
 
 // Import Swiper styles
 import "swiper/css";
@@ -12,9 +11,7 @@ import 'swiper/css/effect-fade';
 import 'swiper/swiper-bundle.css';
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import 'swiper/swiper-bundle.css';
-import "swiper/css/effect-cards";
-
+import 'swiper/css/effect-cards';
 
 
 // import required modules
@@ -147,9 +144,7 @@ export default {
     },
     setup() {
         return {
-            modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
-            EffectFade,
+            modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards]
         };
-    },
-
+    }
 };
