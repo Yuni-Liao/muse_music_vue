@@ -17,12 +17,9 @@
         width: 100%;
         height: 100vh;
         background-image: url("/public/image/Ranking/ranking01.png");
-        background-blend-mode: lighten;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        background-blend-mode: darken;
-        // opacity: 0.6;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -116,6 +113,7 @@
           ol{
             margin: 50px 20px 0px 20px;
             li{
+              
               display: flex;
               flex-direction: row;
               justify-content: space-evenly;
@@ -124,6 +122,7 @@
               img{
                 width: 70px;
                 height: 70px;
+                margin-right: 20px;
               }
               .order{
                 font-size: $superBig;
@@ -134,6 +133,7 @@
               }
               .txt {
                 text-align: left;
+                margin-right: 50px;
                 h3{
                   color: $white;
                   font-size: $default;
@@ -205,6 +205,7 @@
             img{
               width: 70px;
               height: 70px;
+              margin-right: 20px;
             }
             .order{
               font-size: $superBig;
@@ -229,12 +230,12 @@
               font-weight: 400;
             }
           }
-          .icon{
+          .follow_icon{
             cursor: pointer;
             margin-left: 30px;
             
             img{
-              width: 20px;
+              width: 50px;
               margin: 3px;
             }
           }
