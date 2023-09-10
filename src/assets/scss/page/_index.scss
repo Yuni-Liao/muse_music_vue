@@ -80,14 +80,16 @@
     text-align: right;
     color: $white;
     span {
+      width: 130px;
+      height: 130px;
       position: relative;
-      right: 2%;
+      right: 6%;
+      overflow-x: hidden;
     }
   }
   & span::after {
-    content: "";
+    content: '';
     background-image: url("/public/image/index/index_joinus.png");
-    background-size: contain;
     position: absolute;
     top: 50%;
     right: 50%;
@@ -96,6 +98,7 @@
     transform-origin: center;
     animation: rotate360 7s 0s linear infinite;
     z-index: 2;
+    box-sizing: border-box;
   }
 }
 
@@ -290,48 +293,73 @@
       p{
           font-size: $medium;
           color: $pink;
-          text-align: left;
+          text-align: center;
           text-shadow: 3px 3px 3px $white;
-          padding: 20px 0px 20px 10px;
+          padding: 0px 0px 10px 10px;
+          margin-bottom: 5%;
         }
       };
     .index_emoAns{
       display: flex;
       flex-wrap: wrap;
       .index_input{
-        display: inline-block;
+        margin: 0% 5% 5% 10%;
+        display: inline-flex;
+        align-items: center;
         @include layout(100%);
         input {
           @include rect(20px);
+          margin-left: -5%;
         }
         span{
           font-size: $small;
           text-shadow: 3px 3px 3px $white;
           color: $dark;
+          margin-left: 2%;
+          text-align: left;
         }
       }
     }
   }
-
     .swiper-slide:nth-child(1) {
       background-image: url('/public/image/index/index_emo_01.png');
       background-color: $dark;
+      background-position: 5% -5%;
     }
 
     .swiper-slide:nth-child(2) {
-      background-color: rgb(0, 140, 255);
+      background-image: url('/public/image/index/index_emo_02.png');
+      background-color: $dark;
+      background-position: 15% 20%;
     } 
 
     .swiper-slide:nth-child(3) {
-      background-color: rgb(10, 184, 111);
+      background-image: url('/public/image/index/index_emo_03.png');
+      background-color: $dark;    
+      background-position: 50%;
     } 
 
     .swiper-slide:nth-child(4) {
-      background-color: rgb(211, 122, 7);
+      background-image: url('/public/image/index/index_emo_04.png');
+      background-color: $dark;    
+      background-position: 5% 0%;
     } 
 
     .swiper-slide:nth-child(5) {
-      background-color: rgb(118, 163, 12);
+      background-image: url('/public/image/index/index_emo_05.png');
+      background-color: $dark;
+      background-position: 20% 0%;
+      }
     }
-  }
+    .index_emoNext{
+      @include rect(80px, 30px);
+      @include btnBgNone;
+      color: $blue;
+        font-size: $default;
+        margin-left: 80%;
+      text-shadow: 3px 3px 3px $white;
+      span{
+        margin-right: 10%;
+      }
+    }
 }

@@ -88,11 +88,7 @@ const routes = [
       import(/* webpackChunkName: "backend" */ "../views/Backend.vue"),
   },
 
-<<<<<<< HEAD
-  // 以下是商城商品詳情頁面,動態改變內容
-=======
   // 以下是商城商品詳情共用頁面
->>>>>>> dev
   {
     path: "/shopProdDetail",
     name: "shopProdDetail",
