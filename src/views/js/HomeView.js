@@ -21,6 +21,7 @@ import { Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards } from "
 export default {
     data() {
         return {
+            // 首頁頂部Banner - 廖妍榛
             topBanner: [{
                 image: "index_topbanner_01.jpg",
             },
@@ -33,6 +34,7 @@ export default {
             {
                 image: "song01.jpg",
             }],
+            // 新歌推薦輪播、本週熱門歌曲輪播 - 黃珮菁
             songs: [
                 {
                     title: "宇宙飛行1",
@@ -98,6 +100,8 @@ export default {
                     views: 0,
                 },
             ],
+
+            // 本週熱門專輯 -廖妍榛
             album: [{
                 name: 'RockYou',
                 image: "index_grid_01.png"
