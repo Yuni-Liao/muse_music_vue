@@ -88,12 +88,12 @@ const routes = [
       import(/* webpackChunkName: "backend" */ "../views/Backend.vue"),
   },
 
-  // 以下是商城商品詳情頁面,看想做幾個產品請自行創建
+  // 以下是商城商品詳情共用頁面
   {
-    path: "/shopProd/1",
-    name: "shop_prod_1",
+    path: "/shopProdDetail",
+    name: "shopProdDetail",
     component: () =>
-      import(/* webpackChunkName: "shop_prod_1" */ "../views/shopProd/1.vue"),
+      import(/* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"),
   },
 
   //以下是我的音樂庫-我的歌單
@@ -112,13 +112,13 @@ const routes = [
       import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
   },
 
-    //以下是單曲頁面
-    {
-      path: "/singlemusic",
-      name: "singlemusic",
-      component: () =>
-        import(/* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"),
-    },
+  //以下是單曲頁面
+  {
+    path: "/singlemusic",
+    name: "singlemusic",
+    component: () =>
+      import(/* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"),
+  },
 
   //若網址列亂輸入,就會跳到404頁面,此區塊請固定放最下方
   {

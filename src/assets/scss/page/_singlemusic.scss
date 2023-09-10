@@ -3,14 +3,14 @@
     margin: auto;
 }
 
-h1,
-h2,
-h3,
-p {
+.singleMusic h1,
+.singleMusic h2,
+.singleMusic h3,
+.singleMusic p {
     color: $white;
 }
 
-.banner {
+.singleMusic .banner {
     @include layout(100%);
     position: relative;
 
@@ -93,24 +93,8 @@ p {
                 .buttonArea {
                     display: flex;
                     align-items: flex-end;
-
-                    .share {
-                        @include music_btn_circle(35px);
+                    #ShareBtn,#AddSlBtn,#AddFavBtn{
                         margin-right: 10px;
-                    }
-
-                    .add {
-                        @include music_btn_circle(35px);
-                        margin-right: 10px;
-                    }
-
-                    .like {
-                        @include music_btn_circle(35px);
-                        margin-right: 10px;
-                    }
-
-                    .play {
-                        @include music_btn_circle(55px);
                     }
                 }
             }
