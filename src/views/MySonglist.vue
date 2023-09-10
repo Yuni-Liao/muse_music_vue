@@ -59,6 +59,6 @@
   </div>
 </template>
 <style scoped lang="scss">
-@import "~@/assets/scss/page/_mysonglist.scss";
+@import "~@/assets/scss/page/mysonglist.scss";
 </style>
 <script src="./js/MySonglistView.js"></script>

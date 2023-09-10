@@ -148,6 +148,6 @@
     </main>
 </template>
 <style scoped lang="scss">
-@import "~@/assets/scss/page/_singlemusic.scss";
+@import "~@/assets/scss/page/singlemusic.scss";
 </style>
 <script src="./js/SingleMusic.js"></script>
