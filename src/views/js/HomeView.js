@@ -102,40 +102,62 @@ export default {
             ],
 
             // 本週熱門專輯 -廖妍榛
+            a: [{
+                image: ["index_grid_01.png", "index_grid_01.png", "index_grid_01.png", "index_grid_01.png", "index_grid_01.png", "index_grid_01.png", "index_grid_01.png", "index_grid_01.png", "index_grid_01.png"],
+                name: ['RockYou', 'RockYou', 'RockYou', 'RockYou', 'RockYou', 'RockYou', 'RockYou', 'RockYou', 'RockYou']
+            }],
             album: [{
+                ranking: '1',
+                alb: '專輯．Aden Scott',
                 name: 'RockYou',
                 image: "index_grid_01.png"
             },
             {
+                ranking: '2',
+                alb: '專輯．桌子樂團',
                 name: '藍色',
                 image: "index_grid_02.png"
             },
             {
+                alb: '專輯．東西肯恩',
+                ranking: '3',
                 name: 'LOVE',
                 image: "index_grid_03.png"
             },
             {
+                alb: '專輯．溫室花朵',
+                ranking: '4',
                 name: 'Faded',
                 image: "index_grid_04.png"
             },
             {
+                alb: '專輯．潛水大象',
+                ranking: '5',
                 name: '有個念頭',
                 image: "index_grid_05.png"
             },
             {
+                alb: '專輯．Apple Jump',
+                ranking: '6',
                 name: '作夢的顏色',
                 image: "index_grid_06.png"
             },
             {
+                alb: '專輯．消防車',
+                ranking: '7',
                 name: '花火',
                 image: "index_grid_07.png"
             },
             {
+                alb: '專輯．榕樹幫',
+                ranking: '8',
                 name: '你看不見',
                 image: "index_grid_08.png"
             },
             {
-                name: '你看不見',
+                alb: '專輯．Bye Bye Lucy',
+                ranking: '9',
+                name: '芭比',
                 image: "index_grid_09.png"
             }],
 

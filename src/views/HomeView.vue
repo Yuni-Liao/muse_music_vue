@@ -86,8 +86,16 @@
   <section class="index_WeekTopAlbum">
     <h2>本週熱門專輯．Popular Album This Week</h2>
     <div class="index_albumBox">
-      <Grid center square>
-        <GridItem v-for="(item, index) in album" :key="index"><img :src="require(`/public/image/index/${item.image}`)" />
+      <Grid center square :border="false">
+        <GridItem v-for="(item, index) in album" :key="index">
+          <div class="imgbox"><img :src="require(`/public/image/index/${item.image}`)" />
+            <span class="ranking">
+              {{ item.ranking }}<br>
+              <span class="name">{{ item.name }}<br>
+                <span class="alb">{{ item.alb }}</span>
+              </span>
+            </span>
+          </div>
         </GridItem>
       </Grid>
     </div>

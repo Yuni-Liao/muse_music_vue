@@ -187,17 +187,69 @@
     text-align: start;
     margin: 40px;
   }
+
+
   .index_albumBox{
-    @include rect(35%);
+    @include rect(40%);
     margin: auto;
     position: relative;
-    .ivu-grid-item-main{
-      img {
+    .imgbox{
+      position: relative;
+      color: $pink;
+      .ranking{
+        @include l{
+          @include layout(100%);
+          text-shadow: 3px 3px 3px $dark;
+          font-weight: bolder;
+          font-size: $superBig;
+          position: absolute;
+          top: 45%;
+          //手機版約20%~30% 需要再調整
+          left: 0%;
+          margin: auto;
+        }
+      }
+      .name{
         @include layout(100%);
+        font-weight: 600;
+        font-size: $medium;
+        position: absolute;
+        top: 85%;
+        left: 0%;
+        margin: auto;
+      }
+      .alb{
+        @include layout(100%);
+        font-weight: normal;
+        font-size: $tag;
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        margin: auto;
+      }
+      img {
+        width: 120%;
+        margin: -24px;
+        // -webkit-filter: grayscale(100%);
+        // filter: grayscale(100%);
+        // -webkit-transition: .3s ease-in-out;
+        // transition: .3s ease-in-out;
+      }
+        // img:hover{
+        //   -webkit-filter: grayscale(0);
+        //   filter: grayscale(0);
+        //   -webkit-transition: .3s ease-in-out;
+        //   transition: .3s ease-in-out;
+        // }
       }
     }
   }
-
+  // .imgbox::after{
+  //   content: 'ssss';
+  //   color: $white;
+  //   position: relative;
+  //   inset: 0;
+  // }
   .index_albumBox::before {
     content: "";
     background-image: url("/public/image/index/index_ablumPot.svg");
@@ -216,7 +268,17 @@
     right: -130px;
     bottom: 120px;
   }
+
+
+
+
+
+@mixin s() {
+    @media screen and (max-width: $s) {
+        @content;
+    }
 }
+
 
 //專輯下方閃電線 - 廖妍榛
 .hr {
