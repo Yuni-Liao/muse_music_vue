@@ -1,6 +1,6 @@
 <template>
-    <div class="wrapper">
-        <div class="inner">
+    <div class="reg_wrapper">
+        <div class="reg_inner">
             <Steps :current="current">
                 <Step title="會員註冊"></Step>
                 <Step title="信箱驗證"></Step>
@@ -13,8 +13,8 @@
                 <input type="password" placeholder="請輸入密碼" v-model="password" required>
                 <input type="password" placeholder="確認密碼" v-model="confirmpassword" required>
                 <label>
-                    <input type="checkbox" id="text">
-                    同意MUSE的會員服務條款與隱私權保護政策，包括cookies的使用、其他人能夠在本站上瀏覽你的相關公開資訊。
+                    <input class="policy" type="checkbox" id="text">
+                    同意MUSE的會員服務條款與隱私權保護政策，<br>包括cookies的使用、其他人能夠在本站上瀏覽你的相關公開資訊。
                 </label>
                 <button class="btn_L_NoBorder obj_Radius submit" @click="next" :disabled="!email1">信箱收取驗證碼</button>
             </form>
@@ -53,55 +53,8 @@
     </div>
 </template>
 
-<script>
-</script>
-
-<style scoped lang="scss">
-@import "~@/assets/scss/page/register.scss";
-</style>
 <script src="./js/RegisterView.js"></script>
-
-<style>
-/* 步驟條 */
-.ivu-steps {
-    display: flex;
-    width: 100%;
-}
-
-/* 步驟區塊 */
-.ivu-steps-item {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 文字 */
-.ivu-steps-item.ivu-steps-status-wait .ivu-steps-title,
-.ivu-steps .ivu-steps-title,
-.ivu-steps-item.ivu-steps-status-finish .ivu-steps-title {
-    color: white;
-    font-size: 20px;
-    background-color: transparent;
-}
-
-/* 勾圖區塊 */
-.ivu-steps .ivu-steps-head,
-.ivu-steps-horizontal .ivu-steps-item:not(:first-child) .ivu-steps-head {
-    background: transparent;
-    margin: auto;
-}
-
-/* 勾勾圖片
-    .ivu-steps-horizontal div :nth-child(2){
-        
-    } */
-/* 文字底線 */
-.ivu-steps .ivu-steps-tail {
-    display: none;
-}
-
-/* 當前進度文字 */
-.ivu-steps-item.ivu-steps-status-process .ivu-steps-title {
-    color: white;
-}
+<style lang="scss"> //註冊頁不下scoped
+ @import "~@/assets/scss/page/_register.scss";
 </style>
+
