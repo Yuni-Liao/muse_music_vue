@@ -1,16 +1,9 @@
 <template>
   <!-- 頂部輪播區 -廖妍榛 -->
   <section class="index_topCarousel">
-    <swiper
-      class="topSwiper"
-      :initialSlide="0"
-      :modules="modules"
-      :effect="'fade'"
-      :pagination="{
-        clickable: true,
-      }"
-      :autoplay="{ delay: 2500, disableOnInteraction: false }"
-    >
+    <swiper class="topSwiper" :initialSlide="0" :modules="modules" :effect="'fade'" :pagination="{
+      clickable: true,
+    }" :autoplay="{ delay: 2500, disableOnInteraction: false }">
       <swiper-slide v-for="(item, index) in topBanner" :key="index">
         <img class="pic" :src="require(`/public/image/index/${item.image}`)" />
       </swiper-slide>
@@ -34,33 +27,19 @@
   <!--新歌推薦輪播 - 黃珮菁 -->
   <section class="index_newMusic">
     <h2>新歌推薦．New Rlease</h2>
-    <swiper
-      class="mySwiper"
-      :initialSlide="4"
-      :effect="'coverflow'"
-      :slideToClickedSlide="false"
-      :grabCursor="false"
-      :centeredSlides="true"
-      :slidesPerView="2.5"
-      :slidesPerGroup="1"
-      :coverflowEffect="{
+    <swiper class="mySwiper" :initialSlide="4" :effect="'coverflow'" :slideToClickedSlide="false" :grabCursor="false"
+      :centeredSlides="true" :slidesPerView="2.5" :slidesPerGroup="1" :coverflowEffect="{
         rotate: 0,
         stretch: 0,
         depth: 300,
         modifier: 1.5,
         slideShadows: false,
-      }"
-      :pagination="{
-        clickable: true,
-      }"
-      :modules="modules"
-    >
+      }" :pagination="{
+  clickable: true,
+}" :modules="modules">
       <swiper-slide v-for="(item, index) in songs" :key="sid">
         <div class="card">
-          <img
-            :src="require(`/public/image/index/${item.image}`)"
-            @click="playmusic()"
-          />
+          <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
           <div class="text" @click="gotosinglemusic()">
             <h3>{{ item.title }}</h3>
             <p>
@@ -75,33 +54,19 @@
   <!--本週熱門歌曲輪播 - 黃珮菁 -->
   <section class="index_WeekTopusic">
     <h2>本週熱門歌曲．Popular Songs This Week</h2>
-    <swiper
-      class="mySwiper"
-      :initialSlide="4"
-      :effect="'coverflow'"
-      :slideToClickedSlide="false"
-      :grabCursor="false"
-      :centeredSlides="true"
-      :slidesPerView="2.5"
-      :slidesPerGroup="1"
-      :coverflowEffect="{
+    <swiper class="mySwiper" :initialSlide="4" :effect="'coverflow'" :slideToClickedSlide="false" :grabCursor="false"
+      :centeredSlides="true" :slidesPerView="2.5" :slidesPerGroup="1" :coverflowEffect="{
         rotate: 0,
         stretch: 0,
         depth: 300,
         modifier: 1.5,
         slideShadows: false,
-      }"
-      :pagination="{
-        clickable: true,
-      }"
-      :modules="modules"
-    >
+      }" :pagination="{
+  clickable: true,
+}" :modules="modules">
       <swiper-slide v-for="(item, index) in songs" :key="sid">
         <div class="card">
-          <img
-            :src="require(`/public/image/index/${item.image}`)"
-            @click="playmusic()"
-          />
+          <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
           <div class="text" @click="gotosinglemusic()">
             <h3>{{ item.title }}</h3>
             <p>
@@ -123,8 +88,7 @@
             <img :src="require(`/public/image/index/${item.image}`)" />
             <span class="ranking">
               {{ item.ranking }}<br />
-              <span class="name"
-                >{{ item.name }}<br />
+              <span class="name">{{ item.name }}<br />
                 <span class="alb">{{ item.alb }}</span>
               </span>
             </span>
@@ -136,10 +100,11 @@
 
   <!-- 專輯下方閃電線 -廖妍榛 -->
   <div class="hr">
-    <img src="/image/index/index_lineBg.svg" alt="" />
+    <img src="/image/index/index_lineBg.svg" />
   </div>
 
   <!-- 音樂轉盤 -廖妍榛 -->
+  <!-- 功能還在處理中 -->
   <section class="index_revolve">
     <h2>轉出你的音樂．Revolve</h2>
     <div class="step">
@@ -162,23 +127,94 @@
         </div>
       </div>
     </div>
-    <img
-      class="index_loop"
-      src="/image/index/index_revolveLoop.png"
-      alt="音樂轉盤機器"
-    />
+    <div class="index_dj">
+      <div class="index_dj_box">
+        <div class="dj_left">
+          <div class="song_info">
+            <div class="song_title">
+              <fontAwesome :icon="['fa', 'music']" />
+              <span>第一首歌</span>
+            </div>
+            <div class="timebox">
+              <span class="song_time">03:30:02</span>
+              <fontAwesome :icon="['fa', 'fa-clock']" />
+            </div>
+          </div>
+          <div class="plate" id="plate_left">
+            <span></span>
+          </div>
+          <div class="dj_buttons">
+            <button class="button prev obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-backward-step']" />
+            </button>
+            <button class="button play obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-play']" />
+            </button>
+            <button class="button pause obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-pause']" />
+            </button>
+            <button class="button stop obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-stop']" />
+            </button>
+            <button class="button next obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-step-forward']" />
+            </button>
+          </div>
+        </div>
+        <div class="dj_center">
+          <div class="plates_vols">
+            <div class="vol vol_left">
+              <input class="left_vol obj_Radius" type="range" name="vol_left" id="volume_left" min="0" max="100">
+            </div>
+            <div class="vol vol_right">
+              <input class="right_vol obj_Radius" type="range" name="volume_right" id="volume_right" min="0" max="100">
+            </div>
+          </div>
+          <div class="vol vol_mix">
+            <input class="mix_vol obj_Radius" type="range" name="volume_mix" id="volume_mix" min="0" max="100">
+          </div>
+        </div>
+        <div class="dj_right">
+          <div class="song_info">
+            <div class="song_title">
+              <fontAwesome :icon="['fa', 'music']" />
+              <span>第二首歌</span>
+            </div>
+            <div class="timebox">
+              <span class="song_time">03:30:02</span>
+              <fontAwesome :icon="['fa', 'fa-clock']" />
+            </div>
+          </div>
+          <div class="plate" id="plate_right">
+            <span></span>
+          </div>
+          <div class="dj_buttons">
+            <button class="button prev obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-backward-step']" />
+            </button>
+            <button class="button play obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-play']" />
+            </button>
+            <button class="button pause obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-pause']" />
+            </button>
+            <button class="button stop obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-stop']" />
+            </button>
+            <button class="button next obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-step-forward']" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 情緒歌單 -廖妍榛 -->
   <!-- 功能還在處理中 -->
   <section class="index_emo">
     <h2>情緒歌單．Find Your Emotion</h2>
-    <swiper
-      :effect="'cards'"
-      :grabCursor="false"
-      :modules="modules"
-      class="mySwiper"
-    >
+    <swiper :effect="'cards'" :grabCursor="false" :modules="modules" class="mySwiper">
       <swiper-slide v-for="(item, index) in ques" :key="index">
         <div class="index_emoQue">
           <p>{{ item.title }}</p>
@@ -210,19 +246,3 @@
 @import "~@/assets/scss/page/index.scss";
 </style>
 <script src="./js/HomeView.js"></script>
-
-<!-- <script>
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  data() {
-    return {
-      value: 0
-    }
-  },
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
-</script> -->
