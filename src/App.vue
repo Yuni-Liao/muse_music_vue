@@ -60,7 +60,7 @@
                 alt=""
               />帳號設定</router-link
             ><br />
-            <router-link to=""
+            <router-link to="/profilepage"
               ><img
                 src="~@/assets/image/icon/personalPage.png"
                 alt=""

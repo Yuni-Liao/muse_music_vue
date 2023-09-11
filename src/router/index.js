@@ -93,7 +93,9 @@ const routes = [
     path: "/shopProdDetail",
     name: "shopProdDetail",
     component: () =>
-      import(/* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"),
+      import(
+        /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"
+      ),
   },
 
   //以下是我的音樂庫-我的歌單
@@ -101,15 +103,19 @@ const routes = [
     path: "/mysonglist",
     name: "mysonglist",
     component: () =>
-      import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
+      import(
+        /* webpackChunkName: "mysonglist" */ "../views/MySonglistView.vue"
+      ),
   },
 
-  //以下是我的音樂庫-我的歌單
+  //以下歌單頁面
   {
-    path: "/mysonglist",
-    name: "mysonglist",
+    path: "/singlesonglist",
+    name: "singlesonglist",
     component: () =>
-      import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
+      import(
+        /* webpackChunkName: "singlesonglist" */ "../views/SingleSonglistView.vue"
+      ),
   },
 
   //以下是單曲頁面
@@ -119,7 +125,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"),
   },
-
+  //以下是個人主頁頁面
+  {
+    path: "/profilepage",
+    name: "profilepage",
+    component: () =>
+      import(
+        /* webpackChunkName: "singlemusic" */ "../views/ProfilePageView.vue"
+      ),
+  },
   //若網址列亂輸入,就會跳到404頁面,此區塊請固定放最下方
   {
     path: "/:pathMatch(.*)*",
