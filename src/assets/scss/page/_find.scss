@@ -82,3 +82,38 @@ a:hover{
     border-left:0 ;
   }
 }
+.test{
+  width: 100%;
+  display: flex;
+  // border: 2px solid;
+}
+.test .aaa{
+  width: 15%;
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
+  background-color: red;
+  border: 1px solid;
+  padding: .5% 0;
+  position: relative;
+  overflow: hidden;
+  font-size: $medium;
+}
+.test .aaa img{
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+.test .aaa:hover img{
+  display: block;
+}
+.test .aaa:hover{
+  background-color: gray;
+}
+.test .aaa:first-child{
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
+  background-color: green;
+}
+.test .aaa:last-child{
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 25% 100%);
+  background-color: blue;
+}

@@ -34,6 +34,42 @@
             </div>
         </div>
     </div>
+
+    <div class="test">
+        <div class="aaa">
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+            <div class="text">
+                <p>
+                    test123
+                </p>
+            </div>
+        </div>
+        <div class="aaa">
+            test123
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+        </div>
+        <div class="aaa">
+            test123
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+        </div>
+        <div class="aaa">
+            test123
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+        </div>
+        <div class="aaa">
+            test123
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+        </div>
+        <div class="aaa">
+            test123
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+        </div>
+        <div class="aaa">
+            test123
+            <img src="~@/assets/image/footer_background.jpg" alt="">
+        </div>
+    </div>
+
 </template>
 
 
