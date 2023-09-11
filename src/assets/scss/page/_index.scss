@@ -361,17 +361,14 @@
           animation-play-state: paused;
           box-shadow: 1px 1px $white;
           position: relative;
-          // .fa-circle{
-          //   color: $pink;
-          // }
           span{
             background-image: url("/public/image/index/index_dj_logo.png");
             @include rect(140px);
             background-size: contain;
-            animation: rotate360 7s 0s linear infinite;
+            animation: run 7s 0s linear infinite;
             position: absolute;
-            top: 50%;
-            left: -22.5%;
+            top: 13.5%;
+            left: 13.5%;
           }
         }
       }
@@ -389,7 +386,7 @@
         }
     }
 
-    //中間的音量拉條
+    //中間的音量拉條 - 廖妍榛
       .dj_center{
         display: flex;
         align-self: center;
