@@ -270,12 +270,6 @@
   bottom: 120px;
 }
 
-@mixin s() {
-  @media screen and (max-width: $s) {
-    @content;
-  }
-}
-
 //專輯下方閃電線 - 廖妍榛
 .hr {
   @include layout(100%);
