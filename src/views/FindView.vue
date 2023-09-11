@@ -39,33 +39,33 @@
         <div class="aaa">
             <img src="~@/assets/image/footer_background.jpg" alt="">
             <div class="text">
-                <p>
-                    test123
-                </p>
+                <a href="">
+                    Boss-Rou
+                </a>
             </div>
         </div>
         <div class="aaa">
-            test123
+            Yuni
             <img src="~@/assets/image/footer_background.jpg" alt="">
         </div>
         <div class="aaa">
-            test123
+            Kay
             <img src="~@/assets/image/footer_background.jpg" alt="">
         </div>
         <div class="aaa">
-            test123
+            Toby
             <img src="~@/assets/image/footer_background.jpg" alt="">
         </div>
         <div class="aaa">
-            test123
+            Zac
             <img src="~@/assets/image/footer_background.jpg" alt="">
         </div>
         <div class="aaa">
-            test123
+            DaXiang
             <img src="~@/assets/image/footer_background.jpg" alt="">
         </div>
         <div class="aaa">
-            test123
+            Zxc
             <img src="~@/assets/image/footer_background.jpg" alt="">
         </div>
     </div>
