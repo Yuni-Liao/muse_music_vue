@@ -101,20 +101,22 @@
                                     </div>
                                     <p class="date">
                                         {{ messageItem.date }}
-                                        <button class="more">
+                                        <button class="more" @click="toggleReportBtn">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
                                         </button>
+                                        <ReportBtn v-if="showReportBtn"></ReportBtn>
                                     </p>
 
                                 </div>
                                 <p class="txt">
                                     {{ messageItem.message }}
                                 </p>
-                                <div class="likeMes">
+                                <div class="likeMes" v-if="messageItem">
                                     <p class="likeCount">{{ messageItem.like }}</p>
-                                    <button class="btn_likeMes">
-                                        <fontAwesome :icon="['fa', 'thumbs-up']" style="color:#fff;" />
-                                    </button>
+                                    <!--<button class="btn_likeMes" @click="likeMessage(messageItem)">
+                                        <font-awesome-icon :icon="['fa', 'thumbs-up']"/>
+                                    </button>-->
+                                    <LikeMesBtn :messageItem="messageItem"></LikeMesBtn>
                                 </div>
                             </div>
 

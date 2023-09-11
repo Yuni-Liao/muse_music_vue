@@ -2,9 +2,11 @@ import PlayBtnBig from "@/components/PlayBtnBig.vue";
 import AddFavBtn from "@/components/AddFavBtn.vue";
 import AddSlBtn from "@/components/AddSlBtn.vue";
 import ShareBtn from "@/components/ShareBtn.vue";
+import ReportBtn from "@/components/ReportBtn.vue";
+import LikeMesBtn from "@/components/LikeMesBtn.vue";
 
 export default {
-    components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn },
+    components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn },
     data() {
         return {
             //歌曲清單
@@ -44,7 +46,7 @@ export default {
                     userPic: "userpic2.png",
                     userName: "Auterpe",
                     date: "2023-06-23",
-                    message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.",
+                    message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem .",
                     like: "24"
                 },
                 {
@@ -52,7 +54,7 @@ export default {
                     userPic: "userpic3.png",
                     userName: "Zuterpe",
                     date: "2023-04-23",
-                    message: "dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.",
+                    message: "dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ",
                     like: "33"
                 },
                 {
@@ -70,14 +72,6 @@ export default {
                     date: "2023-05-23",
                     message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore.",
                     like: "999"
-                },
-                {
-                    id: 6,
-                    userPic: "userpic3.png",
-                    userName: "Rose",
-                    date: "2023-03-23",
-                    message: " rem dolor ipsum dolore, facilis nam tenetur unde.",
-                    like: "888"
                 }
             ],
             otherSongs: [
@@ -105,16 +99,11 @@ export default {
                     id: 5,
                     albumPic: "othaersong2.png",
                     name: "Bed",
-                },
-                {
-                    id: 6,
-                    albumPic: "othaersong3.png",
-                    name: "OMG",
                 }
-
             ],
             showAllMessages: true,
             showAllSongs: true,
+            showReportBtn: false,
         };
     },
     methods: {
@@ -123,6 +112,9 @@ export default {
         },
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;
+        },
+        toggleReportBtn() {
+            this.showReportBtn = !this.showReportBtn;
         },
     },
 };

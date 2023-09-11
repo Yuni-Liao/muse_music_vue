@@ -271,10 +271,18 @@
 
                             .date {
                                 font-size: $tag;
+                                position: relative;
 
                                 .more {
                                     margin: 0 20px 0 25px;
                                     @include btnBgNone;
+
+                                }
+
+                                #ReportBtn {
+                                    top: 11px;
+                                    right: -5px;
+                                    position: absolute;
                                 }
                             }
                         }
@@ -293,6 +301,12 @@
 
                             .likeCount {
                                 font-size: $tag;
+                            }
+
+                            .btn_likeMes {
+                                @include music_btn_circle(35px);
+                                background-color: $tp;
+                                border: 1px solid $white;
                             }
                         }
 

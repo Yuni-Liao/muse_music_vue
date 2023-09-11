@@ -40,6 +40,7 @@ import {
   faThumbsUp,
   faAngleDown,
   faEllipsis,
+  faCircleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -74,7 +75,8 @@ library.add(
   faEllipsisVertical,
   faThumbsUp,
   faAngleDown,
-  faEllipsis
+  faEllipsis,
+  faCircleExclamation,
 );
 
 <i class="fa-brands "></i>;
