@@ -90,7 +90,7 @@
                                 </button>
                             </div>
                             <div class="message" v-for="(messageItem, messageIndex) in messages" :key="messageIndex"
-                                v-if="showAllMessages || messageIndex < 3">
+                                v-if="showAllMessages || messageIndex < 3 || messages.length <= 3">
                                 <div class="infBar">
                                     <div class="user">
                                         <div class="pic">
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
 
-                            <a href="#" class="readMore" @click="showAllMessages = !showAllMessages">
+                            <a href="#" class="readMore" @click="toggleMessages">
                                 {{ showAllMessages ? '收起' : '查看更多' }}
                                 <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
                             </a>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="otherSong">
                         <h3>專輯其他歌曲</h3>
-                        <div class="song" v-for="(item, index) in otherSongs" :key="index">
+                        <div class="song" v-for="(item, index) in otherSongs" :key="index" v-if="showAllSongs || index < 3">
                             <div class="list">
                                 <div class="number">{{ item.id }}</div>
 
@@ -143,7 +143,7 @@
                                 <AddFavBtn></AddFavBtn>
                             </div>
                         </div>
-                        <a href="#" class="readMore">
+                        <a href="#" class="readMore" @click="toggleSongs">
                             <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
                         </a>
                     </div>

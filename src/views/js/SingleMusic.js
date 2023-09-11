@@ -113,7 +113,16 @@ export default {
                 }
 
             ],
-            showAllMessages: false,
+            showAllMessages: true,
+            showAllSongs: true,
         };
-    }, 
-}
+    },
+    methods: {
+        toggleMessages() {
+            this.showAllMessages = !this.showAllMessages;
+        },
+        toggleSongs() {
+            this.showAllSongs = !this.showAllSongs;
+        },
+    },
+};
