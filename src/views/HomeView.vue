@@ -117,9 +117,18 @@
   <section class="index_WeekTopAlbum">
     <h2>本週熱門專輯．Popular Album This Week</h2>
     <div class="index_albumBox">
-      <Grid center square>
-        <GridItem v-for="(item, index) in album" :key="index"
-          ><img :src="require(`/public/image/index/${item.image}`)" />
+      <Grid center square :border="false">
+        <GridItem v-for="(item, index) in album" :key="index">
+          <div class="imgbox">
+            <img :src="require(`/public/image/index/${item.image}`)" />
+            <span class="ranking">
+              {{ item.ranking }}<br />
+              <span class="name"
+                >{{ item.name }}<br />
+                <span class="alb">{{ item.alb }}</span>
+              </span>
+            </span>
+          </div>
         </GridItem>
       </Grid>
     </div>
@@ -161,39 +170,46 @@
   </section>
 
   <!-- 情緒歌單 -廖妍榛 -->
-  <!-- 還在處理中 -->
+  <!-- 功能還在處理中 -->
   <section class="index_emo">
     <h2>情緒歌單．Find Your Emotion</h2>
     <swiper
       :effect="'cards'"
-      :grabCursor="true"
+      :grabCursor="false"
       :modules="modules"
       class="mySwiper"
     >
-      <swiper-slide>
+      <swiper-slide v-for="(item, index) in ques" :key="index">
         <div class="index_emoQue">
-          <p>Q: 今天是星期一，鬧鐘一響，剛醒來你的想法是什麼？</p>
+          <p>{{ item.title }}</p>
           <div class="index_emoAns">
             <div class="index_input">
-              <input type="radio" name="hi" />
-              <span>全新的一週，動力滿滿活力滿滿！</span>
+              <input type="radio" name="ans" />
+              <span>{{ item.ans[0] }}</span>
             </div>
             <div class="index_input">
-              <input type="radio" name="hi" />
-              <span>好累，好想繼續睡</span>
+              <input type="radio" name="ans" />
+              <span>{{ item.ans[1] }}</span>
             </div>
             <div class="index_input">
-              <input type="radio" name="hi" />
-              <span>沒有特別感受，腦袋空空</span>
+              <input type="radio" name="ans" />
+              <span>{{ item.ans[2] }}</span>
             </div>
           </div>
+          <button class="index_emoNext">
+            <span>下一題</span>
+            <fontAwesome :icon="['fa', 'angle-right']" />
+          </button>
         </div>
       </swiper-slide>
-      <swiper-slide>好開心</swiper-slide><swiper-slide>謝謝你</swiper-slide>
-      <swiper-slide>我的超人</swiper-slide><swiper-slide>Slide 5</swiper-slide>
     </swiper>
   </section>
 </template>
+
+<style scoped lang="scss">
+@import "~@/assets/scss/page/index.scss";
+</style>
+<script src="./js/HomeView.js"></script>
 
 <!-- <script>
 import HelloWorld from '@/components/HelloWorld.vue'
@@ -210,8 +226,3 @@ export default {
   }
 }
 </script> -->
-
-<style scoped lang="scss">
-@import "~@/assets/scss/page/index.scss";
-</style>
-<script src="./js/HomeView.js"></script>

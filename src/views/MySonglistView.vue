@@ -9,9 +9,15 @@
         </button>
       </div>
       <div class="tabs">
-        <button @click="currentType = 0" class="tab"><h2>全部</h2></button>
-        <button @click="currentType = 1" class="tab"><h2>由我建立</h2></button>
-        <button @click="currentType = 2" class="tab"><h2>我追蹤的</h2></button>
+        <button @click="currentType = 0" class="tab">
+          <h2>全部</h2>
+        </button>
+        <button @click="currentType = 1" class="tab">
+          <h2>由我建立</h2>
+        </button>
+        <button @click="currentType = 2" class="tab">
+          <h2>我追蹤的</h2>
+        </button>
       </div>
       <div class="line"></div>
     </section>
