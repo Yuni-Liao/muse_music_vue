@@ -1,9 +1,16 @@
 <template>
   <!-- 頂部輪播區 -廖妍榛 -->
   <section class="index_topCarousel">
-    <swiper class="topSwiper" :initialSlide="0" :modules="modules" :effect="'fade'" :pagination="{
-      clickable: true,
-    }" :autoplay="{ delay: 2500, disableOnInteraction: false }">
+    <swiper
+      class="topSwiper"
+      :initialSlide="0"
+      :modules="modules"
+      :effect="'fade'"
+      :pagination="{
+        clickable: true,
+      }"
+      :autoplay="{ delay: 2500, disableOnInteraction: false }"
+    >
       <swiper-slide v-for="(item, index) in topBanner" :key="index">
         <img class="pic" :src="require(`/public/image/index/${item.image}`)" />
       </swiper-slide>
@@ -27,28 +34,40 @@
   <!--新歌推薦輪播 - 黃珮菁 -->
   <section class="index_newMusic">
     <h2>新歌推薦．New Rlease</h2>
-    <swiper class="mySwiper" :initialSlide="4" :effect="'coverflow'" :slideToClickedSlide="false" :grabCursor="true"
-      :centeredSlides="true" :slidesPerView="2.5" :slidesPerGroup="1" :coverflowEffect="{
+    <swiper
+      class="mySwiper"
+      :initialSlide="4"
+      :effect="'coverflow'"
+      :slideToClickedSlide="false"
+      :grabCursor="false"
+      :centeredSlides="true"
+      :slidesPerView="2.5"
+      :slidesPerGroup="1"
+      :coverflowEffect="{
         rotate: 0,
         stretch: 0,
         depth: 300,
         modifier: 1.5,
         slideShadows: false,
-      }" :pagination="{
-  clickable: true,
-}" :modules="modules">
-      <swiper-slide v-for="(item, index) in songs" :key="index">
-        <router-link to="/shopProd/1">
-          <div class="card">
-            <img :src="require(`/public/image/index/${item.image}`)" />
-            <div class="text">
-              <h3>{{ item.title }}</h3>
-              <p>
-                {{ item.singer }}<span>播放量{{ item.views }}</span>
-              </p>
-            </div>
+      }"
+      :pagination="{
+        clickable: true,
+      }"
+      :modules="modules"
+    >
+      <swiper-slide v-for="(item, index) in songs" :key="sid">
+        <div class="card">
+          <img
+            :src="require(`/public/image/index/${item.image}`)"
+            @click="playmusic()"
+          />
+          <div class="text" @click="gotosinglemusic()">
+            <h3>{{ item.title }}</h3>
+            <p>
+              {{ item.singer }}<span>播放量{{ item.views }}</span>
+            </p>
           </div>
-        </router-link>
+        </div>
       </swiper-slide>
     </swiper>
   </section>
@@ -56,28 +75,40 @@
   <!--本週熱門歌曲輪播 - 黃珮菁 -->
   <section class="index_WeekTopusic">
     <h2>本週熱門歌曲．Popular Songs This Week</h2>
-    <swiper class="mySwiper" :initialSlide="4" :effect="'coverflow'" :slideToClickedSlide="false" :grabCursor="true"
-      :centeredSlides="true" :slidesPerView="2.5" :slidesPerGroup="1" :coverflowEffect="{
+    <swiper
+      class="mySwiper"
+      :initialSlide="4"
+      :effect="'coverflow'"
+      :slideToClickedSlide="false"
+      :grabCursor="false"
+      :centeredSlides="true"
+      :slidesPerView="2.5"
+      :slidesPerGroup="1"
+      :coverflowEffect="{
         rotate: 0,
         stretch: 0,
         depth: 300,
         modifier: 1.5,
         slideShadows: false,
-      }" :pagination="{
-  clickable: true,
-}" :modules="modules">
-      <swiper-slide v-for="(item, index) in songs" :key="index">
-        <router-link to="/shopProd/1">
-          <div class="card">
-            <img :src="require(`/public/image/index/${item.image}`)" />
-            <div class="text">
-              <h3>{{ item.title }}</h3>
-              <p>
-                {{ item.singer }}<span>播放量{{ item.views }}</span>
-              </p>
-            </div>
+      }"
+      :pagination="{
+        clickable: true,
+      }"
+      :modules="modules"
+    >
+      <swiper-slide v-for="(item, index) in songs" :key="sid">
+        <div class="card">
+          <img
+            :src="require(`/public/image/index/${item.image}`)"
+            @click="playmusic()"
+          />
+          <div class="text" @click="gotosinglemusic()">
+            <h3>{{ item.title }}</h3>
+            <p>
+              {{ item.singer }}<span>播放量{{ item.views }}</span>
+            </p>
           </div>
-        </router-link>
+        </div>
       </swiper-slide>
     </swiper>
   </section>
@@ -87,7 +118,8 @@
     <h2>本週熱門專輯．Popular Album This Week</h2>
     <div class="index_albumBox">
       <Grid center square>
-        <GridItem v-for="(item, index) in album" :key="index"><img :src="require(`/public/image/index/${item.image}`)" />
+        <GridItem v-for="(item, index) in album" :key="index"
+          ><img :src="require(`/public/image/index/${item.image}`)" />
         </GridItem>
       </Grid>
     </div>
@@ -121,25 +153,37 @@
         </div>
       </div>
     </div>
-    <img class="index_loop" src="/image/index/index_revolveLoop.png" alt="音樂轉盤機器" />
+    <img
+      class="index_loop"
+      src="/image/index/index_revolveLoop.png"
+      alt="音樂轉盤機器"
+    />
   </section>
 
   <!-- 情緒歌單 -廖妍榛 -->
   <!-- 還在處理中 -->
   <section class="index_emo">
     <h2>情緒歌單．Find Your Emotion</h2>
-    <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+    <swiper
+      :effect="'cards'"
+      :grabCursor="true"
+      :modules="modules"
+      class="mySwiper"
+    >
       <swiper-slide>
         <div class="index_emoQue">
           <p>Q: 今天是星期一，鬧鐘一響，剛醒來你的想法是什麼？</p>
           <div class="index_emoAns">
-            <div class="index_input"><input type="radio" name="hi" />
+            <div class="index_input">
+              <input type="radio" name="hi" />
               <span>全新的一週，動力滿滿活力滿滿！</span>
             </div>
-            <div class="index_input"><input type="radio" name="hi" />
+            <div class="index_input">
+              <input type="radio" name="hi" />
               <span>好累，好想繼續睡</span>
             </div>
-            <div class="index_input"><input type="radio" name="hi" />
+            <div class="index_input">
+              <input type="radio" name="hi" />
               <span>沒有特別感受，腦袋空空</span>
             </div>
           </div>
