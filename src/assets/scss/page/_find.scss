@@ -86,16 +86,17 @@ a:hover{
   width: 100%;
   display: flex;
   // border: 2px solid;
+  padding: 1% 0;
 }
 .test .aaa{
   width: 15%;
   clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
-  background-color: red;
   border: 1px solid;
   padding: .5% 0;
   position: relative;
   overflow: hidden;
   font-size: $medium;
+  background-color: #252525;
 }
 .test .aaa img{
   width: 100%;
@@ -111,9 +112,7 @@ a:hover{
 }
 .test .aaa:first-child{
   clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
-  background-color: green;
 }
 .test .aaa:last-child{
   clip-path: polygon(0 0, 100% 0%, 100% 100%, 25% 100%);
-  background-color: blue;
 }
