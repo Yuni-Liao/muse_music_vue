@@ -3,7 +3,8 @@
         <!-- 上方大圖 -->
         <div class="banner" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
             <div class="overlay"></div>
-            <img class="backPic" :src="require(`/public/image/SingleAlbum/${albumItem.bannerPic}`)" alt="albumItem.bannerPic">
+            <img class="backPic" :src="require(`/public/image/SingleAlbum/${albumItem.bannerPic}`)"
+                alt="albumItem.bannerPic">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
@@ -52,7 +53,7 @@
                     </p>
                 </div>
                 <div class="detail">
-                    <div class="otherSong">
+                    <!-- <div class="playList">
                         <h3>專輯其他歌曲</h3>
                         <div class="song" v-for="(item, index) in otherSongs" :key="index">
                             <div class="list">
@@ -64,13 +65,57 @@
                                 <p class="songName">
                                     {{ item.name }}
                                 </p>
+                                <p class="singerName">
+                                    {{ item.singer }}
+                                </p>
+                                <p class="time">
+                                    {{ item.time }}
+                                </p>
                             </div>
                             <div class="btnArea">
-                                <AddSlBtn></AddSlBtn>
                                 <AddFavBtn></AddFavBtn>
+                                <AddSlBtn></AddSlBtn>
+                                <button class="moreBtn">
+                                    <fontAwesome :icon="['fa', 'ellipsis']" />
+                                </button>
+                                
                             </div>
                         </div>
+                    </div> -->
+
+                    <div class="playList">
+                        <table class="musicTable">
+                            <thead>
+                                <tr class="playListHeader">
+                                    <th></th>
+                                    <th></th>
+                                    <th>歌曲名稱</th>
+                                    <th>創作者</th>
+                                    <th>時長</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in otherSongs" :key="index" class="number">
+                                    <td>{{ item.id }}</td>
+                                    <td>
+                                        <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
+                                    </td>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.singer }}</td>
+                                    <td>{{ item.time }}</td>
+                                    <td class="btnArea">
+                                        <AddFavBtn></AddFavBtn>
+                                        <AddSlBtn></AddSlBtn>
+                                        <button class="moreBtn">
+                                            <fontAwesome :icon="['fa', 'ellipsis']" />
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+
                 </div>
             </div>
         </section>
