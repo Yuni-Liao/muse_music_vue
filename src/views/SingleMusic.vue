@@ -50,14 +50,14 @@
                         <div class="singerPic">
                             <img :src="require(`/public/image/SingleMusic/${songItem.singerPic}`)" alt="songItem.singer">
                         </div>
-                        <p class="singerName">{{ songItem.singer }}</p>
+                        <a href="singerPage" class="singerName">{{ songItem.singer }}</a>
                     </div>
                     <div class="album">
                         <div class="albumPic">
                             <img :src="require(`/public/image/SingleMusic/${songItem.albumPic}`)" alt="songItem.album">
                         </div>
                         <p>專輯</p>
-                        <p class="albumName">{{ songItem.album }}</p>
+                        <a href="albumPage" class="albumName">{{ songItem.album }}</a>
                     </div>
                     <div class="date">
                         <p>發布時間</p>
