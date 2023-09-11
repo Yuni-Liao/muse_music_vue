@@ -1,26 +1,43 @@
 .mysonglist {
   @include layout(1400px);
-  padding-top: 90px;
+  padding: 150px 30px;
+  box-sizing: border-box;
   li {
     list-style: none;
   }
   .hd {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 200px;
+    padding: 50px;
     h1 {
       font-size: $big;
       color: $white;
       text-align: left;
-      line-height: 6;
+    }
+    .newlistBtn {
+      @include btnBgNone;
+
+      .fa-plus {
+        display: inline-block;
+        vertical-align: top;
+        font-size: $big;
+        color: #ffffff;
+      }
+      .fa-plus:hover {
+        color: $blue;
+      }
     }
   }
 
   .tabs {
-    padding: 10px;
+    padding: 15px;
     display: flex;
     justify-content: space-evenly;
 
     .tab {
-      border: none;
-      background-color: $tp;
+      @include btnBgNone;
       color: $white;
 
       h2 {
@@ -36,13 +53,15 @@
     width: 100%;
     background: linear-gradient(to right, $tp, $blue, $tp);
   }
-  :root {
-    --gap: 50px;
-    --container-max-width: 1400px;
-  }
   //內容
   .container {
-    padding: 0px;
+    padding: 30px 0px;
+    .nodata {
+      height: 150px;
+      text-align: center;
+      line-height: 150px;
+      color: $white;
+    }
     .sl-list {
       //row
       margin: 20px 0;
@@ -58,6 +77,8 @@
         cursor: pointer;
 
         //設定外觀
+        min-width: 250px;
+
         margin: 20px 0;
         height: 250px;
         padding: 15px;
@@ -75,11 +96,16 @@
           width: 100%;
           padding: 25px 15px 15px 15px;
           background: linear-gradient(to top, rgba(0, 0, 0, 0.6), $tp);
+          //取消動作
+          pointer-events: none;
 
           //子元素排版
           display: flex;
           justify-content: space-between;
-
+          #PlayBtnBig {
+            z-index: 10;
+            pointer-events: visible;
+          }
           h3 {
             font-size: $small;
             .lock {
@@ -97,14 +123,14 @@
           position: absolute;
 
           //定位參考.txt
-          top: 15px;
+          top: 10px;
           right: 15px;
 
           //去除button預設樣式
-          border: none;
-          background-color: $tp;
+          @include btnBgNone;
           color: #ffffff;
         }
+
         .more {
           position: absolute;
           //定位參考.txt
