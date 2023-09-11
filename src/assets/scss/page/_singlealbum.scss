@@ -1,12 +1,12 @@
-.singleMusic h1,
-.singleMusic h2,
-.singleMusic h3,
-.singleMusic p {
+.singleAlbum h1,
+.singleAlbum h2,
+.singleAlbum h3,
+.singleAlbum p {
     color: $white;
     letter-spacing: 1px;
 }
 
-.singleMusic .banner {
+.singleAlbum .banner {
     @include layout(100%);
     position: relative;
 
@@ -27,7 +27,7 @@
     }
 }
 
-.inner {
+.singleAlbum .inner {
     @include layout(1200px);
 
     .topInf {
@@ -38,7 +38,7 @@
         align-content: center;
         align-items: center;
 
-        .singlePic {
+        .albumPic {
             width: 350px;
             height: 350px;
             border: 1px solid #333;
@@ -49,14 +49,14 @@
             }
         }
 
-        .singleInf {
+        .albumInf {
             text-align: left;
             width: 60%;
 
-            .song {
+            .album {
                 margin-bottom: 35px;
 
-                .songName {
+                .albumName {
                     font-size: $big;
                     margin-bottom: 5px;
                 }
@@ -73,15 +73,7 @@
                 .countArea {
                     display: flex;
 
-                    .timeline {
-                        margin-right: 30px;
-                    }
-
                     .played {
-                        margin-right: 30px;
-                    }
-
-                    .liked {
                         margin-right: 30px;
                     }
                 }
@@ -91,7 +83,6 @@
                     align-items: flex-end;
 
                     #ShareBtn,
-                    #AddSlBtn,
                     #AddFavBtn {
                         margin-right: 10px;
                     }
@@ -154,6 +145,7 @@
                 p {
                     margin-left: 20px;
                     font-size: $small;
+
                 }
 
                 .albumName {
