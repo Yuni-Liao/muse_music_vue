@@ -1,15 +1,28 @@
 <template>
-  <button id="AddFavBtn" @click="AddFavBtn()">
-    <fontAwesome :icon="['fa', 'heart']" style="color: #252525" />
+  <button id="AddFavBtn" @click="toggleFavorite">
+    <fontAwesome :icon="['fa', 'heart']" :style="favButtonStyle" />
   </button>
 </template>
+
 <script>
 export default {
   name: "AddFavBtn",
+  data() {
+    return {
+      isFavorited: false,
+    };
+  },
+  computed: {
+    favButtonStyle() {
+      return {
+        color: this.isFavorited ? "red" : "#252525",
+      };
+    },
+  },
   methods: {
-    AddFavBtn() {
-      // 此處撰寫功能code，測試用內容可清除
-      alert("加入我的最愛");
+    toggleFavorite() {
+      this.isFavorited = !this.isFavorited;
+      // 這邊再補上加到最爱的後續操作
     },
   },
 };
