@@ -58,21 +58,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
-  {
-    //faq的component還沒改還沒導,試試看能不能用茅點
-    path: "/faq",
-    name: "faq",
-    component: () =>
-      import(/* webpackChunkName: "faq" */ "../views/AboutView.vue"),
-  },
-  {
-    //faq的component還沒改還沒導,試試看能不能用茅點
-    path: "/faq",
-    name: "faq",
-    component: () =>
-      import(/* webpackChunkName: "faq" */ "../views/AboutView.vue"),
-  },
-
+  // {
+  //   //faq的component還沒改還沒導,試試看能不能用茅點
+  //   path: "/faq",
+  //   name: "faq",
+  //   component: () =>
+  //     import(/* webpackChunkName: "faq" */ "../views/FaqView.vue"),
+  // },
   // {
   //   //隱私權政策還沒導,之後再確認看是不是直接寫彈窗就好
   //   path: '/policy',
@@ -80,13 +72,6 @@ const routes = [
   //   component: () => import(/* webpackChunkName: "這裡要取名" */ '../views/PolicyView.vue')
   //   //component還沒改
   // },
-
-  {
-    path: "/backend",
-    name: "backend",
-    component: () =>
-      import(/* webpackChunkName: "backend" */ "../views/Backend.vue"),
-  },
 
   // 以下是商城商品詳情共用頁面
   {
@@ -126,13 +111,13 @@ const routes = [
       import(/* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"),
   },
 
-    //以下是專輯頁面
-    {
-      path: "/singlealbum",
-      name: "singlealbum",
-      component: () =>
-        import(/* webpackChunkName: "singlealbum" */ "../views/SingleAlbum.vue"),
-    },
+  //以下是專輯頁面
+  {
+    path: "/singlealbum",
+    name: "singlealbum",
+    component: () =>
+      import(/* webpackChunkName: "singlealbum" */ "../views/SingleAlbum.vue"),
+  },
 
   //以下是個人主頁頁面
   {
@@ -151,13 +136,98 @@ const routes = [
         /* webpackChunkName: "profilepage" */ "../views/ProfilePageView.vue"
       ),
   },
+  // 以下為後台登入頁面
+  {
+    path: "/backend",
+    name: "backend",
+    component: () =>
+      import(/* webpackChunkName: "backend" */ "../views/Backendviews/Backend.vue"),
+    children: [
+      // 以下為歌曲審核管理頁面
+      {
+        path: "songreview",
+        name: "songreview",
+        component: () =>
+          import(/* webpackChunkName: "songreview" */ "../views/Backendviews/SongReview.vue"),
+      },
+      // 以下為歌曲類別管理頁面
+      {
+        path: "songtype",
+        name: "songtype",
+        component: () =>
+          import(/* webpackChunkName: "songtype" */ "../views/Backendviews/SongType.vue"),
+      },
+      // 以下為訂單管理頁面
+      {
+        path: "ordermgmt",
+        name: "ordermgmt",
+        component: () =>
+          import(/* webpackChunkName: "ordermgmt" */ "../views/Backendviews/OrderMgmt.vue"),
+      },
+      // 以下為商品管理頁面
+      {
+        path: "prodmgmt",
+        name: "prodmgmt",
+        component: () =>
+          import(/* webpackChunkName: "prodmgmt" */ "../views/Backendviews/ProdMgmt.vue"),
+      },
+      // 以下為首頁輪播管理頁面
+      {
+        path: "homecarousel",
+        name: "homecarousel",
+        component: () =>
+          import(/* webpackChunkName: "homecarousel" */ "../views/Backendviews/HomeCarousel.vue"),
+      },
+      // 以下為機器人管理頁面
+      {
+        path: "robotmgmt",
+        name: "robotmgmt",
+        component: () =>
+          import(/* webpackChunkName: "robotmgmt" */ "../views/Backendviews/RobotMgmt.vue"),
+      },
+      // 以下為音樂快訊管理頁面
+      {
+        path: "museevent",
+        name: "museevent",
+        component: () =>
+          import(/* webpackChunkName: "museevent" */ "../views/Backendviews/MuseEvent.vue"),
+      },
+      // 以下為排行榜管理頁面
+      {
+        path: "rankmgmt",
+        name: "rankmgmt",
+        component: () =>
+          import(/* webpackChunkName: "rankmgmt" */ "../views/Backendviews/RankMgmt.vue"),
+      },
+      // 以下為檢舉留言管理頁面
+      {
+        path: "msgmgmt",
+        name: "msgmgmt",
+        component: () =>
+          import(/* webpackChunkName: "msgmgmt" */ "../views/Backendviews/MsgMgmt.vue"),
+      },
+      // 以下為會員管理頁面
+      {
+        path: "memmgmt",
+        name: "memmgmt",
+        component: () =>
+          import(/* webpackChunkName: "memmgmt" */ "../views/Backendviews/MemMgmt.vue"),
+      },
+      // 以下為管理員管理頁面
+      {
+        path: "admmgmt",
+        name: "admmgmt",
+        component: () =>
+          import(/* webpackChunkName: "admmgmt" */ "../views/Backendviews/AdmMgmt.vue"),
+      }]
+  },
   //若網址列亂輸入,就會跳到404頁面,此區塊請固定放最下方
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     component: () =>
       import(/* webpackChunkName: "error" */ "../views/NotFoundView.vue"),
-  },
+  }
 ];
 
 const router = createRouter({
