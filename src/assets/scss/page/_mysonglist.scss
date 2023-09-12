@@ -120,6 +120,8 @@
           }
         }
         .moreBtn {
+          width: 30px;
+          height: 30px;
           position: absolute;
 
           //定位參考.txt
@@ -127,8 +129,15 @@
           right: 15px;
 
           //去除button預設樣式
-          @include btnBgNone;
+          background: transparent;
+          border: none;
           color: #ffffff;
+          .i {
+            pointer-events: none;
+          }
+        }
+        .moreBtn:hover .i {
+          color: $blue;
         }
 
         .more {

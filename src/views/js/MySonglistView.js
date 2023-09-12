@@ -121,10 +121,14 @@ export default {
     },
   },
   methods: {
-    // togglelayout(index) {
-    //   // 切換 isLVisible 的值，以顯示/隱藏 Layout
-    //   this.isVisible = !this.isVisible;
-    // },
+    togglelayout(e) {
+      if (e.target.nextElementSibling.classList.contains("hidden")) {
+        e.target.nextElementSibling.classList.remove("hidden");
+      } else {
+        e.target.nextElementSibling.classList.add("hidden");
+      }
+    },
+
     gotosonglist() {
       // this.$router.push("/singlesonglist");
       this.$router.push({
