@@ -30,7 +30,7 @@
           <div class="notify_dropdown">
             <p>通知中心</p>
             <hr />
-            <div class="notify" v-for="item in notifyList">
+            <div class="notify" v-for="(item, index) in notifyList" :key="index">
               <img
                 :src="require(`@/assets/image/creator/${item.src}`)"
                 alt=""
@@ -66,7 +66,7 @@
                 alt=""
               />個人主頁</router-link
             ><br />
-            <router-link to=""
+            <router-link to="/profilepageedit"
               ><img
                 src="~@/assets/image/icon/development.png"
                 alt=""
