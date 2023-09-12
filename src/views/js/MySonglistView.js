@@ -1,12 +1,10 @@
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
-import MoreBtn from "@/components/MoreBtn.vue";
 
 export default {
-  // emits: ["visibleChange"],
-  components: { PlayBtnBig, MoreBtn },
+  components: { PlayBtnBig },
   data() {
     return {
-      dataaa: new Boolean(),
+      morecurrent: -1,
       currentType: 0, //0,1,2
       songlists: [
         {
@@ -124,6 +122,14 @@ export default {
     },
   },
   methods: {
+    //更多選單 顯示隱藏
+    showtoggle(e, index) {
+      if (e.target.nextElementSibling.classList.contains("show")) {
+        this.morecurrent = -1;
+      } else {
+        this.morecurrent = index;
+      }
+    },
     // togglelayout(e) {
     //   if (e.target.nextElementSibling.classList.contains("hidden")) {
     //     e.target.nextElementSibling.classList.remove("hidden");
@@ -131,10 +137,7 @@ export default {
     //     e.target.nextElementSibling.classList.add("hidden");
     //   }
     // },
-    // visibleChange(val) {
-    //   this.dataaa = val;
-    //   console.log(this.dataaa);
-    // },
+
     gotosonglist() {
       // this.$router.push("/singlesonglist");
       this.$router.push({

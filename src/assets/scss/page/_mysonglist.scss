@@ -119,7 +119,7 @@
             font-size: 12px;
           }
         }
-        #MoreBtn {
+        .moreBtn {
           width: 30px;
           height: 30px;
           position: absolute;
@@ -136,18 +136,29 @@
             pointer-events: none;
           }
         }
-        #MoreBtn:hover .i {
+        .moreBtn:hover .i {
           color: $blue;
         }
 
         .more {
           position: absolute;
+          display: none;
+          //去除button預設樣式
+          border: none;
+          color: #ffffff;
+
           //定位參考.txt
           top: 40px;
           right: 5px;
+          .i {
+            pointer-events: none;
+          }
         }
-        .more.hidden {
-          display: none;
+        .more:hover .fa-ellipsis {
+          color: $blue;
+        }
+        .more.show {
+          display: block;
         }
       }
       .sl-item:hover::after {
