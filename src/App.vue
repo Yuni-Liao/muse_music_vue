@@ -66,7 +66,7 @@
                 alt=""
               />個人主頁</router-link
             ><br />
-            <router-link to=""
+            <router-link to="/profilepageedit"
               ><img
                 src="~@/assets/image/icon/development.png"
                 alt=""
