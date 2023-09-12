@@ -118,6 +118,8 @@
     <img alt="robot_icon" src="~@/assets/image/icon/robot.svg" />
   </div>
 
+
+
   <footer
     :style="{
       backgroundImage: `url( ${require('@/assets/image/footer_background.jpg')} )`,
@@ -147,6 +149,7 @@
 @import "~@/assets/scss/layout/header.scss";
 @import "~@/assets/scss/layout/footer.scss";
 @import "~@/assets/scss/component/muse_robot.scss";
+
 </style>
 
 <script>
@@ -166,4 +169,7 @@ export default {
     };
   },
 };
+</script>
+<script>
+  
 </script>
