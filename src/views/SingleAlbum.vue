@@ -53,36 +53,6 @@
                     </p>
                 </div>
                 <div class="detail">
-                    <!-- <div class="playList">
-                        <h3>專輯其他歌曲</h3>
-                        <div class="song" v-for="(item, index) in otherSongs" :key="index">
-                            <div class="list">
-                                <div class="number">{{ item.id }}</div>
-
-                                <div class="songPic">
-                                    <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
-                                </div>
-                                <p class="songName">
-                                    {{ item.name }}
-                                </p>
-                                <p class="singerName">
-                                    {{ item.singer }}
-                                </p>
-                                <p class="time">
-                                    {{ item.time }}
-                                </p>
-                            </div>
-                            <div class="btnArea">
-                                <AddFavBtn></AddFavBtn>
-                                <AddSlBtn></AddSlBtn>
-                                <button class="moreBtn">
-                                    <fontAwesome :icon="['fa', 'ellipsis']" />
-                                </button>
-                                
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="playList">
                         <table class="musicTable">
                             <thead>
@@ -96,26 +66,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(item, index) in otherSongs" :key="index" class="number">
-                                    <td>{{ item.id }}</td>
-                                    <td>
+                                <tr v-for="(item, index) in otherSongs" :key="index" class="songArea">
+                                    <td class="id">{{ item.id }}</td>
+                                    <td class="pic">
                                         <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
                                     </td>
-                                    <td>{{ item.name }}</td>
-                                    <td>{{ item.singer }}</td>
-                                    <td>{{ item.time }}</td>
+                                    <td class="name"><a href="">{{ item.name }}</a></td>
+                                    <td class="singer"><a href="">{{ item.singer }}</a></td>
+                                    <td class="time">{{ item.time }}</td>
                                     <td class="btnArea">
                                         <AddFavBtn></AddFavBtn>
                                         <AddSlBtn></AddSlBtn>
                                         <button class="moreBtn">
-                                            <fontAwesome :icon="['fa', 'ellipsis']" />
+                                            <fontAwesome :icon="['fa', 'ellipsis']" style="color:#AAAAAA;" />
                                         </button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </section>
