@@ -146,9 +146,20 @@
           top: 40px;
           right: 5px;
         }
-        .more.hidden {
-          display: none;
-        }
+        // .more.hidden {
+        //   display: none;
+        // }
+      }
+      .sl-item:hover::after {
+        pointer-events: none;
+        position: absolute;
+        content: "";
+        background-color: #ffffff20;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        left: 0;
+        top: 0;
       }
     }
   }

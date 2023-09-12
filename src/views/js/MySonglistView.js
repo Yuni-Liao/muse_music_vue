@@ -4,7 +4,7 @@ export default {
   components: { PlayBtnBig },
   data() {
     return {
-      isVisible: true, //初始狀態為隱藏
+      isVisible: false, //初始狀態為隱藏
       currentType: 0, //0,1,2
       songlists: [
         {
@@ -147,5 +147,13 @@ export default {
     addnewsonglist() {
       alert("新增一個新歌單");
     },
+  },
+  created() {
+    // 添加全局点击事件监听器
+    document.addEventListener("click", this.handleGlobalClick);
+  },
+  destroyed() {
+    // 在组件销毁时移除全局点击事件监听器
+    document.removeEventListener("click", this.handleGlobalClick);
   },
 };

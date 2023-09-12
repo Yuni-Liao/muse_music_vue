@@ -29,7 +29,7 @@
         v-else
         class="sl-list row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
       >
-        <div class="col" v-for="(item, index) in choosecreator" :key="slid">
+        <div class="col" v-for="(item, index) in choosecreator">
           <!-- 單一歌單 -->
           <div
             class="sl-item"
@@ -39,20 +39,23 @@
             @click.self.prevent="gotosonglist()"
           >
             <!-- 更多按鈕 -->
-            <button class="moreBtn" @click="togglelayout($event)">
+            <button class="moreBtn" @click="isVisible = !isVisible">
               <fontAwesome class="i" :icon="['fa', 'ellipsis']" />
             </button>
+            <div :id="`teleport-more-${index}`" class="more obj_Radius"></div>
             <!-- 更多_選項 -->
-            <div class="more hidden obj_Radius">
-              <ul>
-                <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
-                <li v-if="item.memid == 1" @click="deletesonglist()">
-                  刪除此歌單
-                </li>
-                <!-- 歌單擁有者非我，則顯示 取消追蹤此歌單 -->
-                <li v-else @click="unfolsonglist()">取消追蹤此歌單</li>
-              </ul>
-            </div>
+            <teleport v-if="isVisible" :to="`#teleport-more-${index}`">
+              <div>
+                <ul>
+                  <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
+                  <li v-if="item.memid == 1" @click="deletesonglist()">
+                    刪除此歌單
+                  </li>
+                  <!-- 歌單擁有者非我，則顯示 取消追蹤此歌單 -->
+                  <li v-else @click="unfolsonglist()">取消追蹤此歌單</li>
+                </ul>
+              </div>
+            </teleport>
 
             <div class="txt">
               <div>
