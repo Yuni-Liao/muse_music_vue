@@ -136,8 +136,16 @@ const routes = [
 
   //以下是個人主頁頁面
   {
+    path: "/profilepageedit",
+    name: "profilepageedit",
+    component: () =>
+      import(
+        /* webpackChunkName: "profilepageedit" */ "../views/ProfilePageEditView.vue"
+      ),
+  },
+  {
     path: "/profilepage",
-    name: "profilepage",
+    name: "profilepagee",
     component: () =>
       import(
         /* webpackChunkName: "profilepage" */ "../views/ProfilePageView.vue"
