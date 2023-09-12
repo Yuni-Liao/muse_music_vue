@@ -30,7 +30,7 @@
           <div class="notify_dropdown">
             <p>通知中心</p>
             <hr />
-            <div class="notify" v-for="item in notifyList">
+            <div class="notify" v-for="(item, index) in notifyList" :key="index">
               <img
                 :src="require(`@/assets/image/creator/${item.src}`)"
                 alt=""

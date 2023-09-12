@@ -21,7 +21,7 @@
             <!-- 1-5名 -->
            
             <ol >
-              <li v-for="(item, intex) in weekFirstFiveSongs" :key="index" >
+              <li v-for="(item, index) in weekFirstFiveSongs" :key="index" >
                 <div class="order">{{item.order}}</div>
                 <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
                 
@@ -39,7 +39,7 @@
             </ol>
             <!-- 6-10名 -->
             <ol>
-              <li v-for="(item, intex) in weekLastFiveSongs" :key="index">
+              <li v-for="(item, index) in weekLastFiveSongs" :key="index">
                 <div class="order">{{item.order}}</div>
                 <img
                   :src="require(`@/assets/image/index/${item.image}`)"
@@ -75,7 +75,7 @@
             <!-- 1-5名 -->
             
             <ol >
-              <li v-for="(item, intex) in albumsFirstFiveSongs" :key="index" >
+              <li v-for="(item, index) in albumsFirstFiveSongs" :key="index" >
                 <div class="order">{{item.order}}</div>
                 <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
                 
@@ -93,7 +93,7 @@
             </ol>
              <!-- 6-10名 -->
              <ol>
-              <li v-for="(item, intex) in albumsLastFiveSongs" :key="index">
+              <li v-for="(item, index) in albumsLastFiveSongs" :key="index">
                 <div class="order">{{item.order}}</div>
                 <img
                   :src="require(`@/assets/image/index/${item.image}`)"
@@ -125,7 +125,7 @@
           <div class="topSongListRanking">
             <!-- 1-5名 -->
             <ol >
-              <li v-for="(item, intex) in songListFirstFiveSongs" :key="index" >
+              <li v-for="(item, index) in songListFirstFiveSongs" :key="index" >
                 <div class="order">{{item.order}}</div>
                 <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
                 
@@ -143,7 +143,7 @@
             </ol>
             <!-- 6-10名 -->
             <ol>
-              <li v-for="(item, intex) in songListLastFiveSongs" :key="index">
+              <li v-for="(item, index) in songListLastFiveSongs" :key="index">
                 <div class="order">{{item.order}}</div>
                 <img
                   :src="require(`@/assets/image/index/${item.image}`)"
