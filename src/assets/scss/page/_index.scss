@@ -16,7 +16,7 @@
 .index_topCarousel {
   @include layout(100%);
   overflow: hidden;
-  .topSwiper{
+  .topSwiper {
     width: 100%;
     height: 100vh;
     img {
@@ -80,14 +80,16 @@
     text-align: right;
     color: $white;
     span {
+      width: 130px;
+      height: 130px;
       position: relative;
-      right: 2%;
+      right: 6%;
+      overflow-x: hidden;
     }
   }
   & span::after {
     content: "";
     background-image: url("/public/image/index/index_joinus.png");
-    background-size: contain;
     position: absolute;
     top: 50%;
     right: 50%;
@@ -96,6 +98,7 @@
     transform-origin: center;
     animation: rotate360 7s 0s linear infinite;
     z-index: 2;
+    box-sizing: border-box;
   }
 }
 
@@ -111,6 +114,7 @@
   }
 }
 
+// 音樂謬思 && dj轉盤用的動畫 - 廖妍榛
 @keyframes rotate360 {
   0% {
     transform: translate(50%, -50%) rotate(0deg);
@@ -120,7 +124,7 @@
   }
 }
 
-// 新歌推薦輪播 - 黃珮菁
+// 新歌推薦/本週熱門歌曲輪播 - 黃珮菁
 .index_newMusic,
 .index_WeekTopusic {
   h2 {
@@ -146,8 +150,10 @@
             @include rect(315px);
             object-fit: cover;
             object-position: top center;
+            cursor: pointer;
           }
           .text {
+            cursor: pointer;
             h3 {
               text-align: start;
               font-size: $small;
@@ -184,33 +190,80 @@
     text-align: start;
     margin: 40px;
   }
-  .index_albumBox{
-    @include rect(35%);
+
+  .index_albumBox {
+    @include rect(40%);
     margin: auto;
     position: relative;
-    img {
-      @include layout(100%);
+    .imgbox {
+      position: relative;
+      color: $pink;
+      .ranking {
+        @include l {
+          @include layout(100%);
+          text-shadow: 3px 3px 3px $dark;
+          font-weight: bolder;
+          font-size: $superBig;
+          position: absolute;
+          top: 45%;
+          //手機版約20%~30% 需要再調整
+          left: 0%;
+          margin: auto;
+        }
+      }
+      .name {
+        @include layout(100%);
+        font-weight: 600;
+        font-size: $medium;
+        position: absolute;
+        top: 85%;
+        left: 0%;
+        margin: auto;
+      }
+      .alb {
+        @include layout(100%);
+        font-weight: normal;
+        font-size: $tag;
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        margin: auto;
+      }
+      img {
+        width: 120%;
+        margin: -24px;
+        // -webkit-filter: grayscale(100%);
+        // filter: grayscale(100%);
+        // -webkit-transition: .3s ease-in-out;
+        // transition: .3s ease-in-out;
+      }
+      // img:hover{
+      //   -webkit-filter: grayscale(0);
+      //   filter: grayscale(0);
+      //   -webkit-transition: .3s ease-in-out;
+      //   transition: .3s ease-in-out;
+      // }
     }
   }
+}
 
-  .index_albumBox::before {
-    content: "";
-    background-image: url("/public/image/index/index_ablumPot.svg");
-    background-size: contain;
-    @include rect(120px);
-    position: absolute;
-    left: -130px;
-    top: 30px;
-  }
-  .index_albumBox::after {
-    content: "";
-    background-image: url("/public/image/index/index_ablumPot.svg");
-    background-size: contain;
-    @include rect(120px);
-    position: absolute;
-    right: -130px;
-    bottom: 120px;
-  }
+.index_albumBox::before {
+  content: "";
+  background-image: url("/public/image/index/index_ablumPot.svg");
+  background-size: contain;
+  @include rect(120px);
+  position: absolute;
+  left: -130px;
+  top: 30px;
+}
+.index_albumBox::after {
+  content: "";
+  background-image: url("/public/image/index/index_ablumPot.svg");
+  background-size: contain;
+  @include rect(120px);
+  position: absolute;
+  right: -130px;
+  bottom: 120px;
 }
 
 //專輯下方閃電線 - 廖妍榛
@@ -253,14 +306,175 @@
       }
     }
   }
-  .index_loop {
-    @include layout(50%);
-    display: inline-block;
-    margin: auto;
-  }
+
+  // 轉盤區塊  - 廖妍榛
+  .index_dj{
+    @include layout(1100px);
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 5%;
+    .index_dj_box{
+      display: flex;
+      justify-content: space-between;
+      background: linear-gradient(to right top, $blue, $pink, $green);
+      border-radius: 10px;
+      padding: 0.5% 2.5%;
+      border: 2px solid $dark;
+      .dj_left, .dj_right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 325px;
+        .song_title{
+          span{
+            color: $white;
+            font-weight: bold;
+            margin-left: 10px;
+          }
+        }
+        .song_info {
+          height: 50px;
+          display: flex;
+          justify-content: space-between;
+          color: #fff;
+          padding: 10px;
+          border: 2px solid $blue;
+          border-radius: 20px;
+          background: linear-gradient($dark, #000);
+        }
+        .timebox{
+          .song_time{
+            margin-right: 5px;
+          }
+        }
+        .plate {
+          @include rect(195px);
+          margin: 5% 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          align-self: center;
+          border-radius: 200px;
+          background: repeating-radial-gradient(circle, #000000 0%, #000000 1%, $dark 2%);
+          border: 2px solid $green;
+          animation: run 2s linear infinite;
+          animation-play-state: paused;
+          box-shadow: 1px 1px $white;
+          position: relative;
+          span{
+            background-image: url("/public/image/index/index_dj_logo.png");
+            @include rect(140px);
+            background-size: contain;
+            animation: run 7s 0s linear infinite;
+            position: absolute;
+            top: 13.5%;
+            left: 13.5%;
+          }
+        }
+      }
+      // 轉盤底下的按鈕們 - 廖妍榛
+      .dj_buttons{
+        button{
+          align-self: center;
+          color: $dark;
+          background: linear-gradient($dark, $blue);
+          padding: 10px 20px;
+        }
+        button:active {
+          background: linear-gradient($blue, $dark);
+          color: $dark;
+        }
+    }
+
+    //中間的音量拉條 - 廖妍榛
+      .dj_center{
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        flex-grow: 1;
+        .plates_vols{
+          margin: 20px;
+          flex-grow: 1;
+          display: flex;
+          justify-content: space-around;
+          .vol_left {
+            align-self: flex-start;
+            margin-right: 5%;
+        }
+          .vol_right{
+            align-self: flex-end;
+        }
+      }
+
+        .vol {
+          width: 20%;
+        }
+        
+        .vol_mix {
+          display: flex;
+          align-self: center;
+          margin: 20px;
+          height: 20%;
+          width: 50%;
+          input {
+            align-self: center;
+            transform: rotate(0deg);
+            margin: 0px;
+          }
+        }
+      }
+    }
+
+    // 中間三根的拉條外觀  - 廖妍榛
+      input{
+        @include rect(195px,80px);
+        cursor: pointer;
+        margin: 50px -80px;
+        -webkit-appearance: none;
+        appearance: none;
+        box-sizing: border-box;
+        // position: absolute;
+        border: 2px solid #353535;
+        padding: 0 1rem;
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        background: linear-gradient(-90deg, #343535 1rem, rgba(68, 84, 99, 0) 1.5rem, rgba(40, 50, 59, 0) calc(100% - 1.5rem), #070707 calc(100% - 1rem)), linear-gradient(90deg, #595858 0.125rem, transparent 0.125rem) repeat-x 4px 25%, linear-gradient(90deg, #595858 0.125rem, transparent 0.125rem) repeat-x 4px 75%, linear-gradient(-90deg, #3a3b3b, #000000);
+        background-size: 100% 100%, 0.625rem 23%, 0.625rem 23%, 100% 100%;
+      }
+
+    // 調整拉條軌道  - 廖妍榛
+      input::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 7.5px;
+        box-shadow: inset 0 0 0 1px $dark;
+        background: linear-gradient(-90deg, $dark, #111);
+    }
+
+    // 調整拉條按鈕  - 廖妍榛
+      input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        margin-top: -1.65625em;
+        border: none;
+        width: 2.5em;
+        height: 3.75em;
+        border-radius: 0.25em;
+        box-shadow: inset 0 0 1px $white;
+        background: radial-gradient(at 50% 0, $white, #0000 70%) no-repeat 50% 0, radial-gradient(at 50% 100%, $white, #0000 100%) no-repeat 50% 100%,
+        linear-gradient(90deg, #d9d9d9, #878787 25%, #d9d9d9 25%, $white 47%, #d9d9d9 48%, $pink, #d9d9d9, $white 52%, $white 75%, #cbcbcb 75%, #d9d9d9);
+        background-size: 100% 8px;
+      }
+    }
+}
+// 播放音樂時的轉盤動畫  - 廖妍榛
+@keyframes run { 
+  100% { 
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg); 
+  } 
 }
 
-//情緒歌單  - 廖妍榛
+//情緒歌單  - 廖妍榛 
 .index_emo {
   @include layout(100%);
   padding-bottom: 5%;
@@ -276,82 +490,85 @@
     width: 600px;
     height: 330px;
 
-  .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-    .index_emoQue{
-      p{
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      .index_emoQue {
+        p {
           font-size: $medium;
           color: $pink;
-          text-align: left;
+          text-align: center;
           text-shadow: 3px 3px 3px $white;
-          padding: 20px 0px 20px 10px;
+          padding: 0px 0px 10px 10px;
+          margin-bottom: 5%;
         }
-      };
-    .index_emoAns{
-      display: flex;
-      flex-wrap: wrap;
-      .index_input{
-        display: inline-block;
-        @include layout(100%);
-        padding: 1%;
-        margin-left: 5%;
-        input {
-          @include rect(20px);
-        }
-        span{
-          font-size: $small;
-          text-shadow: 3px 3px 3px $white;
-          color: $dark;
+      }
+      .index_emoAns {
+        display: flex;
+        flex-wrap: wrap;
+        .index_input {
+          margin: 0% 5% 5% 10%;
+          display: inline-flex;
+          align-items: center;
+          @include layout(100%);
+          input {
+            @include rect(20px);
+            margin-left: -5%;
+          }
+          span {
+            font-size: $small;
+            text-shadow: 3px 3px 3px $white;
+            color: $dark;
+            margin-left: 2%;
+            text-align: left;
+          }
         }
       }
     }
-  }
+    .swiper-slide:nth-child(1) {
+      background-image: url("/public/image/index/index_emo_01.png");
+      background-color: $dark;
+      background-position: 5% -5%;
+    }
 
-  .swiper-slide:nth-child(1) {
-    background-image: url('/public/image/index/index_emo_01.png');
-    background-color: $dark;
-  }
+    .swiper-slide:nth-child(2) {
+      background-image: url("/public/image/index/index_emo_02.png");
+      background-color: $dark;
+      background-position: 15% 20%;
+    }
 
-  .swiper-slide:nth-child(2) {
-    background-color: rgb(0, 140, 255);
-  }
+    .swiper-slide:nth-child(3) {
+      background-image: url("/public/image/index/index_emo_03.png");
+      background-color: $dark;
+      background-position: 50%;
+    }
 
-  .swiper-slide:nth-child(3) {
-    background-color: rgb(10, 184, 111);
-  }
+    .swiper-slide:nth-child(4) {
+      background-image: url("/public/image/index/index_emo_04.png");
+      background-color: $dark;
+      background-position: 5% 0%;
+    }
 
-  .swiper-slide:nth-child(4) {
-    background-color: rgb(211, 122, 7);
+    .swiper-slide:nth-child(5) {
+      background-image: url("/public/image/index/index_emo_05.png");
+      background-color: $dark;
+      background-position: 20% 0%;
+    }
   }
-
-  .swiper-slide:nth-child(5) {
-    background-color: rgb(118, 163, 12);
-  }
-
-  .swiper-slide:nth-child(6) {
-    background-color: rgb(180, 10, 47);
-  }
-
-  .swiper-slide:nth-child(7) {
-    background-color: rgb(35, 99, 19);
-  }
-
-  .swiper-slide:nth-child(8) {
-    background-color: rgb(0, 68, 255);
-  }
-
-  .swiper-slide:nth-child(9) {
-    background-color: rgb(218, 12, 218);
-  }
-
-  .swiper-slide:nth-child(10) {
-    background-color: rgb(54, 94, 77);
+  .index_emoNext {
+    @include rect(80px, 30px);
+    @include btnBgNone;
+    color: $blue;
+    font-size: $default;
+    margin-left: 80%;
+    text-shadow: 3px 3px 3px $white;
+    span {
+      margin-right: 10%;
     }
   }
 }

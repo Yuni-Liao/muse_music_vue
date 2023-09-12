@@ -9,7 +9,7 @@ export default {
   methods: {
     AddFavBtn() {
       // 此處撰寫功能code，測試用內容可清除
-      alert("家入我的最愛");
+      alert("加入我的最愛");
     },
   },
 };

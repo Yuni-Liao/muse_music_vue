@@ -40,6 +40,12 @@ import {
   faThumbsUp,
   faAngleDown,
   faEllipsis,
+  faCircleExclamation,
+  faClock,
+  faBackwardStep,
+  faPause,
+  faStop,
+  faStepForward,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -74,10 +80,15 @@ library.add(
   faEllipsisVertical,
   faThumbsUp,
   faAngleDown,
-  faEllipsis
+  faEllipsis,
+  faCircleExclamation,
+  faClock,
+  faBackwardStep,
+  faPause,
+  faStop,
+  faStepForward,
 );
 
-<i class="fa-brands "></i>;
 const vueApp = createApp(App)
   .use(store)
   .use(router)

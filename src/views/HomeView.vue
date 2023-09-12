@@ -27,7 +27,7 @@
   <!--新歌推薦輪播 - 黃珮菁 -->
   <section class="index_newMusic">
     <h2>新歌推薦．New Rlease</h2>
-    <swiper class="mySwiper" :initialSlide="4" :effect="'coverflow'" :slideToClickedSlide="false" :grabCursor="true"
+    <swiper class="mySwiper" :initialSlide="4" :effect="'coverflow'" :slideToClickedSlide="false" :grabCursor="false"
       :centeredSlides="true" :slidesPerView="2.5" :slidesPerGroup="1" :coverflowEffect="{
         rotate: 0,
         stretch: 0,
@@ -37,18 +37,16 @@
       }" :pagination="{
   clickable: true,
 }" :modules="modules">
-      <swiper-slide v-for="(item, index) in songs" :key="index">
-        <router-link to="/shopProd/1">
-          <div class="card">
-            <img :src="require(`/public/image/index/${item.image}`)" />
-            <div class="text">
-              <h3>{{ item.title }}</h3>
-              <p>
-                {{ item.singer }}<span>播放量{{ item.views }}</span>
-              </p>
-            </div>
+      <swiper-slide v-for="(item, index) in songs" :key="sid">
+        <div class="card">
+          <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
+          <div class="text" @click="gotosinglemusic()">
+            <h3>{{ item.title }}</h3>
+            <p>
+              {{ item.singer }}<span>播放量{{ item.views }}</span>
+            </p>
           </div>
-        </router-link>
+        </div>
       </swiper-slide>
     </swiper>
   </section>
@@ -56,7 +54,7 @@
   <!--本週熱門歌曲輪播 - 黃珮菁 -->
   <section class="index_WeekTopusic">
     <h2>本週熱門歌曲．Popular Songs This Week</h2>
-    <swiper class="mySwiper" :initialSlide="4" :effect="'coverflow'" :slideToClickedSlide="false" :grabCursor="true"
+    <swiper class="mySwiper" :initialSlide="4" :effect="'coverflow'" :slideToClickedSlide="false" :grabCursor="false"
       :centeredSlides="true" :slidesPerView="2.5" :slidesPerGroup="1" :coverflowEffect="{
         rotate: 0,
         stretch: 0,
@@ -66,18 +64,16 @@
       }" :pagination="{
   clickable: true,
 }" :modules="modules">
-      <swiper-slide v-for="(item, index) in songs" :key="index">
-        <router-link to="/shopProd/1">
-          <div class="card">
-            <img :src="require(`/public/image/index/${item.image}`)" />
-            <div class="text">
-              <h3>{{ item.title }}</h3>
-              <p>
-                {{ item.singer }}<span>播放量{{ item.views }}</span>
-              </p>
-            </div>
+      <swiper-slide v-for="(item, index) in songs" :key="sid">
+        <div class="card">
+          <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
+          <div class="text" @click="gotosinglemusic()">
+            <h3>{{ item.title }}</h3>
+            <p>
+              {{ item.singer }}<span>播放量{{ item.views }}</span>
+            </p>
           </div>
-        </router-link>
+        </div>
       </swiper-slide>
     </swiper>
   </section>
@@ -86,8 +82,17 @@
   <section class="index_WeekTopAlbum">
     <h2>本週熱門專輯．Popular Album This Week</h2>
     <div class="index_albumBox">
-      <Grid center square>
-        <GridItem v-for="(item, index) in album" :key="index"><img :src="require(`/public/image/index/${item.image}`)" />
+      <Grid center square :border="false">
+        <GridItem v-for="(item, index) in album" :key="index">
+          <div class="imgbox">
+            <img :src="require(`/public/image/index/${item.image}`)" />
+            <span class="ranking">
+              {{ item.ranking }}<br />
+              <span class="name">{{ item.name }}<br />
+                <span class="alb">{{ item.alb }}</span>
+              </span>
+            </span>
+          </div>
         </GridItem>
       </Grid>
     </div>
@@ -95,10 +100,11 @@
 
   <!-- 專輯下方閃電線 -廖妍榛 -->
   <div class="hr">
-    <img src="/image/index/index_lineBg.svg" alt="" />
+    <img src="/image/index/index_lineBg.svg" />
   </div>
 
   <!-- 音樂轉盤 -廖妍榛 -->
+  <!-- 功能還在處理中 -->
   <section class="index_revolve">
     <h2>轉出你的音樂．Revolve</h2>
     <div class="step">
@@ -121,51 +127,120 @@
         </div>
       </div>
     </div>
-    <img class="index_loop" src="/image/index/index_revolveLoop.png" alt="音樂轉盤機器" />
+    <div class="index_dj">
+      <div class="index_dj_box">
+        <div class="dj_left">
+          <div class="song_info">
+            <div class="song_title">
+              <fontAwesome :icon="['fa', 'music']" />
+              <span>第一首歌</span>
+            </div>
+            <div class="timebox">
+              <span class="song_time">03:30:02</span>
+              <fontAwesome :icon="['fa', 'fa-clock']" />
+            </div>
+          </div>
+          <div class="plate" id="plate_left">
+            <span></span>
+          </div>
+          <div class="dj_buttons">
+            <button class="button prev obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-backward-step']" />
+            </button>
+            <button class="button play obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-play']" />
+            </button>
+            <button class="button pause obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-pause']" />
+            </button>
+            <button class="button stop obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-stop']" />
+            </button>
+            <button class="button next obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-step-forward']" />
+            </button>
+          </div>
+        </div>
+        <div class="dj_center">
+          <div class="plates_vols">
+            <div class="vol vol_left">
+              <input class="left_vol obj_Radius" type="range" name="vol_left" id="volume_left" min="0" max="100">
+            </div>
+            <div class="vol vol_right">
+              <input class="right_vol obj_Radius" type="range" name="volume_right" id="volume_right" min="0" max="100">
+            </div>
+          </div>
+          <div class="vol vol_mix">
+            <input class="mix_vol obj_Radius" type="range" name="volume_mix" id="volume_mix" min="0" max="100">
+          </div>
+        </div>
+        <div class="dj_right">
+          <div class="song_info">
+            <div class="song_title">
+              <fontAwesome :icon="['fa', 'music']" />
+              <span>第二首歌</span>
+            </div>
+            <div class="timebox">
+              <span class="song_time">03:30:02</span>
+              <fontAwesome :icon="['fa', 'fa-clock']" />
+            </div>
+          </div>
+          <div class="plate" id="plate_right">
+            <span></span>
+          </div>
+          <div class="dj_buttons">
+            <button class="button prev obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-backward-step']" />
+            </button>
+            <button class="button play obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-play']" />
+            </button>
+            <button class="button pause obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-pause']" />
+            </button>
+            <button class="button stop obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-stop']" />
+            </button>
+            <button class="button next obj_Radius">
+              <fontAwesome :icon="['fa', 'fa-step-forward']" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 情緒歌單 -廖妍榛 -->
-  <!-- 還在處理中 -->
+  <!-- 功能還在處理中 -->
   <section class="index_emo">
     <h2>情緒歌單．Find Your Emotion</h2>
-    <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
-      <swiper-slide>
+    <swiper :effect="'cards'" :grabCursor="false" :modules="modules" class="mySwiper">
+      <swiper-slide v-for="(item, index) in ques" :key="index">
         <div class="index_emoQue">
-          <p>Q: 今天是星期一，鬧鐘一響，剛醒來你的想法是什麼？</p>
+          <p>{{ item.title }}</p>
           <div class="index_emoAns">
-            <div class="index_input"><input type="radio" name="hi" />
-              <span>全新的一週，動力滿滿活力滿滿！</span>
+            <div class="index_input">
+              <input type="radio" name="ans" />
+              <span>{{ item.ans[0] }}</span>
             </div>
-            <div class="index_input"><input type="radio" name="hi" />
-              <span>好累，好想繼續睡</span>
+            <div class="index_input">
+              <input type="radio" name="ans" />
+              <span>{{ item.ans[1] }}</span>
             </div>
-            <div class="index_input"><input type="radio" name="hi" />
-              <span>沒有特別感受，腦袋空空</span>
+            <div class="index_input">
+              <input type="radio" name="ans" />
+              <span>{{ item.ans[2] }}</span>
             </div>
           </div>
+          <button class="index_emoNext">
+            <span>下一題</span>
+            <fontAwesome :icon="['fa', 'angle-right']" />
+          </button>
         </div>
       </swiper-slide>
-      <swiper-slide>好開心</swiper-slide><swiper-slide>謝謝你</swiper-slide>
-      <swiper-slide>我的超人</swiper-slide><swiper-slide>Slide 5</swiper-slide>
     </swiper>
   </section>
 </template>
-
-<!-- <script>
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  data() {
-    return {
-      value: 0
-    }
-  },
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
-</script> -->
 
 <style scoped lang="scss">
 @import "~@/assets/scss/page/index.scss";

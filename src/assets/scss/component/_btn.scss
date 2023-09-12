@@ -77,6 +77,13 @@
   line-height: $tag/2;
 }
 
+//單曲頁面 按讚留言 按鈕
+.btn_likeMes {
+  @include music_btn_circle(35px);
+  background-color: $tp;
+  border: 1px solid $white;
+}
+
 button {
   cursor: pointer;
 }

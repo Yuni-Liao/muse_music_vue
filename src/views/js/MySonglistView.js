@@ -15,7 +15,7 @@ export default {
           creator: "我",
           playnum: 0,
           songnum: 123,
-          public: 0,
+          public: false,
         },
         {
           slid: 2,
@@ -25,7 +25,7 @@ export default {
           creator: "亨利",
           playnum: 0,
           songnum: 123,
-          public: 0,
+          public: false,
         },
         {
           slid: 3,
@@ -35,7 +35,7 @@ export default {
           creator: "大衛",
           playnum: 0,
           songnum: 123,
-          public: 0,
+          public: false,
         },
         {
           slid: 4,
@@ -45,7 +45,7 @@ export default {
           creator: "我",
           playnum: 0,
           songnum: 123,
-          public: 0,
+          public: false,
         },
         {
           slid: 5,
@@ -55,7 +55,7 @@ export default {
           creator: "我",
           playnum: 0,
           songnum: 123,
-          public: 1,
+          public: true,
         },
         {
           slid: 6,
@@ -65,7 +65,7 @@ export default {
           creator: "我",
           playnum: 0,
           songnum: 123,
-          public: 0,
+          public: false,
         },
         {
           slid: 7,
@@ -75,7 +75,7 @@ export default {
           creator: "亨利",
           playnum: 0,
           songnum: 123,
-          public: 0,
+          public: false,
         },
         {
           slid: 8,
@@ -85,7 +85,7 @@ export default {
           creator: "大衛",
           playnum: 0,
           songnum: 123,
-          public: 0,
+          public: false,
         },
         {
           slid: 9,
@@ -95,7 +95,7 @@ export default {
           creator: "我",
           playnum: 0,
           songnum: 123,
-          public: 0,
+          public: false,
         },
         {
           slid: 10,
@@ -105,7 +105,7 @@ export default {
           creator: "我",
           playnum: 0,
           songnum: 123,
-          public: 1,
+          public: true,
         },
       ],
     };
@@ -121,9 +121,27 @@ export default {
     },
   },
   methods: {
-    togglelayout() {
-      // 切換 isLVisible 的值，以顯示/隱藏 Layout
-      this.isVisible = !this.isVisible;
+    // togglelayout(index) {
+    //   // 切換 isLVisible 的值，以顯示/隱藏 Layout
+    //   this.isVisible = !this.isVisible;
+    // },
+    gotosonglist() {
+      // this.$router.push("/singlesonglist");
+      this.$router.push({
+        name: "singlesonglist",
+        query: {
+          q: 1,
+        },
+      });
+    },
+    deletesonglist() {
+      alert("刪除歌單");
+    },
+    unfolsonglist() {
+      alert("取消追蹤歌單");
+    },
+    addnewsonglist() {
+      alert("新增一個新歌單");
     },
   },
 };

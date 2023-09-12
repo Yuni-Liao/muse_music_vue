@@ -88,12 +88,14 @@ const routes = [
       import(/* webpackChunkName: "backend" */ "../views/Backend.vue"),
   },
 
-  // 以下是商城商品詳情頁面,看想做幾個產品請自行創建
+  // 以下是商城商品詳情共用頁面
   {
-    path: "/shopProd/1",
-    name: "shop_prod_1",
+    path: "/shopProdDetail",
+    name: "shopProdDetail",
     component: () =>
-      import(/* webpackChunkName: "shop_prod_1" */ "../views/shopProd/1.vue"),
+      import(
+        /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"
+      ),
   },
 
   //以下是我的音樂庫-我的歌單
@@ -101,25 +103,46 @@ const routes = [
     path: "/mysonglist",
     name: "mysonglist",
     component: () =>
-      import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
+      import(
+        /* webpackChunkName: "mysonglist" */ "../views/MySonglistView.vue"
+      ),
   },
 
-  //以下是我的音樂庫-我的歌單
+  //以下歌單頁面
   {
-    path: "/mysonglist",
-    name: "mysonglist",
+    path: "/singlesonglist",
+    name: "singlesonglist",
     component: () =>
-      import(/* webpackChunkName: "mysonglist" */ "../views/MySonglist.vue"),
+      import(
+        /* webpackChunkName: "singlesonglist" */ "../views/SingleSonglistView.vue"
+      ),
   },
 
-    //以下是單曲頁面
+  //以下是單曲頁面
+  {
+    path: "/singlemusic",
+    name: "singlemusic",
+    component: () =>
+      import(/* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"),
+  },
+
+    //以下是專輯頁面
     {
-      path: "/singlemusic",
-      name: "singlemusic",
+      path: "/singlealbum",
+      name: "singlealbum",
       component: () =>
-        import(/* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"),
+        import(/* webpackChunkName: "singlealbum" */ "../views/SingleAlbum.vue"),
     },
 
+  //以下是個人主頁頁面
+  {
+    path: "/profilepage",
+    name: "profilepage",
+    component: () =>
+      import(
+        /* webpackChunkName: "profilepage" */ "../views/ProfilePageView.vue"
+      ),
+  },
   //若網址列亂輸入,就會跳到404頁面,此區塊請固定放最下方
   {
     path: "/:pathMatch(.*)*",

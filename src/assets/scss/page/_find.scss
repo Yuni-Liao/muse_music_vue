@@ -7,12 +7,13 @@ h1{
   text-align: left ;
   margin:3% 0 3% 7%;
 }
+a:hover{
+  color: $green;
+}
 .language,
 .style,
 .emotion{
   @include layout(100%);
-
-  background-color: $tp;
   margin: 3% 0;
   border-top:1px solid ;
   border-bottom:1px solid ;
@@ -25,7 +26,8 @@ h1{
   .space{
     transform: skewX(45deg);
     width: 20%;
-    border-left:2px solid ;
+    border-left: 2px solid;
+    border-right: 2px solid;
     position: relative;
     img{
       position: absolute;
@@ -44,41 +46,11 @@ h1{
   :hover img{
     display: block;
   }
-  :first-child{
-    border-left:0 ;
-  }
+  // :first-child{
+  //   border-left:0 ;
+  // }
 }
-.style{
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  overflow: hidden;
-  .space{
-    transform: skewX(45deg);
-    width: 20%;
-    border-left:2px solid ;
-    position: relative;
-    img{
-      position: absolute;
-      display: none;
-      width: 100%;
-    }
-    .txt{
-      transform: skewX(-45deg);
-      padding: 5%;
-      a{
-        padding: 30% ;
-        font-size: $medium;
-      }
-    }
-  }
-  :hover img{
-    display: block;
-  }
-  :first-child{
-    border-left:0 ;
-  }
-}
+.style,
 .emotion{
   width: 100%;
   display: flex;
@@ -109,4 +81,39 @@ h1{
   :first-child{
     border-left:0 ;
   }
+}
+.test{
+  width: 100%;
+  display: flex;
+  // border: 2px solid;
+}
+.test .aaa{
+  width: 15%;
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
+  background-color: red;
+  border: 1px solid;
+  padding: .5% 0;
+  position: relative;
+  overflow: hidden;
+  font-size: $medium;
+}
+.test .aaa img{
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+.test .aaa:hover img{
+  display: block;
+}
+.test .aaa:hover{
+  background-color: gray;
+}
+.test .aaa:first-child{
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
+  background-color: green;
+}
+.test .aaa:last-child{
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 25% 100%);
+  background-color: blue;
 }

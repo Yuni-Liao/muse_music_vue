@@ -1,11 +1,11 @@
-.wrapper {
+.reg_wrapper {
     @include layout(100%);
 
-    .inner {
+    .reg_inner {
         width: 62.5%;
         margin: auto;
-        padding: 13% 0;
-
+        // padding: 13% 0;
+        padding: 8% 0;
         form {
             font-size: $small;
             width: 35%;
@@ -19,11 +19,11 @@
             }
 
             input {
+                @include mini_Tag($tag);
                 width: 75%;
                 margin: 5% 0;
                 padding: 2%;
                 border: 2px solid $green;
-                font-size: $tag;
             }
 
             button {
@@ -33,7 +33,6 @@
                 margin: 3% 0;
                 background-color: $white;
                 color: $dark;
-                cursor: pointer;
             }
 
             .submit {
@@ -41,7 +40,8 @@
             }
 
             .error-message {
-                @include mini_Tag($tag);
+                color: $pink;
+                font-size: $tag;
                 margin-top: 1%;
             }
 
@@ -49,13 +49,16 @@
                 font-size: 12px;
                 text-align: left;
                 justify-content: center;
-                width: 280px;
+                width: 315px;
                 padding: 10px;
                 display: flex;
                 align-items: center;
+                margin: auto;
+                .policy{
+                    width: 20px;
+                    margin-right: 5%;
+                }
             }
-
-
         }
 
         .step_2,
@@ -68,21 +71,6 @@
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* 步驟條 */

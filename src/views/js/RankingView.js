@@ -11,10 +11,12 @@ import { Mousewheel, Pagination } from "swiper/modules";
 
 // -----------------------------------
 
+
 export default {
   components: {
     Swiper,
     SwiperSlide,
+    
   },
   setup() {
     return {
@@ -268,8 +270,8 @@ export default {
           singer: "桌子樂團",
           views: 0,
         },
-        
       ],
+      
     };
   },
   computed: {
@@ -296,8 +298,15 @@ export default {
     },
   },
   methods: {
-    hearted(){
-    
+    hearted(item) {
+      item.hearted = !item.hearted;
+    },
+    plused(item) {
+      item.plused = !item.plused;
+    },
+   
+    followed(item) {
+      item.followed = !item.followed;
     }
   },
 };
