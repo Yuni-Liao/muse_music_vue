@@ -11,10 +11,12 @@ import { Mousewheel, Pagination } from "swiper/modules";
 
 // -----------------------------------
 
+
 export default {
   components: {
     Swiper,
     SwiperSlide,
+    
   },
   setup() {
     return {
