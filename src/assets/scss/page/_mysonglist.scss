@@ -119,7 +119,7 @@
             font-size: 12px;
           }
         }
-        .moreBtn {
+        #MoreBtn {
           width: 30px;
           height: 30px;
           position: absolute;
@@ -136,7 +136,7 @@
             pointer-events: none;
           }
         }
-        .moreBtn:hover .i {
+        #MoreBtn:hover .i {
           color: $blue;
         }
 
@@ -146,9 +146,9 @@
           top: 40px;
           right: 5px;
         }
-        // .more.hidden {
-        //   display: none;
-        // }
+        .more.hidden {
+          display: none;
+        }
       }
       .sl-item:hover::after {
         pointer-events: none;

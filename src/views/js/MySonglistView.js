@@ -1,10 +1,12 @@
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
+import MoreBtn from "@/components/MoreBtn.vue";
 
 export default {
-  components: { PlayBtnBig },
+  // emits: ["visibleChange"],
+  components: { PlayBtnBig, MoreBtn },
   data() {
     return {
-      isVisible: false, //初始狀態為隱藏
+      dataaa: new Boolean(),
       currentType: 0, //0,1,2
       songlists: [
         {
@@ -110,6 +112,7 @@ export default {
       ],
     };
   },
+
   computed: {
     choosecreator() {
       // 使用 Array.filter() 過濾 memid 為 1 的資料
@@ -121,14 +124,17 @@ export default {
     },
   },
   methods: {
-    togglelayout(e) {
-      if (e.target.nextElementSibling.classList.contains("hidden")) {
-        e.target.nextElementSibling.classList.remove("hidden");
-      } else {
-        e.target.nextElementSibling.classList.add("hidden");
-      }
-    },
-
+    // togglelayout(e) {
+    //   if (e.target.nextElementSibling.classList.contains("hidden")) {
+    //     e.target.nextElementSibling.classList.remove("hidden");
+    //   } else {
+    //     e.target.nextElementSibling.classList.add("hidden");
+    //   }
+    // },
+    // visibleChange(val) {
+    //   this.dataaa = val;
+    //   console.log(this.dataaa);
+    // },
     gotosonglist() {
       // this.$router.push("/singlesonglist");
       this.$router.push({
@@ -147,13 +153,5 @@ export default {
     addnewsonglist() {
       alert("新增一個新歌單");
     },
-  },
-  created() {
-    // 添加全局点击事件监听器
-    document.addEventListener("click", this.handleGlobalClick);
-  },
-  destroyed() {
-    // 在组件销毁时移除全局点击事件监听器
-    document.removeEventListener("click", this.handleGlobalClick);
   },
 };
