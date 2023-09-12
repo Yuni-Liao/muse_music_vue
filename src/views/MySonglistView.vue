@@ -38,9 +38,16 @@
             }"
             @click.self.prevent="gotosonglist()"
           >
-            <MoreBtn></MoreBtn>
+            <!-- 更多_按鈕 -->
+            <button class="moreBtn" @click="showtoggle($event, index)">
+              <fontAwesome class="i" :icon="['fa', 'ellipsis']" />
+            </button>
+
             <!-- 更多_選項 -->
-            <div class="more hidden obj_Radius">
+            <div
+              class="more obj_Radius"
+              v-bind:class="{ show: index == morecurrent }"
+            >
               <ul>
                 <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
                 <li v-if="item.memid == 1" @click="deletesonglist()">
