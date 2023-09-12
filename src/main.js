@@ -46,6 +46,7 @@ import {
   faPause,
   faStop,
   faStepForward,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -87,6 +88,7 @@ library.add(
   faPause,
   faStop,
   faStepForward,
+  faXmark,
 );
 
 const vueApp = createApp(App)
@@ -97,5 +99,6 @@ const vueApp = createApp(App)
     locale,
   })
   .mount("#app");
+
 
 // createApp(App).use(store).use(router).mount('#app')
