@@ -159,7 +159,16 @@ const routes = [
             /* webpackChunkName: "findmusic" */ "../views/FindMusicView.vue"
           ),
       },
-    ],
+      //以下是前台-帳號設定頁面
+      {
+        path: "accsetting",
+        name: "accsetting",
+        component: () =>
+          import(
+                  /* webpackChunkName: "accsetting" */ "../views/AccSetting.vue"
+          ),
+      },
+    ]
   },
   // 以下為後台登入頁面
   {
