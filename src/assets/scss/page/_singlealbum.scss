@@ -156,85 +156,62 @@
 
             .playList {
                 @include layout(100%);
-                position: relative;
-                margin: 100px 0;
+                margin: 110px 0;
                 color: $white;
 
                 .musicTable {
                     @include layout(80%);
 
                     .playListHeader {
-                        height: 50px;
+                        height: 30px;
                     }
 
-                    .btnArea {
+                    .songArea {
+                        border-bottom: 1px solid $white;
+                        height: 80px;
 
-                        #AddSlBtn,
-                        #AddFavBtn {
-                            width: 25px;
-                            height: 25px;
-                            margin: 5px;
-                            border: 1px $dark solid;
+                        td {
+                            padding-top: 20px;
                         }
 
-                        .moreBtn {
-                            @include music_btn_circle(25px);
-                            border: 1px solid $dark;
-                            margin: 5px;
+                        .id,
+                        .time {
+                            font-size: $tag;
+                        }
+
+                        .name,
+                        .singer {
+                            font-size: $default;
+
+                            a {
+                                color: $white;
+                            }
+                        }
+
+
+
+                        img {
+                            vertical-align: middle;
+                            width: 50px;
+                            height: 50px;
+                        }
+
+                        .btnArea {
+
+                            #AddSlBtn,
+                            #AddFavBtn {
+                                width: 25px;
+                                height: 25px;
+                                margin: 5px;
+                                border: 1px $dark solid;
+                            }
+
+                            .moreBtn {
+                                @include btnBgNone;
+                                margin: 0 0 0 10px;
+                            }
                         }
                     }
-
-                    // .song {
-                    //     display: flex;
-                    //     align-items: center;
-                    //     justify-content: space-between;
-                    //     margin-bottom: 40px;
-
-                    //     .list {
-                    //         display: flex;
-                    //         align-items: center;
-
-                    //         .number {
-                    //             color: $white;
-                    //             font-size: $default;
-                    //             padding: 0 10px;
-                    //         }
-
-                    //         .songPic {
-                    //             width: 45px;
-
-                    //             img {
-                    //                 width: 100%;
-                    //                 vertical-align: top;
-                    //             }
-                    //         }
-
-                    //         .songName,
-                    //         .singerName,
-                    //         .time {
-                    //             z-index: 2;
-                    //             color: $white;
-                    //             font-size: $default;
-                    //             padding-left: 20px;
-                    //         }
-                    //     }
-
-                    //     .btnArea {
-                    //         #AddSlBtn,
-                    //         #AddFavBtn {
-                    //             width: 25px;
-                    //             height: 25px;
-                    //             margin: 5px;
-                    //             border: 1px $dark solid;
-                    //         }
-
-                    //         .moreBtn {
-                    //             @include music_btn_circle(25px);
-                    //             border: 1px solid $dark;
-                    //             margin: 5px;
-                    //         }
-                    //     }
-                    // }
                 }
             }
         }

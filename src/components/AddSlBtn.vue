@@ -1,15 +1,27 @@
 <template>
-  <button id="AddSlBtn" @click="AddSlBtn()">
-    <fontAwesome :icon="['fa', 'plus']" style="color: #252525" />
+  <button id="AddSlBtn" @click="toggleAddSlBtn()">
+    <fontAwesome :icon="['fa', 'plus']" :style="AddSlBtnStyle" />
   </button>
 </template>
 <script>
 export default {
   name: "AddSlBtn",
+  data() {
+    return {
+      isAddSlBtn: false,
+    };
+  },
+  computed: {
+    AddSlBtnStyle() {
+      return {
+        color: this.isAddSlBtn ? "red" : "#252525",
+      };
+    },
+  },
   methods: {
-    AddSlBtn() {
-      // 此處撰寫功能code，測試用內容可清除
-      alert("加入歌單");
+    toggleAddSlBtn() {
+      this.isAddSlBtn = !this.isAddSlBtn;
+      // 這邊再補上加到歌單的後續操作
     },
   },
 };
