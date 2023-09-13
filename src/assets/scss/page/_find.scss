@@ -7,6 +7,12 @@ h1{
   text-align: left ;
   margin:3% 0 3% 7%;
 }
+h2{
+  font-size: $big;
+  padding: 5% 0;
+  text-align: left ;
+  margin:0 0 0 7%;
+}
 a:hover{
   color: $green;
 }
@@ -36,7 +42,7 @@ a:hover{
     }
     .txt{
       transform: skewX(-45deg);
-      padding: 5%;
+      padding: 5% 0;
       a{
         padding: 30% ;
         font-size: $medium;
@@ -46,9 +52,9 @@ a:hover{
   :hover img{
     display: block;
   }
-  // :first-child{
-  //   border-left:0 ;
-  // }
+  :first-child{
+    border-left:0 ;
+  }
 }
 .style,
 .emotion{
@@ -68,10 +74,10 @@ a:hover{
     }
     .txt{
       transform: skewX(-45deg);
-      padding: 5%;
+      padding: 5% 0;
       a{
-        padding: 30% ;
-        font-size: $medium;
+        padding: 1%;
+        font-size: $small;
       }
     }
   }
@@ -82,38 +88,86 @@ a:hover{
     border-left:0 ;
   }
 }
-.test{
-  width: 100%;
-  display: flex;
-  // border: 2px solid;
+
+.index_newMusic .swiper .swiper-wrapper .swiper-slide, .index_WeekTopusic .swiper .swiper-wrapper .swiper-slide {
+  // background-color: red;
+  margin: auto;
 }
-.test .aaa{
-  width: 15%;
-  clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
-  background-color: red;
-  border: 1px solid;
-  padding: .5% 0;
-  position: relative;
-  overflow: hidden;
-  font-size: $medium;
+
+.hot_singer{
+  .swiper {
+    width: 100%;
+    .swiper-wrapper {
+      .swiper-slide {
+        .card {
+          width: 80%;
+          margin: auto;
+          background-color: $tp;
+          cursor: pointer;
+          img {
+            width: 100%;
+            border-radius: 100%;
+          }
+          .text{
+            margin: 5% 0;
+            h3 {
+              text-align: center;
+              font-size: $small;
+            }
+          }
+        }
+      }
+    }
+    .swiper-pagination-bullet {
+      width: 30px;
+      border-radius: 2px;
+      height: 3px;
+    }
+    .swiper-pagination-bullet-active {
+      width: 60px;
+      height: 5px;
+      background-color: $green;
+    }
+  }
 }
-.test .aaa img{
-  width: 100%;
-  position: absolute;
-  inset: 0;
-  display: none;
-}
-.test .aaa:hover img{
-  display: block;
-}
-.test .aaa:hover{
-  background-color: gray;
-}
-.test .aaa:first-child{
-  clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
-  background-color: green;
-}
-.test .aaa:last-child{
-  clip-path: polygon(0 0, 100% 0%, 100% 100%, 25% 100%);
-  background-color: blue;
+.new_release{
+  .swiper {
+    width: 100%;
+    .swiper-wrapper {
+      background-color: transparent;
+      .swiper-slide {
+        .card {
+          width: 80%;
+          margin: auto;
+          background-color: $tp;
+          cursor: pointer;
+          img {
+            width: 100%;
+          }
+          .text{
+            margin: 3% 0;
+            h3 {
+              font-size: $small;
+              margin: 2% 0;
+            }
+          }
+          p {
+            @include mini_Tag($tag);
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+    .swiper-pagination-bullet {
+      width: 30px;
+      border-radius: 2px;
+      height: 3px;
+    }
+    .swiper-pagination-bullet-active {
+      width: 60px;
+      height: 5px;
+      background-color: $green;
+    }
+  }
 }
