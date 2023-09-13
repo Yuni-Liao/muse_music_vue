@@ -40,17 +40,18 @@
         <section class="index_newMusic">
             <swiper class="mySwiper" 
             :loop="true"
+            :loopedSlides="3"
             :initialSlide="4" 
-            :effect="'coverflow'" 
             :slideToClickedSlide="false" 
             :grabCursor="false"
             :centeredSlides="true" 
             :slidesPerView="5" 
             :slidesPerGroup="1" 
+            :effect="'coverflow'" 
             :coverflowEffect="{
                 rotate: 0,
-                stretch: -1,
-                depth: 80,
+                stretch: -150,
+                depth: 300,
                 modifier: 2.5,
                 slideShadows: false,
             }" 
@@ -59,12 +60,14 @@
             }"      
             :modules="modules">
                 <swiper-slide v-for="(item, index) in singers" :key="sid">
-                    <div class="card">
-                        <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
-                        <div class="text" @click="gotosinglemusic()">
-                            <h3>{{ item.title }}</h3>
+                    <a :href="item.slink">
+                        <div class="card">
+                            <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
+                            <div class="text" @click="gotosinglemusic()">
+                                <h3>{{ item.title }}</h3>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </swiper-slide>
             </swiper>
         </section>
@@ -74,18 +77,20 @@
         <h2>新歌推薦．New Release</h2>
         <section class="index_newMusic">
             <swiper class="mySwiper" 
+            :loop="true"
+            :loopedSlides="3"
             :initialSlide="4" 
-            :effect="'coverflow'" 
             :slideToClickedSlide="false" 
             :grabCursor="false"
             :centeredSlides="true" 
             :slidesPerView="5" 
             :slidesPerGroup="1" 
+            :effect="'coverflow'" 
             :coverflowEffect="{
                 rotate: 0,
-                stretch: -1,
-                depth: 80,
-                modifier: 2,
+                stretch: -150,
+                depth: 300,
+                modifier: 2.5,
                 slideShadows: false,
             }" 
             :pagination="{
@@ -94,21 +99,22 @@
             :modules="modules">
                 <swiper-slide v-for="(item, index) in singers" :key="sid">
                     <div class="card">
-                        <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
+                        <div class="image">
+                            <PlayBtnBig class="play_btn"></PlayBtnBig>
+                            <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
+                        </div>
                         <div class="text" @click="gotosinglemusic()">
                             <h3>{{ item.title }}</h3>
                             <p>
                             {{ item.singer }}
                             <span>播放量{{ item.views }}</span>
                             </p>
-
                         </div>
                     </div>
                 </swiper-slide>
             </swiper>
         </section>
     </div>
-    
 </template>
 <style scoped lang="scss">
 @import "~@/assets/scss/page/find.scss";

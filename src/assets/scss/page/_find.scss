@@ -44,7 +44,7 @@ a:hover{
       transform: skewX(-45deg);
       padding: 5% 0;
       a{
-        padding: 30% ;
+        padding: 5% 25%;
         font-size: $medium;
       }
     }
@@ -54,6 +54,9 @@ a:hover{
   }
   :first-child{
     border-left:0 ;
+  }
+  :last-child{
+    border-right:0 ;
   }
 }
 .style,
@@ -76,7 +79,7 @@ a:hover{
       transform: skewX(-45deg);
       padding: 5% 0;
       a{
-        padding: 1%;
+        padding: 5% 25%;
         font-size: $small;
       }
     }
@@ -141,8 +144,17 @@ a:hover{
           margin: auto;
           background-color: $tp;
           cursor: pointer;
-          img {
-            width: 100%;
+          .image{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            #PlayBtnBig {
+              position: absolute;
+            }
+            img {
+              width: 100%;
+            }
           }
           .text{
             margin: 3% 0;

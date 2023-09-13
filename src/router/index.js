@@ -141,6 +141,15 @@ const routes = [
           import(
         /* webpackChunkName: "profilepage" */ "../views/ProfilePageView.vue"
           ),
+      },
+      //以下是探索音樂內頁頁面
+      {
+        path: "findmusic",
+        name: "findmusic",
+        component: () =>
+          import(
+            /* webpackChunkName: "findmusic" */ "../views/FindMusicView.vue"
+          ),
       }
     ]
   },
