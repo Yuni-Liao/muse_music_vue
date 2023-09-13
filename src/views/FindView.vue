@@ -35,44 +35,81 @@
         </div>
     </div>
 
-    <div class="test">
-        <div class="aaa">
-            <img src="~@/assets/image/footer_background.jpg" alt="">
-            <div class="text">
-                <p>
-                    test123
-                </p>
-            </div>
-        </div>
-        <div class="aaa">
-            test123
-            <img src="~@/assets/image/footer_background.jpg" alt="">
-        </div>
-        <div class="aaa">
-            test123
-            <img src="~@/assets/image/footer_background.jpg" alt="">
-        </div>
-        <div class="aaa">
-            test123
-            <img src="~@/assets/image/footer_background.jpg" alt="">
-        </div>
-        <div class="aaa">
-            test123
-            <img src="~@/assets/image/footer_background.jpg" alt="">
-        </div>
-        <div class="aaa">
-            test123
-            <img src="~@/assets/image/footer_background.jpg" alt="">
-        </div>
-        <div class="aaa">
-            test123
-            <img src="~@/assets/image/footer_background.jpg" alt="">
-        </div>
+    <div class="hot_singer">
+        <h2>熱門創作者．Hot Creator</h2>
+        <section class="index_newMusic">
+            <swiper class="mySwiper" 
+            :loop="true"
+            :initialSlide="4" 
+            :effect="'coverflow'" 
+            :slideToClickedSlide="false" 
+            :grabCursor="false"
+            :centeredSlides="true" 
+            :slidesPerView="5" 
+            :slidesPerGroup="1" 
+            :coverflowEffect="{
+                rotate: 0,
+                stretch: -1,
+                depth: 80,
+                modifier: 2.5,
+                slideShadows: false,
+            }" 
+            :pagination="{
+                clickable: true,
+            }"      
+            :modules="modules">
+                <swiper-slide v-for="(item, index) in singers" :key="sid">
+                    <div class="card">
+                        <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
+                        <div class="text" @click="gotosinglemusic()">
+                            <h3>{{ item.title }}</h3>
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
+        </section>
     </div>
 
+    <div class="new_release">
+        <h2>新歌推薦．New Release</h2>
+        <section class="index_newMusic">
+            <swiper class="mySwiper" 
+            :initialSlide="4" 
+            :effect="'coverflow'" 
+            :slideToClickedSlide="false" 
+            :grabCursor="false"
+            :centeredSlides="true" 
+            :slidesPerView="5" 
+            :slidesPerGroup="1" 
+            :coverflowEffect="{
+                rotate: 0,
+                stretch: -1,
+                depth: 80,
+                modifier: 2,
+                slideShadows: false,
+            }" 
+            :pagination="{
+                clickable: true,
+            }"      
+            :modules="modules">
+                <swiper-slide v-for="(item, index) in singers" :key="sid">
+                    <div class="card">
+                        <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
+                        <div class="text" @click="gotosinglemusic()">
+                            <h3>{{ item.title }}</h3>
+                            <p>
+                            {{ item.singer }}
+                            <span>播放量{{ item.views }}</span>
+                            </p>
+
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
+        </section>
+    </div>
+    
 </template>
-
-
 <style scoped lang="scss">
 @import "~@/assets/scss/page/find.scss";
 </style>

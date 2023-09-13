@@ -29,7 +29,7 @@
         v-else
         class="sl-list row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
       >
-        <div class="col" v-for="(item, index) in choosecreator" :key="slid">
+        <div class="col" v-for="(item, index) in choosecreator">
           <!-- 單一歌單 -->
           <div
             class="sl-item"
@@ -38,10 +38,25 @@
             }"
             @click.self.prevent="gotosonglist()"
           >
-            <!-- 更多按鈕 -->
-            <button class="moreBtn" @click="isVisible = !isVisible">
-              <fontAwesome :icon="['fa', 'ellipsis']" />
+            <!-- 更多_按鈕 -->
+            <button class="moreBtn" @click="showtoggle($event, index)">
+              <fontAwesome class="i" :icon="['fa', 'ellipsis']" />
             </button>
+
+            <!-- 更多_選項 -->
+            <div
+              class="more obj_Radius"
+              v-bind:class="{ show: index == morecurrent }"
+            >
+              <ul>
+                <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
+                <li v-if="item.memid == 1" @click="deletesonglist()">
+                  刪除此歌單
+                </li>
+                <!-- 歌單擁有者非我，則顯示 取消追蹤此歌單 -->
+                <li v-else @click="unfolsonglist()">取消追蹤此歌單</li>
+              </ul>
+            </div>
 
             <div class="txt">
               <div>
@@ -59,17 +74,6 @@
                 </div>
               </div>
               <PlayBtnBig></PlayBtnBig>
-            </div>
-            <!-- 更多_選項 -->
-            <div class="more obj_Radius">
-              <ul>
-                <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
-                <li v-if="item.memid == 1" @click="deletesonglist()">
-                  刪除此歌單
-                </li>
-                <!-- 歌單擁有者非我，則顯示 取消追蹤此歌單 -->
-                <li v-else @click="unfolsonglist()">取消追蹤此歌單</li>
-              </ul>
             </div>
           </div>
         </div>

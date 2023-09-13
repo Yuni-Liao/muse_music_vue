@@ -32,6 +32,7 @@ export default {
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
+                    showOtherBtn: false,
                 },
                 {
                     id: 2,
@@ -39,6 +40,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
+                    showOtherBtn: false,
                 },
                 {
                     id: 3,
@@ -46,6 +48,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
+                    showOtherBtn: false,
                 },
                 {
                     id: 4,
@@ -53,6 +56,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
+                    showOtherBtn: false,
                 },
                 {
                     id: 5,
@@ -60,8 +64,15 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
+                    showOtherBtn: false,
                 }
             ],
+            // showFirstMoreBtnAlert: false,
         };
     },
+    // methods: {
+    //     toggleFirstMoreBtnAlert() {
+    //         this.showFirstMoreBtnAlert = true;
+    //     },
+    // },
 };

@@ -120,6 +120,8 @@
           }
         }
         .moreBtn {
+          width: 30px;
+          height: 30px;
           position: absolute;
 
           //定位參考.txt
@@ -127,19 +129,48 @@
           right: 15px;
 
           //去除button預設樣式
-          @include btnBgNone;
+          background: transparent;
+          border: none;
           color: #ffffff;
+          .i {
+            pointer-events: none;
+          }
+        }
+        .moreBtn:hover .i {
+          color: $blue;
         }
 
         .more {
           position: absolute;
+          display: none;
+          //去除button預設樣式
+          border: none;
+          color: #ffffff;
+
           //定位參考.txt
           top: 40px;
           right: 5px;
+          .i {
+            pointer-events: none;
+          }
         }
-        .more.hidden {
-          display: none;
+        .more:hover .fa-ellipsis {
+          color: $blue;
         }
+        .more.show {
+          display: block;
+        }
+      }
+      .sl-item:hover::after {
+        pointer-events: none;
+        position: absolute;
+        content: "";
+        background-color: #ffffff20;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        left: 0;
+        top: 0;
       }
     }
   }
