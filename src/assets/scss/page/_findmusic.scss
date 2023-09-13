@@ -1,0 +1,36 @@
+*{
+    color: $white;
+}
+h1{
+    font-size: $big;
+    margin: 0 2% -1% 0;
+}
+.banner{
+    width: 100%;
+    height: 40vh;
+    margin: 5% 0 ;
+    background:url(/public/image/Find/banner_albumPic1.png) no-repeat ;
+    >p{
+        width: 80%;
+        margin:auto;
+        text-align: start;
+        font-size: $medium;
+    }
+    .wrapper{
+        width: 80%;
+        display: block;
+        margin: auto;
+        .txt{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            .title{
+                display: flex;
+                width: 50%;
+                align-items:flex-end;
+            }
+            .btn{
+            }
+        }
+    }
+}
