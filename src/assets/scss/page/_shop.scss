@@ -48,6 +48,7 @@ select {
     @include layout(100%);
     margin: auto;
     display: flex;
+    position: relative;
 
     .prodType {
         font-size: $medium;
@@ -88,7 +89,7 @@ select {
 
                 a {
                     font-weight: 400;
-                    color: #333;
+                    color: $dark;
 
                     &::after {
                         color: $green;
@@ -127,6 +128,7 @@ select {
 
                     .prodName {
                         padding-bottom: 10px;
+                        color: $dark;
                     }
 
                     .prodPrice {
@@ -156,13 +158,22 @@ select {
                             }
                         }
                     }
-
-                    button {
-                        cursor: pointer;
-                    }
                 }
             }
         }
+    }
+}
+
+.shopcart {
+    position: fixed;
+    bottom: 50%;
+    right: 2%;
+    @include btnBgNone;
+
+    img {
+        vertical-align: top;
+        background-color: $tp;
+        width: 80%;
     }
 }
 

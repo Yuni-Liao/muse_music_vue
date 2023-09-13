@@ -9,13 +9,25 @@
         </button>
       </div>
       <div class="tabs">
-        <button @click="currentType = 0" class="tab">
+        <button
+          @click="currentType = 0"
+          class="tab"
+          :class="{ active: currentType == 0 }"
+        >
           <h2>全部</h2>
         </button>
-        <button @click="currentType = 1" class="tab">
+        <button
+          @click="currentType = 1"
+          class="tab"
+          :class="{ active: currentType == 1 }"
+        >
           <h2>由我建立</h2>
         </button>
-        <button @click="currentType = 2" class="tab">
+        <button
+          @click="currentType = 2"
+          class="tab"
+          :class="{ active: currentType == 2 }"
+        >
           <h2>我追蹤的</h2>
         </button>
       </div>
@@ -46,7 +58,7 @@
             <!-- 更多_選項 -->
             <div
               class="more obj_Radius"
-              v-bind:class="{ show: index == morecurrent }"
+              :class="{ show: index == morecurrent }"
             >
               <ul>
                 <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->

@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="btn">
-                <button class="acc_savebtn default_Btn obj_Rounded">儲存變更</button>
+                <button class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">儲存變更</button>
             </div>
         </div>
     </main>

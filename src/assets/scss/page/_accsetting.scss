@@ -33,8 +33,7 @@
         }
     }
     .acc_editprofile{
-        padding-top: 2.5%;
-        padding-left: 2.5%;
+        padding: 2.5% 0 2.5% 2.5%;
         text-align: left;
         color: $green;
         background-image: linear-gradient($dark,#333,#111 90%);
@@ -73,8 +72,5 @@
         margin-top: 10%;
         display: flex;
         justify-content: center;
-        .acc_savebtn{
-            @include btnColor($green, false);
-        }
     }
 }
