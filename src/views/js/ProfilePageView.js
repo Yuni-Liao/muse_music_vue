@@ -1,5 +1,6 @@
+import FolBtnBig from "@/components/FolBtnBig.vue";
 export default {
-  components: {},
+  components: { FolBtnBig },
   data() {
     return {
       test: "124",
@@ -13,6 +14,7 @@ export default {
         songcount: 23,
         fans: 1264,
         follower: 10,
+        coverimg: "coverimage.jpg",
       },
     };
   },
