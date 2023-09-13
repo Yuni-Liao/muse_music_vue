@@ -5,11 +5,7 @@
     <nav>
       <div class="header_nav_left">
         <router-link to="/">
-          <img
-            class="logo_header"
-            alt="Vue logo"
-            src="~@/assets/image/muse_logo.png"
-          />
+          <img class="logo_header" alt="Vue logo" src="~@/assets/image/muse_logo.png" />
         </router-link>
         <router-link to="/find">探索</router-link>
         <router-link to="/ranking">排行榜</router-link>
@@ -30,73 +26,28 @@
           <div class="notify_dropdown">
             <p>通知中心</p>
             <hr />
-            <div class="notify" v-for="item in notifyList">
-              <img
-                :src="require(`@/assets/image/creator/${item.src}`)"
-                alt=""
-              />
+            <div class="notify" v-for="(item, index) in notifyList" :key="index">
+              <img :src="require(`@/assets/image/creator/${item.src}`)" alt="" />
               <p>{{ item.notifytxt }}</p>
             </div>
           </div>
         </div>
         <div class="user_dropdown_reaction">
-          <router-link to="/login"
-            ><img
-              style="margin-top: -1px"
-              alt="user_icon"
-              src="~@/assets/image/icon/user.png"
-          /></router-link>
+          <router-link to="/login"><img style="margin-top: -1px" alt="user_icon"
+              src="~@/assets/image/icon/user.png" /></router-link>
 
           <div class="user_dropdown">
-            <router-link to=""
-              ><img
-                src="~@/assets/image/icon/clipboard.png"
-                alt=""
-              />訂單資訊</router-link
-            ><br />
-            <router-link to=""
-              ><img
-                src="~@/assets/image/icon/settingicon.png"
-                alt=""
-              />帳號設定</router-link
-            ><br />
-            <router-link to="/profilepage"
-              ><img
-                src="~@/assets/image/icon/personalPage.png"
-                alt=""
-              />個人主頁</router-link
-            ><br />
-            <router-link to=""
-              ><img
-                src="~@/assets/image/icon/development.png"
-                alt=""
-              />個人管理頁面</router-link
-            ><br />
+            <router-link to=""><img src="~@/assets/image/icon/clipboard.png" alt="" />訂單資訊</router-link><br />
+            <router-link to=""><img src="~@/assets/image/icon/settingicon.png" alt="" />帳號設定</router-link><br />
+            <router-link to="/profilepage"><img src="~@/assets/image/icon/personalPage.png"
+                alt="" />個人主頁</router-link><br />
+            <router-link to="/profilepageedit"><img src="~@/assets/image/icon/development.png"
+                alt="" />個人管理頁面</router-link><br />
             <p>我的音樂庫</p>
-            <router-link to=""
-              ><img
-                src="~@/assets/image/icon/clock.png"
-                alt=""
-              />播放紀錄</router-link
-            ><br />
-            <router-link to="/mysonglist"
-              ><img
-                src="~@/assets/image/icon/list.png"
-                alt=""
-              />我的歌單</router-link
-            ><br />
-            <router-link to=""
-              ><img
-                src="~@/assets/image/icon/heart.png"
-                alt=""
-              />我的最愛</router-link
-            ><br />
-            <router-link to=""
-              ><img
-                src="~@/assets/image/icon/targeticon.png"
-                alt=""
-              />我的追蹤</router-link
-            >
+            <router-link to=""><img src="~@/assets/image/icon/clock.png" alt="" />播放紀錄</router-link><br />
+            <router-link to="/mysonglist"><img src="~@/assets/image/icon/list.png" alt="" />我的歌單</router-link><br />
+            <router-link to=""><img src="~@/assets/image/icon/heart.png" alt="" />我的最愛</router-link><br />
+            <router-link to=""><img src="~@/assets/image/icon/targeticon.png" alt="" />我的追蹤</router-link>
             <hr style="margin: 10px 0px" />
             <div class="loginbtn">登出</div>
           </div>
@@ -109,23 +60,16 @@
   </main>
 
   <div class="pageTop_robot">
-    <img
-      id="pageTop"
-      alt="pagetop_icon"
-      src="~@/assets/image/icon/pageTop.svg"
-      href="#top"
-    />
+    <img id="pageTop" alt="pagetop_icon" src="~@/assets/image/icon/pageTop.svg" href="#top" />
     <img alt="robot_icon" src="~@/assets/image/icon/robot.svg" />
   </div>
 
 
 
-  <footer
-    :style="{
-      backgroundImage: `url( ${require('@/assets/image/footer_background.jpg')} )`,
-      backgroundSize: '100% auto',
-    }"
-  >
+  <footer :style="{
+    backgroundImage: `url( ${require('@/assets/image/footer_background.jpg')} )`,
+    backgroundSize: '100% auto',
+  }">
     <div class="logo_footer">
       <router-link to="/">
         <img alt="Vue logo" src="~@/assets/image/muse_logo_2.png" />
@@ -149,7 +93,6 @@
 @import "~@/assets/scss/layout/header.scss";
 @import "~@/assets/scss/layout/footer.scss";
 @import "~@/assets/scss/component/muse_robot.scss";
-
 </style>
 
 <script>
@@ -169,7 +112,4 @@ export default {
     };
   },
 };
-</script>
-<script>
-  
 </script>

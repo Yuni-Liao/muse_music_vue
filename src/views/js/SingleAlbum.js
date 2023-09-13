@@ -15,7 +15,7 @@ export default {
                     id: 1,
                     bannerPic: "banner_albumPic1.png",
                     singer: "George Makridis, Hannah Hampton",
-                    singerPage:"#",
+                    singerPage: "#",
                     singerPic: "singerPic.png",
                     albumPic: "albumPic.png",
                     albumName: "Countlary",
@@ -30,28 +30,49 @@ export default {
                     id: 1,
                     albumPic: "othaersong1.png",
                     name: "Fly Like",
+                    singer: "Lisa",
+                    time: "03:00",
+                    showOtherBtn: false,
                 },
                 {
                     id: 2,
                     albumPic: "othaersong2.png",
                     name: "Tired",
+                    singer: "Rose",
+                    time: "03:00",
+                    showOtherBtn: false,
                 },
                 {
                     id: 3,
                     albumPic: "othaersong3.png",
                     name: "Want To Go Home",
+                    singer: "Apple Apple",
+                    time: "03:00",
+                    showOtherBtn: false,
                 },
                 {
                     id: 4,
                     albumPic: "othaersong1.png",
                     name: "Sleep",
+                    singer: "Cat Dog",
+                    time: "03:00",
+                    showOtherBtn: false,
                 },
                 {
                     id: 5,
                     albumPic: "othaersong2.png",
                     name: "Bed",
+                    singer: "Ruby",
+                    time: "03:00",
+                    showOtherBtn: false,
                 }
             ],
+            // showFirstMoreBtnAlert: false,
         };
     },
+    // methods: {
+    //     toggleFirstMoreBtnAlert() {
+    //         this.showFirstMoreBtnAlert = true;
+    //     },
+    // },
 };

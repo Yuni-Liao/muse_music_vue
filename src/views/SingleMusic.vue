@@ -101,10 +101,10 @@
                                     </div>
                                     <p class="date">
                                         {{ messageItem.date }}
-                                        <button class="more" @click="toggleReportBtn">
+                                        <button class="more" @click="toggleReportBtn(messageItem)">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
                                         </button>
-                                        <ReportBtn v-if="showReportBtn"></ReportBtn>
+                                        <ReportBtn v-if="messageItem.showReportBtn"></ReportBtn>
                                     </p>
 
                                 </div>

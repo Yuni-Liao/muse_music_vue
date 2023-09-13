@@ -39,7 +39,8 @@ export default {
                     userName: "Euterpe",
                     date: "2023-08-23",
                     message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.",
-                    like: "12"
+                    like: "12",
+                    showReportBtn: false
                 },
                 {
                     id: 2,
@@ -47,7 +48,8 @@ export default {
                     userName: "Auterpe",
                     date: "2023-06-23",
                     message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem .",
-                    like: "24"
+                    like: "24",
+                    showReportBtn: false
                 },
                 {
                     id: 3,
@@ -55,7 +57,8 @@ export default {
                     userName: "Zuterpe",
                     date: "2023-04-23",
                     message: "dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ",
-                    like: "33"
+                    like: "33",
+                    showReportBtn: false
                 },
                 {
                     id: 4,
@@ -63,7 +66,8 @@ export default {
                     userName: "Jisoo",
                     date: "2023-07-23",
                     message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                    like: "666"
+                    like: "666",
+                    showReportBtn: false
                 },
                 {
                     id: 5,
@@ -71,7 +75,8 @@ export default {
                     userName: "Lisa",
                     date: "2023-05-23",
                     message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore.",
-                    like: "999"
+                    like: "999",
+                    showReportBtn: false
                 }
             ],
             otherSongs: [
@@ -113,8 +118,8 @@ export default {
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;
         },
-        toggleReportBtn() {
-            this.showReportBtn = !this.showReportBtn;
+        toggleReportBtn(messageItem) {
+            messageItem.showReportBtn = !messageItem.showReportBtn;
         },
     },
 };
