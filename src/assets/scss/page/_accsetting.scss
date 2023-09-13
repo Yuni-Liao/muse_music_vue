@@ -1,0 +1,80 @@
+// 帳號設定 -- 廖妍榛
+
+.acc_setting{
+    @include layout(1200px);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 8% 0%;
+    .acc_sidebar{
+        @include rect(180px, 395px);
+        margin-right: 5%;
+        font-size: $default;
+        ul{ list-style: none;
+            background-image: linear-gradient($dark,#333,#111 90%);
+            padding: 2.5%;
+            li{
+                color: $white;
+                text-align: left;
+                margin: 30% 0;
+                padding: 0% 15%;
+                cursor: pointer;
+            }
+            li::before{
+                content:'';
+                border-left: 5px solid $tp;
+                margin-right: 3px;
+                transition: .5s;
+            }
+            li:hover::before{
+                transition: .5s;
+                border-left-color: $green;
+            }
+        }
+    }
+    .acc_editprofile{
+        padding-top: 2.5%;
+        padding-left: 2.5%;
+        text-align: left;
+        color: $green;
+        background-image: linear-gradient($dark,#333,#111 90%);
+        h1{
+            font-size: $big;
+            color: $white;
+        }
+        .acc_box{
+            @include rect(340px, fit);
+            padding: 0% 5% 5% 0%;
+            .acc_item{
+                margin-top: 10%;
+                input{
+                    margin-top: 0.5%;
+                    height: 30px;
+                    width: 300px;
+                }
+                .nation_box{
+                    width: 80px;
+                    text-align: center;
+                }
+                .city{
+                    margin-left: 5%;
+                    width: 203px;
+                }
+            }
+        //所有input加上邊框線
+        .name_box, .mail_box, .bth_box, .nation_box, .city{
+            border: 2px solid $green;
+            text-align: center;
+            }
+        }
+    }
+    .btn{
+        @include rect(80%, fit);
+        margin-top: 10%;
+        display: flex;
+        justify-content: center;
+        .acc_savebtn{
+            @include btnColor($green, false);
+        }
+    }
+}
