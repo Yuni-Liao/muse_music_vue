@@ -135,6 +135,7 @@
   }
   .swiper {
     width: 100%;
+    height: 90vh;
     padding-top: 50px;
     padding-bottom: 50px;
     .swiper-wrapper {
@@ -143,11 +144,14 @@
 
       .swiper-slide {
         background-color: transparent;
+        opacity: 0.7;
+        display: flex;
+        align-content: center;
         .card {
-          width: 315px;
+          width: 200px;
           margin: auto;
           img {
-            @include rect(315px);
+            @include rect(200px);
             object-fit: cover;
             object-position: top center;
             cursor: pointer;
@@ -164,6 +168,15 @@
             display: flex;
             justify-content: space-between;
           }
+        }
+      }
+      .swiper-slide-active {
+        opacity: 1;
+        .card {
+          transform: scale(1.6);
+          // img {
+          //   transform: scale(1.6);
+          // }
         }
       }
     }
@@ -308,25 +321,26 @@
   }
 
   // 轉盤區塊  - 廖妍榛
-  .index_dj{
+  .index_dj {
     @include layout(1100px);
     display: flex;
     flex-flow: column wrap;
     margin-top: 5%;
-    .index_dj_box{
+    .index_dj_box {
       display: flex;
       justify-content: space-between;
       background: linear-gradient(to right top, $blue, $pink, $green);
       border-radius: 10px;
       padding: 0.5% 2.5%;
       border: 2px solid $dark;
-      .dj_left, .dj_right {
+      .dj_left,
+      .dj_right {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         width: 325px;
-        .song_title{
-          span{
+        .song_title {
+          span {
             color: $white;
             font-weight: bold;
             margin-left: 10px;
@@ -342,8 +356,8 @@
           border-radius: 20px;
           background: linear-gradient($dark, #000);
         }
-        .timebox{
-          .song_time{
+        .timebox {
+          .song_time {
             margin-right: 5px;
           }
         }
@@ -355,13 +369,18 @@
           align-items: center;
           align-self: center;
           border-radius: 200px;
-          background: repeating-radial-gradient(circle, #000000 0%, #000000 1%, $dark 2%);
+          background: repeating-radial-gradient(
+            circle,
+            #000000 0%,
+            #000000 1%,
+            $dark 2%
+          );
           border: 2px solid $green;
           animation: run 2s linear infinite;
           animation-play-state: paused;
           box-shadow: 1px 1px $white;
           position: relative;
-          span{
+          span {
             background-image: url("/public/image/index/index_dj_logo.png");
             @include rect(140px);
             background-size: contain;
@@ -373,8 +392,8 @@
         }
       }
       // 轉盤底下的按鈕們 - 廖妍榛
-      .dj_buttons{
-        button{
+      .dj_buttons {
+        button {
           align-self: center;
           color: $dark;
           background: linear-gradient($dark, $blue);
@@ -384,15 +403,15 @@
           background: linear-gradient($blue, $dark);
           color: $dark;
         }
-    }
+      }
 
-    //中間的音量拉條 - 廖妍榛
-      .dj_center{
+      //中間的音量拉條 - 廖妍榛
+      .dj_center {
         display: flex;
         align-self: center;
         flex-direction: column;
         flex-grow: 1;
-        .plates_vols{
+        .plates_vols {
           margin: 20px;
           flex-grow: 1;
           display: flex;
@@ -400,16 +419,16 @@
           .vol_left {
             align-self: flex-start;
             margin-right: 5%;
-        }
-          .vol_right{
+          }
+          .vol_right {
             align-self: flex-end;
+          }
         }
-      }
 
         .vol {
           width: 20%;
         }
-        
+
         .vol_mix {
           display: flex;
           align-self: center;
@@ -426,55 +445,80 @@
     }
 
     // 中間三根的拉條外觀  - 廖妍榛
-      input{
-        @include rect(195px,80px);
-        cursor: pointer;
-        margin: 50px -80px;
-        -webkit-appearance: none;
-        appearance: none;
-        box-sizing: border-box;
-        // position: absolute;
-        border: 2px solid #353535;
-        padding: 0 1rem;
-        -webkit-transform: rotate(-90deg);
-        transform: rotate(-90deg);
-        background: linear-gradient(-90deg, #343535 1rem, rgba(68, 84, 99, 0) 1.5rem, rgba(40, 50, 59, 0) calc(100% - 1.5rem), #070707 calc(100% - 1rem)), linear-gradient(90deg, #595858 0.125rem, transparent 0.125rem) repeat-x 4px 25%, linear-gradient(90deg, #595858 0.125rem, transparent 0.125rem) repeat-x 4px 75%, linear-gradient(-90deg, #3a3b3b, #000000);
-        background-size: 100% 100%, 0.625rem 23%, 0.625rem 23%, 100% 100%;
-      }
+    input {
+      @include rect(195px, 80px);
+      cursor: pointer;
+      margin: 50px -80px;
+      -webkit-appearance: none;
+      appearance: none;
+      box-sizing: border-box;
+      // position: absolute;
+      border: 2px solid #353535;
+      padding: 0 1rem;
+      -webkit-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      background: linear-gradient(
+          -90deg,
+          #343535 1rem,
+          rgba(68, 84, 99, 0) 1.5rem,
+          rgba(40, 50, 59, 0) calc(100% - 1.5rem),
+          #070707 calc(100% - 1rem)
+        ),
+        linear-gradient(90deg, #595858 0.125rem, transparent 0.125rem) repeat-x
+          4px 25%,
+        linear-gradient(90deg, #595858 0.125rem, transparent 0.125rem) repeat-x
+          4px 75%,
+        linear-gradient(-90deg, #3a3b3b, #000000);
+      background-size: 100% 100%, 0.625rem 23%, 0.625rem 23%, 100% 100%;
+    }
 
     // 調整拉條軌道  - 廖妍榛
-      input::-webkit-slider-runnable-track {
-        -webkit-appearance: none;
-        appearance: none;
-        height: 7.5px;
-        box-shadow: inset 0 0 0 1px $dark;
-        background: linear-gradient(-90deg, $dark, #111);
+    input::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 7.5px;
+      box-shadow: inset 0 0 0 1px $dark;
+      background: linear-gradient(-90deg, $dark, #111);
     }
 
     // 調整拉條按鈕  - 廖妍榛
-      input::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        margin-top: -1.65625em;
-        border: none;
-        width: 2.5em;
-        height: 3.75em;
-        border-radius: 0.25em;
-        box-shadow: inset 0 0 1px $white;
-        background: radial-gradient(at 50% 0, $white, #0000 70%) no-repeat 50% 0, radial-gradient(at 50% 100%, $white, #0000 100%) no-repeat 50% 100%,
-        linear-gradient(90deg, #d9d9d9, #878787 25%, #d9d9d9 25%, $white 47%, #d9d9d9 48%, $pink, #d9d9d9, $white 52%, $white 75%, #cbcbcb 75%, #d9d9d9);
-        background-size: 100% 8px;
-      }
+    input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      margin-top: -1.65625em;
+      border: none;
+      width: 2.5em;
+      height: 3.75em;
+      border-radius: 0.25em;
+      box-shadow: inset 0 0 1px $white;
+      background: radial-gradient(at 50% 0, $white, #0000 70%) no-repeat 50% 0,
+        radial-gradient(at 50% 100%, $white, #0000 100%) no-repeat 50% 100%,
+        linear-gradient(
+          90deg,
+          #d9d9d9,
+          #878787 25%,
+          #d9d9d9 25%,
+          $white 47%,
+          #d9d9d9 48%,
+          $pink,
+          #d9d9d9,
+          $white 52%,
+          $white 75%,
+          #cbcbcb 75%,
+          #d9d9d9
+        );
+      background-size: 100% 8px;
     }
+  }
 }
 // 播放音樂時的轉盤動畫  - 廖妍榛
-@keyframes run { 
-  100% { 
-    -webkit-transform: rotate(360deg); 
-    transform:rotate(360deg); 
-  } 
+@keyframes run {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
-//情緒歌單  - 廖妍榛 
+//情緒歌單  - 廖妍榛
 .index_emo {
   @include layout(100%);
   padding-bottom: 5%;
