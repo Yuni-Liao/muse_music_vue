@@ -197,7 +197,7 @@
                         }
 
                         .btnArea {
-
+position: relative;
                             #AddSlBtn,
                             #AddFavBtn {
                                 width: 25px;
@@ -210,6 +210,44 @@
                                 @include btnBgNone;
                                 margin: 0 0 0 10px;
                             }
+
+                            .moreBtnAlert {
+                                position: absolute;
+                                width: 185px;
+                                height: 220px;
+                                background-color: #000000;
+                                padding: 0 0 0 18px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-evenly;
+                                align-items: flex-start;
+                                top: 20px;
+                                left: 170px;
+                                border-radius: 6px;
+
+                                .close {
+                                    @include btnBgNone;
+                                    font-size: 25px;
+                                    margin-left: 130px;
+                                }
+
+                                a {
+                                    display: flex;
+                                    font-size: $tag;
+                                    align-items: center;
+
+                                    p {
+                                        margin: 0 0px 0 20px;
+                                    }
+
+                                    .eyeopen {
+                                        width: 18px;
+                                        height: 13px;
+                                        vertical-align: top;
+                                    }
+                                }
+                            }
+
                         }
                     }
                 }

@@ -77,9 +77,33 @@
                                     <td class="btnArea">
                                         <AddFavBtn></AddFavBtn>
                                         <AddSlBtn></AddSlBtn>
-                                        <button class="moreBtn">
+                                        <button class="moreBtn" @click="toggleFirstMoreBtnAlert">
                                             <fontAwesome :icon="['fa', 'ellipsis']" style="color:#AAAAAA;" />
                                         </button>
+
+                                        <!-- ...看更多調整中 -->
+
+                                        <!-- <div class="moreBtnAlert" v-if="showFirstMoreBtnAlert">
+                                            <button class="close">
+                                                <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
+                                            </button>
+                                            <a href="#">
+                                                <fontAwesome :icon="['fa', 'share']" style="color: #ffffff" />
+                                                <p>分享</p>
+                                            </a>
+                                            <a href="#">
+                                                <fontAwesome :icon="['fa', 'heart']" style="color: #ffffff" />
+                                                <p>加入我的最愛</p>
+                                            </a>
+                                            <a href="#">
+                                                <fontAwesome :icon="['fa', 'plus']" style="color: #ffffff" />
+                                                <p>加入歌單</p>
+                                            </a>
+                                            <a href="#">
+                                                <img src="../../public/image/icon/eyeopen.png" alt="" class="eyeopen">
+                                                <p>檢視歌曲</p>
+                                            </a>
+                                        </div> -->
                                     </td>
                                 </tr>
                             </tbody>
