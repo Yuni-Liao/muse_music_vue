@@ -1,0 +1,82 @@
+.editfrontpage {
+    box-sizing: border-box;
+    display: flex;
+}
+
+.cover-image-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.cover-image {
+    width: 100%;
+    height: 500px;
+    display: flex;
+}
+
+.profile-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -170%);
+    border-radius: 50%;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+}
+
+.profile {
+    width: 100%;
+    height: auto;
+}
+
+
+.page-options {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+.page-options :hover {
+    color: rgb(151, 63, 215);
+}
+
+
+.page-option button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color:$white;
+    font-size: $small;
+    margin-top: 300px;
+}
+
+.page-content {
+    padding: 90px 0px;
+    justify-content: left;
+}
+
+.line {
+    height: 3px;
+    width: 100%;
+    background:  linear-gradient(to right, $tp, $purple, $tp);
+}
+
+.form-group input {
+    width: 50%;
+    height: 50px;
+    background-color: $dark;
+    color: $white;
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    color: $white;
+    font-size: $small;
+    display: flex;
+    justify-content: center;
+}
+

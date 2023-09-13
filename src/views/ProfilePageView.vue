@@ -2,13 +2,11 @@
   <div class="profilepage">
     <section>
       <div class="hd">
-        <div class="bg">
-          <div class="pic"><img src="" alt="" /></div>
+        <div class="cover-image">
+          <div class="profile-container"><img src="" alt="" /></div>
           <article class="txt">
             <h1>{{ mem.memname }}<button>追蹤</button></h1>
-            <div>
-              <fontAwesome :icon="['fa', 'location-dot']" />{{ mem.loc }}
-            </div>
+            <p><fontAwesome :icon="['fa', 'location-dot']" />{{ mem.loc }}</p>
             <p>{{ mem.intro }}</p>
           </article>
           <div class="fol">
@@ -35,9 +33,11 @@
       </div>
       <div class="line"></div>
     </section>
-    <section v-if="tabtype === 0" class="activity">activity</section>
-    <section v-else-if="tabtype === 1" class="music">music</section>
-    <section v-else-if="tabtype === 2" class="songlist">songlist</section>
+    <main>
+      <section v-if="tabtype === 0" class="activity">activity</section>
+      <section v-else-if="tabtype === 1" class="music">music</section>
+      <section v-else-if="tabtype === 2" class="songlist">songlist</section>
+    </main>
   </div>
 </template>
 <style scoped lang="scss">
