@@ -33,11 +33,11 @@
         <div class="inner">
             <div class="prod">
                 <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
-                    <div class="prodPic">
+                    <a :href="item.link" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
-                    </div>
+                    </a>
                     <div class="prodTxt">
-                        <p class="prodName">{{ item.prodName }}</p>
+                        <a :href="item.link" class="prodName">{{ item.prodName }}</a>
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>
 
                         <!-- 數量加減 -->
@@ -58,8 +58,11 @@
             <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
                 @on-change="handlePageChange" @on-page-size-change="handlePageSize" />
         </div>
-
+        <button class="shopcart">
+            <img src="/image/icon/shopcart.png" alt="shopcart">
+        </button>
         <pre>{{ sortProducts2 }}</pre>
+
     </div>
 </template>
 
