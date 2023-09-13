@@ -113,9 +113,6 @@
                                 </p>
                                 <div class="likeMes" v-if="messageItem">
                                     <p class="likeCount">{{ messageItem.like }}</p>
-                                    <!--<button class="btn_likeMes" @click="likeMessage(messageItem)">
-                                        <font-awesome-icon :icon="['fa', 'thumbs-up']"/>
-                                    </button>-->
                                     <LikeMesBtn :messageItem="messageItem"></LikeMesBtn>
                                 </div>
                             </div>
