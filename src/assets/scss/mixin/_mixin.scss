@@ -13,29 +13,29 @@
 }
 
 // 按鈕顏色與框線, border=true走if, 若false走else
-@mixin btnColor($color, $border: true) {
+@mixin btnColor($color, $border: true, $hover: true) {
   @if $border {
     border: 2px solid $color;
     transition: 1s;
     color: $color;
-    padding: 10px 20px;
-
-    &:hover {
-      border: 2px solid $color;
-      background-color: $color;
-      color: $dark;
-      transition: 0.5s;
+    @if $hover {
+      &:hover {
+        border: 2px solid $color;
+        background-color: $color;
+        color: $dark;
+        transition: 0.5s;
+      }
     }
   } @else {
     border: 2px solid $color; //要留著,不可以刪
     background-color: $color;
     color: $dark;
     transition: 1s;
-    padding: 10px 20px;
-
-    &:hover {
-      background-color: darken($color, 25);
-      transition: 0.3s;
+    @if $hover {
+      &:hover {
+        background-color: darken($color, 25);
+        transition: 0.3s;
+      }
     }
   }
 }
