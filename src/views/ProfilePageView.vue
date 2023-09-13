@@ -64,7 +64,42 @@
       <div class="line"></div>
       <section v-if="tabtype === 0" class="activity">activity</section>
       <section v-else-if="tabtype === 1" class="music">music</section>
-      <section v-else-if="tabtype === 2" class="songlist">songlist</section>
+      <section v-else-if="tabtype === 2" class="songlist">
+        <section class="container">
+          <!-- 判斷是否有data -->
+          <div class="nodata" v-if="songlists.length === 0">
+            目前沒有公開歌單
+          </div>
+          <div
+            v-else
+            class="sl-list row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
+          >
+            <div class="col" v-for="(item, index) in songlists">
+              <!-- 單一歌單 -->
+              <div
+                class="sl-item"
+                :style="{
+                  backgroundImage: `url(/image/SingleMusic/${item.image})`,
+                }"
+                @click.self.prevent="gotosonglist()"
+              >
+                <div class="txt">
+                  <div>
+                    <h3>
+                      {{ item.slname }}
+                    </h3>
+                    <div>
+                      <span>共有{{ item.songnum }}首歌</span>
+                      <span>{{ item.creator }}</span>
+                    </div>
+                  </div>
+                  <PlayBtnBig></PlayBtnBig>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
     </main>
   </div>
 </template>

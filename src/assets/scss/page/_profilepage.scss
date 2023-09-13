@@ -1,29 +1,28 @@
 .profilepage {
-  height: 1000px;
-
+  padding: 80px 0;
+  box-sizing: border-box;
   .hd {
     color: $white;
-    height: 100vh;
     .cover-image {
       background-size: cover;
       background-position: bottom;
 
       width: 100%;
-      height: 500px;
+      height: 400px;
       padding: 0 100px;
+      margin-bottom: 250px;
+
       //排版
       display: flex;
-      flex-wrap: wrap;
       flex-direction: row;
       align-items: flex-end;
-      justify-content: space-evenly;
-
+      justify-content: space-between;
       .profile-container {
         position: relative;
         bottom: -30%;
+        margin: 0 30px;
         img {
-          width: 300px;
-          height: 300px;
+          @include rect(300px);
           border-radius: 50%;
           overflow: hidden;
           //照片調整
@@ -35,12 +34,16 @@
         position: relative;
         bottom: -30%;
         .intro {
-          width: 80%;
           text-align: start;
           padding: 30px;
           h1 {
             font-size: $big;
-            line-height: $fh;
+            // line-height: 3;
+            #FolBtnBig {
+              margin-left: 30px;
+              // line-height: 1;
+              vertical-align: text-bottom;
+            }
           }
           p {
             font-size: $default;
@@ -48,7 +51,6 @@
           }
         }
         .fol {
-          width: 80%;
           display: flex;
           flex-direction: row;
           div {
@@ -92,6 +94,80 @@
       height: 3px;
       width: 100%;
       background: linear-gradient(to right, $tp, $blue, $tp);
+    }
+    .container {
+      padding: 30px 0px;
+      .nodata {
+        height: 150px;
+        text-align: center;
+        line-height: 150px;
+        color: $white;
+      }
+      .sl-list {
+        //row
+        margin: 20px 0;
+
+        //單一歌單
+        .sl-item {
+          //歌單照片使用:style backgroundImage渲染
+          background-size: cover;
+          background-position: center top;
+
+          // 供子元素定位
+          position: relative;
+          cursor: pointer;
+
+          //設定外觀
+          min-width: 250px;
+
+          margin: 20px 0;
+          height: 250px;
+          padding: 15px;
+          border-radius: 10px;
+          overflow: hidden;
+
+          //子元素字體設定
+          color: $white;
+          text-align: left;
+
+          .txt {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 25px 15px 15px 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), $tp);
+            //取消動作
+            pointer-events: none;
+
+            //子元素排版
+            display: flex;
+            justify-content: space-between;
+            #PlayBtnBig {
+              z-index: 10;
+              pointer-events: visible;
+            }
+            h3 {
+              font-size: $small;
+            }
+            span {
+              margin-right: 20px;
+              font-size: 12px;
+            }
+          }
+        }
+        .sl-item:hover::after {
+          pointer-events: none;
+          position: absolute;
+          content: "";
+          background-color: #ffffff20;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+          left: 0;
+          top: 0;
+        }
+      }
     }
   }
 }
