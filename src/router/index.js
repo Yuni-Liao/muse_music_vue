@@ -155,10 +155,10 @@ const routes = [
   },
   // 以下為後台登入頁面
   {
-    path: "/login",
-    name: "login",
+    path: "/backendLogin",
+    name: "backendLogin",
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/Backendviews/Login.vue"),
+      import(/* webpackChunkName: "backendLogin" */ "../views/Backendviews/Login.vue"),
   },
   {
     path: "/backend",
