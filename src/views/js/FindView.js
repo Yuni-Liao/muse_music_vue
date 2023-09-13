@@ -1,3 +1,6 @@
+import PlayBtnBig from "@/components/PlayBtnBig.vue";
+
+
 //引入swiper-------------------------
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -24,6 +27,7 @@ import {
 export default {
     name: 'App',
     components: {
+        PlayBtnBig,
         Swiper,
         SwiperSlide,
         },
@@ -35,7 +39,7 @@ export default {
                     id: 1,
                     name:'日語流行',
                     imgUrl:123,
-                    link: '/'
+                    link: '/findmusic'
                 },
                 {
                     id: 2,
@@ -157,7 +161,7 @@ export default {
                     sid: 1,
                     title: "宇宙飛行1",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -165,7 +169,7 @@ export default {
                     sid: 2,
                     title: "宇宙飛行2",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -173,7 +177,7 @@ export default {
                     sid: 3,
                     title: "宇宙飛行3",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -181,7 +185,7 @@ export default {
                     sid: 4,
                     title: "宇宙飛行4",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -189,7 +193,7 @@ export default {
                     sid: 5,
                     title: "宇宙飛行5",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -197,7 +201,7 @@ export default {
                     sid: 6,
                     title: "宇宙飛行6",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -205,7 +209,7 @@ export default {
                     sid: 7,
                     title: "宇宙飛行7",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -213,7 +217,7 @@ export default {
                     sid: 8,
                     title: "宇宙飛行8",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -221,7 +225,15 @@ export default {
                     sid: 9,
                     title: "宇宙飛行9",
                     image: "index_grid_08.png",
-                    link: "/shopProd/1",
+                    slink: "/profilepage",
+                    singer: "桌子樂團",
+                    views: 0,
+                },
+                {
+                    sid: 10,
+                    title: "宇宙飛行10",
+                    image: "index_grid_08.png",
+                    slink: "/profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 }

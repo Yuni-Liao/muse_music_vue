@@ -197,7 +197,8 @@
                         }
 
                         .btnArea {
-position: relative;
+                            position: relative;
+
                             #AddSlBtn,
                             #AddFavBtn {
                                 width: 25px;
@@ -222,7 +223,7 @@ position: relative;
                                 justify-content: space-evenly;
                                 align-items: flex-start;
                                 top: 20px;
-                                left: 170px;
+                                left: 150px;
                                 border-radius: 6px;
 
                                 .close {
@@ -233,15 +234,21 @@ position: relative;
 
                                 a {
                                     display: flex;
-                                    font-size: $tag;
+                                    flex-direction: row;
                                     align-items: center;
+
+                                    img {
+                                        width: 20px;
+                                        height: 20px;
+                                    }
 
                                     p {
                                         margin: 0 0px 0 20px;
+                                        font-size: $tag;
                                     }
 
                                     .eyeopen {
-                                        width: 18px;
+                                        width: 20px;
                                         height: 13px;
                                         vertical-align: top;
                                     }

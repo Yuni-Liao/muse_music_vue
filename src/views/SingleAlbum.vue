@@ -66,44 +66,42 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(item, index) in otherSongs" :key="index" class="songArea">
-                                    <td class="id">{{ item.id }}</td>
+                                <tr v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
+                                    <td class="id">{{ albumItem.id }}</td>
                                     <td class="pic">
-                                        <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
+                                        <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
+                                            alt="albumItem.name">
                                     </td>
-                                    <td class="name"><a href="">{{ item.name }}</a></td>
-                                    <td class="singer"><a href="">{{ item.singer }}</a></td>
-                                    <td class="time">{{ item.time }}</td>
+                                    <td class="name"><a href="">{{ albumItem.name }}</a></td>
+                                    <td class="singer"><a href="">{{ albumItem.singer }}</a></td>
+                                    <td class="time">{{ albumItem.time }}</td>
                                     <td class="btnArea">
                                         <AddFavBtn></AddFavBtn>
                                         <AddSlBtn></AddSlBtn>
-                                        <button class="moreBtn" @click="toggleFirstMoreBtnAlert">
+                                        <button class="moreBtn" @click="toggleMoreBtn(albumItem)">
                                             <fontAwesome :icon="['fa', 'ellipsis']" style="color:#AAAAAA;" />
                                         </button>
-
-                                        <!-- ...看更多調整中 -->
-
-                                        <!-- <div class="moreBtnAlert" v-if="showFirstMoreBtnAlert">
-                                            <button class="close">
+                                        <div class="moreBtnAlert" v-if="albumItem.showMoreBtn">
+                                            <button class="close" @click="closeMoreBtn(albumItem)">
                                                 <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
                                             </button>
-                                            <a href="#">
-                                                <fontAwesome :icon="['fa', 'share']" style="color: #ffffff" />
+                                            <a href="#" >
+                                                <img src="../../public/image/icon/share.png">
                                                 <p>分享</p>
                                             </a>
-                                            <a href="#">
-                                                <fontAwesome :icon="['fa', 'heart']" style="color: #ffffff" />
+                                            <a href="#" class="addFav">
+                                                <img src="../../public/image/icon/addFav.png">
                                                 <p>加入我的最愛</p>
                                             </a>
-                                            <a href="#">
-                                                <fontAwesome :icon="['fa', 'plus']" style="color: #ffffff" />
+                                            <a href="#" class="addSl">
+                                                <img src="../../public/image/icon/addSl.png">
                                                 <p>加入歌單</p>
                                             </a>
-                                            <a href="#">
+                                            <a href="#" class="readSong">
                                                 <img src="../../public/image/icon/eyeopen.png" alt="" class="eyeopen">
                                                 <p>檢視歌曲</p>
                                             </a>
-                                        </div> -->
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
