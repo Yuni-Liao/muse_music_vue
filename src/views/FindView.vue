@@ -4,7 +4,7 @@
     </div>
     <div class="language">
         <div class="space" v-for="(item, index) in languages" :key="index">
-            <img src="~@/assets/image/footer_background.jpg" alt="">
+            <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
                 <a :href="item.link">
                     {{ item.name }}
@@ -38,36 +38,26 @@
     <div class="hot_singer">
         <h2>熱門創作者．Hot Creator</h2>
         <section class="index_newMusic">
-            <swiper class="mySwiper" 
-            :loop="true"
-            :loopedSlides="3"
-            :initialSlide="4" 
-            :slideToClickedSlide="false" 
-            :grabCursor="false"
-            :centeredSlides="true" 
-            :slidesPerView="5" 
-            :slidesPerGroup="1" 
-            :effect="'coverflow'" 
-            :coverflowEffect="{
-                rotate: 0,
-                stretch: -150,
-                depth: 300,
-                modifier: 2.5,
-                slideShadows: false,
-            }" 
-            :pagination="{
-                clickable: true,
-            }"      
-            :modules="modules">
+            <swiper class="mySwiper" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
+                :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
+                :coverflowEffect="{
+                    rotate: 0,
+                    stretch: -150,
+                    depth: 300,
+                    modifier: 2.5,
+                    slideShadows: false,
+                }" :pagination="{
+    clickable: true,
+}" :modules="modules">
                 <swiper-slide v-for="(item, sid) in singers" :key="sid">
-                    <a :href="item.slink">
-                        <div class="card">
+                    <div class="card">
+                        <a :href="item.slink">
                             <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
                             <div class="text" @click="gotosinglemusic()">
                                 <h3>{{ item.title }}</h3>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </swiper-slide>
             </swiper>
         </section>
@@ -76,28 +66,18 @@
     <div class="new_release">
         <h2>新歌推薦．New Release</h2>
         <section class="index_newMusic">
-            <swiper class="mySwiper" 
-            :loop="true"
-            :loopedSlides="3"
-            :initialSlide="4" 
-            :slideToClickedSlide="false" 
-            :grabCursor="false"
-            :centeredSlides="true" 
-            :slidesPerView="5" 
-            :slidesPerGroup="1" 
-            :effect="'coverflow'" 
-            :coverflowEffect="{
-                rotate: 0,
-                stretch: -150,
-                depth: 300,
-                modifier: 2.5,
-                slideShadows: false,
-            }" 
-            :pagination="{
-                clickable: true,
-            }"      
-            :modules="modules">
-                <swiper-slide v-for="(item, sid) in singers" :key="sid">
+            <swiper class="mySwiper" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
+                :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
+                :coverflowEffect="{
+                    rotate: 0,
+                    stretch: -150,
+                    depth: 300,
+                    modifier: 2.5,
+                    slideShadows: false,
+                }" :pagination="{
+    clickable: true,
+}" :modules="modules">
+                <swiper-slide v-for="(item, index) in singers" :key="sid">
                     <div class="card">
                         <div class="image">
                             <PlayBtnBig class="play_btn"></PlayBtnBig>
@@ -106,8 +86,8 @@
                         <div class="text" @click="gotosinglemusic()">
                             <h3>{{ item.title }}</h3>
                             <p>
-                            {{ item.singer }}
-                            <span>播放量{{ item.views }}</span>
+                                {{ item.singer }}
+                                <span>播放量{{ item.views }}</span>
                             </p>
                         </div>
                     </div>
