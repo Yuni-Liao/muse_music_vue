@@ -1,9 +1,69 @@
-.shopProdDetail{
-    background-color: rgb(255, 255, 0);
-}
-h1{
+.shopProdDetail {
     margin-top: 85px;
+    background-color: rgb(255, 255, 255);
+    @include layout(100%);
+
+    .ivu-breadcrumb {
+        text-align: left;
+        margin-left: 5%;
+        padding: 20px 0 70px;
+    }
+
+    .inner {
+        border: 1px solid red;
+        @include layout(62.5%);
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+
+        .mainInf {
+            display: flex;
+            margin-bottom: 12%;
+            align-items: center;
+
+            .pic {
+                width: 574px;
+                height: 378px;
+                margin-right: 7%;
+
+                img {
+                    width: 100%;
+                    vertical-align: top;
+                }
+            }
+
+            .txt {
+                .title {
+                    font-size: $big;
+                    font-weight: 700;
+                    width: 100%;
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 1px;
+                        background-color: $dark;
+                        margin: 10px 0 30px -10px;
+                    }
+                }
+
+                .prodInf {
+                    font-size: $default;
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 1px;
+                        background-color: $dark;
+                        margin: 30px 0 30px -10px;
+                    }
+                }
+                .price{
+                    font-size: $default;
+                    color: $pink;
+                }
+            }
+        }
+    }
 }
-
-
-//測試用,這裡的內容都可以刪除
