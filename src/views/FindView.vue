@@ -46,9 +46,11 @@
                     depth: 300,
                     modifier: 2.5,
                     slideShadows: false,
-                }" :pagination="{
-    clickable: true,
-}" :modules="modules">
+                }" 
+                :pagination="{
+                    clickable: true,
+                }" 
+                :modules="modules">
                 <swiper-slide v-for="(item, sid) in singers" :key="sid">
                     <div class="card">
                         <a :href="item.slink">
@@ -74,9 +76,10 @@
                     depth: 300,
                     modifier: 2.5,
                     slideShadows: false,
-                }" :pagination="{
-    clickable: true,
-}" :modules="modules">
+                }" 
+                :pagination="{
+                    clickable: true,
+                }" :modules="modules">
                 <swiper-slide v-for="(item, index) in singers" :key="sid">
                     <div class="card">
                         <div class="image">
