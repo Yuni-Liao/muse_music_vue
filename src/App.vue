@@ -43,6 +43,8 @@
                 alt="" />個人主頁</router-link><br />
             <router-link to="/profilepageedit"><img src="~@/assets/image/icon/development.png"
                 alt="" />個人管理頁面</router-link><br />
+                <router-link to="/shoppingsteps"><img src="~@/assets/image/icon/development.png"
+                  alt="" />購物車流程</router-link><br />
             <p>我的音樂庫</p>
             <router-link to=""><img src="~@/assets/image/icon/clock.png" alt="" />播放紀錄</router-link><br />
             <router-link to="/mysonglist"><img src="~@/assets/image/icon/list.png" alt="" />我的歌單</router-link><br />

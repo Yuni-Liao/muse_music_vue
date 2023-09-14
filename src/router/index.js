@@ -128,6 +128,17 @@ const routes = [
         /* webpackChunkName: "profilepageedit" */ "../views/ProfilePageEditView.vue"
       ),
   },
+  //以下是個人主頁頁面
+
+  {
+    path: "shoppingsteps",
+    name: "shoppingsteps",
+    component: () =>
+      import(
+        /* webpackChunkName: "shoppingsteps" */ "../views/ShoppingStepsView.vue"
+      ),
+  },
+  //以下是購物流程頁面
   {
     path: "/profilepage",
     name: "profilepagee",
