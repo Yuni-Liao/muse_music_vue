@@ -38,7 +38,9 @@
                                 <img src="/image/ShopImage/down.png">
                             </button>
                         </span>
-                        <button class="obj_Radius btn_Shop_Border">加入購物車</button>
+                        <router-link to="/shoppingsteps">
+                            <button class="obj_Radius btn_Shop_Border">加入購物車</button>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -69,3 +71,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/shopproddetail.scss";
 </style>
+<script src="./js/prodDetailView.js"></script>
