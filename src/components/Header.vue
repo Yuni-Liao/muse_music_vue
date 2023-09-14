@@ -32,11 +32,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="user_dropdown_reaction">
+                <div class="user_dropdown_reaction" >
                     <router-link to="/login"><img style="margin-top: -1px" alt="user_icon"
                             src="~@/assets/image/icon/user.png" /></router-link>
 
-                    <div class="user_dropdown">
+                    <div class="user_dropdown" >
                         <router-link to=""><img src="~@/assets/image/icon/clipboard.png" alt="" />訂單資訊</router-link><br />
                         <router-link to=""><img src="~@/assets/image/icon/settingicon.png" alt="" />帳號設定</router-link><br />
                         <router-link to="/profilepage"><img src="~@/assets/image/icon/personalPage.png"
@@ -62,6 +62,7 @@
 export default {
     data() {
         return {
+            
             notifyList: [
                 {
                     src: "creator01.jpg",

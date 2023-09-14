@@ -1,6 +1,6 @@
 <template>
     <div class="player" >
-        <div class="player_left" v-for="item in songList">
+        <div class="player_left" v-for="item in songList" :key="item.id">
             <img class="screen" src="/image/icon/screen.svg" alt="">
             <img class="musicPic" :src="item.cover" alt="">
             <div class="songInfo">
@@ -111,11 +111,11 @@ export default {
             .screen{
                 cursor: pointer;
                 width: 25px;
-                margin: 0px 30px;
+                margin: 0px 10px 0px 0px;
             }
             .musicPic{
                 width: 50px;
-                margin: 0px 30px;
+                margin: 0px 20px ;
             }
             .songInfo{
                 display: flex;
