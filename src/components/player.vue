@@ -1,41 +1,44 @@
 <template>
-   <div id="player" >
-     <div class="player_left" v-for="item in songList">
-        <img class="screen" src="/image/icon/screen.svg" alt="">
-        <img class="musicPic" :src="item.src" alt="">
-        <div class="songInfo">
-            <p>{{ item.songTitle }}</p>
-            <span>{{ item.singer }}</span>
-        </div>
-    </div>
-    <div class="player_center">
-        <div class="playerControls">
-            <div id="prev" class="backwardBtn controlsItem">
-                <img  src="/image/icon/backward.svg" alt="">
-            </div>
-            <div id="play" class="playBtn controlsItem">
-                <fontAwesome  :icon="['fa', 'play']" style="color: #fff; width: 30px; height: 30px; cursor: pointer;;" />
-                <div class="background"></div>
-            </div>
-            <div id="next" class="forwargBtn controlsItem">
-                <img  src="/image/icon/forward.svg" alt="">
+    <div class="player" >
+        <div class="player_left" v-for="item in songList">
+            <img class="screen" src="/image/icon/screen.svg" alt="">
+            <img class="musicPic" :src="item.cover" alt="">
+            <div class="songInfo">
+                <p>{{ item.songTitle }}</p>
+                <span>{{ item.singer }}</span>
             </div>
         </div>
-        <audio src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio>
-        <div class="music-progress">
-            <div id="progress-bar" class="music-progress-bar"></div>
-            <div class="music-progress__time">
-                <span class="music-progress__time-item music-current-time">00:00</span>
-                <span class="music-progress__time-item music-duration-time">00:00</span>
+
+        <div class="player_center">
+            <div class="playerControls">
+                <div id="prev" class="backwardBtn controlsItem">
+                    <img  src="/image/icon/backward.svg" alt="">
+                </div >
+                <div id="play">
+                    <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio>
+                    <img
+                        v-if="!isPlaying"
+                        @click="playMusic"
+                        style="width: 25px;"
+                        src="/image/icon/play.svg" alt="Play" />
+                    <img
+                        v-else
+                        @click="pauseMusic"
+                        style="width: 25px;"
+                        src="/image/icon/pause.svg"
+                        alt="Pause"/>
+                </div>
+                <div id="next" class="forwargBtn controlsItem">
+                    <img  src="/image/icon/forward.svg" alt="">
+                </div>
             </div>
-        </div>
+            <div id="music-progress" class="music-progress" @click="playMusic">
+                <div id="progress-bar" class="music-progress-bar" :style="{ width: progressWidth }"></div>
+            </div>
     </div>
     <div class="player_right">
-        <img  src="/image/icon/shuffle.svg" alt="">
-        <img  src="/image/icon/volume.svg" alt="">
-        <div class="volumeLine">
-            <section></section>
-        </div>
+        <img v-if="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute">
+        <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
     </div>
    </div>
 </template>
@@ -46,17 +49,52 @@ export default {
     data() {
         return {
             songList: [{
-                src: '/image/SingleMusic/songPic.png',
+                cover: '/image/SingleMusic/songPic.png',
                 songTitle: 'Say it',
                 singer: 'George Makridis',
+                
             }],
+            isPlaying: false,
+            progressWidth: '0px',
+            isMuted: false,
+            currentVolume: 0.5,
+        }
+    },
+    methods: {
+        playMusic() {
+        // 播放音樂
+        this.$refs.music.play();
+        this.isPlaying = true;
+        this.updateProgress();
+        },
+        pauseMusic() {
+        // 暫停音樂
+        this.$refs.music.pause();
+        this.isPlaying = false;
+        },
+        updateProgress() {
+        const audio = this.$refs.music;
+        audio.addEventListener("timeupdate", () => {
+        const currentTime = audio.currentTime;
+        const duration = audio.duration;
+        this.progressWidth = (currentTime / duration) * 100 + "%";
+        });
+        },
+        toggleMute(){
+      if (this.isMuted) {
+        this.$refs.music.volume = this.currentVolume;
+      } else {
+        this.currentVolume = this.$refs.music.volume;
+        this.$refs.music.volume = 0;
+      }
+      this.isMuted = !this.isMuted;
         }
     },
 };
 </script>
   
 <style scoped lang="scss">
-    #player{
+    .player{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -109,63 +147,32 @@ export default {
         }
         .music-progress{
             width: 550px;
+            height: 3px;
             cursor: pointer;
-            
+            border: 1px solid #aaa;
+            border-radius: 50px;
+            background-color: #aaa;
+            margin-top: -10px;
             /* 拖拉線 */
             .music-progress-bar{
                 position: relative;
-                width: 0;
+                width: 0px;
                 height: 3px;
-                background-color: purple;
+                background-color: #fff;
+                border-style: solid;
                 border-radius: 50px;
-                
-            }
-            /* 圓點 */
-            .music-progress-bar::after {
-                content: '';
-                position: absolute;
-                top: -1px;
-                background-color: white;
-                width: 6px;
-                height: 6px;
-                border-radius: 50px;
-                box-sizing: border-box;
-            }
-            /* 底線 */
-            .music-progress-bar::before {
-                content: '';
-                position: absolute;
-                top:0;
-                left: 0;
-                width: 550px;
-                height: 3px;
-                border-radius: 50px;
-                filter: drop-shadow(0px 0px 4px rgba(46, 45, 45, 1));
-                background: rgba(255, 255, 255, .3);
-            }
-            .music-progress__time{
-                display: flex;
-                justify-content: space-between;
-                span{
-                    color: #aaa;
-                }
             }
         }
         }
        .player_right{
         display: flex;
         align-items: center;
+        cursor: pointer;
         img{
             width: 20px;
             margin: 0px 10px;
         }
-        .volumeLine{
-            width: 60px;
-            height: 3px;
-            background-color: #fff;
-            border-radius: 50px;
-            margin-right: 30px;
-        }
+    
        }
     }
 </style>

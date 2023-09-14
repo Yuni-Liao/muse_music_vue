@@ -35,6 +35,14 @@ const routes = [
           import(/* webpackChunkName: "shop" */ "../views/ShopView.vue"),
       },
       {
+        path: "shoppingsteps",
+        name: "shoppingsteps",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepage" */ "../views/ShoppingStepsView.vue"
+          ),
+      },
+      {
         path: "activity",
         name: "activity",
         component: () =>

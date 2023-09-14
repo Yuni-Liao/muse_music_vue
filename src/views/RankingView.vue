@@ -164,6 +164,7 @@
   </div>
   
   <player/>
+  
 </template>
 
 <style scoped lang="scss">

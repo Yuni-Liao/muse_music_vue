@@ -17,20 +17,47 @@
               {{ mem.memname }}
               <FolBtnBig></FolBtnBig>
             </h1>
-            <p><fontAwesome :icon="['fa', 'location-dot']" />{{ mem.loc }}</p>
+            <p class="loc">
+              <fontAwesome class="i" :icon="['fa', 'location-dot']" />{{
+                mem.loc
+              }}
+            </p>
             <p>{{ mem.intro }}</p>
           </article>
           <div class="fol">
             <div>
-              <span>{{ mem.songcount }}</span>
+              <span v-if="mem.songcount > 1000">
+                <CountUp
+                  :end="changeNum(mem.songcount)"
+                  :duration="3"
+                  :decimals="1"
+                >
+                </CountUp>
+                K
+              </span>
+              <CountUp v-else :end="mem.songcount" :duration="3" />
               <h4>音樂</h4>
             </div>
             <div>
-              <span>{{ mem.fans }}</span>
+              <span v-if="mem.fans > 1000">
+                <CountUp :end="changeNum(mem.fans)" :duration="3" :decimals="1">
+                </CountUp>
+                K
+              </span>
+              <CountUp v-else :end="changeNum(mem.fans)" :duration="3" />
               <h4>粉絲</h4>
             </div>
             <div>
-              <span>{{ mem.follower }}</span>
+              <span v-if="mem.follower > 1000">
+                <CountUp
+                  :end="changeNum(mem.follower)"
+                  :duration="3"
+                  :decimals="1"
+                >
+                </CountUp>
+                K
+              </span>
+              <CountUp v-else :end="mem.follower" :duration="3" />
               <h4>追蹤數</h4>
             </div>
           </div>

@@ -59,8 +59,8 @@
                 clickable: true,
             }"      
             :modules="modules">
-                <swiper-slide v-for="(item, index) in singers" :key="sid">
-                    <div class="card">
+                <swiper-slide v-for="(item, sid) in singers" :key="sid">
+                                        <div class="card">
                         <a :href="item.slink">
                             <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
                             <div class="text" @click="gotosinglemusic()">
@@ -106,8 +106,8 @@
                         <div class="text" @click="gotosinglemusic()">
                             <h3>{{ item.title }}</h3>
                             <p>
-                            {{ item.singer }}
-                            <span>播放量{{ item.views }}</span>
+                                {{ item.singer }}
+                                <span>播放量{{ item.views }}</span>
                             </p>
                         </div>
                     </div>
