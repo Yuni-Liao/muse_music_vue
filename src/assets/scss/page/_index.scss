@@ -114,7 +114,7 @@
   }
 }
 
-// 音樂謬思 && dj轉盤用的動畫 - 廖妍榛
+// 音樂謬思 && dj轉盤用的動畫 && 熱門輪播 - 廖妍榛
 @keyframes rotate360 {
   0% {
     transform: translate(50%, -50%) rotate(0deg);
@@ -124,9 +124,11 @@
   }
 }
 
-// 新歌推薦/本週熱門歌曲輪播 - 黃珮菁
-.index_newMusic,
-.index_WeekTopusic {
+// 本週熱門歌曲輪播 - 黃珮菁
+.index_WeekTopmusic {
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
   h2 {
     color: $white;
     font-size: $big;
@@ -135,12 +137,14 @@
   }
   .swiper {
     width: 100%;
-    height: 90vh;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    height: 110vh;
+    // padding-top: 50px;
+    // padding-bottom: 50px;
     .swiper-wrapper {
+      position: relative;
       background-color: transparent;
       margin-bottom: 30px;
+      position: relative;
 
       .swiper-slide {
         background-color: transparent;
@@ -148,10 +152,10 @@
         display: flex;
         align-content: center;
         .card {
-          width: 200px;
+          width: 190px;
           margin: auto;
           img {
-            @include rect(200px);
+            @include rect(190px);
             object-fit: cover;
             object-position: top center;
             cursor: pointer;
@@ -162,35 +166,84 @@
               text-align: start;
               font-size: $small;
             }
-          }
-          p {
-            @include mini_Tag($tag);
-            display: flex;
-            justify-content: space-between;
+            p {
+              @include mini_Tag($tag);
+              display: flex;
+              justify-content: space-between;
+            }
           }
         }
       }
       .swiper-slide-active {
         opacity: 1;
         .card {
-          transform: scale(1.6);
-          // img {
-          //   transform: scale(1.6);
-          // }
+          transform: scale(1.5);
+          .text {
+            h3,
+            p {
+              color: $tp;
+            }
+          }
+        }
+      }
+      .swiper-slide-active {
+        .card::before {
+          pointer-events: none;
+          content: "";
+          background-image: url("/public/image/index/vinyl.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          top: -9%;
+          left: -28%;
+          z-index: -10;
+          transform: translate(-50%, 0);
+          animation: rotate360 10s 0s linear infinite;
         }
       }
     }
-    .swiper-pagination-bullet {
-      width: 30px;
-      border-radius: 2px;
-      height: 3px;
-    }
-    .swiper-pagination-bullet-active {
-      width: 60px;
-      height: 5px;
-      background-color: $green;
-    }
+
+    // .swiper-pagination-bullet {
+    //   width: 30px;
+    //   border-radius: 2px;
+    //   height: 3px;
+    // }
+    // .swiper-pagination-bullet-active {
+    //   width: 60px;
+    //   height: 5px;
+    //   background-color: $green;
+    // }
   }
+
+  .swiper::after {
+    pointer-events: none;
+    content: "";
+    background-image: url("/public/image/index/index_mplayer.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 345px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -35%);
+  }
+}
+.index_WeekTopmusic::after {
+  content: "";
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top right;
+  z-index: 0;
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  right: 0px;
+  top: -200px;
+  background-image: url("/public/image/index/index_light.png");
 }
 
 // // 本週熱門專輯 - 廖妍榛
@@ -330,7 +383,7 @@
       display: flex;
       justify-content: space-between;
       // background: linear-gradient(to right top, $blue, $pink, $green);
-      background-image: linear-gradient(#000, #333,#555,#444,#222,#000 95%);
+      background-image: linear-gradient(#000, #333, #555, #444, #222, #000 95%);
       box-shadow: 5px 5px 10px #000;
       border-radius: 10px;
       padding: 0.5% 2.5%;
