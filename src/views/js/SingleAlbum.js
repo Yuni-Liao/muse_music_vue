@@ -15,7 +15,7 @@ export default {
                     id: 1,
                     bannerPic: "banner_albumPic1.png",
                     singer: "George Makridis, Hannah Hampton",
-                    singerPage: "#",
+                    singerPage: "/profilepage",
                     singerPic: "singerPic.png",
                     albumPic: "albumPic.png",
                     albumName: "Countlary",
