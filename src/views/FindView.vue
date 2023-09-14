@@ -59,7 +59,7 @@
                 clickable: true,
             }"      
             :modules="modules">
-                <swiper-slide v-for="(item, index) in singers" :key="sid">
+                <swiper-slide v-for="(item, sid) in singers" :key="sid">
                     <a :href="item.slink">
                         <div class="card">
                             <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
@@ -97,7 +97,7 @@
                 clickable: true,
             }"      
             :modules="modules">
-                <swiper-slide v-for="(item, index) in singers" :key="sid">
+                <swiper-slide v-for="(item, sid) in singers" :key="sid">
                     <div class="card">
                         <div class="image">
                             <PlayBtnBig class="play_btn"></PlayBtnBig>

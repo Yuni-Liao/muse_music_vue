@@ -12,12 +12,13 @@ import { Mousewheel, Pagination } from "swiper/modules";
 // -----------------------------------
 import player from '@/components/player.vue';
 
+
 export default {
   components: {
     Swiper,
     SwiperSlide,
-   
     player,
+    
   },
   setup() {
     return {
