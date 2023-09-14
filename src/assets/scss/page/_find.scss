@@ -35,13 +35,12 @@ a:hover{
     border-left: 2px solid;
     border-right: 2px solid;
     position: relative;
-    overflow: hidden;
+    overflow:hidden;
     img{
+      transform: skewX(-45deg);
       position: absolute;
       display: none;
       width: 150%;
-      margin: 0 0 0 -50%;
-      transform: skewX(-45deg);
     }
     .txt{
       transform: skewX(-45deg);
@@ -73,10 +72,13 @@ a:hover{
     width: 20%;
     border-left:2px solid ;
     position: relative;
+    overflow: hidden;
     img{
+      transform: skewX(-45deg);
       position: absolute;
       display: none;
-      width: 100%;
+      width: 150%;
+      margin: 0 0 0 -50%;
     }
     .txt{
       transform: skewX(-45deg);
@@ -97,16 +99,17 @@ a:hover{
 
 .index_newMusic .swiper .swiper-wrapper .swiper-slide, .index_WeekTopusic .swiper .swiper-wrapper .swiper-slide {
   // background-color: red;
-  margin: auto;
+  // margin: auto;
 }
 
 .hot_singer{
   .swiper {
     width: 100%;
+    height: 55vh;
     .swiper-wrapper {
       .swiper-slide {
         .card {
-          width: 80%;
+          width: 55%;
           margin: auto;
           background-color: $tp;
           cursor: pointer;
@@ -139,11 +142,12 @@ a:hover{
 .new_release{
   .swiper {
     width: 100%;
+    height: 60vh;
     .swiper-wrapper {
-      background-color: transparent;
+      background-color: $tp;
       .swiper-slide {
         .card {
-          width: 80%;
+          width: 55%;
           margin: auto;
           background-color: $tp;
           cursor: pointer;

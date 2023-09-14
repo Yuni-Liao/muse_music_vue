@@ -45,25 +45,25 @@ export default {
                     id: 2,
                     name:'韓語流行',
                     img:'japan50.png',
-                    link: '/'
+                    link: '/findmusic',
                 },
                 {
                     id: 3,
                     name:'華語流行',
                     img:'japan50.png',
-                    link: '/'
+                    link: '/findmusic',
                 },
                 {
                     id: 4,
                     name:'西洋流行',
                     img:'japan50.png',
-                    link: '/'
+                    link: '/findmusic',
                 },
                 {
                     id: 5,
                     name: '其他語言',
                     img:'japan50.png',
-                    link: '/'
+                    link: '/findmusic',
                 }
             ],
             // 風格

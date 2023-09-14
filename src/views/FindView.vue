@@ -60,14 +60,14 @@
             }"      
             :modules="modules">
                 <swiper-slide v-for="(item, index) in singers" :key="sid">
-                    <a :href="item.slink">
-                        <div class="card">
+                    <div class="card">
+                        <a :href="item.slink">
                             <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
                             <div class="text" @click="gotosinglemusic()">
                                 <h3>{{ item.title }}</h3>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </swiper-slide>
             </swiper>
         </section>
