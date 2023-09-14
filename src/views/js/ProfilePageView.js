@@ -1,9 +1,11 @@
+import FolBtnBig from "@/components/FolBtnBig.vue";
+import PlayBtnBig from "@/components/PlayBtnBig.vue";
+
 export default {
-  components: {},
+  components: { FolBtnBig, PlayBtnBig },
   data() {
     return {
-      test: "124",
-      tabtype: 1, //0,1,2
+      tabtype: 2, //0,1,2
       mem: {
         memid: 1,
         memname: "Anonymous",
@@ -13,9 +15,43 @@ export default {
         songcount: 23,
         fans: 1264,
         follower: 10,
+        coverimg: "coverimage.jpg",
       },
+      //要注意撈來的資料有沒有包含public: false!!!!!
+      songlists: [
+        {
+          slid: 5,
+          slname: "我的假日歌單",
+          image: "songPic.png",
+          memid: 1,
+          creator: "我",
+          playnum: 0,
+          songnum: 123,
+          public: true,
+        },
+        {
+          slid: 10,
+          slname: "我的假日歌單",
+          image: "songPic.png",
+          memid: 1,
+          creator: "我",
+          playnum: 0,
+          songnum: 123,
+          public: true,
+        },
+      ],
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    gotosonglist() {
+      // this.$router.push("/singlesonglist");
+      this.$router.push({
+        name: "singlesonglist",
+        query: {
+          q: 1,
+        },
+      });
+    },
+  },
 };

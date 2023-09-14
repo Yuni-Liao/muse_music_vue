@@ -17,7 +17,8 @@ $default: map-get($theme-fonts, default_Text);
 $tag: map-get($theme-fonts, tag);
 // --------------------
 
-// 行高區
+// 行高區 --- 預設1.5倍
+$fh: 1.5;
 
 // --------------------
 

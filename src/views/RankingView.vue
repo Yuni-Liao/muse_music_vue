@@ -150,24 +150,26 @@
                 </div>
                 <div class="follow_icon">
                   <img @click="followed(item)" :src="item.followed ? require(`@/assets/image/icon/followed.svg`) : require(`@/assets/image/icon/unfollow.svg`)" alt="" />
-                  <!-- <bigPlayBtn/> -->
+      
                 </div>
+                
               </li>
             </ol>
           </div>
 
         </div>
-        <!-- <playbtn /> -->
+        
       </swiper-slide>
     </swiper>
   </div>
+  
+  <player/>
+  
 </template>
 
 <style scoped lang="scss">
 @import "~@/assets/scss/page/ranking.scss";
 </style>
-<script src="./js/RankingView.js"></script>
-<!-- <script setup   >
-  import playbtn from '~@/components\PlayBtnBig.vue'
-</script> -->
+<script src="./js/RankingView.js" ></script>
+
 

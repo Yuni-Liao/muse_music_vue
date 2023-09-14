@@ -25,13 +25,14 @@ export default {
                     shared: "39"
                 }
             ],
-            otherSongs: [
+            songs: [
                 {
                     id: 1,
                     albumPic: "othaersong1.png",
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
+                    showMoreBtn: false,
                 },
                 {
                     id: 2,
@@ -39,6 +40,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
+                    showMoreBtn: false,
                 },
                 {
                     id: 3,
@@ -46,6 +48,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
+                    showMoreBtn: false,
                 },
                 {
                     id: 4,
@@ -53,6 +56,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
+                    showMoreBtn: false,
                 },
                 {
                     id: 5,
@@ -60,8 +64,17 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
+                    showMoreBtn: false,
                 }
             ],
         };
+    },
+    methods: {
+        toggleMoreBtn(albumItem) {
+            albumItem.showMoreBtn = !albumItem.showMoreBtn;
+        },
+        closeMoreBtn(albumItem) {
+            albumItem.showMoreBtn = false;
+        }
     },
 };

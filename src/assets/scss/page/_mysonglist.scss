@@ -47,6 +47,9 @@
     .tab:hover {
       color: $blue;
     }
+    .tab.active {
+      color: $blue;
+    }
   }
   .line {
     height: 3px;
