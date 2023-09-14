@@ -4,13 +4,13 @@
     </div>
     <div class="language">
         <div class="space" v-for="(item, index) in languages" :key="index">
-            <img src="~@/assets/image/footer_background.jpg" alt="">
+            <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
                 <a :href="item.link">
                     {{ item.name }}
                 </a>
             </div>
-        </div>
+        </div>  
     </div>
 
     <div class="style">

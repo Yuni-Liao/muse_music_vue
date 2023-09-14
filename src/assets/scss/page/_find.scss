@@ -35,10 +35,13 @@ a:hover{
     border-left: 2px solid;
     border-right: 2px solid;
     position: relative;
+    overflow: hidden;
     img{
       position: absolute;
       display: none;
-      width: 100%;
+      width: 150%;
+      margin: 0 0 0 -50%;
+      transform: skewX(-45deg);
     }
     .txt{
       transform: skewX(-45deg);
