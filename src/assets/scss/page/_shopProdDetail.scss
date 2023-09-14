@@ -63,6 +63,32 @@
                     font-size: $default;
                     color: $pink;
                 }
+                .btnArea{
+                    display: flex;
+                    .prodCount {
+                        padding-bottom: 20px;
+                        display: flex;
+                        justify-content: center;
+                        width: 50px;
+                        align-content: center;
+                        margin: auto;
+
+                        .prodBtn {
+                            background: none;
+                            border: none;
+                            padding: 0 10px;
+                            cursor: pointer;
+
+                            img {
+                                vertical-align: middle;
+                            }
+
+                            p {
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

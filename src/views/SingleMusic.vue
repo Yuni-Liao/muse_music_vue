@@ -57,7 +57,7 @@
                             <img :src="require(`/public/image/SingleMusic/${songItem.albumPic}`)" alt="songItem.album">
                         </div>
                         <p>專輯</p>
-                        <a href="albumPage" class="albumName">{{ songItem.album }}</a>
+                        <a href="/singlealbum" class="albumName">{{ songItem.album }}</a>
                     </div>
                     <div class="date">
                         <p>發布時間</p>
