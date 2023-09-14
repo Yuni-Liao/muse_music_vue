@@ -38,31 +38,31 @@ export default {
                 {
                     id: 1,
                     name:'日語流行',
-                    imgUrl:123,
-                    link: '/findmusic'
+                    img:'japan50.png',
+                    link: '/findmusic',
                 },
                 {
                     id: 2,
                     name:'韓語流行',
-                    imgUrl:123,
+                    img:'japan50.png',
                     link: '/'
                 },
                 {
                     id: 3,
                     name:'華語流行',
-                    imgUrl:123,
+                    img:'japan50.png',
                     link: '/'
                 },
                 {
                     id: 4,
                     name:'西洋流行',
-                    imgUrl:123,
+                    img:'japan50.png',
                     link: '/'
                 },
                 {
                     id: 5,
                     name: '其他語言',
-                    imgUrl: 123,
+                    img:'japan50.png',
                     link: '/'
                 }
             ],
