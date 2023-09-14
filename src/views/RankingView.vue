@@ -5,9 +5,6 @@
       :slidesPerView="1"
       :spaceBetween="0"
       :mousewheel="true"
-      :pagination="{
-        clickable: true,
-      }"
       :modules="modules"
       class="mySwiper"
     >
