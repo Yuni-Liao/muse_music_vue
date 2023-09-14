@@ -74,7 +74,7 @@ library.add(
   faEllipsisVertical,
   faThumbsUp,
   faAngleDown,
-  faEllipsis
+  faEllipsis,
 );
 
 <i class="fa-brands "></i>;

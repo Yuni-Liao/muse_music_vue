@@ -59,7 +59,7 @@
                 @on-change="handlePageChange" @on-page-size-change="handlePageSize" />
         </div>
 
-        <pre>{{ sortProducts2 }}</pre>
+        <!-- <pre>{{ sortProducts2 }}</pre> -->
     </div>
 </template>
 
