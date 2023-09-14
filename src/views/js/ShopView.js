@@ -40,7 +40,8 @@ export default {
                     link: '#'
                 }
             ],
-            //商品
+
+            //商品：product.json
             products: [
                 {
                     id: 1,
@@ -243,8 +244,9 @@ export default {
                     link:"#",
                 }
             ],
+            // displayedProducts: [],   //接json檔
             currentPage: 1,
-            //劉宜靜 - 商品分類篩選
+            //劉宜靜 - 商品分類篩選(All)
             currentKind: "All",
             //劉宜靜 - 商品排序
             typeOptions: [
@@ -259,7 +261,6 @@ export default {
             selectedPageSize: 20,
         }
     },
-
     computed: {
         //劉宜靜 - 商品分類篩選(All)
         catList() {
@@ -295,6 +296,7 @@ export default {
     //郭凱芸 - 下拉數量選單:預設
     mounted() {
         this.handlePageSize(20)
+
     },
     methods: {
         // 郭凱芸 - 增加商品數量
@@ -315,7 +317,7 @@ export default {
             this.currentPage = page;
         },
         handlePageSize(page) {
-            console.log('handlePageSize', page)
+            // console.log('handlePageSize', page)
             this.selectedPageSize = page;
         },
     },

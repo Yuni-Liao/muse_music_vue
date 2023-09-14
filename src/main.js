@@ -82,6 +82,7 @@ library.add(
   faThumbsUp,
   faAngleDown,
   faEllipsis,
+<<<<<<< HEAD
   faCircleExclamation,
   faClock,
   faBackwardStep,
@@ -89,6 +90,8 @@ library.add(
   faStop,
   faStepForward,
   faXmark,
+=======
+>>>>>>> sang
 );
 
 const vueApp = createApp(App)
