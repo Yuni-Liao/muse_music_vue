@@ -6,17 +6,16 @@
     .cover-image {
       background-size: cover;
       background-position: bottom;
-
       width: 100%;
       height: 400px;
-      padding: 0 100px;
+      // padding: 0 100px;
       margin-bottom: 250px;
 
       //排版
       display: flex;
       flex-direction: row;
+      justify-content: center;
       align-items: flex-end;
-      justify-content: space-between;
       .profile-container {
         position: relative;
         bottom: -30%;
@@ -31,6 +30,7 @@
         }
       }
       .txt {
+        max-width: 55%;
         position: relative;
         bottom: -30%;
         .intro {
@@ -38,11 +38,17 @@
           padding: 30px;
           h1 {
             font-size: $big;
-            // line-height: 3;
+            line-height: 2.5;
             #FolBtnBig {
               margin-left: 30px;
-              // line-height: 1;
+              line-height: $fh;
               vertical-align: text-bottom;
+            }
+          }
+          .loc {
+            line-height: 3;
+            .i {
+              margin-right: 10px;
             }
           }
           p {
@@ -58,9 +64,10 @@
             span {
               color: $pink;
               font-size: $big;
+              line-height: 2;
             }
             h4 {
-              font-size: $small;
+              font-size: $default;
             }
           }
         }
