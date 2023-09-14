@@ -33,7 +33,7 @@
         <div class="inner">
             <div class="prod">
                 <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
-                    <a :href="item.link" class="prodPic">
+                    <a href="/shopproddetail" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </a>
                     <div class="prodTxt">

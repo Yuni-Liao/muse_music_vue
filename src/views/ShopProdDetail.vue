@@ -3,8 +3,8 @@
         <!-- 麵包屑 -->
         <Breadcrumb separator="/">
             <BreadcrumbItem><router-link to="/">首頁</router-link></BreadcrumbItem>
-            <BreadcrumbItem><router-link to="/">周邊商品</router-link></BreadcrumbItem>
-            <BreadcrumbItem>黑膠唱片</BreadcrumbItem>
+            <BreadcrumbItem><router-link to="/shop">周邊商品</router-link></BreadcrumbItem>
+            <BreadcrumbItem>商品詳情</BreadcrumbItem>
         </Breadcrumb>
         <!-- 商品介紹 -->
         <section class="inner">
@@ -18,12 +18,12 @@
                         <h2 class="prodName">Over Over(黑膠)</h2>
                     </div>
                     <div class="prodInf">
-                        商品條碼 4710149693495<br>
-                        商品編號 RLP139<br>
-                        音樂類型 黑膠唱片LP黑膠 專輯<br>
-                        發行公司 昆拾<br>
-                        發行日期 2022/12/2<br>
-                        內裝片數 1
+                        ● 商品編號 RLP139<br>
+                        ● 商品條碼 4710149693495<br>
+                        ● 音樂類型 黑膠唱片LP黑膠 專輯<br>
+                        ● 發行公司 昆拾<br>
+                        ● 發行日期 2022/12/2<br>
+                        ● 內裝片數 1
                     </div>
                     <p class="price">
                         售價 $990
@@ -52,13 +52,13 @@
                         男人的胸膛與女人的懷抱之間 這一片春天花會開...
                     </p>
                     <p class="list">
-                        原始母帶製作<br>
-                        德國Optimal刻片、壓片、140g<br>
-                        限量發行<br>
+                        ● 原始母帶製作<br>
+                        ● 德國Optimal刻片、壓片、140g<br>
+                        ● 限量發行<br>
                     </p>
                     <p>
                         此商品為預購特殊商品，除無法發行外，否則下訂單後一律「無法取消」或「更改」訂單。<br>
-                        如遇供貨量不足，將依訂購順序，強制取消訂單，請消費者確認之後再下訂單!敬請見諒!
+                        如遇供貨量不足，將依訂購順序，強制取消訂單，請消費者確認之後再下訂單!敬請見諒！
                     </p>
                 </div>
             </div>
