@@ -7,10 +7,10 @@
                 <router-link to="/">
                     <img class="logo_header" alt="Vue logo" src="~@/assets/image/muse_logo.png" />
                 </router-link>
-                <router-link to="/find">探索</router-link>
-                <router-link to="/ranking">排行榜</router-link>
-                <router-link to="/shop">周邊販售</router-link>
-                <router-link to="/activity">音樂快訊</router-link>
+                <router-link to="find">探索</router-link>
+                <router-link to="ranking">排行榜</router-link>
+                <router-link to="shop">周邊販售</router-link>
+                <router-link to="activity">音樂快訊</router-link>
             </div>
 
             <div class="header_nav_right">
@@ -38,16 +38,17 @@
 
                     <div class="user_dropdown">
                         <router-link to=""><img src="~@/assets/image/icon/clipboard.png" alt="" />訂單資訊</router-link><br />
-                        <router-link to=""><img src="~@/assets/image/icon/settingicon.png" alt="" />帳號設定</router-link><br />
-                        <router-link to="/profilepage"><img src="~@/assets/image/icon/personalPage.png"
+                        <router-link to="accsetting"><img src="~@/assets/image/icon/settingicon.png"
+                                alt="" />帳號設定</router-link><br />
+                        <router-link to="profilepage"><img src="~@/assets/image/icon/personalPage.png"
                                 alt="" />個人主頁</router-link><br />
-                        <router-link to="/profilepageedit"><img src="~@/assets/image/icon/development.png"
+                        <router-link to="profilepageedit"><img src="~@/assets/image/icon/development.png"
                                 alt="" />個人管理頁面</router-link><br />
                                 <router-link to="shoppingsteps"><img src="~@/assets/image/icon/development.png"
                                     alt="" />購物車流程</router-link><br />
                         <p>我的音樂庫</p>
                         <router-link to=""><img src="~@/assets/image/icon/clock.png" alt="" />播放紀錄</router-link><br />
-                        <router-link to="/mysonglist"><img src="~@/assets/image/icon/list.png"
+                        <router-link to="mysonglist"><img src="~@/assets/image/icon/list.png"
                                 alt="" />我的歌單</router-link><br />
                         <router-link to=""><img src="~@/assets/image/icon/heart.png" alt="" />我的最愛</router-link><br />
                         <router-link to=""><img src="~@/assets/image/icon/targeticon.png" alt="" />我的追蹤</router-link>
