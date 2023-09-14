@@ -31,68 +31,22 @@
     </div>
   </div>
 
-  <!--新歌推薦輪播 - 黃珮菁 -->
-  <section class="index_newMusic">
-    <h2>新歌推薦．New Rlease</h2>
-    <swiper
-      class="mySwiper"
-      :initialSlide="4"
-      :effect="'coverflow'"
-      :slideToClickedSlide="false"
-      :grabCursor="false"
-      :centeredSlides="true"
-      :slidesPerView="5"
-      :slidesPerGroup="1"
-      :coverflowEffect="{
-        rotate: 0,
-        stretch: 0,
-        depth: 0,
-        modifier: 1,
-        slideShadows: false,
-      }"
-      :pagination="{
-        clickable: true,
-      }"
-      :modules="modules"
-    >
-      <swiper-slide v-for="(item, index) in songs" :key="sid">
-        <div class="card">
-          <img
-            :src="require(`/public/image/index/${item.image}`)"
-            @click="playmusic()"
-          />
-          <div class="text" @click="gotosinglemusic()">
-            <h3>{{ item.title }}</h3>
-            <p>
-              {{ item.singer }}<span>播放量{{ item.views }}</span>
-            </p>
-          </div>
-        </div>
-      </swiper-slide>
-    </swiper>
-  </section>
-
   <!--本週熱門歌曲輪播 - 黃珮菁 -->
-  <section class="index_WeekTopusic">
+  <section class="index_WeekTopmusic">
     <h2>本週熱門歌曲．Popular Songs This Week</h2>
     <swiper
       class="mySwiper"
       :initialSlide="4"
-      :effect="'coverflow'"
+      :effect="slide"
       :slideToClickedSlide="false"
       :grabCursor="false"
       :centeredSlides="true"
       :slidesPerView="5"
       :slidesPerGroup="1"
-      :coverflowEffect="{
-        rotate: 0,
-        stretch: 0,
-        depth: 0,
-        modifier: 1,
-        slideShadows: false,
-      }"
-      :pagination="{
-        clickable: true,
+      :speed="0.001"
+      :autoplay="{
+        delay: 4000,
+        disableOnInteraction: false,
       }"
       :modules="modules"
     >
@@ -112,7 +66,6 @@
       </swiper-slide>
     </swiper>
   </section>
-
   <!-- 本週熱門專輯 -廖妍榛 -->
   <section class="index_WeekTopAlbum">
     <h2>本週熱門專輯．Popular Album This Week</h2>
