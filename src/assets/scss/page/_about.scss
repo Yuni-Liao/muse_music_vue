@@ -1,6 +1,74 @@
-*{
-    background-color: green;
-    
+.bannertext{
+    font-size: $superBig;
+    font-weight: bold;
+    letter-spacing: 4.8px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(180deg, #5D5DDB 50.54%, rgba(116, 235, 213, 0.00) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: $tp;
 }
 
-//測試用,這裡的內容都可以刪除
+.summary{
+    font-size: $default;
+    font-weight: bold;
+    color: $white;
+    text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+    letter-spacing: 1.8px;
+}
+
+h2{
+    font-size: $big;
+    font-weight: bold;
+    color: $white;
+    letter-spacing: 3.2px;
+}
+
+.slide{
+    display: flex;
+}
+
+.faq{
+    width: 80%;
+    margin: auto;
+}
+
+.question{
+    width: 100%;
+    font-size: $small;
+    color: $dark;
+    background-color: $green;
+    display: flex;
+}
+
+.answer {
+    width: 100%;
+    font-size: $default;
+    color: $white;
+    letter-spacing: 1.8px;
+    white-space: pre-line;
+    display: flex;
+}
+
+.faqtitle{
+    margin: auto 5%;
+    // box-sizing: border-box;
+    padding: 5px 0;
+}
+
+.faqcontent{
+    width: 80%;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+form>*{
+    display: block;
+    margin: auto;
+}
+
+textarea {
+    resize: none;
+  }
+
+

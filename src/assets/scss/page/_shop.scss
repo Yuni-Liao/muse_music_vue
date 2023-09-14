@@ -166,14 +166,14 @@ select {
 
 .shopcart {
     position: fixed;
-    bottom: 50%;
-    right: 2%;
+    bottom: 5%;
+    right: 1%;
     @include btnBgNone;
 
     img {
         vertical-align: top;
         background-color: $tp;
-        width: 80%;
+        width: 70%;
     }
 }
 
