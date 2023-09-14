@@ -38,27 +38,17 @@
     <div class="hot_singer">
         <h2>熱門創作者．Hot Creator</h2>
         <section class="index_newMusic">
-            <swiper class="mySwiper" 
-            :loop="true"
-            :loopedSlides="3"
-            :initialSlide="4" 
-            :slideToClickedSlide="false" 
-            :grabCursor="false"
-            :centeredSlides="true" 
-            :slidesPerView="5" 
-            :slidesPerGroup="1" 
-            :effect="'coverflow'" 
-            :coverflowEffect="{
-                rotate: 0,
-                stretch: -150,
-                depth: 300,
-                modifier: 2.5,
-                slideShadows: false,
-            }" 
-            :pagination="{
-                clickable: true,
-            }"      
-            :modules="modules">
+            <swiper class="mySwiper" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
+                :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
+                :coverflowEffect="{
+                    rotate: 0,
+                    stretch: -150,
+                    depth: 300,
+                    modifier: 2.5,
+                    slideShadows: false,
+                }" :pagination="{
+    clickable: true,
+}" :modules="modules">
                 <swiper-slide v-for="(item, index) in singers" :key="sid">
                     <a :href="item.slink">
                         <div class="card">
@@ -76,27 +66,17 @@
     <div class="new_release">
         <h2>新歌推薦．New Release</h2>
         <section class="index_newMusic">
-            <swiper class="mySwiper" 
-            :loop="true"
-            :loopedSlides="3"
-            :initialSlide="4" 
-            :slideToClickedSlide="false" 
-            :grabCursor="false"
-            :centeredSlides="true" 
-            :slidesPerView="5" 
-            :slidesPerGroup="1" 
-            :effect="'coverflow'" 
-            :coverflowEffect="{
-                rotate: 0,
-                stretch: -150,
-                depth: 300,
-                modifier: 2.5,
-                slideShadows: false,
-            }" 
-            :pagination="{
-                clickable: true,
-            }"      
-            :modules="modules">
+            <swiper class="mySwiper" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
+                :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
+                :coverflowEffect="{
+                    rotate: 0,
+                    stretch: -150,
+                    depth: 300,
+                    modifier: 2.5,
+                    slideShadows: false,
+                }" :pagination="{
+    clickable: true,
+}" :modules="modules">
                 <swiper-slide v-for="(item, index) in singers" :key="sid">
                     <div class="card">
                         <div class="image">
@@ -106,8 +86,8 @@
                         <div class="text" @click="gotosinglemusic()">
                             <h3>{{ item.title }}</h3>
                             <p>
-                            {{ item.singer }}
-                            <span>播放量{{ item.views }}</span>
+                                {{ item.singer }}
+                                <span>播放量{{ item.views }}</span>
                             </p>
                         </div>
                     </div>
