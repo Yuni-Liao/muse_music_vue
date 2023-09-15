@@ -7,37 +7,31 @@ export default {
                     id: 1,
                     label: '所有商品',
                     kind: 'All',
-                    link: '#'
                 },
                 {
                     id: 2,
                     label: '黑膠唱片',
                     kind: '黑膠唱片',
-                    link: '#'
                 },
                 {
                     id: 3,
                     label: '錄音帶',
                     kind: '錄音帶',
-                    link: '#'
                 },
                 {
                     id: 4,
                     label: '男藝人',
                     kind: '男藝人',
-                    link: '#'
                 },
                 {
                     id: 5,
                     label: '女藝人',
                     kind: '女藝人',
-                    link: '#'
                 },
                 {
                     id: 6,
                     label: '樂團團體',
                     kind: '樂團團體',
-                    link: '#'
                 }
             ],
 

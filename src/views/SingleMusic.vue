@@ -46,19 +46,19 @@
             </div>
             <div class="mainInf" v-for="(songItem, songIndex) in songs" :key="songIndex">
                 <div class="singerInf">
-                    <a href="/profilepage" class="singer">
+                    <router-link to="/profilepage" class="singer">
                         <div class="singerPic">
                             <img :src="require(`/public/image/SingleMusic/${songItem.singerPic}`)" alt="songItem.singer">
                         </div>
                         <p class="singerName">{{ songItem.singer }}</p>
-                    </a>
-                    <a href="/singlealbum" class="album">
+                    </router-link>
+                    <router-link to="/singlealbum" class="album">
                         <div class="albumPic">
                             <img :src="require(`/public/image/SingleMusic/${songItem.albumPic}`)" alt="songItem.album">
                         </div>
                         <p>專輯</p>
                         <p class="albumName">{{ songItem.album }}</p>
-                    </a>
+                    </router-link>
                     <div class="date">
                         <p>發布時間</p>
                         <p class="releasDate">{{ songItem.date }}</p>
