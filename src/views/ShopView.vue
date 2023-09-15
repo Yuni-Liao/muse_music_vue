@@ -23,7 +23,8 @@
             <!-- 分類篩選 -->
             <ul>
                 <li v-for="item in items" :key="item.id">
-                    <p class="chooseType" @click="currentKind = item.kind" :class="{ '--active': currentKind === item.kind }">{{ item.label }}
+                    <p class="chooseType" @click="currentKind = item.kind"
+                        :class="{ '--active': currentKind === item.kind }">{{ item.label }}
                     </p>
                 </li>
             </ul>
