@@ -106,8 +106,11 @@ export default {
                     name: "Bed",
                 }
             ],
-            showAllMessages: true,
-            showAllSongs: true,
+            // showAllMessages: true,
+            // showAllSongs: true,
+            isShow:true,
+            num:3,
+            txt:'查看更多',
         };
     },
     created() {
@@ -121,8 +124,15 @@ export default {
     },
 
     methods: {
-        toggleMessages() {
-            this.showAllMessages = !this.showAllMessages;
+        // toggleMessages() {
+        //     this.showAllMessages = !this.showAllMessages;
+        // },
+        showMore(){
+            console.log('1',this.isShow);
+            this.isShow=!this.isShow;
+            console.log('2',this.isShow);
+            this.num=this.isShow? 3:this.messages.length;
+            this.txt=this.isShow? '查看更多':'收起留言'
         },
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;

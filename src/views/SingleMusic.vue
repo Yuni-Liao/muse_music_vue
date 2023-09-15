@@ -89,8 +89,7 @@
                                     <fontAwesome :icon="['fa', 'paper-plane']" style="color:#74EBD5;" size="2xl" />
                                 </button>
                             </div>
-                            <div class="message" v-for="(messageItem, messageIndex) in messages" :key="messageIndex"
-                                v-if="showAllMessages || messageIndex < 3 || messages.length <= 3">
+                            <div class="message" v-for="(messageItem, messageIndex) in messages.slice(0, num)" :key="messageIndex">
                                 <div class="infBar">
                                     <div class="user">
                                         <div class="pic">
@@ -116,15 +115,15 @@
                                 </div>
                             </div>
 
-                            <a href="#" class="readMore" @click="toggleMessages">
-                                {{ showAllMessages ? '收起' : '查看更多' }}
+                            <a href="#" class="readMore" @click="showMore">
+                                {{ txt }}
                                 <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
                             </a>
                         </div>
                     </div>
                     <div class="otherSong">
                         <h3>專輯其他歌曲</h3>
-                        <div class="song" v-for="(item, index) in otherSongs" :key="index" v-if="showAllSongs || index < 3">
+                        <div class="song" v-for="(item, index) in otherSongs.slice(0, num)" :key="index">
                             <div class="list">
                                 <div class="number">{{ item.id }}</div>
 
@@ -141,8 +140,7 @@
                                 <AddFavBtn></AddFavBtn>
                             </div>
                         </div>
-                        <a href="#" class="readMore" @click="toggleMessages">
-                            {{ showAllMessages ? '收起' : '查看更多' }}
+                        <a href="#" class="readMore" @click="showMore">
                             <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
                         </a>
                     </div>
