@@ -20,6 +20,7 @@
                 padding: 0% 15%;
                 cursor: pointer;
             }
+            
             li::before{
                 content:'';
                 border-left: 5px solid $tp;
@@ -30,8 +31,19 @@
                 transition: .5s;
                 border-left-color: $green;
             }
+
+            li.active{
+                color: $green;
+            }
+            li.active::before{
+                content:'';
+                color: $green;
+                border-color: $green;
+                border-left: 5px solid $green;            
+            }
         }
     }
+
     .acc_editprofile{
         padding: 2.5% 0 2.5% 2.5%;
         text-align: left;
@@ -44,6 +56,7 @@
         .acc_box{
             @include rect(340px, fit);
             padding: 0% 5% 5% 0%;
+            font-size: $default;
             .acc_item{
                 margin-top: 10%;
                 input{
@@ -59,7 +72,13 @@
                     margin-left: 5%;
                     width: 203px;
                 }
+                span{
+                    @include mini_Tag($tag);
+                    display: inline-block;
+                }
             }
+        }
+
         //所有input加上邊框線
         .name_box, .mail_box, .bth_box, .nation_box, .city{
             border: 2px solid $green;
@@ -72,5 +91,47 @@
         margin-top: 10%;
         display: flex;
         justify-content: center;
+    }
+    .acc_btn{
+        @include rect(100%, fit);
+        margin-top: 35%;
+            display: flex;
+            justify-content: center;
+    }
+    // 帳號安全驗證
+    .acc_safe_wrap{
+        padding: 2.5%;
+        text-align: left;
+        color: $green;
+        background-image: linear-gradient($dark,#333,#111 90%);
+        h1{
+            font-size: $big;
+            color: $white;
+        }
+        .acc_safe_box{
+            @include rect(700px, fit);
+            padding: 0% 5%;
+            font-size: $default;
+            .acc_safe_item{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6%;
+            border-bottom: 2px solid #d9d9d9;
+            .txt{
+                display: flex;
+                flex-flow: column wrap;
+            span{
+                @include mini_Tag($tag);
+                }
+            }
+            p{
+                color: $white;
+            }
+            button{
+                @include rect(fit, fit);
+                align-self: center;
+            }
+        }
     }
 }

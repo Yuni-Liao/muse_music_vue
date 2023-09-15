@@ -71,7 +71,7 @@
 //周邊販售 加入購物車按鈕
 .btn_Shop_Border {
   @include rect(130px, 36px);
-  @include btnColor($green, false);
+  @include btnColor($green, false, true);
   font-size: $tag;
   padding: 10px;
   line-height: $tag/2;

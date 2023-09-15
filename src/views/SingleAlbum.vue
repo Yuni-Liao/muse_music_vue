@@ -38,12 +38,12 @@
             </div>
             <div class="mainInf" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
                 <div class="singerInf">
-                    <div class="singer">
+                    <a href="/profilepage" class="singer">
                         <div class="singerPic">
                             <img :src="require(`/public/image/SingleMusic/${albumItem.singerPic}`)" alt="albumItem.singer">
                         </div>
-                        <a href="singerPage" class="singerName">{{ albumItem.singer }}</a>
-                    </div>
+                        <p class="singerName">{{ albumItem.singer }}</p>
+                    </a>
                     <div class="date">
                         <p>發布時間</p>
                         <p class="releasDate">{{ albumItem.date }}</p>
@@ -69,11 +69,11 @@
                                 <tr v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
                                     <td class="id">{{ albumItem.id }}</td>
                                     <td class="pic">
-                                        <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
-                                            alt="albumItem.name">
+                                        <a href="/singlemusic"> <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
+                                                alt="albumItem.name"></a>
                                     </td>
-                                    <td class="name"><a href="">{{ albumItem.name }}</a></td>
-                                    <td class="singer"><a href="">{{ albumItem.singer }}</a></td>
+                                    <td class="name"><a href="/singlemusic">{{ albumItem.name }}</a></td>
+                                    <td class="singer"><a href="/profilepage">{{ albumItem.singer }}</a></td>
                                     <td class="time">{{ albumItem.time }}</td>
                                     <td class="btnArea">
                                         <AddFavBtn></AddFavBtn>
@@ -85,7 +85,7 @@
                                             <button class="close" @click="closeMoreBtn(albumItem)">
                                                 <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
                                             </button>
-                                            <a href="#" >
+                                            <a href="#">
                                                 <img src="../../public/image/icon/share.png">
                                                 <p>分享</p>
                                             </a>
