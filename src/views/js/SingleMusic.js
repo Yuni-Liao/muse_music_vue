@@ -135,6 +135,7 @@ export default {
             // showAllMessages: true,
             // showAllSongs: true,
             isShow: true,
+            isShowSong: true,
             num: 3,
             txt: '查看更多',
         };
@@ -150,13 +151,20 @@ export default {
     },
 
     methods: {
-        // 預設只顯示前三筆留言 與 其他歌曲
+        // 預設只顯示前三筆留言
         showMore() {
             console.log('1', this.isShow);
             this.isShow = !this.isShow;
             console.log('2', this.isShow);
             this.num = this.isShow ? 3 : this.messages.length;
             this.txt = this.isShow ? '查看更多' : '收起留言'
+        },
+        // 預設只顯示前三首歌曲
+        showMoreSong() {
+            console.log('1', this.isShowSong);
+            this.isShowSong = !this.isShowSong;
+            console.log('2', this.isShowSong);
+            this.num = this.isShowSong ? 3 : this.otherSongs.length;
         },
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;
@@ -169,19 +177,19 @@ export default {
             console.log(messageItem)
             messageItem.showReportBtn = false
         },
-        handleGlobalClick(event) {
-            // 檢查是否是點在按鈕外的地方
-            const buttonElement = document.querySelectorAll(".more");
-            const btnElList = buttonElement.length ? Array.from(buttonElement) : []
-            if (btnElList.includes(event.target)) {
-                // 關閉打開的按鈕
-                this.messages.forEach((message) => {
-                    if (message.showReportBtn) {
-                        message.showReportBtn = false;
-                    }
-                });
+        // handleGlobalClick(event) {
+        //     // 檢查是否是點在按鈕外的地方
+        //     const buttonElement = document.querySelectorAll(".more");
+        //     const btnElList = buttonElement.length ? Array.from(buttonElement) : []
+        //     if (btnElList.includes(event.target)) {
+        //         // 關閉打開的按鈕
+        //         this.messages.forEach((message) => {
+        //             if (message.showReportBtn) {
+        //                 message.showReportBtn = false;
+        //             }
+        //         });
 
-            }
-        },
+        //     }
+        // },
     },
 };
