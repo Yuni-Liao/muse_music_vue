@@ -108,31 +108,29 @@ export default {
             ],
             // showAllMessages: true,
             // showAllSongs: true,
-            isShow:true,
-            num:3,
-            txt:'查看更多',
+            isShow: true,
+            num: 3,
+            txt: '查看更多',
         };
     },
     created() {
-        // 全局監聽事件
+        // 全局監聽點擊事件
         window.addEventListener("click", this.handleGlobalClick);
     },
 
     beforeDestroy() {
-        // 監聽
+        // 監聽點擊事件
         window.removeEventListener("click", this.handleGlobalClick);
     },
 
     methods: {
-        // toggleMessages() {
-        //     this.showAllMessages = !this.showAllMessages;
-        // },
-        showMore(){
-            console.log('1',this.isShow);
-            this.isShow=!this.isShow;
-            console.log('2',this.isShow);
-            this.num=this.isShow? 3:this.messages.length;
-            this.txt=this.isShow? '查看更多':'收起留言'
+        // 預設只顯示前三筆留言 與 其他歌曲
+        showMore() {
+            console.log('1', this.isShow);
+            this.isShow = !this.isShow;
+            console.log('2', this.isShow);
+            this.num = this.isShow ? 3 : this.messages.length;
+            this.txt = this.isShow ? '查看更多' : '收起留言'
         },
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;
