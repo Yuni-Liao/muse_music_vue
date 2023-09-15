@@ -80,7 +80,7 @@
                 :pagination="{
                     clickable: true,
                 }" :modules="modules">
-                <swiper-slide v-for="(item, index) in singers" :key="sid">
+                <swiper-slide v-for="(item, sid) in singers" :key="sid">
                     <div class="n_card">
                         <div class="image">
                             <PlayBtnBig class="play_btn"></PlayBtnBig>

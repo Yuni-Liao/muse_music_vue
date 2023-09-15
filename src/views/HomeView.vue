@@ -50,7 +50,7 @@
       }"
       :modules="modules"
     >
-      <swiper-slide v-for="(item, index) in songs" :key="sid">
+      <swiper-slide v-for="(item, sid) in songs" :key="sid">
         <div class="card">
           <img
             :src="require(`/public/image/index/${item.image}`)"
