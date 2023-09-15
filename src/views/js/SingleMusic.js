@@ -40,7 +40,7 @@ export default {
                     date: "2023-08-23",
                     message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.",
                     like: "12",
-                    showReportBtn: false
+                    showReportBtn: false,
                 },
                 {
                     id: 2,
@@ -49,7 +49,7 @@ export default {
                     date: "2023-06-23",
                     message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem .",
                     like: "24",
-                    showReportBtn: false
+                    showReportBtn: false,
                 },
                 {
                     id: 3,
@@ -58,7 +58,7 @@ export default {
                     date: "2023-04-23",
                     message: "dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ",
                     like: "33",
-                    showReportBtn: false
+                    showReportBtn: false,
                 },
                 {
                     id: 4,
@@ -67,7 +67,7 @@ export default {
                     date: "2023-07-23",
                     message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                     like: "666",
-                    showReportBtn: false
+                    showReportBtn: false,
                 },
                 {
                     id: 5,
@@ -76,7 +76,7 @@ export default {
                     date: "2023-05-23",
                     message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore.",
                     like: "999",
-                    showReportBtn: false
+                    showReportBtn: false,
                 }
             ],
             otherSongs: [
@@ -108,9 +108,18 @@ export default {
             ],
             showAllMessages: true,
             showAllSongs: true,
-            showReportBtn: false,
         };
     },
+    created() {
+        // 全局監聽事件
+        window.addEventListener("click", this.handleGlobalClick);
+    },
+
+    beforeDestroy() {
+        // 監聽
+        window.removeEventListener("click", this.handleGlobalClick);
+    },
+
     methods: {
         toggleMessages() {
             this.showAllMessages = !this.showAllMessages;
@@ -119,7 +128,20 @@ export default {
             this.showAllSongs = !this.showAllSongs;
         },
         toggleReportBtn(messageItem) {
+            // 切換按鈕模式
             messageItem.showReportBtn = !messageItem.showReportBtn;
+        },
+        handleGlobalClick(event) {
+            // 檢查是否是點在按鈕外的地方
+            const buttonElement = document.querySelector(".more");
+            if (buttonElement && !buttonElement.contains(event.target)) {
+                // 關閉打開的按鈕
+                this.messages.forEach((message) => {
+                    if (message.showReportBtn) {
+                        message.showReportBtn = false;
+                    }
+                });
+            }
         },
     },
 };

@@ -106,7 +106,6 @@
                                         </button>
                                         <ReportBtn v-if="messageItem.showReportBtn"></ReportBtn>
                                     </p>
-
                                 </div>
                                 <p class="txt">
                                     {{ messageItem.message }}
@@ -142,7 +141,8 @@
                                 <AddFavBtn></AddFavBtn>
                             </div>
                         </div>
-                        <a href="#" class="readMore" @click="toggleSongs">
+                        <a href="#" class="readMore" @click="toggleMessages">
+                            {{ showAllMessages ? '收起' : '查看更多' }}
                             <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
                         </a>
                     </div>
