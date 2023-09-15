@@ -101,10 +101,13 @@
                                     </div>
                                     <p class="date">
                                         {{ messageItem.date }}
+                                    <div tabindex="0" class="more-group">
                                         <button class="more" v-click-outside="closeReportBtn(messageItem)">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
                                         </button>
                                         <ReportBtn class="report-btn"></ReportBtn>
+
+                                    </div>
                                     </p>
                                 </div>
                                 <p class="txt">
@@ -124,7 +127,7 @@
                     </div>
                     <div class="otherSong">
                         <h3>專輯其他歌曲</h3>
-                        <div class="song" v-for="(item, index) in otherSongs.slice(0, num)" :key="index">
+                        <div class="song" v-for="(item, index) in otherSongs.slice(0, num2)" :key="index">
                             <div class="list">
                                 <div class="number">{{ item.id }}</div>
 
@@ -142,9 +145,9 @@
                             </div>
                         </div>
                         <button class="readMore" @click.prevent="showMoreSong">
-                                <fontAwesome v-if="isShowSong" :icon="['fa', 'angle-down']" style="color:#fff;" />
-                                <fontAwesome v-else :icon="['fa', 'angle-up']" style="color:#fff;" />
-                            </button>
+                            <fontAwesome v-if="isShowSong" :icon="['fa', 'angle-down']" style="color:#fff;" />
+                            <fontAwesome v-else :icon="['fa', 'angle-up']" style="color:#fff;" />
+                        </button>
                     </div>
                 </div>
             </div>

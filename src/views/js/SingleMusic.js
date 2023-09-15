@@ -137,6 +137,7 @@ export default {
             isShow: true,
             isShowSong: true,
             num: 3,
+            num2: 3,
             txt: '查看更多',
         };
     },
@@ -164,7 +165,7 @@ export default {
             console.log('1', this.isShowSong);
             this.isShowSong = !this.isShowSong;
             console.log('2', this.isShowSong);
-            this.num = this.isShowSong ? 3 : this.otherSongs.length;
+            this.num2 = this.isShowSong ? 3 : this.otherSongs.length;
         },
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;
