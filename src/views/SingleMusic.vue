@@ -144,6 +144,7 @@
                             </div>
                         </div>
                         <button class="readMore" @click.prevent="showMoreSong">
+                            {{ txt2 }}
                             <fontAwesome v-if="isShowSong" :icon="['fa', 'angle-down']" style="color:#fff;" />
                             <fontAwesome v-else :icon="['fa', 'angle-up']" style="color:#fff;" />
                         </button>
