@@ -117,8 +117,8 @@
                             </div>
                             <button class="readMore" @click.prevent="showMore">
                                 {{ txt }}
-                                <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
-                                <fontAwesome :icon="['fa', 'angle-up']" style="color:#fff;" />
+                                <fontAwesome v-if="isShow" :icon="['fa', 'angle-down']" style="color:#fff;" />
+                                <fontAwesome v-else :icon="['fa', 'angle-up']" style="color:#fff;" />
                             </button>
                         </div>
                     </div>
@@ -141,9 +141,10 @@
                                 <AddFavBtn></AddFavBtn>
                             </div>
                         </div>
-                        <button class="readMore" @click.prevent="showMore">
-                            <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
-                        </button>
+                        <button class="readMore" @click.prevent="showMoreSong">
+                                <fontAwesome v-if="isShowSong" :icon="['fa', 'angle-down']" style="color:#fff;" />
+                                <fontAwesome v-else :icon="['fa', 'angle-up']" style="color:#fff;" />
+                            </button>
                     </div>
                 </div>
             </div>
