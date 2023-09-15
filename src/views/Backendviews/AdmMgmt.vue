@@ -1,10 +1,17 @@
 <template>
-    <div class="admin_mgmt">
-        <h1>這是管理員管理頁面</h1>
-        <!-- 此處為測試文字,可以改掉重新編輯 -->
-        <!-- 若要檢查頁面,請在網址列末端 將路徑改為輸入 /backend/admmgmt -->
+    <div class="admin_table_box">
+        <h1>管理員管理</h1>
+        <Table size="large" highlight-row stripe class="admin_table" width="1200" height="550" :columns="columns"
+            :data="data">
+            <template #deleteBtn="{ row }">
+                <Button @click="deleteBtn()">刪除</Button>
+            </template>
+        </Table>
+        <button @click="createAdmin()" class="admin_add obj_Radius default_Btn btn_S_NoBorder">新增</button>
     </div>
 </template>
+<!-- 刪除按鈕功能要寫,, 新增管理員按鈕也要調整-->
+
 
 
 <style scoped lang="scss">
