@@ -40,9 +40,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    .wave{
-        transform: rotate(-25deg);
-      }
     .whatson{
         display: flex;
         align-items: center;
@@ -66,4 +63,9 @@
             margin: 10px;
         }
     }
+  }
+  .wave{
+    transform: rotate(-25deg);
+    position: absolute;
+    float: left;
   }
