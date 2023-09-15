@@ -326,11 +326,12 @@
                     .readMore {
                         @include btnBgNone;
                         color: $white;
-                        justify-content: end;
+                        //justify-content: end;
                         align-items: center;
                         gap: 10px;
-                        display: flex;
+                        // display: flex;
                         margin: 25px 0 0px;
+                        margin-left: 0;
                     }
 
                 }
@@ -399,7 +400,8 @@
                     align-items: center;
                     gap: 10px;
                     display: flex;
-                    margin: 0px 0 50px;
+                    //margin: 0px 0 50px;
+                    margin: auto;
                 }
             }
         }
