@@ -15,7 +15,64 @@
             </div>
         </div>
     </div>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci dignissimos quasi pariatur! Libero vel doloremque laboriosam modi perferendis asperiores adipisci quos provident id soluta consequatur aliquam sed, iure explicabo ducimus voluptas commodi animi aspernatur architecto accusantium! Ullam architecto libero ab ratione nisi quae, enim tempora facere voluptatibus quia rem, et ut quibusdam maiores eum molestiae accusantium deserunt. Laborum tempora sint quisquam dicta magnam laboriosam voluptate molestiae ratione nostrum ipsum perspiciatis nihil rem, eius soluta nulla nisi aut! Possimus minus pariatur enim assumenda libero quae fugit harum sed eos, distinctio nam ipsum quam voluptate at sit doloribus recusandae saepe earum commodi. Maiores hic, officiis aliquid est exercitationem minus nisi. Voluptas tempore soluta esse recusandae iusto magni ipsum aut corrupti accusamus eos, atque expedita officiis inventore, sed natus, fugiat molestias. Exercitationem eius maxime delectus consequatur, vel possimus dolorum, ut deserunt mollitia commodi illo aliquid pariatur. Delectus excepturi, maxime qui hic tempore ut molestiae illo repellat vitae similique repudiandae consequatur mollitia rerum ad earum aut magnam dolorem quidem incidunt eaque. Error adipisci impedit labore, aliquid tempora magnam amet. Ducimus iste blanditiis omnis iusto illo nesciunt est doloribus saepe ad explicabo accusantium, dolorum odit molestias repellendus itaque adipisci consequuntur et voluptates similique esse nisi.
+
+    <div class="detail">
+        <div class="playList">
+            <table class="musicTable">
+                <thead>
+                    <tr class="playListHeader">
+                        <th></th>
+                        <th></th>
+                        <th>歌曲名稱</th>
+                        <th>創作者</th>
+                        <th>時長</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
+                        <td class="id">{{ albumItem.id }}</td>
+                        <td class="pic">
+                            <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
+                                alt="albumItem.name">
+                        </td>
+                        <td class="name"><a href="">{{ albumItem.name }}</a></td>
+                        <td class="singer"><a href="">{{ albumItem.singer }}</a></td>
+                        <td class="time">{{ albumItem.time }}</td>
+                        <td class="btnArea">
+                            <AddFavBtn></AddFavBtn>
+                            <AddSlBtn></AddSlBtn>
+                            <button class="moreBtn" @click="toggleMoreBtn(albumItem)">
+                                <fontAwesome :icon="['fa', 'ellipsis']" style="color:#AAAAAA;" />
+                            </button>
+                            <div class="moreBtnAlert" v-if="albumItem.showMoreBtn">
+                                <button class="close" @click="closeMoreBtn(albumItem)">
+                                    <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
+                                </button>
+                                <a href="#" >
+                                    <img src="../../public/image/icon/share.png">
+                                    <p>分享</p>
+                                </a>
+                                <a href="#" class="addFav">
+                                    <img src="../../public/image/icon/addFav.png">
+                                    <p>加入我的最愛</p>
+                                </a>
+                                <a href="#" class="addSl">
+                                    <img src="../../public/image/icon/addSl.png">
+                                    <p>加入歌單</p>
+                                </a>
+                                <a href="#" class="readSong">
+                                    <img src="../../public/image/icon/eyeopen.png" alt="" class="eyeopen">
+                                    <p>檢視歌曲</p>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
     
 </template>

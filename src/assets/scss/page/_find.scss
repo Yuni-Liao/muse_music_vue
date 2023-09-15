@@ -157,6 +157,7 @@ a:hover{
             justify-content: center;
             align-items: center;
             #PlayBtnBig {
+              @include btnColor($purple, $border: true, $hover: true);
               position: absolute;
             }
             img {

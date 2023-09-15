@@ -6,9 +6,9 @@
         <div class="space" v-for="(item, index) in languages" :key="index">
             <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
-                <a :href="item.link">
+                <router-link :to="item.link" >
                     {{ item.name }}
-                </a>
+                </router-link>
             </div>
         </div>
     </div>
@@ -17,9 +17,9 @@
         <div class="space" v-for="(item, index) in styles" :key="index">
             <img src="~@/assets/image/footer_background.jpg" alt="">
             <div class="txt">
-                <a :href="item.link">
+                <router-link :to="item.link" >
                     {{ item.name }}
-                </a>
+                </router-link>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="hot_singer">
+    <div class="hot_singer" >
         <h2>熱門創作者．Hot Creator</h2>
         <section class="index_newMusic">
             <swiper class="mySwiper" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"

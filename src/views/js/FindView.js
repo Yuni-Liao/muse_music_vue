@@ -39,25 +39,25 @@ export default {
                     id: 1,
                     name:'日語流行',
                     img:'japan50.png',
-                    link: '/findmusic',
+                    link: 'findmusic',
                 },
                 {
                     id: 2,
                     name:'韓語流行',
                     img:'japan50.png',
-                    link: '/findmusic',
+                    link: 'findmusic',
                 },
                 {
                     id: 3,
                     name:'華語流行',
                     img:'japan50.png',
-                    link: '/findmusic',
+                    link: 'findmusic',
                 },
                 {
                     id: 4,
                     name:'西洋流行',
                     img:'japan50.png',
-                    link: '/findmusic',
+                    link: 'findmusic',
                 },
                 {
                     id: 5,
@@ -237,7 +237,7 @@ export default {
                     singer: "桌子樂團",
                     views: 0,
                 }
-            ]
+            ],
         }
     },
     methods: {
