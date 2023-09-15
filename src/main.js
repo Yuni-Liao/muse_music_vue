@@ -48,6 +48,8 @@ import {
   faStepForward,
   faXmark,
   faCopy,
+  faChevronLeft,
+  faChevronRight,
   faAngleUp,
 
 } from "@fortawesome/free-solid-svg-icons";
@@ -95,7 +97,8 @@ library.add(
   faPenToSquare,
   faCircleCheck,
   faCircleXmark,
-  faAngleUp
+  faChevronLeft,
+  faChevronRight
 );
 
 
