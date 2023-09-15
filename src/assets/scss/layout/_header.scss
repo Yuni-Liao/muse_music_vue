@@ -106,7 +106,8 @@ header {
             position: absolute;
             right: 30px;
             width: 200px;
-            height: 400px;
+            // height: 400px;
+            height: fit-content;
             border-radius: 10px;
             background-color: #000000;
             box-shadow: 1px 1px 5px $white;

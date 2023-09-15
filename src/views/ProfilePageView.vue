@@ -89,9 +89,9 @@
         </button>
       </div>
       <div class="line"></div>
-      <section v-if="tabtype === 0" class="activity">activity</section>
-      <section v-else-if="tabtype === 1" class="music">music</section>
-      <section v-else-if="tabtype === 2" class="songlist">
+      <section v-show="tabtype === 0" class="activity">activity</section>
+      <section v-show="tabtype === 1" class="music">music</section>
+      <section v-show="tabtype === 2" class="songlist">
         <section class="container">
           <!-- 判斷是否有data -->
           <div class="nodata" v-if="songlists.length === 0">
