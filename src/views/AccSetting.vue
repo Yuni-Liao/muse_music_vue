@@ -1,14 +1,18 @@
+<!-- 帳號設定 --廖妍榛 -->
 <template>
     <main class="acc_setting">
-        <div class="acc_sidebar">
+        <nav class="acc_sidebar">
             <ul class="obj_Radius">
-                <li>編輯個人檔案</li>
-                <li>帳號資訊</li>
-                <li>帳號安全驗證</li>
-                <li>更改密碼</li>
+                <li @click="setCurrentTab('showMe')" :class="{ active: currentTabType === 'showMe' }">
+                    編輯個人檔案</li>
+                <li @click="setCurrentTab('showMyAcc')" :class="{ active: currentTabType === 'showMyAcc' }">帳號資訊</li>
+                <li @click="setCurrentTab('showAccSafe')" :class="{ active: currentTabType === 'showAccSafe' }">帳號安全驗證</li>
+                <li @click="setCurrentTab('showChangePsw')" :class="{ active: currentTabType === 'showChangePsw' }">更改密碼
+                </li>
             </ul>
-        </div>
-        <div class="acc_editprofile obj_Radius">
+        </nav>
+        <!-- 編輯個人檔案 -->
+        <div v-if="currentTab == 'showMe'" class=" acc_editprofile obj_Radius">
             <h1>編輯個人檔案</h1>
             <div class="acc_box">
                 <div class="acc_name acc_item">
@@ -28,34 +32,82 @@
                         <p>國家或地區</p>
                         <input class="nation_box obj_Radius" type="text" readonly placeholder="臺灣">
                         <select class="city obj_Radius" id="city">
-                            <option value="台北市">台北市</option>
-                            <option value="新北市">新北市</option>
-                            <option value="基隆市">基隆市</option>
-                            <option value="桃園市">桃園市</option>
-                            <option value="新竹市">新竹市</option>
-                            <option value="新竹縣">新竹縣</option>
-                            <option value="苗栗縣">苗栗縣</option>
-                            <option value="臺中市">臺中市</option>
-                            <option value="彰化縣">彰化縣</option>
-                            <option value="南投縣">南投縣</option>
-                            <option value="雲林縣">雲林縣</option>
-                            <option value="嘉義縣">嘉義縣</option>
-                            <option value="嘉義市">嘉義市</option>
-                            <option value="臺南市">臺南市</option>
-                            <option value="高雄市">高雄市</option>
-                            <option value="屏東縣">屏東縣</option>
-                            <option value="宜蘭縣">宜蘭縣</option>
-                            <option value="花蓮縣">花蓮縣</option>
-                            <option value="臺東縣">臺東縣</option>
-                            <option value="澎湖縣">澎湖縣</option>
-                            <option value="金門縣">金門縣</option>
-                            <option value="連江縣">連江縣</option>
+                            <option v-for="(   item, index   ) in    cityName   " :key="index" value="{{ item }}">{{ item
+                            }}
+                            </option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="btn">
-                <button class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">儲存變更</button>
+                <button @click="saveBtn()" class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">儲存變更</button>
+            </div>
+        </div>
+        <!-- 帳號資訊 -->
+        <div v-else-if="currentTab == 'showMyAcc'" class="acc_editprofile obj_Radius acc_info_box">
+            <h1>帳號: ooxxx123
+                <fontAwesome @click="editAccount()" :icon="['far', 'pen-to-square']" size="2xs" style="cursor: pointer;" />
+            </h1>
+            <div class="acc_box">
+                <div class="acc_name acc_item">
+                    <p>會員網址: </p>
+                    <input class="name_box obj_Radius" type="text" readonly placeholder="https://www.muse.com/ooxx123">
+                    <span @click="copyLink()">
+                        <fontAwesome :icon="['fa', 'copy']" size="xl"
+                            style="margin-left: 30%; cursor: pointer; color: #74EBD5" />
+                    </span>
+                    <span>帳號僅能變更一次</span>
+                </div>
+                <div class="acc_btn">
+                    <button @click="saveBtn()" class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">儲存變更</button>
+                </div>
+            </div>
+        </div>
+        <!-- 帳號安全驗證 -->
+        <div v-else-if="currentTab == 'showAccSafe'" class="obj_Radius acc_safe_wrap">
+            <h1>帳號安全驗證
+            </h1>
+            <div class="acc_safe_box">
+                <div class="acc_safe_item">
+                    <div class="txt">
+                        <fontAwesome :icon="['far', 'circle-xmark']"
+                            style="color: #FE1C6C; margin-right: 3%; text-align: center; width: 50px;" />
+                        <span>未完成</span>
+                    </div>
+                    <p>驗證手機號碼</p><button @click="setSafeBtn()"
+                        class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">設定</button>
+                </div>
+                <div class="acc_safe_item">
+                    <div class="txt">
+                        <fontAwesome :icon="['far', 'circle-check']"
+                            style="color: #ffffff; margin-right: 3%; text-align: center; width: 50px;" />
+                        <span>已完成</span>
+                    </div>
+                    <p>驗證電子信箱</p><button @click="setSafeBtn()"
+                        class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">設定</button>
+                </div>
+                <div class="acc_safe_item">
+                    <div class="txt">
+                        <fontAwesome :icon="['far', 'circle-xmark']"
+                            style="color: #FE1C6C; margin-right: 3%; text-align: center; width: 50px;" />
+                        <span>未完成</span>
+                    </div>
+                    <p>完善會員詳細資料</p>
+                    <button @click="setSafeBtn()" class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">設定</button>
+                </div>
+            </div>
+        </div>
+        <!-- 更改密碼 -->
+        <div v-else class="acc_editprofile obj_Radius">
+            <h1>更改密碼</h1>
+            <div class="acc_box">
+                <div class="acc_name acc_item" v-for="(psw, index) in changePsw" :key="index">
+                    <p>{{ psw.title }}</p>
+                    <input class="name_box obj_Radius" type="password">
+                </div>
+            </div>
+            <div class="btn">
+                <button @click="saveBtn()" class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">儲存變更</button>
             </div>
         </div>
     </main>

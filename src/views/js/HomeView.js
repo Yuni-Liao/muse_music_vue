@@ -26,6 +26,8 @@ import {
 export default {
   data() {
     return {
+      //本週熱門歌曲輪播RWD
+      weekTopSwiper: 1,
       // 首頁頂部Banner - 廖妍榛
       topBanner: [
         {
@@ -41,7 +43,7 @@ export default {
           image: "song01.jpg",
         },
       ],
-      // 新歌推薦輪播、本週熱門歌曲輪播 - 黃珮菁
+      // 本週熱門歌曲輪播 - 黃珮菁
       songs: [
         {
           sid: 1,
@@ -54,7 +56,7 @@ export default {
         {
           sid: 2,
           title: "宇宙飛行2",
-          image: "song01.jpg",
+          image: "index_grid_05.png",
           link: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -62,7 +64,7 @@ export default {
         {
           sid: 3,
           title: "宇宙飛行3",
-          image: "song01.jpg",
+          image: "index_grid_08.png",
           link: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -70,7 +72,7 @@ export default {
         {
           sid: 4,
           title: "宇宙飛行4",
-          image: "song01.jpg",
+          image: "index_grid_06.png",
           link: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -78,7 +80,7 @@ export default {
         {
           sid: 5,
           title: "宇宙飛行5",
-          image: "song01.jpg",
+          image: "index_grid_04.png",
           link: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -86,7 +88,7 @@ export default {
         {
           sid: 6,
           title: "宇宙飛行6",
-          image: "song01.jpg",
+          image: "index_grid_03.png",
           songLink: "/shopProd/1",
           singer: "桌子樂團7",
           views: 0,
@@ -102,7 +104,7 @@ export default {
         {
           sid: 8,
           title: "宇宙飛行8",
-          image: "song01.jpg",
+          image: "index_grid_05.png",
           songLink: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -110,7 +112,7 @@ export default {
         {
           sid: 8,
           title: "宇宙飛行9",
-          image: "song01.jpg",
+          image: "index_grid_02.png",
           songLink: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -256,6 +258,18 @@ export default {
     Grid,
     GridItem,
   },
+  mounted() {
+    //本週熱門歌曲輪播RWD
+    const swiperRWD = () => {
+      if (window.innerWidth > 414) {
+        this.weekTopSwiper = 5;
+      } else {
+        this.weekTopSwiper = 1;
+      }
+    };
+    swiperRWD();
+  },
+  computed: {},
   methods: {
     gotosinglemusic() {
       this.$router.push({

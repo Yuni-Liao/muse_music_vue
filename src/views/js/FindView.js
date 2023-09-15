@@ -38,32 +38,32 @@ export default {
                 {
                     id: 1,
                     name:'日語流行',
-                    imgUrl:123,
-                    link: '/findmusic'
+                    img:'japan50.png',
+                    link: 'findmusic',
                 },
                 {
                     id: 2,
                     name:'韓語流行',
-                    imgUrl:123,
-                    link: '/'
+                    img:'japan50.png',
+                    link: 'findmusic',
                 },
                 {
                     id: 3,
                     name:'華語流行',
-                    imgUrl:123,
-                    link: '/'
+                    img:'japan50.png',
+                    link: 'findmusic',
                 },
                 {
                     id: 4,
                     name:'西洋流行',
-                    imgUrl:123,
-                    link: '/'
+                    img:'japan50.png',
+                    link: 'findmusic',
                 },
                 {
                     id: 5,
                     name: '其他語言',
-                    imgUrl: 123,
-                    link: '/'
+                    img:'japan50.png',
+                    link: 'findmusic',
                 }
             ],
             // 風格
@@ -72,43 +72,43 @@ export default {
                     id: 1,
                     name: '流行音樂',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 2,
                     name: '獨立音樂',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 3,
                     name: '嘻哈',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 4,
                     name: '搖滾',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 5,
                     name: '藍調',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 6,
                     name: '爵士',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 7,
                     name: '古典',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
             ],
             // 心情
@@ -117,43 +117,43 @@ export default {
                     id: 1,
                     name: '快樂',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 2,
                     name: '傷心',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 3,
                     name: '運動',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 4,
                     name: '輕鬆',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 5,
                     name: '舒眠',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 6,
                     name: '專注',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
                 {
                     id: 7,
                     name: '派對',
                     imgUrl: 123,
-                    link: '/'
+                    link: 'findmusic',
                 },
             ],
             singers: [
@@ -161,7 +161,7 @@ export default {
                     sid: 1,
                     title: "宇宙飛行1",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -169,7 +169,7 @@ export default {
                     sid: 2,
                     title: "宇宙飛行2",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -177,7 +177,7 @@ export default {
                     sid: 3,
                     title: "宇宙飛行3",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -185,7 +185,7 @@ export default {
                     sid: 4,
                     title: "宇宙飛行4",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -193,7 +193,7 @@ export default {
                     sid: 5,
                     title: "宇宙飛行5",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -201,7 +201,7 @@ export default {
                     sid: 6,
                     title: "宇宙飛行6",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -209,7 +209,7 @@ export default {
                     sid: 7,
                     title: "宇宙飛行7",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -217,7 +217,7 @@ export default {
                     sid: 8,
                     title: "宇宙飛行8",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -225,7 +225,7 @@ export default {
                     sid: 9,
                     title: "宇宙飛行9",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 },
@@ -233,16 +233,16 @@ export default {
                     sid: 10,
                     title: "宇宙飛行10",
                     image: "index_grid_08.png",
-                    slink: "/profilepage",
+                    slink: "profilepage ",
                     singer: "桌子樂團",
                     views: 0,
                 }
-            ]
+            ],
         }
-    },
+    },  
     methods: {
         playmusic() {
-            // alert("呼叫懸浮播放器");
+            alert("呼叫懸浮播放器");
         },
     },
     setup() {

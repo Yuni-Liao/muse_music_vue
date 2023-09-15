@@ -1,3 +1,12 @@
+@import "@/assets/scss/mixin/_mixin.scss";
+    
+    #AddFavBtn {
+    @include music_btn_circle(25px);
+      margin: 10px;
+    }
+    #AddSlBtn {
+    @include music_btn_circle(25px);
+    }
 .ranking {
   .swiper {
     width: 100%;

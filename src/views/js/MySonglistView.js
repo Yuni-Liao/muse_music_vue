@@ -110,7 +110,6 @@ export default {
       ],
     };
   },
-
   computed: {
     choosecreator() {
       // 使用 Array.filter() 過濾 memid 為 1 的資料
@@ -156,5 +155,14 @@ export default {
     addnewsonglist() {
       alert("新增一個新歌單");
     },
+    closemore(e) {
+      this.morecurrent = -1;
+    },
+  },
+  mounted() {
+    document.addEventListener("click", this.closemore, true);
+  },
+  beforeUnmount() {
+    document.removeEventListener("click", this.closemore);
   },
 };

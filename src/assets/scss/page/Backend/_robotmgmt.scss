@@ -1,6 +1,18 @@
-*{  //此為Yuni測試 可以刪除
-    width: 500px;
-    height: 500px;
-    background-color: red;
-    color: $dark;
+main{
+    position: relative;
+    .robotmgmt_box{
+        display: flex;
+        flex-flow: column wrap;
+        @include layout(80%);
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        display: flex;
+        justify-content: center;
+        h1{
+            font-size: $big;
+            text-align: left;
+            padding-bottom: 3%;
+        }
+    }
 }

@@ -1,5 +1,5 @@
 <template>
-    <button id="ReportBtn" @click="ReportBtn()">
+    <button id="ReportBtn" @click="ReportBtn">
         <fontAwesome :icon="['fa', 'circle-exclamation']" style="color:#252525;" />
     </button>
 </template>

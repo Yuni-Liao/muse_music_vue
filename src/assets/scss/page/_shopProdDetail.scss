@@ -1,9 +1,128 @@
-.shopProdDetail{
-    background-color: rgb(255, 255, 0);
-}
-h1{
+.shopProdDetail {
     margin-top: 85px;
+    background-color: rgb(255, 255, 255);
+    @include layout(100%);
+
+    .ivu-breadcrumb {
+        text-align: left;
+        margin-left: 5%;
+        padding: 20px 0 70px;
+    }
+
+    .inner {
+        @include layout(62.5%);
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+
+        .mainInf {
+            display: flex;
+            margin-bottom: 10%;
+            align-items: center;
+
+            .pic {
+                width: 50%;
+                margin-right: 7%;
+
+                img {
+                    width: 100%;
+                    vertical-align: top;
+                }
+            }
+
+            .txt {
+
+                width: 50%;
+
+                .title {
+                    font-size: $big;
+                    font-weight: 700;
+                    width: 100%;
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 1px;
+                        background-color: $dark;
+                        margin: 10px 0 30px -10px;
+                    }
+                }
+
+                .prodInf {
+                    font-size: $default;
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 1px;
+                        background-color: $dark;
+                        margin: 30px 0 10px -10px;
+                    }
+                }
+
+                .price {
+                    font-size: $default;
+                    color: $pink;
+                    margin-bottom: 10px;
+                }
+
+                .btnArea {
+
+                    display: flex;
+                    justify-content: space-between;
+
+                    .prodCount {
+                        padding-bottom: 20px;
+                        display: flex;
+                        width: 50px;
+                        align-content: center;
+                        align-items: center;
+                        margin: auto 0;
+                        padding-top: 15px;
+
+                        .prodBtn {
+                            background: none;
+                            border: none;
+                            padding: 0 10px;
+                            cursor: pointer;
+
+                            img {
+                                vertical-align: middle;
+                            }
+
+                            p {
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+
+                    .obj_Radius {
+                        margin: 10px;
+                    }
+                }
+            }
+        }
+
+        .description {
+            width: 99%;
+            margin: 0 auto 100px;
+
+            h3 {
+                font-size: $medium;
+                margin: 0 auto 20px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid $dark;
+            }
+
+            .txt {
+                font-size: $default;
+
+                p {
+                    margin: 30px 0;
+                }
+            }
+        }
+    }
 }
-
-
-//測試用,這裡的內容都可以刪除

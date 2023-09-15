@@ -15,7 +15,7 @@ export default {
   computed: {
     favButtonStyle() {
       return {
-        color: this.isFavorited ? "red" : "#252525",
+        color: this.isFavorited ? "#FE1C6C" : "#252525",
       };
     },
   },

@@ -23,8 +23,8 @@
             <!-- 分類篩選 -->
             <ul>
                 <li v-for="item in items" :key="item.id">
-                    <a :href="item.link" @click="currentKind = item.kind"
-                        :class="{ '--active': currentKind === item.kind }">{{ item.label }}</a>
+                    <router-link :to="item.link" @click="currentKind = item.kind"
+                        :class="{ '--active': currentKind === item.kind }">{{ item.label }}</router-link>
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
         <div class="inner">
             <div class="prod">
                 <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
-                    <a :href="item.link" class="prodPic">
+                    <a href="/shopproddetail" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </a>
                     <div class="prodTxt">
@@ -58,9 +58,11 @@
             <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
                 @on-change="handlePageChange" @on-page-size-change="handlePageSize" />
         </div>
-        <button class="shopcart">
-            <img src="/image/icon/shopcart.png" alt="shopcart">
-        </button>
+        <router-link to="/shoppingsteps">
+            <button class="shopcart">
+                <img src="/image/icon/shopcart.png" alt="shopcart">
+            </button>
+        </router-link>
         <pre>{{ sortProducts2 }}</pre>
 
     </div>

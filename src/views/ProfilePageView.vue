@@ -15,14 +15,23 @@
           <article class="intro">
             <h1>
               {{ mem.memname }}
-              <FolBtnBig></FolBtnBig>
+              <FolBtnBig :functype="2"></FolBtnBig>
             </h1>
             <p class="loc">
               <fontAwesome class="i" :icon="['fa', 'location-dot']" />{{
                 mem.loc
               }}
             </p>
-            <p>{{ mem.intro }}</p>
+            <p class="itl" :class="{ itlmore: isReadMore }" ref="itl">
+              {{ mem.intro }}
+            </p>
+            <button
+              class="readmoreBtn"
+              v-show="isReadmoreBtn"
+              @click="readmore()"
+            >
+              顯示更多
+            </button>
           </article>
           <div class="fol">
             <div>
@@ -89,9 +98,9 @@
         </button>
       </div>
       <div class="line"></div>
-      <section v-if="tabtype === 0" class="activity">activity</section>
-      <section v-else-if="tabtype === 1" class="music">music</section>
-      <section v-else-if="tabtype === 2" class="songlist">
+      <section v-show="tabtype === 0" class="activity">activity</section>
+      <section v-show="tabtype === 1" class="music">music</section>
+      <section v-show="tabtype === 2" class="songlist">
         <section class="container">
           <!-- 判斷是否有data -->
           <div class="nodata" v-if="songlists.length === 0">
