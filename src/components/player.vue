@@ -13,24 +13,22 @@
         <div class="player_center">
             <div class="playerControls">
                 <div id="prev" class="backwardBtn controlsItem">
-                    <img  src="/image/icon/backward.svg" alt="">
+                    <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" />
                 </div >
                 <div id="play">
                     <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio>
-                    <img
+                    <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-if="!isPlaying"
                         @click="playMusic"
-                        style="width: 25px;"
-                        src="/image/icon/play.svg" alt="Play" />
-                    <img
+                    />
+                    <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-else
                         @click="pauseMusic"
-                        style="width: 25px;"
-                        src="/image/icon/pause.svg"
-                        alt="Pause"/>
+                    />
+                   
                 </div>
                 <div id="next" class="forwargBtn controlsItem">
-                    <img  src="/image/icon/forward.svg" alt="">
+                    <fontAwesome :icon="['fa', 'fa-step-forward']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"  />
                 </div>
             </div>
             <div id="music-progress" class="music-progress" @click="playMusic">
@@ -42,37 +40,124 @@
         <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
     </div>
    </div>
-   <!-- -------------懸浮播放器範圍 -->
+   <!-- ^^^^^^^^^^^^^^懸浮播放器範圍^^^^^^^^^^^^^^ -->
 
    <!-- -------------蓋板播放器範圍 -->
    <div class="modal" 
         v-if="isModalVisible" :style="{
         backgroundImage: `url( ${require('@/assets/image/songPic.png')} )`,
         backgroundSize: '100% auto',
+        backgroundRepeat: no-repeat,
     }">
         <div class="modal-content">
-            <div class="playerLogo">
+            <div class="playerTop">
                 <img src="~@/assets/image/muse_logo_2.png" alt="">
-            </div>
-            <div class="playSection">
-                <div class="playLyrics">
-                    <h4 style="color: #74EBD5;">正在播放</h4>
-                    <h4>歌詞</h4>
+                <div class="playerTab">
+                    <h3 style="color: #74EBD5;">正在播放</h3>
+                    <h3 @click="showLyrics = !showLyrics; " :style="{ color: showLyrics ? '#74EBD5' : 'white' }">歌詞</h3>
                 </div>
-                <img src="/image/SingleMusic/songPic.png" alt="">
-            </div>
-            <div class="playerClose">
+                <div class="playerClose">
                 <fontAwesome @click="closeModal" class="close" :icon="['fa', 'xmark']" size="2xl" style="color: #fff;"  />
+                </div>
             </div>
+            <div class="playerBottom">
+                <div class="songSection">
+                    <img src="/image/SingleMusic/songPic.png" alt="">
+                    <div class="titleBtns">
+                        <h4>Say it</h4>
+                        <div class="btns">
+                            <ShareBtn/>
+                            <AddSlBtn/>
+                            <AddFavBtn/>
+                        </div>
+                    </div>
+                    <h5>George Makridis</h5>
+                    <div id="music-progress" class="progress" @click="playMusic">
+                        <div id="progress-bar" class="bar" :style="{ width: progressWidth }"></div>
+                    </div>
+                    <div class="fcbtns">
+                        <img v-if="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute" >
+                        <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
+                        <div class="awsome">
+                            <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" />
+                            <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
+                                v-if="!isPlaying"
+                                @click="playMusic"
+                            />
+                            <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
+                                v-else
+                                @click="pauseMusic"
+                            />
+                            <fontAwesome :icon="['fa', 'fa-step-forward']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"  />
+                        </div>
+                        <fontAwesome :icon="['fa', 'arrow-rotate-right']" style="color: #fff; cursor: pointer;" />
+                        
+                    </div>
+                </div>
+                <div v-show="showLyrics" class="lyricsSection">
+                    <p>
+                        Tryin' my best to take it slowly
+                        To play it cool and keep it low key
+                        But I'm just a man I ain't a priest
+                        My mind's stuck on one thing
+                        And it ain't exactly holy
+                        No, it won't ever be the time to
+
+                        Cross that line with you
+                        But if only you knew
+                        We'd be causin' a commotion
+                        No more hopin'
+                        I leave my girl
+                        You leave your man
+                        Show you my world
+                        Drink your potion
+                        Unlimited oxytocin, Oh!
+                        I can't fake it
+
+                        Girl, I'm breaking
+                        Tension's got me
+                        Tryin' my best to take it slowly
+                        To play it cool and keep it low key
+                        But I'm just a man I ain't a priest
+                        My mind's stuck on one thing
+                        And it ain't exactly holy
+                        No, it won't ever be the time to
+
+                        Cross that line with you
+                        But if only you knew
+                        We'd be causin' a commotion
+                        No more hopin'
+                        I leave my girl
+                        You leave your man
+                        Show you my world
+                        Drink your potion
+                        Unlimited oxytocin, Oh!
+                        I can't fake it
+
+                        Girl, I'm breaking
+                        Tension's got me
+                    </p>
+                </div>
+            </div>
+            
         </div>
         
    </div>
-<!-- -------------蓋板播放器範圍 -->
+<!-- ^^^^^^^^^^^^^^蓋板播放器範圍^^^^^^^^^^^^^^ -->
 </template>
   
 <script>
+import ShareBtn from '@/components/ShareBtn.vue';
+import AddSlBtn from '@/components/AddSlBtn.vue';
+import AddFavBtn from '@/components/AddFavBtn.vue';
+
 export default {
     name: "player",
+    components: {
+        ShareBtn,
+        AddSlBtn,
+        AddFavBtn,
+    },
     data() {
         return {
             songList: [{
@@ -86,6 +171,7 @@ export default {
             isMuted: false,
             currentVolume: 0.5,
             isModalVisible: false,
+            showLyrics: false,
         }
     },
     methods: {
@@ -129,6 +215,17 @@ export default {
 </script>
   
 <style scoped lang="scss">
+    @import "@/assets/scss/mixin/_mixin.scss";
+    #ShareBtn {
+    @include music_btn_circle(25px);
+    };
+    #AddFavBtn {
+    @include music_btn_circle(25px);
+    }
+    #AddSlBtn {
+    @include music_btn_circle(25px);
+    margin:  0px 10px;
+    }
     .player{
         display: flex;
         justify-content: center;
@@ -173,12 +270,7 @@ export default {
             display: flex;
             align-items: center;
             justify-content: space-evenly;
-            img{
-            width: 13px;
-            margin: 15px 10px;
-            cursor: pointer;
-            }
-           
+            margin: -30px 0px;
         }
         .music-progress{
             width: 550px;
@@ -187,10 +279,9 @@ export default {
             border: 1px solid #aaa;
             border-radius: 50px;
             background-color: #aaa;
-            margin-top: -10px;
+            margin-top: 30px;
             /* 拖拉線 */
             .music-progress-bar{
-                position: relative;
                 width: 0px;
                 height: 3px;
                 background-color: #fff;
@@ -220,35 +311,113 @@ export default {
   top: 0;
   width: 100%;
   height: 100vh;
-  
-  }
   .modal-content{
     width: 100%;
     height: 100vh;
     background-color: rgba(0,0,0,0.8);
     backdrop-filter:blur(5px);
-    display: flex;
-    justify-content: space-between;
-    .playerLogo{
+    //display: flex;
+    //justify-content: space-between;
+    .playerTop{
+        display: flex;
+        justify-content: space-between;
         img{
-            width: 80px;
-            margin-left: 50px;
-            margin-top: 30px;
+            width: 70px;
+            height: 80px;
+            margin: 30px 0px 0px 30px;
         }
-    }
-    .playSection{
-        margin-top: 70px;
-       .playLyrics{
+        .playerTab{
             display: flex;
-        h4{
-            color: #fff;
-            margin: 50px;
+            margin-top: 50px;
+            margin-left: -40px;
+            h3{
+                color: #fff;
+                margin: 30px;
+                cursor: pointer;
+            }
         }
-       }
+        .playerClose{
+            margin: 30px 30px 0px 0px;
+            cursor: pointer;
+        }
+    
     }
-    .playerClose{
-        margin-top: 30px;
-        margin-right: 50px;
+    .playerBottom{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        .songSection{
+            display: flex;
+            flex-direction: column;
+            img{
+                width: 250px;
+            }
+            .titleBtns{
+                display: flex;
+                justify-content: space-between;
+                margin: 10px 0px;
+                h4{
+                    color: #fff;
+                }
+            }
+            h5{
+                color: #aaa;
+                margin-left: -150px;
+            }
+            .progress{
+                width: 100%;
+                height: 3px;
+                cursor: pointer;
+                border: 1px solid #aaa;
+                border-radius: 50px;
+                background-color: #aaa;
+                margin-top: 10px;
+                .bar{
+                    width: 0px;
+                    height: 3px;
+                    background-color: #fff;
+                    border-style: solid;
+                    border-radius: 50px;
+                }
+            }
+            .fcbtns{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 20px;
+                img{
+                    width: 15px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .lyricsSection{
+            width: 250px;
+            max-height: 350px;
+            padding: 30px;
+            margin: 0px 50px;
+            overflow-y: scroll; 
+            
+            p{
+                color: #fff;
+            }
+        }
+        .lyricsSection::-webkit-scrollbar {
+                width: 5px; 
+        }
+        .lyricsSection::-webkit-scrollbar-thumb{
+            background-color: #5D5DDB;
+            height: 7px;
+            border-radius: 4px;
+        }
+        .lyricsSection::-webkit-scrollbar-track-piece{
+            background: #fff;
+            
+        }
+    }
     }
   }
+  
+   
+    
 </style>
