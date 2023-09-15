@@ -22,7 +22,16 @@
                 mem.loc
               }}
             </p>
-            <p>{{ mem.intro }}</p>
+            <p class="itl" :class="{ itlmore: isReadMore }" ref="itl">
+              {{ mem.intro }}
+            </p>
+            <button
+              class="readmoreBtn"
+              v-show="isReadmoreBtn"
+              @click="readmore()"
+            >
+              顯示更多
+            </button>
           </article>
           <div class="fol">
             <div>
