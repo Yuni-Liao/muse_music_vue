@@ -87,9 +87,10 @@ select {
                     margin-bottom: 0;
                 }
 
-                a {
+                p {
                     font-weight: 400;
                     color: $dark;
+                    cursor: pointer;
 
                     &::after {
                         color: $green;
@@ -166,8 +167,8 @@ select {
 
 .shopcart {
     position: fixed;
-    bottom: 5%;
-    right: 1%;
+    bottom: 40%;
+    right: 1.5%;
     @include btnBgNone;
 
     img {

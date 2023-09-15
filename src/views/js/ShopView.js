@@ -51,7 +51,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-01",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 2,
@@ -61,7 +61,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-02",
                     kind: "男藝人樂團團體黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 3,
@@ -71,7 +71,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-03",
                     kind: "樂團團體錄音帶",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 4,
@@ -81,7 +81,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-04",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 5,
@@ -91,7 +91,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-05",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 6,
@@ -101,7 +101,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-06",
                     kind: "樂團團體黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 7,
@@ -111,7 +111,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-07",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 8,
@@ -121,7 +121,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-08",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 9,
@@ -131,7 +131,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-09",
                     kind: "男藝人樂團團體黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 10,
@@ -141,7 +141,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-10",
                     kind: "樂團團體錄音帶",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 11,
@@ -151,7 +151,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-11",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 12,
@@ -161,7 +161,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-12",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 13,
@@ -171,7 +171,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-13",
                     kind: "樂團團體黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 14,
@@ -181,7 +181,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-14",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 15,
@@ -191,7 +191,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-15",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 16,
@@ -201,7 +201,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-16",
                     kind: "女藝人樂團團體黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 17,
@@ -211,7 +211,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-17",
                     kind: "樂團團體錄音帶",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 18,
@@ -221,7 +221,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-18",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 19,
@@ -231,7 +231,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-19",
                     kind: "女藝人黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 },
                 {
                     id: 20,
@@ -241,7 +241,7 @@ export default {
                     inCart: 0,
                     date: "2023-01-20",
                     kind: "樂團團體黑膠唱片",
-                    link:"#",
+                    link:"/ShopProdDetail",
                 }
             ],
             // displayedProducts: [],   //接json檔
