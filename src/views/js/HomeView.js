@@ -54,7 +54,7 @@ export default {
         {
           sid: 2,
           title: "宇宙飛行2",
-          image: "song01.jpg",
+          image: "index_grid_05.png",
           link: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -62,7 +62,7 @@ export default {
         {
           sid: 3,
           title: "宇宙飛行3",
-          image: "song01.jpg",
+          image: "index_grid_08.png",
           link: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -70,7 +70,7 @@ export default {
         {
           sid: 4,
           title: "宇宙飛行4",
-          image: "song01.jpg",
+          image: "index_grid_06.png",
           link: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -78,7 +78,7 @@ export default {
         {
           sid: 5,
           title: "宇宙飛行5",
-          image: "song01.jpg",
+          image: "index_grid_04.png",
           link: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -86,7 +86,7 @@ export default {
         {
           sid: 6,
           title: "宇宙飛行6",
-          image: "song01.jpg",
+          image: "index_grid_03.png",
           songLink: "/shopProd/1",
           singer: "桌子樂團7",
           views: 0,
@@ -102,7 +102,7 @@ export default {
         {
           sid: 8,
           title: "宇宙飛行8",
-          image: "song01.jpg",
+          image: "index_grid_05.png",
           songLink: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
@@ -110,7 +110,7 @@ export default {
         {
           sid: 8,
           title: "宇宙飛行9",
-          image: "song01.jpg",
+          image: "index_grid_02.png",
           songLink: "/shopProd/1",
           singer: "桌子樂團",
           views: 0,
