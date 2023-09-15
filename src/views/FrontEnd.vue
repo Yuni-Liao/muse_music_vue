@@ -2,10 +2,10 @@
 
 <template>
     <Header />
+    <Robot />
     <main>
         <router-view />
     </main>
-    <Robot />
     <Footer />
 </template>
 
