@@ -43,6 +43,7 @@
 }
 
 
+
 .page-option button {
     padding: 10px 20px;
     border: none;
@@ -72,7 +73,9 @@
     justify-content: center;
     align-items: center;
 }
-
+button.active {
+    color:$purple;
+}
 .label {
     color: $white;
     font-size: $small;

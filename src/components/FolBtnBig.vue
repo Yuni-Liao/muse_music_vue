@@ -14,10 +14,11 @@
 
 export default {
   name: "FolBtnBig",
+  props: ["functype"],
+  //functype: 0追蹤歌單, 1追蹤創作者, 2追蹤音樂快訊
   data() {
     return {
       isFol: false,
-      functype: 2, //0追蹤歌單, 1追蹤創作者, 2追蹤音樂快訊
     };
   },
   methods: {
@@ -69,6 +70,7 @@ export default {
   font-size: 14px;
   padding: 4px 13px;
 }
+
 #FolBtnBig.active {
   @include btnColor($green, true, false);
   background-color: transparent;

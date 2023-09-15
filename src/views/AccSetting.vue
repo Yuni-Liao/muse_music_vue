@@ -101,7 +101,7 @@
         <div v-else class="acc_editprofile obj_Radius">
             <h1>更改密碼</h1>
             <div class="acc_box">
-                <div class="acc_name acc_item" v-for="(    psw, index   ) in    changePsw   " :key="index">
+                <div class="acc_name acc_item" v-for="(psw, index) in changePsw" :key="index">
                     <p>{{ psw.title }}</p>
                     <input class="name_box obj_Radius" type="password">
                 </div>

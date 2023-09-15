@@ -1,0 +1,22 @@
+nav{
+    @include rect(140px, 100vh);
+    background-color: $dark;
+    // padding: 8% 0;
+    ul{
+        @include rect(100%, fit);
+        // padding: 10% 10%;
+        background-color: $dark;
+        li{
+            @include rect(100%, fit);
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-evenly;
+            background-color: $dark;
+            color: $white;            
+            line-height: 3;
+            padding: 10% 8%;
+            text-align: left;
+            cursor: pointer;
+        }
+    }
+}
