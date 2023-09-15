@@ -1,0 +1,22 @@
+.backend_header{
+    position: relative;
+    box-shadow: none;
+    @include rect(100%, 15%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo_backend{
+        display: inline-block;
+        margin-left: 30%;
+        @include rect(80px, fit);
+        background-color: $dark;
+        padding: 1% 3%;
+        vertical-align: middle;
+    }
+    .logout{
+        padding: 1% 3%;
+        color: $white;
+        background-color: $dark;
+        border: 0;
+    }
+}

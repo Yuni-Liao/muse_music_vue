@@ -5,8 +5,34 @@ import ShareBtn from "@/components/ShareBtn.vue";
 import ReportBtn from "@/components/ReportBtn.vue";
 import LikeMesBtn from "@/components/LikeMesBtn.vue";
 
+const clickOutside = {
+    mounted(el, binding) {
+        function eventHandler(e) {
+            if (el.contains(e.target)) {
+                return false
+            }
+            // 如果绑定的参数是函数，正常情况也应该是函数，执行
+            if (binding.value && typeof binding.value === 'function') {
+                binding.value(e)
+            }
+        }
+        // 用于销毁前注销事件监听
+        el.__click_outside__ = eventHandler
+        // 添加事件监听
+        document.addEventListener('click', eventHandler)
+    },
+    beforeUnmount(el) {
+        // 移除事件监听
+        document.removeEventListener('click', el.__click_outside__)
+    }
+}
+
+
 export default {
     components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn },
+    directives: {
+        clickOutside,
+    },
     data() {
         return {
             //歌曲清單
@@ -109,13 +135,15 @@ export default {
             // showAllMessages: true,
             // showAllSongs: true,
             isShow: true,
+            isShowSong: true,
             num: 3,
+            num2: 3,
             txt: '查看更多',
         };
     },
     created() {
         // 全局監聽點擊事件
-        window.addEventListener("click", this.handleGlobalClick);
+        // window.addEventListener("click", this.handleGlobalClick);
     },
 
     beforeDestroy() {
@@ -124,13 +152,20 @@ export default {
     },
 
     methods: {
-        // 預設只顯示前三筆留言 與 其他歌曲
+        // 預設只顯示前三筆留言
         showMore() {
             console.log('1', this.isShow);
             this.isShow = !this.isShow;
             console.log('2', this.isShow);
             this.num = this.isShow ? 3 : this.messages.length;
             this.txt = this.isShow ? '查看更多' : '收起留言'
+        },
+        // 預設只顯示前三首歌曲
+        showMoreSong() {
+            console.log('1', this.isShowSong);
+            this.isShowSong = !this.isShowSong;
+            console.log('2', this.isShowSong);
+            this.num2 = this.isShowSong ? 3 : this.otherSongs.length;
         },
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;
@@ -139,17 +174,23 @@ export default {
             // 切換按鈕模式
             messageItem.showReportBtn = !messageItem.showReportBtn;
         },
-        handleGlobalClick(event) {
-            // 檢查是否是點在按鈕外的地方
-            const buttonElement = document.querySelector(".more");
-            if (buttonElement && !buttonElement.contains(event.target)) {
-                // 關閉打開的按鈕
-                this.messages.forEach((message) => {
-                    if (message.showReportBtn) {
-                        message.showReportBtn = false;
-                    }
-                });
-            }
+        closeReportBtn(messageItem) {
+            console.log(messageItem)
+            messageItem.showReportBtn = false
         },
+        // handleGlobalClick(event) {
+        //     // 檢查是否是點在按鈕外的地方
+        //     const buttonElement = document.querySelectorAll(".more");
+        //     const btnElList = buttonElement.length ? Array.from(buttonElement) : []
+        //     if (btnElList.includes(event.target)) {
+        //         // 關閉打開的按鈕
+        //         this.messages.forEach((message) => {
+        //             if (message.showReportBtn) {
+        //                 message.showReportBtn = false;
+        //             }
+        //         });
+
+        //     }
+        // },
     },
 };

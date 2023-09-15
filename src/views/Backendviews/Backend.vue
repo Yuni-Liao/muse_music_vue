@@ -1,5 +1,8 @@
 <!-- 這頁作為後台的根目錄 -->
+
 <template>
+    <BackendHeader />
+    <BackendSideBar />
     <router-view />
 </template>
 

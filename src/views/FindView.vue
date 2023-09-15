@@ -75,6 +75,7 @@
 
     <div class="new_release">
         <h2>新歌推薦．New Release</h2>
+<<<<<<< HEAD
         <section class="find_newsong">
             <swiper class="find_swiper" 
             :loop="true" 
@@ -98,6 +99,22 @@
             }" 
             :modules="modules">
                 <swiper-slide v-for="(item, index) in singers" :key="sid">
+=======
+        <section>
+            <swiper :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
+                :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
+                :coverflowEffect="{
+                    rotate: 0,
+                    stretch: -150,
+                    depth: 300,
+                    modifier: 2.5,
+                    slideShadows: false,
+                }" 
+                :pagination="{
+                    clickable: true,
+                }" :modules="modules">
+                <swiper-slide v-for="(item, sid) in singers" :key="sid">
+>>>>>>> 185e7fe7e972444df04d602af68c1b91f851408d
                     <div class="n_card">
                         <div class="image">
                             <PlayBtnBig class="play_btn"></PlayBtnBig>
