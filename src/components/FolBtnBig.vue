@@ -1,10 +1,5 @@
 <template>
-  <button
-    id="FolBtnBig"
-    class="obj_Rounded"
-    :class="{ active: isFol }"
-    @click="toggleFol()"
-  >
+  <button id="FolBtnBig" class="obj_Rounded" :class="{ active: isFol }" @click="toggleFol()">
     <fontAwesome v-show="!isFol" class="i" :icon="['fa', 'plus']" />
     {{ isFol ? " 已追蹤 " : "追蹤" }}
   </button>
@@ -69,6 +64,7 @@ export default {
   font-size: 14px;
   padding: 4px 13px;
 }
+
 #FolBtnBig.active {
   @include btnColor($green, true, false);
   background-color: transparent;
