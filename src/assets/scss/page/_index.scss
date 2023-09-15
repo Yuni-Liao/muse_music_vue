@@ -187,6 +187,7 @@
         }
       }
       .swiper-slide-active {
+        //旋轉黑膠
         .card::before {
           content: "";
           width: 150px;
@@ -195,7 +196,7 @@
           background-size: contain;
           background-repeat: no-repeat;
           position: absolute;
-          top: -9%;
+          top: -7%;
           left: -28%;
           z-index: -10;
           transform: translate(-50%, 0);
@@ -222,6 +223,7 @@
   }
 }
 .index_WeekTopmusic::after {
+  //背景打燈裝飾
   content: "";
   width: 1000px;
   height: 1000px;
@@ -231,7 +233,7 @@
   background-position: top right;
   position: absolute;
   right: 0px;
-  top: -50px;
+  top: 0px;
   z-index: 0;
 }
 
