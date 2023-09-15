@@ -102,11 +102,10 @@
                                     <p class="date">
                                         {{ messageItem.date }}
                                     <div tabindex="0" class="more-group">
-                                        <button class="more" v-click-outside="closeReportBtn(messageItem)">
+                                        <button class="more">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
                                         </button>
                                         <ReportBtn class="report-btn"></ReportBtn>
-
                                     </div>
                                     </p>
                                 </div>
