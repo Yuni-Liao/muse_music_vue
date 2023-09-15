@@ -15,7 +15,7 @@
           <article class="intro">
             <h1>
               {{ mem.memname }}
-              <FolBtnBig></FolBtnBig>
+              <FolBtnBig :functype="2"></FolBtnBig>
             </h1>
             <p class="loc">
               <fontAwesome class="i" :icon="['fa', 'location-dot']" />{{

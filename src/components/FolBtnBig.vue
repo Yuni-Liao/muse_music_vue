@@ -1,5 +1,10 @@
 <template>
-  <button id="FolBtnBig" class="obj_Rounded" :class="{ active: isFol }" @click="toggleFol()">
+  <button
+    id="FolBtnBig"
+    class="obj_Rounded"
+    :class="{ active: isFol }"
+    @click="toggleFol()"
+  >
     <fontAwesome v-show="!isFol" class="i" :icon="['fa', 'plus']" />
     {{ isFol ? " 已追蹤 " : "追蹤" }}
   </button>
@@ -9,10 +14,11 @@
 
 export default {
   name: "FolBtnBig",
+  props: ["functype"],
+  //functype: 0追蹤歌單, 1追蹤創作者, 2追蹤音樂快訊
   data() {
     return {
       isFol: false,
-      functype: 2, //0追蹤歌單, 1追蹤創作者, 2追蹤音樂快訊
     };
   },
   methods: {
