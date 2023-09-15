@@ -101,10 +101,10 @@
                                     </div>
                                     <p class="date">
                                         {{ messageItem.date }}
-                                        <button class="more" @click="toggleReportBtn(messageItem)">
+                                        <button class="more" v-click-outside="closeReportBtn(messageItem)">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
                                         </button>
-                                        <ReportBtn v-if="messageItem.showReportBtn"></ReportBtn>
+                                        <ReportBtn class="report-btn"></ReportBtn>
                                     </p>
                                 </div>
                                 <p class="txt">
@@ -118,6 +118,7 @@
                             <button class="readMore" @click.prevent="showMore">
                                 {{ txt }}
                                 <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
+                                <fontAwesome :icon="['fa', 'angle-up']" style="color:#fff;" />
                             </button>
                         </div>
                     </div>
