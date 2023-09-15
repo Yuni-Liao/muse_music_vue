@@ -15,12 +15,11 @@
             </div>
         </div>
     </div>
-
-    <div class="detail">
-        <div class="playList">
-            <table class="musicTable">
+    <div class="listWrapper">
+        <div class="songList">
+            <table>
                 <thead>
-                    <tr class="playListHeader">
+                    <tr class="listTitle">
                         <th></th>
                         <th></th>
                         <th>歌曲名稱</th>
@@ -36,12 +35,16 @@
                             <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
                                 alt="albumItem.name">
                         </td>
-                        <td class="name"><a href="">{{ albumItem.name }}</a></td>
-                        <td class="singer"><a href="">{{ albumItem.singer }}</a></td>
+                        <td class="name">{{ albumItem.name }}</td>
+                        <td class="singer">
+                            <router-link :to="albumItem.link">
+                                {{ albumItem.singer }}
+                            </router-link>
+                        </td>
                         <td class="time">{{ albumItem.time }}</td>
                         <td class="btnArea">
-                            <AddFavBtn></AddFavBtn>
-                            <AddSlBtn></AddSlBtn>
+                            <!-- <AddFavBtn></AddFavBtn>
+                            <AddSlBtn></AddSlBtn> -->
                             <button class="moreBtn" @click="toggleMoreBtn(albumItem)">
                                 <fontAwesome :icon="['fa', 'ellipsis']" style="color:#AAAAAA;" />
                             </button>
@@ -72,12 +75,7 @@
             </table>
         </div>
     </div>
-
-
-    
 </template>
-
-
 <style scoped lang="scss">
 @import "~@/assets/scss/page/findmusic.scss";
 </style>

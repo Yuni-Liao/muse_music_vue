@@ -24,6 +24,7 @@ export default {
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -32,6 +33,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -40,6 +42,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -48,6 +51,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -56,38 +60,43 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
                     id: 6,
-                    albumPic: "othaersong2.png",
-                    name: "Bed",
-                    singer: "Ruby",
+                    albumPic: "othaersong1.png",
+                    name: "Fly Like",
+                    singer: "Lisa",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
                     id: 7,
                     albumPic: "othaersong2.png",
-                    name: "Bed",
-                    singer: "Ruby",
+                    name: "Tired",
+                    singer: "Rose",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
                     id: 8,
-                    albumPic: "othaersong2.png",
-                    name: "Bed",
-                    singer: "Ruby",
+                    albumPic: "othaersong3.png",
+                    name: "Want To Go Home",
+                    singer: "Apple Apple",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
                     id: 9,
-                    albumPic: "othaersong2.png",
-                    name: "Bed",
-                    singer: "Ruby",
+                    albumPic: "othaersong1.png",
+                    name: "Sleep",
+                    singer: "Cat Dog",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -96,10 +105,10 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
+                    link: "profilepage",
                     showMoreBtn: false,
                 }
             ]
-
         }
     },
     methods: {
@@ -110,5 +119,4 @@ export default {
             albumItem.showMoreBtn = false;
         }
     }
-
 }
