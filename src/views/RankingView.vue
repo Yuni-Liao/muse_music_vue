@@ -29,8 +29,10 @@
                   </p>
                 </div>
                 <div class="icon">
-                  <img @click="hearted(item)" :src="item.hearted ? require(`@/assets/image/icon/smallHearted.svg`) : require(`@/assets/image/icon/smallHeart.svg`)" alt="" />
-                  <img @click="plused(item)" :src="item.plused ? require(`@/assets/image/icon/smallPlused.svg`) : require(`@/assets/image/icon/smallPlus.svg`)" alt="" />
+                  <AddFavBtn/>
+                  <AddSlBtn/>
+                  
+                  
                 </div>
               </li>
             </ol>
@@ -50,8 +52,8 @@
                   </p>
                 </div>
                 <div class="icon">
-                  <img @click="hearted(item)" :src="item.hearted ? require(`@/assets/image/icon/smallHearted.svg`) : require(`@/assets/image/icon/smallHeart.svg`)" alt="" />
-                  <img @click="plused(item)" :src="item.plused ? require(`@/assets/image/icon/smallPlused.svg`) : require(`@/assets/image/icon/smallPlus.svg`)" alt="" />
+                  <AddFavBtn/>
+                  <AddSlBtn/>
                 </div>
               </li>
             </ol>

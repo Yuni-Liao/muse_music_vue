@@ -32,11 +32,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="user_dropdown_reaction" >
+                <div class="user_dropdown_reaction">
                     <router-link to="/login"><img style="margin-top: -1px" alt="user_icon"
                             src="~@/assets/image/icon/user.png" /></router-link>
 
-                    <div class="user_dropdown" >
+                    <div class="user_dropdown">
                         <router-link to=""><img src="~@/assets/image/icon/clipboard.png" alt="" />訂單資訊</router-link><br />
                         <router-link to="accsetting"><img src="~@/assets/image/icon/settingicon.png"
                                 alt="" />帳號設定</router-link><br />
@@ -44,8 +44,8 @@
                                 alt="" />個人主頁</router-link><br />
                         <router-link to="profilepageedit"><img src="~@/assets/image/icon/development.png"
                                 alt="" />個人管理頁面</router-link><br />
-                                <router-link to="shoppingsteps"><img src="~@/assets/image/icon/development.png"
-                                    alt="" />購物車流程</router-link><br />
+                        <router-link to="shoppingsteps"><img src="~@/assets/image/icon/development.png"
+                                alt="" />購物車流程</router-link><br />
                         <p>我的音樂庫</p>
                         <router-link to=""><img src="~@/assets/image/icon/clock.png" alt="" />播放紀錄</router-link><br />
                         <router-link to="mysonglist"><img src="~@/assets/image/icon/list.png"
@@ -65,7 +65,7 @@
 export default {
     data() {
         return {
-            
+
             notifyList: [
                 {
                     src: "creator01.jpg",

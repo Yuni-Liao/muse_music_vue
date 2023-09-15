@@ -11,14 +11,16 @@ import { Mousewheel, Pagination } from "swiper/modules";
 
 // -----------------------------------
 import player from '@/components/player.vue';
-
+import AddFavBtn from '@/components/AddFavBtn.vue';
+import AddSlBtn from '@/components/AddSlBtn.vue';
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     player,
-    
+    AddFavBtn,
+    AddSlBtn,
   },
   setup() {
     return {
