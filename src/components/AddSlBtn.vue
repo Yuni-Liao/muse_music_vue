@@ -14,7 +14,7 @@ export default {
   computed: {
     AddSlBtnStyle() {
       return {
-        color: this.isAddSlBtn ? "red" : "#252525",
+        color: this.isAddSlBtn ? "#FE1C6C" : "#252525",
       };
     },
   },

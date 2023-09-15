@@ -1,74 +1,195 @@
-.bannertext{
-    font-size: $superBig;
-    font-weight: bold;
-    letter-spacing: 4.8px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background: linear-gradient(180deg, #5D5DDB 50.54%, rgba(116, 235, 213, 0.00) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: $tp;
+.about{
+
+    // banner圖
+    .banner{
+        position: relative;
+        .bannerpic{
+            width: 100%;
+            margin-top: 85px;
+            img{
+                width: 100%;
+                vertical-align: bottom;
+            }
+        }
+        // banner圖文字
+        .bannertext{
+            font-size: $superBig;
+            font-weight: bold;
+            letter-spacing: 4.8px;
+            text-align: left;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(180deg, #5D5DDB 50.54%, rgba(116, 235, 213, 0.00) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: $tp;
+            position: absolute;
+            top: 30%;
+            left: 5%;
+        }
+        .en{
+            font-size: 60px;
+        }
+        .ch{
+            top: 50%;
+            margin-left: 40px;
+        }
+    }
+
+
+    // 區段標題
+    h2{
+        font-size: $big;
+        font-weight: bold;
+        color: $white;
+        letter-spacing: 3.2px;
+        margin: 150px auto 80px;
+    }    
+
+
+    // 關於我們描述
+    .wrapper{
+        background: $white;
+        .wrap{
+            background: linear-gradient(180deg, #252525 39.12%, rgba(37, 37, 37, 0.00) 100%);
+            .summary{
+                font-size: $default;
+                font-weight: bold;
+                color: $white;
+                text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.215);
+                letter-spacing: 1.8px;
+                line-height: 3.5;
+                display: inline-block;
+                padding: 80px 0;
+            }
+            .partnerwrap{
+            padding: 50px 0 200px;
+            overflow: hidden;
+                .partnerwall {
+                display: flex;
+                .partnerwrapper {
+                display: flex;
+                animation: scroll 40s linear infinite;
+                animation-play-state: paused;
+            
+                    &:nth-child(2) {
+                        animation: scroll2 40s linear infinite;
+                        animation-delay: -20s;
+                        animation-play-state: paused;
+                    }
+                    &.active {
+                        animation-play-state: running;
+                    }
+                    .partnerpic {
+                        margin: 0 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }            
+                }
+            }
+        }
+    }
+
+
+    // 謬思創作者
+    @keyframes scroll {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+      
+      @keyframes scroll2 {
+        from {
+          transform: translateX(0%);
+        }
+        to {
+          transform: translateX(-200%);
+        }
+      }
+
+    
 }
 
-.summary{
-    font-size: $default;
-    font-weight: bold;
-    color: $white;
-    text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
-    letter-spacing: 1.8px;
+
+    // 常見問題
+    .faq{
+        width: 80%;
+        margin: 30px auto;
+        .question{
+            width: 100%;
+            font-size: $small;
+            color: $dark;
+            background-color: $green;
+            display: flex;
+        }
+        .answer {
+            width: 100%;
+            font-size: $default;
+            color: $white;
+            letter-spacing: 1.8px;
+            white-space: pre-line;
+            display: flex;
+            margin-top: 10px;
+        }    
+
+    }
+
+    .faqtitle{
+        margin: auto 5%; 
+    }
+
+    .faqcontent{
+        width: 80%;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 15px 0;
+    }
+
+
+    // 聯絡謬思
+    .contact{
+        display: inline-block;
+        margin: auto 0;
+        width: 70%;
+        padding-top: 50px;
+        margin-bottom: 100px;
+        background-color: #000;
+        span{
+            font-size: $default;
+            color: $white;
+            width: 15%;             
+            display: inline-block;
+        }
+        .describe{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input,select,textarea{
+            width: 70%;
+            font-size: $default;
+            padding: 5px 10px;
+            border: 5px solid $green;
+        }
+        textarea {
+            height: 230px;
+            resize: none;
+        }
+        div{
+            margin: 35px 0;
+        }
+        div:nth-last-child(1){
+            padding-bottom: 30px;
+            margin-top: 50px;
+        }
+    }
+
+    .contactbtn{
+        @include rect (160px !important, 50px !important);
+        @include btnColor($green, $border: true, $hover: true)
+    }
+
 }
-
-h2{
-    font-size: $big;
-    font-weight: bold;
-    color: $white;
-    letter-spacing: 3.2px;
-}
-
-.slide{
-    display: flex;
-}
-
-.faq{
-    width: 80%;
-    margin: auto;
-}
-
-.question{
-    width: 100%;
-    font-size: $small;
-    color: $dark;
-    background-color: $green;
-    display: flex;
-}
-
-.answer {
-    width: 100%;
-    font-size: $default;
-    color: $white;
-    letter-spacing: 1.8px;
-    white-space: pre-line;
-    display: flex;
-}
-
-.faqtitle{
-    margin: auto 5%;
-    // box-sizing: border-box;
-    padding: 5px 0;
-}
-
-.faqcontent{
-    width: 80%;
-    justify-content: flex-start;
-    text-align: left;
-}
-
-form>*{
-    display: block;
-    margin: auto;
-}
-
-textarea {
-    resize: none;
-  }
-
-
