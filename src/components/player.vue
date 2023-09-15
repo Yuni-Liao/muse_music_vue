@@ -8,6 +8,9 @@
                 <p>{{ item.songTitle }}</p>
                 <span>{{ item.singer }}</span>
             </div>
+            <!-- <audio controls>
+                <source :src="getSrc(item.audio)" type="audio/mpeg">
+            </audio> -->
         </div>
 
         <div class="player_center">
@@ -164,6 +167,7 @@ export default {
                 cover: '/image/SingleMusic/songPic.png',
                 songTitle: 'Say it',
                 singer: 'George Makridis',
+                // audio: 'https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3',
                 
             }],
             isPlaying: false,
@@ -175,6 +179,9 @@ export default {
         }
     },
     methods: {
+        // getSrc(src) {
+        // return require("../assets/video/" + src)
+        // },
         playMusic() {
         // 播放音樂
         this.$refs.music.play();
@@ -310,10 +317,10 @@ export default {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   .modal-content{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0,0,0,0.8);
     backdrop-filter:blur(5px);
     //display: flex;

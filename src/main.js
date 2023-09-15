@@ -48,6 +48,8 @@ import {
   faStepForward,
   faXmark,
   faCopy,
+  faChevronLeft,
+  faChevronRight,
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -93,7 +95,9 @@ library.add(
   faCopy,
   faPenToSquare,
   faCircleCheck,
-  faCircleXmark
+  faCircleXmark,
+  faChevronLeft,
+  faChevronRight
 );
 
 
