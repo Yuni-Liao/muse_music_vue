@@ -7,7 +7,7 @@ export default {
     return {
       isReadmoreBtn: Boolean,
       isReadMore: false,
-      tabtype: 2, //0,1,2
+      tabtype: 2,
       introline: 4,
       mem: {
         memid: 1,
