@@ -1,7 +1,18 @@
-// 此為Yuni測試,可以刪除
-h1{
-    width: 1200px;
-    height: 800px;
-    color: $dark;
-    background-color: yellow;
+main{
+    position: relative;
+    .admin_table_box{
+        display: flex;
+        flex-flow: column wrap;
+        @include layout(80%);
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        display: flex;
+        justify-content: center;
+        h1{
+            font-size: $big;
+            text-align: left;
+            padding-bottom: 3%;
+        }
+    }
 }

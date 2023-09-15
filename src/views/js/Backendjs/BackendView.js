@@ -1,3 +1,10 @@
+import BackendHeader from '../../../components/Backend/BackendHeader.vue'
+import BackendSideBar from '../../../components/Backend/BackendSideBar.vue'
+
 export default {
-    //  script寫這
+    name: 'Backend',
+    components: {
+        BackendHeader,
+        BackendSideBar,
+    }
 }
