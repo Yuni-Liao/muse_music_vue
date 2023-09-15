@@ -30,11 +30,11 @@
                     </p>
                     <div class="btnArea">
                         <span class="prodCount">
-                            <button class="prodBtn">
+                            <button class="prodBtn" @click="decrementItem">
                                 <img src="/image/ShopImage/up.png">
                             </button>
-                            <p>0</p>
-                            <button class="prodBtn">
+                            <p>{{ inCart }}</p>
+                            <button class="prodBtn" @click="incrementItem">
                                 <img src="/image/ShopImage/down.png">
                             </button>
                         </span>

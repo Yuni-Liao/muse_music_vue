@@ -89,8 +89,8 @@
                                     <fontAwesome :icon="['fa', 'paper-plane']" style="color:#74EBD5;" size="2xl" />
                                 </button>
                             </div>
-                            <div class="message" v-for="(messageItem, messageIndex) in messages" :key="messageIndex"
-                                v-if="showAllMessages || messageIndex < 3 || messages.length <= 3">
+                            <div class="message" v-for="(messageItem, messageIndex) in messages.slice(0, num)"
+                                :key="messageIndex">
                                 <div class="infBar">
                                     <div class="user">
                                         <div class="pic">
@@ -101,12 +101,11 @@
                                     </div>
                                     <p class="date">
                                         {{ messageItem.date }}
-                                        <button class="more" @click="toggleReportBtn(messageItem)">
+                                        <button class="more" v-click-outside="closeReportBtn(messageItem)">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
                                         </button>
-                                        <ReportBtn v-if="messageItem.showReportBtn"></ReportBtn>
+                                        <ReportBtn class="report-btn"></ReportBtn>
                                     </p>
-
                                 </div>
                                 <p class="txt">
                                     {{ messageItem.message }}
@@ -116,16 +115,16 @@
                                     <LikeMesBtn :messageItem="messageItem"></LikeMesBtn>
                                 </div>
                             </div>
-
-                            <a href="#" class="readMore" @click="toggleMessages">
-                                {{ showAllMessages ? '收起' : '查看更多' }}
+                            <button class="readMore" @click.prevent="showMore">
+                                {{ txt }}
                                 <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
-                            </a>
+                                <fontAwesome :icon="['fa', 'angle-up']" style="color:#fff;" />
+                            </button>
                         </div>
                     </div>
                     <div class="otherSong">
                         <h3>專輯其他歌曲</h3>
-                        <div class="song" v-for="(item, index) in otherSongs" :key="index" v-if="showAllSongs || index < 3">
+                        <div class="song" v-for="(item, index) in otherSongs.slice(0, num)" :key="index">
                             <div class="list">
                                 <div class="number">{{ item.id }}</div>
 
@@ -142,9 +141,9 @@
                                 <AddFavBtn></AddFavBtn>
                             </div>
                         </div>
-                        <a href="#" class="readMore" @click="toggleSongs">
+                        <button class="readMore" @click.prevent="showMore">
                             <fontAwesome :icon="['fa', 'angle-down']" style="color:#fff;" />
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
