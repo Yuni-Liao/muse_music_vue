@@ -17,9 +17,14 @@
       flex-direction: row;
       justify-content: center;
       align-items: flex-end;
+      @media screen and (max-width: 800px) {
+        flex-wrap: wrap;
+        margin-bottom: 500px;
+      }
+
       .profile-container {
         position: relative;
-        bottom: -30%;
+        bottom: -130px;
         margin: 0 30px;
         img {
           @include rect(300px);
@@ -33,7 +38,14 @@
       .txt {
         max-width: 55%;
         position: relative;
-        bottom: -30%;
+        bottom: -130px;
+        @media screen and (max-width: 880px) {
+          margin: 50px 0;
+          max-width: 95%;
+          .fol {
+            justify-content: center;
+          }
+        }
         .intro {
           text-shadow: 2px 3px 5px #4d4d4d60;
           text-align: start;
@@ -94,7 +106,6 @@
   }
   main {
     @include layout(1200px);
-    height: 1000px;
     .tabs {
       padding: 15px;
       display: flex;

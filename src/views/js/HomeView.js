@@ -26,6 +26,8 @@ import {
 export default {
   data() {
     return {
+      //本週熱門歌曲輪播RWD
+      weekTopSwiper: 1,
       // 首頁頂部Banner - 廖妍榛
       topBanner: [
         {
@@ -41,7 +43,7 @@ export default {
           image: "song01.jpg",
         },
       ],
-      // 新歌推薦輪播、本週熱門歌曲輪播 - 黃珮菁
+      // 本週熱門歌曲輪播 - 黃珮菁
       songs: [
         {
           sid: 1,
@@ -248,6 +250,8 @@ export default {
           ans: ["鐵達尼號", "再見可魯", "當男人戀愛時"],
         },
       ],
+      // swiper
+      modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
     };
   },
   components: {
@@ -256,6 +260,8 @@ export default {
     Grid,
     GridItem,
   },
+  mounted() {},
+  computed: {},
   methods: {
     gotosinglemusic() {
       this.$router.push({

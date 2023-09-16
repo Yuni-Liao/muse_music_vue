@@ -4,7 +4,7 @@
 .singleAlbum p {
     color: $white;
     letter-spacing: 1px;
-    
+
 }
 
 .singleAlbum .banner {
@@ -199,6 +199,8 @@
 
                         .btnArea {
                             position: relative;
+                            display: flex;
+                            align-items: center;
 
                             #AddSlBtn,
                             #AddFavBtn {
@@ -208,12 +210,24 @@
                                 border: 1px $dark solid;
                             }
 
+                            .more-group {
+
+                                &:focus,
+                                &:focus-within {
+                                    .moreBtnAlert {
+                                        opacity: 1;
+                                        pointer-events: auto;
+                                    }
+                                }
+                            }
+
                             .moreBtn {
                                 @include btnBgNone;
                                 margin: 0 0 0 10px;
                             }
 
                             .moreBtnAlert {
+                                opacity: 0;
                                 position: absolute;
                                 width: 185px;
                                 height: 220px;
@@ -223,9 +237,10 @@
                                 flex-direction: column;
                                 justify-content: space-evenly;
                                 align-items: flex-start;
-                                top: 20px;
-                                left: 150px;
+                                top: 50px;
+                                left: -70px;
                                 border-radius: 6px;
+                                z-index: 3;
 
                                 .close {
                                     @include btnBgNone;

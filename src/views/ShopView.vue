@@ -23,8 +23,9 @@
             <!-- 分類篩選 -->
             <ul>
                 <li v-for="item in items" :key="item.id">
-                    <router-link :to="item.link" @click="currentKind = item.kind"
-                        :class="{ '--active': currentKind === item.kind }">{{ item.label }}</router-link>
+                    <p class="chooseType" @click="currentKind = item.kind"
+                        :class="{ '--active': currentKind === item.kind }">{{ item.label }}
+                    </p>
                 </li>
             </ul>
         </div>
@@ -33,9 +34,9 @@
         <div class="inner">
             <div class="prod">
                 <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
-                    <a href="/shopproddetail" class="prodPic">
+                    <router-link to="/shopproddetail" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
-                    </a>
+                    </router-link>
                     <div class="prodTxt">
                         <a :href="item.link" class="prodName">{{ item.prodName }}</a>
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>

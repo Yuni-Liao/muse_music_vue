@@ -41,7 +41,15 @@
       :slideToClickedSlide="false"
       :grabCursor="false"
       :centeredSlides="true"
-      :slidesPerView="5"
+      :breakpoints="{
+        '414': {
+          slidesPerView: 3,
+        },
+        '1200': {
+          slidesPerView: 5,
+        },
+      }"
+      :slidesPerView="1"
       :slidesPerGroup="1"
       :speed="0.001"
       :autoplay="{

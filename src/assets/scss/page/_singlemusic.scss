@@ -299,7 +299,6 @@
                                 }
 
                                 .more {
-                                    //margin: 0 20px 0 25px;
                                     @include btnBgNone;
                                 }
 
@@ -309,7 +308,7 @@
                                 }
 
                                 #ReportBtn {
-                                    top:10px;
+                                    top: 10px;
                                     right: -25px;
                                     position: absolute;
                                 }

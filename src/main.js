@@ -98,7 +98,8 @@ library.add(
   faCircleCheck,
   faCircleXmark,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faAngleUp,
 );
 
 

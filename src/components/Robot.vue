@@ -1,7 +1,7 @@
 <template>
     <div class="pageTop_robot">
-        <img id="pageTop" alt="pagetop_icon" src="~@/assets/image/icon/pageTop.svg" href="#top" />
-        <img alt="robot_icon" src="~@/assets/image/icon/robot.svg" />
+        <img id="pageTop" alt="pagetop_icon" src="/image/icon/pageTop.svg" href="#top" />
+        <img alt="robot_icon" src="/image/icon/robot.svg" />
     </div>
 </template>
 
