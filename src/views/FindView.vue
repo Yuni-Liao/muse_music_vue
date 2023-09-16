@@ -3,7 +3,7 @@
         <h1>探索．Find Your MUSE</h1>
     </div>
     <div class="language">
-        <div class="space" v-for="(item, index) in languages" :key="index">
+        <div class="space" v-for="(item, index) in language" :key="index">
             <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
                 <router-link :to="item.link" >
@@ -14,7 +14,7 @@
     </div>
 
     <div class="style">
-        <div class="space" v-for="(item, index) in styles" :key="index">
+        <div class="space" v-for="(item, index) in style" :key="index">
             <img src="~@/assets/image/footer_background.jpg" alt="">
             <div class="txt">
                 <router-link :to="item.link" >

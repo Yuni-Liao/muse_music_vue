@@ -34,7 +34,7 @@ export default {
     data() {
         return {
             // 語系
-            languages:[
+            language:[
                 {
                     id: 1,
                     name:'日語流行',
@@ -67,7 +67,7 @@ export default {
                 }
             ],
             // 風格
-            styles:[
+            style:[
                 {
                     id: 1,
                     name: '流行音樂',
@@ -238,15 +238,6 @@ export default {
                     views: 0,
                 }
             ],
-        }
-    },  
-    methods: {
-        playmusic() {
-            alert("呼叫懸浮播放器");
-        },
-    },
-    setup() {
-        return {
             modules: [
                 Autoplay, 
                 EffectCoverflow,  
@@ -254,7 +245,16 @@ export default {
                 EffectFade, 
                 EffectCards
             ],
-        };
+        }
+    },  
+    methods: {
+        playmusic() {
+            alert("呼叫懸浮播放器");
+        },
     },
+    // setup() {
+    //     return {
+    //     };
+    // }
     
 }
