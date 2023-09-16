@@ -250,6 +250,8 @@ export default {
           ans: ["鐵達尼號", "再見可魯", "當男人戀愛時"],
         },
       ],
+      // swiper
+      modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
     };
   },
   components: {
@@ -258,17 +260,7 @@ export default {
     Grid,
     GridItem,
   },
-  mounted() {
-    //本週熱門歌曲輪播RWD
-    const swiperRWD = () => {
-      if (window.innerWidth > 414) {
-        this.weekTopSwiper = 5;
-      } else {
-        this.weekTopSwiper = 1;
-      }
-    };
-    swiperRWD();
-  },
+  mounted() {},
   computed: {},
   methods: {
     gotosinglemusic() {
