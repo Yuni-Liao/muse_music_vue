@@ -195,6 +195,7 @@ a:hover{
             #PlayBtnBig {
               @include btnColor($green, $border: true, $hover: true);
               position: absolute;
+              background-color: $white;
             }
             img {
               width: 100%;
