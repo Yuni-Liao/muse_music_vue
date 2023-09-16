@@ -22,7 +22,7 @@
     </swiper>
     </div>
 
-    <!-- 音樂快訊 -->
+    <!-- 音樂快訊標題 -->
     <div class="activityTitle">
         <div class="whatson">
             <h1>音樂快訊</h1>
@@ -47,27 +47,60 @@
 
     <!-- 月份TAB -->
     <div class="bigMonthTab">
-        <div class="left-arrow">
-            <fontAwesome :icon="['fa', 'fa-chevron-left']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"  />
-        </div>
-        <ul class="monthTab">
-            <li>MAY</li>
-            <li>JUN</li>
-            <li>JUL</li>
-            <li>AUG</li>
-            <li>SEP</li>
-            <li>OCT</li>
-            <li>NOV</li>
-            <li>DEC</li>
-            <li>JAN</li>
-            <li>FEB</li>
-            <li>MAR</li>
-            <li>APR</li>
-        </ul>
-        <div class="right-arrow">
-            <fontAwesome :icon="['fa', 'fa-chevron-right']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"  />
+        <div class="monthTab">
+            <div class="left-arrow" @click="scrollMonth(-1)">
+                <fontAwesome :icon="['fa', 'fa-chevron-left']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"  />
+            </div>
+            <ul class="monthTab" ref="monthContainer">
+                <li v-for="month in visibleMonths" :key="month">{{ month }}</li>
+            </ul>
+            <div class="right-arrow" @click="scrollMonth(1)">
+                 <fontAwesome :icon="['fa', 'fa-chevron-right']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"  />
+            </div>
         </div>
     </div>
+    
+    <div class="areaInfoContainer">
+         <!-- 地區 -->
+        <div class="activityArea">
+            <ul>
+                <li>全部</li>
+                <li>北部</li>
+                <li>中部</li>
+                <li>南部</li>
+                <li>東部</li>
+                <li>其他地區</li>
+            </ul>
+        </div>
+
+        <!-- 活動資訊區 -->
+        <div class="infoWrapper">
+            <div class="activityInfo" v-for=" activity in activityList" :key=" activity">
+            <div class="calender">
+                <div class="month">
+                    {{ activity.month }}月
+                </div>
+                <p>{{activity.date}}日</p>
+                <p>星期{{activity.day}}</p>
+            </div>
+            <img :src="activity.img" alt="">
+            
+            <div class="info">
+                <p>{{activity.title}}</p>
+                <p>{{activity.timePlace}}</p>
+                <router-link to="" class="singer">
+                    <fontAwesome :icon="['fa', 'user-large']" style="color: #fff; margin-left: 10px; cursor: pointer;" />
+                    <p>{{activity.singer}}</p>
+                </router-link>
+            
+            </div>
+            
+        </div>
+        </div>
+    </div>
+
+   
+    
 </template>
 
 

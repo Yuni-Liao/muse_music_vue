@@ -140,6 +140,7 @@ export default {
             num2: 3,
             txt: '查看更多',
             txt2: '查看更多',
+            icon: 'arrayIcon',
         };
     },
     created() {
@@ -179,6 +180,11 @@ export default {
         closeReportBtn(messageItem) {
             console.log(messageItem)
             messageItem.showReportBtn = false
+        },
+        methods: {
+            toggleIcon() {
+                this.isShowSong = !this.isShowSong;
+            },
         },
         // handleGlobalClick(event) {
         //     // 檢查是否是點在按鈕外的地方

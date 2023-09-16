@@ -54,6 +54,7 @@
             height: 60px;
             line-height: 60px;
             letter-spacing: 2px;
+            font-weight: bolder;
         }
         p{
             color: $green;
@@ -61,11 +62,112 @@
             font-weight: bold;
             letter-spacing: 4px;
             margin: 10px;
+            font-weight: bolder;
         }
     }
   }
   .wave{
     transform: rotate(-25deg);
     position: absolute;
-    float: left;
+    margin-top: -170px;
+    margin-left: -50px;
+  }
+  .bigMonthTab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    .monthTab{
+        display: flex;
+        width: 700px;
+        overflow: hidden;
+        white-space: nowrap;
+        background-color: #000;
+    }
+    ul{
+        display: flex;
+        width: 400px;
+        li{
+            cursor: pointer;
+            list-style: none;
+            color: $white;
+            font-size: $medium;
+            letter-spacing: 3px;
+            margin: 10px;
+            
+        }
+    }
+    
+  }
+
+  .areaInfoContainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 100px 0px;
+    .activityArea{
+        background-color: #000;
+        width: 160px;
+        height: 400px;
+        margin-right: 100px;
+        ul, li{
+            list-style: none;
+            color: $white;
+            font-size: $small;
+            padding: 10px;
+            margin: 10px 10px;
+        }
+      }
+      .activityInfo{
+        // width: 900px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 50px;
+        padding: 10px 0px;
+        border-bottom: 1px solid #fff;
+        .calender{
+            margin-right: 30px;
+            background-color: $white;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            height: 70px;
+            .month{
+                color: $white;
+                background-color: $blue;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                padding: 0px 20px;
+                font-weight: bolder;
+            }
+            p{
+                color: #000;
+            }
+        }
+        img{
+            width: 200px;
+        }
+        .info{
+            text-align: left;
+            margin-left: 20px;
+            cursor: pointer;
+            p{
+                padding: 5px 10px;
+                color: $white;
+            }
+            .singer{
+                width: 100px;
+                background-color: $pink;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                margin: 10px;
+                p{
+                    padding: 0px 10px;
+                }
+            }
+        }
+        
+      }
   }
