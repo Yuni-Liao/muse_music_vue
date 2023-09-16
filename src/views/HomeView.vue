@@ -41,7 +41,7 @@
       :slideToClickedSlide="false"
       :grabCursor="false"
       :centeredSlides="true"
-      :slidesPerView="5"
+      :slidesPerView="weekTopSwiper"
       :slidesPerGroup="1"
       :speed="0.001"
       :autoplay="{

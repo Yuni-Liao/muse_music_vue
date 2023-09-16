@@ -162,7 +162,7 @@ export default {
   mounted() {
     document.addEventListener("click", this.closemore, true);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener("click", this.closemore);
   },
 };
