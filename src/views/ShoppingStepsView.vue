@@ -144,6 +144,6 @@
 
 
 <style scoped lang="scss">
-@import "~@/assets/scss/page/shoppingsteps";
+@import "~@/assets/scss/page/shoppingsteps.scss";
 </style> 
 <script src="./js/ShoppingStepsView"></script>
