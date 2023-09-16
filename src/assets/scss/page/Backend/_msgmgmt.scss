@@ -1,4 +1,5 @@
 main{
+    background-color: $white;
     position: relative;
     .msgmgmt_box{
         display: flex;
@@ -6,7 +7,7 @@ main{
         @include layout(80%);
         position: absolute;
         top: 20%;
-        left: 10%;
+        left: 18%;
         display: flex;
         justify-content: center;
         h1{
@@ -15,4 +16,8 @@ main{
             padding-bottom: 3%;
         }
     }
+}
+
+.cellHeight{
+    line-height: $fh;
 }

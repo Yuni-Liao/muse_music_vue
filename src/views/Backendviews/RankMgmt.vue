@@ -1,8 +1,8 @@
 <template>
     <div class="rankmgmt_box">
         <h1>網站資訊管理 | 排行榜管理</h1>
-        <Table highlight-row stripe size="large" class="rankmgmt_table" width="1200" height="550" :columns="columns"
-            :data="data">
+        <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="550"
+            :columns="columns" :data="data">
             <template #editBtn="{ row }">
                 <Button @click="editBtn()">
                     <fontAwesome :icon="['far', 'pen-to-square']" />

@@ -1,7 +1,8 @@
 <template>
     <div class="ordermgmt_box">
         <h1>周邊販售管理 | 訂單管理</h1>
-        <Table highlight-row stripe class="order_mgmt_table" width="1200" height="550" :columns="columns" :data="data">
+        <Table highlight-row stripe class="order_mgmt_table cellHeight" width="1200" height="550" :columns="columns"
+            :data="data">
             <template #editBtn="{ row }">
                 <Button @click="editBtn()">
                     <fontAwesome :icon="['far', 'pen-to-square']" />

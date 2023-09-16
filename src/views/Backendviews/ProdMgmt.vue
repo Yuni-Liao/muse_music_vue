@@ -1,7 +1,8 @@
 <template>
     <div class="prodmgmt_box">
         <h1>周邊販售管理 | 商品管理</h1>
-        <Table highlight-row stripe class="prodmgmt_table" width="1200" height="550" :columns="columns" :data="data">
+        <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1200" height="550" :columns="columns"
+            :data="data">
             <template #upDownBtn="{ row }">
                 <Button @click="upDownBtn()">
                     上/下架
