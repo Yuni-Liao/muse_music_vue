@@ -175,6 +175,7 @@
         }
       }
       .swiper-slide-active {
+        z-index: 20;
         opacity: 1;
         .card {
           transform: scale(1.5);

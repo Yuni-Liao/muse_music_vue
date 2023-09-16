@@ -99,7 +99,28 @@
       </div>
       <div class="line"></div>
       <section v-show="tabtype === 0" class="activity">activity</section>
-      <section v-show="tabtype === 1" class="music">music</section>
+      <section v-show="tabtype === 1" class="music">
+        <section class="album">
+          <swiper
+            :scrollbar="{
+              hide: true,
+            }"
+            :modules="modules"
+            class="mySwiper"
+          >
+            <swiper-slide>Slide 1</swiper-slide>
+            <swiper-slide>Slide 2</swiper-slide
+            ><swiper-slide>Slide 3</swiper-slide>
+            <swiper-slide>Slide 4</swiper-slide
+            ><swiper-slide>Slide 5</swiper-slide>
+            <swiper-slide>Slide 6</swiper-slide
+            ><swiper-slide>Slide 7</swiper-slide>
+            <swiper-slide>Slide 8</swiper-slide
+            ><swiper-slide>Slide 9</swiper-slide>
+          </swiper>
+        </section>
+        <section class="song"></section>
+      </section>
       <section v-show="tabtype === 2" class="songlist">
         <section class="container">
           <!-- 判斷是否有data -->
@@ -110,7 +131,11 @@
             v-else
             class="sl-list row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
           >
-            <div class="col" v-for="(item, index) in songlists">
+            <div
+              class="col"
+              v-for="(item, index) in songlists"
+              :key="item.slid"
+            >
               <!-- 單一歌單 -->
               <div
                 class="sl-item"
