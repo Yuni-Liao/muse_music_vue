@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import FrontEnd from "../views/FrontEnd.vue";
 
 const routes = [
+  //g2
   {
     path: "/",
     name: "frontend",
@@ -239,7 +240,7 @@ const routes = [
       },
     ],
   },
-  // 以下為後台登入頁面
+  // 以下為後台登入頁面/g2/backendLogin
   {
     path: "/backendLogin",
     name: "backendLogin",
@@ -251,6 +252,7 @@ const routes = [
       title: "後台登入歌曲",
     },
   },
+  ///g2/backend
   {
     path: "/backend",
     name: "backend",
