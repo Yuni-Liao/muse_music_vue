@@ -21,18 +21,27 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () =>
           import(/* webpackChunkName: "find" */ "../views/FindView.vue"),
+        meta: {
+          title: "探索",
+        },
       },
       {
         path: "ranking",
         name: "ranking",
         component: () =>
           import(/* webpackChunkName: "ranking" */ "../views/RankingView.vue"),
+        meta: {
+          title: "排行榜",
+        },
       },
       {
         path: "shop",
         name: "shop",
         component: () =>
           import(/* webpackChunkName: "shop" */ "../views/ShopView.vue"),
+        meta: {
+          title: "周邊販售",
+        },
       },
       {
         path: "shoppingsteps",
@@ -41,6 +50,9 @@ const routes = [
           import(
             /* webpackChunkName: "profilepage" */ "../views/ShoppingStepsView.vue"
           ),
+        meta: {
+          title: "結帳",
+        },
       },
       {
         path: "activity",
@@ -49,12 +61,18 @@ const routes = [
           import(
             /* webpackChunkName: "activity" */ "../views/ActivityView.vue"
           ),
+        meta: {
+          title: "音樂快訊",
+        },
       },
       {
         path: "login",
         name: "login",
         component: () =>
           import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
+        meta: {
+          title: "登入",
+        },
       },
       {
         path: "register",
@@ -63,18 +81,28 @@ const routes = [
           import(
             /* webpackChunkName: "register" */ "../views/RegisterView.vue"
           ),
+        meta: {
+          title: "會員註冊",
+        },
       },
       {
         path: "forgetpsw",
         name: "forgetpsw",
         component: () =>
           import(/* webpackChunkName: "forgetpsw" */ "../views/ForgetPsw.vue"),
+        meta: {
+          title: "忘記密碼",
+        },
       },
+
       {
         path: "about",
         name: "about",
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+        meta: {
+          title: "關於謬思",
+        },
       },
       // {
       //   //faq的component還沒改還沒導,試試看能不能用茅點
@@ -99,16 +127,24 @@ const routes = [
           import(
             /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"
           ),
+        meta: {
+          title: "商品名稱",
+          //把它變成商品名稱
+        },
       },
 
       //以下是我的音樂庫-我的歌單
       {
+        title: "我的歌單",
         path: "mysonglist",
         name: "mysonglist",
         component: () =>
           import(
             /* webpackChunkName: "mysonglist" */ "../views/MySonglistView.vue"
           ),
+        meta: {
+          title: "我的歌單",
+        },
       },
 
       //以下歌單頁面
@@ -119,6 +155,10 @@ const routes = [
           import(
             /* webpackChunkName: "singlesonglist" */ "../views/SingleSonglistView.vue"
           ),
+        meta: {
+          title: "歌單",
+          //把它變成歌單名稱
+        },
       },
 
       //以下是單曲頁面
@@ -129,6 +169,10 @@ const routes = [
           import(
             /* webpackChunkName: "singlemusic" */ "../views/SingleMusic.vue"
           ),
+        meta: {
+          title: "單曲",
+          //把它變成專輯名稱
+        },
       },
 
       //以下是專輯頁面
@@ -139,6 +183,10 @@ const routes = [
           import(
             /* webpackChunkName: "singlealbum" */ "../views/SingleAlbum.vue"
           ),
+        meta: {
+          title: "專輯",
+          //把它變成專輯名稱
+        },
       },
 
       //以下是個人主頁頁面
@@ -149,6 +197,9 @@ const routes = [
           import(
             /* webpackChunkName: "profilepageedit" */ "../views/ProfilePageEditView.vue"
           ),
+        meta: {
+          title: "個人主頁管理",
+        },
       },
       {
         path: "profilepage",
@@ -157,6 +208,10 @@ const routes = [
           import(
             /* webpackChunkName: "profilepage" */ "../views/ProfilePageView.vue"
           ),
+        meta: {
+          title: "個人主頁",
+          //把它變成會員名稱
+        },
       },
       //以下是探索音樂內頁頁面
       {
@@ -166,6 +221,9 @@ const routes = [
           import(
             /* webpackChunkName: "findmusic" */ "../views/FindMusicView.vue"
           ),
+        meta: {
+          title: "探索",
+        },
       },
       //以下是前台-帳號設定頁面
       {
@@ -173,17 +231,25 @@ const routes = [
         name: "accsetting",
         component: () =>
           import(
-                  /* webpackChunkName: "accsetting" */ "../views/AccSetting.vue"
+            /* webpackChunkName: "accsetting" */ "../views/AccSetting.vue"
           ),
+        meta: {
+          title: "帳號設定",
+        },
       },
-    ]
+    ],
   },
   // 以下為後台登入頁面
   {
     path: "/backendLogin",
     name: "backendLogin",
     component: () =>
-      import(/* webpackChunkName: "backendLogin" */ "../views/Backendviews/Login.vue"),
+      import(
+        /* webpackChunkName: "backendLogin" */ "../views/Backendviews/Login.vue"
+      ),
+    meta: {
+      title: "後台登入歌曲",
+    },
   },
   {
     path: "/backend",
@@ -201,6 +267,9 @@ const routes = [
           import(
             /* webpackChunkName: "songreview" */ "../views/Backendviews/SongReview.vue"
           ),
+        meta: {
+          title: "歌曲審核管理",
+        },
       },
       // 以下為歌曲類別管理頁面
       {
@@ -210,6 +279,9 @@ const routes = [
           import(
             /* webpackChunkName: "songtype" */ "../views/Backendviews/SongType.vue"
           ),
+        meta: {
+          title: "歌曲類別管理",
+        },
       },
       // 以下為訂單管理頁面
       {
@@ -219,6 +291,9 @@ const routes = [
           import(
             /* webpackChunkName: "ordermgmt" */ "../views/Backendviews/OrderMgmt.vue"
           ),
+        meta: {
+          title: "訂單管理",
+        },
       },
       // 以下為商品管理頁面
       {
@@ -228,6 +303,9 @@ const routes = [
           import(
             /* webpackChunkName: "prodmgmt" */ "../views/Backendviews/ProdMgmt.vue"
           ),
+        meta: {
+          title: "商品管理",
+        },
       },
       // 以下為首頁輪播管理頁面
       {
@@ -237,6 +315,9 @@ const routes = [
           import(
             /* webpackChunkName: "homecarousel" */ "../views/Backendviews/HomeCarousel.vue"
           ),
+        meta: {
+          title: "首頁輪播管理",
+        },
       },
       // 以下為機器人管理頁面
       {
@@ -246,6 +327,9 @@ const routes = [
           import(
             /* webpackChunkName: "robotmgmt" */ "../views/Backendviews/RobotMgmt.vue"
           ),
+        meta: {
+          title: "機器人管理歌曲",
+        },
       },
       // 以下為音樂快訊管理頁面
       {
@@ -255,6 +339,9 @@ const routes = [
           import(
             /* webpackChunkName: "museevent" */ "../views/Backendviews/MuseEvent.vue"
           ),
+        meta: {
+          title: "音樂快訊管理",
+        },
       },
       // 以下為排行榜管理頁面
       {
@@ -264,6 +351,9 @@ const routes = [
           import(
             /* webpackChunkName: "rankmgmt" */ "../views/Backendviews/RankMgmt.vue"
           ),
+        meta: {
+          title: "排行榜管理",
+        },
       },
       // 以下為檢舉留言管理頁面
       {
@@ -273,6 +363,9 @@ const routes = [
           import(
             /* webpackChunkName: "msgmgmt" */ "../views/Backendviews/MsgMgmt.vue"
           ),
+        meta: {
+          title: "歌曲檢舉留言管理",
+        },
       },
       // 以下為會員管理頁面
       {
@@ -282,6 +375,9 @@ const routes = [
           import(
             /* webpackChunkName: "memmgmt" */ "../views/Backendviews/MemMgmt.vue"
           ),
+        meta: {
+          title: "會員管理",
+        },
       },
       // 以下為管理員管理頁面
       {
@@ -291,6 +387,9 @@ const routes = [
           import(
             /* webpackChunkName: "admmgmt" */ "../views/Backendviews/AdmMgmt.vue"
           ),
+        meta: {
+          title: "管理員管理",
+        },
       },
     ],
   },
@@ -300,6 +399,9 @@ const routes = [
     name: "NotFound",
     component: () =>
       import(/* webpackChunkName: "NotFound" */ "../views/NotFoundView.vue"),
+    meta: {
+      title: "404 NotFound",
+    },
   },
 ];
 
@@ -309,6 +411,14 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 };
   },
+});
+
+router.beforeEach(async (to, from) => {
+  if (to.meta && to.meta.title) {
+    document.title = `${to.meta.title} ｜ MUSE MUSIC`;
+  } else {
+    document.title = `MUSE MUSIC`;
+  }
 });
 
 export default router;
