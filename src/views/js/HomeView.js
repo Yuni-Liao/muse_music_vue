@@ -263,21 +263,16 @@ export default {
   mounted() {},
   computed: {},
   methods: {
-    gotosinglemusic() {
+    gotosinglemusic(sid) {
       this.$router.push({
         name: "singlemusic",
         query: {
-          q: this.songs.ssid, //???
+          q: sid,
         },
       });
     },
     playmusic() {
       alert("呼叫懸浮播放器");
     },
-  },
-  setup() {
-    return {
-      modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
-    };
   },
 };

@@ -64,7 +64,7 @@
             :src="require(`/public/image/index/${item.image}`)"
             @click="playmusic()"
           />
-          <div class="text" @click="gotosinglemusic()">
+          <div class="text" @click="gotosinglemusic(item.sid)">
             <h3>{{ item.title }}</h3>
             <p>
               {{ item.singer }}<span>播放量{{ item.views }}</span>
