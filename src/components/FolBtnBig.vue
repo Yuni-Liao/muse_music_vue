@@ -10,8 +10,6 @@
   </button>
 </template>
 <script>
-//還沒寫完，還要從父取值去控制按鈕功能
-
 export default {
   name: "FolBtnBig",
   props: ["functype"],
