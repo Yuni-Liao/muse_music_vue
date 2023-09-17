@@ -4,19 +4,27 @@ export default {
             columns: [
                 {
                     title: 'No',
-                    key: 'allSongNo'
+                    key: 'allSongNo',
+                    width: 200,
+                    align: 'center'
                 },
                 {
                     title: '舊類別名稱',
-                    key: 'oldTypeName'
+                    key: 'oldTypeName',
+                    width: 300,
+                    align: 'center'
                 },
                 {
                     title: '新類別名稱',
-                    key: 'newTypeName'
+                    key: 'newTypeName',
+                    width: 300,
+                    align: 'center'
                 },
                 {
                     title: '操作',
-                    slot: 'editSongTypeBtn'
+                    slot: 'editSongTypeBtn',
+                    width: 300,
+                    align: 'center'
                 },
             ],
             data: [
@@ -39,35 +47,51 @@ export default {
             singleSongType: [
                 {
                     title: 'No',
-                    key: 'singleSongNo'
+                    key: 'singleSongNo',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '歌曲名稱',
-                    key: 'SongName'
+                    key: 'SongName',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '會員帳號',
-                    key: 'memAcc'
+                    key: 'memAcc',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '歌曲類別',
-                    key: 'singleSongType'
+                    key: 'singleSongType',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '歌曲狀態',
-                    key: 'singleSongStatus'
+                    key: 'singleSongStatus',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '審核者',
-                    key: 'adminAcc'
+                    key: 'adminAcc',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '審核時間',
-                    key: 'acceptTime'
+                    key: 'acceptTime',
+                    width: 200,
+                    align: 'center'
                 },
                 {
                     title: '操作',
-                    slot: 'editSingleSongBtn'
+                    slot: 'editSingleSongBtn',
+                    width: 150,
+                    align: 'center'
                 }
             ],
             singleSongData: [

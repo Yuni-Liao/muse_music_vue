@@ -1,10 +1,10 @@
 nav{
-    @include rect(140px, 100vh);
+    @include rect(200px, 100vh);
     background-color: $dark;
     // padding: 8% 0;
     ul{
         @include rect(100%, fit);
-        // padding: 10% 10%;
+        // padding: 10% 0;
         background-color: $dark;
         li{
             @include rect(100%, fit);
@@ -18,5 +18,15 @@ nav{
             text-align: left;
             cursor: pointer;
         }
+        .sidebar_item{
+            padding:14px 40px;
+            margin-bottom: -10px ;
+            transition: all .2s ease-in-out;
+            &:hover{
+                color: #2d8cf0;
+                transition: all .2s ease-in-out;
+            }
+        }
+        
     }
 }

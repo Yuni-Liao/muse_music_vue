@@ -1,7 +1,8 @@
 <template>
     <div class="song_review_table_box">
         <h1>歌曲管理 | 歌曲審核管理</h1>
-        <Table highlight-row stripe class="song_review_table" width="1200" height="550" :columns="columns" :data="data">
+        <Table highlight-row stripe class="song_review_table cellHeight" width="1200" height="550" :columns="columns"
+            :data="data">
             <template #editBtn="{ row }">
                 <Button @click="editBtn()">刪除</Button>
             </template>

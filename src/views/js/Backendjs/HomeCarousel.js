@@ -2,33 +2,49 @@ export default {
     data() {
         return {
             columns: [
+
                 {
                     title: 'No',
-                    key: 'no'
+                    key: 'no',
+                    align: 'center',
+                    width: 60,
+
                 },
                 {
                     title: '輪播名稱',
-                    key: 'carouselName'
+                    key: 'carouselName',
+                    align: 'center',
+                    width: 200,
                 },
                 {
                     title: '圖片',
-                    key: 'imageLink'
+                    key: 'imageLink',
+                    align: 'center',
+                    width: 200,
                 },
                 {
                     title: '上/下架',
-                    slot: 'upDownBtn'
+                    slot: 'upDownBtn',
+                    align: 'center',
+                    width: 100,
                 },
                 {
                     title: '更新者',
-                    key: 'adminAcc'
+                    key: 'adminAcc',
+                    align: 'center',
+                    width: 150,
                 },
                 {
                     title: '更新時間',
-                    key: 'updateTime'
+                    key: 'updateTime',
+                    align: 'center',
+                    width: 250,
                 },
                 {
                     title: '操作',
-                    slot: 'editBtn'
+                    slot: 'editBtn',
+                    align: 'center',
+                    width: 100,
                 }
             ],
             data: [
