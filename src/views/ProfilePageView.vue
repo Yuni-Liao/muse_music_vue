@@ -15,7 +15,7 @@
           <article class="intro">
             <h1>
               {{ mem.memname }}
-              <FolBtnBig :functype="2"></FolBtnBig>
+              <FolBtnBig :functype="1"></FolBtnBig>
             </h1>
             <p class="loc">
               <fontAwesome class="i" :icon="['fa', 'location-dot']" />{{
@@ -30,7 +30,7 @@
               v-show="isReadmoreBtn"
               @click="readmore()"
             >
-              顯示更多
+              顯示更{{ isReadMore ? "少" : "多" }}
             </button>
           </article>
           <div class="fol">
@@ -74,6 +74,7 @@
       </div>
     </section>
     <main>
+      <!-- tab -->
       <div class="tabs">
         <button
           @click="tabtype = 0"
@@ -98,68 +99,120 @@
         </button>
       </div>
       <div class="line"></div>
-      <section v-show="tabtype === 0" class="activity">activity</section>
-      <section v-show="tabtype === 1" class="music">
-        <section class="album">
-          <swiper
-            :scrollbar="{
-              hide: true,
-            }"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide>Slide 1</swiper-slide>
-            <swiper-slide>Slide 2</swiper-slide
-            ><swiper-slide>Slide 3</swiper-slide>
-            <swiper-slide>Slide 4</swiper-slide
-            ><swiper-slide>Slide 5</swiper-slide>
-            <swiper-slide>Slide 6</swiper-slide
-            ><swiper-slide>Slide 7</swiper-slide>
-            <swiper-slide>Slide 8</swiper-slide
-            ><swiper-slide>Slide 9</swiper-slide>
-          </swiper>
-        </section>
-        <section class="song"></section>
+      <!-- 由tab切換之顯示內容 -->
+      <!-- 活動 -->
+      <section v-show="tabtype === 0" class="activity container">
+        activity
       </section>
-      <section v-show="tabtype === 2" class="songlist">
-        <section class="container">
-          <!-- 判斷是否有data -->
-          <div class="nodata" v-if="songlists.length === 0">
-            目前沒有公開歌單
-          </div>
-          <div
-            v-else
-            class="sl-list row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
-          >
-            <div
-              class="col"
-              v-for="(item, index) in songlists"
-              :key="item.slid"
+      <!-- 音樂 -->
+      <section v-show="tabtype === 1" class="music container">
+        <!-- 假如沒有專輯就不顯示專輯區塊 -->
+        <div v-if="album.length > 0" class="album">
+          <h3>專輯． Album</h3>
+          <div class="content">
+            <swiper
+              class="mySwiper"
+              :scrollbar="true"
+              :modules="modules"
+              :slidesPerView="3"
+              :slidesPerGroup="3"
             >
-              <!-- 單一歌單 -->
-              <div
-                class="sl-item"
-                :style="{
-                  backgroundImage: `url(/image/SingleMusic/${item.image})`,
-                }"
-                @click.self.prevent="gotosonglist()"
-              >
-                <div class="txt">
-                  <div>
-                    <h3>
-                      {{ item.slname }}
-                    </h3>
-                    <div>
-                      <span>共有{{ item.songnum }}首歌</span>
-                      <span>{{ item.creator }}</span>
+              <!-- 單一專輯 -->
+              <swiper-slide v-for="(item, index) in album" :key="item.id">
+                <div class="card" @click="gotosinglealbum(abid)">
+                  <div class="pic">
+                    <img
+                      :src="
+                        require(`/public/image/SingleAlbum/${item.albumPic}`)
+                      "
+                      :alt="item.songName"
+                    />
+                    <!-- <button></button> -->
+                  </div>
+                  <div class="txt">
+                    <div class="inf">
+                      <h4>{{ item.albumName }}</h4>
+                      <span>{{ item.singer }}</span>
+                      <span>{{ item.date }}</span>
+                    </div>
+                    <div class="tag" v-if="item.mcatid">
+                      <fontAwesome class="i" :icon="['fa', 'tags']" />
+                      <div>
+                        <span
+                          v-for="(tagitem, index) in item.mcatid.slice(0, 3)"
+                          >{{ tagitem }}</span
+                        >
+                        <span v-if="item.mcatid.length > 3">... </span>
+                      </div>
                     </div>
                   </div>
-                  <PlayBtnBig></PlayBtnBig>
                 </div>
+              </swiper-slide>
+            </swiper>
+          </div>
+        </div>
+        <div class="song">
+          <h3>所有歌曲． Songs</h3>
+          <!-- 判斷是否有data -->
+          <div v-if="songs.length === 0" class="nodata">
+            {{ mem.memname }}目前沒有上傳歌曲
+          </div>
+          <div v-else class="content">
+            <ol>
+              <li v-for="(item, index) in songs" :key="item.id">
+                <span class="index">{{ index + 1 }}</span>
+                <div class="pic">
+                  <img
+                    :src="require(`/public/image/SingleMusic/${item.songPic}`)"
+                    :alt="item.songName"
+                  />
+                  <div class="play" @click="playmusic()">
+                    <fontAwesome class="i" :icon="['fa', 'play']" />
+                  </div>
+                </div>
+                <h4 v-line-clamp="2" @click="gotosinglemusic(sid)">
+                  {{ item.songName }}
+                </h4>
+                <span class="time">{{ item.time }}</span>
+                <span> <AddSlBtn></AddSlBtn></span>
+                <span> <AddFavBtn></AddFavBtn></span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+      <!-- 公開歌單 -->
+      <section v-show="tabtype === 2" class="songlist container">
+        <!-- 判斷是否有data -->
+        <div v-if="songlists.length === 0" class="nodata">目前沒有公開歌單</div>
+        <div
+          v-else
+          class="sl-list row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
+        >
+          <div class="col" v-for="(item, index) in songlists" :key="item.slid">
+            <!-- 單一歌單 -->
+            <div
+              class="sl-item"
+              :style="{
+                backgroundImage: `url(/image/SingleMusic/${item.image})`,
+              }"
+              @click.self.prevent="gotosonglist(item.slid)"
+            >
+              <div class="txt">
+                <div>
+                  <h4>
+                    {{ item.slname }}
+                  </h4>
+                  <div>
+                    <span>共有{{ item.songnum }}首歌</span>
+                    <span>{{ item.creator }}</span>
+                  </div>
+                </div>
+                <PlayBtnBig></PlayBtnBig>
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </section>
     </main>
   </div>
