@@ -38,7 +38,7 @@
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
-                        <a :href="item.link" class="prodName">{{ item.prodName }}</a>
+                        <router-link :to="item.link" class="prodName">{{ item.prodName }}</router-link>
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>
 
                         <!-- 數量加減 -->
@@ -50,7 +50,7 @@
                             <button class="prodBtn" @click="incrementItem(item)">
                                 <img src="/image/ShopImage/down.png"></button>
                         </span>
-                        <button class="obj_Radius btn_Shop_Border" @click="addItem(item.id, item.value)">加入購物車</button>
+                        <button class="obj_Radius btn_Shop_Border addButton" @click="addToCart(item)">加入購物車</button>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,6 @@
                 <img src="/image/icon/shopcart.png" alt="shopcart">
             </button>
         </router-link>
-        <pre>{{ sortProducts2 }}</pre>
 
     </div>
 </template>

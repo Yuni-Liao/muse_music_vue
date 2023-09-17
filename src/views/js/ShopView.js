@@ -275,14 +275,6 @@ export default {
             //郭凱芸 - 下拉數量選單:預設
             selectedPageSize: 20,
 
-            //郭凱芸 - 以下是購物車localStorage相關
-            selectedItem: {
-                image: '',
-                title: '',
-                price: '',
-            },
-            itemCount: 0,
-            subtotal: 0,
         }
     },
     computed: {
@@ -345,46 +337,33 @@ export default {
             this.selectedPageSize = page;
         },
 
-        //郭凱芸 - 購物車localStorage相關
-        addItem(itemId, itemValue) {
-            let image = `imgs/${itemValue.split('|')[1]}`;
-            let title = itemValue.split('|')[0];
-            let price = itemValue.split('|')[2];
+        //這邊是 加入購物車
+        addToCart(item) {
+            // 獲取已存儲的購物車數據或初始化一個空數組
+            const cartItemsJSON = localStorage.getItem('cartItems');
+            let cartItems = [];
 
-            this.selectedItem = { image, title, price };
+            if (cartItemsJSON) {
+                // 如果已經有購物車數據，則解析它
+                cartItems = JSON.parse(cartItemsJSON);
+            }
 
-            if (this.storage[itemId]) {
-                alert('You have checked.');
+            // 檢查購物車中是否已經存在相同的商品
+            const existingItem = cartItems.find(cartItem => cartItem.prodName === item.prodName);
+
+            if (existingItem) {
+                // 如果存在相同的商品，將它們的 inCart 數字相加
+                existingItem.inCart += item.inCart;
             } else {
-                this.storage['addItemList'] += `${itemId}, `;
-                this.storage[itemId] = itemValue;
+                // 如果不存在相同的商品，將商品添加到購物車數組
+                cartItems.push(item);
             }
 
-            let itemString = this.storage['addItemList'];
-            let items = itemString.substring(0, itemString.length - 2).split(', ');
+            // 將購物車數組轉換為 JSON 字符串
+            const updatedCartItemsJSON = JSON.stringify(cartItems);
 
-            this.subtotal = 0;
-            for (let i = 0; i < items.length; i++) {
-                let itemInfo = this.storage.getItem(items[i]);
-                this.subtotal += parseInt(itemInfo.split('|')[2]);
-            }
-
-            this.itemCount = items.length;
-        },
-    },
-    created() {
-        if (!this.storage['addItemList']) {
-            this.storage['addItemList'] = '';
-        }
-    },
-    mounted() {
-        let list = document.querySelectorAll('.addButton');
-
-        for (let i = 0; i < list.length; i++) {
-            list[i].addEventListener('click', (e) => {
-                let teddyInfo = this.items.find((item) => item.id === e.target.textContent);
-                this.addItem(e.target.textContent, teddyInfo.value);
-            });
+            // 使用 localStorage 存儲購物車數據
+            localStorage.setItem('cartItems', updatedCartItemsJSON);
         }
     },
 }
