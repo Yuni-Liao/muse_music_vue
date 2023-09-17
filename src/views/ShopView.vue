@@ -50,7 +50,7 @@
                             <button class="prodBtn" @click="incrementItem(item)">
                                 <img src="/image/ShopImage/down.png"></button>
                         </span>
-                        <button class="obj_Radius btn_Shop_Border">加入購物車</button>
+                        <button class="obj_Radius btn_Shop_Border" @click="addItem(item.id, item.value)">加入購物車</button>
                     </div>
                 </div>
             </div>

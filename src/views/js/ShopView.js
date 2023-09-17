@@ -1,6 +1,7 @@
 export default {
     data() {
         return {
+            storage: localStorage,
             //分類篩選
             items: [
                 {
@@ -45,7 +46,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-01",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Killbeast 黑膠|prod1.jpg|790",
                 },
                 {
                     id: 2,
@@ -55,7 +57,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-02",
                     kind: "男藝人樂團團體黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "西城男人 黑膠|prod2.jpg|1190",
                 },
                 {
                     id: 3,
@@ -65,7 +68,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-03",
                     kind: "樂團團體錄音帶",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Party Time 錄音帶|prod3.jpg|590",
                 },
                 {
                     id: 4,
@@ -75,7 +79,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-04",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Rose 黑膠|prod4.jpg|890",
                 },
                 {
                     id: 5,
@@ -85,7 +90,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-05",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Over Over 黑膠|prod5.jpg|1290",
                 },
                 {
                     id: 6,
@@ -95,7 +101,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-06",
                     kind: "樂團團體黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Blackmage 黑膠|prod6.jpg|1020",
                 },
                 {
                     id: 7,
@@ -105,7 +112,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-07",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "KKOCK 黑膠|prod7.jpg|990",
                 },
                 {
                     id: 8,
@@ -115,7 +123,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-08",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "cillbeast 黑膠|prod1.jpg|790",
                 },
                 {
                     id: 9,
@@ -125,7 +134,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-09",
                     kind: "男藝人樂團團體黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "東城男子 黑膠|prod2.jpg|790",
                 },
                 {
                     id: 10,
@@ -135,7 +145,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-10",
                     kind: "樂團團體錄音帶",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Sleep Time 錄音帶|prod3.jpg|1290",
                 },
                 {
                     id: 11,
@@ -145,7 +156,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-11",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Lisa 黑膠|prod4.jpg|790",
                 },
                 {
                     id: 12,
@@ -155,7 +167,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-12",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Very Very 黑膠|prod5.jpg|1090",
                 },
                 {
                     id: 13,
@@ -165,7 +178,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-13",
                     kind: "樂團團體黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Pinkmage 黑膠|prod6.jpg|690",
                 },
                 {
                     id: 14,
@@ -175,7 +189,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-14",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "VVOCK 黑膠|prod7.jpg|890",
                 },
                 {
                     id: 15,
@@ -185,7 +200,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-15",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Drop beast 黑膠|prod1.jpg|1190",
                 },
                 {
                     id: 16,
@@ -195,7 +211,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-16",
                     kind: "女藝人樂團團體黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "北區女孩 黑膠|prod2.jpg|890",
                 },
                 {
                     id: 17,
@@ -205,7 +222,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-17",
                     kind: "樂團團體錄音帶",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Show Time 錄音帶|prod3.jpg|990",
                 },
                 {
                     id: 18,
@@ -215,7 +233,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-18",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Jisso 黑膠|prod4.jpg|1090",
                 },
                 {
                     id: 19,
@@ -225,7 +244,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-19",
                     kind: "女藝人黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Money Money 黑膠|prod5.jpg|1390",
                 },
                 {
                     id: 20,
@@ -235,7 +255,8 @@ export default {
                     inCart: 0,
                     date: "2023-01-20",
                     kind: "樂團團體黑膠唱片",
-                    link:"/ShopProdDetail",
+                    link: "/ShopProdDetail",
+                    value: "Bluemage 黑膠|prod6.jpg|890",
                 }
             ],
             // displayedProducts: [],   //接json檔
@@ -253,6 +274,15 @@ export default {
             selectedType: '商品排序',
             //郭凱芸 - 下拉數量選單:預設
             selectedPageSize: 20,
+
+            //郭凱芸 - 以下是購物車localStorage相關
+            selectedItem: {
+                image: '',
+                title: '',
+                price: '',
+            },
+            itemCount: 0,
+            subtotal: 0,
         }
     },
     computed: {
@@ -314,5 +344,47 @@ export default {
             // console.log('handlePageSize', page)
             this.selectedPageSize = page;
         },
+
+        //郭凱芸 - 購物車localStorage相關
+        addItem(itemId, itemValue) {
+            let image = `imgs/${itemValue.split('|')[1]}`;
+            let title = itemValue.split('|')[0];
+            let price = itemValue.split('|')[2];
+
+            this.selectedItem = { image, title, price };
+
+            if (this.storage[itemId]) {
+                alert('You have checked.');
+            } else {
+                this.storage['addItemList'] += `${itemId}, `;
+                this.storage[itemId] = itemValue;
+            }
+
+            let itemString = this.storage['addItemList'];
+            let items = itemString.substring(0, itemString.length - 2).split(', ');
+
+            this.subtotal = 0;
+            for (let i = 0; i < items.length; i++) {
+                let itemInfo = this.storage.getItem(items[i]);
+                this.subtotal += parseInt(itemInfo.split('|')[2]);
+            }
+
+            this.itemCount = items.length;
+        },
+    },
+    created() {
+        if (!this.storage['addItemList']) {
+            this.storage['addItemList'] = '';
+        }
+    },
+    mounted() {
+        let list = document.querySelectorAll('.addButton');
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', (e) => {
+                let teddyInfo = this.items.find((item) => item.id === e.target.textContent);
+                this.addItem(e.target.textContent, teddyInfo.value);
+            });
+        }
     },
 }
