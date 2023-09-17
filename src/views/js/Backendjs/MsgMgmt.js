@@ -9,31 +9,42 @@ export default {
                 },
                 {
                     title: '來源',
-                    key: 'source'
+                    key: 'source',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '留言帳號',
-                    key: 'msgAcc'
+                    key: 'msgAcc',
+                    width: 150,
+                    align: 'center',
                 },
                 {
                     title: '留言內容',
-                    key: 'msgContent'
+                    key: 'msgContent',
+                    align: 'center',
                 },
                 {
                     title: '檢舉原因',
-                    key: 'reason'
+                    key: 'reason',
+                    align: 'center'
                 },
                 {
                     title: '檢舉日期',
-                    key: 'reasonDate'
+                    key: 'reasonDate',
+                    align: 'center'
                 },
                 {
                     title: '操作',
-                    slot: 'acceptBtn'
+                    slot: 'acceptBtn',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '駁回檢舉',
-                    slot: 'rejectBtn'
+                    slot: 'rejectBtn',
+                    width: 100,
+                    align: 'center'
                 }
             ],
             data: [

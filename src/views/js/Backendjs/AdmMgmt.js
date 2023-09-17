@@ -2,25 +2,36 @@ export default {
     data() {
         return {
             columns: [
+
                 {
                     title: '編號',
-                    key: 'no'
+                    key: 'no',
+                    width: 80,
+                    align: 'center'
                 },
                 {
                     title: '管理員姓名',
-                    key: 'name'
+                    key: 'name',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '管理員帳號',
-                    key: 'acc'
+                    key: 'acc',
+                    width: 300,
+                    align: 'center'
                 },
                 {
                     title: '管理員帳號',
-                    key: 'adminPsw'
+                    key: 'adminPsw',
+                    width: 300,
+                    align: 'center'
                 },
                 {
                     title: '操作',
-                    slot: 'deleteBtn'
+                    slot: 'deleteBtn',
+                    width: 300,
+                    align: 'center'
                 }
             ],
             data: [

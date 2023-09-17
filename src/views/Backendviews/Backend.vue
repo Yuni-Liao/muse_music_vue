@@ -3,6 +3,11 @@
 <template>
     <BackendHeader />
     <BackendSideBar />
+    <div class="welcome_box">
+        <h1 class="backend_title_welcome">
+            歡迎登入 MUSE 管理平台
+        </h1>
+    </div>
     <router-view />
 </template>
 

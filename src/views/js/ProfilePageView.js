@@ -1,10 +1,23 @@
+// swiper
+import { Swiper, SwiperSlide } from "swiper/vue";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/scrollbar";
+
+// import required modules
+import { Scrollbar } from "swiper/modules";
+
 import FolBtnBig from "@/components/FolBtnBig.vue";
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
 
 export default {
-  components: { FolBtnBig, PlayBtnBig },
+  components: { FolBtnBig, PlayBtnBig, Swiper, SwiperSlide },
+
   data() {
     return {
+      //swiper
+      modules: [Scrollbar],
+
       isReadmoreBtn: Boolean,
       isReadMore: false,
       tabtype: 2,
@@ -13,10 +26,10 @@ export default {
         memid: 1,
         memname: "Anonymous",
         loc: "桃園市",
-        //intro:
-        //"桃園人，喜歡古典樂，最近嘗試個人創作，將古典樂結合搖滾，如果各位還喜歡，請追蹤我會不定時更新創作，謝謝支持~~~",
         intro:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam itaque, cupiditate ea odit, laboriosam omnis officiis soluta excepturi placeat deleniti harum consequatur explicabo qui enim? Odio expedita libero fugiat ab eligendi atque eos exercitationem dignissimos, alias quo consectetur iste, ipsa aliquid tempora iusto unde cupiditate quibusdam sequi totam facilis. Impedit obcaecati fuga, ut tempora ducimus assumenda, repudiandae ea accusamus placeat adipisci inventore! Minus alias soluta tempore quis? Eligendi autem ipsa reiciendis adipisci minima necessitatibus cumque dolor quos, sunt cum possimus earum dolore at officiis esse amet odit aliquid neque harum commodi consequuntur fugiat sapiente iste? Quo, quia! In, veritatis facere.",
+          "桃園人，喜歡古典樂，最近嘗試個人創作，將古典樂結合搖滾，如果各位還喜歡，請追蹤我會不定時更新創作，謝謝支持~~~",
+        //intro:
+        // "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam itaque, cupiditate ea odit, laboriosam omnis officiis soluta excepturi placeat deleniti harum consequatur explicabo qui enim? Odio expedita libero fugiat ab eligendi atque eos exercitationem dignissimos, alias quo consectetur iste, ipsa aliquid tempora iusto unde cupiditate quibusdam sequi totam facilis. Impedit obcaecati fuga, ut tempora ducimus assumenda, repudiandae ea accusamus placeat adipisci inventore! Minus alias soluta tempore quis? Eligendi autem ipsa reiciendis adipisci minima necessitatibus cumque dolor quos, sunt cum possimus earum dolore at officiis esse amet odit aliquid neque harum commodi consequuntur fugiat sapiente iste? Quo, quia! In, veritatis facere.",
         songcount: 12,
         fans: 1264,
         follower: 10,
@@ -48,6 +61,7 @@ export default {
     };
   },
   mounted() {
+    //是否顯示"顯示更多"按鈕
     const readmoreBtn = () => {
       let itlSH = this.$refs.itl.scrollHeight;
       //console.log(itlSH);
@@ -61,17 +75,6 @@ export default {
   },
   computed: {},
   methods: {
-    //是否顯示"顯示更多"按鈕
-    // readmoreBtn() {
-    //   let itlSH = this.$refs.itl.scrollHeight;
-    //   console.log(itlSH);
-    //   if (itlSH > 54) {
-    //     this.isReadmoreBtn = true;
-    //   } else {
-    //     this.isReadmoreBtn = false;
-    //   }
-    // },
-
     //切換簡介顯示內容
     readmore() {
       this.isReadMore = !this.isReadMore;
