@@ -114,8 +114,18 @@
               class="mySwiper"
               :scrollbar="true"
               :modules="modules"
-              :slidesPerView="3"
-              :slidesPerGroup="3"
+              :slidesPerView="1"
+              :slidesPerGroup="1"
+              :breakpoints="{
+                '700': {
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
+                },
+                '1024': {
+                  slidesPerView: 3,
+                  slidesPerGroup: 3,
+                },
+              }"
             >
               <!-- 單一專輯 -->
               <swiper-slide v-for="(item, index) in album" :key="item.id">

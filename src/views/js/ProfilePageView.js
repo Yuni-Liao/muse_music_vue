@@ -61,7 +61,6 @@ export default {
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
           played: "2,855",
           shared: "39",
-          //記得用v-for跑，若有餘力處理導向探索類別歌單!!!!!
           mcatid: ["日語流行", "搖滾", "派對"],
         },
         {
@@ -77,7 +76,6 @@ export default {
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
           played: "2,855",
           shared: "39",
-          //記得用v-for跑，若有餘力處理導向探索類別歌單!!!!!
           mcatid: ["日語流行"],
         },
         {
@@ -93,7 +91,6 @@ export default {
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
           played: "2,855",
           shared: "39",
-          //記得用v-for跑，若有餘力處理導向探索類別歌單!!!!!
           mcatid: ["日語流行", "搖滾", "派對", "輕鬆", "更多類別"],
         },
         {
@@ -109,7 +106,6 @@ export default {
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
           played: "2,855",
           shared: "39",
-          //記得用v-for跑，若有餘力處理導向探索類別歌單!!!!!
           mcatid: ["日語流行", "搖滾", "派對"],
         },
         {
@@ -125,7 +121,6 @@ export default {
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
           played: "2,855",
           shared: "39",
-          //記得用v-for跑，若有餘力處理導向探索類別歌單!!!!!
           mcatid: ["日語流行", "搖滾", "派對"],
         },
       ],
