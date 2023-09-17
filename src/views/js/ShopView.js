@@ -48,6 +48,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Killbeast 黑膠|prod1.jpg|790",
+                    singer: "Bling Bling",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Bling Bling之前是冬天的天涯<br>Bling Bling之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 2,
@@ -59,6 +64,11 @@ export default {
                     kind: "男藝人樂團團體黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "西城男人 黑膠|prod2.jpg|1190",
+                    singer: "西城男人",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "西城男人之前是冬天的天涯<br>西城男人之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 3,
@@ -70,6 +80,11 @@ export default {
                     kind: "樂團團體錄音帶",
                     link: "/ShopProdDetail",
                     value: "Party Time 錄音帶|prod3.jpg|590",
+                    singer: "Gaga",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Gaga之前是冬天的天涯<br>Gaga之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 4,
@@ -81,6 +96,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Rose 黑膠|prod4.jpg|890",
+                    singer: "Rose",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Rose之前是冬天的天涯<br>Rose之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 5,
@@ -92,6 +112,10 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Over Over 黑膠|prod5.jpg|1290",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Mekka之前是冬天的天涯<br>Mekka之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 6,
@@ -103,6 +127,10 @@ export default {
                     kind: "樂團團體黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Blackmage 黑膠|prod6.jpg|1020",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Sun之前是冬天的天涯<br>Sun之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 7,
@@ -114,6 +142,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "KKOCK 黑膠|prod7.jpg|990",
+                    singer: "Moon",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Moon之前是冬天的天涯<br>Moon之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 8,
@@ -125,6 +158,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "cillbeast 黑膠|prod1.jpg|790",
+                    singer: "Ban",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Ban之前是冬天的天涯<br>Ban之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 9,
@@ -136,6 +174,11 @@ export default {
                     kind: "男藝人樂團團體黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "東城男子 黑膠|prod2.jpg|790",
+                    singer: "東城男子",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "東城男子之前是冬天的天涯<br>東城男子之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 10,
@@ -147,6 +190,11 @@ export default {
                     kind: "樂團團體錄音帶",
                     link: "/ShopProdDetail",
                     value: "Sleep Time 錄音帶|prod3.jpg|1290",
+                    singer: "Lili",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Lili之前是冬天的天涯<br>Lili之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 11,
@@ -158,6 +206,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Lisa 黑膠|prod4.jpg|790",
+                    singer: "Lisa",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Lisa之前是冬天的天涯<br>Lisa之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 12,
@@ -169,6 +222,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Very Very 黑膠|prod5.jpg|1090",
+                    singer: "Happy",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Happy之前是冬天的天涯<br>Happy之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 13,
@@ -180,6 +238,11 @@ export default {
                     kind: "樂團團體黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Pinkmage 黑膠|prod6.jpg|690",
+                    singer: "Black & White",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Black & White之前是冬天的天涯<br>Black & White之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 14,
@@ -191,6 +254,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "VVOCK 黑膠|prod7.jpg|890",
+                    singer: "VVOCK",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "VVOCK之前是冬天的天涯<br>VVOCK之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 15,
@@ -202,6 +270,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Drop beast 黑膠|prod1.jpg|1190",
+                    singer: "DJ Cool",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "DJ Cool之前是冬天的天涯<br>DJ Cool之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 16,
@@ -213,6 +286,11 @@ export default {
                     kind: "女藝人樂團團體黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "北區女孩 黑膠|prod2.jpg|890",
+                    singer: "DJ Cool",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "北區女孩之前是冬天的天涯<br>北區女孩之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 17,
@@ -224,6 +302,11 @@ export default {
                     kind: "樂團團體錄音帶",
                     link: "/ShopProdDetail",
                     value: "Show Time 錄音帶|prod3.jpg|990",
+                    singer: "Show",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 錄音帶<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Show之前是冬天的天涯<br>Show之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 18,
@@ -235,6 +318,11 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Jisso 黑膠|prod4.jpg|1090",
+                    singer: "Jisso",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 錄音帶<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Jisso之前是冬天的天涯<br>Jisso之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 19,
@@ -246,6 +334,10 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Money Money 黑膠|prod5.jpg|1390",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 錄音帶<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Money之前是冬天的天涯<br>Money之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 },
                 {
                     id: 20,
@@ -257,6 +349,11 @@ export default {
                     kind: "樂團團體黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Bluemage 黑膠|prod6.jpg|890",
+                    singer: "Yoyo",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 錄音帶<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Yoyo之前是冬天的天涯<br>Yoyo之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 }
             ],
             // displayedProducts: [],   //接json檔
@@ -364,6 +461,16 @@ export default {
 
             // 使用 localStorage 存儲購物車數據
             localStorage.setItem('cartItems', updatedCartItemsJSON);
+        },
+
+        //切換商品業面
+        goToProduct(productId) {
+            this.$router.push({
+                name: "shopproddetail",
+                query: {
+                    id: productId
+                }
+            })
         }
     },
 }
