@@ -2,7 +2,6 @@ export default {
     data() {
         return {
             columns: [
-
                 {
                     title: '會員編號',
                     key: 'no',
@@ -37,12 +36,19 @@ export default {
                     key: 'createdSongList',
                     align: 'center',
                     width: 150,
-                }, {
-                    title: '權限管理',
-                    key: 'permission ',
+                },
+                {
+                    title: '操作',
+                    slot: 'pauseBtn',
                     align: 'center',
-                    width: 150,
-                }
+                    width: 100,
+                },
+                {
+                    title: ' ',
+                    slot: 'viewBtn',
+                    align: 'center',
+                    width: 100,
+                },
             ],
             data: [
                 {
@@ -86,6 +92,14 @@ export default {
                     createdSongList: 5 + ' 個',
                 },
             ]
+        }
+    },
+    methods: {
+        pauseBtn() {
+            alert('停權');
+        },
+        viewBtn() {
+            alert('查閱');
         }
     },
 }

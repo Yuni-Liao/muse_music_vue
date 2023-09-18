@@ -421,6 +421,10 @@ export default {
             selectedCounty: "",
             selectedDistrict: "",
             zipcode: "",
+
+            // 以上不要動到!!!
+            cartItems: [], // 存放購物車商品列表
+            total: 0, // 總金額
         };
     },
     computed: {
@@ -485,5 +489,52 @@ export default {
             if (Object.keys(this.errors).length === 0) {
             }
         },
+
+        // 以上不要動到
+
+
+
+        
+        addToCart(item) {
+            // 获取商品信息
+            const prodPic = item.prodPic;
+            const prodPrice = item.prodPrice;
+            const prodName = item.prodName;
+            const inCart = item.inCart;
+
+            // 创建商品信息字符串
+            const itemInfo = `${prodName}|${prodPic}|${prodPrice}`;
+
+            // 将商品信息存储到本地存储
+            localStorage.setItem(item.id, itemInfo);
+
+            // 更新购物车列表
+            this.cartItems.push({
+                id: item.id,
+                prodPic,
+                prodPrice,
+                prodName,
+                inCart,
+            });
+
+            // 更新购物车总金额
+            this.total += prodPrice * inCart;
+
+            // 跳转到购物车页面
+            this.$router.push({ name: 'shoppingCart' });
+        },
+        // 載入購物車中的商品
+        loadCartItems() {
+            const cartItemsJSON = localStorage.getItem('cartItems');
+            if (cartItemsJSON) {
+                // 如果 localStorage 中有購物車數據，將其解析並填充到 cartItems 中
+                this.cartItems = JSON.parse(cartItemsJSON);
+            }
+        },
+    },
+
+    //凱芸新增 購物車功能
+    mounted() {
+        this.loadCartItems();
     },
 };

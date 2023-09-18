@@ -87,7 +87,7 @@
 
         <!-- 活動資訊區 -->
         <div class="infoWrapper">
-            <div class="activityInfo" v-for=" activity in activityList" :key="activity">
+            <div class="activityInfo" v-for="activity in activityList" :key="activity">
                 <div class="calender">
                     <div class="month">
                         {{ activity.month }}月
@@ -95,35 +95,40 @@
                     <p>{{ activity.date }}日</p>
                     <p>星期{{ activity.day }}</p>
                 </div>
-                <img :src="activity.img" alt="">
-
-                <div class="info">
+                <img :src="require(`/public/image/Activity/${activity.img}`)">
+                <div class="info" v-for="activity in activityList" :key="activity">
                     <p>{{ activity.title }}</p>
                     <p>{{ activity.timePlace }}</p>
-                    <router-link to="" class="singer">
+                    <router-link to="#" class="singer">
                         <fontAwesome :icon="['fa', 'user-large']"
                             style="color: #fff; margin-left: 10px; cursor: pointer;" />
                         <p>{{ activity.singer }}</p>
                     </router-link>
-
                 </div>
-
             </div>
-            <router-link to=""><img :src="activity.img" alt=""></router-link>
-            
-            <div class="info">
-                <router-link to=""><p>{{activity.title}}</p></router-link>
-                <router-link to=""><p><p>{{activity.timePlace}}</p></p></router-link>
-                <router-link to="" class="singer">
-                    <fontAwesome :icon="['fa', 'user-large']" style="color: #fff; margin-left: 10px; cursor: pointer;" />
-                    <p>{{activity.singer}}</p>
+            <!-- <router-link to="#">
+                <img :src="require(`/public/image/Activity/${activity.img}`)">
+            </router-link> -->
+            <div class="info" v-for="activity in activityList" :key="activity">
+                <router-link to="#">
+                    <p>{{ activity.title }}</p>
                 </router-link>
-            
+                <router-link to="#">
+                    <p>
+                    <p>{{ activity.timePlace }}</p>
+                    </p>
+                </router-link>
+                <router-link to="#" class="singer">
+                    <fontAwesome :icon="['fa', 'user-large']" style="color: #fff; margin-left: 10px; cursor: pointer;" />
+                    <p>{{ activity.singer }}</p>
+                </router-link>
             </div>
-            
         </div>
-</div></template>
+    </div>
+</template>
 
 
-<style scoped lang="scss">@import "~@/assets/scss/page/activity.scss";</style>
+<style scoped lang="scss">
+@import "~@/assets/scss/page/activity.scss";
+</style>
 <script src="./js/ActivityView.js"></script>

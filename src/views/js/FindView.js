@@ -1,5 +1,5 @@
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
-
+import player from '@/components/player.vue';
 
 //引入swiper-------------------------
 // Import Swiper Vue.js components
@@ -28,6 +28,7 @@ export default {
     name: 'App',
     components: {
         PlayBtnBig,
+        player,
         Swiper,
         SwiperSlide,
         },
@@ -246,10 +247,10 @@ export default {
                 EffectCards
             ],
         }
-    },  
+    },
     methods: {
-        playmusic() {
-            alert("呼叫懸浮播放器");
+        openPlayer() {
+            this.$refs.player123.playMusic();
         },
     },
     // setup() {

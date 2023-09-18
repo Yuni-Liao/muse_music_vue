@@ -1,5 +1,6 @@
 
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
+import player from '@/components/player.vue';
 import AddFavBtn from "@/components/AddFavBtn.vue";
 import AddSlBtn from "@/components/AddSlBtn.vue";
 import ShareBtn from "@/components/ShareBtn.vue";
@@ -8,7 +9,8 @@ import LikeMesBtn from "@/components/LikeMesBtn.vue";
 
 export default {
     components: { 
-        PlayBtnBig, 
+        PlayBtnBig,
+        player,
         AddFavBtn, 
         AddSlBtn, 
         ShareBtn, 
@@ -117,6 +119,9 @@ export default {
         },
         closeMoreBtn(albumItem) {
             albumItem.showMoreBtn = false;
-        }
+        },
+        openPlayer() {
+            this.$refs.player.playMusic();
+        },
     }
 }

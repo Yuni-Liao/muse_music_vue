@@ -1,6 +1,6 @@
 <template>
-    <!-- -------------懸浮播放器範圍------------- -->
-    <div class="player" >
+    <!-- -------------懸浮播放器範圍 -->
+    <div class="player" v-if="playerOpen" >
         <div class="player_left" v-for="item in songList" :key="item.id">
             <img @click="showModal" class="screen" src="/image/icon/screen.svg" alt="">
             <img class="musicPic" :src="item.cover" alt="">
@@ -171,13 +171,16 @@ export default {
     },
     data() {
         return {
-            songList: [{
+            //播放器狀態預設關閉
+            playerOpen: false,
+            songList: [
+                {
                 cover: '/image/SingleMusic/songPic.png',
                 songTitle: 'Say it',
                 singer: 'George Makridis',
                 audio: 'Busy Day Ahead.mp3',
-                
-            }],
+                }
+            ],
             isPlaying: false,
             progressWidth: '0px',
             isMuted: false,

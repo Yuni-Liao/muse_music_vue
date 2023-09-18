@@ -46,16 +46,15 @@ const routes = [
       },
       // 以下是商城商品詳情共用頁面
       {
-        path: "shopproddetail", // 使用動態路由參數:id
-        //path: "shopproddetail/:id", // 使用動態路由參數:id
+        //path: "shopproddetail", // 使用動態路由參數:id
+        path: "shopproddetail/:id", // 使用動態路由參數:id
         name: "shopproddetail",
         component: () =>
           import(
-            /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"
+            /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetailView.vue"
           ),
         meta: {
           title: "商品名稱",
-          //把它變成商品名稱
         },
       },
       {

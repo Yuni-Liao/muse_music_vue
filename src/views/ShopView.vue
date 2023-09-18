@@ -34,11 +34,11 @@
         <div class="inner">
             <div class="prod">
                 <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
-                    <router-link to="/shopproddetail" class="prodPic">
+                    <router-link to="`/shopproddetail/${item.id}`" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
-                        <router-link :to="item.link" class="prodName">{{ item.prodName }}</router-link>
+                        <router-link to="`/shopproddetail/${item.id}`" class="prodName">{{ item.prodName }}</router-link>
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>
 
                         <!-- 數量加減 -->
