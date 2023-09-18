@@ -18,11 +18,10 @@
 
     <div class="checkout">
       <div v-if="currentStep === 1">
-        <!-- <p>已加入購物車商品</p> -->
-        <!-- 以上不要動 -->
+        <p>已加入購物車商品</p>
 
         <!-- ▼凱芸 測試帶入暫存的商品資訊 -->
-        <div id="myCart">
+        <!-- <div id="myCart">
           <h1>
             Shopping Cart
           </h1>
@@ -46,11 +45,9 @@
             </div>
             <p>Total: {{ total }}</p>
           </div>
-        </div>
+        </div> -->
         <!-- ▲凱芸 測試帶入暫存的商品資訊 -->
 
-
-        <!-- 以下不要動 -->
         <button @click="completeStep">
           <router-link to="/shop">◄ 繼續選購其他商品</router-link>
         </button>
