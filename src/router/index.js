@@ -44,6 +44,20 @@ const routes = [
           title: "周邊販售",
         },
       },
+      // 以下是商城商品詳情共用頁面
+      {
+        path: "shopproddetail", // 使用動態路由參數:id
+        //path: "shopproddetail/:id", // 使用動態路由參數:id
+        name: "shopproddetail",
+        component: () =>
+          import(
+            /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"
+          ),
+        meta: {
+          title: "商品名稱",
+          //把它變成商品名稱
+        },
+      },
       {
         path: "shoppingsteps",
         name: "shoppingsteps",
@@ -119,20 +133,6 @@ const routes = [
       //   component: () => import(/* webpackChunkName: "這裡要取名" */ '../views/PolicyView.vue')
       //   //component還沒改
       // },
-
-      // 以下是商城商品詳情共用頁面
-      {
-        path: "shopProdDetail",
-        name: "shopProdDetail",
-        component: () =>
-          import(
-            /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"
-          ),
-        meta: {
-          title: "商品名稱",
-          //把它變成商品名稱
-        },
-      },
 
       //以下是我的音樂庫-我的歌單
       {

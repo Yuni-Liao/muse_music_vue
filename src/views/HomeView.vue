@@ -1,9 +1,16 @@
 <template>
   <!-- 頂部輪播區 -廖妍榛 -->
   <section class="index_topCarousel">
-    <swiper class="topSwiper" :initialSlide="0" :modules="modules" :effect="'fade'" :pagination="{
-      clickable: true,
-    }" :autoplay="{ delay: 2500, disableOnInteraction: false }">
+    <swiper
+      class="topSwiper"
+      :initialSlide="0"
+      :modules="modules"
+      :effect="'fade'"
+      :pagination="{
+        clickable: true,
+      }"
+      :autoplay="{ delay: 2500, disableOnInteraction: false }"
+    >
       <swiper-slide v-for="(item, index) in topBanner" :key="index">
         <img class="pic" :src="require(`/public/image/index/${item.image}`)" />
       </swiper-slide>
@@ -27,22 +34,37 @@
   <!--本週熱門歌曲輪播 - 黃珮菁 -->
   <section class="index_WeekTopmusic">
     <h2>本週熱門歌曲．Popular Songs This Week</h2>
-    <swiper class="mySwiper" :initialSlide="4" :effect="slide" :slideToClickedSlide="false" :grabCursor="false"
-      :centeredSlides="true" :breakpoints="{
+    <swiper
+      class="mySwiper"
+      :initialSlide="4"
+      :effect="slide"
+      :slideToClickedSlide="false"
+      :grabCursor="false"
+      :centeredSlides="true"
+      :breakpoints="{
         '414': {
           slidesPerView: 3,
         },
         '1200': {
           slidesPerView: 5,
         },
-      }" :slidesPerView="1" :slidesPerGroup="1" :speed="0.001" :autoplay="{
-  delay: 4000,
-  disableOnInteraction: false,
-}" :modules="modules">
+      }"
+      :slidesPerView="1"
+      :slidesPerGroup="1"
+      :speed="0.001"
+      :autoplay="{
+        delay: 4000,
+        disableOnInteraction: false,
+      }"
+      :modules="modules"
+    >
       <swiper-slide v-for="(item, sid) in songs" :key="sid">
         <div class="card">
-          <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
-          <div class="text" @click="gotosinglemusic()">
+          <img
+            :src="require(`/public/image/index/${item.image}`)"
+            @click="playmusic()"
+          />
+          <div class="text" @click="gotosinglemusic(item.sid)">
             <h3>{{ item.title }}</h3>
             <p>
               {{ item.singer }}<span>播放量{{ item.views }}</span>
@@ -62,7 +84,8 @@
             <img :src="require(`/public/image/index/${item.image}`)" />
             <span class="ranking">
               {{ item.ranking }}<br />
-              <span class="name">{{ item.name }}<br />
+              <span class="name"
+                >{{ item.name }}<br />
                 <span class="alb">{{ item.alb }}</span>
               </span>
             </span>
@@ -138,14 +161,35 @@
         <div class="dj_center">
           <div class="plates_vols">
             <div class="vol vol_left">
-              <input class="left_vol obj_Radius" type="range" name="vol_left" id="volume_left" min="0" max="100" />
+              <input
+                class="left_vol obj_Radius"
+                type="range"
+                name="vol_left"
+                id="volume_left"
+                min="0"
+                max="100"
+              />
             </div>
             <div class="vol vol_right">
-              <input class="right_vol obj_Radius" type="range" name="volume_right" id="volume_right" min="0" max="100" />
+              <input
+                class="right_vol obj_Radius"
+                type="range"
+                name="volume_right"
+                id="volume_right"
+                min="0"
+                max="100"
+              />
             </div>
           </div>
           <div class="vol vol_mix">
-            <input class="mix_vol obj_Radius" type="range" name="volume_mix" id="volume_mix" min="0" max="100" />
+            <input
+              class="mix_vol obj_Radius"
+              type="range"
+              name="volume_mix"
+              id="volume_mix"
+              min="0"
+              max="100"
+            />
           </div>
         </div>
         <div class="dj_right">
@@ -188,7 +232,12 @@
   <!-- 功能還在處理中 -->
   <section class="index_emo">
     <h2>情緒歌單．Find Your Emotion</h2>
-    <swiper :effect="'cards'" :grabCursor="false" :modules="modules" class="mySwiper">
+    <swiper
+      :effect="'cards'"
+      :grabCursor="false"
+      :modules="modules"
+      class="mySwiper"
+    >
       <swiper-slide v-for="(item, index) in ques" :key="index">
         <div class="index_emoQue">
           <p>{{ item.title }}</p>
