@@ -11,7 +11,7 @@
       <swiper-slide>
         <div class="weekTopSongs">
           <div class="weekTopTitle">
-            <h1>當週單曲排行榜</h1>
+            <h1 >當週單曲排行榜</h1>
             <section></section>
           </div>
           <section class="weekRanking">
@@ -20,7 +20,7 @@
             <ol >
               <li v-for="(item, index) in weekFirstFiveSongs" :key="index" >
                 <div class="order">{{item.order}}</div>
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
+                <img  :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
                 
                 <div class="txt">
                   <h3>{{ item.title }}</h3>

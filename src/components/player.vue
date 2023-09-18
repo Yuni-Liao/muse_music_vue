@@ -1,5 +1,5 @@
 <template>
-    <!-- -------------懸浮播放器範圍 -->
+    <!-- -------------懸浮播放器範圍------------- -->
     <div class="player" >
         <div class="player_left" v-for="item in songList" :key="item.id">
             <img @click="showModal" class="screen" src="/image/icon/screen.svg" alt="">
@@ -8,18 +8,19 @@
                 <p>{{ item.songTitle }}</p>
                 <span>{{ item.singer }}</span>
             </div>
-            <!-- <audio controls>
+            <!-- <audio controls id="myAudio" ref="music">
                 <source :src="getSrc(item.audio)" type="audio/mpeg">
             </audio> -->
         </div>
 
         <div class="player_center">
             <div class="playerControls">
-                <div id="prev" class="backwardBtn controlsItem">
+                <div  id="prev" class="backwardBtn controlsItem">
                     <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" />
                 </div >
                 <div id="play">
-                    <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio>
+                    <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio> -->
+                    <audio id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" loop></audio>
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-if="!isPlaying"
                         @click="playMusic"
@@ -34,18 +35,21 @@
                     <fontAwesome :icon="['fa', 'fa-step-forward']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"  />
                 </div>
             </div>
-            <div id="music-progress" class="music-progress" @click="playMusic">
+            <div id="music-progress" class="music-progress" @click="playMusic" >
                 <div id="progress-bar" class="music-progress-bar" :style="{ width: progressWidth }"></div>
             </div>
     </div>
     <div class="player_right">
+        <!-- <fontAwesome class="loopSong" @click="toggleLoop" :class="{ 'loopSong-active': isLooping }" :icon="['fa', 'arrow-rotate-right']" size="xl" style="color: #fff; cursor: pointer; margin-right: 10px;" /> -->
         <img v-if="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute">
         <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
+        <input type="range" id="volumeSlider" v-model="volume" min="0" max="100">
+        <p><span>{{ volume }}</span></p>
     </div>
    </div>
-   <!-- ^^^^^^^^^^^^^^懸浮播放器範圍^^^^^^^^^^^^^^ -->
+   
 
-   <!-- -------------蓋板播放器範圍 -->
+   <!-- -------------蓋板播放器範圍------------- -->
    <div class="modal" 
         v-if="isModalVisible" :style="{
         backgroundImage: `url( ${require('@/assets/image/songPic.png')} )`,
@@ -75,9 +79,9 @@
                         </div>
                     </div>
                     <h5>George Makridis</h5>
-                    <div id="music-progress" class="progress" @click="playMusic">
+                    <!-- <div id="music-progress" class="progress" @click="playMusic">
                         <div id="progress-bar" class="bar" :style="{ width: progressWidth }"></div>
-                    </div>
+                    </div> -->
                     <div class="fcbtns">
                         <img v-if="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute" >
                         <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
@@ -146,7 +150,7 @@
         </div>
         
    </div>
-<!-- ^^^^^^^^^^^^^^蓋板播放器範圍^^^^^^^^^^^^^^ -->
+
 </template>
   
 <script>
@@ -167,7 +171,7 @@ export default {
                 cover: '/image/SingleMusic/songPic.png',
                 songTitle: 'Say it',
                 singer: 'George Makridis',
-                // audio: 'https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3',
+                audio: 'Busy Day Ahead.mp3',
                 
             }],
             isPlaying: false,
@@ -176,17 +180,20 @@ export default {
             currentVolume: 0.5,
             isModalVisible: false,
             showLyrics: false,
+            volume: 50,
+            showPlayer: false,
         }
     },
     methods: {
         // getSrc(src) {
-        // return require("../assets/video/" + src)
+        // return require("audio/" + src)
         // },
         playMusic() {
         // 播放音樂
         this.$refs.music.play();
         this.isPlaying = true;
         this.updateProgress();
+
         },
         pauseMusic() {
         // 暫停音樂
@@ -210,14 +217,23 @@ export default {
         }
         this.isMuted = !this.isMuted;
         },
-        // -------------蓋板播放器範圍
         showModal() {
         this.isModalVisible = true;
         },
         closeModal() {
         this.isModalVisible = false;
-        }
+        },
+        togglePlayer() {
+        this.showPlayer = !this.showPlayer;
+        },
+        
     },
+    watch: {
+                volume: function(newVolume) {
+                    const audioElement = document.getElementById("myAudio");
+                    audioElement.volume = newVolume / 100;
+                }
+            }
 };
 </script>
   
@@ -234,7 +250,8 @@ export default {
     margin:  0px 10px;
     }
     .player{
-        display: flex;
+        // display: none;
+         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
@@ -250,7 +267,7 @@ export default {
             .screen{
                 cursor: pointer;
                 width: 25px;
-                margin: 0px 10px 0px 0px;
+                margin: 0px 20px 0px 0px;
             }
             .musicPic{
                 width: 50px;
@@ -281,16 +298,15 @@ export default {
         }
         .music-progress{
             width: 550px;
-            height: 3px;
+            height: 4px;
             cursor: pointer;
-            border: 1px solid #aaa;
             border-radius: 50px;
             background-color: #aaa;
             margin-top: 30px;
             /* 拖拉線 */
             .music-progress-bar{
                 width: 0px;
-                height: 3px;
+                height: 4px;
                 background-color: #fff;
                 border-style: solid;
                 border-radius: 50px;
@@ -305,7 +321,25 @@ export default {
             width: 20px;
             margin: 0px 10px;
         }
-    
+        input{
+            width: 80px;
+            height: 3px;
+            border-radius: 50px;
+            color: #fff;
+        }
+        input[type="range"]::-webkit-slider-thumb{
+            background-color: #fff;
+        }
+        p{
+            color: #aaa;
+            margin-left: 5px;
+        }
+        .loopSong{
+            transition: color 0.3s;
+        }
+        .loopSong-active{
+            color: #74EBD5;
+        }
        }
     }
 

@@ -83,11 +83,11 @@
                 <p>{{activity.date}}日</p>
                 <p>星期{{activity.day}}</p>
             </div>
-            <img :src="activity.img" alt="">
+            <router-link to=""><img :src="activity.img" alt=""></router-link>
             
             <div class="info">
-                <p>{{activity.title}}</p>
-                <p>{{activity.timePlace}}</p>
+                <router-link to=""><p>{{activity.title}}</p></router-link>
+                <router-link to=""><p><p>{{activity.timePlace}}</p></p></router-link>
                 <router-link to="" class="singer">
                     <fontAwesome :icon="['fa', 'user-large']" style="color: #fff; margin-left: 10px; cursor: pointer;" />
                     <p>{{activity.singer}}</p>
