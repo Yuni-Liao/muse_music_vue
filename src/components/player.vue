@@ -1,6 +1,6 @@
 <template>
     <!-- -------------懸浮播放器範圍 -->
-    <div class="player" >
+    <div class="player" v-if="isPlayerVisible" >
         <div class="player_left" v-for="item in songList" :key="item.id">
             <img @click="showModal" class="screen" src="/image/icon/screen.svg" alt="">
             <img class="musicPic" :src="item.cover" alt="">
@@ -163,6 +163,7 @@ export default {
     },
     data() {
         return {
+            isPlayerVisible: false,
             songList: [{
                 cover: '/image/SingleMusic/songPic.png',
                 songTitle: 'Say it',
@@ -184,6 +185,7 @@ export default {
         // },
         playMusic() {
         // 播放音樂
+        this.isPlayerVisible = true;
         this.$refs.music.play();
         this.isPlaying = true;
         this.updateProgress();
@@ -223,6 +225,7 @@ export default {
   
 <style scoped lang="scss">
     @import "@/assets/scss/mixin/_mixin.scss";
+
     #ShareBtn {
     @include music_btn_circle(25px);
     };
