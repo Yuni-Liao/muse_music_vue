@@ -1,8 +1,8 @@
 export default {
     data() {
         return {
+            modal: false,
             columns: [
-
                 {
                     title: '編號',
                     key: 'no',
@@ -70,7 +70,7 @@ export default {
     },
     methods: {
         createAdmin() {
-            alert('新增管理員');
+            this.modal = true;
         },
         deleteBtn() {
             alert('刪除管理員');
