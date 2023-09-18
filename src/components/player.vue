@@ -232,14 +232,13 @@ export default {
     },
     mounted() {
         const audio = document.getElementById("myAudio");
-
-        audio.onloadedmetadata = () => {
+        audio.addEventListener("loadedmetadata", () => {
             this.totalTime = audio.duration;
-        };
+        });
 
-        audio.ontimeupdate = () => {
+        audio.addEventListener("timeupdate", () => {
             this.currentTime = audio.currentTime;
-        };
+        });
 
 
     },
