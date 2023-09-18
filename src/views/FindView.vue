@@ -1,8 +1,5 @@
 <template>
     <player ref="player"></player>
-    <audio ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio>
-
-    
     <div class="find">
         <h1>探索．Find Your MUSE</h1>
     </div>

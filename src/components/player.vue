@@ -191,10 +191,16 @@ export default {
         // },
         playMusic() {
         // 播放音樂
-        this.playerOpen = true;
-        this.$refs.music.play();
-        this.isPlaying = true;
-        this.updateProgress();
+        
+            //先執行顯示
+            this.playerOpen = true;
+            
+            //再執行播放
+            this.$nextTick(() => {
+                this.$refs.music.play();
+                this.isPlaying = true;
+                this.updateProgress();
+            });
 
         },
         pauseMusic() {
