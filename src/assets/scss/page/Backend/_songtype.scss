@@ -5,14 +5,14 @@ main{
         flex-flow: column wrap;
         @include layout(80%);
         position: absolute;
-        top: 20%;
+        top: 15%;
         left: 18%;
         display: flex;
         justify-content: center;
         h1{
             font-size: $big;
             text-align: left;
-            padding-bottom: 3%;
+            padding-bottom: 2%;
         }
     }
     .singlesongtype_table_box{
@@ -20,7 +20,7 @@ main{
         flex-flow: column wrap;
         @include layout(80%);
         position: absolute;
-        top: 55%;
+        top: 63%;
         left: 18%;
         display: flex;
         justify-content: center;

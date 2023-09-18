@@ -1,12 +1,11 @@
 <template>
     <div class="rankmgmt_box">
         <h1>網站資訊管理 | 排行榜管理</h1>
-        <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="550"
+        <Button type="primary" @click="addRank()" style="width:100px; margin-bottom: 1%;margin-left: 65%;">編輯排行</Button>
+        <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="700"
             :columns="columns" :data="data">
             <template #editBtn="{ row }">
-                <Button @click="editBtn()">
-                    <fontAwesome :icon="['far', 'pen-to-square']" />
-                </Button>
+                <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
         </Table>
     </div>

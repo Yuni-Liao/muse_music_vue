@@ -21,6 +21,12 @@ export default {
                     align: 'center'
                 },
                 {
+                    title: ' ',
+                    key: 'playMuz',
+                    width: 30,
+                    //slot插槽,播放音樂鈕
+                },
+                {
                     title: '專輯名稱',
                     key: 'albumName',
                     width: 150,
@@ -45,14 +51,8 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '',
-                    key: 'playMuz',
-                    width: 100,
-                    align: 'center' //slot插槽,播放音樂鈕
-                },
-                {
                     title: '操作',
-                    key: 'editBtn',
+                    slot: 'editBtn',
                     width: 100,
                     align: 'center'
                 }
@@ -110,5 +110,8 @@ export default {
         editBtn() {
             alert('編輯審核');
         },
+        songReviewSearchBtn() {
+            alert('搜尋歌曲');
+        }
     },
 }
