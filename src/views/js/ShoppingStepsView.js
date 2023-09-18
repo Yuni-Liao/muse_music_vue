@@ -491,6 +491,10 @@ export default {
         },
 
         // 以上不要動到
+
+
+
+        
         addToCart(item) {
             // 获取商品信息
             const prodPic = item.prodPic;
