@@ -176,7 +176,7 @@ p {
                 .item {
                     border-bottom: $white 1px solid;
                     display: flex;
-                    padding-top: 20px;
+                    padding: 20px 0;
 
                     .pic {
                         width: 25%;
@@ -193,6 +193,7 @@ p {
 
                         p {
                             font-size: $medium;
+                            color: $white;
                         }
                     }
 
@@ -220,7 +221,7 @@ p {
         }
 
         .count {
-            color: $white;
+            color: $pink;
         }
     }
 }
