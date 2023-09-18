@@ -1,6 +1,6 @@
 <template>
-    <!-- -------------懸浮播放器範圍------------- -->
-    <div class="player" >
+    <!-- -------------懸浮播放器範圍 -->
+    <div class="player" v-if="playerOpen" >
         <div class="player_left" v-for="item in songList" :key="item.id">
             <img @click="showModal" class="screen" src="/image/icon/screen.svg" alt="">
             <img class="musicPic" :src="item.cover" alt="">
@@ -167,13 +167,16 @@ export default {
     },
     data() {
         return {
-            songList: [{
+            //播放器狀態預設關閉
+            playerOpen: false,
+            songList: [
+                {
                 cover: '/image/SingleMusic/songPic.png',
                 songTitle: 'Say it',
                 singer: 'George Makridis',
                 audio: 'Busy Day Ahead.mp3',
-                
-            }],
+                }
+            ],
             isPlaying: false,
             progressWidth: '0px',
             isMuted: false,
@@ -190,10 +193,12 @@ export default {
         // },
         playMusic() {
         // 播放音樂
-        this.$refs.music.play();
-        this.isPlaying = true;
-        this.updateProgress();
-
+        this.playerOpen = true;//先執行顯示
+            this.$nextTick(() => {//再執行播放
+                this.$refs.music.play();
+                this.isPlaying = true;
+                this.updateProgress();
+            });
         },
         pauseMusic() {
         // 暫停音樂
@@ -239,6 +244,7 @@ export default {
   
 <style scoped lang="scss">
     @import "@/assets/scss/mixin/_mixin.scss";
+
     #ShareBtn {
     @include music_btn_circle(25px);
     };
