@@ -4,39 +4,57 @@ export default {
             columns: [
                 {
                     title: 'No',
-                    key: 'no'
+                    key: 'no',
+                    width: 60,
+                    align: 'center'
                 },
                 {
                     title: '商品編號',
-                    key: 'prodNo'
+                    key: 'prodNo',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '商品名稱',
-                    key: 'prodName'
+                    key: 'prodName',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '商品分類',
-                    key: 'prodType'
+                    key: 'prodType',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '商品售價',
-                    key: 'amount'
+                    key: 'amount',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '更新者',
-                    key: 'adminAcc'
+                    key: 'adminAcc',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '更新時間',
-                    key: 'updateTime'
+                    key: 'updateTime',
+                    width: 200,
+                    align: 'center'
                 },
                 {
                     title: '上/下架',
-                    slot: 'upDownBtn'
+                    slot: 'upDownBtn',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '操作',
-                    slot: 'editBtn'
+                    slot: 'editBtn',
+                    width: 100,
+                    align: 'center'
                 }
             ],
             data: [

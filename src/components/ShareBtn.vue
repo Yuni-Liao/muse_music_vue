@@ -8,7 +8,6 @@ export default {
   name: "ShareBtn",
   methods: {
     ShareBtn() {
-      // 此處撰寫功能code，測試用內容可清除
       alert("分享");
     },
   },

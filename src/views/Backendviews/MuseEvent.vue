@@ -1,7 +1,8 @@
 <template>
     <div class="muse_event_box">
         <h1>網站資訊管理 | 音樂快訊管理</h1>
-        <Table highlight-row stripe class="muse_event_table" width="1200" height="550" :columns="columns" :data="data">
+        <Table highlight-row stripe class="muse_event_table cellHeight" width="1200" height="550" :columns="columns"
+            :data="data">
             <template #upDownBtn="{ row }">
                 <Button @click="upDownBtn()">
                     上/下架

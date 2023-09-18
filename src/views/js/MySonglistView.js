@@ -137,12 +137,12 @@ export default {
     //   }
     // },
 
-    gotosonglist() {
+    gotosonglist(slid) {
       // this.$router.push("/singlesonglist");
       this.$router.push({
         name: "singlesonglist",
         query: {
-          q: 1,
+          q: slid,
         },
       });
     },
@@ -160,9 +160,11 @@ export default {
     },
   },
   mounted() {
+    //建立事件聆聽:點空白處關閉
     document.addEventListener("click", this.closemore, true);
   },
   beforeUnmount() {
+    //移除事件聆聽:點空白處關閉
     document.removeEventListener("click", this.closemore);
   },
 };

@@ -4,39 +4,57 @@ export default {
             columns: [
                 {
                     title: '編號',
-                    key: 'no'
+                    key: 'no',
+                    width: 80,
+                    align: 'center'
                 },
                 {
                     title: '提交時間',
-                    key: 'submitTime'
+                    key: 'submitTime',
+                    width: 200,
+                    align: 'center'
                 },
                 {
                     title: '歌曲名稱',
-                    key: 'songName'
+                    key: 'songName',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '專輯名稱',
-                    key: 'albumName'
+                    key: 'albumName',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '時長',
-                    key: 'timeRange'
+                    key: 'timeRange',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '會員帳號',
-                    key: 'memberAcc'
+                    key: 'memberAcc',
+                    width: 200,
+                    align: 'center'
                 },
                 {
                     title: '歌曲狀態',
-                    key: 'songStatus'
+                    key: 'songStatus',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '',
-                    key: 'playMuz' //slot插槽,播放音樂鈕
+                    key: 'playMuz',
+                    width: 100,
+                    align: 'center' //slot插槽,播放音樂鈕
                 },
                 {
                     title: '操作',
-                    key: 'editBtn'
+                    key: 'editBtn',
+                    width: 100,
+                    align: 'center'
                 }
             ],
             data: [

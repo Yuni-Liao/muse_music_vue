@@ -1,7 +1,7 @@
 <template>
     <div class="songtype_table_box">
         <h1>歌曲管理 | 歌曲類別管理</h1>
-        <Table highlight-row stripe class="songtype_table" width="1200" :columns="columns" :data="data">
+        <Table highlight-row stripe class="songtype_table cellHeight" width="1200" :columns="columns" :data="data">
             <template #editSongTypeBtn="{ row }">
                 <Button @click="editSongTypeBtn()">
                     <fontAwesome :icon="['far', 'pen-to-square']" />
@@ -10,7 +10,7 @@
         </Table>
     </div>
     <div class="singlesongtype_table_box">
-        <Table highlight-row stripe class="songtype_table" width="1200" height="300" :columns="singleSongType"
+        <Table highlight-row stripe class="songtype_table cellHeight" width="1200" height="300" :columns="singleSongType"
             :data="singleSongData">
             <template #editSingleSongBtn="{ row }">
                 <Button @click="editSingleSongBtn()">

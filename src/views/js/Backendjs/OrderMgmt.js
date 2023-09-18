@@ -4,35 +4,51 @@ export default {
             columns: [
                 {
                     title: 'No',
-                    key: 'no'
+                    key: 'no',
+                    width: 60,
+                    align: 'center'
                 },
                 {
                     title: '訂單編號',
-                    key: 'orderNo'
+                    key: 'orderNo',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '會員帳號',
-                    key: 'memAcc'
+                    key: 'memAcc',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '會員姓名',
-                    key: 'memName'
+                    key: 'memName',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '訂單金額',
-                    key: 'amount'
+                    key: 'amount',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '付款方式',
-                    key: 'payType'
+                    key: 'payType',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '訂單狀態',
-                    key: 'orderStatus'
+                    key: 'orderStatus',
+                    width: 150,
+                    align: 'center'
                 },
                 {
                     title: '操作',
-                    slot: 'editBtn'
+                    slot: 'editBtn',
+                    width: 100,
+                    align: 'center'
                 }
             ],
             data: [

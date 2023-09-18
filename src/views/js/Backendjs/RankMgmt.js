@@ -4,19 +4,27 @@ export default {
             columns: [
                 {
                     title: 'No',
-                    key: 'no'
+                    key: 'no',
+                    width: 300,
+                    align: 'center'
                 },
                 {
                     title: '會員編號',
-                    key: 'memNo'
+                    key: 'memNo',
+                    width: 300,
+                    align: 'center'
                 },
                 {
                     title: '單曲名稱',
-                    key: 'songName'
+                    key: 'songName',
+                    width: 300,
+                    align: 'center'
                 },
                 {
                     title: '操作',
-                    slot: 'editBtn'
+                    slot: 'editBtn',
+                    width: 300,
+                    align: 'center'
                 }
             ],
             data: [

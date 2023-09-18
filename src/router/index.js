@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import FrontEnd from "../views/FrontEnd.vue";
 
 const routes = [
+  //g2
   {
     path: "/",
     name: "frontend",
@@ -41,6 +42,20 @@ const routes = [
           import(/* webpackChunkName: "shop" */ "../views/ShopView.vue"),
         meta: {
           title: "周邊販售",
+        },
+      },
+      // 以下是商城商品詳情共用頁面
+      {
+        path: "shopproddetail", // 使用動態路由參數:id
+        //path: "shopproddetail/:id", // 使用動態路由參數:id
+        name: "shopproddetail",
+        component: () =>
+          import(
+            /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"
+          ),
+        meta: {
+          title: "商品名稱",
+          //把它變成商品名稱
         },
       },
       {
@@ -118,20 +133,6 @@ const routes = [
       //   component: () => import(/* webpackChunkName: "這裡要取名" */ '../views/PolicyView.vue')
       //   //component還沒改
       // },
-
-      // 以下是商城商品詳情共用頁面
-      {
-        path: "shopProdDetail",
-        name: "shopProdDetail",
-        component: () =>
-          import(
-            /* webpackChunkName: "shopProdDetail" */ "../views/ShopProdDetail.vue"
-          ),
-        meta: {
-          title: "商品名稱",
-          //把它變成商品名稱
-        },
-      },
 
       //以下是我的音樂庫-我的歌單
       {
@@ -239,7 +240,7 @@ const routes = [
       },
     ],
   },
-  // 以下為後台登入頁面
+  // 以下為後台登入頁面/g2/backendLogin
   {
     path: "/backendLogin",
     name: "backendLogin",
@@ -251,6 +252,7 @@ const routes = [
       title: "後台登入歌曲",
     },
   },
+  ///g2/backend
   {
     path: "/backend",
     name: "backend",

@@ -41,14 +41,18 @@
         v-else
         class="sl-list row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
       >
-        <div class="col" v-for="(item, index) in choosecreator">
+        <div
+          class="col"
+          v-for="(item, index) in choosecreator"
+          :key="item.slid"
+        >
           <!-- 單一歌單 -->
           <div
             class="sl-item"
             :style="{
               backgroundImage: `url(/image/SingleMusic/${item.image})`,
             }"
-            @click.self.prevent="gotosonglist()"
+            @click.self.prevent="gotosonglist(item.slid)"
           >
             <!-- 更多_按鈕 -->
             <button class="moreBtn" @click="showtoggle($event, index)">
