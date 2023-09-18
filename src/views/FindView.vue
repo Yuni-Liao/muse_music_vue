@@ -3,7 +3,7 @@
         <h1>探索．Find Your MUSE</h1>
     </div>
     <div class="language">
-        <div class="space" v-for="(item, index) in languages" :key="index">
+        <div class="space" v-for="(item, index) in language" :key="index">
             <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
                 <router-link :to="item.link" >
@@ -14,7 +14,7 @@
     </div>
 
     <div class="style">
-        <div class="space" v-for="(item, index) in styles" :key="index">
+        <div class="space" v-for="(item, index) in style" :key="index">
             <img src="~@/assets/image/footer_background.jpg" alt="">
             <div class="txt">
                 <router-link :to="item.link" >
@@ -38,19 +38,27 @@
     <div class="hot_creator" >
         <h2>熱門創作者．Hot Creator</h2>
         <section>
-            <swiper :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
-                :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
-                :coverflowEffect="{
-                    rotate: 0,
-                    stretch: -150,
-                    depth: 300,
-                    modifier: 2.5,
-                    slideShadows: false,
-                }" 
-                :pagination="{
-                    clickable: true,
-                }" 
-                :modules="modules">
+            <swiper class="find_swiper"
+            :loop="true" 
+            :loopedSlides="3" 
+            :initialSlide="4" 
+            :slideToClickedSlide="false"
+            :grabCursor="false" 
+            :centeredSlides="true" 
+            :slidesPerView="5" 
+            :slidesPerGroup="1" 
+            :effect="'coverflow'"
+            :coverflowEffect="{
+                rotate: 0,
+                stretch: -150,
+                depth: 300,
+                modifier: 2.5,
+                slideShadows: false,
+            }" 
+            :pagination="{
+                clickable: true,
+            }" 
+            :modules="modules">
                 <swiper-slide v-for="(item, sid) in singers" :key="sid">
                     <div class="h_card">
                         <router-link :to="item.slink">
@@ -67,20 +75,29 @@
 
     <div class="new_release">
         <h2>新歌推薦．New Release</h2>
-        <section>
-            <swiper :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
-                :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
-                :coverflowEffect="{
-                    rotate: 0,
-                    stretch: -150,
-                    depth: 300,
-                    modifier: 2.5,
-                    slideShadows: false,
-                }" 
-                :pagination="{
-                    clickable: true,
-                }" :modules="modules">
-                <swiper-slide v-for="(item, sid) in singers" :key="sid">
+        <section class="find_newsong">
+            <swiper class="find_swiper" 
+            :loop="true" 
+            :loopedSlides="3" 
+            :initialSlide="4" 
+            :slideToClickedSlide="false"
+            :grabCursor="false" 
+            :centeredSlides="true" 
+            :slidesPerView="5" 
+            :slidesPerGroup="1" 
+            :effect="'coverflow'"
+            :coverflowEffect="{
+                rotate: 0,
+                stretch: -150,
+                depth: 300,
+                modifier: 2.5,
+                slideShadows: false,
+            }" 
+            :pagination="{
+                clickable: true,
+            }" 
+            :modules="modules">
+                <swiper-slide v-for="(item, index) in singers" :key="sid">
                     <div class="n_card">
                         <div class="image">
                             <PlayBtnBig class="play_btn"></PlayBtnBig>
@@ -101,6 +118,7 @@
         </section>
     </div>
 </template>
+
 <style scoped lang="scss">
 @import "~@/assets/scss/page/find.scss";
 </style>

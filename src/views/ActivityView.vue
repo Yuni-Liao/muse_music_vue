@@ -109,6 +109,18 @@
                 </div>
 
             </div>
+            <router-link to=""><img :src="activity.img" alt=""></router-link>
+            
+            <div class="info">
+                <router-link to=""><p>{{activity.title}}</p></router-link>
+                <router-link to=""><p><p>{{activity.timePlace}}</p></p></router-link>
+                <router-link to="" class="singer">
+                    <fontAwesome :icon="['fa', 'user-large']" style="color: #fff; margin-left: 10px; cursor: pointer;" />
+                    <p>{{activity.singer}}</p>
+                </router-link>
+            
+            </div>
+            
         </div>
 </div></template>
 
