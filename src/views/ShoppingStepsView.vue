@@ -5,12 +5,8 @@
     </div>
     <Breadcrumb separator=">" class="breadcrumb">
       <BreadcrumbItem><router-link to="/">首頁</router-link></BreadcrumbItem>
-      <BreadcrumbItem
-        ><router-link to="/shop">周邊商品</router-link></BreadcrumbItem
-      >
-      <BreadcrumbItem
-        ><router-link to="/shoppingsteps"></router-link>購物車</BreadcrumbItem
-      >
+      <BreadcrumbItem><router-link to="/shop">周邊商品</router-link></BreadcrumbItem>
+      <BreadcrumbItem><router-link to="/shoppingsteps"></router-link>購物車</BreadcrumbItem>
     </Breadcrumb>
     <div class="checkout-steps">
       <div :class="{ active: currentStep === 1 }">1.選取商品加入購物車</div>
@@ -22,12 +18,44 @@
 
     <div class="checkout">
       <div v-if="currentStep === 1">
-        <p>已加入購物車商品</p>
+        <!-- <p>已加入購物車商品</p> -->
+        <!-- 以上不要動到 -->
+
+        <!-- ▼凱芸 測試帶入暫存的商品資訊 -->
+        <div id="myCart">
+          <h1>
+            Shopping Cart
+          </h1>
+          <div>
+            <div id="cartList">
+              <table>
+                <tr v-for="(item, itemId) in cartItems" :key="itemId" class="item">
+                  <td style="width: 200px">
+                    <img :src="'imgs/' + item.prodPic" width="70" alt="item.prodName" />
+                  </td>
+                  <td style="width: 280px">
+                    <p>{{ item.prodName }}</p>
+                    <button @click="deleteItem(itemId)">Delete</button>
+                  </td>
+                  <td style="width: 170px">{{ item.prodPrice }}</td>
+                  <td style="width: 60px">
+                    <input type="number" v-model="item.inCart" min="1" @input="changeItemCount(itemId)" />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>Total: {{ total }}</p>
+          </div>
+        </div>
+        <!-- ▲凱芸 測試帶入暫存的商品資訊 -->
+
+
+        <!-- 以下不要動 -->
         <button @click="completeStep">
           <router-link to="/shop">◄ 繼續選購其他商品</router-link>
         </button>
         <button @click="nextStep">進入結帳 ►</button>
-        
+
         <div class="shopinst">
           <div class="shoptitle">
             購物說明
@@ -106,24 +134,24 @@
           }}</span>
         </div>
         <button @click="nextStep">確認結帳 ►</button>
-      <div class="shopinst">
-        <div class="shoptitle">
-          購物說明
-        </div>
-        <div class="shopcont">
-          您可以至首頁選擇商品繼續購物，全部選完後再點按上方的結帳按鈕。<br>
-          <br>
-          • 預購CD依發行日寄出,請單獨下單,如與其它CD併購,將與預購CD發行日同時寄出,不另分次寄送。<br>
-          • 訂單如因個人因素需取消,限定於訂單完成48小時內(例假日不算)通知取消。<br>
-          • 進口商品與限量預購商品訂單為專單，訂單完成後恕不接受取消。<br>
-          • 請留意您的訂購是否有未發行商品。<br>
-          • 若遇缺貨本公司保留接受訂單與否的權利。<br>
-          • 本公司保留接受訂單與否的權利。<br>
-          • 贈品如有海報，若未購買海報筒將用折疊的方式。
+        <div class="shopinst">
+          <div class="shoptitle">
+            購物說明
+          </div>
+          <div class="shopcont">
+            您可以至首頁選擇商品繼續購物，全部選完後再點按上方的結帳按鈕。<br>
+            <br>
+            • 預購CD依發行日寄出,請單獨下單,如與其它CD併購,將與預購CD發行日同時寄出,不另分次寄送。<br>
+            • 訂單如因個人因素需取消,限定於訂單完成48小時內(例假日不算)通知取消。<br>
+            • 進口商品與限量預購商品訂單為專單，訂單完成後恕不接受取消。<br>
+            • 請留意您的訂購是否有未發行商品。<br>
+            • 若遇缺貨本公司保留接受訂單與否的權利。<br>
+            • 本公司保留接受訂單與否的權利。<br>
+            • 贈品如有海報，若未購買海報筒將用折疊的方式。
+          </div>
         </div>
       </div>
-    </div>
-      
+
       <div v-else>
         <div class="paytitle">
           完成訂單

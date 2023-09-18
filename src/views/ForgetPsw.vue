@@ -1,4 +1,4 @@
-<template>
+q<template>
     <div class="fog_wrapper">
         <div class="fog_inner">
             <Steps :current="current">

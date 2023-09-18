@@ -421,6 +421,10 @@ export default {
             selectedCounty: "",
             selectedDistrict: "",
             zipcode: "",
+
+            // 以上不要動到!!!
+            cartItems: {}, // 存放購物車商品的物件
+            total: 0, // 總金額
         };
     },
     computed: {
@@ -485,5 +489,28 @@ export default {
             if (Object.keys(this.errors).length === 0) {
             }
         },
-    },
+
+        // 以上不要動到
+        addToCart(item) {
+            // 獲取商品信息
+            const prodPic = item.prodPic;
+            const prodPrice = item.prodPrice;
+            const prodName = item.prodName;
+            const inCart = item.inCart;
+
+            // 創建一個用於存儲到本地存儲的商品信息字符串
+            const itemInfo = `${prodName}|${prodPic}|${prodPrice}`;
+
+            // 將商品信息存儲到本地存儲
+            localStorage.setItem(item.id, itemInfo);
+
+            // 更新 addToItemList 字符串
+            let addItemList = localStorage.getItem('addItemList') || '';
+            addItemList += `${item.id}, `;
+            localStorage.setItem('addItemList', addItemList);
+
+            // 跳轉到購物車頁面
+            this.$router.push({ name: 'shoppingCart' });
+        },
+    }
 };
