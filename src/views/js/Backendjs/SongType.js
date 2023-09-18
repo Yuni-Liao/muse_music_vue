@@ -5,7 +5,7 @@ export default {
                 {
                     title: 'No',
                     key: 'allSongNo',
-                    width: 200,
+                    width: 280,
                     align: 'center'
                 },
                 {
@@ -23,7 +23,7 @@ export default {
                 {
                     title: '操作',
                     slot: 'editSongTypeBtn',
-                    width: 300,
+                    width: 220,
                     align: 'center'
                 },
             ],

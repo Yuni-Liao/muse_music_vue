@@ -1,10 +1,8 @@
 <template>
     <nav>
         <ul>
-            <router-link to="/backend/memmgmt">
-                <li class="sidebar_mem sidebar_item">會員管理</li>
-            </router-link>
-            <Menu accordion mode="vertical" active-name="1-2" :open-names="['1']" width="100%">
+            <Menu accordion mode="vertical" active-name="1-2" :open-names="['0']" width="100%">
+                <MenuItem name="0-1" to="/backend/memmgmt" type="primary" class="sidebar_item">會員管理</MenuItem>
                 <Submenu name="1" style="margin: -30px 0;">
                     <template #title>
                         歌曲管理
@@ -28,12 +26,8 @@
                     <MenuItem name="3-1" to="/backend/ordermgmt">訂單管理</MenuItem>
                     <MenuItem name="3-2" to="/backend/prodmgmt">商品管理</MenuItem>
                 </Submenu>
-                <router-link to="/backend/msgmgmt">
-                    <li class="sidebar_item">檢舉留言管理</li>
-                </router-link>
-                <router-link to="/backend/admmgmt">
-                    <li class="sidebar_item">管理員帳號管理</li>
-                </router-link>
+                <MenuItem name="0-2" to="/backend/msgmgmt" class="sidebar_item">檢舉留言管理</MenuItem>
+                <MenuItem name="0-3" to="/backend/admmgmt" class="sidebar_item">管理員帳號管理</MenuItem>
             </Menu>
         </ul>
     </nav>
