@@ -22,7 +22,7 @@ a {
 
 .paytitle {
     text-align: center;
-    font-size:$small;
+    font-size: $small;
 }
 
 .input-group {
@@ -36,7 +36,7 @@ a {
 input,
 textarea {
     background-color: transparent;
-    color:$white;
+    color: $white;
     border: 1px $white solid;
     width: 50%;
 }
@@ -54,7 +54,7 @@ textarea {
 }
 
 .step {
-    color:$white;
+    color: $white;
 }
 
 .checkout {
@@ -87,7 +87,7 @@ p {
     padding: 50px;
     text-align: left;
     align-items: center;
-    border:$white 3px solid;
+    border: $white 3px solid;
     margin: 0px 50px;
     font-size: $default;
 }
@@ -142,5 +142,85 @@ p {
 .dropdown input:focus {
     outline: none;
     border-color: #66afe9;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+#myCart {
+    margin: auto;
+    @include layout(100%);
+
+    .cartArea {
+        @include layout(80%);
+
+        h2 {
+            font-size: $big;
+
+            &::after {
+                content: '';
+                display: block;
+                width: 15%;
+                height: 1px;
+                background-color: $white;
+                margin: 10px auto 30px;
+            }
+        }
+
+
+        // 凱芸 這邊是購物清單
+        #cartList {
+            @include layout(100%);
+
+            table {
+                margin: auto;
+
+                .item {
+                    border-bottom: $white 1px solid;
+                    display: flex;
+                    padding-top: 20px;
+
+                    .pic {
+                        width: 25%;
+                        margin: auto;
+
+                        img {
+                            width: 100%;
+                            vertical-align: top;
+                        }
+                    }
+
+                    .prodName {
+                        width: 25%;
+
+                        p {
+                            font-size: $medium;
+                        }
+                    }
+
+                    .price {
+                        width: 15%;
+                        margin: auto;
+
+                        p {
+                            font-size: $medium;
+                        }
+                    }
+
+                    .number {
+                        margin: auto;
+                        width: 15%;
+                    }
+
+                    button {
+                        height: 50px;
+                        margin: auto;
+                    }
+
+                }
+            }
+        }
+
+        .count {
+            color: $white;
+        }
+    }
 }
