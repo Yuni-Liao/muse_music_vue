@@ -1,4 +1,5 @@
 <template>
+    <player ref="player"></player>
     <div class="banner">
         <div class="wrapper">
             <div class="find">
@@ -10,7 +11,7 @@
                     <p>共6666首歌</p>
                 </div>
                 <div class="btn">
-                    <PlayBtnBig></PlayBtnBig>
+                    <PlayBtnBig @click="openPlayer"></PlayBtnBig>
                 </div>
             </div>
         </div>

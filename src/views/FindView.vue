@@ -1,4 +1,5 @@
 <template>
+    <player ref="player123"></player>
     <div class="find">
         <h1>探索．Find Your MUSE</h1>
     </div>
@@ -97,11 +98,15 @@
                 clickable: true,
             }" 
             :modules="modules">
-                <swiper-slide v-for="(item, index) in singers" :key="sid">
+                <swiper-slide v-for="(item, index) in singers" :key="index">
                     <div class="n_card">
                         <div class="image">
-                            <PlayBtnBig class="play_btn"></PlayBtnBig>
-                            <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
+                            <PlayBtnBig 
+                            class="play_btn"
+                            @click="openPlayer">
+
+                            </PlayBtnBig>
+                            <img :src="require(`/public/image/index/${item.image}`)" @click="openPlayer"/>
                         </div>
                         <div class="text">
                             <h3>{{ item.title }}</h3>

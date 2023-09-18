@@ -10,7 +10,8 @@ export default {
   methods: {
     playsong() {
       // 此處撰寫功能code，測試用內容可清除
-      alert("播放歌單/專輯");
+      // alert("播放歌單/專輯");
+      
     },
   },
 };
