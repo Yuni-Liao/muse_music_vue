@@ -4,14 +4,10 @@
         <Table highlight-row stripe class="robotmgmt_table cellHeight" width="1200" height="550" :columns="columns"
             :data="data">
             <template #editBtn="{ row }">
-                <Button @click="editBtn()">
-                    <fontAwesome :icon="['far', 'pen-to-square']" />
-                </Button>
+                <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
             <template #deleteBtn="{ row }">
-                <Button @click="deleteBtn()">
-                    <fontAwesome :icon="['fa', 'trash']" />
-                </Button>
+                <fontAwesome @click="deleteBtn()" :icon="['fa', 'trash']" style="cursor: pointer;" />
             </template>
         </Table>
     </div>

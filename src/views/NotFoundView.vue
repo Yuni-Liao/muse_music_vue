@@ -1,7 +1,10 @@
-<template>
+<!-- <template>
     <div class="error">
         <h1>404 NotFound</h1>
     </div>
+</template> -->
+<template>
+    <Exception type="404" />
 </template>
 
 <!-- 此頁文字不需要修改,只要改SCSS裝飾就好 -->

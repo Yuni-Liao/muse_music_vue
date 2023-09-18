@@ -12,7 +12,7 @@ export default {
                 {
                     title: '管理員姓名',
                     key: 'name',
-                    width: 150,
+                    width: 300,
                     align: 'center'
                 },
                 {
@@ -22,7 +22,7 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '管理員帳號',
+                    title: '管理員密碼',
                     key: 'adminPsw',
                     width: 300,
                     align: 'center'
@@ -30,7 +30,7 @@ export default {
                 {
                     title: '操作',
                     slot: 'deleteBtn',
-                    width: 300,
+                    width: 80,
                     align: 'center'
                 }
             ],

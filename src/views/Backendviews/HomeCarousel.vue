@@ -4,14 +4,10 @@
         <Table highlight-row stripe class="homecarousel_table cellHeight" width="1200" height="550" :columns="columns"
             :data="data">
             <template #upDownBtn="{ row }">
-                <Button @click="upDownBtn()">
-                    上/下架
-                </Button>
+                <Switch @click="upDownBtn()" true-color="#13ce66" false-color="#ff4949" />
             </template>
             <template #editBtn="{ row }">
-                <Button @click="editBtn()">
-                    <fontAwesome :icon="['far', 'pen-to-square']" />
-                </Button>
+                <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
         </Table>
     </div>

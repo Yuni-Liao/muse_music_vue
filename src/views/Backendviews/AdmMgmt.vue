@@ -4,11 +4,11 @@
         <Table size="large" highlight-row stripe class="admin_table cellHeight" width="1200" height="450" :columns="columns"
             :data="data">
             <template #deleteBtn="{ row }">
-                <Button @click="deleteBtn()">刪除</Button>
+                <fontAwesome @click="deleteBtn()" :icon="['fa', 'trash']" style="cursor: pointer;" />
             </template>
         </Table>
         <div class="btn_box">
-            <Button type="primary" @click="createAdmin()" class="admin_add">新增</Button>
+            <Button v-margin="10" type="primary" @click="createAdmin()" class="admin_add">新增</Button>
         </div>
     </div>
 </template>

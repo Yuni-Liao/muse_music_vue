@@ -23,7 +23,7 @@ export default {
                 {
                     title: '操作',
                     slot: 'editBtn',
-                    width: 300,
+                    width: 200,
                     align: 'center'
                 }
             ],
@@ -85,6 +85,9 @@ export default {
         editBtn(row) {
             alert('編輯');
         },
+        addRank() {
+            alert('編輯排行');
+        }
     },
 }
 

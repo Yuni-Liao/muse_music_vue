@@ -63,7 +63,7 @@ export default {
                 },
                 {
                     no: 2,
-                    orderNo: 'O-001200',
+                    orderNo: 'O-001201',
                     memAcc: 'yuni70217',
                     memName: '煞氣a芋泥',
                     amount: 666,
@@ -72,7 +72,7 @@ export default {
                 },
                 {
                     no: 3,
-                    orderNo: 'O-001200',
+                    orderNo: 'O-001202',
                     memAcc: 'yuni70217',
                     memName: '煞氣a芋泥',
                     amount: 666,
@@ -81,7 +81,7 @@ export default {
                 },
                 {
                     no: 4,
-                    orderNo: 'O-001200',
+                    orderNo: 'O-001203',
                     memAcc: 'yuni70217',
                     memName: '煞氣a芋泥',
                     amount: 666,
@@ -90,7 +90,16 @@ export default {
                 },
                 {
                     no: 5,
-                    orderNo: 'O-001200',
+                    orderNo: 'O-001204',
+                    memAcc: 'yuni70217',
+                    memName: '煞氣a芋泥',
+                    amount: 666,
+                    payType: '信用卡',
+                    orderStatus: '已取消',
+                },
+                {
+                    no: 6,
+                    orderNo: 'O-001205',
                     memAcc: 'yuni70217',
                     memName: '煞氣a芋泥',
                     amount: 666,
@@ -101,6 +110,9 @@ export default {
         }
     },
     methods: {
+        orderSearchBtn() {
+            alert('搜索訂單');
+        },
         editBtn() {
             alert('編輯');
         },

@@ -17,7 +17,7 @@ export default {
                 {
                     title: '創建者',
                     key: 'createAdminAcc',
-                    width: 100,
+                    width: 150,
                     align: 'center'
                 },
                 {
@@ -29,7 +29,7 @@ export default {
                 {
                     title: '更新者',
                     key: 'updateAdminAcc',
-                    width: 100,
+                    width: 150,
                     align: 'center'
                 },
                 {
@@ -45,10 +45,10 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '刪除',
+                    title: ' ',
                     slot: 'deleteBtn',
-                    width: 100,
-                    align: 'center'
+                    width: 80,
+                    // align: 'center'
                 }
             ],
             data: [

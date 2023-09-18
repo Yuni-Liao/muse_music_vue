@@ -43,6 +43,26 @@ export default {
                     oldTypeName: '輕鬆舒眠',
                     newTypeName: '放鬆一下',
                 },
+                {
+                    allSongNo: 4,
+                    oldTypeName: '輕鬆舒眠',
+                    newTypeName: '放鬆一下',
+                },
+                {
+                    allSongNo: 5,
+                    oldTypeName: '輕鬆舒眠',
+                    newTypeName: '放鬆一下',
+                },
+                {
+                    allSongNo: 6,
+                    oldTypeName: '輕鬆舒眠',
+                    newTypeName: '放鬆一下',
+                },
+                {
+                    allSongNo: 7,
+                    oldTypeName: '輕鬆舒眠',
+                    newTypeName: '放鬆一下',
+                },
             ],
             singleSongType: [
                 {
@@ -148,11 +168,23 @@ export default {
                     singleSongStatus: '已上傳',
                     adminAcc: 'admin01',
                     acceptTime: '2023-09-15 09:15:00'
+                },
+                {
+                    singleSongNo: 7,
+                    SongName: '夜曲',
+                    memAcc: 'yuni70217',
+                    singleSongType: '輕鬆',
+                    singleSongStatus: '已上傳',
+                    adminAcc: 'admin01',
+                    acceptTime: '2023-09-15 09:15:00'
                 }
             ],
         }
     },
     methods: {
+        songTypeSearchBtn() {
+            alert('搜索歌曲類別');
+        },
         editSongTypeBtn(row) {
             alert('調整歌曲類別');
         },
