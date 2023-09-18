@@ -248,7 +248,7 @@ const routes = [
         /* webpackChunkName: "backendLogin" */ "../views/Backendviews/Login.vue"
       ),
     meta: {
-      title: "後台登入歌曲",
+      title: "後台登入",
     },
   },
   ///g2/backend

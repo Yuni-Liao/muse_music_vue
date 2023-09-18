@@ -232,16 +232,6 @@ export default {
     },
     mounted() {
         const audio = document.getElementById("myAudio");
-<<<<<<< HEAD
-
-        audio.onloadedmetadata = () => {
-        this.totalTime = audio.duration;
-        };
-
-        audio.ontimeupdate = () => {
-        this.currentTime = audio.currentTime;
-        };
-=======
         audio.addEventListener("loadedmetadata", () => {
             this.totalTime = audio.duration;
         });
@@ -249,7 +239,6 @@ export default {
         audio.addEventListener("timeupdate", () => {
             this.currentTime = audio.currentTime;
         });
->>>>>>> Yuni
 
 
     },

@@ -29,9 +29,7 @@
     </Modal>
 </template>
 
-
-
-<!--待補 會員內頁、搜尋框、page分頁按鈕 -->
+<!--待補 page分頁按鈕 -->
 <style scoped lang="scss">
 @import "~@/assets/scss/page/Backend/memmgmt.scss";
 </style>
