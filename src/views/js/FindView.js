@@ -250,7 +250,7 @@ export default {
     },
     methods: {
         openPlayer() {
-            this.$refs.player.playMusic();
+            this.$refs.player123.playMusic();
         },
     },
     // setup() {

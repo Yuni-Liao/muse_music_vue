@@ -167,14 +167,16 @@ export default {
     },
     data() {
         return {
+            //播放器狀態預設關閉
             playerOpen: false,
-            songList: [{
+            songList: [
+                {
                 cover: '/image/SingleMusic/songPic.png',
                 songTitle: 'Say it',
                 singer: 'George Makridis',
                 audio: 'Busy Day Ahead.mp3',
-                
-            }],
+                }
+            ],
             isPlaying: false,
             progressWidth: '0px',
             isMuted: false,
@@ -191,17 +193,12 @@ export default {
         // },
         playMusic() {
         // 播放音樂
-        
-            //先執行顯示
-            this.playerOpen = true;
-            
-            //再執行播放
-            this.$nextTick(() => {
+        this.playerOpen = true;//先執行顯示
+            this.$nextTick(() => {//再執行播放
                 this.$refs.music.play();
                 this.isPlaying = true;
                 this.updateProgress();
             });
-
         },
         pauseMusic() {
         // 暫停音樂
