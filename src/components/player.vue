@@ -237,13 +237,14 @@ export default {
     },
     mounted() {
         const audio = document.getElementById("myAudio");
-        audio.addEventListener("loadedmetadata", () => {
-          this.totalTime = audio.duration;
-        });
 
-        audio.addEventListener("timeupdate", () => {
-          this.currentTime = audio.currentTime;
-        });
+        audio.onloadedmetadata = () => {
+        this.totalTime = audio.duration;
+        };
+
+        audio.ontimeupdate = () => {
+        this.currentTime = audio.currentTime;
+        };
 
         
     },
