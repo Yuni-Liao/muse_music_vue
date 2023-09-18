@@ -34,7 +34,8 @@
         <div class="inner">
             <div class="prod">
                 <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
-                    <router-link to="`/shopproddetail/${item.id}`" class="prodPic">
+                    <!-- <router-link to="`/shopproddetail/${item.id}`" class="prodPic"> -->
+                        <router-link to="/shopproddetail" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
