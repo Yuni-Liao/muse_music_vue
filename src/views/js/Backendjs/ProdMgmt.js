@@ -45,15 +45,15 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '上/下架',
+                    title: '操作',
                     slot: 'upDownBtn',
                     width: 100,
                     align: 'center'
                 },
                 {
-                    title: '操作',
+                    title: ' ',
                     slot: 'editBtn',
-                    width: 100,
+                    width: 80,
                     align: 'center'
                 }
             ],
@@ -113,6 +113,12 @@ export default {
         editBtn(row) {
             alert('編輯');
         },
+        prodSearchBtn() {
+            alert('搜索');
+        },
+        addProdBtn() {
+            alert('新增商品');
+        }
     },
 }
 

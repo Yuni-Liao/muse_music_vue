@@ -15,8 +15,8 @@
             </template>
         </Table>
         <space :size="size">
-            <Button type="error" @click="allAccept()">批次下架</Button>
-            <Button type="success" @click="allReject()">批次駁回</Button>
+            <Button v-margin="10" type="error" @click="allAccept()">批次下架</Button>
+            <Button v-margin="10" type="success" @click="allReject()">批次駁回</Button>
         </space>
     </div>
 </template>
