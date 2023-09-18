@@ -19,7 +19,7 @@
     <div class="checkout">
       <div v-if="currentStep === 1">
         <!-- <p>已加入購物車商品</p> -->
-        <!-- 以上不要動到 -->
+        <!-- 以上不要動 -->
 
         <!-- ▼凱芸 測試帶入暫存的商品資訊 -->
         <div id="myCart">
