@@ -1,6 +1,7 @@
 export default {
     data() {
         return {
+            modal: false,
             columns: [
                 {
                     title: '會員編號',
@@ -99,7 +100,10 @@ export default {
             alert('停權');
         },
         viewBtn() {
-            alert('查閱');
+            this.modal = true;
+        },
+        memSearchBtn() {
+            alert('搜尋會員');
         }
     },
 }

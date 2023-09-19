@@ -494,21 +494,21 @@ export default {
 
 
 
-        
+        //凱芸新增 加入購物車
         addToCart(item) {
-            // 获取商品信息
+            // 獲得商品訊息
             const prodPic = item.prodPic;
             const prodPrice = item.prodPrice;
             const prodName = item.prodName;
             const inCart = item.inCart;
 
-            // 创建商品信息字符串
+            // 產生商品訊息字串
             const itemInfo = `${prodName}|${prodPic}|${prodPrice}`;
 
-            // 将商品信息存储到本地存储
+            // 將商品訊息儲存到localStorage
             localStorage.setItem(item.id, itemInfo);
 
-            // 更新购物车列表
+            // 更新購物車列表
             this.cartItems.push({
                 id: item.id,
                 prodPic,
@@ -517,10 +517,10 @@ export default {
                 inCart,
             });
 
-            // 更新购物车总金额
+            // 更新購物車總金額
             this.total += prodPrice * inCart;
 
-            // 跳转到购物车页面
+            // 跳轉到購物車也面
             this.$router.push({ name: 'shoppingCart' });
         },
         // 載入購物車中的商品
