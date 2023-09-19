@@ -235,19 +235,19 @@ export default {
         },
         
     },
-    mounted() {
-        const audio = document.getElementById("myAudio");
+    // mounted() {
+    //     const audio = document.getElementById("myAudio");
 
-        audio.onloadedmetadata = () => {
-        this.totalTime = audio.duration;
-        };
+    //     audio.onloadedmetadata = () => {
+    //     this.totalTime = audio.duration;
+    //     };
 
-        audio.ontimeupdate = () => {
-        this.currentTime = audio.currentTime;
-        };
+    //     audio.ontimeupdate = () => {
+    //     this.currentTime = audio.currentTime;
+    //     };
 
         
-    },
+    // },
     computed: {
         formatTime() {
         const format = (time) => {
