@@ -27,7 +27,7 @@
             </p>
             <button
               class="readmoreBtn"
-              v-show="isReadmoreBtn"
+              v-if="isReadmoreBtn"
               @click="readmore()"
             >
               顯示更{{ isReadMore ? "少" : "多" }}
@@ -169,7 +169,10 @@
           </div>
           <div v-else class="content">
             <ol>
-              <li v-for="(item, index) in songs" :key="item.id">
+              <li
+                v-for="(item, index) in songs.slice(0, songnum)"
+                :key="item.id"
+              >
                 <span class="index">{{ index + 1 }}</span>
                 <div class="pic">
                   <img
@@ -187,6 +190,23 @@
                 <span> <AddSlBtn></AddSlBtn></span>
                 <span> <AddFavBtn></AddFavBtn></span>
               </li>
+              <button
+                v-if="songs.length > 5"
+                class="showmore"
+                @click.prevent="showMoreSong()"
+              >
+                {{ isShowMoreSong ? "收起歌曲" : "顯示更多" }}
+                <fontAwesome
+                  v-show="isShowMoreSong === false"
+                  :icon="['fa', 'angle-down']"
+                  style="color: #fff"
+                />
+                <fontAwesome
+                  v-show="isShowMoreSong === true"
+                  :icon="['fa', 'angle-up']"
+                  style="color: #fff"
+                />
+              </button>
             </ol>
           </div>
         </div>
