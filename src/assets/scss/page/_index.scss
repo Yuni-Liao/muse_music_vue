@@ -154,11 +154,40 @@
         .card {
           width: 190px;
           margin: auto;
-          img {
+          .pic {
             @include rect(190px);
-            object-fit: cover;
-            object-position: top center;
+            position: relative;
+
             cursor: pointer;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: top center;
+            }
+            .play {
+              opacity: 0;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: #00000030;
+              cursor: pointer;
+              .i {
+                color: $white;
+                font-size: 35px;
+                position: relative;
+                top: 40%;
+                left: 2%;
+              }
+            }
+            &:hover,
+            &:focus {
+              .play {
+                opacity: 1;
+              }
+            }
           }
           .text {
             cursor: pointer;
