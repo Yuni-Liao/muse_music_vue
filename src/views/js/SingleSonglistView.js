@@ -1,9 +1,10 @@
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
 import ShareBtn from "@/components/ShareBtn.vue";
 import FolBtnBig from "@/components/FolBtnBig.vue";
+import player from "@/components/player.vue";
 
 export default {
-  components: { PlayBtnBig, ShareBtn, FolBtnBig },
+  components: { PlayBtnBig, ShareBtn, FolBtnBig, player },
   data() {
     return {
       morecurrent: -1,
@@ -180,7 +181,7 @@ export default {
     },
   },
   methods: {
-    //更多選單 顯示隱藏
+    //選單 顯示隱藏
     showtoggle(e, index) {
       // console.log(e.target.nextElementSibling);
       if (e.target.nextElementSibling.classList.contains("show")) {
@@ -192,6 +193,19 @@ export default {
     closemore(e) {
       this.morecurrent = -1;
     },
+    openPlayer() {
+      this.$refs.player.playMusic();
+    },
+    share(e) {
+      alert(`分享歌曲，歌曲ID${e}`);
+    },
+    addFav(e) {
+      alert(`歌曲ID${e}，加入我的最愛`);
+    },
+    addSonglist(e) {
+      alert(`歌曲ID${e}，加入我的歌單`);
+    },
+    //頁面切換--------------
     gotosinglemusic(sid) {
       this.$router.push({
         name: "singlemusic",
@@ -215,9 +229,6 @@ export default {
           q: abid,
         },
       });
-    },
-    playmusic() {
-      alert("呼叫懸浮播放器");
     },
   },
   mounted() {
