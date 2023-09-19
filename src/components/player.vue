@@ -20,7 +20,7 @@
                 </div >
                 <div id="play">
                     <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio> -->
-                    <audio id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" loop></audio>
+                    <audio id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" @timeupdate="updateTime"></audio>
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-if="!isPlaying"
                         @click="playMusic"
@@ -239,21 +239,14 @@ export default {
           const audio = document.getElementById("myAudio");
           audio.currentTime = this.currentTime;
         },
-        
+        updateTime() {
+        // 在音樂時間更新時觸發，用於更新currentTime
+        const audioElement = this.$refs.music;
+        this.currentTime = audioElement.currentTime;
+        this.totalTime = audioElement.duration;
+        },
     },
-    mounted() {
-        // const audio = this.$refs.myAudio;
-
-        // audio.onloadedmetadata = () => {
-        // this.totalTime = audio.duration;
-        // };
-
-        // audio.ontimeupdate = () => {
-        // this.currentTime = audio.currentTime;
-        // };
-
-        
-    },
+    
     computed: {
         formatTime() {
         const format = (time) => {
@@ -269,6 +262,7 @@ export default {
                     const audioElement = document.getElementById("myAudio");
                     audioElement.volume = newVolume / 100;
                 },
+                
                 
             }
 };
