@@ -374,7 +374,6 @@
     .index_dj_box {
       display: flex;
       justify-content: space-between;
-      // background: linear-gradient(to right top, $blue, $pink, $green);
       background-image: linear-gradient(#000, #333, #555, #444, #222, #000 95%);
       box-shadow: 5px 5px 10px #000;
       border-radius: 10px;
@@ -565,7 +564,7 @@
   }
 }
 
-//情緒歌單  - 廖妍榛
+//找到屬於你的歌 - 廖妍榛
 .index_emo {
   @include layout(100%);
   padding-bottom: 5%;
@@ -575,5 +574,237 @@
     color: $white;
     text-align: start;
     margin: 40px;
+  }
+  .index_test_page_box{
+    @include rect(682px, 455px);
+    margin: auto;
+    position: relative;
+    .index_test_box{
+      overflow: hidden;
+      width: 652px;
+      height: 367px;
+      position: absolute;
+      top: 7.8%;
+      left: 8.7%;
+      background-image: linear-gradient(#000, #333, #555, #444, #222, #000 95%);
+      background-position: 100%;
+      .decoration{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .test_startbtn{
+        position: absolute;
+        top: 33%;
+        left: 30%;
+        animation: boom 1s infinite;
+        cursor: pointer;
+      }
+      .ques{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        h2{
+          font-size: $medium;
+        }
+        p{
+          max-width: 430px;
+          color: $white;
+          font-size: $default;
+          text-align: left;
+          padding: 2.5% 7%;
+          cursor: pointer;
+        }
+        .test_cloud{
+          @include rect(100px, fit);
+        }
+        .test_cloud_rtl{
+          animation: cuteCloud_ltr 13s infinite ease-in-out;
+        }
+        .test_cloud_ltr{
+          animation: cuteCloud_rtl 13s infinite ease-in-out;
+        }
+        .test_clock{
+          @include rect(70px, fit);
+          animation: clock 1s infinite ease-in-out;
+        }
+        .test_shooting_one{
+          animation: shooting 10s infinite ease-in-out;
+        }
+        .test_shooting_two{
+          animation: shooting 10s -2s infinite ease-in-out;
+        }
+        .test_shooting_three{
+          animation: shooting 8s infinite ease-in-out;
+        }
+        .test_sweet{
+          display: inline-block;
+          margin: 0px 9px;
+          animation: sweet 1s infinite ease-in-out;
+        }
+        .test_man{
+          animation: cdman 3s infinite ease-in-out;
+        }
+        .test_note{
+          animation: blingStar 1.5s infinite ease-in-out;
+        }
+        .test_museteam{
+          animation: walk 15s infinite ;
+        }
+      }
+    }
+  }
+}
+
+
+//按了之後讓遊戲換下一頁
+.index_nextpage{
+  animation: bye 1s ease-in-out forwards;
+  }
+
+  @keyframes bye {
+    0%{
+      opacity: 0.2;
+      transform: scale(1.5);
+    }
+    90%{
+      opacity: 0.1;
+      transform: rotate(360deg);
+    }
+    100%{
+      opacity: 0;
+      transform: translate-Y(-1200px);
+    }
+  }
+
+//問題進入畫面
+.quesEnter{
+  animation: enter 1.2s ease-in-out forwards;
+}
+
+@keyframes enter {
+  0%{
+    opacity: 0;
+    transform: scale(0);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Start按鈕動畫
+@keyframes boom {
+  0%{
+    transform: translateY(10px);
+  }  
+  50%{
+    transform: translateY(-10px);
+  }
+  100%{
+    transform: translateY(10px);
+  }
+}
+
+// 雲朵飄飄動畫 - 左到右
+@keyframes cuteCloud_ltr {
+  0%{
+    transform: translate(0px, -120px)
+    
+  }
+  50%{
+    transform: translate(300px, -120px) 
+  }
+  100%{
+    transform: translate(0px, -120px) 
+  }
+}
+
+// 雲朵飄飄動畫 - 右到左
+@keyframes cuteCloud_rtl {
+  0%{
+    transform: translate(0px, -235px)
+  }
+  50%{
+    transform: translate(-280px, -235px)
+  }
+  100%{
+    transform: translate(0px, -235px)
+  }
+}
+
+// 時鐘 - 左右晃
+@keyframes clock {
+  0%{
+    transform: translate(150px, -20px) rotate(30deg)
+  }
+  50%{
+    transform: translate(150px, -20px) rotate(-30deg)
+  }
+  100%{
+    transform: translate(150px, -20px) rotate(30deg)
+  }
+}
+
+// 流星
+@keyframes shooting {
+  0%{
+    transform: translate(300px, -360px)
+  }
+  100%{
+    transform: translate(-300px, 350px)
+  }
+}
+
+// 晃動的甜點
+@keyframes sweet {
+  0%{
+    transform: translate(0px, -25px) rotate(30deg)
+  }
+  50%{
+    transform: translate(0px, -25px) rotate(-30deg)
+  }
+  100%{
+    transform: translate(0px, -25px) rotate(30deg)
+  }
+}
+
+// 黑膠人
+@keyframes cdman {
+  0%{
+    transform: translate(170px, -200px) scale(1) rotate(10deg)
+  }
+  50%{
+    transform: translate(170px, -200px) scale(1.5) rotate(-10deg)
+  }
+  100%{
+    transform: translate(170px, -200px) scale(1) rotate(10deg)
+  }
+}
+
+// 音符
+@keyframes blingStar {
+  0%{
+    opacity: 0;
+    transform: translate(350px, -200px) rotate(25deg)
+  }
+  50%{
+    opacity: 1;
+    transform: translate(350px, -200px) rotate(-35deg)
+  }
+  100%{
+    opacity: 0;
+    transform: translate(350px, -200px) rotate(25deg)
+  }
+}
+
+//樂隊
+@keyframes walk {
+  0%{
+    transform: translate(650px, -40px) 
+  }
+  100%{
+    transform: translate(-650px, -40px)
   }
 }

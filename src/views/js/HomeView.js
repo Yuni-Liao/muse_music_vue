@@ -26,6 +26,13 @@ import {
 export default {
   data() {
     return {
+      // 音樂測驗換下一頁 - 廖妍榛
+      quesOne: false,
+      quesTwo: false,
+      quesThree: false,
+      quesFour: false,
+      quesFive: false,
+      quesEnd: false,
       //本週熱門歌曲輪播RWD
       weekTopSwiper: 1,
       // 首頁頂部Banner - 廖妍榛
@@ -214,7 +221,7 @@ export default {
       // 情緒歌單測驗題 - 廖妍榛
       ques: [
         {
-          title: "Q: 今天是星期一，鬧鐘一響，剛醒來你的想法是什麼？",
+          title: "今天星期一，鬧鐘一響，醒來的你想法是什麼？",
           ans: [
             "全新的一週，動力滿滿活力滿滿！",
             "好累，好想繼續睡",
@@ -222,15 +229,15 @@ export default {
           ],
         },
         {
-          title: "Q: 午休做了個好長的夢，下列哪個是你希望做的夢?",
+          title: "午休做了個好長的夢，下列哪個是你希望做的夢?",
           ans: [
             "在酒吧和約會對象渡過火辣的夜晚",
-            "和美好的初戀相遇，以朋友的身份互相問候",
+            "和初戀相遇，以朋友的身份互相問候",
             "努力好久，終於開了間夢想的咖啡廳！",
           ],
         },
         {
-          title: "Q: 下午公司團購下午茶，哪一個是你會想點的?",
+          title: "下午公司團購下午茶，哪一個是你會想點的?",
           ans: [
             "溫暖帶點甜的布朗尼搭配鍋煮奶茶",
             "大人才懂得的苦澀回甘咖啡",
@@ -238,7 +245,7 @@ export default {
           ],
         },
         {
-          title: "Q: 晚餐時,遇見上空辣妹、猛男,你希望他和你說什麼 ?",
+          title: "吃晚餐的時候,突然出現上空辣妹、猛男,你希望他和你說什麼 ?",
           ans: [
             "나랑 사귈래？ (要跟我交往嗎？)",
             "Do you want to watch Netflix and chill?",
@@ -246,7 +253,7 @@ export default {
           ],
         },
         {
-          title: "Q: 晚上睡前希望挑哪一部電影陪伴你一天的結束呢?",
+          title: "晚上睡前希望挑哪一部電影陪伴你一天的結束呢?",
           ans: ["鐵達尼號", "再見可魯", "當男人戀愛時"],
         },
       ],
@@ -260,7 +267,6 @@ export default {
     Grid,
     GridItem,
   },
-  mounted() {},
   computed: {},
   methods: {
     gotosinglemusic(sid) {
@@ -274,5 +280,25 @@ export default {
     playmusic() {
       alert("呼叫懸浮播放器");
     },
-  },
+    //各題音樂測驗按鈕 - 廖妍榛
+    gameStart() {
+      this.quesOne = true;
+    },
+    nextQuesTwo() {
+      this.quesTwo = true;
+    },
+    nextQuesThree() {
+      this.quesThree = true;
+    },
+    nextQuesFour() {
+      this.quesFour = true;
+    },
+    nextQuesFive() {
+      this.quesFive = true;
+    },
+    endBtn() {
+      alert('不要急');
+    },
+    mounted() { },
+  }
 };
