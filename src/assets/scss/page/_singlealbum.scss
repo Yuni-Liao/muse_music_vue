@@ -170,6 +170,8 @@
                     .songArea {
                         border-bottom: 1px solid $white;
                         height: 80px;
+                        position: relative;
+                        overflow: hidden;
 
                         td {
                             padding-top: 20px;
@@ -178,6 +180,10 @@
                         .id,
                         .time {
                             font-size: $tag;
+                        }
+
+                        .id {
+                            padding: 0 10px;
                         }
 
                         .name,
@@ -229,8 +235,8 @@
                             .moreBtnAlert {
                                 opacity: 0;
                                 position: absolute;
-                                width: 185px;
-                                height: 220px;
+                                width: 175px;
+                                height: 175px;
                                 background-color: #000000;
                                 padding: 0 0 0 18px;
                                 display: flex;
@@ -270,7 +276,6 @@
                                     }
                                 }
                             }
-
                         }
                     }
                 }
