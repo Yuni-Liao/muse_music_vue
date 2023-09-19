@@ -106,7 +106,8 @@
                             @click="openPlayer">
 
                             </PlayBtnBig>
-                            <img :src="require(`/public/image/index/${item.image}`)" @click="openPlayer"/>
+                            <img :src="require(`/public/image/index/${item.image}`)" 
+                            @click="openPlayer"/>
                         </div>
                         <div class="text">
                             <h3>{{ item.title }}</h3>

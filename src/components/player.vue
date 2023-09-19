@@ -1,6 +1,7 @@
 <template>
     <!-- -------------懸浮播放器範圍 -->
     <div class="player" v-if="playerOpen">
+    <div class="player" v-if="playerOpen">
         <div class="player_left" v-for="item in songList" :key="item.id">
             <img @click="showModal" class="screen" src="/image/icon/screen.svg" alt="">
             <img class="musicPic" :src="item.cover" alt="">
@@ -81,9 +82,11 @@
                         </div>
                     </div>
                     <h5>George Makridis</h5>
-                    <!-- <div id="music-progress" class="progress" @click="playMusic">
-                        <div id="progress-bar" class="bar" :style="{ width: progressWidth }"></div>
-                    </div> -->
+                    <div class="timeBarr">
+                        <p>{{ formatTime(currentTime) }}</p>
+                        <input class="input-range--custom" type="range" v-model="currentTime" @input="seekToTime" step="0.01" >
+                        <p>{{ formatTime(totalTime) }}</p>
+                    </div>
                     <div class="fcbtns">
                         <img v-if="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute">
                         <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
@@ -194,10 +197,14 @@ export default {
         // return require("audio/" + src)
         // },
         playMusic() {
-            // 播放音樂
-            this.$refs.music.play();
-            this.isPlaying = true;
-
+        //播放音樂
+        // 播放音樂
+        this.playerOpen = true;//先執行顯示
+            this.$nextTick(() => {//再執行播放
+                this.$refs.music.play();
+                this.isPlaying = true;
+                
+            });
 
         },
         pauseMusic() {
@@ -231,15 +238,15 @@ export default {
 
     },
     mounted() {
-        const audio = document.getElementById("myAudio");
-        audio.addEventListener("loadedmetadata", () => {
-            this.totalTime = audio.duration;
-        });
+        // const audio = this.$refs.myAudio;
 
-        audio.addEventListener("timeupdate", () => {
-            this.currentTime = audio.currentTime;
-        });
+        // audio.onloadedmetadata = () => {
+        // this.totalTime = audio.duration;
+        // };
 
+        // audio.ontimeupdate = () => {
+        // this.currentTime = audio.currentTime;
+        // };
 
     },
     computed: {
