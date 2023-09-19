@@ -1,6 +1,7 @@
 export default {
     data() {
         return {
+            bannerBox: false,
             columns: [
 
                 {
@@ -87,6 +88,9 @@ export default {
         }
     },
     methods: {
+        addBannerBtn() {
+            this.bannerBox = true;
+        },
         upDownBtn(row) {
             alert('上/下架');
         },

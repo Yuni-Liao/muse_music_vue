@@ -46,8 +46,8 @@ const routes = [
       },
       // 以下是商城商品詳情共用頁面
       {
-        //path: "shopproddetail", // 使用動態路由參數:id
-        path: "shopproddetail/:id", // 使用動態路由參數:id
+        path: "shopproddetail", // 使用動態路由參數:id
+        //path: "shopproddetail/:id", // 使用動態路由參數:id
         name: "shopproddetail",
         component: () =>
           import(
@@ -248,7 +248,7 @@ const routes = [
         /* webpackChunkName: "backendLogin" */ "../views/Backendviews/Login.vue"
       ),
     meta: {
-      title: "後台登入歌曲",
+      title: "後台登入",
     },
   },
   ///g2/backend

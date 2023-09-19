@@ -19,38 +19,34 @@
     <div class="checkout">
       <div v-if="currentStep === 1">
         <!-- <p>已加入購物車商品</p> -->
-        <!-- 以上不要動 -->
 
         <!-- ▼凱芸 測試帶入暫存的商品資訊 -->
         <div id="myCart">
-          <h1>
-            Shopping Cart
-          </h1>
-          <div>
+          <div class="cartArea">
+            <h2>購物清單</h2>
             <div id="cartList">
               <table>
                 <tr v-for="(item, itemId) in cartItems" :key="itemId" class="item">
-                  <td style="width: 200px">
-                    <img :src="'imgs/' + item.prodPic" width="70" alt="item.prodName" />
+                  <td class="pic">
+                    <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName" />
                   </td>
-                  <td style="width: 280px">
+                  <td class="prodName">
                     <p>{{ item.prodName }}</p>
-                    <button @click="deleteItem(itemId)">Delete</button>
+                    
                   </td>
-                  <td style="width: 170px">{{ item.prodPrice }}</td>
-                  <td style="width: 60px">
+                  <td class="price">$ {{ item.prodPrice }}</td>
+                  <td class="number">
                     <input type="number" v-model="item.inCart" min="1" @input="changeItemCount(itemId)" />
                   </td>
+                  <button @click="deleteItem(itemId)">刪除</button>
                 </tr>
               </table>
             </div>
-            <p>Total: {{ total }}</p>
+            <p class="count">總金額： {{ total }}</p>
           </div>
         </div>
         <!-- ▲凱芸 測試帶入暫存的商品資訊 -->
 
-
-        <!-- 以下不要動 -->
         <button @click="completeStep">
           <router-link to="/shop">◄ 繼續選購其他商品</router-link>
         </button>
