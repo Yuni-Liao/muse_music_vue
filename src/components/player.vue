@@ -21,7 +21,7 @@
                 </div>
                 <div id="play">
                     <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio> -->
-                    <audio id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" loop></audio>
+                    <audio id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" @timeupdate="updateTime"></audio>
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
                         v-if="!isPlaying" @click="playMusic" />
                     <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
@@ -49,7 +49,6 @@
             <p><span>{{ volume }}</span></p>
         </div>
     </div>
-
 
     <!-- -------------蓋板播放器範圍------------- -->
     <div class="modal" v-if="isModalVisible" :style="{
@@ -81,9 +80,12 @@
                         </div>
                     </div>
                     <h5>George Makridis</h5>
-                    <!-- <div id="music-progress" class="progress" @click="playMusic">
-                        <div id="progress-bar" class="bar" :style="{ width: progressWidth }"></div>
-                    </div> -->
+                    <div class="timeBarr">
+                        <p>{{ formatTime(currentTime) }}</p>
+                        <input class="input-range--custom" type="range" v-model="currentTime" @input="seekToTime"
+                            step="0.01">
+                        <p>{{ formatTime(totalTime) }}</p>
+                    </div>
                     <div class="fcbtns">
                         <img v-if="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute">
                         <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
@@ -186,7 +188,6 @@ export default {
             showPlayer: false,
             currentTime: 0,
             totalTime: 0,
-
         }
     },
     methods: {
@@ -194,18 +195,19 @@ export default {
         // return require("audio/" + src)
         // },
         playMusic() {
+            //播放音樂
             // 播放音樂
-            this.$refs.music.play();
-            this.isPlaying = true;
-
-
+            this.playerOpen = true;//先執行顯示
+            this.$nextTick(() => {//再執行播放
+                this.$refs.music.play();
+                this.isPlaying = true;
+            });
         },
         pauseMusic() {
             // 暫停音樂
             this.$refs.music.pause();
             this.isPlaying = false;
         },
-
         toggleMute() {
             if (this.isMuted) {
                 this.$refs.music.volume = this.currentVolume;
@@ -228,19 +230,14 @@ export default {
             const audio = document.getElementById("myAudio");
             audio.currentTime = this.currentTime;
         },
-
-    },
-    mounted() {
-        const audio = document.getElementById("myAudio");
-        audio.addEventListener("loadedmetadata", () => {
-            this.totalTime = audio.duration;
-        });
-
-        audio.addEventListener("timeupdate", () => {
-            this.currentTime = audio.currentTime;
-        });
-
-
+        updateTime() {
+            // 在音樂時間更新時觸發，用於更新currentTime
+            const audioElement = this.$refs.music;
+            if (audioElement) {
+                this.currentTime = audioElement.currentTime;
+                this.totalTime = audioElement.duration;
+            }
+        },
     },
     computed: {
         formatTime() {
@@ -257,7 +254,6 @@ export default {
             const audioElement = document.getElementById("myAudio");
             audioElement.volume = newVolume / 100;
         },
-
     }
 };
 </script>
