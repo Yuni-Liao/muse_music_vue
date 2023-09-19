@@ -80,6 +80,17 @@ const routes = [
         },
       },
       {
+        path: "activityInfo",
+        name: "activityInfo",
+        component: () =>
+          import(
+            /* webpackChunkName: "activityInfo" */ "../views/ActivityInfo.vue"
+          ),
+        meta: {
+          title: "音樂快訊詳情",
+        },
+      },
+      {
         path: "login",
         name: "login",
         component: () =>

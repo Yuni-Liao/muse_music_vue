@@ -83,9 +83,11 @@
                         </div>
                     </div>
                     <h5>George Makridis</h5>
-                    <!-- <div id="music-progress" class="progress" @click="playMusic">
-                        <div id="progress-bar" class="bar" :style="{ width: progressWidth }"></div>
-                    </div> -->
+                    <div class="timeBarr">
+                        <p>{{ formatTime(currentTime) }}</p>
+                        <input class="input-range--custom" type="range" v-model="currentTime" @input="seekToTime" step="0.01" >
+                        <p>{{ formatTime(totalTime) }}</p>
+                    </div>
                     <div class="fcbtns">
                         <img v-if="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute" >
                         <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
@@ -199,10 +201,14 @@ export default {
         // return require("audio/" + src)
         // },
         playMusic() {
+        //播放音樂
         // 播放音樂
-        this.$refs.music.play();
-        this.isPlaying = true;
-        
+        this.playerOpen = true;//先執行顯示
+            this.$nextTick(() => {//再執行播放
+                this.$refs.music.play();
+                this.isPlaying = true;
+                
+            });
 
         },
         pauseMusic() {
@@ -236,15 +242,15 @@ export default {
         
     },
     mounted() {
-        const audio = document.getElementById("myAudio");
+        // const audio = this.$refs.myAudio;
 
-        audio.onloadedmetadata = () => {
-        this.totalTime = audio.duration;
-        };
+        // audio.onloadedmetadata = () => {
+        // this.totalTime = audio.duration;
+        // };
 
-        audio.ontimeupdate = () => {
-        this.currentTime = audio.currentTime;
-        };
+        // audio.ontimeupdate = () => {
+        // this.currentTime = audio.currentTime;
+        // };
 
         
     },
