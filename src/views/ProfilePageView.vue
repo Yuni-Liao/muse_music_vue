@@ -129,7 +129,7 @@
             >
               <!-- 單一專輯 -->
               <swiper-slide v-for="(item, index) in album" :key="item.id">
-                <div class="card" @click="gotosinglealbum(abid)">
+                <div class="card" @click="gotosinglealbum(item.id)">
                   <div class="pic">
                     <img
                       :src="

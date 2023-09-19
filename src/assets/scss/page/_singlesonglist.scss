@@ -129,6 +129,7 @@
           flex: 1;
           margin-left: 20px;
           font-size: $small;
+          cursor: pointer;
         }
       }
 
@@ -145,10 +146,10 @@
               display: flex;
               align-items: center;
               padding: 15px 0;
-              border-bottom: 1px solid $white;
+              border-bottom: 1px solid #ffffff40;
               font-size: $default;
               span {
-                margin: 0 8px;
+                margin: 0 10px;
               }
               .idx {
                 min-width: 20px;
@@ -157,21 +158,45 @@
               .pic {
                 vertical-align: middle;
                 @include rect(50px);
-                margin: 0 8px;
+                margin: 0 10px;
+                position: relative;
 
                 img {
                   @include rect(100%);
+                }
+                .play {
+                  opacity: 0;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #00000030;
+                  cursor: pointer;
+                  .i {
+                    font-size: 20px;
+                    position: relative;
+                    transform: translate(5%, 60%);
+                  }
+                }
+                &:hover,
+                &:focus {
+                  .play {
+                    opacity: 1;
+                  }
                 }
               }
               h3 {
                 flex: 2;
                 font-size: $default;
-                margin: 0 8px;
+                margin: 0 10px;
+                cursor: pointer;
               }
               .singer,
               .album {
                 flex: 1;
                 font-size: $default;
+                cursor: pointer;
               }
               .time {
                 min-width: 50px;
@@ -179,30 +204,36 @@
               }
               .moreWrap {
                 min-width: 30px;
-                margin: 0 8px;
+                margin: 0 10px;
                 position: relative;
-
                 .moreBtn {
                   background-color: $tp;
                   border: none;
                   color: $white;
+
+                  .i {
+                    pointer-events: none;
+                  }
                 }
                 .more {
-                  opacity: 0;
-                  position: absolute;
+                  display: none;
+
                   width: 185px;
                   height: 220px;
-                  background-color: #000000;
                   padding: 0 0 0 18px;
-                  display: flex;
+                  background-color: #000000;
+                  border-radius: 6px;
+
+                  //定位
+                  position: absolute;
+                  top: 50px;
+                  z-index: 3;
+                  right: -10px;
+
+                  //子元素排版
                   flex-direction: column;
                   justify-content: space-evenly;
                   align-items: flex-start;
-                  top: 50px;
-                  left: -70px;
-                  border-radius: 6px;
-                  z-index: 3;
-
                   .close {
                     @include btnBgNone;
                     font-size: 25px;
@@ -231,6 +262,9 @@
                     }
                   }
                 }
+                .more.show {
+                  display: flex;
+                }
               }
             }
             li.title {
@@ -239,117 +273,6 @@
               text-align: center;
             }
           }
-
-          // .musicTable {
-          //   @include layout(80%);
-
-          //   .playListHeader {
-          //     height: 30px;
-          //   }
-
-          //   .songArea {
-          //     border-bottom: 1px solid $white;
-          //     height: 80px;
-
-          //     td {
-          //       padding-top: 20px;
-          //     }
-
-          //     .id,
-          //     .time {
-          //       font-size: $tag;
-          //     }
-
-          //     .name,
-          //     .singer {
-          //       font-size: $default;
-
-          //       a {
-          //         color: $white;
-          //       }
-          //     }
-
-          //     img {
-          //       vertical-align: middle;
-          //       width: 50px;
-          //       height: 50px;
-          //     }
-
-          //     .btnArea {
-          //       position: relative;
-          //       display: flex;
-          //       align-items: center;
-
-          //       #AddSlBtn,
-          //       #AddFavBtn {
-          //         width: 25px;
-          //         height: 25px;
-          //         margin: 5px;
-          //         border: 1px $dark solid;
-          //       }
-
-          //       .more-group {
-          //         &:focus,
-          //         &:focus-within {
-          //           .moreBtnAlert {
-          //             opacity: 1;
-          //             pointer-events: auto;
-          //           }
-          //         }
-          //       }
-
-          //       .moreBtn {
-          //         @include btnBgNone;
-          //         margin: 0 0 0 10px;
-          //       }
-
-          //       .moreBtnAlert {
-          //         opacity: 0;
-          //         position: absolute;
-          //         width: 185px;
-          //         height: 220px;
-          //         background-color: #000000;
-          //         padding: 0 0 0 18px;
-          //         display: flex;
-          //         flex-direction: column;
-          //         justify-content: space-evenly;
-          //         align-items: flex-start;
-          //         top: 50px;
-          //         left: -70px;
-          //         border-radius: 6px;
-          //         z-index: 3;
-
-          //         .close {
-          //           @include btnBgNone;
-          //           font-size: 25px;
-          //           margin-left: 130px;
-          //         }
-
-          //         a {
-          //           display: flex;
-          //           flex-direction: row;
-          //           align-items: center;
-
-          //           img {
-          //             width: 20px;
-          //             height: 20px;
-          //           }
-
-          //           p {
-          //             margin: 0 0px 0 20px;
-          //             font-size: $tag;
-          //           }
-
-          //           .eyeopen {
-          //             width: 20px;
-          //             height: 13px;
-          //             vertical-align: top;
-          //           }
-          //         }
-          //       }
-          //     }
-          //   }
-          // }
         }
       }
     }

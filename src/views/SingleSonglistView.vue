@@ -51,7 +51,9 @@
               alt="歌單擁有者頭像"
             />
           </div>
-          <p class="creatorName">{{ songlists.creator }}</p>
+          <p class="creatorName" @click="gotosinger(songlists.singerid)">
+            {{ songlists.creator }}
+          </p>
         </div>
         <div class="detail">
           <div class="playList">
@@ -72,20 +74,35 @@
                 ><span class="pic"
                   ><img
                     :src="require(`/public/image/SingleMusic/${item.image}`)"
-                /></span>
+                  />
+                  <div class="play" @click="playmusic()">
+                    <fontAwesome class="i" :icon="['fa', 'play']" />
+                  </div>
+                </span>
 
-                <h3 v-line-clamp="2">{{ item.name }}</h3>
-                <span v-line-clamp="2" class="singer">{{ item.singer }}</span
-                ><span v-line-clamp="2" class="album">{{ item.album }}</span>
+                <h3 v-line-clamp="2" @click="gotosinglemusic(item.sid)">
+                  {{ item.name }}
+                </h3>
+                <span
+                  v-line-clamp="2"
+                  class="singer"
+                  @click="gotosinger(item.singerid)"
+                  >{{ item.singer }}</span
+                ><span
+                  v-line-clamp="2"
+                  class="album"
+                  @click="gotosinglealbum(item.albumid)"
+                  >{{ item.album }}</span
+                >
                 <span class="time">{{ item.time }}</span>
                 <div class="moreWrap">
                   <!-- 更多_按鈕 -->
                   <button class="moreBtn" @click="showtoggle($event, index)">
                     <fontAwesome class="i" :icon="['fa', 'ellipsis']" />
                   </button>
-                  <!-- 更多_選項 -->
-                  <div class="more" :class="{ show: index == morecurrent }">
-                    <button class="close" @click="closeMoreBtn(albumItem)">
+                  <!-- 更多_選項-->
+                  <div class="more" :class="{ show: index === morecurrent }">
+                    <button class="close" @click="closemore($event)">
                       <fontAwesome
                         :icon="['fa', 'fa-xmark']"
                         style="color: #ffffff"

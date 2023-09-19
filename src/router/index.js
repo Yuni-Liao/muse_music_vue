@@ -146,7 +146,6 @@ const routes = [
 
       //以下是我的音樂庫-我的歌單
       {
-        title: "我的歌單",
         path: "mysonglist",
         name: "mysonglist",
         component: () =>
@@ -214,7 +213,7 @@ const routes = [
       },
       {
         path: "profilepage",
-        name: "profilepagee",
+        name: "profilepage",
         component: () =>
           import(
             /* webpackChunkName: "profilepage" */ "../views/ProfilePageView.vue"
