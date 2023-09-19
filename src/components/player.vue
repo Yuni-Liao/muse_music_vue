@@ -1,6 +1,7 @@
 <template>
     <!-- -------------懸浮播放器範圍 -->
     <div class="player" v-if="playerOpen">
+    <div class="player" v-if="playerOpen">
         <div class="player_left" v-for="item in songList" :key="item.id">
             <img @click="showModal" class="screen" src="/image/icon/screen.svg" alt="">
             <img class="musicPic" :src="item.cover" alt="">
