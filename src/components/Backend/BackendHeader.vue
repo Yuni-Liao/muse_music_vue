@@ -4,6 +4,7 @@
             <img class="logo_backend" id="logo_backend" alt="Vue logo" src="~@/assets/image/muse_logo.png" />
         </router-link>
         <button @click="logOut()" class="logout obj_Radius" id="logout">登出</button>
+        <!-- <router-link to="/backendlogin">登出</router-link> -->
     </header>
 </template>
 

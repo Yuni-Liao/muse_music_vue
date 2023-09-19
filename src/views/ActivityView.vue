@@ -95,10 +95,10 @@
                     <p>{{ activity.date }}日</p>
                     <p>星期{{ activity.day }}</p>
                 </div>
-                <img :src="require(`/public/image/Activity/${activity.img}`)">
-                <div class="info" v-for="activity in activityList" :key="activity">
-                    <p>{{ activity.title }}</p>
-                    <p>{{ activity.timePlace }}</p>
+                <router-link to="ActivityInfo"><img :src="require(`/public/image/Activity/${activity.img}`)"></router-link>
+                <div class="info" >
+                    <router-link to="ActivityInfo"><p>{{ activity.title }}</p></router-link>
+                    <router-link to="ActivityInfo"><p>{{ activity.timePlace }}</p></router-link>
                     <router-link to="#" class="singer">
                         <fontAwesome :icon="['fa', 'user-large']"
                             style="color: #fff; margin-left: 10px; cursor: pointer;" />
@@ -106,23 +106,7 @@
                     </router-link>
                 </div>
             </div>
-            <!-- <router-link to="#">
-                <img :src="require(`/public/image/Activity/${activity.img}`)">
-            </router-link> -->
-            <div class="info" v-for="activity in activityList" :key="activity">
-                <router-link to="#">
-                    <p>{{ activity.title }}</p>
-                </router-link>
-                <router-link to="#">
-                    <p>
-                    <p>{{ activity.timePlace }}</p>
-                    </p>
-                </router-link>
-                <router-link to="#" class="singer">
-                    <fontAwesome :icon="['fa', 'user-large']" style="color: #fff; margin-left: 10px; cursor: pointer;" />
-                    <p>{{ activity.singer }}</p>
-                </router-link>
-            </div>
+            
         </div>
     </div>
 </template>

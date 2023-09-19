@@ -9,8 +9,7 @@
             <Button icon="ios-search" @click="prodSearchBtn()" style="background-color: #515a6e; color: #fff;"></Button>
         </template>
         </Input>
-        <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1200" height="550" :columns="columns"
-            :data="data">
+        <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1200" :columns="columns" :data="data">
             <template #upDownBtn="{ row }">
                 <Switch @click="upDownBtn()" true-color="#13ce66" false-color="#ff4949" />
             </template>

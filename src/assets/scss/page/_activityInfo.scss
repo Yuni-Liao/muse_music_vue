@@ -1,0 +1,109 @@
+.infoContainer{
+    background-image: url("/public/image/Activity/activitybac.avif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .infoTop{
+       
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        
+        img{
+            width: 350px;
+            height: 200px;
+            margin-top: 200px;
+            box-shadow: 3px 3px 5px #fff;
+        }
+        .intro{
+            margin-left: 30px;
+            color: $white;
+            text-align: left;
+            margin-top: 200px;
+            display: flex;
+            flex-direction: column;
+            line-height: 30px;
+            h1{
+                font-size: $small;
+                letter-spacing: 2px;
+                
+            }
+            .singer{
+                width: 100px;
+                background-color: $pink;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                margin: 30px 0px;
+                p{
+                    padding: 0px 10px;
+                    color: $white;
+                }
+            }
+        }
+    }
+    .infoCenter{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: $white;
+        text-align: left;
+        h1{
+            font-size: $small;
+            margin: 50px 300px;
+        }
+        p{
+            letter-spacing: 2px;
+            line-height: 25px;
+            margin: 10px 0px 30px 300px;
+        }
+    }
+    .infoBottom{
+        display: flex;
+        flex-direction: column;
+        
+        h1{
+            font-size: $small;
+            margin: 50px 300px;
+            color: $white;
+            text-align: left;
+        }
+        .related{
+            display: flex;
+            align-items: center;
+            margin: 30px 300px;
+            .calender{
+                width: 70px;
+                margin-right: 30px;
+                background-color: $white;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                height: 70px;
+                .month{
+                color: $white;
+                background-color: $blue;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                padding: 0px 20px;
+                font-weight: bolder;
+                }   
+                p{
+                    color: #000;
+                }
+            }
+            img{
+                width: 230px;
+            }
+            .relatedInfo{
+                display: flex;
+                flex-direction: column;
+                color: $white;
+                text-align: left;
+                margin: 0px 30px;
+                letter-spacing: 2px;
+                line-height: 25px;
+            }
+        }
+    }
+}
