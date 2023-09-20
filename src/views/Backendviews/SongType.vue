@@ -7,14 +7,15 @@
             <Button icon="ios-search" @click="songTypeSearchBtn()" style="background-color: #515a6e; color: #fff;"></Button>
         </template>
         </Input>
-        <Table highlight-row stripe class="songtype_table cellHeight" width="1200" :columns="columns" :data="data">
+        <Table highlight-row stripe class="songtype_table cellHeight" width="1200" height="250" :columns="columns"
+            :data="data">
             <template #editSongTypeBtn="{ row }">
                 <fontAwesome @click="editSongTypeBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
         </Table>
     </div>
     <div class="singlesongtype_table_box">
-        <Table highlight-row stripe class="songtype_table cellHeight" width="1200" :columns="singleSongType"
+        <Table highlight-row stripe class="songtype_table cellHeight" width="1200" height="250" :columns="singleSongType"
             :data="singleSongData">
             <template #editSingleSongBtn="{ row }">
                 <fontAwesome @click="editSingleSongBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
