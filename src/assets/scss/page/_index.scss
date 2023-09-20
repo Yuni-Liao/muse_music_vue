@@ -648,6 +648,58 @@
           padding: 2.5% 7%;
           cursor: pointer;
         }
+        .index_findurmusic{
+          font-family: "DotGothic16","Noto Sans TC", "Noto Sans";
+          max-width: 430px;
+          color: $white;
+          font-size: $medium;
+          text-align: center;
+          padding: 23% 0%;
+        }
+        #index_playCD{
+          border: 2px solid red;
+          @include rect(195px);
+          margin: 12.5% 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          align-self: center;
+          border-radius: 200px;
+          background: repeating-radial-gradient(
+            circle,
+            #000000 0%,
+            #000000 1%,
+            $dark 2%
+          );
+          border: 2px solid $green;
+          animation: run 2s linear infinite;
+          animation-play-state: paused;
+          box-shadow: 1px 1px $white;
+          position: relative;
+          top: 40%;
+          left: 35%;
+          span{
+            @include rect(140px);
+            background-image: url("/public/image/index/index_dj_logo.png");
+            background-size: contain;
+            animation: run 7s 0s linear infinite;
+            position: absolute;
+            top: 13%;
+            left: 13.5%;
+            pointer-events: none;
+          }
+          .tag_clickme{
+            color: $white;
+            font-size: $default;
+            position: absolute;
+            top: 15%;
+            right: -50%;
+          }
+          #musicOff{
+            @include rect(50px);
+            opacity: 0;
+          }
+        }
         .test_cloud{
           @include rect(100px, fit);
         }

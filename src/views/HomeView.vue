@@ -11,7 +11,6 @@
   </section>
 
   <!-- 音樂謬思就是音樂的發生地 -廖妍榛 -->
-
   <div class="index_centerSlogn">
     <div class="index_centerH1">
       <h1>Making Waves</h1>
@@ -265,9 +264,20 @@
             <img class="test_museteam" src="/image/index/index_test_member_three.png" alt="樂隊">
           </div>
         </li>
-        <!-- 播歌還沒寫~ -->
+        <!-- 找尋音樂中 等待 3 秒 -->
         <li v-if="quesEnd === true" class="ques quesEnter">
-          <p>END</p>
+          <p id="findUrMuz" class="index_findurmusic" :class="{ 'index_nextpage': startMuz }">正在找尋屬於你的音樂 ...{{ timerValue
+          }}</p>
+        </li>
+        <!-- 音樂出現 -->
+        <li v-if="startMuz === true" class="ques quesEnter">
+          <div class="index_playCD" id="index_playCD">
+            <span></span>
+            <div class="tag_clickme">Click Center!</div>
+            <audio id="myMuz" ref="myMuz" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Leo%20-%20Trying.mp3"
+              autoplay></audio>
+            <button @click="turnMusic()" id="musicOff">Off or On</button>
+          </div>
         </li>
       </ul>
     </div>

@@ -33,6 +33,9 @@ export default {
       quesFour: false,
       quesFive: false,
       quesEnd: false,
+      startMuz: false,
+      // 倒數計時器
+      timerValue: null,
       //本週熱門歌曲輪播RWD
       weekTopSwiper: 1,
       // 首頁頂部Banner - 廖妍榛
@@ -297,8 +300,40 @@ export default {
       this.quesFive = true;
     },
     endBtn() {
-      alert('不要急');
+      this.quesEnd = true;
     },
-    mounted() { },
+    startMuzBtn() {
+      this.startMuz = true;
+    },
+    startTimer() {
+      //  倒數計時 3 秒換下一頁
+      const intervalId = setInterval(() => {
+        const findMuz = document.getElementById("findUrMuz");
+        if (findMuz) {
+          this.timerValue++;
+          if (this.timerValue === 3) {
+            this.startMuz = true;
+          }
+        }
+      }, 3000);
+      this.intervalId = intervalId;
+    },
+    turnMusic() {
+      const audio = this.$refs.myMuz;
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    },
+  },
+  mounted() {
+    this.startTimer();
+  },
+  beforeUnmount() {
+    // 清除計時器
+    if (this.intervalId !== null) {
+      clearInterval(this.intervalId);
+    }
   }
 };
