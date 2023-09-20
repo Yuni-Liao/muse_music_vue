@@ -1,8 +1,11 @@
 <template>
   <div id="Typed">
-    <h2 v-for="(content, index) in displayedText" :key="index">
+    <h2 v-for="(content, index) in displayedText.slice(0, 1)" :key="index">
       {{ content }}
     </h2>
+    <p v-for="(content, index) in displayedText.slice(1, 10)" :key="index">
+      {{ content }}
+    </p>
   </div>
 </template>
 
