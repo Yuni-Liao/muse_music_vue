@@ -1,9 +1,9 @@
+import MuseBoy from "@/components/MuseBoy.vue";
 //引入swiper-------------------------
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 //引入viewUI Grid系統-------------------------
 import { Grid, GridItem } from "view-ui-plus";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -33,8 +33,6 @@ export default {
       quesFour: false,
       quesFive: false,
       quesEnd: false,
-      //本週熱門歌曲輪播RWD
-      weekTopSwiper: 1,
       // 首頁頂部Banner - 廖妍榛
       topBanner: [
         {
@@ -266,6 +264,7 @@ export default {
     SwiperSlide,
     Grid,
     GridItem,
+    MuseBoy,
   },
   computed: {},
   methods: {
@@ -297,8 +296,8 @@ export default {
       this.quesFive = true;
     },
     endBtn() {
-      alert('不要急');
+      alert("不要急");
     },
-    mounted() { },
-  }
+    // mounted() {},
+  },
 };
