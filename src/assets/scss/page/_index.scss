@@ -630,14 +630,17 @@
         cursor: pointer;
       }
       .ques{
+        font-family:Press+Start+2P;
         width: 100%;
         position: absolute;
         top: 0;
         left: 0;
         h2{
+          font-family: "DotGothic16","Noto Sans TC", "Noto Sans";
           font-size: $medium;
         }
         p{
+          font-family: "DotGothic16","Noto Sans TC", "Noto Sans";
           max-width: 430px;
           color: $white;
           font-size: $default;
