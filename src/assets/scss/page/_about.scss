@@ -61,57 +61,71 @@
                 display: inline-block;
                 padding: 80px 0;
             }
+
+            //謬思創作者
             .partnerwrap{
             padding: 50px 0 200px;
             overflow: hidden;
                 .partnerwall {
                 display: flex;
-                .partnerwrapper {
-                display: flex;
-                animation: scroll 40s linear infinite;
-                animation-play-state: paused;
-            
-                    &:nth-child(2) {
-                        animation: scroll2 40s linear infinite;
-                        animation-delay: -20s;
-                        animation-play-state: paused;
+                    .partnerwrapper {
+                    display: flex;
+                    animation: scroll 60s linear infinite;
+                    animation-play-state: paused;
+                
+                        &:nth-child(2){
+                            animation: scroll2 60s linear infinite;
+                            animation-delay: -30s;
+                            animation-play-state: paused;
+                        }
+                        &.active{
+                            animation-play-state: running;
+                        }
+                        .partnerpic{
+                            width: 150px;
+                            height: 154px;
+                            margin: 0 30px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            >a{
+                                display: inline-block;
+                                width: 100%;
+                                img{
+                                    width: 100%;
+                                }
+                            }
+
+                        }            
                     }
-                    &.active {
-                        animation-play-state: running;
-                    }
-                    .partnerpic {
-                        margin: 0 30px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }            
                 }
             }
         }
+
+       
+
+
+
+        // 謬思創作者-animation
+        @keyframes scroll{
+            from{
+            transform: translateX(100%);
+            }
+            to{
+            transform: translateX(-100%);
+            }
+        }
+        
+        @keyframes scroll2{
+            from{
+            transform: translateX(0%);
+            }
+            to{
+            transform: translateX(-200%);
+            }
+        }
     }
-
-
-    // 謬思創作者
-    @keyframes scroll {
-        from {
-          transform: translateX(100%);
-        }
-        to {
-          transform: translateX(-100%);
-        }
-      }
-      
-      @keyframes scroll2 {
-        from {
-          transform: translateX(0%);
-        }
-        to {
-          transform: translateX(-200%);
-        }
-      }
-
-    
-}
 
 
     // 常見問題
@@ -146,6 +160,7 @@
         justify-content: flex-start;
         text-align: left;
         padding: 15px 0;
+        line-height: 1.5;
     }
 
 
@@ -188,7 +203,7 @@
     }
 
     .contactbtn{
-        @include rect (160px !important, 50px !important);
+        @include rect(160px !important, 50px !important);
         @include btnColor($green, $border: true, $hover: true)
     }
 

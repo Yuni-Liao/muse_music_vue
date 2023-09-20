@@ -2,7 +2,7 @@ export default {
     //script寫在這裡
     data() {
         return {
-            isActive: true,
+
             // 謬思創作者
             userList: [
                 {
@@ -47,6 +47,10 @@ export default {
                     link: "/profilepage",
                 },
             ],
+
+            //謬思創作者-初始輪播狀態
+            isActive: true,
+
             // 常見問題
             faqList: [
                 {
@@ -126,12 +130,13 @@ export default {
         toggleQuestion(index) {
             this.faqList[index].open = !this.faqList[index].open;
         },
+
+        //謬思創作者-輪播狀態切換
         pauseAnimation(event) {
             this.isActive = false
         },
         resumeAnimation(event) {
             this.isActive = true
-
         }
     },
 
