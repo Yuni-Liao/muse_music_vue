@@ -537,14 +537,14 @@ export default {
 
 <style scoped lang="scss">
 .museboybox {
-  border: 1px solid #232323;
-  width: 300px;
+  width: 200px;
 
   #museboy {
     width: 100%;
     height: 100%;
     object-fit: contain;
     z-index: 200;
+    transform: translate(435px, 100px);
   }
 }
 </style>

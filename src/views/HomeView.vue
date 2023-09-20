@@ -196,8 +196,10 @@
       <img src="/image/index/index_test_boxwrap.svg" alt="音樂測驗外框">
       <ul class="index_test_box">
         <img class="decoration" src="/image/index/index_test_topbottom.png" alt="音樂冊頁裝飾">
-        <li @click="gameStart()" :class="{ 'index_nextpage': quesOne }">
+        <li @click="gameStart()" :class="{ 'index_nextpage': quesOne }" class="first_test">
           <img class="test_startbtn" src="/image/index/index_test_startbtn.svg" alt="測驗開始">
+          <MuseBoy class="index_boy_one" />
+          <MuseBoy class="index_boy_two" />
         </li>
         <!-- 問題一 -->
         <li v-if="quesOne === true" class="ques quesEnter">
@@ -235,7 +237,7 @@
             <img class="test_pudding test_sweet" src="/image/index/index_test_pudding.png" alt="布丁">
             <img class="test_mon test_sweet" src="/image/index/index_test_mon.png" alt="黃色蒙布朗">
             <img class="test_eatgirl test_sweet" src="/image/index/index_test_eatice.png" alt="吃冰妹妹">
-            <img class="test_banana test_sweet" src="/image/index/index_test_banana.png" alt="落地香蕉皮">
+            <img class="test_banana test_drop_banana" src="/image/index/index_test_banana.png" alt="落地香蕉皮">
           </div>
         </li>
         <!-- 問題四 -->
@@ -245,7 +247,10 @@
           <p @click="nextQuesFive()" :class="{ 'index_nextpage': quesFive }">{{ ques[3].ans[1] }}</p>
           <p @click="nextQuesFive()" :class="{ 'index_nextpage': quesFive }">{{ ques[3].ans[2] }}</p>
           <div :class="{ 'index_nextpage': quesFive }">
-            <img class="test_man" src="/image/index/index_test_man.png" alt="黑膠人">
+            <img class="test_choco test_redlove" src="/image/index/index_test_love.png" alt="紅巧克力">
+            <img class="test_choco test_loveAllB" src="/image/index/index_test_loveAllB.png" alt="巧克力紅緞帶">
+            <img class="test_choco test_loveGreen" src="/image/index/index_test_loveGreen.png" alt="白巧克力綠緞帶">
+            <img class="test_choco test_loveRed" src="/image/index/index_test_loveRed.png" alt="紅巧克力白緞帶">
           </div>
         </li>
         <!-- 問題五 -->

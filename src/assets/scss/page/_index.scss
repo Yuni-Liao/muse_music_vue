@@ -699,7 +699,12 @@
             @include rect(50px);
             opacity: 0;
           }
+          .index_boy_one{
+            transform: translate(435px, 120px);
+            animation: clock 1s infinite ease-in-out;
+          }
         }
+        
         .test_cloud{
           @include rect(100px, fit);
         }
@@ -727,8 +732,20 @@
           margin: 0px 9px;
           animation: sweet 1s infinite ease-in-out;
         }
-        .test_man{
-          animation: cdman 3s infinite ease-in-out;
+        .test_drop_banana{
+          animation: banana 5s infinite ease-in-out;
+        }
+        .test_loveRed{
+          animation: love_slow 4s infinite ease-in-out;
+        }
+        .test_loveAllB{
+          animation: love_slow 2s infinite ease-in-out;
+        }
+        .test_loveGreen{
+        animation: love_fast 3s infinite ease-in-out;
+        }
+        .test_redlove{
+          animation: love_bling 2s infinite ease-in-out;
         }
         .test_note{
           animation: blingStar 1.5s infinite ease-in-out;
@@ -823,11 +840,8 @@
   0%{
     transform: translate(150px, -20px) rotate(30deg)
   }
-  50%{
-    transform: translate(150px, -20px) rotate(-30deg)
-  }
   100%{
-    transform: translate(150px, -20px) rotate(30deg)
+    transform: translate(150px, -20px) rotate(-30deg)
   }
 }
 
@@ -854,16 +868,44 @@
   }
 }
 
-// 黑膠人
-@keyframes cdman {
+//掉落香蕉
+@keyframes banana{
   0%{
-    transform: translate(170px, -200px) scale(1) rotate(10deg)
-  }
-  50%{
-    transform: translate(170px, -200px) scale(1.5) rotate(-10deg)
+    transform: translate(0px, -340px) rotate(30deg)
   }
   100%{
-    transform: translate(170px, -200px) scale(1) rotate(10deg)
+    transform: translate(0px, -10px) rotate(30deg)
+  }
+}
+
+// 掉落愛心
+@keyframes love_fast{
+  0%{
+    transform: translate(70px, -360px) 
+  }
+  100%{
+    transform: translate(70px, -10px)
+  }
+}
+
+@keyframes love_slow{
+  0%{
+    transform: translate(200px, -360px) 
+  }
+  100%{
+    transform: translate(200px, -10px) 
+  }
+}
+
+// 閃爍愛心
+@keyframes love_bling{
+  0%{
+    opacity: 0;
+    transform: translate(-180px, -245px) 
+  }
+  100%{
+    opacity: 1;
+    transform: translate(-180px, -245px)
   }
 }
 
