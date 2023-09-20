@@ -28,11 +28,10 @@
               <table>
                 <tr v-for="(item, itemId) in cartItems" :key="itemId" class="item">
                   <td class="pic">
-                    <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName" />
+                    <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName" />
                   </td>
                   <td class="prodName">
                     <p>{{ item.prodName }}</p>
-                    
                   </td>
                   <td class="price">$ {{ item.prodPrice }}</td>
                   <td class="number">
@@ -42,7 +41,7 @@
                 </tr>
               </table>
             </div>
-            <p class="count">總金額： {{ total }}</p>
+            <p class="count">總金額： $ {{ total }}</p>
           </div>
         </div>
         <!-- ▲凱芸 測試帶入暫存的商品資訊 -->
