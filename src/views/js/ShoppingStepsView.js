@@ -531,6 +531,12 @@ export default {
                 this.cartItems = JSON.parse(cartItemsJSON);
             }
         },
+        changeItemCount(itemId) {
+            // 更新购物车中商品数量后，重新计算总金额
+            this.total = this.cartItems.reduce((acc, item) => {
+                return acc + item.prodPrice * item.inCart;
+            }, 0);
+        },
     },
 
     //凱芸新增 購物車功能
