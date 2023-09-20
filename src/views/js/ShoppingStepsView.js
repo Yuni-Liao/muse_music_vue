@@ -525,6 +525,11 @@ export default {
             if (cartItemsJSON) {
                 // 如果 localStorage 中有購物車數據，將其解析並填充到 cartItems 中
                 this.cartItems = JSON.parse(cartItemsJSON);
+
+                // 計算總金額
+                this.total = this.cartItems.reduce((acc, item) => {
+                    return acc + item.prodPrice * item.inCart;
+                }, 0);
             }
         },
         changeItemCount(itemId) {
@@ -532,7 +537,7 @@ export default {
             this.total = this.cartItems.reduce((acc, item) => {
                 return acc + item.prodPrice * item.inCart;
             }, 0);
-        
+
             // 將購物車數據儲存到 localStorage
             localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
             localStorage.setItem('total', this.total);
