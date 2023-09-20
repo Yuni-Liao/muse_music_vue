@@ -8,8 +8,7 @@
                 style="background-color: #515a6e; color: #fff;"></Button>
         </template>
         </Input>
-        <Table highlight-row stripe class="song_review_table cellHeight" width="1200" height="550" :columns="columns"
-            :data="data">
+        <Table highlight-row stripe class="song_review_table cellHeight" width="1200" :columns="columns" :data="data">
             <template #editBtn="{ row }">
                 <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
