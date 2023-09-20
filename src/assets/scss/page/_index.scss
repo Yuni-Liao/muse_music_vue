@@ -699,7 +699,6 @@
             @include rect(50px);
             opacity: 0;
           }
-<<<<<<< HEAD
           .index_boy_one{
             transform: translate(435px, 120px);
             animation: clock 1s infinite ease-in-out;
@@ -707,13 +706,11 @@
         }
         
         .test_cloud{
-=======
           .index_boy_one {
             transform: translate(435px, 120px);
             animation: clock 1s infinite ease-in-out;
           }
         .test_cloud {
->>>>>>> 5e12c85d247fdb04b6e6a43bc7602cb5aef7a6e7
           @include rect(100px, fit);
         }
         .test_cloud_rtl {
@@ -914,8 +911,6 @@
     transform: translate(-180px, -245px)
   }
 }
-<<<<<<< HEAD
-=======
 
 @keyframes banana {
   0% {
@@ -925,7 +920,6 @@
     transform: translate(0px, -10px) rotate(30deg);
   }
 }
->>>>>>> 5e12c85d247fdb04b6e6a43bc7602cb5aef7a6e7
 
 // 音符
 @keyframes blingStar {
