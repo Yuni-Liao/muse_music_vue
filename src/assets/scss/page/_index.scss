@@ -699,22 +699,13 @@
             @include rect(50px);
             opacity: 0;
           }
-<<<<<<< HEAD
           .index_boy_one{
-=======
-          .index_boy_one {
->>>>>>> 55d8be7268bee767d100204099cbfa90ead19459
             transform: translate(435px, 120px);
             animation: clock 1s infinite ease-in-out;
           }
         }
-<<<<<<< HEAD
         
         .test_cloud{
-=======
-
-        .test_cloud {
->>>>>>> 55d8be7268bee767d100204099cbfa90ead19459
           @include rect(100px, fit);
         }
         .test_cloud_rtl {
@@ -741,7 +732,6 @@
           margin: 0px 9px;
           animation: sweet 1s infinite ease-in-out;
         }
-<<<<<<< HEAD
         .test_drop_banana{
           animation: banana 5s infinite ease-in-out;
         }
@@ -756,13 +746,6 @@
         }
         .test_redlove{
           animation: love_bling 2s infinite ease-in-out;
-=======
-        .test_drop_banana {
-          animation: banana 5s infinite ease-in-out;
-        }
-        .test_man {
-          animation: cdman 3s infinite ease-in-out;
->>>>>>> 55d8be7268bee767d100204099cbfa90ead19459
         }
         .test_note {
           animation: blingStar 1.5s infinite ease-in-out;
@@ -855,16 +838,8 @@
   0% {
     transform: translate(150px, -20px) rotate(30deg);
   }
-<<<<<<< HEAD
   100%{
     transform: translate(150px, -20px) rotate(-30deg)
-=======
-  50% {
-    transform: translate(150px, -20px) rotate(-30deg);
-  }
-  100% {
-    transform: translate(150px, -20px) rotate(30deg);
->>>>>>> 55d8be7268bee767d100204099cbfa90ead19459
   }
 }
 
@@ -892,7 +867,6 @@
 }
 
 //掉落香蕉
-<<<<<<< HEAD
 @keyframes banana{
   0%{
     transform: translate(0px, -340px) rotate(30deg)
@@ -930,26 +904,6 @@
   100%{
     opacity: 1;
     transform: translate(-180px, -245px)
-=======
-@keyframes banana {
-  0% {
-    transform: translate(0px, -340px) rotate(30deg);
-  }
-  100% {
-    transform: translate(0px, -10px) rotate(30deg);
-  }
-}
-// 黑膠人
-@keyframes cdman {
-  0% {
-    transform: translate(170px, -200px) scale(1) rotate(10deg);
-  }
-  50% {
-    transform: translate(170px, -200px) scale(1.5) rotate(-10deg);
-  }
-  100% {
-    transform: translate(170px, -200px) scale(1) rotate(10deg);
->>>>>>> 55d8be7268bee767d100204099cbfa90ead19459
   }
 }
 
