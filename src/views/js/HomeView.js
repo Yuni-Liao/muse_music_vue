@@ -1,4 +1,5 @@
 import MuseBoy from "@/components/MuseBoy.vue";
+import Typed from "@/components/Typed.vue";
 //引入swiper-------------------------
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -270,6 +271,7 @@ export default {
     Grid,
     GridItem,
     MuseBoy,
+    Typed,
   },
   computed: {},
   methods: {
@@ -336,5 +338,5 @@ export default {
     if (this.intervalId !== null) {
       clearInterval(this.intervalId);
     }
-  }
+  },
 };
