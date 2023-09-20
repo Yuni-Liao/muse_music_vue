@@ -1,9 +1,9 @@
+import MuseBoy from "@/components/MuseBoy.vue";
 //引入swiper-------------------------
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 //引入viewUI Grid系統-------------------------
 import { Grid, GridItem } from "view-ui-plus";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -269,6 +269,7 @@ export default {
     SwiperSlide,
     Grid,
     GridItem,
+    MuseBoy,
   },
   computed: {},
   methods: {

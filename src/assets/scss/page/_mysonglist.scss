@@ -146,9 +146,7 @@
         .more {
           position: absolute;
           display: none;
-          //去除button預設樣式
-          border: none;
-          color: #ffffff;
+          z-index: 10;
 
           //定位參考.txt
           top: 40px;
