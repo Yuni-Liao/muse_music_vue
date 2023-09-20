@@ -244,12 +244,18 @@
           src="/image/index/index_test_topbottom.png"
           alt="音樂冊頁裝飾"
         />
-        <li @click="gameStart()" :class="{ index_nextpage: quesOne }">
+        <li
+          @click="gameStart()"
+          :class="{ index_nextpage: quesOne }"
+          class="first_test"
+        >
           <img
             class="test_startbtn"
             src="/image/index/index_test_startbtn.svg"
             alt="測驗開始"
           />
+          <MuseBoy class="index_boy_one" />
+          <MuseBoy class="index_boy_two" />
         </li>
         <!-- 問題一 -->
         <li v-if="quesOne === true" class="ques quesEnter">
@@ -261,10 +267,16 @@
             :class="{ index_nextpage: quesTwo }"
             @click="nextQuesTwo()"
           ></Typed>
-          <!-- <h2 :class="{ 'index_nextpage': quesTwo }">{{ ques[0].title }}</h2>
-          <p @click="nextQuesTwo()" :class="{ 'index_nextpage': quesTwo }">{{ ques[0].ans[0] }}</p>
-          <p @click="nextQuesTwo()" :class="{ 'index_nextpage': quesTwo }">{{ ques[0].ans[1] }}</p>
-          <p @click="nextQuesTwo()" :class="{ 'index_nextpage': quesTwo }">{{ ques[0].ans[2] }}</p> -->
+          <!-- <h2 :class="{ index_nextpage: quesTwo }">{{ ques[0].title }}</h2>
+          <p @click="nextQuesTwo()" :class="{ index_nextpage: quesTwo }">
+            {{ ques[0].ans[0] }}
+          </p>
+          <p @click="nextQuesTwo()" :class="{ index_nextpage: quesTwo }">
+            {{ ques[0].ans[1] }}
+          </p>
+          <p @click="nextQuesTwo()" :class="{ index_nextpage: quesTwo }">
+            {{ ques[0].ans[2] }}
+          </p> -->
           <div :class="{ index_nextpage: quesTwo }">
             <img
               class="test_cloud test_cloud_rtl"
@@ -293,8 +305,8 @@
             :class="{ index_nextpage: quesThree }"
             @click="nextQuesThree()"
           ></Typed>
-          <!-- <h2 :class="{ index_nextpage: quesThree }">{{ ques[1].title }}</h2> -->
-          <!-- <p @click="nextQuesThree()" :class="{ index_nextpage: quesThree }">
+          <!-- <h2 :class="{ index_nextpage: quesThree }">{{ ques[1].title }}</h2>
+          <p @click="nextQuesThree()" :class="{ index_nextpage: quesThree }">
             {{ ques[1].ans[0] }}
           </p>
           <p @click="nextQuesThree()" :class="{ index_nextpage: quesThree }">
@@ -360,7 +372,7 @@
               alt="吃冰妹妹"
             />
             <img
-              class="test_banana test_sweet"
+              class="test_banana test_drop_banana"
               src="/image/index/index_test_banana.png"
               alt="落地香蕉皮"
             />
