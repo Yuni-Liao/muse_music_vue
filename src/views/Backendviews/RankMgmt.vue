@@ -4,25 +4,25 @@
         <Button type="primary" @click="addRank()" style="width:100px; margin-bottom: 1%;margin-left: 65%;">編輯排行</Button>
 
         <Tabs value="name1" capture-focus v-width="1200" style="overflow-x: hidden;">
-            <TabPane label="單曲排行" name="singleSongRanking">
-                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" :columns="columns"
-                    :data="data">
+            <TabPane label="單曲排行" name="singleSongRanking" width="1200" height="450">
+                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="450"
+                    :columns="columns" :data="data">
                     <template #editBtn="{ row }">
                         <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
                     </template>
                 </Table>
             </TabPane>
             <TabPane label="專輯排行" name="albumRanking">
-                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" :columns="columns"
-                    :data="data">
+                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="450"
+                    :columns="columns" :data="data">
                     <template #editBtn="{ row }">
                         <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
                     </template>
                 </Table>
             </TabPane>
             <TabPane label="歌單排行" name="songListRanking">
-                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" :columns="columns"
-                    :data="data">
+                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="450"
+                    :columns="columns" :data="data">
                     <template #editBtn="{ row }">
                         <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
                     </template>

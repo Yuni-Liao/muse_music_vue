@@ -1,8 +1,8 @@
 <template>
     <div class="msgmgmt_box">
         <h1>檢舉留言管理</h1>
-        <Table ref="selection" highlight-row stripe class="msgmgmt_table cellHeight" width="1200" height="550"
-            :columns="columns" :data="data">
+        <Table ref="selection" highlight-row stripe class="msgmgmt_table cellHeight" width="1200" :columns="columns"
+            :data="data">
             <template #acceptBtn="{ row }">
                 <Button type="error" @click="acceptBtn()">
                     下架
