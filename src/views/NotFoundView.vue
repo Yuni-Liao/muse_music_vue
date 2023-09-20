@@ -1,5 +1,5 @@
 <template>
-    <Exception type="404" title="哇" desc="網站走丟了" />
+    <Exception type="404" title="哇" desc="你迷路了" />
 </template>
 
 
