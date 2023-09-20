@@ -1,16 +1,9 @@
 <template>
   <!-- 頂部輪播區 -廖妍榛 -->
   <section class="index_topCarousel">
-    <swiper
-      class="topSwiper"
-      :initialSlide="0"
-      :modules="modules"
-      :effect="'fade'"
-      :pagination="{
-        clickable: true,
-      }"
-      :autoplay="{ delay: 2500, disableOnInteraction: false }"
-    >
+    <swiper class="topSwiper" :initialSlide="0" :modules="modules" :effect="'fade'" :pagination="{
+      clickable: true,
+    }" :autoplay="{ delay: 2500, disableOnInteraction: false }">
       <swiper-slide v-for="(item, index) in topBanner" :key="index">
         <img class="pic" :src="require(`/public/image/index/${item.image}`)" />
       </swiper-slide>
@@ -33,37 +26,22 @@
   <!--本週熱門歌曲輪播 - 黃珮菁 -->
   <section class="index_WeekTopmusic">
     <h2>本週熱門歌曲．Popular Songs This Week</h2>
-    <swiper
-      class="mySwiper"
-      :initialSlide="4"
-      :effect="slide"
-      :slideToClickedSlide="false"
-      :grabCursor="false"
-      :centeredSlides="true"
-      :breakpoints="{
+    <swiper class="mySwiper" :initialSlide="4" :effect="slide" :slideToClickedSlide="false" :grabCursor="false"
+      :centeredSlides="true" :breakpoints="{
         '414': {
           slidesPerView: 3,
         },
         '1200': {
           slidesPerView: 5,
         },
-      }"
-      :slidesPerView="1"
-      :slidesPerGroup="1"
-      :speed="0.001"
-      :autoplay="{
-        delay: 4000,
-        disableOnInteraction: false,
-      }"
-      :modules="modules"
-    >
+      }" :slidesPerView="1" :slidesPerGroup="1" :speed="0.001" :autoplay="{
+  delay: 4000,
+  disableOnInteraction: false,
+}" :modules="modules">
       <swiper-slide v-for="(item, sid) in songs" :key="sid">
         <div class="card">
           <div class="pic">
-            <img
-              :src="require(`/public/image/index/${item.image}`)"
-              @click="playmusic()"
-            />
+            <img :src="require(`/public/image/index/${item.image}`)" @click="playmusic()" />
             <div class="play" @click="playmusic()">
               <fontAwesome class="i" :icon="['fa', 'play']" />
             </div>
@@ -89,8 +67,7 @@
             <img :src="require(`/public/image/index/${item.image}`)" />
             <span class="ranking">
               {{ item.ranking }}<br />
-              <span class="name"
-                >{{ item.name }}<br />
+              <span class="name">{{ item.name }}<br />
                 <span class="alb">{{ item.alb }}</span>
               </span>
             </span>
@@ -166,35 +143,14 @@
         <div class="dj_center">
           <div class="plates_vols">
             <div class="vol vol_left">
-              <input
-                class="left_vol obj_Radius"
-                type="range"
-                name="vol_left"
-                id="volume_left"
-                min="0"
-                max="100"
-              />
+              <input class="left_vol obj_Radius" type="range" name="vol_left" id="volume_left" min="0" max="100" />
             </div>
             <div class="vol vol_right">
-              <input
-                class="right_vol obj_Radius"
-                type="range"
-                name="volume_right"
-                id="volume_right"
-                min="0"
-                max="100"
-              />
+              <input class="right_vol obj_Radius" type="range" name="volume_right" id="volume_right" min="0" max="100" />
             </div>
           </div>
           <div class="vol vol_mix">
-            <input
-              class="mix_vol obj_Radius"
-              type="range"
-              name="volume_mix"
-              id="volume_mix"
-              min="0"
-              max="100"
-            />
+            <input class="mix_vol obj_Radius" type="range" name="volume_mix" id="volume_mix" min="0" max="100" />
           </div>
         </div>
         <div class="dj_right">
@@ -247,14 +203,8 @@
         </li>
         <!-- 問題一 -->
         <li v-if="quesOne === true" class="ques quesEnter">
-          <Typed
-            :initialques="ques[0].title"
-            :initialopt1="ques[0].ans[0]"
-            :initialopt2="ques[0].ans[1]"
-            :initialopt3="ques[0].ans[2]"
-            :class="{ index_nextpage: quesTwo }"
-            @click="nextQuesTwo()"
-          ></Typed>
+          <Typed :initialques="ques[0].title" :initialopt1="ques[0].ans[0]" :initialopt2="ques[0].ans[1]"
+            :initialopt3="ques[0].ans[2]" :class="{ index_nextpage: quesTwo }" @click="nextQuesTwo()"></Typed>
           <!-- <h2 :class="{ index_nextpage: quesTwo }">{{ ques[0].title }}</h2>
           <p @click="nextQuesTwo()" :class="{ index_nextpage: quesTwo }">
             {{ ques[0].ans[0] }}
@@ -266,33 +216,15 @@
             {{ ques[0].ans[2] }}
           </p> -->
           <div :class="{ index_nextpage: quesTwo }">
-            <img
-              class="test_cloud test_cloud_rtl"
-              src="/image/index/index_test_cloud.png"
-              alt="雲朵"
-            />
-            <img
-              class="test_cloud test_cloud_ltr"
-              src="/image/index/index_test_cloud.png"
-              alt="雲朵"
-            />
-            <img
-              class="test_clock"
-              src="/image/index/index_test_clock.png"
-              alt="時鐘"
-            />
+            <img class="test_cloud test_cloud_rtl" src="/image/index/index_test_cloud.png" alt="雲朵" />
+            <img class="test_cloud test_cloud_ltr" src="/image/index/index_test_cloud.png" alt="雲朵" />
+            <img class="test_clock" src="/image/index/index_test_clock.png" alt="時鐘" />
           </div>
         </li>
         <!-- 問題二 -->
         <li v-if="quesTwo === true" class="ques quesEnter">
-          <Typed
-            :initialques="ques[1].title"
-            :initialopt1="ques[1].ans[0]"
-            :initialopt2="ques[1].ans[1]"
-            :initialopt3="ques[1].ans[2]"
-            :class="{ index_nextpage: quesThree }"
-            @click="nextQuesThree()"
-          ></Typed>
+          <Typed :initialques="ques[1].title" :initialopt1="ques[1].ans[0]" :initialopt2="ques[1].ans[1]"
+            :initialopt3="ques[1].ans[2]" :class="{ index_nextpage: quesThree }" @click="nextQuesThree()"></Typed>
           <!-- <h2 :class="{ index_nextpage: quesThree }">{{ ques[1].title }}</h2>
           <p @click="nextQuesThree()" :class="{ index_nextpage: quesThree }">
             {{ ques[1].ans[0] }}
@@ -304,21 +236,9 @@
             {{ ques[1].ans[2] }}
           </p> -->
           <div :class="{ index_nextpage: quesThree }">
-            <img
-              class="test_shooting test_shooting_one"
-              src="/image/index/index_test_shooting.png"
-              alt="流星"
-            />
-            <img
-              class="test_shooting test_shooting_two"
-              src="/image/index/index_test_shooting.png"
-              alt="流星"
-            />
-            <img
-              class="test_shooting test_shooting_three"
-              src="/image/index/index_test_shooting.png"
-              alt="流星"
-            />
+            <img class="test_shooting test_shooting_one" src="/image/index/index_test_shooting.png" alt="流星" />
+            <img class="test_shooting test_shooting_two" src="/image/index/index_test_shooting.png" alt="流星" />
+            <img class="test_shooting test_shooting_three" src="/image/index/index_test_shooting.png" alt="流星" />
           </div>
         </li>
         <!-- 問題三 -->
@@ -362,50 +282,18 @@
             {{ ques[4].ans[2] }}
           </p>
           <div :class="{ index_nextpage: quesEnd }">
-            <img
-              class="test_note"
-              src="/image/index/index_test_mznote.png"
-              alt="星星與音符"
-            />
-            <img
-              class="test_museteam"
-              src="/image/index/index_test_greenboy.png"
-              alt="Bboy"
-            />
-            <img
-              class="test_museteam"
-              src="/image/index/index_test_blueboy.png"
-              alt="Bboy"
-            />
-            <img
-              class="test_museteam"
-              src="/image/index/index_test_leader.png"
-              alt="樂隊"
-            />
-            <img
-              class="test_museteam"
-              src="/image/index/index_test_member_one.png"
-              alt="樂隊"
-            />
-            <img
-              class="test_museteam"
-              src="/image/index/index_test_member_two.png"
-              alt="樂隊"
-            />
-            <img
-              class="test_museteam"
-              src="/image/index/index_test_member_three.png"
-              alt="樂隊"
-            />
+            <img class="test_note" src="/image/index/index_test_mznote.png" alt="星星與音符" />
+            <img class="test_museteam" src="/image/index/index_test_greenboy.png" alt="Bboy" />
+            <img class="test_museteam" src="/image/index/index_test_blueboy.png" alt="Bboy" />
+            <img class="test_museteam" src="/image/index/index_test_leader.png" alt="樂隊" />
+            <img class="test_museteam" src="/image/index/index_test_member_one.png" alt="樂隊" />
+            <img class="test_museteam" src="/image/index/index_test_member_two.png" alt="樂隊" />
+            <img class="test_museteam" src="/image/index/index_test_member_three.png" alt="樂隊" />
           </div>
         </li>
         <!-- 找尋音樂中 等待 3 秒 -->
         <li v-if="quesEnd === true" class="ques quesEnter">
-          <p
-            id="findUrMuz"
-            class="index_findurmusic"
-            :class="{ index_nextpage: startMuz }"
-          >
+          <p id="findUrMuz" class="index_findurmusic" :class="{ index_nextpage: startMuz }">
             正在找尋屬於你的音樂 ...{{ timerValue }}
           </p>
         </li>
@@ -414,12 +302,8 @@
           <div class="index_playCD" id="index_playCD">
             <span></span>
             <div class="tag_clickme">Click Center!</div>
-            <audio
-              id="myMuz"
-              ref="myMuz"
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Leo%20-%20Trying.mp3"
-              autoplay
-            ></audio>
+            <audio id="myMuz" ref="myMuz" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Leo%20-%20Trying.mp3"
+              autoplay></audio>
             <button @click="turnMusic()" id="musicOff">Off or On</button>
           </div>
         </li>
