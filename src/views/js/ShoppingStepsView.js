@@ -422,9 +422,9 @@ export default {
             selectedDistrict: "",
             zipcode: "",
 
-            // 以上不要動到!!!
+            //凱芸新增▼
             cartItems: [], // 存放購物車商品列表
-            total: 0, // 總金額
+            total: 0, // 總金額預設0元
         };
     },
     computed: {
@@ -490,11 +490,7 @@ export default {
             }
         },
 
-        // 以上不要動到
-
-
-
-        //凱芸新增 加入購物車
+        // ▼ 凱芸 加入購物車
         addToCart(item) {
             // 獲得商品訊息
             const prodPic = item.prodPic;
@@ -529,13 +525,22 @@ export default {
             if (cartItemsJSON) {
                 // 如果 localStorage 中有購物車數據，將其解析並填充到 cartItems 中
                 this.cartItems = JSON.parse(cartItemsJSON);
+
+                // 計算總金額
+                this.total = this.cartItems.reduce((acc, item) => {
+                    return acc + item.prodPrice * item.inCart;
+                }, 0);
             }
         },
         changeItemCount(itemId) {
-            // 更新购物车中商品数量后，重新计算总金额
+            // 更新購物車數量後 重新計算總金額
             this.total = this.cartItems.reduce((acc, item) => {
                 return acc + item.prodPrice * item.inCart;
             }, 0);
+
+            // 將購物車數據儲存到 localStorage
+            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+            localStorage.setItem('total', this.total);
         },
     },
 

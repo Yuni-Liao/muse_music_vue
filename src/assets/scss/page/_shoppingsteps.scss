@@ -158,7 +158,7 @@ p {
             &::after {
                 content: '';
                 display: block;
-                width: 15%;
+                width: 150px;
                 height: 1px;
                 background-color: $white;
                 margin: 10px auto 30px;
@@ -166,12 +166,14 @@ p {
         }
 
 
-        // 凱芸 這邊是購物清單
+        // ▼ 凱芸 這邊是購物清單
         #cartList {
             @include layout(100%);
 
             table {
                 margin: auto;
+                justify-content: space-between;
+
 
                 .item {
                     border-bottom: $white 1px solid;
@@ -198,7 +200,7 @@ p {
                     }
 
                     .price {
-                        width: 15%;
+                        width: 20%;
                         margin: auto;
 
                         p {
@@ -212,8 +214,8 @@ p {
                     }
 
                     button {
-                        height: 50px;
-                        margin: auto;
+                        @include btnBgNone;
+                        color: $white;
                     }
 
                 }

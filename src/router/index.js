@@ -46,8 +46,8 @@ const routes = [
       },
       // 以下是商城商品詳情共用頁面
       {
-        path: "shopproddetail", // 使用動態路由參數:id
-        //path: "shopproddetail/:id", // 使用動態路由參數:id
+        //設定動態路由參數":id"
+        path: "shopproddetail/:id",
         name: "shopproddetail",
         component: () =>
           import(
