@@ -1,1 +1,18 @@
 //已掛載 iview UI套件 若有需要調整可以於此處處理
+
+.hot_creator,
+.new_release{
+    // 探索輪播圓點
+    .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+        width: 30px;
+        border-radius: 2px;
+        height: 3px;
+    }
+    //作用中圓點
+    .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active,
+    .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        width: 60px; 
+        height: 5px;
+        --swiper-theme-color: #74EBD5;
+    }
+}
