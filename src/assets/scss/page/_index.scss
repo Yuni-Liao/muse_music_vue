@@ -608,6 +608,61 @@
     @include rect(682px, 455px);
     margin: auto;
     position: relative;
+    
+    .index_pic_box{
+      // 第一個問題的裝飾
+      .test_cloud_rtl {
+        animation: cuteCloud_rtl 13s infinite ease-in-out;
+      }
+      .test_cloud_ltr {
+        animation: cuteCloud_ltr 13s infinite ease-in-out;
+      }
+      .test_clock {
+        @include rect(70px, fit);
+        animation: clock 1s infinite ease-in-out;
+      }
+      // 第二個問題的裝飾
+      .test_shooting_one {
+        animation: shooting 10s infinite ease-in-out;
+      }
+      .test_shooting_two {
+        animation: shooting 10s -2s infinite ease-in-out;
+      }
+      .test_shooting_three {
+        animation: shooting 8s infinite ease-in-out;
+      }
+      // 第三個問題的裝飾
+      .test_sweet {
+        display: inline-block;
+        margin: 0px 9px;
+        animation: sweet 1s infinite ease-in-out;
+      }
+      .test_drop_banana{
+        animation: banana 5s infinite ease-in-out;
+      }
+      
+      // 第四個問題的裝飾
+      .test_loveRed{
+        animation: love_slow 4s infinite ease-in-out;
+      }
+      .test_loveAllB{
+        animation: love_slow 2s infinite ease-in-out;
+      }
+      .test_loveGreen{
+      animation: love_fast 3s infinite ease-in-out;
+      }
+      .test_redlove{
+        animation: love_bling 2s infinite ease-in-out;
+      }
+
+      //第五個問題的裝飾
+      .test_note {
+        animation: blingStar 1.5s infinite ease-in-out;
+      }
+      .test_museteam {
+        animation: walk 15s infinite;
+      }
+    }
     .index_test_box {
       overflow: hidden;
       width: 652px;
@@ -636,16 +691,19 @@
         top: 0;
         left: 0;
         h2 {
+          width: 100%;
           font-family: "DotGothic16", "Noto Sans TC", "Noto Sans";
           font-size: $medium;
         }
         p {
+          width: 100%;
           font-family: "DotGothic16", "Noto Sans TC", "Noto Sans";
           max-width: 430px;
           color: $white;
           font-size: $default;
           text-align: left;
           padding: 2.5% 7%;
+          letter-spacing: 1.5px;
           cursor: pointer;
         }
         .index_findurmusic {
@@ -680,7 +738,7 @@
           left: 35%;
           span {
             @include rect(140px);
-            background-image: url("/public/image/index/index_dj_logo.png");
+            background-image: url("/public/image/index/vinyl.png");
             background-size: contain;
             animation: run 7s 0s linear infinite;
             position: absolute;
@@ -696,62 +754,13 @@
             right: -50%;
           }
           #musicOff {
-            @include rect(50px);
+            @include rect(135px);
             opacity: 0;
           }
           .index_boy_one{
             transform: translate(435px, 120px);
             animation: clock 1s infinite ease-in-out;
           }
-        }
-        
-        .test_cloud{
-          @include rect(100px, fit);
-        }
-        .test_cloud_rtl {
-          animation: cuteCloud_ltr 13s infinite ease-in-out;
-        }
-        .test_cloud_ltr {
-          animation: cuteCloud_rtl 13s infinite ease-in-out;
-        }
-        .test_clock {
-          @include rect(70px, fit);
-          animation: clock 1s infinite ease-in-out;
-        }
-        .test_shooting_one {
-          animation: shooting 10s infinite ease-in-out;
-        }
-        .test_shooting_two {
-          animation: shooting 10s -2s infinite ease-in-out;
-        }
-        .test_shooting_three {
-          animation: shooting 8s infinite ease-in-out;
-        }
-        .test_sweet {
-          display: inline-block;
-          margin: 0px 9px;
-          animation: sweet 1s infinite ease-in-out;
-        }
-        .test_drop_banana{
-          animation: banana 5s infinite ease-in-out;
-        }
-        .test_loveRed{
-          animation: love_slow 4s infinite ease-in-out;
-        }
-        .test_loveAllB{
-          animation: love_slow 2s infinite ease-in-out;
-        }
-        .test_loveGreen{
-        animation: love_fast 3s infinite ease-in-out;
-        }
-        .test_redlove{
-          animation: love_bling 2s infinite ease-in-out;
-        }
-        .test_note {
-          animation: blingStar 1.5s infinite ease-in-out;
-        }
-        .test_museteam {
-          animation: walk 15s infinite;
         }
       }
     }
@@ -823,23 +832,23 @@
 // 雲朵飄飄動畫 - 右到左
 @keyframes cuteCloud_rtl {
   0% {
-    transform: translate(0px, -235px);
+    transform: translate(0px, -205px);
   }
   50% {
-    transform: translate(-280px, -235px);
+    transform: translate(-280px, -205px);
   }
   100% {
-    transform: translate(0px, -235px);
+    transform: translate(0px, -205px);
   }
 }
 
 // 時鐘 - 左右晃
 @keyframes clock {
   0% {
-    transform: translate(150px, -20px) rotate(30deg);
+    transform: translate(150px, -10px) rotate(30deg);
   }
   100%{
-    transform: translate(150px, -20px) rotate(-30deg)
+    transform: translate(150px, -10px) rotate(-30deg)
   }
 }
 
@@ -856,42 +865,42 @@
 // 晃動的甜點
 @keyframes sweet {
   0% {
-    transform: translate(0px, -25px) rotate(30deg);
+    transform: translate(0px, -170px) rotate(30deg);
   }
   50% {
-    transform: translate(0px, -25px) rotate(-30deg);
+    transform: translate(0px, -170px) rotate(-30deg);
   }
   100% {
-    transform: translate(0px, -25px) rotate(30deg);
+    transform: translate(0px, -170px) rotate(30deg);
   }
 }
 
 //掉落香蕉
 @keyframes banana{
   0%{
-    transform: translate(0px, -340px) rotate(30deg)
+    transform: translate(0px, -450px) rotate(30deg)
   }
   100%{
-    transform: translate(0px, -10px) rotate(30deg)
+    transform: translate(0px, -20px) rotate(30deg)
   }
 }
 
 // 掉落愛心
 @keyframes love_fast{
   0%{
-    transform: translate(70px, -360px) 
+    transform: translate(70px, -450px) 
   }
   100%{
-    transform: translate(70px, -10px)
+    transform: translate(70px, -30px)
   }
 }
 
 @keyframes love_slow{
   0%{
-    transform: translate(200px, -360px) 
+    transform: translate(200px, -450px) 
   }
   100%{
-    transform: translate(200px, -10px) 
+    transform: translate(200px, -30px) 
   }
 }
 
@@ -899,11 +908,11 @@
 @keyframes love_bling{
   0%{
     opacity: 0;
-    transform: translate(-180px, -245px) 
+    transform: translate(-180px, -430px) 
   }
   100%{
     opacity: 1;
-    transform: translate(-180px, -245px)
+    transform: translate(-180px, -430px)
   }
 }
 
@@ -911,24 +920,24 @@
 @keyframes blingStar {
   0% {
     opacity: 0;
-    transform: translate(350px, -200px) rotate(25deg);
+    transform: translate(350px, -500px) rotate(25deg);
   }
   50% {
     opacity: 1;
-    transform: translate(350px, -200px) rotate(-35deg);
+    transform: translate(350px, -500px) rotate(-35deg);
   }
   100% {
     opacity: 0;
-    transform: translate(350px, -200px) rotate(25deg);
+    transform: translate(350px, -500px) rotate(25deg);
   }
 }
 
 //樂隊
 @keyframes walk {
   0% {
-    transform: translate(650px, -40px);
+    transform: translate(650px, -350px);
   }
   100% {
-    transform: translate(-650px, -40px);
+    transform: translate(-650px, -350px);
   }
 }
