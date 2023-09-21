@@ -602,13 +602,12 @@
     font-size: $big;
     color: $white;
     text-align: start;
-    margin: 40px;
+    margin: 35px;
   }
   .index_test_page_box {
     @include rect(682px, 455px);
     margin: auto;
     position: relative;
-    
     .index_pic_box{
       // 第一個問題的裝飾
       .test_cloud_rtl {
@@ -757,10 +756,6 @@
             @include rect(135px);
             opacity: 0;
           }
-          .index_boy_one{
-            transform: translate(435px, 120px);
-            animation: clock 1s infinite ease-in-out;
-          }
         }
       }
     }
@@ -908,11 +903,11 @@
 @keyframes love_bling{
   0%{
     opacity: 0;
-    transform: translate(-180px, -430px) 
+    transform: translate(-180px, -475px) 
   }
   100%{
     opacity: 1;
-    transform: translate(-180px, -430px)
+    transform: translate(-180px, -475px)
   }
 }
 
