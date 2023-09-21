@@ -10,10 +10,7 @@
         <section class="inner">
             <div class="mainInf">
                 <div class="pic">
-                    <!-- 圖片路徑待修正 -->
-                    <!-- <img :src="require(`/public/image/ShopImage/${foundObject.prodPic}`)"> -->
                     <img :src="foundObject.prodPic" :alt="foundObject.prodName">
-
                 </div>
                 <div class="txt">
                     <div class="title">
