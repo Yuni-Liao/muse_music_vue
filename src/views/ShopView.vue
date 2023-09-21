@@ -1,7 +1,6 @@
 <template>
     <div class="bannerpic">
-        <img src="
-        /image/ShopImage/shopbanner.png" alt="周邊販售">
+        <img :src="`${publicPath}image/ShopImage/shopbanner.png`" alt="周邊販售">
     </div>
     <!-- 麵包屑 -->
     <Breadcrumb separator="/">
@@ -66,10 +65,9 @@
         </div>
         <router-link to="/home/shoppingsteps">
             <button class="shopcart">
-                <img src="/image/icon/shopcart.png" alt="shopcart">
+                <img :src="`${publicPath}image/icon/shopcart.png`" alt="shopcart">
             </button>
         </router-link>
-
     </div>
 </template>
 
