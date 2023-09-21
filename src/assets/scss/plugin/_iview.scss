@@ -7,12 +7,13 @@
         width: 30px;
         border-radius: 2px;
         height: 3px;
+        background-color:#fff;
     }
     //作用中圓點
     .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active,
     .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
         width: 60px; 
         height: 5px;
-        --swiper-theme-color: #74EBD5;
+        background-color:#74EBD5;
     }
 }
