@@ -7,7 +7,8 @@ export default {
             products: [
                 {
                     id: 0,
-                    prodPic: require('/public/image/ShopImage/prod6.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod6.jpg'),
+                    prodPic:"prod6.jpg",
                     prodName: "Bluemage 黑膠",
                     prodPrice: 890,
                     inCart: 0,
@@ -23,7 +24,8 @@ export default {
                 },
                 {
                     id: 1,
-                    prodPic: require('/public/image/ShopImage/prod1.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod1.jpg'),
+                    prodPic:"prod1.jpg",
                     prodName: "Killbeast 黑膠",
                     prodPrice: 790,
                     inCart: 0,
@@ -39,7 +41,8 @@ export default {
                 },
                 {
                     id: 2,
-                    prodPic: require('/public/image/ShopImage/prod2.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod2.jpg'),
+                    prodPic:"prod2.jpg",
                     prodName: "西城男人 黑膠",
                     prodPrice: 1190,
                     inCart: 0,
@@ -55,7 +58,8 @@ export default {
                 },
                 {
                     id: 3,
-                    prodPic: require('/public/image/ShopImage/prod3.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod3.jpg'),
+                    prodPic:"prod3.jpg",
                     prodName: "Party Time 錄音帶",
                     prodPrice: 590,
                     inCart: 0,
@@ -71,7 +75,8 @@ export default {
                 },
                 {
                     id: 4,
-                    prodPic: require('/public/image/ShopImage/prod4.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod4.jpg'),
+                    prodPic:"prod4.jpg",
                     prodName: "Rose 黑膠",
                     prodPrice: 890,
                     inCart: 0,
@@ -87,7 +92,8 @@ export default {
                 },
                 {
                     id: 5,
-                    prodPic: require('/public/image/ShopImage/prod5.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod5.jpg'),
+                    prodPic:"prod5.jpg",
                     prodName: "Over Over 黑膠",
                     prodPrice: 1290,
                     inCart: 0,
@@ -103,7 +109,8 @@ export default {
                 },
                 {
                     id: 6,
-                    prodPic: require('/public/image/ShopImage/prod6.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod6.jpg'),
+                    prodPic:"prod6.jpg",
                     prodName: "Blackmage 黑膠",
                     prodPrice: 1020,
                     inCart: 0,
@@ -119,7 +126,8 @@ export default {
                 },
                 {
                     id: 7,
-                    prodPic: require('/public/image/ShopImage/prod7.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod7.jpg'),
+                    prodPic:"prod7.jpg",
                     prodName: "KKOCK 黑膠",
                     prodPrice: 990,
                     inCart: 0,
@@ -135,7 +143,8 @@ export default {
                 },
                 {
                     id: 8,
-                    prodPic: require('/public/image/ShopImage/prod1.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod1.jpg'),
+                    prodPic:"prod1.jpg",
                     prodName: "Cillbeast 黑膠",
                     prodPrice: 790,
                     inCart: 0,
@@ -151,7 +160,8 @@ export default {
                 },
                 {
                     id: 9,
-                    prodPic: require('/public/image/ShopImage/prod2.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod2.jpg'),
+                    prodPic:"prod2.jpg",
                     prodName: "東城男子 黑膠",
                     prodPrice: 790,
                     inCart: 0,
@@ -167,7 +177,8 @@ export default {
                 },
                 {
                     id: 10,
-                    prodPic: require('/public/image/ShopImage/prod3.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod3.jpg'),
+                    prodPic:"prod3.jpg",
                     prodName: "Sleep Time 錄音帶",
                     prodPrice: 1290,
                     inCart: 0,
@@ -183,7 +194,8 @@ export default {
                 },
                 {
                     id: 11,
-                    prodPic: require('/public/image/ShopImage/prod4.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod4.jpg'),
+                    prodPic:"prod4.jpg",
                     prodName: "Lisa 黑膠",
                     prodPrice: 790,
                     inCart: 0,
@@ -199,7 +211,8 @@ export default {
                 },
                 {
                     id: 12,
-                    prodPic: require('/public/image/ShopImage/prod5.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod5.jpg'),
+                    prodPic:"prod5.jpg",
                     prodName: "Very Very 黑膠",
                     prodPrice: 1090,
                     inCart: 0,
@@ -215,7 +228,8 @@ export default {
                 },
                 {
                     id: 13,
-                    prodPic: require('/public/image/ShopImage/prod6.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod6.jpg'),
+                    prodPic:"prod6.jpg",
                     prodName: "Pinkmage 黑膠",
                     prodPrice: 690,
                     inCart: 0,
@@ -231,7 +245,8 @@ export default {
                 },
                 {
                     id: 14,
-                    prodPic: require('/public/image/ShopImage/prod7.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod7.jpg'),
+                    prodPic:"prod7.jpg",
                     prodName: "VVOCK 黑膠",
                     prodPrice: 890,
                     inCart: 0,
@@ -247,7 +262,8 @@ export default {
                 },
                 {
                     id: 15,
-                    prodPic: require('/public/image/ShopImage/prod1.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod1.jpg'),
+                    prodPic:"prod1.jpg",
                     prodName: "Drop beast 黑膠",
                     prodPrice: 1190,
                     inCart: 0,
@@ -263,7 +279,8 @@ export default {
                 },
                 {
                     id: 16,
-                    prodPic: require('/public/image/ShopImage/prod2.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod2.jpg'),
+                    prodPic:"prod2.jpg",
                     prodName: "北區女孩 黑膠",
                     prodPrice: 890,
                     inCart: 0,
@@ -279,7 +296,8 @@ export default {
                 },
                 {
                     id: 17,
-                    prodPic: require('/public/image/ShopImage/prod3.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod3.jpg'),
+                    prodPic:"prod3.jpg",
                     prodName: "Show Time 錄音帶",
                     prodPrice: 990,
                     inCart: 0,
@@ -295,7 +313,8 @@ export default {
                 },
                 {
                     id: 18,
-                    prodPic: require('/public/image/ShopImage/prod4.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod4.jpg'),
+                    prodPic:"prod4.jpg",
                     prodName: "Jisso 黑膠",
                     prodPrice: 1090,
                     inCart: 0,
@@ -311,7 +330,8 @@ export default {
                 },
                 {
                     id: 19,
-                    prodPic: require('/public/image/ShopImage/prod5.jpg'),
+                    //prodPic: require('/public/image/ShopImage/prod5.jpg'),
+                    prodPic:"prod5.jpg",
                     prodName: "Money Money 黑膠",
                     prodPrice: 1390,
                     inCart: 0,
@@ -329,12 +349,12 @@ export default {
         };
     },
     methods: {
-        incrementItem(item) {
+        incrementItem() {
             if (this.foundObject.inCart >= 0) {
                 this.foundObject.inCart++;
             }
         },
-        decrementItem(item) {
+        decrementItem() {
             if (this.foundObject.inCart > 0) {
                 this.foundObject.inCart--;
             }
