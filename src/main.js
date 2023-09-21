@@ -6,7 +6,11 @@ import store from "./store";
 import "view-ui-plus/dist/styles/viewuiplus.css";
 import locale from "view-ui-plus/dist/locale/zh-TW";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPenToSquare, faCircleCheck, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
+import {
+  faPenToSquare,
+  faCircleCheck,
+  faCircleXmark,
+} from "@fortawesome/free-regular-svg-icons";
 // import {  } from '@fortawesome/free-brands-svg-icons' //目前沒用到這種類的icon,有用到再把註解開啟 {} 填入icon駝峰式名稱
 import {
   faMagnifyingGlass,
@@ -54,7 +58,7 @@ import {
   faChevronDown,
   faCirclePlus,
   faCircleMinus,
-
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -103,11 +107,8 @@ library.add(
   faChevronLeft,
   faChevronRight,
   faAngleUp,
-  faChevronDown,
-  faCirclePlus,
-  faCircleMinus,
+  faChevronDown
 );
-
 
 const vueApp = createApp(App)
   .use(store)
@@ -117,6 +118,5 @@ const vueApp = createApp(App)
     locale,
   })
   .mount("#app");
-
 
 // createApp(App).use(store).use(router).mount('#app')
