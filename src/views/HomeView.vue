@@ -77,22 +77,30 @@
     </div>
   </section>
 
-  <!-- 專輯下方閃電線 -廖妍榛 -->
-  <!-- <div class="hr">
-    <img src="/image/index/index_lineBg.svg" />
-  </div> -->
-
   <div class="wave">
-    <svg  width="1699" height="271" viewBox="0 0 1699 271" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; max-height: 100%;">
-        <path d="M5.27764 199.464L147.14 123.465L284.676 177.219L383.117 133.267L508.459 159.401L623.839 85.5109L730.256 141.742L810.159 99.2665L922.26 126.455L1069.42 50.0344L1189.08 105.211L1249.5 35.6963L1353.27 92.1384L1451.44 19.6185L1594.93 72.8979L1689 19.6185" stroke="white" stroke-width="3" stroke-dasharray="0,0,0,1898.704833984375"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1000" dur="2.5s" values="0,0,0,1898.704833984375; 
+    <svg width="1699" height="271" viewBox="0 0 1699 271" fill="none" xmlns="http://www.w3.org/2000/svg"
+      style="max-width: 100%; max-height: 100%;">
+      <path
+        d="M5.27764 199.464L147.14 123.465L284.676 177.219L383.117 133.267L508.459 159.401L623.839 85.5109L730.256 141.742L810.159 99.2665L922.26 126.455L1069.42 50.0344L1189.08 105.211L1249.5 35.6963L1353.27 92.1384L1451.44 19.6185L1594.93 72.8979L1689 19.6185"
+        stroke="white" stroke-width="3" stroke-dasharray="0,0,0,1898.704833984375">
+        <animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1000" dur="2.5s" values="0,0,0,1898.704833984375; 
                   0,949.3524169921875,949.3524169921875,0; 
-                  1898.704833984375,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
-        <path d="M6.11919 234.64L147.982 158.641L285.517 212.395L383.958 168.443L509.301 194.578L624.68 120.687L731.098 176.919L811.001 134.443L923.101 161.632L1070.26 85.211L1189.92 140.388L1250.35 70.8728L1354.12 127.315L1452.28 54.795L1595.78 108.074L1689.84 54.795" stroke="white" stroke-width="3" stroke-dasharray="0,0,0,1898.70458984375"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1000" dur="2.5s" values="0,0,0,1898.70458984375; 
+                  1898.704833984375,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate>
+      </path>
+      <path
+        d="M6.11919 234.64L147.982 158.641L285.517 212.395L383.958 168.443L509.301 194.578L624.68 120.687L731.098 176.919L811.001 134.443L923.101 161.632L1070.26 85.211L1189.92 140.388L1250.35 70.8728L1354.12 127.315L1452.28 54.795L1595.78 108.074L1689.84 54.795"
+        stroke="white" stroke-width="3" stroke-dasharray="0,0,0,1898.70458984375">
+        <animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1000" dur="2.5s" values="0,0,0,1898.70458984375; 
                   0,949.352294921875,949.352294921875,0; 
-                  1898.70458984375,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
-        <path d="M11.1192 269.64L152.982 193.641L290.517 247.395L388.958 203.443L514.301 229.578L629.68 155.687L736.098 211.919L816.001 169.443L928.101 196.632L1075.26 120.211L1194.92 175.388L1255.35 105.873L1359.12 162.315L1457.28 89.795L1600.78 143.074L1694.84 89.795" stroke="white" stroke-width="3" stroke-dasharray="0,0,0,1898.7044677734375"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1000" dur="2.5s" values="0,0,0,1898.7044677734375; 
+                  1898.70458984375,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate>
+      </path>
+      <path
+        d="M11.1192 269.64L152.982 193.641L290.517 247.395L388.958 203.443L514.301 229.578L629.68 155.687L736.098 211.919L816.001 169.443L928.101 196.632L1075.26 120.211L1194.92 175.388L1255.35 105.873L1359.12 162.315L1457.28 89.795L1600.78 143.074L1694.84 89.795"
+        stroke="white" stroke-width="3" stroke-dasharray="0,0,0,1898.7044677734375">
+        <animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1000" dur="2.5s" values="0,0,0,1898.7044677734375; 
                   0,949.3522338867188,949.3522338867188,0; 
-                  1898.7044677734375,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+                  1898.7044677734375,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate>
+      </path>
     </svg>
   </div>
 
@@ -332,14 +340,11 @@
             <audio id="myMuz" ref="myMuz" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Leo%20-%20Trying.mp3"
               autoplay></audio>
             <button @click="turnMusic()" id="musicOff">Off or On</button>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-</template>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section></template>
 
-<style scoped lang="scss">
-@import "~@/assets/scss/page/index.scss";
-</style>
+<style scoped lang="scss">@import "~@/assets/scss/page/index.scss";</style>
 <script src="./js/HomeView.js"></script>
