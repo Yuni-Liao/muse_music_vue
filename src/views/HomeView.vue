@@ -199,13 +199,19 @@
         <li @click="gameStart()" :class="{ 'index_nextpage': quesOne }" class="first_test">
           <img class="test_startbtn" src="/image/index/index_test_startbtn.svg" alt="測驗開始">
           <MuseBoy class="index_boy_one" />
-          <MuseBoy class="index_boy_two" />
         </li>
         <!-- 問題一 -->
         <li v-if="quesOne === true" class="ques quesEnter">
           <Typed :initialques="ques[0].title" :initialopt1="ques[0].ans[0]" :initialopt2="ques[0].ans[1]"
             :initialopt3="ques[0].ans[2]" :class="{ index_nextpage: quesTwo }" @click="nextQuesTwo()"></Typed>
-          <!-- <h2 :class="{ index_nextpage: quesTwo }">{{ ques[0].title }}</h2>
+        </li>
+        <div v-if="quesOne === true" class="index_pic_box" :class="{ index_nextpage: quesTwo }">
+          <img class="test_cloud test_cloud_rtl" src="/image/index/index_test_cloud.png" alt="雲朵" />
+          <img class="test_cloud test_cloud_ltr" src="/image/index/index_test_cloud.png" alt="雲朵" />
+          <img class="test_clock" src="/image/index/index_test_clock.png" alt="時鐘" />
+        </div>
+        <!-- 要復原的話要塞到li裡面
+          <h2 :class="{ index_nextpage: quesTwo }">{{ ques[0].title }}</h2>
           <p @click="nextQuesTwo()" :class="{ index_nextpage: quesTwo }">
             {{ ques[0].ans[0] }}
           </p>
@@ -215,17 +221,18 @@
           <p @click="nextQuesTwo()" :class="{ index_nextpage: quesTwo }">
             {{ ques[0].ans[2] }}
           </p> -->
-          <div :class="{ index_nextpage: quesTwo }">
-            <img class="test_cloud test_cloud_rtl" src="/image/index/index_test_cloud.png" alt="雲朵" />
-            <img class="test_cloud test_cloud_ltr" src="/image/index/index_test_cloud.png" alt="雲朵" />
-            <img class="test_clock" src="/image/index/index_test_clock.png" alt="時鐘" />
-          </div>
-        </li>
         <!-- 問題二 -->
         <li v-if="quesTwo === true" class="ques quesEnter">
           <Typed :initialques="ques[1].title" :initialopt1="ques[1].ans[0]" :initialopt2="ques[1].ans[1]"
             :initialopt3="ques[1].ans[2]" :class="{ index_nextpage: quesThree }" @click="nextQuesThree()"></Typed>
-          <!-- <h2 :class="{ index_nextpage: quesThree }">{{ ques[1].title }}</h2>
+        </li>
+        <div v-if="quesTwo === true" :class="{ index_nextpage: quesThree }" class="index_pic_box">
+          <img class="test_shooting test_shooting_one" src="/image/index/index_test_shooting.png" alt="流星" />
+          <img class="test_shooting test_shooting_two" src="/image/index/index_test_shooting.png" alt="流星" />
+          <img class="test_shooting test_shooting_three" src="/image/index/index_test_shooting.png" alt="流星" />
+        </div>
+        <!-- 要復原的話要塞到li裡面
+          <h2 :class="{ index_nextpage: quesThree }">{{ ques[1].title }}</h2>
           <p @click="nextQuesThree()" :class="{ index_nextpage: quesThree }">
             {{ ques[1].ans[0] }}
           </p>
@@ -235,42 +242,57 @@
           <p @click="nextQuesThree()" :class="{ index_nextpage: quesThree }">
             {{ ques[1].ans[2] }}
           </p> -->
-          <div :class="{ index_nextpage: quesThree }">
-            <img class="test_shooting test_shooting_one" src="/image/index/index_test_shooting.png" alt="流星" />
-            <img class="test_shooting test_shooting_two" src="/image/index/index_test_shooting.png" alt="流星" />
-            <img class="test_shooting test_shooting_three" src="/image/index/index_test_shooting.png" alt="流星" />
-          </div>
-        </li>
         <!-- 問題三 -->
         <li v-if="quesThree === true" class="ques quesEnter">
+          <Typed :initialques="ques[2].title" :initialopt1="ques[2].ans[0]" :initialopt2="ques[2].ans[1]"
+            :initialopt3="ques[2].ans[2]" :class="{ index_nextpage: quesFour }" @click="nextQuesFour()"></Typed>
+        </li>
+        <div v-if="quesThree === true" :class="{ 'index_nextpage': quesFour }" class="index_pic_box">
+          <img class="test_cake test_sweet" src="/image/index/index_test_cake.png" alt="草莓蛋糕">
+          <img class="test_chef test_sweet" src="/image/index/index_test_chef.png" alt="蛋糕師傅">
+          <img class="test_pudding test_sweet" src="/image/index/index_test_pudding.png" alt="布丁">
+          <img class="test_mon test_sweet" src="/image/index/index_test_mon.png" alt="黃色蒙布朗">
+          <img class="test_eatgirl test_sweet" src="/image/index/index_test_eatice.png" alt="吃冰妹妹">
+          <img class="test_banana test_drop_banana" src="/image/index/index_test_banana.png" alt="落地香蕉皮">
+        </div>
+        <!-- 要復原的話要塞到li裡面 <li v-if="quesThree === true" class="ques quesEnter">
           <h2 :class="{ 'index_nextpage': quesFour }">{{ ques[2].title }}</h2>
           <p @click="nextQuesFour()" :class="{ 'index_nextpage': quesFour }">{{ ques[2].ans[0] }}</p>
           <p @click="nextQuesFour()" :class="{ 'index_nextpage': quesFour }">{{ ques[2].ans[1] }}</p>
           <p @click="nextQuesFour()" :class="{ 'index_nextpage': quesFour }">{{ ques[2].ans[2] }}</p>
-          <div :class="{ 'index_nextpage': quesFour }">
-            <img class="test_cake test_sweet" src="/image/index/index_test_cake.png" alt="草莓蛋糕">
-            <img class="test_chef test_sweet" src="/image/index/index_test_chef.png" alt="蛋糕師傅">
-            <img class="test_pudding test_sweet" src="/image/index/index_test_pudding.png" alt="布丁">
-            <img class="test_mon test_sweet" src="/image/index/index_test_mon.png" alt="黃色蒙布朗">
-            <img class="test_eatgirl test_sweet" src="/image/index/index_test_eatice.png" alt="吃冰妹妹">
-            <img class="test_banana test_drop_banana" src="/image/index/index_test_banana.png" alt="落地香蕉皮">
-          </div>
-        </li>
+        </li> -->
         <!-- 問題四 -->
         <li v-if="quesFour === true" class="ques quesEnter">
+          <Typed :initialques="ques[3].title" :initialopt1="ques[3].ans[0]" :initialopt2="ques[3].ans[1]"
+            :initialopt3="ques[3].ans[2]" :class="{ index_nextpage: quesFive }" @click="nextQuesFive()"></Typed>
+        </li>
+        <div v-if="quesFour === true" :class="{ 'index_nextpage': quesFive }" class="index_pic_box">
+          <img class="test_choco test_redlove" src="/image/index/index_test_love.png" alt="紅巧克力">
+          <img class="test_choco test_loveAllB" src="/image/index/index_test_loveAllB.png" alt="巧克力紅緞帶">
+          <img class="test_choco test_loveGreen" src="/image/index/index_test_loveGreen.png" alt="白巧克力綠緞帶">
+          <img class="test_choco test_loveRed" src="/image/index/index_test_loveRed.png" alt="紅巧克力白緞帶">
+        </div>
+        <!-- 要復原的話要塞到li裡面 <li v-if="quesFour === true" class="ques quesEnter">
           <h2 :class="{ 'index_nextpage': quesFive }">{{ ques[3].title }}</h2>
           <p @click="nextQuesFive()" :class="{ 'index_nextpage': quesFive }">{{ ques[3].ans[0] }}</p>
           <p @click="nextQuesFive()" :class="{ 'index_nextpage': quesFive }">{{ ques[3].ans[1] }}</p>
           <p @click="nextQuesFive()" :class="{ 'index_nextpage': quesFive }">{{ ques[3].ans[2] }}</p>
-          <div :class="{ 'index_nextpage': quesFive }">
-            <img class="test_choco test_redlove" src="/image/index/index_test_love.png" alt="紅巧克力">
-            <img class="test_choco test_loveAllB" src="/image/index/index_test_loveAllB.png" alt="巧克力紅緞帶">
-            <img class="test_choco test_loveGreen" src="/image/index/index_test_loveGreen.png" alt="白巧克力綠緞帶">
-            <img class="test_choco test_loveRed" src="/image/index/index_test_loveRed.png" alt="紅巧克力白緞帶">
-          </div>
-        </li>
+        </li> -->
         <!-- 問題五 -->
         <li v-if="quesFive === true" class="ques quesEnter">
+          <Typed :initialques="ques[4].title" :initialopt1="ques[4].ans[0]" :initialopt2="ques[4].ans[1]"
+            :initialopt3="ques[4].ans[2]" :class="{ index_nextpage: quesEnd }" @click="endBtn()"></Typed>
+        </li>
+        <div v-if="quesFive === true" :class="{ index_nextpage: quesEnd }" class="index_pic_box">
+          <img class="test_note" src="/image/index/index_test_mznote.png" alt="星星與音符" />
+          <img class="test_museteam" src="/image/index/index_test_greenboy.png" alt="Bboy" />
+          <img class="test_museteam" src="/image/index/index_test_blueboy.png" alt="Bboy" />
+          <img class="test_museteam" src="/image/index/index_test_leader.png" alt="樂隊" />
+          <img class="test_museteam" src="/image/index/index_test_member_one.png" alt="樂隊" />
+          <img class="test_museteam" src="/image/index/index_test_member_two.png" alt="樂隊" />
+          <img class="test_museteam" src="/image/index/index_test_member_three.png" alt="樂隊" />
+        </div>
+        <!-- 要復原的話要塞到li裡面 <li v-if="quesFive === true" class="ques quesEnter">
           <h2 :class="{ index_nextpage: quesEnd }">{{ ques[4].title }}</h2>
           <p @click="endBtn()" :class="{ index_nextpage: quesEnd }">
             {{ ques[4].ans[0] }}
@@ -281,16 +303,7 @@
           <p @click="endBtn()" :class="{ index_nextpage: quesEnd }">
             {{ ques[4].ans[2] }}
           </p>
-          <div :class="{ index_nextpage: quesEnd }">
-            <img class="test_note" src="/image/index/index_test_mznote.png" alt="星星與音符" />
-            <img class="test_museteam" src="/image/index/index_test_greenboy.png" alt="Bboy" />
-            <img class="test_museteam" src="/image/index/index_test_blueboy.png" alt="Bboy" />
-            <img class="test_museteam" src="/image/index/index_test_leader.png" alt="樂隊" />
-            <img class="test_museteam" src="/image/index/index_test_member_one.png" alt="樂隊" />
-            <img class="test_museteam" src="/image/index/index_test_member_two.png" alt="樂隊" />
-            <img class="test_museteam" src="/image/index/index_test_member_three.png" alt="樂隊" />
-          </div>
-        </li>
+        </li> -->
         <!-- 找尋音樂中 等待 3 秒 -->
         <li v-if="quesEnd === true" class="ques quesEnter">
           <p id="findUrMuz" class="index_findurmusic" :class="{ index_nextpage: startMuz }">
