@@ -22,11 +22,15 @@
                 <div id="play">
                     <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio> -->
                     <audio id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" @timeupdate="updateTime"></audio>
-                    <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
-                        v-if="!isPlaying" @click="playMusic" />
-                    <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
-                        v-else @click="pauseMusic" />
-
+                    <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
+                        v-if="!isPlaying"
+                        @click="playMusic"
+                    />
+                    <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
+                        v-else
+                        @click="pauseMusic"
+                    />
+                   
                 </div>
                 <div id="next" class="forwargBtn controlsItem">
                     <fontAwesome :icon="['fa', 'fa-step-forward']" size="2xl"
@@ -201,6 +205,7 @@ export default {
             this.$nextTick(() => {//再執行播放
                 this.$refs.music.play();
                 this.isPlaying = true;
+                
             });
         },
         pauseMusic() {
@@ -238,6 +243,11 @@ export default {
                 this.totalTime = audioElement.duration;
             }
         },
+        initializeAudio() {
+            const audioElement = this.$refs.music;
+            this.totalTime = audioElement.duration;
+        },
+       
     },
     computed: {
         formatTime() {
@@ -250,11 +260,13 @@ export default {
         }
     },
     watch: {
-        volume: function (newVolume) {
-            const audioElement = document.getElementById("myAudio");
-            audioElement.volume = newVolume / 100;
-        },
-    }
+                volume: function(newVolume) {
+                    const audioElement = document.getElementById("myAudio");
+                    audioElement.volume = newVolume / 100;
+                },
+                
+                
+            }
 };
 </script>
 
