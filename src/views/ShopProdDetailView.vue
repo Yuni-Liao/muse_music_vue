@@ -10,8 +10,7 @@
         <section class="inner">
             <div class="mainInf">
                 <div class="pic">
-                    <!-- 圖片路徑待修正 -->
-                    <img src="/image/ShopImage/prod5.jpg" alt="Mekka Over Over(黑膠)">
+                    <img :src="foundObject.prodPic" :alt="foundObject.prodName">
                 </div>
                 <div class="txt">
                     <div class="title">
