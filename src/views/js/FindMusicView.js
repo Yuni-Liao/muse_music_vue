@@ -8,17 +8,20 @@ import ReportBtn from "@/components/ReportBtn.vue";
 import LikeMesBtn from "@/components/LikeMesBtn.vue";
 
 export default {
-    components: { 
+    components: {
         PlayBtnBig,
         player,
-        AddFavBtn, 
-        AddSlBtn, 
-        ShareBtn, 
-        ReportBtn, 
-        LikeMesBtn 
+        AddFavBtn,
+        AddSlBtn,
+        ShareBtn,
+        ReportBtn,
+        LikeMesBtn
     },
     data() {
         return {
+            // 讓圖片 build 之後能顯示
+            publicPath: process.env.BASE_URL,
+            //
             songs: [
                 {
                     id: 1,

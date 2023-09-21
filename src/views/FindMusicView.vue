@@ -33,8 +33,7 @@
                     <tr v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
                         <td class="id">{{ albumItem.id }}</td>
                         <td class="pic">
-                            <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
-                                alt="albumItem.name">
+                            <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)" alt="albumItem.name">
                         </td>
                         <td class="name">{{ albumItem.name }}</td>
                         <td class="singer">
@@ -53,7 +52,7 @@
                                 <button class="close" @click="closeMoreBtn(albumItem)">
                                     <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
                                 </button>
-                                <a href="#" >
+                                <a href="#">
                                     <img src="../../public/image/icon/share.png">
                                     <p>分享</p>
                                 </a>

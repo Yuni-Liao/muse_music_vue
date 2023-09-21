@@ -31,44 +31,47 @@ export default {
         player,
         Swiper,
         SwiperSlide,
-        },
+    },
     data() {
         return {
+            // 讓圖片 build 之後能顯示
+            publicPath: process.env.BASE_URL,
+            //
             // 語系
-            language:[
+            language: [
                 {
                     id: 1,
-                    name:'日語流行',
-                    img:'japan50.png',
+                    name: '日語流行',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 2,
-                    name:'韓語流行',
-                    img:'japan50.png',
+                    name: '韓語流行',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 3,
-                    name:'華語流行',
-                    img:'japan50.png',
+                    name: '華語流行',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 4,
-                    name:'西洋流行',
-                    img:'japan50.png',
+                    name: '西洋流行',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 5,
                     name: '其他語言',
-                    img:'japan50.png',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 }
             ],
             // 風格
-            style:[
+            style: [
                 {
                     id: 1,
                     name: '流行音樂',
@@ -113,7 +116,7 @@ export default {
                 },
             ],
             // 心情
-            emotion:[
+            emotion: [
                 {
                     id: 1,
                     name: '快樂',
@@ -240,10 +243,10 @@ export default {
                 }
             ],
             modules: [
-                Autoplay, 
-                EffectCoverflow,  
+                Autoplay,
+                EffectCoverflow,
                 Pagination,
-                EffectFade, 
+                EffectFade,
                 EffectCards
             ],
         }
@@ -257,5 +260,5 @@ export default {
     //     return {
     //     };
     // }
-    
+
 }
