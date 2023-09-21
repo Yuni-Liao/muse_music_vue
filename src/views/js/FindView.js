@@ -57,7 +57,7 @@ export default {
                 {
                     id: 4,
                     name:'西洋流行',
-                    img:'usa.jpg',
+                    img:'japan50.png',
                     link: 'findmusic',
                 },
                 {
