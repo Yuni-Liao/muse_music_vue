@@ -256,12 +256,9 @@ export default {
             this.$refs.player.playMusic();
         },
     },
-<<<<<<< HEAD
     // setup() {
     //     return {
     //     };
     // }
 
-=======
->>>>>>> be0216d7611cde9b567e8da101368ce6b596558a
 }

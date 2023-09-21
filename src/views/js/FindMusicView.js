@@ -19,15 +19,13 @@ export default {
     },
     data() {
         return {
-<<<<<<< HEAD
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-=======
             //用來存儲查找到的風格
             foundObject: {},
             //內頁
-            styles:[
+            styles: [
                 {
                     id: 0,
                     styleName: "日語流行",
@@ -55,7 +53,6 @@ export default {
                 },
 
             ],
->>>>>>> be0216d7611cde9b567e8da101368ce6b596558a
             songs: [
                 {
                     id: 1,
