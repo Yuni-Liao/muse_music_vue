@@ -35,7 +35,7 @@
             <div class="prod">
                 <div class="prodCard" v-for="(item, id) in products" :key="id">
                     <router-link to="/shopproddetail/:id" class="prodPic" @click="goToProductDetail(id)">
-                        <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
+                        <img :src="item.prodPic" :alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
                         <router-link to="`/shopproddetail/${item.id}`" class="prodName">{{ item.prodName }}</router-link>
