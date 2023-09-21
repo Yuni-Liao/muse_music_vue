@@ -7,8 +7,8 @@
             </div>
             <div class="container1">
                 <div class="title">
-                    <h1>日語流行</h1>
-                    <p>共6666首歌</p>
+                    <h1>{{ foundObject.styleName }}</h1>
+                    <p>共{{ foundObject.count }}首歌</p>
                 </div>
                 <div class="btn">
                     <PlayBtnBig @click="openPlayer"></PlayBtnBig>

@@ -4,10 +4,10 @@
         <h1>探索．Find Your MUSE</h1>
     </div>
     <div class="language">
-        <div class="space" v-for="(item, index) in language" :key="index">
+        <div class="space" v-for="(item, id) in language" :key="id">
             <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
-                <router-link :to="item.link" >
+                <router-link to="/findmusic/:id" @click="goToFindMusic(id)" >
                     {{ item.name }}
                 </router-link>
             </div>
