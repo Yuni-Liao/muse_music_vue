@@ -422,7 +422,7 @@ export default {
             selectedDistrict: "",
             zipcode: "",
 
-            //凱芸新增▼
+            //凱芸 購物車 ▼
             cartItems: [], // 存放購物車商品列表
             total: 0, // 總金額預設0元
         };
@@ -542,9 +542,23 @@ export default {
             localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
             localStorage.setItem('total', this.total);
         },
+        // 刪除購物車商品
+        deleteItem(itemId) {
+            // 使用 splice 方法刪除對應id產品
+            this.cartItems.splice(itemId, 1);
+
+            // 更新總金額
+            this.total = this.cartItems.reduce((acc, item) => {
+                return acc + item.prodPrice * item.inCart;
+            }, 0);
+
+            // 將更新後的資料保存到 localStorage
+            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+            localStorage.setItem('total', this.total);
+        },
     },
 
-    //凱芸新增 購物車功能
+    //凱芸 加載購物車商品資訊
     mounted() {
         this.loadCartItems();
     },
