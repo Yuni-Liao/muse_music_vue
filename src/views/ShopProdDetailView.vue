@@ -24,16 +24,17 @@
                         售價 ${{ foundObject.prodPrice }}
                     </p>
                     <div class="btnArea">
+                        <!-- 數量加減 -->
                         <span class="prodCount">
-                            <button class="prodBtn" @click="decrementItem">
+                            <button class="prodBtn" @click="decrementItem(item)">
                                 <fontAwesome :icon="['fa', 'circle-minus']" style="color: #252525;" size="xl" />
                             </button>
                             <p>{{ foundObject.inCart }}</p>
-                            <button class="prodBtn" @click="incrementItem">
+                            <button class="prodBtn" @click="incrementItem(item)">
                                 <fontAwesome :icon="['fa', 'circle-plus']" style="color: #252525;" size="xl" />
                             </button>
                         </span>
-                        <button class="obj_Radius btn_Shop_Border">加入購物車</button>
+                        <button class="obj_Radius btn_Shop_Border" @click="addToCart(item)">加入購物車</button>
                     </div>
                 </div>
             </div>

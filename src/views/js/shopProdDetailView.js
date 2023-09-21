@@ -7,7 +7,7 @@ export default {
             products: [
                 {
                     id: 0,
-                    prodPic:require('/public/image/ShopImage/prod6.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod6.jpg'),
                     prodName: "Bluemage 黑膠",
                     prodPrice: 890,
                     inCart: 0,
@@ -23,7 +23,7 @@ export default {
                 },
                 {
                     id: 1,
-                    prodPic:require('/public/image/ShopImage/prod1.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod1.jpg'),
                     prodName: "Killbeast 黑膠",
                     prodPrice: 790,
                     inCart: 0,
@@ -39,7 +39,7 @@ export default {
                 },
                 {
                     id: 2,
-                    prodPic:require('/public/image/ShopImage/prod2.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod2.jpg'),
                     prodName: "西城男人 黑膠",
                     prodPrice: 1190,
                     inCart: 0,
@@ -55,7 +55,7 @@ export default {
                 },
                 {
                     id: 3,
-                    prodPic:require('/public/image/ShopImage/prod3.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod3.jpg'),
                     prodName: "Party Time 錄音帶",
                     prodPrice: 590,
                     inCart: 0,
@@ -71,7 +71,7 @@ export default {
                 },
                 {
                     id: 4,
-                    prodPic:require('/public/image/ShopImage/prod4.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod4.jpg'),
                     prodName: "Rose 黑膠",
                     prodPrice: 890,
                     inCart: 0,
@@ -87,7 +87,7 @@ export default {
                 },
                 {
                     id: 5,
-                    prodPic:require('/public/image/ShopImage/prod5.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod5.jpg'),
                     prodName: "Over Over 黑膠",
                     prodPrice: 1290,
                     inCart: 0,
@@ -103,7 +103,7 @@ export default {
                 },
                 {
                     id: 6,
-                    prodPic:require('/public/image/ShopImage/prod6.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod6.jpg'),
                     prodName: "Blackmage 黑膠",
                     prodPrice: 1020,
                     inCart: 0,
@@ -119,7 +119,7 @@ export default {
                 },
                 {
                     id: 7,
-                    prodPic:require('/public/image/ShopImage/prod7.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod7.jpg'),
                     prodName: "KKOCK 黑膠",
                     prodPrice: 990,
                     inCart: 0,
@@ -135,7 +135,7 @@ export default {
                 },
                 {
                     id: 8,
-                    prodPic:require('/public/image/ShopImage/prod1.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod1.jpg'),
                     prodName: "Cillbeast 黑膠",
                     prodPrice: 790,
                     inCart: 0,
@@ -151,7 +151,7 @@ export default {
                 },
                 {
                     id: 9,
-                    prodPic:require('/public/image/ShopImage/prod2.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod2.jpg'),
                     prodName: "東城男子 黑膠",
                     prodPrice: 790,
                     inCart: 0,
@@ -167,7 +167,7 @@ export default {
                 },
                 {
                     id: 10,
-                    prodPic:require('/public/image/ShopImage/prod3.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod3.jpg'),
                     prodName: "Sleep Time 錄音帶",
                     prodPrice: 1290,
                     inCart: 0,
@@ -183,7 +183,7 @@ export default {
                 },
                 {
                     id: 11,
-                    prodPic:require('/public/image/ShopImage/prod4.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod4.jpg'),
                     prodName: "Lisa 黑膠",
                     prodPrice: 790,
                     inCart: 0,
@@ -199,7 +199,7 @@ export default {
                 },
                 {
                     id: 12,
-                    prodPic:require('/public/image/ShopImage/prod5.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod5.jpg'),
                     prodName: "Very Very 黑膠",
                     prodPrice: 1090,
                     inCart: 0,
@@ -215,7 +215,7 @@ export default {
                 },
                 {
                     id: 13,
-                    prodPic:require('/public/image/ShopImage/prod6.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod6.jpg'),
                     prodName: "Pinkmage 黑膠",
                     prodPrice: 690,
                     inCart: 0,
@@ -231,7 +231,7 @@ export default {
                 },
                 {
                     id: 14,
-                    prodPic:require('/public/image/ShopImage/prod7.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod7.jpg'),
                     prodName: "VVOCK 黑膠",
                     prodPrice: 890,
                     inCart: 0,
@@ -247,7 +247,7 @@ export default {
                 },
                 {
                     id: 15,
-                    prodPic:require('/public/image/ShopImage/prod1.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod1.jpg'),
                     prodName: "Drop beast 黑膠",
                     prodPrice: 1190,
                     inCart: 0,
@@ -263,7 +263,7 @@ export default {
                 },
                 {
                     id: 16,
-                    prodPic:require('/public/image/ShopImage/prod2.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod2.jpg'),
                     prodName: "北區女孩 黑膠",
                     prodPrice: 890,
                     inCart: 0,
@@ -279,7 +279,7 @@ export default {
                 },
                 {
                     id: 17,
-                    prodPic:require('/public/image/ShopImage/prod3.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod3.jpg'),
                     prodName: "Show Time 錄音帶",
                     prodPrice: 990,
                     inCart: 0,
@@ -295,7 +295,7 @@ export default {
                 },
                 {
                     id: 18,
-                    prodPic:require('/public/image/ShopImage/prod4.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod4.jpg'),
                     prodName: "Jisso 黑膠",
                     prodPrice: 1090,
                     inCart: 0,
@@ -311,7 +311,7 @@ export default {
                 },
                 {
                     id: 19,
-                    prodPic:require('/public/image/ShopImage/prod5.jpg'),
+                    prodPic: require('/public/image/ShopImage/prod5.jpg'),
                     prodName: "Money Money 黑膠",
                     prodPrice: 1390,
                     inCart: 0,
@@ -329,12 +329,12 @@ export default {
         };
     },
     methods: {
-        incrementItem() {
+        incrementItem(item) {
             if (this.foundObject.inCart >= 0) {
                 this.foundObject.inCart++;
             }
         },
-        decrementItem() {
+        decrementItem(item) {
             if (this.foundObject.inCart > 0) {
                 this.foundObject.inCart--;
             }
@@ -344,11 +344,39 @@ export default {
             const productId = this.$route.params.id;
             // 根據商品ID獲取商品詳情數據 將獲取到的數據賦值給 this.product
             this.product = getProductById(productId);
-        }
+        },
+        //這邊是 加入購物車
+        addToCart() {
+            // 獲取已存儲的購物車數據或初始化一個空數組
+            const cartItemsJSON = localStorage.getItem('cartItems');
+            let cartItems = [];
+
+            if (cartItemsJSON) {
+                // 如果已經有購物車數據，則解析它
+                cartItems = JSON.parse(cartItemsJSON);
+            }
+
+            // 檢查購物車中是否已經存在相同的商品
+            const existingItem = cartItems.find(cartItem => cartItem.prodName === this.foundObject.prodName);
+
+            if (existingItem) {
+                // 如果存在相同的商品，將它們的 inCart 數字相加
+                existingItem.inCart += this.foundObject.inCart;
+            } else {
+                // 如果不存在相同的商品，將商品添加到購物車數組
+                cartItems.push(this.foundObject);
+            }
+
+            // 將購物車數組轉換為 JSON 字符串
+            const updatedCartItemsJSON = JSON.stringify(cartItems);
+
+            // 使用 localStorage 存儲購物車數據
+            localStorage.setItem('cartItems', updatedCartItemsJSON);
+        },
     },
     //根據路由參數中的 id 值來查找並定位
     mounted() {
         const idToFind = parseInt(this.$route.params.id);
         this.foundObject = this.products.find(item => item.id === idToFind);
     },
-};
+}
