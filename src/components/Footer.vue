@@ -4,13 +4,13 @@
         backgroundSize: '100% auto',
     }">
         <div class="logo_footer">
-            <router-link to="/">
+            <router-link to="/home">
                 <img alt="Vue logo" src="~@/assets/image/muse_logo_2.png" />
             </router-link>
         </div>
         <div class="footer_nav">
-            <router-link to="about">關於謬思</router-link> |
-            <router-link to="activity">音樂快訊</router-link> |
+            <router-link to="/home/about">關於謬思</router-link> |
+            <router-link to="/home/activity">音樂快訊</router-link> |
             <router-link to="#">常見問題</router-link> |
             <router-link to="#">隱私權政策</router-link>
         </div>

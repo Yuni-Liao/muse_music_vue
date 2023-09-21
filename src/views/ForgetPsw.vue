@@ -1,4 +1,4 @@
-q<template>
+<template>
     <div class="fog_wrapper">
         <div class="fog_inner">
             <Steps :current="current">
@@ -38,7 +38,7 @@ q<template>
             </form>
             <form class="step_4" v-if="current === 3">
                 <h2>已完成修改</h2>
-                <router-link to="/">
+                <router-link to="/home">
                     <button class="btn_L_NoBorder obj_Radius submit">
                         返回首頁
                     </button>

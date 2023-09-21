@@ -37,7 +37,7 @@
                                 @click="openPlayer">
                         </td>
                         <td class="name">
-                            <router-link to="/singlemusic">
+                            <router-link to="/home/singlemusic">
                                 {{ albumItem.name }}
                             </router-link>
                         </td>
