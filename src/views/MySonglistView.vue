@@ -8,6 +8,7 @@
           <fontAwesome :icon="['fa', 'plus']" />
         </button>
       </div>
+      <!-- <NewSl></NewSl> -->
       <div class="tabs">
         <button
           @click="currentType = 0"
