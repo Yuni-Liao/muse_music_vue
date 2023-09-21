@@ -28,57 +28,91 @@ export default {
 
             activityList: [
                 {
-                    month: '5',
+                    calenderMoth: '5',
                     date: '26',
                     day: '五',
                     img: 'activity01.png',
                     title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
                     timePlace: '19:00・台北市・THE WALL 公館',
                     singer: 'Rosalyn',
+                    area: '北部',
+                    month: 'MAY',
                 },
                 {
-                    month: '5',
-                    date: '31',
+                    calenderMoth: '6',
+                    date: '14',
                     day: '三',
                     img: 'activity01.png',
                     title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
                     timePlace: '19:00・台北市・THE WALL 公館',
                     singer: 'Rosalyn',
+                    area: '中部',
+                    month: 'JUN',
                 },
                 {
-                    month: '5',
+                    calenderMoth: '7',
                     date: '31',
-                    day: '三',
+                    day: '一',
                     img: 'activity01.png',
                     title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
                     timePlace: '19:00・台北市・THE WALL 公館',
                     singer: 'Rosalyn',
+                    area: '中部',
+                    month: 'JUL',
                 },
                 {
-                    month: '5',
-                    date: '31',
-                    day: '三',
+                    calenderMoth: '9',
+                    date: '30',
+                    day: '六',
                     img: 'activity01.png',
                     title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
                     timePlace: '19:00・台北市・THE WALL 公館',
                     singer: 'Rosalyn',
+                    area: '北部',
+                    month: 'SEP',
                 },
                 {
-                    month: '5',
-                    date: '31',
-                    day: '三',
+                    calenderMoth: '10',
+                    date: '27',
+                    day: '五',
                     img: 'activity01.png',
                     title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
                     timePlace: '19:00・台北市・THE WALL 公館',
                     singer: 'Rosalyn',
+                    area: '北部',
+                    month: 'OCT',
                 },
             ],
-            visibleActivityCount: 3,
-            showMoreButton: true,
+           
+            selectedArea: '全部',
+            selectedMonth: 'SEP', 
+            filteredActivities: [],
+        }
+    },
+    watch: {
+        selectedArea() {
+          
+          this.filterActivities();
         }
     },
     mounted() {
         this.updateVisibleMonths();
+        this.selectedArea = '全部'; // 默认选择全部地区
+        this.filterByMonth('SEP'); // 默认选择九月的活动
+    },
+    computed: {
+        filteredActivities() {
+            // 根据选中的月份和地区筛选活动
+            return this.activityList.filter((activity) => {
+              const monthMatches = !this.selectedMonth || activity.month === this.selectedMonth;
+              const areaMatches = this.selectedArea === "全部" || activity.area === this.selectedArea;
+              return monthMatches && areaMatches;
+            });
+          },
+    },
+    created() {
+        this.selectedArea = '全部'; // 默认选择全部地区
+        this.filterActivities(); // 显示所有活动
     },
     methods: {
         updateVisibleMonths() {
@@ -93,12 +127,44 @@ export default {
                 this.currentIndex = this.months.length - 8;
             }
             this.updateVisibleMonths();
-        },loadMoreActivities() {
-            this.visibleActivityCount += 3;
-            if (this.visibleActivityCount >= this.activityList.length) {
-                this.showMoreButton = false; 
-            }
         },
+
+        filterByArea(area) {
+            if (area === '全部') {
+              this.selectedArea = '全部';
+            } else {
+              this.selectedArea = area;
+            }
+            
+            this.filterActivities();
+          },
+      
+          filterByMonth(month) {
+            this.selectedMonth = month;
+            this.filterActivities();
+          },
+          filterActivities() {
+            if (this.selectedArea === '全部' && this.selectedMonth === '全部') {
+              this.filteredActivities = this.activityList;
+            } else {
+              this.filteredActivities = this.activityList.filter(activity => {
+                const monthMatches = this.selectedMonth === '全部' || activity.month === this.selectedMonth;
+                const areaMatches = this.selectedArea === '全部' || activity.area === this.selectedArea;
+                return monthMatches && areaMatches;
+              });
+            }
+          },
+          monthStyle() {
+            return function (month) {
+              // 根据月份设置字体颜色
+              if (this.selectedMonth === month) {
+                return { color: '#74EBD5' };
+              } else {
+                return { color: '#fff' }; // 默认颜色或你希望的颜色
+              }
+            };
+          }
     },
+    
 
 }

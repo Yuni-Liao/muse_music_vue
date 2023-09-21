@@ -3,9 +3,13 @@
     #AddFavBtn {
     @include music_btn_circle(25px);
       margin: 10px;
+      text-align: center;
+      line-height: 25px;
     }
     #AddSlBtn {
     @include music_btn_circle(25px);
+    text-align: center;
+    line-height: 25px;
     }
 .ranking {
   .swiper {
