@@ -706,14 +706,6 @@
         }
         
         .test_cloud{
-<<<<<<< HEAD
-=======
-          .index_boy_one {
-            transform: translate(435px, 120px);
-            animation: clock 1s infinite ease-in-out;
-          }
-        .test_cloud {
->>>>>>> dev
           @include rect(100px, fit);
         }
         .test_cloud_rtl {
@@ -914,18 +906,6 @@
     transform: translate(-180px, -245px)
   }
 }
-<<<<<<< HEAD
-=======
-
-@keyframes banana {
-  0% {
-    transform: translate(0px, -340px) rotate(30deg);
-  }
-  100% {
-    transform: translate(0px, -10px) rotate(30deg);
-  }
-}
->>>>>>> dev
 
 // 音符
 @keyframes blingStar {
