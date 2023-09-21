@@ -144,13 +144,12 @@
             align-items: center;
             display: flex;
             margin-top: 100px;
-            padding-bottom: 50px;
+            padding-bottom: 30px;
             border-bottom: #FFF 1px solid;
 
             @media screen and (max-width: 768px) {
                 width: 70%;
                 margin: 10% auto 5%;
-                padding-bottom: 30px;
             }
 
             .singerPic {
@@ -176,14 +175,13 @@
             display: flex;
             align-items: center;
             display: flex;
-            margin-top: 100px;
-            padding-bottom: 50px;
+            margin-top: 50px;
+            padding-bottom: 30px;
             border-bottom: #FFF 1px solid;
 
             @media screen and (max-width: 768px) {
                 width: 70%;
                 margin: 0 auto 5%;
-                padding-bottom: 30px;
             }
 
             .albumPic {

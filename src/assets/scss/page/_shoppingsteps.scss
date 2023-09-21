@@ -180,6 +180,11 @@ p {
                     display: flex;
                     padding: 20px 0;
 
+                    .itemNum {
+                        margin: auto;
+                        width: 10%;
+                    }
+
                     .pic {
                         width: 25%;
                         margin: auto;
