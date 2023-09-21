@@ -56,6 +56,8 @@ import {
   faChevronRight,
   faAngleUp,
   faChevronDown,
+  faCirclePlus,
+  faCircleMinus,
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -105,8 +107,7 @@ library.add(
   faChevronLeft,
   faChevronRight,
   faAngleUp,
-  faChevronDown,
-  faCheck
+  faChevronDown
 );
 
 const vueApp = createApp(App)

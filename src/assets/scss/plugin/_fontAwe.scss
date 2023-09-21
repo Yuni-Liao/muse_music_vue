@@ -1,1 +1,9 @@
-$iconSize: 1.56rem
+$iconSize: 1.56rem;
+.icon{
+
+    svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+        width: .9rem;
+    }
+
+    
+}

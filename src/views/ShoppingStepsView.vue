@@ -37,7 +37,9 @@
                   <td class="number">
                     <input type="number" v-model="item.inCart" min="1" @input="changeItemCount(item.id)" />
                   </td>
-                  <button @click="deleteItem(itemId)"><fontAwesome :icon="['fa', 'trash']" /></button>
+                  <button @click="() => deleteItem(itemId)">
+                    <font-awesome :icon="['fa', 'trash']" />
+                  </button>
                 </tr>
               </table>
             </div>

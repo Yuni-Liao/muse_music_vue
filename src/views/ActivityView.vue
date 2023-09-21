@@ -82,13 +82,25 @@
 
     <!-- 月份TAB -->
     <div class="bigMonthTab">
-        <div class="monthTab">
+        <div class="outMonthTab" >
             <div class="left-arrow" @click="scrollMonth(-1)">
                 <fontAwesome :icon="['fa', 'fa-chevron-left']" size="2xl"
                     style="color: #fff; margin: 15px; cursor: pointer;" />
             </div>
             <ul class="monthTab" ref="monthContainer">
-                <li v-for="month in visibleMonths" :key="month">{{ month }}</li>
+                <!-- <li v-for="month in visibleMonths" :key="month" @click="filterByMonth(month)" :style="monthStyle(month)">{{ month }}</li> -->
+                <li v-for="month in visibleMonths" :key="month">
+                    <span
+                    v-if="selectedMonth === month"
+                    @click="filterByMonth(month)"
+                    style="color: #74EBD5"
+                    >{{ month }}</span>
+                    <span
+                    v-else
+                    @click="filterByMonth(month)"
+                    style="color: white" 
+                    >{{ month }}</span>
+            </li>
             </ul>
             <div class="right-arrow" @click="scrollMonth(1)">
                 <fontAwesome :icon="['fa', 'fa-chevron-right']" size="2xl"
@@ -101,21 +113,21 @@
         <!-- 地區 -->
         <div class="activityArea">
             <ul>
-                <li>全部</li>
-                <li >北部</li>
-                <li >中部</li>
-                <li >南部</li>
-                <li >東部</li>
-                <li >其他地區</li>
+                <li @click="filterByArea('全部')" :class="{ active: selectedArea === '全部' }">全部</li>
+                <li @click="filterByArea('北部')" :class="{ active: selectedArea === '北部' }">北部</li>
+                <li @click="filterByArea('中部')" :class="{ active: selectedArea === '中部' }">中部</li>
+                <li @click="filterByArea('南部')" :class="{ active: selectedArea === '南部' }">南部</li>
+                <li @click="filterByArea('東部')" :class="{ active: selectedArea === '東部' }">東部</li>
+                
             </ul>
         </div>
 
         <!-- 活動資訊區 -->
         <div class="infoWrapper">
-            <div class="activityInfo" v-for="(activity, index) in activityList.slice(0, visibleActivityCount)" :key="index" >
+            <div class="activityInfo" v-for="(activity, index) in filteredActivities" :key="index" >
                 <div class="calender">
                     <div class="month">
-                        {{ activity.month }}月
+                        {{ activity.calenderMoth }}月
                     </div>
                     <p>{{ activity.date }}日</p>
                     <p>星期{{ activity.day }}</p>
@@ -128,6 +140,7 @@
                         <fontAwesome :icon="['fa', 'user-large']"
                             style="color: #fff; margin-left: 10px; cursor: pointer;" />
                         <p>{{ activity.singer }}</p>
+                        
                     </router-link>
                 </div>
             </div>
