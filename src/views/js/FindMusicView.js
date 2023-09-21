@@ -8,21 +8,24 @@ import ReportBtn from "@/components/ReportBtn.vue";
 import LikeMesBtn from "@/components/LikeMesBtn.vue";
 
 export default {
-    components: { 
+    components: {
         PlayBtnBig,
         player,
-        AddFavBtn, 
-        AddSlBtn, 
-        ShareBtn, 
-        ReportBtn, 
-        LikeMesBtn 
+        AddFavBtn,
+        AddSlBtn,
+        ShareBtn,
+        ReportBtn,
+        LikeMesBtn
     },
     data() {
         return {
+            // 讓圖片 build 之後能顯示
+            publicPath: process.env.BASE_URL,
+            //
             //用來存儲查找到的風格
             foundObject: {},
             //內頁
-            styles:[
+            styles: [
                 {
                     id: 0,
                     styleName: "日語流行",

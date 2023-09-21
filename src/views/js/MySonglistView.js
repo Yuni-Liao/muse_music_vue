@@ -5,6 +5,9 @@ export default {
   components: { PlayBtnBig, NewSl },
   data() {
     return {
+      // 讓圖片 build 之後能顯示
+      publicPath: process.env.BASE_URL,
+      //
       morecurrent: -1,
       currentType: 0, //0,1,2
       songlists: [

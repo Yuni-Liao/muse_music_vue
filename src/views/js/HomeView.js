@@ -27,6 +27,7 @@ import {
 export default {
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       // 音樂測驗換下一頁 - 廖妍榛
       quesOne: false,
       quesTwo: false,
@@ -37,8 +38,6 @@ export default {
       startMuz: false,
       // 倒數計時器
       timerValue: null,
-      //本週熱門歌曲輪播RWD
-      weekTopSwiper: 1,
       // 首頁頂部Banner - 廖妍榛
       topBanner: [
         {
@@ -249,7 +248,7 @@ export default {
           ],
         },
         {
-          title: "吃晚餐的時候,突然出現上空辣妹、猛男,你希望他和你說什麼 ?",
+          title: "用餐時,突然出現上空辣妹、猛男,你希望他和你說什麼 ?",
           ans: [
             "나랑 사귈래？ (要跟我交往嗎？)",
             "Do you want to watch Netflix and chill?",
@@ -309,7 +308,7 @@ export default {
       this.startMuz = true;
     },
     startTimer() {
-      //  倒數計時 3 秒換下一頁
+      //  倒數計時 2 秒換下一頁
       const intervalId = setInterval(() => {
         const findMuz = document.getElementById("findUrMuz");
         if (findMuz) {
@@ -318,7 +317,7 @@ export default {
             this.startMuz = true;
           }
         }
-      }, 3000);
+      }, 2000);
       this.intervalId = intervalId;
     },
     turnMusic() {

@@ -7,6 +7,9 @@ export default {
   components: { PlayBtnBig, ShareBtn, FolBtnBig, player },
   data() {
     return {
+      // 讓圖片 build 之後能顯示
+      publicPath: process.env.BASE_URL,
+      //
       morecurrent: -1,
       songlists: {
         slid: 2,

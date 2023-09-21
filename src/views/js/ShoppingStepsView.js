@@ -407,6 +407,9 @@ const database = {
 export default {
     data() {
         return {
+            // 讓圖片 build 之後能顯示
+            publicPath: process.env.BASE_URL,
+            //
             currentStep: 1,
             totalSteps: 3,
             stepLabels: ["填寫基本資料", "選擇運送方式", "選擇付款方式"],

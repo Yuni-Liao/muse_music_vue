@@ -9,6 +9,9 @@ export default {
     components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn },
     data() {
         return {
+            // 讓圖片 build 之後能顯示
+            publicPath: process.env.BASE_URL,
+            //
             //歌曲清單
             album: [
                 {
@@ -38,7 +41,7 @@ export default {
                     id: 2,
                     albumPic: "othaersong2.png",
                     name: "Tired",
-                    singer: "Rose",
+                    singer: "Lisa",
                     time: "03:00",
                     showMoreBtn: false,
                 },
@@ -46,7 +49,7 @@ export default {
                     id: 3,
                     albumPic: "othaersong3.png",
                     name: "Want To Go Home",
-                    singer: "Apple Apple",
+                    singer: "Lisa",
                     time: "03:00",
                     showMoreBtn: false,
                 },
@@ -54,7 +57,7 @@ export default {
                     id: 4,
                     albumPic: "othaersong1.png",
                     name: "Sleep",
-                    singer: "Cat Dog",
+                    singer: "Lisa",
                     time: "03:00",
                     showMoreBtn: false,
                 },
@@ -62,7 +65,7 @@ export default {
                     id: 5,
                     albumPic: "othaersong2.png",
                     name: "Bed",
-                    singer: "Ruby",
+                    singer: "Lisa",
                     time: "03:00",
                     showMoreBtn: false,
                 }
