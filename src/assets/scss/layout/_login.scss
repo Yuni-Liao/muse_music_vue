@@ -1,14 +1,20 @@
+
+
+.login{
+    height: 800px;
+    margin-top: 80px;
+    background: url(/public/image/Login/background_light.png) no-repeat center 95% / 100% ;
+}
 .login_logo{
     padding-top: 100px;
 }
 
 .login-container {
     @include layout(300px);
-    margin: 0 auto;
     padding: 20px;
-    text-align: center;
-    display: block;
-    height: 100%;
+    margin: 0 auto;
+    height: 50px;
+    transform: scale(1.5);
 }
 
 .form-group {

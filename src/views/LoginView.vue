@@ -1,4 +1,5 @@
 <template>
+    <div class="login">
     <router-link to="/"><img class="login_logo" alt="Vue logo" src="~@/assets/image/muse_logo.png"></router-link>
     <div class="login-container">
         <form @submit.prevent="login">
@@ -16,6 +17,7 @@
             <button type="submit">登入</button>
         </form>
     </div>
+</div>
 </template>
 
 <script src="./js/LoginView.js"></script>
