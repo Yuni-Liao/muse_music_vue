@@ -486,13 +486,13 @@ export default {
         },
 
         //在要導入頁面(ex:商品詳情頁面)的前一層(ex:商城頁面)進行路由導航，並傳遞一個動態路由參數"id"
-        goToProductDetail(id) {
-            this.$router.push({
-                name: "shopproddetail",
-                params: {
-                    id: id,
-                }
-            })
-        }
+        // goToProductDetail(id) {
+        //     this.$router.push({
+        //         name: "shopproddetail",
+        //         params: {
+        //             id: id,
+        //         }
+        //     })
+        // }
     },
 }
