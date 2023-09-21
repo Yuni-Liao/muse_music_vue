@@ -250,12 +250,16 @@ export default {
     },
     methods: {
         openPlayer() {
-            this.$refs.player123.playMusic();
+            this.$refs.player.playMusic();
         },
+        //切換探索內頁
+        goToFindMusic(id){
+            this.$router.push({
+                name: "findmusic",
+                params: {
+                    id: id,
+                }
+            })
+        }
     },
-    // setup() {
-    //     return {
-    //     };
-    // }
-    
 }
