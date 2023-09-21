@@ -83,15 +83,15 @@
                                     <td class="btnArea">
                                         <AddFavBtn></AddFavBtn>
                                         <AddSlBtn></AddSlBtn>
-
-                                        <div tabindex="0" class="more-group">
+                                        <ShareBtn></ShareBtn>
+                                        <!-- <div tabindex="0" class="more-group">
                                             <button class="moreBtn" @click="toggleMoreBtn(albumItem)">
                                                 <fontAwesome :icon="['fa', 'ellipsis']" style="color:#AAAAAA;" />
                                             </button>
                                             <div class="moreBtnAlert" v-if="albumItem.showMoreBtn">
-                                                <!-- <button class="close" @click="closeMoreBtn(albumItem)">
+                                                <button class="close" @click="closeMoreBtn(albumItem)">
                                                     <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
-                                                </button> -->
+                                                </button>
                                                 <router-link to="">
                                                     <img src="../../public/image/icon/share.png">
                                                     <p>分享</p>
@@ -109,7 +109,7 @@
                                                     <p>檢視歌曲</p>
                                                 </router-link>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </td>
                                 </tr>
                             </tbody>

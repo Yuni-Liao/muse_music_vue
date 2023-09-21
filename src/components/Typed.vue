@@ -52,13 +52,13 @@ export default {
           clearInterval(typingInterval); // 停止计时器
           setTimeout(() => {
             // 根据不同的内容类型切换到下一个
-            if (this.activeContent === "ques") {
-              this.activeContent = "opt1";
-            } else if (this.activeContent === "opt1") {
-              this.activeContent = "opt2";
-            } else if (this.activeContent === "opt2") {
-              this.activeContent = "opt3";
-            }
+            // if (this.activeContent === "ques") {
+            //   this.activeContent = "opt1";
+            // } else if (this.activeContent === "opt1") {
+            //   this.activeContent = "opt2";
+            // } else if (this.activeContent === "opt2") {
+            //   this.activeContent = "opt3";
+            // }
             this.autoTyping(); // 继续下一个内容
           }, 1000); // 停顿一秒后继续下一个内容
         }

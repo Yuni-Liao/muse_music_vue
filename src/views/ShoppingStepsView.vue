@@ -27,6 +27,9 @@
             <div id="cartList">
               <table>
                 <tr v-for="(item, itemId) in cartItems" :key="itemId" class="item">
+                  <td class="itemNum">
+                    {{ itemId + 1 }} <!-- 自動生成編號 -->
+                  </td>
                   <td class="pic">
                     <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName" />
                   </td>

@@ -535,15 +535,32 @@ export default {
                 }, 0);
             }
         },
-        changeItemCount(itemId) {
-            // 更新購物車數量後 重新計算總金額
-            this.total = this.cartItems.reduce((acc, item) => {
-                return acc + item.prodPrice * item.inCart;
-            }, 0);
+        // changeItemCount(itemId) {
+        //     // 更新購物車數量後 重新計算總金額
+        //     this.total = this.cartItems.reduce((acc, item) => {
+        //         return acc + item.prodPrice * item.inCart;
+        //     }, 0);
 
-            // 將購物車數據儲存到 localStorage
-            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-            localStorage.setItem('total', this.total);
+        //     // 將購物車數據儲存到 localStorage
+        //     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+        //     localStorage.setItem('total', this.total);
+        // },
+        changeItemCount(itemId) {
+            // 查找要更改数量的项目
+            const item = this.cartItems.find(item => item.id === itemId);
+
+            if (item) {
+                item.inCart = Math.max(1, item.inCart); // 最小数量为1
+
+                // 更新總金額
+                this.total = this.cartItems.reduce((acc, item) => {
+                    return acc + item.prodPrice * item.inCart;
+                }, 0);
+
+                // 保存到 localStorage
+                localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+                localStorage.setItem('total', this.total);
+            }
         },
         // 刪除購物車商品
         deleteItem(itemId) {
