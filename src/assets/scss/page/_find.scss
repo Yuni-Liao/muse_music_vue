@@ -41,6 +41,7 @@ a:hover{
       position: absolute;
       display: none;
       width: 150%;
+      margin: 0 0 0 -50%;
     }
     .txt{
       transform: skewX(-45deg);
@@ -96,83 +97,30 @@ a:hover{
     border-left:0 ;
   }
 }
-//------------------------------------------------
-// .hot_creator{
-//   .new_release{
-//   .find_newsong{
-//     .find_swiper {
-//       width: 100%;
-//       padding: 3% 0;
-//       .swiper-slide {
-//         .h_card {
-//           width: 90%;
-//           margin: auto;
-//           // background-color: $tp;
-//           cursor: pointer;
-//           img {
-//             width: 100%;
-//             border-radius: 100%;
-//           }
-//           .text{
-//             margin: 5% 0;
-//             h3 {
-//               text-align: center;
-//               font-size: $small;
-//             }
-//           }
-//         }
-//       }
-//       .swiper-pagination-bullets {
-//         width: 30px;
-//         border-radius: 2px;
-//         height: 3px;
-//       }
-//       .swiper-pagination-bullet-active{
-//         width: 60px;
-//         height: 5px;
-//         background-color: $green;
-//       }
-//     }
-//   }
-// }
-// }
 .hot_creator{
-    .find_swiper {
-      width: 100%;
-      padding: 3% 0;
-      .swiper-slide {
-        .h_card {
-          width: 90%;
-          margin: auto;
-          // background-color: $tp;
-          cursor: pointer;
-          img {
-            width: 100%;
-            border-radius: 100%;
-          }
-          .text{
-            margin: 5% 0;
-            h3 {
-              text-align: center;
-              font-size: $small;
-            }
+  .find_swiper {
+    width: 100%;
+    padding: 3% 0;
+    .swiper-slide {
+      .h_card {
+        width: 90%;
+        margin: auto;
+        // background-color: $tp;
+        cursor: pointer;
+        img {
+          width: 100%;
+          border-radius: 100%;
+        }
+        .text{
+          margin: 5% 0;
+          h3 {
+            text-align: center;
+            font-size: $small;
           }
         }
       }
-      .swiper-pagination-bullet{
-        border: 4px solid purple;
-        width: 30px;
-        border-radius: 2px;
-        height: 3px;
-      }
-      .swiper-pagination-bullet-active{
-        width: 60px;
-        height: 5px;
-        // background-color: $green;
-        background-color: green;
-      }
-      }
-
+    }
+  }
 }
 //------------------------------------------------
 .new_release{

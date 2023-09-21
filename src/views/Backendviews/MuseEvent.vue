@@ -1,8 +1,7 @@
 <template>
     <div class="muse_event_box">
         <h1>網站資訊管理 | 音樂快訊管理</h1>
-        <Table highlight-row stripe class="muse_event_table cellHeight" width="1200" height="550" :columns="columns"
-            :data="data">
+        <Table highlight-row stripe class="muse_event_table cellHeight" width="1200" :columns="columns" :data="data">
             <template #upDownBtn="{ row }">
                 <Switch @click="upDownBtn()" true-color="#13ce66" false-color="#ff4949" />
             </template>

@@ -11,7 +11,7 @@
     <!-- 商品排序 -->
     <div class="selectArea">
         <select class="prodSort obj_Radius" v-model="selectedType">
-            <option v-for="(type, index) in typeOptions" :value="type" :key="index">{{ type
+            <option v-for="(type, index) in typeOptions" :value="type" :key="id">{{ type
             }}
             </option>
         </select>
@@ -33,10 +33,9 @@
         <!-- 商品 -->
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item, index) in displayedProducts" :key="index">
-                    <!-- <router-link to="`/shopproddetail/${item.id}`" class="prodPic"> -->
-                        <router-link to="/shopproddetail" class="prodPic">
-                        <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
+                <div class="prodCard" v-for="(item, id) in products" :key="id">
+                    <router-link to="/shopproddetail/:id" class="prodPic" @click="goToProductDetail(id)">
+                        <img :src="item.prodPic" :alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
                         <router-link to="`/shopproddetail/${item.id}`" class="prodName">{{ item.prodName }}</router-link>
@@ -45,11 +44,13 @@
                         <!-- 數量加減 -->
                         <span class="prodCount">
                             <button class="prodBtn" @click="decrementItem(item)">
-                                <img src="/image/ShopImage/up.png"></button>
+                                <fontAwesome :icon="['fa', 'circle-minus']" style="color: #252525;" />
+                            </button>
 
                             <p>{{ item.inCart }}</p>
                             <button class="prodBtn" @click="incrementItem(item)">
-                                <img src="/image/ShopImage/down.png"></button>
+                                <fontAwesome :icon="['fa', 'circle-plus']" style="color: #252525;" />
+                            </button>
                         </span>
                         <button class="obj_Radius btn_Shop_Border addButton" @click="addToCart(item)">加入購物車</button>
                     </div>

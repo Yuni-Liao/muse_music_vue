@@ -1,4 +1,5 @@
 <template>
+  <player ref="player"></player>
   <div class="singlesonglist">
     <!-- 上方大圖 -->
     <section class="banner">
@@ -51,7 +52,9 @@
               alt="歌單擁有者頭像"
             />
           </div>
-          <p class="creatorName">{{ songlists.creator }}</p>
+          <p class="creatorName" @click="gotosinger(songlists.singerid)">
+            {{ songlists.creator }}
+          </p>
         </div>
         <div class="detail">
           <div class="playList">
@@ -72,130 +75,57 @@
                 ><span class="pic"
                   ><img
                     :src="require(`/public/image/SingleMusic/${item.image}`)"
-                /></span>
+                  />
+                  <div class="play" @click="openPlayer()">
+                    <fontAwesome class="i" :icon="['fa', 'play']" />
+                  </div>
+                </span>
 
-                <h3 v-line-clamp="2">{{ item.name }}</h3>
-                <span v-line-clamp="2" class="singer">{{ item.singer }}</span
-                ><span v-line-clamp="2" class="album">{{ item.album }}</span>
+                <h3 v-line-clamp="2" @click="gotosinglemusic(item.sid)">
+                  {{ item.name }}
+                </h3>
+                <span
+                  v-line-clamp="2"
+                  class="singer"
+                  @click="gotosinger(item.singerid)"
+                  >{{ item.singer }}</span
+                ><span
+                  v-line-clamp="2"
+                  class="album"
+                  @click="gotosinglealbum(item.albumid)"
+                  >{{ item.album }}</span
+                >
                 <span class="time">{{ item.time }}</span>
                 <div class="moreWrap">
                   <!-- 更多_按鈕 -->
                   <button class="moreBtn" @click="showtoggle($event, index)">
                     <fontAwesome class="i" :icon="['fa', 'ellipsis']" />
                   </button>
-                  <!-- 更多_選項 -->
-                  <div class="more" :class="{ show: index == morecurrent }">
-                    <button class="close" @click="closeMoreBtn(albumItem)">
-                      <fontAwesome
-                        :icon="['fa', 'fa-xmark']"
-                        style="color: #ffffff"
-                      />
-                    </button>
-                    <router-link to="">
+                  <!-- 更多_選項-->
+                  <div class="more" :class="{ show: index === morecurrent }">
+                    <div @click="share(item.id)">
                       <img src="../../public/image/icon/share.png" />
                       <p>分享</p>
-                    </router-link>
-                    <router-link to="" class="addFav">
+                    </div>
+                    <div class="addFav" @click="addFav(item.id)">
                       <img src="../../public/image/icon/addFav.png" />
                       <p>加入我的最愛</p>
-                    </router-link>
-                    <router-link to="" class="addSl">
+                    </div>
+                    <div class="addSl" @click="addSonglist(item.id)">
                       <img src="../../public/image/icon/addSl.png" />
                       <p>加入歌單</p>
-                    </router-link>
-                    <router-link to="" class="readSong">
+                    </div>
+                    <div class="readSong" @click="gotosinglemusic(item.id)">
                       <img
                         src="../../public/image/icon/eyeopen.png"
                         class="eyeopen"
                       />
                       <p>檢視歌曲</p>
-                    </router-link>
+                    </div>
                   </div>
                 </div>
               </li>
             </ol>
-            <!-- <table class="musicTable">
-              <thead>
-                <tr class="playListHeader">
-                  <th></th>
-                  <th></th>
-                  <th>歌曲</th>
-                  <th></th>
-                  <th>時長</th>
-                  <th>創作者</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="(albumItem, albumIndex) in songs"
-                  :key="albumIndex"
-                  class="songArea"
-                >
-                  <td class="id">{{ albumItem.id }}</td>
-                  <td class="pic">
-                    <router-link to="/singlemusic">
-                      <img
-                        :src="
-                          require(`/public/image/SingleMusic/${albumItem.albumPic}`)
-                        "
-                        alt="albumItem.name"
-                      />
-                    </router-link>
-                  </td>
-                  <td class="name">
-                    <router-link to="/singlemusic">{{
-                      albumItem.name
-                    }}</router-link>
-                  </td>
-                  <td class="singer">
-                    <router-link to="/profilepage">{{
-                      albumItem.singer
-                    }}</router-link>
-                  </td>
-                  <td class="time">{{ albumItem.time }}</td>
-                  <td class="btnArea">
-                    <AddFavBtn></AddFavBtn>
-                    <AddSlBtn></AddSlBtn>
-
-                    <div tabindex="0" class="more-group">
-                      <button class="moreBtn" @click="toggleMoreBtn(albumItem)">
-                        <fontAwesome
-                          :icon="['fa', 'ellipsis']"
-                          style="color: #aaaaaa"
-                        />
-                      </button>
-                      <div class="moreBtnAlert" v-if="albumItem.showMoreBtn">
-                        <button class="close" @click="closeMoreBtn(albumItem)">
-                          <fontAwesome
-                            :icon="['fa', 'fa-xmark']"
-                            style="color: #ffffff"
-                          />
-                        </button>
-                        <router-link to="">
-                          <img src="../../public/image/icon/share.png" />
-                          <p>分享</p>
-                        </router-link>
-                        <router-link to="" class="addFav">
-                          <img src="../../public/image/icon/addFav.png" />
-                          <p>加入我的最愛</p>
-                        </router-link>
-                        <router-link to="" class="addSl">
-                          <img src="../../public/image/icon/addSl.png" />
-                          <p>加入歌單</p>
-                        </router-link>
-                        <router-link to="" class="readSong">
-                          <img
-                            src="../../public/image/icon/eyeopen.png"
-                            class="eyeopen"
-                          />
-                          <p>檢視歌曲</p>
-                        </router-link>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table> -->
           </div>
         </div>
       </div>

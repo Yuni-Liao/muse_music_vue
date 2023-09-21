@@ -10,30 +10,31 @@
         <section class="inner">
             <div class="mainInf">
                 <div class="pic">
-                    <img src="/image/ShopImage/prod5.jpg" alt="Mekka Over Over(黑膠)">
+                    <img :src="foundObject.prodPic" :alt="foundObject.prodName">
                 </div>
                 <div class="txt">
                     <div class="title">
-                        <h1 class="singer">{{ products.singer }}</h1>
-                        <h2 class="prodName">{{ products.prodName }}</h2>
+                        <h1 class="singer">{{ foundObject.singer }}</h1>
+                        <h2 class="prodName">{{ foundObject.prodName }}</h2>
                     </div>
                     <div class="prodInf">
-                        {{products.prodInf}}
+                        {{ foundObject.prodInf }}
                     </div>
                     <p class="price">
-                        售價 ${{products.prodPrice}}
+                        售價 ${{ foundObject.prodPrice }}
                     </p>
                     <div class="btnArea">
+                        <!-- 數量加減 -->
                         <span class="prodCount">
-                            <button class="prodBtn" @click="decrementItem">
-                                <img src="/image/ShopImage/up.png">
+                            <button class="prodBtn" @click="decrementItem(item)">
+                                <fontAwesome :icon="['fa', 'circle-minus']" style="color: #252525;" size="xl" />
                             </button>
-                            <p>{{ products.inCart }}</p>
-                            <button class="prodBtn" @click="incrementItem">
-                                <img src="/image/ShopImage/down.png">
+                            <p>{{ foundObject.inCart }}</p>
+                            <button class="prodBtn" @click="incrementItem(item)">
+                                <fontAwesome :icon="['fa', 'circle-plus']" style="color: #252525;" size="xl" />
                             </button>
                         </span>
-                        <button class="obj_Radius btn_Shop_Border">加入購物車</button>
+                        <button class="obj_Radius btn_Shop_Border" @click="addToCart(item)">加入購物車</button>
                     </div>
                 </div>
             </div>
@@ -41,10 +42,10 @@
                 <h3>專輯介紹</h3>
                 <div class="txt">
                     <p class="mainDesc">
-                        {{products.mainDesc}}
+                        {{ foundObject.mainDesc }}
                     </p>
                     <p class="list">
-                        {{products.list}}
+                        {{ foundObject.list }}
                     </p>
                     <p class="attention">
                         此商品為預購特殊商品，除無法發行外，否則下訂單後一律「無法取消」或「更改」訂單。<br>

@@ -3,14 +3,39 @@
         <swiper :slidesPerView="'auto'" :spaceBetween="30" :pagination="{
             clickable: true,
         }" :modules="modules" class="mySwiper">
-            <swiper-slide>
-                <img src="/image/Activity/activityBanner01.jpg" alt="">
+            <swiper-slide style="background-image: url('/image/Activity/activityBanner01.jpg');">
+                <div class="calender">
+                    <div class="month">
+                        7月
+                    </div>
+                    <p>26日</p>
+                    <p>星期三</p>
+                </div>
+                <h3>音樂大排檔 : Showcase演唱會</h3>
+                <h3>19:00 / 台中市 / Legacy Taichung 傳 音樂展演空間</h3>
+
             </swiper-slide>
-            <swiper-slide>
-                <img src="/image/Activity/activityBanner02.jpg" alt="">
+            <swiper-slide style="background-image: url('/image/Activity/activityBanner02.jpg');"> 
+                <div class="calender">
+                    <div class="month">
+                        8月
+                    </div>
+                    <p>4日</p>
+                    <p>星期五</p>
+                </div>
+                <h3>初登場！夏日新聲企劃！</h3>
+                <h3>20:00 / 台北市 / Revolver</h3>
             </swiper-slide>
-            <swiper-slide>
-                <img src="/image/Activity/activityBanner03.jpg" alt="">
+            <swiper-slide style="background-image: url('/image/Activity/activityBanner03.jpg');">
+                <div class="calender">
+                    <div class="month">
+                        8月
+                    </div>
+                    <p>14日</p>
+                    <p>星期一</p>
+                </div>
+                <h3>喧嘩祭</h3>
+                <h3>16:00/ 高雄市 / 百樂門酒館</h3>
             </swiper-slide>
 
         </swiper>
@@ -57,13 +82,25 @@
 
     <!-- 月份TAB -->
     <div class="bigMonthTab">
-        <div class="monthTab">
+        <div class="outMonthTab" >
             <div class="left-arrow" @click="scrollMonth(-1)">
                 <fontAwesome :icon="['fa', 'fa-chevron-left']" size="2xl"
                     style="color: #fff; margin: 15px; cursor: pointer;" />
             </div>
             <ul class="monthTab" ref="monthContainer">
-                <li v-for="month in visibleMonths" :key="month">{{ month }}</li>
+                <!-- <li v-for="month in visibleMonths" :key="month" @click="filterByMonth(month)" :style="monthStyle(month)">{{ month }}</li> -->
+                <li v-for="month in visibleMonths" :key="month">
+                    <span
+                    v-if="selectedMonth === month"
+                    @click="filterByMonth(month)"
+                    style="color: #74EBD5"
+                    >{{ month }}</span>
+                    <span
+                    v-else
+                    @click="filterByMonth(month)"
+                    style="color: white" 
+                    >{{ month }}</span>
+            </li>
             </ul>
             <div class="right-arrow" @click="scrollMonth(1)">
                 <fontAwesome :icon="['fa', 'fa-chevron-right']" size="2xl"
@@ -76,21 +113,21 @@
         <!-- 地區 -->
         <div class="activityArea">
             <ul>
-                <li>全部</li>
-                <li>北部</li>
-                <li>中部</li>
-                <li>南部</li>
-                <li>東部</li>
-                <li>其他地區</li>
+                <li @click="filterByArea('全部')" :class="{ active: selectedArea === '全部' }">全部</li>
+                <li @click="filterByArea('北部')" :class="{ active: selectedArea === '北部' }">北部</li>
+                <li @click="filterByArea('中部')" :class="{ active: selectedArea === '中部' }">中部</li>
+                <li @click="filterByArea('南部')" :class="{ active: selectedArea === '南部' }">南部</li>
+                <li @click="filterByArea('東部')" :class="{ active: selectedArea === '東部' }">東部</li>
+                
             </ul>
         </div>
 
         <!-- 活動資訊區 -->
         <div class="infoWrapper">
-            <div class="activityInfo" v-for="activity in activityList" :key="activity">
+            <div class="activityInfo" v-for="(activity, index) in filteredActivities" :key="index" >
                 <div class="calender">
                     <div class="month">
-                        {{ activity.month }}月
+                        {{ activity.calenderMoth }}月
                     </div>
                     <p>{{ activity.date }}日</p>
                     <p>星期{{ activity.day }}</p>
@@ -103,10 +140,11 @@
                         <fontAwesome :icon="['fa', 'user-large']"
                             style="color: #fff; margin-left: 10px; cursor: pointer;" />
                         <p>{{ activity.singer }}</p>
+                        
                     </router-link>
                 </div>
             </div>
-            
+            <button @click="loadMoreActivities" v-if="showMoreButton">查看更多<fontAwesome :icon="['fa', 'chevron-down']" style="margin-left: 5px;" /></button>
         </div>
     </div>
 </template>

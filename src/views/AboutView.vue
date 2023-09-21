@@ -25,6 +25,7 @@
                                 </router-link>
                             </div>
                         </div>
+
                         <div class="partnerwrapper" :class="{ 'active': isActive }">
                             <div v-for="(item, user) in userList" :key="user" class="partnerpic">
                                 <router-link :to="item.link">
