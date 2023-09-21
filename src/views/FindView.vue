@@ -1,5 +1,5 @@
 <template>
-    <player ref="player123"></player>
+    <player ref="player"></player>
     <div class="find">
         <h1>探索．Find Your MUSE</h1>
     </div>

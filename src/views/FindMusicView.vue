@@ -34,7 +34,7 @@
                         <td class="id">{{ albumItem.id }}</td>
                         <td class="pic">
                             <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
-                                alt="albumItem.name">
+                                alt="albumItem.name" @click="openPlayer">
                         </td>
                         <td class="name">{{ albumItem.name }}</td>
                         <td class="singer">

@@ -19,7 +19,7 @@ export default {
     },
     data() {
         return {
-            //用來存儲查找到的商品物件
+            //用來存儲查找到的風格
             foundObject: {},
             //內頁
             styles:[
@@ -57,7 +57,7 @@ export default {
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -66,7 +66,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -75,7 +75,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -84,7 +84,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -93,7 +93,7 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -102,7 +102,7 @@ export default {
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -111,7 +111,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -120,7 +120,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -129,7 +129,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -138,7 +138,7 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
-                    link: "profilepage",
+                    link: "/profilepage",
                     showMoreBtn: false,
                 }
             ]
@@ -157,7 +157,7 @@ export default {
         fetchFindMusic() {
             // 使用路由參數中的探索內頁ID來獲取內頁資訊
             const styleId = this.$route.params.id;
-            // 根據商品ID獲取商品詳情數據 將獲取到的數據賦值給 this.style
+            // 根據styles裡的ID獲取詳情數據 將獲取到的數據賦值給 this.style
             this.style = getStyleById(styleId);
         },
     },
