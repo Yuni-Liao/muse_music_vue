@@ -52,6 +52,8 @@ import {
   faChevronRight,
   faAngleUp,
   faChevronDown,
+  faCirclePlus,
+  faCircleMinus,
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -102,6 +104,8 @@ library.add(
   faChevronRight,
   faAngleUp,
   faChevronDown,
+  faCirclePlus,
+  faCircleMinus,
 );
 
 

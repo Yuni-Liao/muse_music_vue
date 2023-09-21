@@ -23,6 +23,8 @@
     .backPic {
         margin-top: 85px;
         width: 100%;
+        height: 400px;
+        object-fit: cover;
         vertical-align: top
     }
 }
@@ -32,11 +34,15 @@
 
     .topInf {
         position: relative;
-        margin-top: -25%;
+        margin-top: -310px;
         display: flex;
         justify-content: space-between;
         align-content: center;
         align-items: center;
+
+        @media screen and (max-width: 768px) {
+            margin-top: -220px;
+        }
 
         .singlePic {
             width: 350px;
@@ -47,379 +53,418 @@
                 border: 1px solid #333;
                 box-shadow: 4px 4px 4px 0px rgba(255, 255, 255, 0.25);
             }
-        }
 
-        .singleInf {
-            text-align: left;
-            width: 60%;
-            margin-left: 5%;
-
-            .song {
-                margin-bottom: 35px;
-
-                .songName {
-                    font-size: $big;
-                    margin-bottom: 5px;
-                }
-
-                .singer {
-                    font-size: $small;
-                }
-            }
-
-            .iconBar {
-                display: flex;
-                justify-content: space-between;
-
-                .countArea {
-                    display: flex;
-
-                    .timeline {
-                        margin-right: 30px;
-                    }
-
-                    .played {
-                        margin-right: 30px;
-                    }
-
-                    .liked {
-                        margin-right: 30px;
-                    }
-
-                    .shared {
-                        margin-right: 10px;
-                    }
-                }
-
-                .buttonArea {
-                    display: flex;
-                    align-items: flex-end;
-
-                    #ShareBtn,
-                    #AddSlBtn,
-                    #AddFavBtn {
-                        margin-right: 10px;
-                    }
-
-                    #PlayBtnBig {
-                        margin-right: 20px;
-                    }
-                }
+            @media screen and (max-width: 768px) {
+                display: none;
             }
         }
     }
 
-    .mainInf {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+    .singleInf {
+        text-align: left;
+        width: 60%;
+        margin-left: 5%;
 
-        .singerInf {
-            flex: 0.9;
-            text-align: left;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            margin: 0 5%;
+        }
+
+        .song {
+            margin-bottom: 70px;
+
+            .songName {
+                font-size: $big;
+                margin-bottom: 5px;
+                letter-spacing: 1px;
+            }
 
             .singer {
-                display: flex;
-
-                align-items: center;
-                margin-top: 100px;
-
-                .singerPic {
-                    width: 70px;
-                    border: 1px solid #FFF;
-                    border-radius: 50%;
-
-                    img {
-                        width: 100%;
-                        vertical-align: top;
-                    }
-                }
-
-                .singerName {
-                    flex: 1;
-                    margin-left: 20px;
-                    font-size: $small;
-                    color: $white;
-                }
-            }
-
-            .album {
-                display: flex;
-                align-items: center;
-                margin-top: 30px;
-                padding-bottom: 50px;
-                border-bottom: #FFF 1px solid;
-
-                .albumPic {
-                    width: 69px;
-                    border: 1px solid #FFF;
-
-                    img {
-                        width: 100%;
-                        vertical-align: top;
-                    }
-                }
-
-                p {
-                    margin-left: 20px;
-                    font-size: $small;
-                }
-
-                .albumName {
-                    flex: 1;
-                    margin-left: 20px;
-                    font-size: $small;
-                    color: $white;
-                }
-            }
-
-            .date {
-                p {
-                    font-size: $tag;
-                    display: inline-block;
-                    padding: 50px 20px 20px 0;
-                }
-            }
-
-            .albumInf {
-                font-size: $default;
+                font-size: $small;
             }
         }
 
-        .detail {
-            flex: 2.1;
+        .iconBar {
+            display: flex;
+            justify-content: space-between;
 
-            .songInf {
-                @include layout(70%);
-                text-align: left;
-                margin-bottom: 100px;
+            .countArea {
+                display: flex;
 
-                h3 {
-                    font-size: $medium;
-                    margin-bottom: 20px;
+                .timeline {
+                    margin-right: 30px;
                 }
 
-                .aboutSong {
-                    font-size: $default;
-                    margin-bottom: 20px;
-
+                .played {
+                    margin-right: 30px;
                 }
 
-                .songCat {
-                    display: flex;
+                .liked {
+                    margin-right: 30px;
+                }
 
-                    .categorize {
-                        padding: 0 10px 0px 0;
-                        line-height: $default/1.5;
-                        color: $white;
-                    }
+                .shared {
+                    margin-right: 10px;
                 }
             }
 
-            .messageBoard {
-                @include layout(70%);
-                margin-bottom: 100px;
-                background-color: #000;
+            .buttonArea {
+                display: flex;
+                align-items: flex-end;
 
-                .board {
-                    @include layout(85%);
-                    padding: 50px 0;
+                #ShareBtn,
+                #AddSlBtn,
+                #AddFavBtn,
+                #PlayBtnBig {
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+}
 
-                    h3 {
-                        font-size: $big;
-                        color: $green;
-                        text-align: left;
-                        font-weight: 700;
-                    }
+.mainInf {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 
-                    .sendArea {
-                        position: relative;
-                        margin: 30px 0;
-                        border: 3px solid #74EBD5;
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 
-                        input {
-                            width: 100%;
-                            height: 50px;
-                            outline: none;
-                        }
+    .singerInf {
+        height: fit-content;
+        flex: 0.9;
+        text-align: left;
 
-                        .send {
-                            @include btnBgNone;
-                            position: absolute;
-                            right: 25px;
-                            top: 10px;
-                        }
-                    }
+        .singer {
+            display: flex;
+            align-items: center;
+            display: flex;
+            margin-top: 100px;
+            padding-bottom: 50px;
+            border-bottom: #FFF 1px solid;
 
-                    .message {
-                        border: 3px solid #74EBD5;
-                        margin-bottom: 30px;
+            @media screen and (max-width: 768px) {
+                width: 70%;
+                margin: 10% auto 5%;
+                padding-bottom: 30px;
+            }
 
-                        .infBar {
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
+            .singerPic {
+                width: 70px;
+                border: 1px solid #FFF;
+                border-radius: 50%;
 
-                            .user {
-                                display: flex;
-                                align-items: center;
-                                gap: 15px;
-                                margin: 20px;
-
-                                .pic {
-                                    width: 60px;
-
-                                    img {
-                                        width: 100%;
-                                        vertical-align: top;
-                                    }
-                                }
-
-                                .userName {
-                                    font-size: $default;
-                                }
-                            }
-
-                            .date {
-                                font-size: $tag;
-                                position: relative;
-                                display: flex;
-                                align-items: center;
-                                margin-right: 4%;
-
-                                .more-group {
-
-                                    &:focus,
-                                    &:focus-within {
-                                        .report-btn {
-                                            opacity: 1;
-                                            pointer-events: auto;
-                                        }
-                                    }
-                                }
-
-                                .more {
-                                    @include btnBgNone;
-                                }
-
-                                .report-btn {
-                                    opacity: 0;
-                                    pointer-events: none;
-                                }
-
-                                #ReportBtn {
-                                    top: 10px;
-                                    right: -25px;
-                                    position: absolute;
-                                }
-                            }
-                        }
-
-                        .txt {
-                            @include layout(80%);
-                            text-align: left;
-                        }
-
-                        .likeMes {
-                            justify-content: flex-end;
-                            align-items: center;
-                            gap: 10px;
-                            display: flex;
-                            margin: 20px;
-
-                            .likeCount {
-                                font-size: $tag;
-                            }
-
-                            .btn_likeMes {
-                                @include music_btn_circle(35px);
-                                background-color: $tp;
-                                border: 1px solid $white;
-                            }
-                        }
-
-                    }
-
-                    .readMore {
-                        @include btnBgNone;
-                        color: $white;
-                        //justify-content: flex-end;
-                        align-items: center;
-                        gap: 10px;
-                        // display: flex;
-                        margin: 25px 0 0px;
-                        margin-left: 0;
-                    }
-
+                img {
+                    width: 100%;
+                    vertical-align: top;
                 }
             }
 
-            .otherSong {
-                @include layout(70%);
-                position: relative;
-                margin-bottom: 100px;
+            .singerName {
+                flex: 1;
+                margin-left: 20px;
+                font-size: $small;
+                cursor: pointer;
+            }
+        }
+
+        .album {
+            display: flex;
+            align-items: center;
+            display: flex;
+            margin-top: 100px;
+            padding-bottom: 50px;
+            border-bottom: #FFF 1px solid;
+
+            @media screen and (max-width: 768px) {
+                width: 70%;
+                margin: 0 auto 5%;
+                padding-bottom: 30px;
+            }
+
+            .albumPic {
+                width: 69px;
+                border: 1px solid #FFF;
+
+                img {
+                    width: 100%;
+                    vertical-align: top;
+                }
+            }
+
+            p {
+                margin-left: 20px;
+                font-size: $small;
+            }
+
+            .albumName {
+                flex: 1;
+                margin-left: 20px;
+                font-size: $small;
+                cursor: pointer;
+            }
+        }
+
+        .date {
+            p {
+                font-size: $tag;
+                display: inline-block;
+                padding: 50px 20px 20px 0;
+            }
+
+            @media screen and (max-width: 768px) {
+                width: 70%;
+                margin: 0 auto;
+            }
+        }
+
+        .albumInf {
+            font-size: $default;
+
+            @media screen and (max-width: 768px) {
+                width: 70%;
+                margin: 0 auto 10%;
+            }
+        }
+    }
+
+    .detail {
+        flex: 2.1;
+
+        .songInf {
+            @include layout(70%);
+            text-align: left;
+            margin-bottom: 100px;
+
+            h3 {
+                font-size: $medium;
+                margin-bottom: 20px;
+            }
+
+            .aboutSong {
+                font-size: $default;
+                margin-bottom: 20px;
+
+            }
+
+            .songCat {
+                display: flex;
+
+                .categorize {
+                    padding: 0 10px 0px 0;
+                    line-height: $default/1.5;
+                    color: $white;
+                }
+            }
+        }
+
+        .messageBoard {
+            @include layout(70%);
+            margin-bottom: 100px;
+            background-color: #000;
+
+            .board {
+                @include layout(85%);
+                padding: 50px 0;
 
                 h3 {
-                    font-size: $medium;
+                    font-size: $big;
+                    color: $green;
                     text-align: left;
-                    margin-bottom: 40px;
+                    font-weight: 700;
                 }
 
-                .song {
-                    display: flex;
-                    align-items: center;
-                    background-color: rgba($green, 0.6);
-                    justify-content: space-between;
-                    margin-bottom: 40px;
+                .sendArea {
+                    position: relative;
+                    margin: 30px 0;
+                    border: 3px solid #74EBD5;
 
-                    .list {
+                    input {
+                        width: 100%;
+                        height: 50px;
+                        outline: none;
+                    }
+
+                    .send {
+                        @include btnBgNone;
+                        position: absolute;
+                        right: 25px;
+                        top: 10px;
+                    }
+                }
+
+                .message {
+                    border: 3px solid #74EBD5;
+                    margin-bottom: 30px;
+
+                    .infBar {
                         display: flex;
                         align-items: center;
+                        justify-content: space-between;
 
-                        .number {
-                            color: $pink;
-                            font-size: 36px;
-                            font-weight: 700;
-                            padding: 0 10px;
-                        }
+                        .user {
+                            display: flex;
+                            align-items: center;
+                            gap: 15px;
+                            margin: 20px;
 
-                        .songPic {
-                            width: 45px;
+                            .pic {
+                                width: 60px;
 
-                            img {
-                                width: 100%;
-                                vertical-align: top;
+                                img {
+                                    width: 100%;
+                                    vertical-align: top;
+                                }
+                            }
+
+                            .userName {
+                                font-size: $default;
                             }
                         }
 
-                        .songName {
-                            z-index: 2;
-                            color: $dark;
-                            font-size: $default;
-                            padding-left: 20px;
+                        .date {
+                            font-size: $tag;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            margin-right: 4%;
+
+                            .more-group {
+
+                                &:focus,
+                                &:focus-within {
+                                    .report-btn {
+                                        opacity: 1;
+                                        pointer-events: auto;
+                                    }
+                                }
+                            }
+
+                            .more {
+                                @include btnBgNone;
+                            }
+
+                            .report-btn {
+                                opacity: 0;
+                                pointer-events: none;
+                            }
+
+                            #ReportBtn {
+                                top: 10px;
+                                right: -25px;
+                                position: absolute;
+                            }
                         }
                     }
 
-                    #ShareBtn,
-                    #AddSlBtn,
-                    #AddFavBtn {
-                        width: 25px;
-                        height: 25px;
-                        margin: 10px;
-                        border: 1px $dark solid;
+                    .txt {
+                        @include layout(80%);
+                        text-align: left;
                     }
+
+                    .likeMes {
+                        justify-content: flex-end;
+                        align-items: center;
+                        gap: 10px;
+                        display: flex;
+                        margin: 20px;
+
+                        .likeCount {
+                            font-size: $tag;
+                        }
+
+                        .btn_likeMes {
+                            @include music_btn_circle(35px);
+                            background-color: $tp;
+                            border: 1px solid $white;
+                        }
+                    }
+
                 }
 
                 .readMore {
                     @include btnBgNone;
                     color: $white;
-                    justify-content: flex-end;
+                    //justify-content: flex-end;
                     align-items: center;
                     gap: 10px;
-                    display: flex;
-                    //margin: 0px 0 50px;
-                    margin: auto;
+                    // display: flex;
+                    margin: 25px 0 0px;
+                    margin-left: 0;
                 }
+
+            }
+        }
+
+        .otherSong {
+            @include layout(70%);
+            position: relative;
+            margin-bottom: 100px;
+
+            h3 {
+                font-size: $medium;
+                text-align: left;
+                margin-bottom: 40px;
+            }
+
+            .song {
+                display: flex;
+                align-items: center;
+                background-color: rgba($green, 0.6);
+                justify-content: space-between;
+                margin-bottom: 40px;
+
+                .list {
+                    display: flex;
+                    align-items: center;
+
+                    .number {
+                        color: $pink;
+                        font-size: 36px;
+                        font-weight: 700;
+                        padding: 0 10px;
+                    }
+
+                    .songPic {
+                        width: 45px;
+
+                        img {
+                            width: 100%;
+                            vertical-align: top;
+                        }
+                    }
+
+                    .songName {
+                        z-index: 2;
+                        color: $dark;
+                        font-size: $default;
+                        padding-left: 20px;
+                    }
+                }
+
+                #ShareBtn,
+                #AddSlBtn,
+                #AddFavBtn {
+                    width: 25px;
+                    height: 25px;
+                    margin: 10px;
+                    border: 1px $dark solid;
+                }
+            }
+
+            .readMore {
+                @include btnBgNone;
+                color: $white;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 10px;
+                display: flex;
+                //margin: 0px 0 50px;
+                margin: auto;
             }
         }
     }
