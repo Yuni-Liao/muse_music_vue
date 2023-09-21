@@ -223,7 +223,50 @@ const routes = [
           title: "個人主頁",
           //把它變成會員名稱
         },
+
       },
+      {
+        path: "editsong",
+        name: "editsong",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepage" */ "../views/EditSong.vue"
+          ),
+        meta: {
+          title: "編輯歌曲",
+
+        },
+
+      },
+      
+      {
+        path: "newalbum",
+        name: "newalbum",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepage" */ "../views/NewAlbum.vue"
+          ),
+        meta: {
+          title: "新增專輯",
+
+        },
+
+      },
+
+      {
+        path: "editalbum",
+        name: "editalbum",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepage" */ "../views/EditAlbum.vue"
+          ),
+        meta: {
+          title: "編輯專輯",
+
+        },
+
+      },
+
       //以下是探索音樂內頁頁面
       {
         path: "findmusic",
@@ -248,7 +291,9 @@ const routes = [
           title: "帳號設定",
         },
       },
+
     ],
+
   },
   // 以下為後台登入頁面/g2/backendLogin
   {
