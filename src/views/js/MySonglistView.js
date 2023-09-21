@@ -1,7 +1,8 @@
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
+import NewSl from "@/components/NewSl.vue";
 
 export default {
-  components: { PlayBtnBig },
+  components: { PlayBtnBig, NewSl },
   data() {
     return {
       morecurrent: -1,
