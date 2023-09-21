@@ -7,7 +7,7 @@
         <div class="space" v-for="(item, id) in language" :key="id">
             <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
-                <router-link to="/findmusic/:id" @click="goToFindMusic(id)" >
+                <router-link :to="`/findmusic/${id}`" >
                     {{ item.name }}
                 </router-link>
             </div>

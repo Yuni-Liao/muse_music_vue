@@ -36,7 +36,11 @@
                             <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
                                 alt="albumItem.name" @click="openPlayer">
                         </td>
-                        <td class="name">{{ albumItem.name }}</td>
+                        <td class="name">
+                            <router-link to="/singlemusic">
+                                {{ albumItem.name }}
+                            </router-link>
+                        </td>
                         <td class="singer">
                             <router-link :to="albumItem.link">
                                 {{ albumItem.singer }}

@@ -252,14 +252,5 @@ export default {
         openPlayer() {
             this.$refs.player.playMusic();
         },
-        //切換探索內頁
-        goToFindMusic(id){
-            this.$router.push({
-                name: "findmusic",
-                params: {
-                    id: id,
-                }
-            })
-        }
     },
 }
