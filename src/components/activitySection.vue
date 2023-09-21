@@ -1,32 +1,30 @@
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
+<template>
+    <div class="activityInfo" v-for="(activity, index) in visibleItems" :key="activity">
+                <div class="calender">
+                    <div class="month">
+                        {{ activity.month }}月
+                    </div>
+                    <p>{{ activity.date }}日</p>
+                    <p>星期{{ activity.day }}</p>
+                </div>
+                <router-link to="ActivityInfo"><img :src="require(`/public/image/Activity/${activity.img}`)"></router-link>
+                <div class="info" >
+                    <router-link to="ActivityInfo"><p>{{ activity.title }}</p></router-link>
+                    <router-link to="ActivityInfo"><p>{{ activity.timePlace }}</p></router-link>
+                    <router-link to="#" class="singer">
+                        <fontAwesome :icon="['fa', 'user-large']"
+                            style="color: #fff; margin-left: 10px; cursor: pointer;" />
+                        <p>{{ activity.singer }}</p>
+                    </router-link>
+                </div>
+            </div>
+</template>
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-// import required modules
-import { Pagination } from 'swiper/modules';
-
+<script>
 export default {
-    components: {
-        Swiper,
-        SwiperSlide,
-    },
-    setup() {
-        return {
-            modules: [Pagination],
-        };
-    },
-    data() {
-        return {
-            months: [
-                "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR"
-            ],
-            currentIndex: 0,
-            visibleMonths: [],
-
-            activityList: [
+  data() {
+    return {
+        activityList: [
                 {
                     month: '5',
                     date: '26',
@@ -73,32 +71,20 @@ export default {
                     singer: 'Rosalyn',
                 },
             ],
-            visibleActivityCount: 3,
-            showMoreButton: true,
-        }
-    },
-    mounted() {
-        this.updateVisibleMonths();
-    },
-    methods: {
-        updateVisibleMonths() {
-            const endIndex = this.currentIndex + 8;
-            this.visibleMonths = this.months.slice(this.currentIndex, endIndex);
-        },
-        scrollMonth(step) {
-            this.currentIndex += step;
-            if (this.currentIndex < 0) {
-                this.currentIndex = 0;
-            } else if (this.currentIndex + 8 > this.months.length) {
-                this.currentIndex = this.months.length - 8;
-            }
-            this.updateVisibleMonths();
-        },loadMoreActivities() {
-            this.visibleActivityCount += 3;
-            if (this.visibleActivityCount >= this.activityList.length) {
-                this.showMoreButton = false; 
-            }
-        },
-    },
-
-}
+      visibleItems: 5, // 初始显示的信息数量
+      increment: 5 // 每次点击“查看更多”增加的数量
+    };
+  },
+  computed: {
+    showMoreAvailable() {
+      return this.visibleItems < this.items.length;
+    }
+  },
+  methods: {
+    showMore() {
+      // 增加可见信息数量
+      this.visibleItems += this.increment;
+    }
+  }
+};
+</script>
