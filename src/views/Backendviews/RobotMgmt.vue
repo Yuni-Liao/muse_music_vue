@@ -1,8 +1,7 @@
 <template>
     <div class="robotmgmt_box">
         <h1>網站資訊管理 | 機器人管理</h1>
-        <Table highlight-row stripe class="robotmgmt_table cellHeight" width="1200" height="550" :columns="columns"
-            :data="data">
+        <Table highlight-row stripe class="robotmgmt_table cellHeight" width="1200" :columns="columns" :data="data">
             <template #editBtn="{ row }">
                 <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>

@@ -77,27 +77,19 @@
                     justify-content: space-between;
 
                     .prodCount {
-                        padding-bottom: 20px;
                         display: flex;
-                        width: 50px;
-                        align-content: center;
                         align-items: center;
                         margin: auto 0;
-                        padding-top: 15px;
 
                         .prodBtn {
                             background: none;
                             border: none;
                             padding: 0 10px;
                             cursor: pointer;
+                        }
 
-                            img {
-                                vertical-align: middle;
-                            }
-
-                            p {
-                                vertical-align: middle;
-                            }
+                        p {
+                            font-size: $default;
                         }
                     }
 

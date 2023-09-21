@@ -1,5 +1,6 @@
 .fog_wrapper{
     @include layout(100%);
+    background: url(/public/image/Login/background_light.png) no-repeat center 78% / 100% ;
     .fog_inner{
         width: 62.5%;
         margin: auto;

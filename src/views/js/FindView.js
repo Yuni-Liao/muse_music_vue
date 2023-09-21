@@ -234,7 +234,7 @@ export default {
                     sid: 10,
                     title: "宇宙飛行10",
                     image: "index_grid_08.png",
-                    slink: "profilepage ",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 }

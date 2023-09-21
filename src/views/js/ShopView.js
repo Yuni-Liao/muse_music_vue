@@ -35,9 +35,24 @@ export default {
                     kind: '樂團團體',
                 }
             ],
-
             //商品：product.json
             products: [
+                {
+                    id: 0,
+                    prodPic: "prod6.jpg",
+                    prodName: "Bluemage 黑膠",
+                    prodPrice: 890,
+                    inCart: 0,
+                    date: "2023-01-20",
+                    kind: "樂團團體黑膠唱片",
+                    link: "/ShopProdDetail",
+                    value: "Bluemage 黑膠|prod6.jpg|890",
+                    singer: "Yoyo",
+                    prodNum: "RLP139",
+                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 錄音帶<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
+                    mainDesc: "Yoyo之前是冬天的天涯<br>Yoyo之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
+                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
+                },
                 {
                     id: 1,
                     prodPic: "prod1.jpg",
@@ -112,6 +127,7 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Over Over 黑膠|prod5.jpg|1290",
+                    singer: "Happy",
                     prodNum: "RLP139",
                     prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
                     mainDesc: "Mekka之前是冬天的天涯<br>Mekka之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
@@ -127,6 +143,7 @@ export default {
                     kind: "樂團團體黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Blackmage 黑膠|prod6.jpg|1020",
+                    singer: "Wendy Club",
                     prodNum: "RLP139",
                     prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
                     mainDesc: "Sun之前是冬天的天涯<br>Sun之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
@@ -151,13 +168,13 @@ export default {
                 {
                     id: 8,
                     prodPic: "prod1.jpg",
-                    prodName: "cillbeast 黑膠",
+                    prodName: "Cillbeast 黑膠",
                     prodPrice: 790,
                     inCart: 0,
                     date: "2023-01-08",
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
-                    value: "cillbeast 黑膠|prod1.jpg|790",
+                    value: "Cillbeast 黑膠|prod1.jpg|790",
                     singer: "Ban",
                     prodNum: "RLP139",
                     prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
@@ -222,7 +239,7 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Very Very 黑膠|prod5.jpg|1090",
-                    singer: "Happy",
+                    singer: "Yappy",
                     prodNum: "RLP139",
                     prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
                     mainDesc: "Happy之前是冬天的天涯<br>Happy之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
@@ -286,7 +303,7 @@ export default {
                     kind: "女藝人樂團團體黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "北區女孩 黑膠|prod2.jpg|890",
-                    singer: "DJ Cool",
+                    singer: "北區女孩",
                     prodNum: "RLP139",
                     prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 黑膠唱片LP黑膠 專輯<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
                     mainDesc: "北區女孩之前是冬天的天涯<br>北區女孩之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
@@ -334,25 +351,10 @@ export default {
                     kind: "女藝人黑膠唱片",
                     link: "/ShopProdDetail",
                     value: "Money Money 黑膠|prod5.jpg|1390",
+                    singer: "Moo",
                     prodNum: "RLP139",
                     prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 錄音帶<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
                     mainDesc: "Money之前是冬天的天涯<br>Money之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
-                    list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
-                },
-                {
-                    id: 20,
-                    prodPic: "prod6.jpg",
-                    prodName: "Bluemage 黑膠",
-                    prodPrice: 890,
-                    inCart: 0,
-                    date: "2023-01-20",
-                    kind: "樂團團體黑膠唱片",
-                    link: "/ShopProdDetail",
-                    value: "Bluemage 黑膠|prod6.jpg|890",
-                    singer: "Yoyo",
-                    prodNum: "RLP139",
-                    prodInf: "● 商品條碼 4710149693495<br>● 音樂類型 錄音帶<br>● 發行公司 昆拾<br>● 發行日期 2022/12/2<br>● 內裝片數 1",
-                    mainDesc: "Yoyo之前是冬天的天涯<br>Yoyo之後是春天的天堂<br>當女人唱歌就該像個男人<br>男人的胸膛與女人的懷抱之間 這一片春天花會開...",
                     list: "● 原始母帶製作<br>● 德國Optimal刻片、壓片、140g<br>● 限量發行",
                 }
             ],
@@ -463,12 +465,12 @@ export default {
             localStorage.setItem('cartItems', updatedCartItemsJSON);
         },
 
-        //切換商品業面
-        goToProduct(productId) {
+        //在要導入頁面(ex:商品詳情頁面)的前一層(ex:商城頁面)進行路由導航，並傳遞一個動態路由參數"id"
+        goToProductDetail(id) {
             this.$router.push({
                 name: "shopproddetail",
-                query: {
-                    id: productId
+                params: {
+                    id: id,
                 }
             })
         }

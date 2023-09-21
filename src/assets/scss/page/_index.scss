@@ -154,11 +154,40 @@
         .card {
           width: 190px;
           margin: auto;
-          img {
+          .pic {
             @include rect(190px);
-            object-fit: cover;
-            object-position: top center;
+            position: relative;
+
             cursor: pointer;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: top center;
+            }
+            .play {
+              opacity: 0;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: #00000030;
+              cursor: pointer;
+              .i {
+                color: $white;
+                font-size: 35px;
+                position: relative;
+                top: 40%;
+                left: 2%;
+              }
+            }
+            &:hover,
+            &:focus {
+              .play {
+                opacity: 1;
+              }
+            }
           }
           .text {
             cursor: pointer;
@@ -374,7 +403,6 @@
     .index_dj_box {
       display: flex;
       justify-content: space-between;
-      // background: linear-gradient(to right top, $blue, $pink, $green);
       background-image: linear-gradient(#000, #333, #555, #444, #222, #000 95%);
       box-shadow: 5px 5px 10px #000;
       border-radius: 10px;
@@ -565,7 +593,7 @@
   }
 }
 
-//情緒歌單  - 廖妍榛
+//找到屬於你的歌 - 廖妍榛
 .index_emo {
   @include layout(100%);
   padding-bottom: 5%;
@@ -575,5 +603,332 @@
     color: $white;
     text-align: start;
     margin: 40px;
+  }
+  .index_test_page_box {
+    @include rect(682px, 455px);
+    margin: auto;
+    position: relative;
+    .index_test_box {
+      overflow: hidden;
+      width: 652px;
+      height: 367px;
+      position: absolute;
+      top: 7.8%;
+      left: 8.7%;
+      background-image: linear-gradient(#000, #333, #555, #444, #222, #000 95%);
+      background-position: 100%;
+      .decoration {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .test_startbtn {
+        position: absolute;
+        top: 33%;
+        left: 30%;
+        animation: boom 1s infinite;
+        cursor: pointer;
+      }
+      .ques {
+        font-family: Press + Start + 2P;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        h2 {
+          font-family: "DotGothic16", "Noto Sans TC", "Noto Sans";
+          font-size: $medium;
+        }
+        p {
+          font-family: "DotGothic16", "Noto Sans TC", "Noto Sans";
+          max-width: 430px;
+          color: $white;
+          font-size: $default;
+          text-align: left;
+          padding: 2.5% 7%;
+          cursor: pointer;
+        }
+        .index_findurmusic {
+          font-family: "DotGothic16", "Noto Sans TC", "Noto Sans";
+          max-width: 430px;
+          color: $white;
+          font-size: $medium;
+          text-align: center;
+          padding: 23% 0%;
+        }
+        #index_playCD {
+          border: 2px solid red;
+          @include rect(195px);
+          margin: 12.5% 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          align-self: center;
+          border-radius: 200px;
+          background: repeating-radial-gradient(
+            circle,
+            #000000 0%,
+            #000000 1%,
+            $dark 2%
+          );
+          border: 2px solid $green;
+          animation: run 2s linear infinite;
+          animation-play-state: paused;
+          box-shadow: 1px 1px $white;
+          position: relative;
+          top: 40%;
+          left: 35%;
+          span {
+            @include rect(140px);
+            background-image: url("/public/image/index/index_dj_logo.png");
+            background-size: contain;
+            animation: run 7s 0s linear infinite;
+            position: absolute;
+            top: 13%;
+            left: 13.5%;
+            pointer-events: none;
+          }
+          .tag_clickme {
+            color: $white;
+            font-size: $default;
+            position: absolute;
+            top: 15%;
+            right: -50%;
+          }
+          #musicOff {
+            @include rect(50px);
+            opacity: 0;
+          }
+          .index_boy_one{
+            transform: translate(435px, 120px);
+            animation: clock 1s infinite ease-in-out;
+          }
+        }
+        
+        .test_cloud{
+          @include rect(100px, fit);
+        }
+        .test_cloud_rtl {
+          animation: cuteCloud_ltr 13s infinite ease-in-out;
+        }
+        .test_cloud_ltr {
+          animation: cuteCloud_rtl 13s infinite ease-in-out;
+        }
+        .test_clock {
+          @include rect(70px, fit);
+          animation: clock 1s infinite ease-in-out;
+        }
+        .test_shooting_one {
+          animation: shooting 10s infinite ease-in-out;
+        }
+        .test_shooting_two {
+          animation: shooting 10s -2s infinite ease-in-out;
+        }
+        .test_shooting_three {
+          animation: shooting 8s infinite ease-in-out;
+        }
+        .test_sweet {
+          display: inline-block;
+          margin: 0px 9px;
+          animation: sweet 1s infinite ease-in-out;
+        }
+        .test_drop_banana{
+          animation: banana 5s infinite ease-in-out;
+        }
+        .test_loveRed{
+          animation: love_slow 4s infinite ease-in-out;
+        }
+        .test_loveAllB{
+          animation: love_slow 2s infinite ease-in-out;
+        }
+        .test_loveGreen{
+        animation: love_fast 3s infinite ease-in-out;
+        }
+        .test_redlove{
+          animation: love_bling 2s infinite ease-in-out;
+        }
+        .test_note {
+          animation: blingStar 1.5s infinite ease-in-out;
+        }
+        .test_museteam {
+          animation: walk 15s infinite;
+        }
+      }
+    }
+  }
+}
+
+//按了之後讓遊戲換下一頁
+.index_nextpage {
+  animation: bye 1s ease-in-out forwards;
+}
+
+@keyframes bye {
+  0% {
+    opacity: 0.2;
+    transform: scale(1.5);
+  }
+  90% {
+    opacity: 0.1;
+    transform: rotate(360deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate-Y(-1200px);
+  }
+}
+
+//問題進入畫面
+.quesEnter {
+  animation: enter 1.2s ease-in-out forwards;
+}
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Start按鈕動畫
+@keyframes boom {
+  0% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+// 雲朵飄飄動畫 - 左到右
+@keyframes cuteCloud_ltr {
+  0% {
+    transform: translate(0px, -120px);
+  }
+  50% {
+    transform: translate(300px, -120px);
+  }
+  100% {
+    transform: translate(0px, -120px);
+  }
+}
+
+// 雲朵飄飄動畫 - 右到左
+@keyframes cuteCloud_rtl {
+  0% {
+    transform: translate(0px, -235px);
+  }
+  50% {
+    transform: translate(-280px, -235px);
+  }
+  100% {
+    transform: translate(0px, -235px);
+  }
+}
+
+// 時鐘 - 左右晃
+@keyframes clock {
+  0% {
+    transform: translate(150px, -20px) rotate(30deg);
+  }
+  100%{
+    transform: translate(150px, -20px) rotate(-30deg)
+  }
+}
+
+// 流星
+@keyframes shooting {
+  0% {
+    transform: translate(300px, -360px);
+  }
+  100% {
+    transform: translate(-300px, 350px);
+  }
+}
+
+// 晃動的甜點
+@keyframes sweet {
+  0% {
+    transform: translate(0px, -25px) rotate(30deg);
+  }
+  50% {
+    transform: translate(0px, -25px) rotate(-30deg);
+  }
+  100% {
+    transform: translate(0px, -25px) rotate(30deg);
+  }
+}
+
+//掉落香蕉
+@keyframes banana{
+  0%{
+    transform: translate(0px, -340px) rotate(30deg)
+  }
+  100%{
+    transform: translate(0px, -10px) rotate(30deg)
+  }
+}
+
+// 掉落愛心
+@keyframes love_fast{
+  0%{
+    transform: translate(70px, -360px) 
+  }
+  100%{
+    transform: translate(70px, -10px)
+  }
+}
+
+@keyframes love_slow{
+  0%{
+    transform: translate(200px, -360px) 
+  }
+  100%{
+    transform: translate(200px, -10px) 
+  }
+}
+
+// 閃爍愛心
+@keyframes love_bling{
+  0%{
+    opacity: 0;
+    transform: translate(-180px, -245px) 
+  }
+  100%{
+    opacity: 1;
+    transform: translate(-180px, -245px)
+  }
+}
+
+// 音符
+@keyframes blingStar {
+  0% {
+    opacity: 0;
+    transform: translate(350px, -200px) rotate(25deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(350px, -200px) rotate(-35deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(350px, -200px) rotate(25deg);
+  }
+}
+
+//樂隊
+@keyframes walk {
+  0% {
+    transform: translate(650px, -40px);
+  }
+  100% {
+    transform: translate(-650px, -40px);
   }
 }
