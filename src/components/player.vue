@@ -20,7 +20,7 @@
                 </div >
                 <div id="play">
                     <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio> -->
-                    <audio id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" @timeupdate="updateTime"></audio>
+                    <audio v-if="playerOpen" id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" @timeupdate="updateTime" @loadedmetadata="initializeAudio"></audio>
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-if="!isPlaying"
                         @click="playMusic"
@@ -208,6 +208,7 @@ export default {
                 this.$refs.music.play();
                 this.isPlaying = true;
                 
+                
             });
 
         },
@@ -245,6 +246,11 @@ export default {
         this.currentTime = audioElement.currentTime;
         this.totalTime = audioElement.duration;
         },
+        initializeAudio() {
+            const audioElement = this.$refs.music;
+            this.totalTime = audioElement.duration;
+        },
+       
     },
     
     computed: {
@@ -258,13 +264,18 @@ export default {
     }
     },
     watch: {
-                volume: function(newVolume) {
-                    const audioElement = document.getElementById("myAudio");
-                    audioElement.volume = newVolume / 100;
-                },
-                
-                
-            }
+        volume: function(newVolume) {
+        const audioElement = document.getElementById("myAudio");
+        audioElement.volume = newVolume / 100;
+        },
+    },
+    mounted() {
+        
+
+  
+
+  
+}
 };
 </script>
   
