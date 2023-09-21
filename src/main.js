@@ -107,7 +107,10 @@ library.add(
   faChevronLeft,
   faChevronRight,
   faAngleUp,
-  faChevronDown
+  faChevronDown,
+  faCirclePlus,
+  faCircleMinus,
+  faCheck,
 );
 
 const vueApp = createApp(App)
