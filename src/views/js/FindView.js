@@ -164,7 +164,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 353,
                 },
                 {
                     sid: 2,
@@ -172,7 +172,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 543,
                 },
                 {
                     sid: 3,
@@ -180,7 +180,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 645,
                 },
                 {
                     sid: 4,
@@ -188,7 +188,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 548,
                 },
                 {
                     sid: 5,
@@ -196,7 +196,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 653,
                 },
                 {
                     sid: 6,
@@ -204,7 +204,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 732,
                 },
                 {
                     sid: 7,
@@ -212,7 +212,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 774,
                 },
                 {
                     sid: 8,
@@ -220,7 +220,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 853,
                 },
                 {
                     sid: 9,
@@ -228,7 +228,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 748,
                 },
                 {
                     sid: 10,
@@ -236,7 +236,7 @@ export default {
                     image: "index_grid_08.png",
                     slink: "profilepage",
                     singer: "桌子樂團",
-                    views: 0,
+                    views: 567,
                 }
             ],
             modules: [

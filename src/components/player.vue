@@ -1,6 +1,6 @@
 <template>
     <!-- -------------懸浮播放器範圍 -->
-    <div class="player" v-if="playerOpen">
+    <div class="player" v-if="playerOpen" ref="player">
         <div class="player_left" v-for="item in songList" :key="item.id">
             <img @click="showModal" class="screen" src="/image/icon/screen.svg" alt="">
             <img class="musicPic" :src="item.cover" alt="">
@@ -20,8 +20,8 @@
                         style="color: #fff; margin: 15px; cursor: pointer;" />
                 </div>
                 <div id="play">
-                    <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio> -->
-                    <audio id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" @timeupdate="updateTime"></audio>
+                    <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3" @timeupdate="updateTime"></audio> -->
+                    <audio id="myAudio" ref="music" src="/audio/Busy_Day_Ahead.mp3" @timeupdate="updateTime"></audio>
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-if="!isPlaying"
                         @click="playMusic"
