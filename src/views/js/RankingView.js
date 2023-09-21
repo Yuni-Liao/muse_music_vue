@@ -29,6 +29,9 @@ export default {
   },
   data() {
     return {
+      // 讓圖片 build 之後能顯示
+      publicPath: process.env.BASE_URL,
+      //
       weekTopSongs: [
         {
           order: 1,
@@ -111,7 +114,7 @@ export default {
           views: 0,
         },
       ],
-      topAlbums:[
+      topAlbums: [
         {
           order: 1,
           title: "宇宙飛行",
@@ -152,7 +155,8 @@ export default {
           singer: "桌子樂團",
           views: 0,
         },
-        {order: 6,
+        {
+          order: 6,
           title: "宇宙飛行",
           image: "song01.jpg",
           link: "/shopProd/1",
@@ -193,7 +197,7 @@ export default {
         },
 
       ],
-      topSongList:[
+      topSongList: [
         {
           order: 1,
           title: "宇宙飛行",
@@ -275,7 +279,7 @@ export default {
           views: 0,
         },
       ],
-      
+
     };
   },
   computed: {
@@ -286,17 +290,17 @@ export default {
       const total = this.weekTopSongs.length;
       return this.weekTopSongs.slice(total - 5, total);
     },
-    albumsFirstFiveSongs(){
+    albumsFirstFiveSongs() {
       return this.topAlbums.slice(0, 5);
     },
-    albumsLastFiveSongs(){
+    albumsLastFiveSongs() {
       const total = this.topAlbums.length;
       return this.topAlbums.slice(total - 5, total);
     },
-    songListFirstFiveSongs(){
+    songListFirstFiveSongs() {
       return this.topSongList.slice(0, 5);
     },
-    songListLastFiveSongs(){
+    songListLastFiveSongs() {
       const total = this.topSongList.length;
       return this.topSongList.slice(total - 5, total);
     },
@@ -308,7 +312,7 @@ export default {
     plused(item) {
       item.plused = !item.plused;
     },
-   
+
     followed(item) {
       item.followed = !item.followed;
     }

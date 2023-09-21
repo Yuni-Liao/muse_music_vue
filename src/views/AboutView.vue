@@ -3,7 +3,7 @@
         <!-- <h1>這是關於謬思頁面</h1> -->
         <div class="banner">
             <!-- banner圖 -->
-            <div class="bannerpic"><img src="/image/About/aboutBanner.png" alt="aboutBanner"></div>
+            <div class="bannerpic"><img :src="`${publicPath}image/About/aboutBanner.png`" alt="aboutBanner"></div>
             <!-- banner圖文字 -->
             <div class="bannertext en">Making Waves</div>
             <div class="bannertext ch">音樂謬思，就是音樂的發生地</div>

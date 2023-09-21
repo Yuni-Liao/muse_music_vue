@@ -7,8 +7,8 @@
             </div>
             <div class="container1">
                 <div class="title">
-                    <h1>日語流行</h1>
-                    <p>共6666首歌</p>
+                    <h1>{{ foundObject.styleName }}</h1>
+                    <p>共{{ foundObject.count }}首歌</p>
                 </div>
                 <div class="btn">
                     <PlayBtnBig @click="openPlayer"></PlayBtnBig>
@@ -33,10 +33,14 @@
                     <tr v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
                         <td class="id">{{ albumItem.id }}</td>
                         <td class="pic">
-                            <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)"
-                                alt="albumItem.name">
+                            <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)" alt="albumItem.name"
+                                @click="openPlayer">
                         </td>
-                        <td class="name">{{ albumItem.name }}</td>
+                        <td class="name">
+                            <router-link to="/singlemusic">
+                                {{ albumItem.name }}
+                            </router-link>
+                        </td>
                         <td class="singer">
                             <router-link :to="albumItem.link">
                                 {{ albumItem.singer }}
@@ -53,7 +57,7 @@
                                 <button class="close" @click="closeMoreBtn(albumItem)">
                                     <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
                                 </button>
-                                <a href="#" >
+                                <a href="#">
                                     <img src="../../public/image/icon/share.png">
                                     <p>分享</p>
                                 </a>

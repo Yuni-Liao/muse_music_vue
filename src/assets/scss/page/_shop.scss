@@ -163,8 +163,8 @@ select {
 
 .shopcart {
     position: fixed;
-    top: 25%;
-    right: 1.5%;
+    bottom: 35px;
+    right: 100px;
     @include btnBgNone;
 
     img {

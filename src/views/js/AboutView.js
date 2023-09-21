@@ -4,7 +4,9 @@ export default {
     //script寫在這裡
     data() {
         return {
-
+            // 讓圖片 build 之後能顯示
+            publicPath: process.env.BASE_URL,
+            //
             // 謬思創作者
             userList: [
                 {

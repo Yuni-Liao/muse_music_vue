@@ -27,6 +27,7 @@ import {
 export default {
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       // 音樂測驗換下一頁 - 廖妍榛
       quesOne: false,
       quesTwo: false,
@@ -37,8 +38,6 @@ export default {
       startMuz: false,
       // 倒數計時器
       timerValue: null,
-      //本週熱門歌曲輪播RWD
-      weekTopSwiper: 1,
       // 首頁頂部Banner - 廖妍榛
       topBanner: [
         {
@@ -168,54 +167,54 @@ export default {
       album: [
         {
           ranking: "1",
-          alb: "專輯．Aden Scott",
+          alb: "歌手．Aden Scott",
           name: "RockYou",
           image: "index_grid_01.png",
         },
         {
           ranking: "2",
-          alb: "專輯．桌子樂團",
+          alb: "歌手．桌子樂團",
           name: "藍色",
           image: "index_grid_02.png",
         },
         {
-          alb: "專輯．東西肯恩",
+          alb: "歌手．東西肯恩",
           ranking: "3",
           name: "LOVE",
           image: "index_grid_03.png",
         },
         {
-          alb: "專輯．溫室花朵",
+          alb: "歌手．溫室花朵",
           ranking: "4",
           name: "Faded",
           image: "index_grid_04.png",
         },
         {
-          alb: "專輯．潛水大象",
+          alb: "歌手．潛水大象",
           ranking: "5",
           name: "有個念頭",
           image: "index_grid_05.png",
         },
         {
-          alb: "專輯．Apple Jump",
+          alb: "歌手．Apple Jump",
           ranking: "6",
           name: "作夢的顏色",
           image: "index_grid_06.png",
         },
         {
-          alb: "專輯．消防車",
+          alb: "歌手．消防車",
           ranking: "7",
           name: "花火",
           image: "index_grid_07.png",
         },
         {
-          alb: "專輯．榕樹幫",
+          alb: "歌手．榕樹幫",
           ranking: "8",
           name: "你看不見",
           image: "index_grid_08.png",
         },
         {
-          alb: "專輯．Bye Bye Lucy",
+          alb: "歌手．Bye Bye Lucy",
           ranking: "9",
           name: "芭比",
           image: "index_grid_09.png",
@@ -249,7 +248,7 @@ export default {
           ],
         },
         {
-          title: "吃晚餐的時候,突然出現上空辣妹、猛男,你希望他和你說什麼 ?",
+          title: "用餐時,突然出現上空辣妹、猛男,你希望他和你說什麼 ?",
           ans: [
             "나랑 사귈래？ (要跟我交往嗎？)",
             "Do you want to watch Netflix and chill?",
@@ -309,7 +308,7 @@ export default {
       this.startMuz = true;
     },
     startTimer() {
-      //  倒數計時 3 秒換下一頁
+      //  倒數計時 2 秒換下一頁
       const intervalId = setInterval(() => {
         const findMuz = document.getElementById("findUrMuz");
         if (findMuz) {
@@ -318,7 +317,7 @@ export default {
             this.startMuz = true;
           }
         }
-      }, 3000);
+      }, 2000);
       this.intervalId = intervalId;
     },
     turnMusic() {

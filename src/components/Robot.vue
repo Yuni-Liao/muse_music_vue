@@ -1,7 +1,8 @@
 <template>
     <div class="pageTop_robot">
-        <img id="pageTop" alt="pagetop_icon" src="/image/icon/pageTop.svg" href="#top" @click="scrollToTop" />
-        <img alt="robot_icon" src="/image/icon/robot.svg" @click="openRobot" />
+        <img id="pageTop" alt="pagetop_icon" :src="`${publicPath}image/icon/pageTop.svg`" href="#top"
+            @click="scrollToTop" />
+        <img alt="robot_icon" :src="`${publicPath}image/icon/robot.svg`" @click="openRobot" />
     </div>
 
     <div class="robot" v-show="isOpen">
@@ -9,7 +10,7 @@
             <div class="main">
                 <div class="box">
                     <div class="title">
-                        <img src="/image/icon/robot_in.svg" alt="logo" class="logo" /> <!-- logo -->
+                        <img :src="`${publicPath}image/icon/robot_in.svg`" alt="logo" class="logo" /> <!-- logo -->
                         <span class="title-hn">MUSE 智慧客服</span>
                         <div class="closebtn" @click="openRobot">
                             <div class="close"></div>
@@ -53,7 +54,7 @@
                     <div class="setproblem"> <!-- 輸入框 -->
                         <textarea placeholder="Type a message... " id="text" v-model="customerText"
                             @keyup.enter="sentMsg()"></textarea>
-                        <img src="/image/icon/send.svg" @click="sentMsg()" class="setproblems" alt="enter">
+                        <img :src="`${publicPath}image/icon/send.svg`" @click="sentMsg()" class="setproblems" alt="enter">
                     </div>
                 </div>
             </div>
@@ -66,6 +67,9 @@ export default {
     // name: "onlineCustomer",
     data() {
         return {
+            // 讓圖片 build 之後能顯示
+            publicPath: process.env.BASE_URL,
+            //
             customerText: "",
             info: [
                 {

@@ -544,7 +544,7 @@ export default {
     height: 100%;
     object-fit: contain;
     z-index: 200;
-    transform: translate(435px, 100px);
+    transform: translate(450px, 120px);
   }
 }
 </style>

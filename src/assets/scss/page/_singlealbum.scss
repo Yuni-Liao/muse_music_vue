@@ -1,7 +1,8 @@
 .singleAlbum h1,
 .singleAlbum h2,
 .singleAlbum h3,
-.singleAlbum p {
+.singleAlbum p,
+.singleAlbum div {
     color: $white;
     letter-spacing: 1px;
 
@@ -135,7 +136,7 @@
                 border-bottom: #FFF 1px solid;
 
                 @media screen and (max-width: 768px) {
-                    width: 70%;
+                    width: 80%;
                     margin: 10% auto 5%;
                     padding-bottom: 30px;
                 }
@@ -167,7 +168,7 @@
                 }
 
                 @media screen and (max-width: 768px) {
-                    width: 70%;
+                    width: 80%;
                     margin: 0 auto;
                 }
             }
@@ -176,7 +177,7 @@
                 font-size: $default;
 
                 @media screen and (max-width: 768px) {
-                    width: 70%;
+                    width: 80%;
                     margin: 0 auto 10%;
                 }
             }
@@ -189,42 +190,80 @@
 
             .playList {
                 @include layout(100%);
-                margin: 110px 0;
-
-                @media screen and (max-width: 768px) {
-                    margin: 50px 0;
-                }
-
-                // 以下是音樂列表
+                margin: 100px 0;
                 .musicTable {
-                    @include layout(80%);
+                    @include layout(85%);
 
-                    .playListHeader {
-                        height: 30px;
-                    }
+                    li {
+                        list-style: none;
+                        display: flex;
+                        align-items: center;
+                        padding: 15px 0;
+                        border-bottom: 1px solid #ffffff40;
+                        font-size: $default;
 
-                    .songArea {
-                        border-bottom: 1px solid $white;
-                        height: 80px;
-                        position: relative;
-                        overflow: hidden;
+                        // span {
+                        //     margin: 0 10px;
+                        // }
 
-                        td {
-                            padding-top: 20px;
-                        }
-
-                        .id,
-                        .time {
+                        .id {
+                            min-width: 20px;
                             font-size: $tag;
                         }
 
-                        .id {
-                            padding: 0 10px;
+                        .name {
+                            flex: 2;
                         }
 
-                        .name,
-                        .singer {
+                        .time {
+                            flex: 1;
+                        }
+
+                        .more {
+                            flex: 1;
+                            background: none;
+                        }
+
+                        .pic {
+                            vertical-align: middle;
+                            @include rect(50px);
+                            margin: 0 10px;
+                            position: relative;
+
+                            img {
+                                @include rect(100%);
+                            }
+
+                            .play {
+                                opacity: 0;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-color: #00000030;
+                                cursor: pointer;
+
+                                .i {
+                                    font-size: 20px;
+                                    position: relative;
+                                    transform: translate(5%, 60%);
+                                }
+                            }
+
+                            &:hover,
+                            &:focus {
+                                .play {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+
+                        h3 {
+                            flex: 2;
                             font-size: $default;
+                            margin: 0 10px;
+                            cursor: pointer;
 
                             a {
                                 color: $white;
@@ -232,102 +271,45 @@
                         }
 
 
-
-                        img {
-                            vertical-align: middle;
-                            width: 50px;
-                            height: 50px;
+                        .time {
+                            flex: 1;
+                            font-size: $tag;
                         }
 
                         .btnArea {
-                            position: relative;
-                            display: flex;
-                            align-items: center;
+                            flex: 1;
+                            margin: 0 10px;
 
+                            #AddFavBtn,
                             #AddSlBtn,
-                            #AddFavBtn {
-                                width: 25px;
-                                height: 25px;
-                                margin: 5px;
-                                border: 1px $dark solid;
-                            }
-
-                            .more-group {
-
-                                &:focus,
-                                &:focus-within {
-                                    .moreBtnAlert {
-                                        opacity: 1;
-                                        pointer-events: auto;
-                                    }
-                                }
-                            }
-
-                            .moreBtn {
-                                @include btnBgNone;
-                                margin: 0 0 0 10px;
-                            }
-
-                            .moreBtnAlert {
-                                opacity: 0;
-                                position: absolute;
-                                width: 175px;
-                                height: 175px;
-                                background-color: #000000;
-                                padding: 0 0 0 18px;
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: space-evenly;
-                                align-items: flex-start;
-                                top: 50px;
-                                left: -70px;
-                                border-radius: 6px;
-                                z-index: 3;
-
-                                .close {
-                                    @include btnBgNone;
-                                    font-size: 25px;
-                                    margin-left: 130px;
-                                }
-
-                                a {
-                                    display: flex;
-                                    flex-direction: row;
-                                    align-items: center;
-
-                                    img {
-                                        width: 20px;
-                                        height: 20px;
-                                    }
-
-                                    p {
-                                        margin: 0 0px 0 20px;
-                                        font-size: $tag;
-                                    }
-
-                                    .eyeopen {
-                                        width: 20px;
-                                        height: 13px;
-                                        vertical-align: top;
-                                    }
-                                }
+                            #ShareBtn {
+                                width: 30px;
+                                height: 30px;
+                                margin: 2.5px;
                             }
                         }
+                    }
+
+                    li.playListHeader {
+                        padding: 0;
+                        border-bottom: 0px;
+                        text-align: center;
                     }
                 }
             }
         }
     }
+}
 
-    @media screen and (max-width: 768px) {
-        .mainInf {
-            flex-direction: column;
 
-            .singerInf,
-            .detail {
-                flex: 0;
-                width: 100%;
-            }
+@media screen and (max-width: 768px) {
+    .mainInf {
+        flex-direction: column;
+
+        .singerInf,
+        .detail {
+            flex: 0;
+            width: 100%;
         }
     }
 }
