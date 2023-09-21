@@ -57,7 +57,7 @@ export default {
                 {
                     id: 4,
                     name:'西洋流行',
-                    img:'japan50.png',
+                    img:'usa.jpg',
                     link: 'findmusic',
                 },
                 {
@@ -234,7 +234,7 @@ export default {
                     sid: 10,
                     title: "宇宙飛行10",
                     image: "index_grid_08.png",
-                    slink: "profilepage ",
+                    slink: "profilepage",
                     singer: "桌子樂團",
                     views: 0,
                 }
