@@ -2,8 +2,8 @@
     <main class="shopProdDetail">
         <!-- 麵包屑 -->
         <Breadcrumb separator="/">
-            <BreadcrumbItem><router-link to="/">首頁</router-link></BreadcrumbItem>
-            <BreadcrumbItem><router-link to="/shop">周邊商品</router-link></BreadcrumbItem>
+            <BreadcrumbItem><router-link to="/home">首頁</router-link></BreadcrumbItem>
+            <BreadcrumbItem><router-link to="/home/shop">周邊商品</router-link></BreadcrumbItem>
             <BreadcrumbItem>商品詳情</BreadcrumbItem>
         </Breadcrumb>
         <!-- 商品介紹 -->
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </section>
-        <router-link to="/shoppingsteps">
+        <router-link to="/home/shoppingsteps">
             <button class="shopcart">
                 <img src="/image/icon/shopcart.png" alt="shopcart">
             </button>

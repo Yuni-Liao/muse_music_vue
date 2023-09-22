@@ -1,27 +1,21 @@
 <template>
   <div class="ranking">
-    <swiper
-      :direction="'vertical'"
-      :slidesPerView="1"
-      :spaceBetween="0"
-      :mousewheel="true"
-      :modules="modules"
-      class="mySwiper"
-    >
+    <swiper :direction="'vertical'" :slidesPerView="1" :spaceBetween="0" :mousewheel="true" :modules="modules"
+      class="mySwiper">
       <swiper-slide>
         <div class="weekTopSongs">
           <div class="weekTopTitle">
-            <h1 >當週單曲排行榜</h1>
+            <h1>當週單曲排行榜</h1>
             <section></section>
           </div>
           <section class="weekRanking">
             <!-- 1-5名 -->
-           
-            <ol >
-              <li v-for="(item, index) in weekFirstFiveSongs" :key="index" >
-                <div class="order">{{item.order}}</div>
-                <img  :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
-                
+
+            <ol>
+              <li v-for="(item, index) in weekFirstFiveSongs" :key="index">
+                <div class="order">{{ item.order }}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
@@ -29,21 +23,18 @@
                   </p>
                 </div>
                 <div class="icon">
-                  <AddFavBtn/>
-                  <AddSlBtn/>
-                  
-                  
+                  <AddFavBtn />
+                  <AddSlBtn />
+
+
                 </div>
               </li>
             </ol>
             <!-- 6-10名 -->
             <ol>
               <li v-for="(item, index) in weekLastFiveSongs" :key="index">
-                <div class="order">{{item.order}}</div>
-                <img
-                  :src="require(`@/assets/image/index/${item.image}`)"
-                  alt=""
-                />
+                <div class="order">{{ item.order }}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
                 <!-- <button>PLAY</button> -->
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
@@ -52,15 +43,15 @@
                   </p>
                 </div>
                 <div class="icon">
-                  <AddFavBtn/>
-                  <AddSlBtn/>
+                  <AddFavBtn />
+                  <AddSlBtn />
                 </div>
               </li>
             </ol>
           </section>
         </div>
 
-        
+
       </swiper-slide>
 
       <swiper-slide>
@@ -72,36 +63,33 @@
           </div>
           <div class="topAlbumsRanking">
             <!-- 1-5名 -->
-            
-            <ol >
-              <li v-for="(item, index) in albumsFirstFiveSongs" :key="index" >
-                <div class="order">{{item.order}}</div>
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
-                
+
+            <ol>
+              <li v-for="(item, index) in albumsFirstFiveSongs" :key="index">
+                <div class="order">{{ item.order }}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
                     {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
                   </p>
                 </div>
-                
+
               </li>
             </ol>
-             <!-- 6-10名 -->
-             <ol>
+            <!-- 6-10名 -->
+            <ol>
               <li v-for="(item, index) in albumsLastFiveSongs" :key="index">
-                <div class="order">{{item.order}}</div>
-                <img
-                  :src="require(`@/assets/image/index/${item.image}`)"
-                  alt=""
-                />
+                <div class="order">{{ item.order }}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
                     {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
                   </p>
                 </div>
-                
+
               </li>
             </ol>
           </div>
@@ -117,11 +105,11 @@
           </div>
           <div class="topSongListRanking">
             <!-- 1-5名 -->
-            <ol >
-              <li v-for="(item, index) in songListFirstFiveSongs" :key="index" >
-                <div class="order">{{item.order}}</div>
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
-                
+            <ol>
+              <li v-for="(item, index) in songListFirstFiveSongs" :key="index">
+                <div class="order">{{ item.order }}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
@@ -129,18 +117,17 @@
                   </p>
                 </div>
                 <div class="follow_icon">
-                  <img @click="followed(item)" :src="item.followed ? require(`@/assets/image/icon/followed.svg`) : require(`@/assets/image/icon/unfollow.svg`)" alt="" />
+                  <img @click="followed(item)"
+                    :src="item.followed ? require(`@/assets/image/icon/followed.svg`) : require(`@/assets/image/icon/unfollow.svg`)"
+                    alt="" />
                 </div>
               </li>
             </ol>
             <!-- 6-10名 -->
             <ol>
               <li v-for="(item, index) in songListLastFiveSongs" :key="index">
-                <div class="order">{{item.order}}</div>
-                <img
-                  :src="require(`@/assets/image/index/${item.image}`)"
-                  alt=""
-                />
+                <div class="order">{{ item.order }}</div>
+                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
@@ -148,22 +135,23 @@
                   </p>
                 </div>
                 <div class="follow_icon">
-                  <img @click="followed(item)" :src="item.followed ? require(`@/assets/image/icon/followed.svg`) : require(`@/assets/image/icon/unfollow.svg`)" alt="" />
-      
+                  <img @click="followed(item)"
+                    :src="item.followed ? require(`@/assets/image/icon/followed.svg`) : require(`@/assets/image/icon/unfollow.svg`)"
+                    alt="" />
+
                 </div>
-                
+
               </li>
             </ol>
           </div>
 
         </div>
-        
+
       </swiper-slide>
     </swiper>
   </div>
-  
-  <player/>
-  
+
+  <player />
 </template>
 
 <style scoped lang="scss">
