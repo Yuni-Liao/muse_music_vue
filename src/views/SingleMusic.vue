@@ -46,13 +46,13 @@
             </div>
             <div class="mainInf" v-for="(songItem, songIndex) in songs" :key="songIndex">
                 <div class="singerInf">
-                    <router-link to="/profilepage" class="singer">
+                    <router-link to="/home/profilepage" class="singer">
                         <div class="singerPic">
                             <img :src="require(`/public/image/SingleMusic/${songItem.singerPic}`)" alt="songItem.singer">
                         </div>
                         <p class="singerName">{{ songItem.singer }}</p>
                     </router-link>
-                    <router-link to="/singlealbum" class="album">
+                    <router-link to="/home/singlealbum" class="album">
                         <div class="albumPic">
                             <img :src="require(`/public/image/SingleMusic/${songItem.albumPic}`)" alt="songItem.album">
                         </div>
@@ -129,13 +129,15 @@
                         <div class="song" v-for="(item, index) in otherSongs.slice(0, num2)" :key="index">
                             <div class="list">
                                 <div class="number">{{ item.id }}</div>
-
                                 <div class="songPic">
                                     <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
+                                    <div class="play">
+                                        <fontAwesome class="i" :icon="['fa', 'play']" />
+                                    </div>
                                 </div>
-                                <p class="songName">
+                                <router-link to="/home/singlemusic" class="songName">
                                     {{ item.name }}
-                                </p>
+                                </router-link>
                             </div>
                             <div class="btnArea">
                                 <ShareBtn></ShareBtn>

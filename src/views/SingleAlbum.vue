@@ -38,7 +38,7 @@
             </div>
             <div class="mainInf" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
                 <div class="singerInf">
-                    <router-link to="/profilepage" class="singer">
+                    <router-link to="/home/profilepage" class="singer">
                         <div class="singerPic">
                             <img :src="require(`/public/image/SingleMusic/${albumItem.singerPic}`)" alt="albumItem.singer">
                         </div>
@@ -71,7 +71,7 @@
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>
                                 </span>
-                                <h3 class="name"><router-link to="/singlemusic">{{ albumItem.name }}</router-link></h3>
+                                <h3 class="name"><router-link to="/home/singlemusic">{{ albumItem.name }}</router-link></h3>
                                 <span class="time">{{ albumItem.time }}</span>
                                 <div class="btnArea">
                                     <!-- 更多_按鈕 -->

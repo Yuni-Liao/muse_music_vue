@@ -9,9 +9,9 @@
     </Breadcrumb>
     <!-- 商品排序 -->
     <div class="selectArea">
-        <select class="prodSort obj_Radius" v-model="selectedType">
-            <option v-for="(type, index) in typeOptions" :value="type" :key="id">{{ type
-            }}
+        <select class="prodSort obj_Radius" v-model="sortType" @change="priceClick(sortType)">
+            <option v-for="type in typeOptions" :value="type" :key="type">
+                {{ type }}
             </option>
         </select>
     </div>
@@ -33,7 +33,7 @@
         <div class="inner">
             <div class="prod">
                 <div class="prodCard" v-for="(item, id) in getSelectedPageSize" :key="id">
-                        <router-link :to="`/home/shopproddetail/${id}`" class="prodPic">
+                    <router-link :to="`/home/shopproddetail/${id}`" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
@@ -59,7 +59,7 @@
 
             <!-- 分頁 -->
             <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
-                @on-change="handlePageChange"  v-model="currentPage"/>
+                @on-change="handlePageChange" v-model="currentPage" />
         </div>
         <router-link to="/home/shoppingsteps">
             <button class="shopcart">
