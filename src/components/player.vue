@@ -8,9 +8,9 @@
                 <p>{{ item.songTitle }}</p>
                 <span>{{ item.singer }}</span>
             </div>
-            <!-- <audio controls id="myAudio" ref="music">
+            <audio controls id="myAudio" ref="music">
                 <source :src="getSrc(item.audio)" type="audio/mpeg">
-            </audio> -->
+            </audio>
         </div>
 
         <div class="player_center">
@@ -21,7 +21,7 @@
                 </div>
                 <div id="play">
                     <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3" @timeupdate="updateTime"></audio> -->
-                    <audio id="myAudio" ref="music" src="/audio/Busy_Day_Ahead.mp3" @timeupdate="updateTime"></audio>
+                    <!-- <audio id="myAudio" ref="music" src="/audio/Busy_Day_Ahead.mp3" @timeupdate="updateTime"></audio> -->
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-if="!isPlaying"
                         @click="playMusic"
@@ -179,7 +179,7 @@ export default {
                     cover: '/image/SingleMusic/songPic.png',
                     songTitle: 'Say it',
                     singer: 'George Makridis',
-                    audio: 'Busy Day Ahead.mp3',
+                    audio: 'Busy_Day_Ahead.mp3',
                 }
             ],
             isPlaying: false,
@@ -195,9 +195,9 @@ export default {
         }
     },
     methods: {
-        // getSrc(src) {
-        // return require("audio/" + src)
-        // },
+        getSrc(src) {
+        return require(`@/audio/${src}`);
+        },
         playMusic() {
             //播放音樂
             // 播放音樂
