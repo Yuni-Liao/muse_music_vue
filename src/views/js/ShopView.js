@@ -381,7 +381,6 @@ export default {
                     list: "● 原始母帶製作 ● 德國Optimal刻片、壓片、140g ● 限量發行",
                 }
             ],
-            //displayedProducts: [],   //接json檔
             currentPage: 1,
             //劉宜靜 - 商品分類篩選(All)
             currentKind: "All",
@@ -393,7 +392,8 @@ export default {
                 '價格:由高到低',
                 '價格:由低到高',
             ],
-            selectedType: '商品排序',
+            //selectedType: '商品排序',
+            sortType: '商品排序',
             //郭凱芸 - 下拉數量選單:預設
             selectedPageSize: 20,
 
@@ -414,21 +414,22 @@ export default {
 
         //劉宜靜 - 商品排序
         sortedTypeOptions() {
-            const sortedProducts = [...this.catList];
-            let func = (a, b) => new Date(b.date) - new Date(a.date)
+            const sortedProducts = this.catList.slice(); // 使用slice()创建浅拷贝
+            let func = (a, b) => new Date(b.date) - new Date(a.date);
 
-            if (this.selectedType === '上架時間(舊>新)') {
-                func = (a, b) => new Date(a.date) - new Date(b.date)
+            if (this.sortType === '上架時間(舊>新)') {
+                func = (a, b) => new Date(a.date) - new Date(b.date);
             }
 
-            if (this.selectedType === '價格:由高到低') {
-                func = (a, b) => b.prodPrice - a.prodPrice
+            if (this.sortType === '價格:由高到低') {
+                func = (a, b) => b.prodPrice - a.prodPrice;
             }
 
-            if (this.selectedType === '價格:由低到高') {
-                func = (a, b) => a.prodPrice - b.prodPrice
+            if (this.sortType === '價格:由低到高') {
+                func = (a, b) => a.prodPrice - b.prodPrice;
             }
-            return sortedProducts.sort(func);
+
+            return sortedProducts.sort(func); // 对拷贝进行排序
         }
     },
     //郭凱芸 - 下拉數量選單:預設
@@ -457,6 +458,12 @@ export default {
         handlePageSize(page) {
             // console.log('handlePageSize', page)
             this.selectedPageSize = page;
+        },
+
+        priceClick(type) {
+            if (this.sortType != type) {
+                this.sortType = type;
+            }
         },
 
         //這邊是 加入購物車
