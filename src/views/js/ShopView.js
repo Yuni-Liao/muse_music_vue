@@ -381,7 +381,7 @@ export default {
                     list: "● 原始母帶製作 ● 德國Optimal刻片、壓片、140g ● 限量發行",
                 }
             ],
-            // displayedProducts: [],   //接json檔
+            displayedProducts: [],   //接json檔
             currentPage: 1,
             //劉宜靜 - 商品分類篩選(All)
             currentKind: "All",
