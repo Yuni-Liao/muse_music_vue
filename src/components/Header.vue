@@ -120,15 +120,9 @@
 const Animations = {
   fadeOut(element) {
     element.classList.add("fadeOut");
-    setTimeout(function () {
-      element.style.display = "none";
-    }, 500);
   },
   fadeIn(element) {
-    element.style.display = "block";
-    setTimeout(function () {
-      element.classList.remove("fadeOut");
-    }, 250);
+    element.classList.remove("fadeOut");
   },
 };
 export default {
