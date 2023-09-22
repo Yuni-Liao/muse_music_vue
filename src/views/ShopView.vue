@@ -32,11 +32,9 @@
         <!-- 商品 -->
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item, id) in products" :key="id">
-                    <router-link :to="`/home/shopproddetail/${id}`" class="prodPic">
-                        <!-- <router-link to="/shopproddetail/:id" class="prodPic" @click="goToProductDetail(id)"></router-link> -->
-                        <!-- <img :src="item.prodPic" :alt="item.prodName"> -->
-                        <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName">
+                <div class="prodCard" v-for="(item, id) in getSelectedPageSize" :key="id">
+                        <router-link :to="`/home/shopproddetail/${id}`" class="prodPic">
+                        <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
                         <router-link to="`/home/shopproddetail/${item.id}`" class="prodName">{{ item.prodName
@@ -61,7 +59,7 @@
 
             <!-- 分頁 -->
             <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
-                @on-change="handlePageChange" @on-page-size-change="handlePageSize" />
+                @on-change="handlePageChange"  v-model="currentPage"/>
         </div>
         <router-link to="/home/shoppingsteps">
             <button class="shopcart">
