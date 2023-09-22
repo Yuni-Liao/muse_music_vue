@@ -381,7 +381,7 @@ export default {
                     list: "● 原始母帶製作 ● 德國Optimal刻片、壓片、140g ● 限量發行",
                 }
             ],
-            // displayedProducts: [],   //接json檔
+            //displayedProducts: [],   //接json檔
             currentPage: 1,
             //劉宜靜 - 商品分類篩選(All)
             currentKind: "All",
@@ -406,7 +406,7 @@ export default {
             return this.products.filter((v, i) => v.kind.includes(this.currentKind))
         },
         //郭凱芸 - 下拉數量選單:計算商品數量
-        displayedProducts() {
+        getSelectedPageSize() {
             const startIdx = (this.currentPage - 1) * this.selectedPageSize;
             const endIdx = startIdx + this.selectedPageSize;
             return this.sortedTypeOptions.slice(startIdx, endIdx);
@@ -433,7 +433,7 @@ export default {
     },
     //郭凱芸 - 下拉數量選單:預設
     mounted() {
-        this.handlePageSize(20)
+        //this.handlePageSize(20)
 
     },
     methods: {
