@@ -11,7 +11,6 @@ import FolBtnBig from "@/components/FolBtnBig.vue";
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
 import AddFavBtn from "@/components/AddFavBtn.vue";
 import AddSlBtn from "@/components/AddSlBtn.vue";
-
 export default {
   components: {
     FolBtnBig,

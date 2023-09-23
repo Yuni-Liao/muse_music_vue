@@ -142,7 +142,7 @@
 
     //由 tab 切換之顯示內容
     .container {
-      padding: 30px 0px;
+      padding: 100px 0px;
       min-height: 80vh;
       .nodata {
         height: 150px;
@@ -164,6 +164,7 @@
         font-size: $medium;
         color: $white;
         text-align: left;
+        margin-left: 50px;
       }
       //音樂-專輯
       .album {
