@@ -8,7 +8,7 @@
                 <p>{{ currentSong.songTitle }}</p>
                 <span>{{ currentSong.singer }}</span>
             </div>
-
+            <!-- 音檔 -->
             <audio id="myAudio" ref="music" @timeupdate="updateTime">
                 <source :src="'/audio/' + currentSong.audio" type="audio/mpeg">
             </audio>
@@ -58,11 +58,11 @@
 
     <!-- -------------蓋板播放器範圍------------- -->
     <div class="modal" v-if="isModalVisible" :style="{
-        backgroundImage: `url( ${require('@/assets/image/songPic.png')} )`,
-
-        // backgroundImage: `url('/home/public/image/SingleMusic/' + currentSong.cover)`,
+        // backgroundImage: `url( ${require('@/assets/image/songPic.png')} )`,
+        backgroundImage: `url('${currentSong.cover}')`,
         backgroundSize: '100% auto',
         backgroundRepeat: no-repeat,
+        backgroundPosition:'center 20%',
     }">
     
         <!-- 歌曲信息和控制按钮 -->
@@ -102,9 +102,11 @@
                             <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" @click="prevSong" />
                             <fontAwesome :icon="['fa', 'play']" size="2xl"
-                                style="color: #fff; margin: 15px; cursor: pointer;" v-if="!isPlaying" @click="playMusic" />
+                                style="color: #fff; margin: 15px; cursor: pointer;" v-if="!isPlaying" @click="playMusic"
+                                class="play_pause" />
                             <fontAwesome :icon="['fa', 'pause']" size="2xl"
-                                style="color: #fff; margin: 15px; cursor: pointer;" v-else @click="pauseMusic" />
+                                style="color: #fff; margin: 15px; cursor: pointer;" v-else @click="pauseMusic"
+                                class="play_pause" />
                             <fontAwesome :icon="['fa', 'fa-step-forward']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" @click="nextSong" />
                         </div>
@@ -292,6 +294,10 @@ export default {
                 audioElement.play()
                 .then(() => {
                     this.isPlaying = true;
+                    // 在音乐准备好后设置totalTime
+                    audioElement.onloadedmetadata = () => {
+                        this.totalTime = audioElement.duration;
+                    };
                 })
                 .catch((error) => {
                     console.error('音樂播放失敗：', error);

@@ -11,7 +11,7 @@
     }
     .player{
         // display: none;
-         display: flex;
+        display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
@@ -24,198 +24,61 @@
         z-index: 100;
         .player_left{
             display: flex;
+            justify-content: space-evenly;
+            width: 14%;
             .screen{
+                width: 12%;
                 cursor: pointer;
-                width: 25px;
+                // width: 25px;
                 margin: 0px 20px 0px 0px;
             }
             .musicPic{
-                width: 50px;
-                margin: 0px 20px ;
+                width: 15%;
+                // width: 50px;
+                margin:0  2%;
             }
             .songInfo{
+                width: 70%;
                 display: flex;
                 flex-direction: column;
-                text-align: center;
+                // text-align: center;
                 text-align: left;
                 p{
                     color: #fff;
                 }
                 span{
                     color: #aaa;
+                    margin: 2% 0;
                 }
             }
-       }
-       .player_center{
-        display: flex;
-        flex-direction: column;
-        margin: 0px 50px;
-        .playerControls{
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
         }
-        
-        .timeBar{
-            display: flex;
-            justify-content: space-between;
-            p{
-                color: #aaa;
-                margin: 0px 10px;
-            }
-            [type="range"] {
-                -webkit-appearance: none;
-                appearance: none;
-                margin: 0;
-                outline: 0;
-                background-color: transparent;
-                width: 550px;
-                cursor: pointer;
-            }
-            [type="range"]::-webkit-slider-runnable-track {
-                height: 4px;
-                background: #eee;
-            }
-            [type="range" i]::-webkit-slider-container {
-                height: 20px;
-                overflow: hidden;
-            }
-            [type="range"]::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: #74EBD5;
-                border: 1px solid transparent;
-                margin-top: -8px;
-                border-image: linear-gradient(#74EBD5,#74EBD5) 0 fill / 8 20 8 0 / 0px 0px 0 2000px;
-            }
-            
-        }
-        }
-       .player_right{
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        img{
-            width: 20px;
-            margin: 0px 10px;
-        }
-        [type="range"] {
-                -webkit-appearance: none;
-                appearance: none;
-                margin: 0;
-                outline: 0;
-                background-color: transparent;
-                width: 80px;
-            }
-            [type="range"]::-webkit-slider-runnable-track {
-                height: 4px;
-                background: #eee;
-            }
-            [type="range" i]::-webkit-slider-container {
-                height: 20px;
-                overflow: hidden;
-            }
-            [type="range"]::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: #74EBD5;
-                border: 1px solid transparent;
-                margin-top: -8px;
-                border-image: linear-gradient(#74EBD5,#74EBD5) 0 fill / 8 20 8 0 / 0px 0px 0 2000px;
-            }
-        
-        p{
-            color: #aaa;
-            margin-left: 5px;
-        }
-        .loopSong{
-            transition: color 0.3s;
-        }
-        .loopSong-active{
-            color: #74EBD5;
-        }
-       }
-    }
-
-// -------------蓋板播放器範圍
-.modal {
-//   display: none;
-  position: fixed;
-  z-index: 200;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  .modal-content{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    backdrop-filter:blur(5px);
-    //display: flex;
-    //justify-content: space-between;
-    .playerTop{
-        display: flex;
-        justify-content: space-between;
-        img{
-            width: 70px;
-            height: 80px;
-            margin: 30px 0px 0px 30px;
-        }
-        .playerTab{
-            display: flex;
-            margin-top: 50px;
-            margin-left: -40px;
-            h3{
-                color: #fff;
-                margin: 30px;
-                cursor: pointer;
-            }
-        }
-        .playerClose{
-            margin: 30px 30px 0px 0px;
-            cursor: pointer;
-        }
-    
-    }
-    .playerBottom{
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        .songSection{
+        .player_center{
             display: flex;
             flex-direction: column;
-
-            img{
-                width: 270px;
-            }
-            .titleBtns{
+            margin: 0 50px 0  0;
+            width: 36%;
+            .playerControls{
                 display: flex;
-                justify-content: space-between;
-                margin: 10px 0px;
-                h4{
-                    color: #fff;
+                align-items: center;
+                justify-content: space-evenly;
+                #play{
+                    width: 10%;
                 }
             }
-            h5{
-                color: #aaa;
-                margin-left: -170px;
-            }
-            .timeBarr{
+            .timeBar{
                 display: flex;
-                margin: 20px 0px;
+                justify-content: space-between;
+                p{
+                    color: #aaa;
+                    margin: auto;
+                }
                 [type="range"] {
                     -webkit-appearance: none;
                     appearance: none;
                     margin: 0;
                     outline: 0;
                     background-color: transparent;
-                    width: 160px;
+                    width: 550px;
                     cursor: pointer;
                 }
                 [type="range"]::-webkit-slider-runnable-track {
@@ -237,48 +100,195 @@
                     margin-top: -8px;
                     border-image: linear-gradient(#74EBD5,#74EBD5) 0 fill / 8 20 8 0 / 0px 0px 0 2000px;
                 }
-                p{
-                    color: #aaa;
-                    margin: 0px 10px;
-                }
             }
-            .fcbtns{
+        }
+        .player_right{
+            width: 10%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            img{
+                width: 20px;
+                margin: 0px 10px;
+            }
+            [type="range"] {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    margin: 0;
+                    outline: 0;
+                    background-color: transparent;
+                    width: 80px;
+                    cursor: pointer;
+                }
+                [type="range"]::-webkit-slider-runnable-track {
+                    height: 4px;
+                    background: #eee;
+                }
+                [type="range" i]::-webkit-slider-container {
+                    height: 20px;
+                    overflow: hidden;
+                }
+                [type="range"]::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: #74EBD5;
+                    border: 1px solid transparent;
+                    margin-top: -8px;
+                    border-image: linear-gradient(#74EBD5,#74EBD5) 0 fill / 8 20 8 0 / 0px 0px 0 2000px;
+                }
+            
+            p{
+                color: #aaa;
+                margin-left: 5px;
+            }
+            .loopSong{
+                transition: color 0.3s;
+            }
+            .loopSong-active{
+                color: #74EBD5;
+            }
+        }
+    }
+// -------------蓋板播放器範圍
+.modal {
+//   display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    .modal-content{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        backdrop-filter:blur(5px);
+        //display: flex;
+        //justify-content: space-between;
+        .playerTop{
+            display: flex;
+            justify-content: space-between;
+            img{
+                width: 70px;
+                height: 80px;
+                margin: 30px 0px 0px 30px;
+            }
+            .playerTab{
                 display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-top: 20px;
-                img{
-                    width: 15px;
+                margin-top: 50px;
+                margin-left: -40px;
+                h3{
+                    color: #fff;
+                    margin: 30px;
                     cursor: pointer;
                 }
             }
-        }
-        .lyricsSection{
-            width: 250px;
-            max-height: 350px;
-            padding: 30px;
-            margin: 0px 50px;
-            overflow-y: scroll; 
-            
-            p{
-                color: #fff;
+            .playerClose{
+                margin: 30px 30px 0px 0px;
+                cursor: pointer;
             }
         }
-        .lyricsSection::-webkit-scrollbar {
+        .playerBottom{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            .songSection{
+                display: flex;
+                flex-direction: column;
+                img{
+                    width: 270px;
+                }
+                .titleBtns{
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 10px 0px;
+                    h4{
+                        color: #fff;
+                    }
+                }
+                h5{
+                    color: #aaa;
+                    text-align: left;
+                    // margin-left: -170px;
+                }
+                .timeBarr{
+                    display: flex;
+                    margin: 20px 0px;
+                    [type="range"] {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        margin: 0;
+                        outline: 0;
+                        background-color: transparent;
+                        width: 160px;
+                        cursor: pointer;
+                    }
+                    [type="range"]::-webkit-slider-runnable-track {
+                        height: 4px;
+                        background: #eee;
+                    }
+                    [type="range" i]::-webkit-slider-container {
+                        height: 20px;
+                        overflow: hidden;
+                    }
+                    [type="range"]::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        background-color: #74EBD5;
+                        border: 1px solid transparent;
+                        margin-top: -8px;
+                        border-image: linear-gradient(#74EBD5,#74EBD5) 0 fill / 8 20 8 0 / 0px 0px 0 2000px;
+                    }
+                    p{
+                        color: #aaa;
+                        margin: 0px 10px;
+                    }
+                }
+                .fcbtns{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                    padding: 0 3%;
+                    img{
+                        width: 7%;
+                        cursor: pointer;
+                    }
+                    .play_pause{
+                        // padding:0 1%;
+                        // margin: 0 2%;
+                        width: 13%;
+                    }
+                }
+            }
+            .lyricsSection{
+                width: 250px;
+                max-height: 350px;
+                padding: 30px;
+                margin: 0px 50px;
+                overflow-y: scroll; 
+                p{
+                    color: #fff;
+                }
+            }
+            .lyricsSection::-webkit-scrollbar {
                 width: 5px; 
-        }
-        .lyricsSection::-webkit-scrollbar-thumb{
-            background-color: #5D5DDB;
-            height: 7px;
-            border-radius: 4px;
-        }
-        .lyricsSection::-webkit-scrollbar-track-piece{
-            background: #fff;
-            
+            }
+            .lyricsSection::-webkit-scrollbar-thumb{
+                background-color: #5D5DDB;
+                height: 7px;
+                border-radius: 4px;
+            }
+            .lyricsSection::-webkit-scrollbar-track-piece{
+                background: #fff;
+                
+            }
         }
     }
-    }
-  }
-  
-   
-    
+}
