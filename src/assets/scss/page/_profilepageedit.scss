@@ -1,45 +1,80 @@
-.editfrontpage {
-    box-sizing: border-box;
-    display: flex;
-}
-
-.cover-image-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-
+// 重推again
 .cover-image {
     width: 100%;
-    height: 500px;
+    height: 600px;
     display: flex;
 }
+
 
 .profile-container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -170%);
+    top: 400px;
+    left: 550px;
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+
+.update {
+    position: absolute;
+    top: 600px;
+    left: 780px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.updatepic {
+    position: absolute;
+    top: 450px;
+    right: 100px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+.songpic {
+    border-radius: 50%;
+    margin: 20px;
+}
+
+.songpicupload {
+    border-radius: 50%;
+    margin: 20px;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    align-items: left;
+    justify-content: left;
+}
+
+.profile-container {
     border-radius: 50%;
     overflow: hidden;
     width: 300px;
     height: 300px;
+
 }
 
 .profile {
     width: 100%;
     height: auto;
+
+
 }
 
 
 .page-options {
     display: flex;
     justify-content: space-evenly;
-    padding: 15px;
 }
 
 .page-options :hover {
-    color: rgb(151, 63, 215);
+    color: $purple
 }
 
 
@@ -49,37 +84,185 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
-    color:$white;
+    color: $white;
     font-size: $small;
     margin-top: 300px;
 }
 
-.page-content {
-    padding: 90px 0px;
-    justify-content: left;
-}
 
 .line {
     height: 3px;
     width: 100%;
-    background:  linear-gradient(to right, $tp, $purple, $tp);
+    background: linear-gradient(to right, $tp, $purple, $tp);
 }
 
-.form-group input {
-    width: 50%;
-    height: 50px;
-    background-color: $dark;
-    color: $white;
-    justify-content: center;
+.form1 {
+    text-align: center;
     align-items: center;
+    justify-content: center;
+    margin: 130px;
+
 }
+
+.form-group {
+    padding: 10px;
+    text-align: left;
+}
+
+
+
+.form-group input {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: $white;
+    padding: 10px;
+    text-align: left;
+    margin: 10px;
+}
+
 button.active {
-    color:$purple;
+    color: $purple;
 }
+
+.button {
+    color: $green;
+    background-color: transparent;
+    border: $green 1px solid;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 50px 50px;
+}
+
 .label {
     color: $white;
     font-size: $small;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    align-items: left;
+    margin: 10px;
+
 }
 
+#inst {
+    background-color: black;
+    color: $white;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 0;
+}
+
+#location {
+    background-color: black;
+    color: $white;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+.checkbox {
+    background-color: black;
+    padding: 20px 20px;
+    font-size: large;
+    width: 100%;
+    height: 350px;
+    text-align: left;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.songclass {
+    margin: 20px;
+}
+
+#privacy {
+    color: $green;
+    background-color: black;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    margin: 10px 0px;
+}
+
+label {
+    color: $white;
+    padding: 8px;
+}
+
+.plus-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+
+}
+
+.plus {
+    border-radius: 20%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+p.plus {
+    font-size: 25px;
+    color: $white;
+    padding: 20px;
+    margin-bottom: 50px;
+    display: inline;
+    width: 250px;
+    text-align: center;
+}
+
+
+.song-table {
+    width: 80%;
+    margin: 100px;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.song-table th,
+.song-table td {
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: left;
+    margin-bottom: 20px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    vertical-align: top;
+    justify-content: space-evenly;
+}
+
+.song-table th {
+    background-color: black;
+    color: $white;
+    text-align: left;
+    height: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.albumn {
+    width: 200px;
+    height: 200px;
+}
+
+.song-table td {
+    color: $white;
+    background-color: transparent;
+    font-size: 14px;
+    text-align: left;
+    align-items: center;
+}
+
+.song-table tr:hover {
+    background-color: black
+}
