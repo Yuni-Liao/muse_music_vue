@@ -8,7 +8,7 @@ export default {
                 {
                     title: '編號',
                     key: 'no',
-                    width: 80,
+                    width: 100,
                     align: 'center'
                 },
                 {
@@ -32,7 +32,7 @@ export default {
                 {
                     title: '專輯名稱',
                     key: 'albumName',
-                    width: 150,
+                    width: 120,
                     align: 'center'
                 },
                 {

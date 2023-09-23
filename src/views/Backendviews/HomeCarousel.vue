@@ -2,8 +2,8 @@
     <div class="homecarousel_box">
         <h1>網站資訊管理 | 首頁輪播管理</h1>
         <Button type="primary" @click="addBannerBtn()"
-            style="width:100px; margin-bottom: 1%;margin-left: 62%;">新增輪播</Button>
-        <Table highlight-row stripe class="homecarousel_table cellHeight" width="1200" :columns="columns" :data="data">
+            style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增輪播</Button>
+        <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" :columns="columns" :data="data">
             <template #upDownBtn="{ row }">
                 <Switch @click="upDownBtn()" true-color="#13ce66" false-color="#ff4949" />
             </template>

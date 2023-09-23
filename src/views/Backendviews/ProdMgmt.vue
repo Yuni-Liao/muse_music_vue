@@ -1,15 +1,15 @@
 <template>
     <div class="prodmgmt_box">
         <h1>周邊販售管理 | 商品管理</h1>
-        <Button type="primary" @click="addProdBtn()" style="width:100px; margin-bottom: 1%;margin-left: 65%;">新增商品</Button>
-        <Input v-model="value3" placeholder="輸入商品編號或名稱" style="width: 180px; margin-bottom: 1%; margin-left: 65%;"
+        <Button type="primary" @click="addProdBtn()" style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增商品</Button>
+        <Input v-model="value3" placeholder="輸入商品編號或名稱" style="width: 180px; margin-bottom: 1%; margin-left: 70%;"
             id="prod_search">
         <Input v-model="value" />
         <template #append>
             <Button icon="ios-search" @click="prodSearchBtn()" style="background-color: #515a6e; color: #fff;"></Button>
         </template>
         </Input>
-        <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1200" :columns="columns" :data="data">
+        <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1000" :columns="columns" :data="data">
             <template #upDownBtn="{ row }">
                 <Switch @click="upDownBtn()" true-color="#13ce66" false-color="#ff4949" />
             </template>

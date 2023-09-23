@@ -5,11 +5,12 @@ main{
         flex-flow: column wrap;
         @include layout(80%);
         position: absolute;
-        top: 15%;
+        top: 23%;
         left: 18%;
         display: flex;
         justify-content: center;
         h1{
+            max-width: 800px;
             font-size: $big;
             text-align: left;
             padding-bottom: 2%;
@@ -20,15 +21,10 @@ main{
         flex-flow: column wrap;
         @include layout(80%);
         position: absolute;
-        top: 63%;
+        top: 80%;
         left: 18%;
         display: flex;
         justify-content: center;
-        h1{
-            font-size: $big;
-            text-align: left;
-            padding-bottom: 3%;
-        }
     }
 }
 

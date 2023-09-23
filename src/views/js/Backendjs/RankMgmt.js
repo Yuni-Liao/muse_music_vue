@@ -8,25 +8,25 @@ export default {
                 {
                     title: 'No',
                     key: 'no',
-                    width: 300,
+                    width: 230,
                     align: 'center'
                 },
                 {
                     title: '會員編號',
                     key: 'memNo',
-                    width: 300,
+                    width: 250,
                     align: 'center'
                 },
                 {
                     title: '單曲名稱',
                     key: 'songName',
-                    width: 300,
+                    width: 250,
                     align: 'center'
                 },
                 {
                     title: '操作',
                     slot: 'editBtn',
-                    width: 200,
+                    width: 250,
                     align: 'center'
                 }
             ],

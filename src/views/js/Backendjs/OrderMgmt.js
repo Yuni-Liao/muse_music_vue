@@ -44,13 +44,13 @@ export default {
                 {
                     title: '訂單狀態',
                     key: 'orderStatus',
-                    width: 150,
+                    width: 100,
                     align: 'center'
                 },
                 {
                     title: '操作',
                     slot: 'editBtn',
-                    width: 100,
+                    width: 80,
                     align: 'center'
                 }
             ],

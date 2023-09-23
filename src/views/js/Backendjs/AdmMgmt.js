@@ -15,19 +15,19 @@ export default {
                 {
                     title: '管理員姓名',
                     key: 'name',
-                    width: 300,
+                    width: 150,
                     align: 'center'
                 },
                 {
                     title: '管理員帳號',
                     key: 'acc',
-                    width: 300,
+                    width: 250,
                     align: 'center'
                 },
                 {
                     title: '管理員密碼',
                     key: 'adminPsw',
-                    width: 300,
+                    width: 250,
                     align: 'center'
                 },
                 {
