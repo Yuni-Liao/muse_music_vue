@@ -57,6 +57,7 @@
   h1,
   p {
     color: transparent;
+    padding: 1%;
     letter-spacing: 1px;
     background-image: linear-gradient(to bottom, $blue, $green 200%);
     -webkit-background-clip: text;
@@ -358,15 +359,16 @@
     .imgbox {
       position: relative;
       color: $pink;
+      line-height: $fh;
+
       .ranking {
         @include l {
           @include layout(100%);
           text-shadow: 3px 3px 3px $dark;
           font-weight: bolder;
-          font-size: $superBig;
+          font-size: $big;
           position: absolute;
-          top: 45%;
-          //手機版約20%~30% 需要再調整
+          top: 15%;
           left: 0%;
           margin: auto;
         }
@@ -374,9 +376,9 @@
       .name {
         @include layout(100%);
         font-weight: 600;
-        font-size: $medium;
+        font-size: $small;
         position: absolute;
-        top: 85%;
+        top: 100%;
         left: 0%;
         margin: auto;
       }
@@ -424,14 +426,6 @@
   position: absolute;
   right: -130px;
   bottom: 120px;
-}
-
-//專輯下方閃電線 - 廖妍榛
-.hr {
-  @include layout(100%);
-  img {
-    width: 100%;
-  }
 }
 
 //音樂轉盤 - 廖妍榛
