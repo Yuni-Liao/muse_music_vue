@@ -1,5 +1,7 @@
 import MuseBoy from "@/components/MuseBoy.vue";
 import Typed from "@/components/Typed.vue";
+import player from "@/components/player.vue";
+
 //引入swiper-------------------------
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -25,6 +27,15 @@ import {
 // -----------------------------------
 
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+    Grid,
+    GridItem,
+    MuseBoy,
+    Typed,
+    player,
+  },
   data() {
     return {
       publicPath: process.env.BASE_URL,
@@ -264,14 +275,7 @@ export default {
       modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
     };
   },
-  components: {
-    Swiper,
-    SwiperSlide,
-    Grid,
-    GridItem,
-    MuseBoy,
-    Typed,
-  },
+
   computed: {},
   methods: {
     gotosinglemusic(sid) {
@@ -282,8 +286,9 @@ export default {
         },
       });
     },
-    playmusic() {
-      alert("呼叫懸浮播放器");
+    openplayer() {
+      // alert("呼叫懸浮播放器");
+      this.$refs.player.playMusic();
     },
     //各題音樂測驗按鈕 - 廖妍榛
     gameStart() {
