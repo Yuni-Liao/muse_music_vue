@@ -28,27 +28,27 @@ export default {
             styles: [
                 {
                     id: 0,
-                    styleName: "日語流行",
+                    styleName:"日語流行",
                     count: 563,
                 },
                 {
                     id: 1,
-                    styleName: "韓語流行",
+                    styleName:"韓語流行",
                     count: 742,
                 },
                 {
                     id: 2,
-                    styleName: "華語流行",
+                    styleName:"華語流行",
                     count: 1145,
                 },
                 {
                     id: 3,
-                    styleName: "西洋流行",
+                    styleName:"西洋流行",
                     count: 2637,
                 },
                 {
                     id: 4,
-                    styleName: "其他語言",
+                    styleName:"其他語言",
                     count: 452,
                 },
 
@@ -60,7 +60,7 @@ export default {
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -69,7 +69,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -78,7 +78,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -87,7 +87,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -96,7 +96,7 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -105,7 +105,7 @@ export default {
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -114,7 +114,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -123,7 +123,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -132,7 +132,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -141,7 +141,7 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 }
             ]

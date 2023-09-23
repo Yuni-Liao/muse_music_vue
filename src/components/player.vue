@@ -8,9 +8,13 @@
                 <p>{{ item.songTitle }}</p>
                 <span>{{ item.singer }}</span>
             </div>
-            <audio controls id="myAudio" ref="music">
-                <source :src="getSrc(item.audio)" type="audio/mpeg">
-            </audio>
+
+            <!-- <audio id="myAudio" ref="music" @timeupdate="updateTime">
+                <source :src="item.audio" type="audio/mpeg" >
+            </audio> -->
+
+            <!-- <audio id="myAudio" ref="music" :src="item.audio" @timeupdate="updateTime"></audio> -->
+
         </div>
 
         <div class="player_center">
@@ -20,8 +24,11 @@
                         style="color: #fff; margin: 15px; cursor: pointer;" />
                 </div>
                 <div id="play">
+
                     <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3" @timeupdate="updateTime"></audio> -->
-                    <!-- <audio id="myAudio" ref="music" src="/audio/Busy_Day_Ahead.mp3" @timeupdate="updateTime"></audio> -->
+
+                    <audio id="myAudio" ref="music" src="/audio/Busy_Day_Ahead.mp3" @timeupdate="updateTime"></audio>
+                    
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-if="!isPlaying"
                         @click="playMusic"
@@ -172,16 +179,28 @@ export default {
     },
     data() {
         return {
-            //播放器狀態預設關閉
-            playerOpen: false,
             songList: [
                 {
                     cover: '/image/SingleMusic/songPic.png',
                     songTitle: 'Say it',
                     singer: 'George Makridis',
                     audio: 'Busy_Day_Ahead.mp3',
-                }
+                },
+                // {
+                //     cover: '/image/SingleMusic/songPic.png',
+                //     songTitle: 'Say it_2',
+                //     singer: 'George Makridis_2',
+                //     audio: 'Busy_Day_Ahead.mp3',
+                // },
+                // {
+                //     cover: '/image/SingleMusic/songPic.png',
+                //     songTitle: 'Say it_3',
+                //     singer: 'George Makridis_3',
+                //     audio: 'Busy_Day_Ahead.mp3',
+                // }
             ],
+            //播放器狀態預設關閉
+            playerOpen: false,
             isPlaying: false,
             progressWidth: '0px',
             isMuted: false,
@@ -195,21 +214,22 @@ export default {
         }
     },
     methods: {
-        getSrc(src) {
-        return require(`@/audio/${src}`);
-        },
+        // getSrc(audio) {
+        // return require(`@/audio/${audio}`);
+        // },
+
+        //播放音樂
         playMusic() {
-            //播放音樂
-            // 播放音樂
-            this.playerOpen = true;//先執行顯示
-            this.$nextTick(() => {//再執行播放
+            //先執行顯示
+            this.playerOpen = true;
+            //再執行播放
+            this.$nextTick(() => {
                 this.$refs.music.play();
                 this.isPlaying = true;
-                
             });
         },
+        // 暫停音樂
         pauseMusic() {
-            // 暫停音樂
             this.$refs.music.pause();
             this.isPlaying = false;
         },
@@ -247,7 +267,6 @@ export default {
             const audioElement = this.$refs.music;
             this.totalTime = audioElement.duration;
         },
-       
     },
     computed: {
         formatTime() {
@@ -260,13 +279,11 @@ export default {
         }
     },
     watch: {
-                volume: function(newVolume) {
-                    const audioElement = document.getElementById("myAudio");
-                    audioElement.volume = newVolume / 100;
-                },
-                
-                
-            }
+        volume: function(newVolume) {
+            const audioElement = document.getElementById("myAudio");
+            audioElement.volume = newVolume / 100;
+        },
+    }
 };
 </script>
 
