@@ -56,11 +56,11 @@
         .acc_box{
             @include rect(340px, fit);
             padding: 0% 5% 5% 0%;
-            font-size: $default;
+            font-size: $tag;
             .acc_item{
                 margin-top: 10%;
                 input{
-                    margin-top: 0.5%;
+                    margin: 1.5% 0%;
                     height: 30px;
                     width: 300px;
                 }
@@ -111,7 +111,7 @@
         .acc_safe_box{
             @include rect(700px, fit);
             padding: 0% 5%;
-            font-size: $default;
+            font-size: $tag;
             .acc_safe_item{
             display: flex;
             justify-content: space-between;
@@ -123,6 +123,7 @@
                 flex-flow: column wrap;
             span{
                 @include mini_Tag($tag);
+                margin-bottom: 5%;
                 }
             }
             p{
