@@ -21,6 +21,9 @@
     height: 100vh;
     img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center; //待調整
     }
   }
 
@@ -84,7 +87,7 @@
       height: 130px;
       position: relative;
       right: 6%;
-      overflow-x: hidden;
+      // overflow-x: hidden;
     }
   }
   & span::after {
@@ -136,16 +139,16 @@
     margin: 40px;
   }
   .swiper {
+    margin-top: 150px;
     width: 100%;
-    height: 110vh;
-    // padding-top: 50px;
+    height: 85vh;
     // padding-bottom: 50px;
+    overflow-y: visible;
     .swiper-wrapper {
       position: relative;
       background-color: transparent;
       margin-bottom: 30px;
       position: relative;
-
       .swiper-slide {
         background-color: transparent;
         opacity: 0.7;
@@ -191,12 +194,16 @@
           }
           .text {
             cursor: pointer;
+            margin-top: 10px;
+            color: $white;
             h3 {
               text-align: start;
               font-size: $small;
+              line-height: 1.8;
+              font-weight: 600;
             }
             p {
-              @include mini_Tag($tag);
+              font-size: $tag;
               display: flex;
               justify-content: space-between;
             }
@@ -231,7 +238,7 @@
           z-index: -10;
           transform: translate(-50%, 0);
           animation: rotate360 10s 0s linear infinite;
-          pointer-events: none;
+          // pointer-events: none;
         }
       }
     }
@@ -265,6 +272,72 @@
   right: 0px;
   top: 0px;
   z-index: 0;
+}
+.index_wave {
+  height: 100px;
+  .wave {
+    margin: auto;
+    position: relative;
+    opacity: 0;
+    top: 0;
+    width: 2px;
+    height: 0.5px;
+    border: #fff 5px solid;
+    border-radius: 300px / 75px;
+    -webkit-animation: ripple 4s infinite;
+    -moz-animation: ripple 4s infinite;
+    animation: ripple 4s infinite;
+  }
+
+  .wave:after {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    top: -5px;
+    left: -5px;
+    width: 2px;
+    height: 0.5px;
+    border: #fff 3px solid;
+    border-radius: 300px / 75px;
+    -webkit-animation: ripple-2 4s infinite;
+    -moz-animation: ripple-2 4s infinite;
+    animation: ripple-2 4s infinite;
+  }
+
+  @keyframes ripple {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      width: 600px;
+      height: 150px;
+      border-width: 1px;
+      top: -50px;
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes ripple-2 {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      width: 200px;
+      height: 50px;
+      border-width: 1px;
+      top: 50px;
+      left: 200px;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 }
 
 // // 本週熱門專輯 - 廖妍榛
@@ -608,7 +681,7 @@
     @include rect(682px, 455px);
     margin: auto;
     position: relative;
-    .index_pic_box{
+    .index_pic_box {
       // 第一個問題的裝飾
       .test_cloud_rtl {
         animation: cuteCloud_rtl 13s infinite ease-in-out;
@@ -636,21 +709,21 @@
         margin: 0px 9px;
         animation: sweet 1s infinite ease-in-out;
       }
-      .test_drop_banana{
+      .test_drop_banana {
         animation: banana 5s infinite ease-in-out;
       }
-      
+
       // 第四個問題的裝飾
-      .test_loveRed{
+      .test_loveRed {
         animation: love_slow 4s infinite ease-in-out;
       }
-      .test_loveAllB{
+      .test_loveAllB {
         animation: love_slow 2s infinite ease-in-out;
       }
-      .test_loveGreen{
-      animation: love_fast 3s infinite ease-in-out;
+      .test_loveGreen {
+        animation: love_fast 3s infinite ease-in-out;
       }
-      .test_redlove{
+      .test_redlove {
         animation: love_bling 2s infinite ease-in-out;
       }
 
@@ -842,8 +915,8 @@
   0% {
     transform: translate(150px, -10px) rotate(30deg);
   }
-  100%{
-    transform: translate(150px, -10px) rotate(-30deg)
+  100% {
+    transform: translate(150px, -10px) rotate(-30deg);
   }
 }
 
@@ -871,43 +944,43 @@
 }
 
 //掉落香蕉
-@keyframes banana{
-  0%{
-    transform: translate(0px, -450px) rotate(30deg)
+@keyframes banana {
+  0% {
+    transform: translate(0px, -450px) rotate(30deg);
   }
-  100%{
-    transform: translate(0px, -20px) rotate(30deg)
+  100% {
+    transform: translate(0px, -20px) rotate(30deg);
   }
 }
 
 // 掉落愛心
-@keyframes love_fast{
-  0%{
-    transform: translate(70px, -450px) 
+@keyframes love_fast {
+  0% {
+    transform: translate(70px, -450px);
   }
-  100%{
-    transform: translate(70px, -30px)
+  100% {
+    transform: translate(70px, -30px);
   }
 }
 
-@keyframes love_slow{
-  0%{
-    transform: translate(200px, -450px) 
+@keyframes love_slow {
+  0% {
+    transform: translate(200px, -450px);
   }
-  100%{
-    transform: translate(200px, -30px) 
+  100% {
+    transform: translate(200px, -30px);
   }
 }
 
 // 閃爍愛心
-@keyframes love_bling{
-  0%{
+@keyframes love_bling {
+  0% {
     opacity: 0;
-    transform: translate(-180px, -475px) 
+    transform: translate(-180px, -475px);
   }
-  100%{
+  100% {
     opacity: 1;
-    transform: translate(-180px, -475px)
+    transform: translate(-180px, -475px);
   }
 }
 
