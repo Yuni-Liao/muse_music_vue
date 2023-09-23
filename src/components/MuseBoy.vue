@@ -518,20 +518,20 @@ export default {
       context.fillStyle = "#aaaaaa80";
       context.fill();
     }
-
-    function alternatedrawing() {
-      // 每隔三秒執行函式1，然後再隔三秒執行函式2，一直重複
-      drawing();
-      setInterval(() => {
-        drawing(); // 執行函式1
-        setTimeout(() => {
-          drawing2(); // 執行函式2
-        }, 500); // 三秒後執行函式2
-      }, 1000); // 六秒後執行函式1
-    }
-    alternatedrawing();
+    // 每隔三秒執行函式1，然後再隔三秒執行函式2，一直重複
+    drawing();
+    this.museboytTimer = setInterval(() => {
+      // console.log("museboy計時器");
+      drawing(); // 執行函式1
+      setTimeout(() => {
+        drawing2(); // 執行函式2
+      }, 500); // 三秒後執行函式2
+    }, 1000); // 六秒後執行函式1
   },
   methods: {},
+  unmounted() {
+    clearInterval(this.museboytTimer);
+  },
 };
 </script>
 

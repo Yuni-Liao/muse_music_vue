@@ -1,13 +1,13 @@
 <template>
     <div class="songtype_table_box">
         <h1>歌曲管理 | 歌曲類別管理</h1>
-        <Input v-model="value3" placeholder="輸入類別編號或名稱" style="width: 180px; margin-bottom: 1%; margin-left: 60%;">
+        <Input v-model="value3" placeholder="輸入類別編號或名稱" style="width: 180px;  margin-bottom: 1%; margin-left: 70%;">
         <Input v-model="value" />
         <template #append>
             <Button icon="ios-search" @click="songTypeSearchBtn()" style="background-color: #515a6e; color: #fff;"></Button>
         </template>
         </Input>
-        <Table highlight-row stripe class="songtype_table cellHeight" width="1200" height="250" :columns="columns"
+        <Table highlight-row stripe class="songtype_table cellHeight" width="1000" height="200" :columns="columns"
             :data="data">
             <template #editSongTypeBtn="{ row }">
                 <fontAwesome @click="editSongTypeBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
@@ -15,7 +15,7 @@
         </Table>
     </div>
     <div class="singlesongtype_table_box">
-        <Table highlight-row stripe class="songtype_table cellHeight" width="1200" height="250" :columns="singleSongType"
+        <Table highlight-row stripe class="songtype_table cellHeight" width="1000" height="200" :columns="singleSongType"
             :data="singleSongData">
             <template #editSingleSongBtn="{ row }">
                 <fontAwesome @click="editSingleSongBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />

@@ -77,6 +77,7 @@
       <!-- tab -->
       <div class="tabs">
         <button
+          style="display: none"
           @click="tabtype = 0"
           class="tab"
           :class="{ active: tabtype == 0 }"
@@ -183,7 +184,7 @@
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </div>
-                <h4 v-line-clamp="2" @click="gotosinglemusic(sid)">
+                <h4 v-line-clamp="2" @click="gotosinglemusic(item.id)">
                   {{ item.songName }}
                 </h4>
                 <span class="time">{{ item.time }}</span>

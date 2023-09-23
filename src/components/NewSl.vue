@@ -10,7 +10,7 @@
           <p>隱私設定</p>
           <div class="opt">
             <label class="radioLabel">
-              <input type="radio" name="public" value="1" checked />
+              <input type="radio" name="public" value="1" required />
               <fontAwesome class="i" :icon="['fa', 'fa-check']"
             /></label>
             <span
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="submit">
-        <button>
+        <button type="button">
           <fontAwesome class="i" :icon="['fa', 'fa-check']" />完成
         </button>
       </div>
@@ -41,91 +41,124 @@
 <script>
 export default {
   name: "NewSl",
-  methods: {
-    // ShareBtn() {
-    //   alert("分享");
-    // },
+  data() {
+    return {};
   },
+  methods: {},
 };
 </script>
 
 <style scoped lang="scss">
 #NewSl {
+  width: 400px;
+  // 水平垂直置中
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 30;
-  width: 280px;
-  background-color: #000000;
-  border-radius: 6px;
-  border: 1px solid $white;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+
+  background-color: #000000dd;
+  box-shadow: 0px 0px 50px #00000030;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
   color: $white;
-  font-size: $tag;
+  padding: 0 30px;
   .i {
     margin: 0 10px;
     font-size: $tag;
   }
   .content {
-    p {
-      text-align: left;
-    }
-    padding: 10px 20px;
-
+    padding-top: 30px;
     .title {
-      padding: 5px 0;
+      margin-bottom: 15px;
       p {
-        padding: 5px 0;
+        font-size: $default;
+        text-align: left;
+        padding: 10px 0;
       }
-    }
-    input[type="text"] {
-      width: 100%;
-      background-color: $tp;
-      border: none;
-      border-bottom: 1px solid $white;
-    }
-    .opt {
-      margin: 10px 0;
-      display: flex;
-      justify-content: space-between;
-      .radioLabel {
-        position: relative;
-        margin-right: 0 10px;
-        vertical-align: middle;
-        input[type="radio"] {
-          color: $white;
-          width: 20px;
-          height: 20px;
-          /*清除預設樣式*/
-          appearance: none;
-          -moz-appearance: none;
-          -webkit-appearance: none;
-          border: 1px solid $white;
+      input[type="text"] {
+        outline: 0;
+        width: 100%;
+        background-color: $tp;
+        border: none;
+        background-color: #ffffff20;
+        border-radius: 5px;
+        // border-bottom: 1px solid $white;
+        padding: 8px 10px;
+        color: $green;
+        margin: 10px 0;
+        font-size: $tag;
+      }
+      .opt {
+        margin: 18px 0 35px 0;
+        display: flex;
+        .radioLabel {
+          position: relative;
+          margin-right: 20px;
+          padding-top: 2px;
+          input[type="radio"] {
+            cursor: pointer;
+            vertical-align: sub;
+            color: $white;
+            width: 23px;
+            height: 23px;
+            border-radius: 50%;
+            /*清除預設樣式*/
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 2px solid #ffffff80;
+          }
+          .i {
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            font-size: 12px;
+            color: $green;
+            margin: 0;
+            opacity: 0;
+            pointer-events: none;
+          }
+          input[type="radio"]:hover,
+          input[type="radio"]:checked {
+            border: 2px solid $green;
+          }
+          input[type="radio"]:hover ~ .i,
+          input[type="radio"]:checked ~ .i {
+            opacity: 1;
+          }
         }
-        .i {
-          position: absolute;
-          z-index: 10;
-          top: 15%;
-          left: 25%;
-          font-size: 12px;
-          color: $white;
-          margin: 0;
-          opacity: 0;
-          pointer-events: none;
-        }
-        input[type="radio"]:checked ~ .i {
-          opacity: 1;
+        span {
+          font-size: $tag;
+          flex-grow: 1;
+          text-align: start;
+          line-height: 25px;
         }
       }
     }
   }
   .submit {
-    width: 280px;
-    padding: 10px;
-    border-top: 1px solid $white;
+    width: 100%;
+    height: 70px;
+    margin-top: 20px;
+    border-top: 1px solid #ffffff80;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     button {
+      margin: auto;
       @include btnBgNone;
+      font-size: $default;
       color: $white;
+      .i {
+        margin-right: 20px;
+      }
+    }
+    button:hover {
+      color: $green;
     }
   }
 }

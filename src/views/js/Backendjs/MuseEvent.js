@@ -57,7 +57,7 @@ export default {
                 {
                     title: '操作',
                     slot: 'editBtn',
-                    width: 100,
+                    width: 80,
                     align: 'center'
                 }
             ],

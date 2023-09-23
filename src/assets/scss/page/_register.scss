@@ -1,17 +1,17 @@
 .reg_wrapper {
     @include layout(100%);
+    background: url(/public/image/Login/background_light.png) no-repeat center 95% / 100% ;
 
     .reg_inner {
         width: 62.5%;
         margin: auto;
-        // padding: 13% 0;
-        padding: 8% 0;
+        padding: 7% 0;
         form {
             font-size: $small;
             width: 35%;
             background-color: $white;
-            margin: 5% auto;
-            padding: 5% 0;
+            margin: 4% auto;
+            padding: 3% 0;
 
             h2 {
                 font-size: $medium;

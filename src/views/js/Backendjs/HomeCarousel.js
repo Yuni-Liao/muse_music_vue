@@ -18,7 +18,7 @@ export default {
                     title: '輪播名稱',
                     key: 'carouselName',
                     align: 'center',
-                    width: 200,
+                    width: 150,
                 },
                 {
                     title: '圖片',
@@ -42,7 +42,7 @@ export default {
                     title: '更新時間',
                     key: 'updateTime',
                     align: 'center',
-                    width: 250,
+                    width: 200,
                 },
                 {
                     title: '操作',

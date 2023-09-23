@@ -7,7 +7,7 @@ export default {
             modal: false,
             columns: [
                 {
-                    title: '會員編號',
+                    title: '編號',
                     key: 'no',
                     align: 'center',
                     width: 100,
@@ -22,7 +22,7 @@ export default {
                     title: '使用者名稱',
                     key: 'name',
                     align: 'center',
-                    width: 200,
+                    width: 135,
                 },
                 {
                     title: '追蹤數',
@@ -34,12 +34,12 @@ export default {
                     title: '已上傳歌曲',
                     key: 'upload_song',
                     align: 'center',
-                    width: 150,
+                    width: 130,
                 }, {
                     title: '已建立歌單',
                     key: 'createdSongList',
                     align: 'center',
-                    width: 150,
+                    width: 130,
                 },
                 {
                     title: '操作',

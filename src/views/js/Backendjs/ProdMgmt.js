@@ -14,7 +14,7 @@ export default {
                 {
                     title: '商品編號',
                     key: 'prodNo',
-                    width: 150,
+                    width: 100,
                     align: 'center'
                 },
                 {
@@ -26,13 +26,13 @@ export default {
                 {
                     title: '商品分類',
                     key: 'prodType',
-                    width: 150,
+                    width: 100,
                     align: 'center'
                 },
                 {
                     title: '商品售價',
                     key: 'amount',
-                    width: 150,
+                    width: 100,
                     align: 'center'
                 },
                 {
@@ -50,13 +50,13 @@ export default {
                 {
                     title: '操作',
                     slot: 'upDownBtn',
-                    width: 100,
+                    width: 70,
                     align: 'center'
                 },
                 {
                     title: ' ',
                     slot: 'editBtn',
-                    width: 80,
+                    width: 60,
                     align: 'center'
                 }
             ],

@@ -42,28 +42,24 @@ export default {
       this.index = 0; // 重置索引
       this.displayedText.push(""); // 添加一个空文本，用于显示当前内容
 
-      const typingInterval = setInterval(() => {
+      this.typingInterval = setInterval(() => {
+        //console.log("打字機計時器");
         this.index++;
         const text = currentContent.slice(0, this.index);
         this.displayedText[this.displayedText.length - 1] = text; // 更新最后一个元素
 
         if (this.index === currentContent.length) {
           // 当前内容已打印完毕
-          clearInterval(typingInterval); // 停止计时器
+          clearInterval(this.typingInterval); // 停止计时器
           setTimeout(() => {
-            // 根据不同的内容类型切换到下一个
-            // if (this.activeContent === "ques") {
-            //   this.activeContent = "opt1";
-            // } else if (this.activeContent === "opt1") {
-            //   this.activeContent = "opt2";
-            // } else if (this.activeContent === "opt2") {
-            //   this.activeContent = "opt3";
-            // }
             this.autoTyping(); // 继续下一个内容
           }, 1000); // 停顿一秒后继续下一个内容
         }
       }, 100);
     },
+  },
+  unmounted() {
+    clearInterval(this.typingInterval);
   },
 };
 </script>

@@ -58,9 +58,10 @@
   p {
     color: transparent;
     letter-spacing: 1px;
-    background-image: linear-gradient(to bottom, $blue, $green 200%);
+    background-image: linear-gradient(to bottom, $blue, $green 100%);
     -webkit-background-clip: text;
     background-clip: text;
+    padding: 1.5%;
   }
 
   h1 {
@@ -87,7 +88,6 @@
       height: 130px;
       position: relative;
       right: 6%;
-      // overflow-x: hidden;
     }
   }
   & span::after {
@@ -141,7 +141,7 @@
   .swiper {
     margin-top: 150px;
     width: 100%;
-    height: 85vh;
+    height: 80vh;
     // padding-bottom: 50px;
     overflow-y: visible;
     .swiper-wrapper {
@@ -358,15 +358,16 @@
     .imgbox {
       position: relative;
       color: $pink;
+      line-height: $fh;
+
       .ranking {
         @include l {
           @include layout(100%);
           text-shadow: 3px 3px 3px $dark;
           font-weight: bolder;
-          font-size: $superBig;
+          font-size: $big;
           position: absolute;
-          top: 45%;
-          //手機版約20%~30% 需要再調整
+          top: 15%;
           left: 0%;
           margin: auto;
         }
@@ -374,9 +375,9 @@
       .name {
         @include layout(100%);
         font-weight: 600;
-        font-size: $medium;
+        font-size: $small;
         position: absolute;
-        top: 85%;
+        top: 100%;
         left: 0%;
         margin: auto;
       }
@@ -424,14 +425,6 @@
   position: absolute;
   right: -130px;
   bottom: 120px;
-}
-
-//專輯下方閃電線 - 廖妍榛
-.hr {
-  @include layout(100%);
-  img {
-    width: 100%;
-  }
 }
 
 //音樂轉盤 - 廖妍榛
@@ -900,13 +893,13 @@
 // 雲朵飄飄動畫 - 右到左
 @keyframes cuteCloud_rtl {
   0% {
-    transform: translate(0px, -205px);
+    transform: translate(0px, -227px);
   }
   50% {
-    transform: translate(-280px, -205px);
+    transform: translate(-280px, -227px);
   }
   100% {
-    transform: translate(0px, -205px);
+    transform: translate(0px, -227px);
   }
 }
 
@@ -976,11 +969,11 @@
 @keyframes love_bling {
   0% {
     opacity: 0;
-    transform: translate(-180px, -475px);
+    transform: translate(-180px, -485px) 
   }
   100% {
     opacity: 1;
-    transform: translate(-180px, -475px);
+    transform: translate(-180px, -485px)
   }
 }
 

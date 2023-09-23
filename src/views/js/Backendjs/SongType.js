@@ -8,25 +8,25 @@ export default {
                 {
                     title: 'No',
                     key: 'allSongNo',
-                    width: 280,
+                    width: 230,
                     align: 'center'
                 },
                 {
                     title: '舊類別名稱',
                     key: 'oldTypeName',
-                    width: 300,
+                    width: 250,
                     align: 'center'
                 },
                 {
                     title: '新類別名稱',
                     key: 'newTypeName',
-                    width: 300,
+                    width: 250,
                     align: 'center'
                 },
                 {
                     title: '操作',
                     slot: 'editSongTypeBtn',
-                    width: 220,
+                    width: 250,
                     align: 'center'
                 },
             ],
@@ -89,7 +89,7 @@ export default {
                 {
                     title: '歌曲類別',
                     key: 'singleSongType',
-                    width: 150,
+                    width: 100,
                     align: 'center'
                 },
                 {
@@ -107,13 +107,13 @@ export default {
                 {
                     title: '審核時間',
                     key: 'acceptTime',
-                    width: 200,
+                    width: 180,
                     align: 'center'
                 },
                 {
                     title: '操作',
                     slot: 'editSingleSongBtn',
-                    width: 150,
+                    width: 100,
                     align: 'center'
                 }
             ],

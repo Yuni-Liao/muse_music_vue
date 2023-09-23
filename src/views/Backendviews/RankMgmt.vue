@@ -1,11 +1,11 @@
 <template>
     <div class="rankmgmt_box">
         <h1>網站資訊管理 | 排行榜管理</h1>
-        <Button type="primary" @click="addRank()" style="width:100px; margin-bottom: 1%;margin-left: 65%;">編輯排行</Button>
+        <Button type="primary" @click="addRank()" style="width:100px; margin-bottom: 1%;margin-left: 70%;">編輯排行</Button>
 
-        <Tabs value="name1" capture-focus v-width="1200" style="overflow-x: hidden;">
-            <TabPane label="單曲排行" name="singleSongRanking" width="1200" height="450">
-                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="450"
+        <Tabs value="name1" capture-focus v-width="1000" style="overflow-x: hidden;">
+            <TabPane label="單曲排行" name="singleSongRanking" width="1000" height="450">
+                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1000" height="450"
                     :columns="columns" :data="data">
                     <template #editBtn="{ row }">
                         <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
@@ -13,7 +13,7 @@
                 </Table>
             </TabPane>
             <TabPane label="專輯排行" name="albumRanking">
-                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="450"
+                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1000" height="450"
                     :columns="columns" :data="data">
                     <template #editBtn="{ row }">
                         <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
@@ -21,7 +21,7 @@
                 </Table>
             </TabPane>
             <TabPane label="歌單排行" name="songListRanking">
-                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1200" height="450"
+                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1000" height="450"
                     :columns="columns" :data="data">
                     <template #editBtn="{ row }">
                         <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
