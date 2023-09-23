@@ -1,7 +1,6 @@
 <template>
     <div class="bannerpic">
-        <img src="
-        /image/ShopImage/shopbanner.png" alt="周邊販售">
+        <img :src="`${publicPath}image/ShopImage/shopbanner.png`" alt="周邊販售">
     </div>
     <!-- 麵包屑 -->
     <Breadcrumb separator="/">
@@ -34,13 +33,14 @@
         <div class="inner">
             <div class="prod">
                 <div class="prodCard" v-for="(item, id) in products" :key="id">
-                    <router-link :to="`/shopproddetail/${id}`"  class="prodPic">
+                    <router-link :to="`/home/shopproddetail/${id}`" class="prodPic">
                         <!-- <router-link to="/shopproddetail/:id" class="prodPic" @click="goToProductDetail(id)"></router-link> -->
                         <!-- <img :src="item.prodPic" :alt="item.prodName"> -->
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
-                        <router-link to="`/shopproddetail/${item.id}`" class="prodName">{{ item.prodName }}</router-link>
+                        <router-link to="`/home/shopproddetail/${item.id}`" class="prodName">{{ item.prodName
+                        }}</router-link>
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>
 
                         <!-- 數量加減 -->
@@ -63,12 +63,11 @@
             <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
                 @on-change="handlePageChange" @on-page-size-change="handlePageSize" />
         </div>
-        <router-link to="/shoppingsteps">
+        <router-link to="/home/shoppingsteps">
             <button class="shopcart">
-                <img src="/image/icon/shopcart.png" alt="shopcart">
+                <img :src="`${publicPath}image/icon/shopcart.png`" alt="shopcart">
             </button>
         </router-link>
-
     </div>
 </template>
 

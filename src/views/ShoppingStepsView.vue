@@ -4,9 +4,9 @@
       <div :style="{ width: progressWidth + '%' }"></div>
     </div>
     <Breadcrumb separator=">" class="breadcrumb">
-      <BreadcrumbItem><router-link to="/">首頁</router-link></BreadcrumbItem>
-      <BreadcrumbItem><router-link to="/shop">周邊商品</router-link></BreadcrumbItem>
-      <BreadcrumbItem><router-link to="/shoppingsteps"></router-link>購物車</BreadcrumbItem>
+      <BreadcrumbItem><router-link to="/home">首頁</router-link></BreadcrumbItem>
+      <BreadcrumbItem><router-link to="/home/shop">周邊商品</router-link></BreadcrumbItem>
+      <BreadcrumbItem><router-link to="/home/shoppingsteps"></router-link>購物車</BreadcrumbItem>
     </Breadcrumb>
     <div class="checkout-steps">
       <div :class="{ active: currentStep === 1 }">1.選取商品加入購物車</div>
@@ -52,7 +52,7 @@
         <!-- ▲ 凱芸 測試帶入暫存的商品資訊 -->
 
         <button @click="completeStep">
-          <router-link to="/shop">◄ 繼續選購其他商品</router-link>
+          <router-link to="/home/shop">◄ 繼續選購其他商品</router-link>
         </button>
         <button @click="nextStep">進入結帳 ►</button>
 
@@ -159,10 +159,10 @@
         <div class="shopline"></div>
         <p>已完成訂購，預計2~3天內出貨，感謝您的支持!</p>
         <button @click="completeStep">
-          <router-link to="/shop">會員專區</router-link>
+          <router-link to="/home/shop">會員專區</router-link>
         </button>
         <button @click="completeStep">
-          <router-link to="/">回到首頁</router-link>
+          <router-link to="/home">回到首頁</router-link>
         </button>
       </div>
     </div>

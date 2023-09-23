@@ -14,7 +14,6 @@
   <div class="index_centerSlogn">
     <div class="index_centerH1">
       <h1>Making Waves</h1>
-      <router-link to="/backendLogin"><button class="default_Btn btn_L_NoBorder">安安你好討厭</button></router-link>
     </div>
     <div class="index_joinUs">
       <span></span>

@@ -1,12 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
-import FrontEnd from "../views/FrontEnd.vue";
+// import FrontEnd from "../views/FrontEnd.vue";
 
 const routes = [
-  //g2
+  //g2  ----- 導航頁
   {
     path: "/",
+    name: "path",
+    component: () =>
+      import(/* webpackChunkName: "path" */ "../views/Path.vue"),
+    meta: {
+      title: "MUSE",
+    },
+  },
+  //  g2/home
+  {
+    path: "/home",
     name: "frontend",
-    component: FrontEnd,
+    component: () =>
+      import(/* webpackChunkName: "frontend" */ "../views/FrontEnd.vue"),
     children: [
       {
         path: "",
@@ -14,12 +25,10 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "index" */ "../views/HomeView.vue"),
       },
+      //  g2/home/find
       {
         path: "find",
         name: "find",
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () =>
           import(/* webpackChunkName: "find" */ "../views/FindView.vue"),
         meta: {

@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-    <router-link to="/"><img class="login_logo" alt="Vue logo" src="~@/assets/image/muse_logo.png"></router-link>
+    <router-link to="/home"><img class="login_logo" alt="Vue logo" src="~@/assets/image/muse_logo.png"></router-link>
     <div class="login-container">
         <form @submit.prevent="login">
             <div class="form-group">
@@ -11,8 +11,8 @@
             </div>
 
             <div class="links">
-                <router-link to="/forgetpsw">忘記密碼</router-link>
-                <router-link to="/register">立即註冊</router-link>
+                <router-link to="/home/forgetpsw">忘記密碼</router-link>
+                <router-link to="/home/register">立即註冊</router-link>
             </div>
             <button type="submit">登入</button>
         </form>
