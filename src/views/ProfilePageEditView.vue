@@ -1,4 +1,5 @@
 <template>
+  <!-- 重推again -->
   <div class="cover-image-container">
     <img
       class="cover-image"

@@ -1,5 +1,6 @@
 
 export default {
+    // 重推again
     data() {
         return {
             // 讓圖片 build 之後能顯示
