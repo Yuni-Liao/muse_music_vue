@@ -4,15 +4,19 @@ export default {
     return {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
-      //
-      coverimgURL: require(`/public/dataimage/member/1-2.jpg`),
-      profileImgURL: require(`/public/dataimage/member/1.jpg`),
       activeTab: 1,
-      name: "",
-      introduction: "",
-      location: "",
-      socialMedia: "",
-      privacy: "公開",
+      currentStep: 0,
+      member: {
+        coverimgURL: require(`/public/dataimage/member/1-2.jpg`),
+        profileImgURL: require(`/public/dataimage/member/1.jpg`),
+        name: "Anonyous",
+        introduction:
+          "桃園人，喜歡古典樂，最近嘗試個人創作，將古典樂結合搖滾，如果各位還喜歡，請追蹤我會不定時更新創作，謝謝支持~~~",
+        location: "",
+        socialMedia: "",
+        privacy: "公開",
+      },
+
       songs: [
         {
           title: "你是我的唯一 ft. 邱比特",

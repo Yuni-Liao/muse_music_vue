@@ -1,32 +1,14 @@
 <template>
   <div class="profilepageedit">
-    <!-- 重推again -->
     <div class="cover-container">
-      <img class="cover" alt="Cover Image" :src="coverimgURL" />
+      <img class="cover" alt="Cover Image" :src="member.coverimgURL" />
       <input class="coverupdate" type="file" @change="coverImgChange" />
       <!-- 頭貼 -->
       <div class="profile-container">
-        <img class="profile" alt="Profile Image" :src="profileImgURL" />
+        <img class="profile" alt="Profile Image" :src="member.profileImgURL" />
         <input type="file" @change="profileImgChange" class="profileupdate" />
       </div>
     </div>
-
-    <!-- <Upload>
-    <img class="update" alt="update" src="@/assets/image/icon/upload.jpg" />
-  </Upload> -->
-
-    <!-- <img class="updatepic" alt="update" src="@/assets/image/icon/upload.jpg" /> -->
-
-    <!-- <Upload>
-    <div class="profile-container">
-      <img
-        class="profile"
-        alt="Profile Image"
-        src="@/assets/image/profileeditimage/profileimage.jpg"
-      />
-    </div>
-    <img class="updatepic" alt="update" src="@/assets/image/icon/upload.jpg" />
-  </Upload> -->
 
     <div class="main-wrapper">
       <div class="page-options">
@@ -64,23 +46,24 @@
                 style=""
                 id="name"
                 v-model="name"
-                placeholder="Anonyous"
+                :placeholder="member.name"
               />
             </div>
             <div class="form-group">
               <label for="inst" class="label">介紹</label>
-              <input
-                type="text"
+              <textarea
+                name=""
                 id="inst"
                 v-model="inst"
-                placeholder="桃園人，喜歡古典樂，最近嘗試個人創作，將古典樂結合搖滾，如果各位還喜歡，請追蹤我會不定時更新創作，謝謝支持~~~"
-                maxlength="300"
-              />
+                rows="10"
+                wrap="hard"
+                :placeholder="member.introduction"
+              ></textarea>
             </div>
             <div class="form-group">
               <label for="location" class="label">位置</label>
               <select id="location" v-model="location">
-                <option value="">請選擇縣市</option>
+                <option value="" disabled>請選擇縣市</option>
                 <option value="基隆市">基隆市,台灣</option>
                 <option value="台北市">台北市,台灣</option>
                 <option value="新北市">新北市,台灣</option>
@@ -139,6 +122,7 @@
         <div v-show="activeTab === 2">
           <form class="form1">
             <div class="form-group">
+              <label for="newalbumname" class="label">歌曲上傳</label>
               <Upload
                 type="drag"
                 action="//jsonplaceholder.typicode.com/posts/"
@@ -159,6 +143,7 @@
             </div>
 
             <div class="form-group">
+              <label for="newalbumname" class="label">歌曲封面</label>
               <Upload
                 type="drag"
                 action="//jsonplaceholder.typicode.com/posts/"
@@ -179,169 +164,172 @@
             </div>
 
             <div class="form-group">
-              <label for="newalbumname" class="label">輸入歌曲名稱</label>
+              <label for="newalbumname" class="label">歌曲名稱</label>
               <input type="text" id="newalbumname" v-model="newalbumname" />
             </div>
             <div class="form-group">
-              <label for="songclass" class="label">輸入歌曲介紹</label>
-              <input type="text" id="songclass" v-model="newalbuminfo" />
+              <label for="songintro" class="label">歌曲介紹</label>
+              <input type="text" id="songintro" v-model="newalbuminfo" />
             </div>
             <div class="form-group">
-              <label for="newalbumname" class="label">選擇種類</label>
+              <label for="songclass" class="label">分類</label>
             </div>
             <div class="checkbox">
-              <label for="songclass" class="label">歌曲語種 :</label>
               <div class="songclass">
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">日語流行</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">韓語流行</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">華語流行</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">西洋流行</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">其他語言</label><br />
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">流行音樂</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">搖滾</label>
+                <label for="songclass" class="label">語系</label>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">日語流行</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">韓語流行</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">華語流行</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">西洋流行</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">其他語言</span>
+                </div>
               </div>
-              <label for="songclass" class="label">歌曲類別 :</label>
               <div class="songclass">
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">嘻哈</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">獨立音樂</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">藍調</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">流行音樂</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">爵士</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">古典</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">其他曲風</label> <br />
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">快樂</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">傷心</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">運動</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">輕鬆</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">舒眠</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">專注</label>
-                <input
-                  type="checkbox"
-                  id="songcheckbox"
-                  name="checkboxGroup"
-                  value="checkbox"
-                />
-                <label for="checkbox">派對</label>
+                <label for="songclass" class="label">曲風</label>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">流行音樂</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">獨立音樂</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">嘻哈</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">搖滾</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">藍調</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">爵士</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">古典</span>
+                </div>
+              </div>
+              <div class="songclass">
+                <label for="songclass" class="label">情境</label>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">其他曲風</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">快樂</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">傷心</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">運動</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">輕鬆</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">輕鬆</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">舒眠</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">專注</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">派對</span>
+                </div>
               </div>
             </div>
           </form>
