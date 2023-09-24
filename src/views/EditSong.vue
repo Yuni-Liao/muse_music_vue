@@ -49,13 +49,17 @@
       </select>
     </div>
   </form>
-  <router-link to="profilepageedit"><button class="button" style="margin-bottom: 150px" @click="complete">
-    取消變更
-  </button></router-link>
-  
-  <router-link to="profilepageedit"><button class="button" style="margin-bottom: 150px" @click="complete">
-    儲存變更
-  </button></router-link>
+  <router-link to="profilepageedit"
+    ><button class="button" style="margin-bottom: 150px" @click="complete">
+      取消變更
+    </button></router-link
+  >
+
+  <router-link to="profilepageedit"
+    ><button class="button" style="margin-bottom: 150px" @click="complete">
+      儲存變更
+    </button></router-link
+  >
 </template>
 
 <style scoped lang="scss">

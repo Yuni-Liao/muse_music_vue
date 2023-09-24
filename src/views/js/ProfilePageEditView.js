@@ -214,7 +214,7 @@ export default {
       readFile.addEventListener("load", this.coverloadImage);
     },
     coverloadImage(e) {
-      this.coverimgURL = e.target.result;
+      this.member.coverimgURL = e.target.result;
     },
     //頭貼相片
     profileImgChange(e) {
@@ -224,7 +224,7 @@ export default {
       readFile.addEventListener("load", this.profileloadImage);
     },
     profileloadImage(e) {
-      this.profileImgURL = e.target.result;
+      this.member.profileImgURL = e.target.result;
     },
   },
 };
