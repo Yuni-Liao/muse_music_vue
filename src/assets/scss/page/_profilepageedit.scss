@@ -1,48 +1,96 @@
 // 重推again
-.cover-image {
-    width: 100%;
-    height: 600px;
-    display: flex;
-}
+.profilepageedit {
+  padding: 80px 0;
+  box-sizing: border-box;
 
+  //封面
+  .cover-container {
+    position: relative;
+    .cover {
+      background-color: #232323dd;
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    //封面上傳按鈕
+    .coverupdate {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      right: 120px;
+      bottom: 20px;
+      z-index: 20;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    //美化封面上傳按鈕
+    .coverupdate:after {
+      content: "";
+      background-image: url("@/assets/image/icon/upload.jpg");
+      background-position: center center;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 10;
+    }
+    //頭貼照片
+    .profile-container {
+      position: absolute;
+      bottom: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      //頭貼
+      .profile {
+        background-color: #232323dd;
+        object-fit: cover;
+        object-position: top;
+        @include rect(300px);
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      //頭貼上傳按鈕
+      .profileupdate {
+        // opacity: 0;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      //美化封面上傳按鈕
+      .profileupdate:after {
+        content: "";
+        background-image: url("@/assets/image/icon/upload.jpg");
+        background-position: center center;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        z-index: 10;
+      }
+    }
+  }
+  .main-wrapper {
+    @include layout(1200px);
+  }
 
-.profile-container {
-    position: absolute;
-    top: 400px;
-    left: 550px;
-    border-radius: 50%;
-    overflow: hidden;
-
-}
-
-.update {
-    position: absolute;
-    top: 600px;
-    left: 780px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.updatepic {
-    position: absolute;
-    top: 450px;
-    right: 100px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-
-.songpic {
+  .songpic {
     border-radius: 50%;
     margin: 20px;
-}
+  }
 
-.songpicupload {
+  .songpicupload {
     border-radius: 50%;
     margin: 20px;
     width: 60px;
@@ -50,36 +98,18 @@
     display: inline-block;
     align-items: left;
     justify-content: left;
-}
+  }
 
-.profile-container {
-    border-radius: 50%;
-    overflow: hidden;
-    width: 300px;
-    height: 300px;
-
-}
-
-.profile {
-    width: 100%;
-    height: auto;
-
-
-}
-
-
-.page-options {
+  .page-options {
     display: flex;
     justify-content: space-evenly;
-}
+  }
 
-.page-options :hover {
-    color: $purple
-}
+  .page-options :hover {
+    color: $purple;
+  }
 
-
-
-.page-option button {
+  .page-option button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
@@ -87,31 +117,27 @@
     color: $white;
     font-size: $small;
     margin-top: 300px;
-}
+  }
 
-
-.line {
+  .line {
     height: 3px;
     width: 100%;
     background: linear-gradient(to right, $tp, $purple, $tp);
-}
+  }
 
-.form1 {
+  .form1 {
     text-align: center;
     align-items: center;
     justify-content: center;
     margin: 130px;
+  }
 
-}
-
-.form-group {
+  .form-group {
     padding: 10px;
     text-align: left;
-}
+  }
 
-
-
-.form-group input {
+  .form-group input {
     width: 100%;
     height: 50px;
     background-color: black;
@@ -119,50 +145,48 @@
     padding: 10px;
     text-align: left;
     margin: 10px;
-}
+  }
 
-button.active {
+  button.active {
     color: $purple;
-}
+  }
 
-.button {
+  .button {
     color: $green;
     background-color: transparent;
     border: $green 1px solid;
     border-radius: 5px;
     padding: 10px 20px;
     margin: 50px 50px;
-}
+  }
 
-.label {
+  .label {
     color: $white;
     font-size: $small;
     display: flex;
     justify-content: left;
     align-items: left;
     margin: 10px;
+  }
 
-}
-
-#inst {
+  #inst {
     background-color: black;
     color: $white;
     padding: 10px;
     margin: 10px;
     margin-top: 0;
-}
+  }
 
-#location {
+  #location {
     background-color: black;
     color: $white;
     width: 100%;
     height: 50px;
     padding: 10px;
     margin: 10px;
-}
+  }
 
-
-.checkbox {
+  .checkbox {
     background-color: black;
     padding: 20px 20px;
     font-size: large;
@@ -171,13 +195,13 @@ button.active {
     text-align: left;
     margin: 10px;
     border-radius: 10px;
-}
+  }
 
-.songclass {
+  .songclass {
     margin: 20px;
-}
+  }
 
-#privacy {
+  #privacy {
     color: $green;
     background-color: black;
     width: 100px;
@@ -186,31 +210,30 @@ button.active {
     padding: 10px;
     border: none;
     margin: 10px 0px;
-}
+  }
 
-label {
+  label {
     color: $white;
     padding: 8px;
-}
+  }
 
-.plus-container {
+  .plus-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 100px;
+  }
 
-}
-
-.plus {
+  .plus {
     border-radius: 20%;
     width: 50px;
     height: 50px;
     cursor: pointer;
     margin-right: 10px;
     margin-bottom: 30px;
-}
+  }
 
-p.plus {
+  p.plus {
     font-size: 25px;
     color: $white;
     padding: 20px;
@@ -218,18 +241,17 @@ p.plus {
     display: inline;
     width: 250px;
     text-align: center;
-}
+  }
 
-
-.song-table {
+  .song-table {
     width: 80%;
     margin: 100px;
     border-collapse: collapse;
     margin-top: 20px;
-}
+  }
 
-.song-table th,
-.song-table td {
+  .song-table th,
+  .song-table td {
     border: 1px solid #ccc;
     padding: 15px;
     text-align: left;
@@ -239,9 +261,9 @@ p.plus {
     border-top: none;
     vertical-align: top;
     justify-content: space-evenly;
-}
+  }
 
-.song-table th {
+  .song-table th {
     background-color: black;
     color: $white;
     text-align: left;
@@ -249,20 +271,21 @@ p.plus {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-.albumn {
+  }
+  .albumn {
     width: 200px;
     height: 200px;
-}
+  }
 
-.song-table td {
+  .song-table td {
     color: $white;
     background-color: transparent;
     font-size: 14px;
     text-align: left;
     align-items: center;
-}
+  }
 
-.song-table tr:hover {
-    background-color: black
+  .song-table tr:hover {
+    background-color: black;
+  }
 }
