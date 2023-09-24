@@ -1,10 +1,13 @@
 <template>
+  <teleport to="body">
+    <NewSl v-if="isNewSlOpen" @isNewSlOpenupdate="isNewSlOpenupdate"></NewSl>
+  </teleport>
   <div class="mysonglist">
     <section>
       <div class="hd">
         <h1>我的歌單</h1>
         <!-- 新增歌單 -->
-        <button class="newlistBtn" @click="addnewsonglist()">
+        <button class="newlistBtn" @click="isNewSlOpen = true">
           <fontAwesome :icon="['fa', 'plus']" />
         </button>
       </div>

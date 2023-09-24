@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="submit">
-        <button type="button">
+        <button type="button" @click="submitNewSl">
           <fontAwesome class="i" :icon="['fa', 'fa-check']" />完成
         </button>
       </div>
@@ -42,9 +42,15 @@
 export default {
   name: "NewSl",
   data() {
-    return {};
+    return {
+      isNewSlOpen: false,
+    };
   },
-  methods: {},
+  methods: {
+    submitNewSl() {
+      this.$emit("isNewSlOpenupdate", this.isNewSlOpen);
+    },
+  },
 };
 </script>
 
