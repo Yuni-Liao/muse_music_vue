@@ -7,7 +7,7 @@
         <div class="space" v-for="(item, id) in language" :key="id">
             <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
-                <router-link :to="`findmusic/${id}`" >
+                <router-link :to="`findmusic/${id}`">
                     {{ item.name }}
                 </router-link>
             </div>
@@ -15,10 +15,10 @@
     </div>
 
     <div class="style">
-        <div class="space" v-for="(item, index) in style" :key="index">
-            <img src="~@/assets/image/footer_background.jpg" alt="">
+        <div class="space" v-for="(item, id) in style" :key="id">
+            <img src="~@/assets/image/footer_background.jpg" alt="image">
             <div class="txt">
-                <router-link :to="item.link" >
+                <router-link :to="`findmusic/${id}`">
                     {{ item.name }}
                 </router-link>
             </div>
@@ -26,10 +26,10 @@
     </div>
 
     <div class="emotion">
-        <div class="space" v-for="(item, index) in emotion" :key="index">
-            <img src="~@/assets/image/footer_background.jpg" alt="">
+        <div class="space" v-for="(item, id) in emotion" :key="id">
+            <img src="~@/assets/image/footer_background.jpg" alt="image">
             <div class="txt">
-                <router-link :to="item.link" >
+                <router-link :to="`findmusic/${id}`">
                     {{ item.name }}
                 </router-link>
             </div>

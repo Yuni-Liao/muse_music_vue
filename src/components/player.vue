@@ -180,12 +180,6 @@ export default {
             currentSongIndex: 0,
             songList: [
                 {
-                    cover: '/image/SingleMusic/songPic.png',
-                    songTitle: 'Say it',
-                    singer: 'George Makridis',
-                    audio: 'Busy_Day_Ahead.mp3',
-                },
-                {
                     cover: '/image/SingleMusic/songPic2.png',
                     songTitle: 'Cant Fight This Feel',
                     singer: 'Raquel Castro',
@@ -196,6 +190,12 @@ export default {
                     songTitle: 'Moon Mother',
                     singer: 'Richard Farrell',
                     audio: 'Moon_Mother.mp3',
+                },
+                {
+                    cover: '/image/SingleMusic/songPic.png',
+                    songTitle: 'Say it',
+                    singer: 'George Makridis',
+                    audio: 'Busy_Day_Ahead.mp3',
                 },
             ],
             //播放器狀態預設關閉

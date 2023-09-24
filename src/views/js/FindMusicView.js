@@ -51,7 +51,41 @@ export default {
                     styleName:"其他語言",
                     count: 452,
                 },
-
+                {
+                    id: 5,
+                    styleName:"流行音樂",
+                    count: 452,
+                },
+                {
+                    id: 6,
+                    styleName:"獨立音樂",
+                    count: 452,
+                },
+                {
+                    id: 7,
+                    styleName:"嘻哈",
+                    count: 452,
+                },
+                {
+                    id: 8,
+                    styleName:"搖滾",
+                    count: 452,
+                },
+                {
+                    id: 9,
+                    styleName:"藍調",
+                    count: 452,
+                },
+                {
+                    id: 10,
+                    styleName:"爵士",
+                    count: 452,
+                },
+                {
+                    id: 11,
+                    styleName:"古典",
+                    count: 452,
+                },
             ],
             songs: [
                 {
