@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import FrontEnd from "../views/FrontEnd.vue";
 
+
 const routes = [
   //g2
   {
