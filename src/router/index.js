@@ -275,6 +275,48 @@ const routes = [
 
       },
 
+      {
+        path: "addsongtoalbum",
+        name: "addsongtoalbum",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepage" */ "../views/AddSongtoAlbum.vue"
+          ),
+        meta: {
+          title: "新增歌曲至專輯",
+
+        },
+
+      },
+
+      {
+        path: "editalbumsong",
+        name: "editalbumsong",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepage" */ "../views/EditAlbumSong.vue"
+          ),
+        meta: {
+          title: "編輯專輯歌曲",
+
+        },
+
+      },
+
+      {
+        path: "editsdsong",
+        name: "editsdsong",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepage" */ "../views/EditSdSong.vue"
+          ),
+        meta: {
+          title: "編輯專輯歌曲",
+
+        },
+
+      },
+
       //以下是探索音樂內頁頁面
       {
         path: "findmusic/:id",

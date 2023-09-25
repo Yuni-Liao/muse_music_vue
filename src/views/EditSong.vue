@@ -65,4 +65,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/profilepageedit";
 </style>
-<script src="./js/ProfilePageEditView"></script>
+<script src="./js/EditSong.js"></script>

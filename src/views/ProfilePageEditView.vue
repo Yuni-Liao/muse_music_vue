@@ -383,12 +383,12 @@
                 <td>{{ song.date }}</td>
                 <td>{{ song.time }}</td>
                 <td>
-                  <router-link to="editsong"
-                    ><img
-                      class="songpicupload"
-                      alt="Update Image"
-                      src="@/assets/image/icon/file.jpg"
-                  /></router-link>
+                  <router-link to="editsong">
+                    <fontAwesome
+                      :icon="['fas', 'pen']"
+                      style="color: #fdfbfb"
+                    />
+                  </router-link>
                 </td>
               </tr>
             </tbody>
@@ -431,13 +431,14 @@
                 <td>{{ albumn.privacy }}</td>
                 <td>{{ albumn.date }}</td>
                 <td>{{ albumn.time }}</td>
+
                 <td>
-                  <router-link to="editalbum"
-                    ><img
-                      class="songpicupload"
-                      alt="Update Image"
-                      src="@/assets/image/icon/file.jpg"
-                  /></router-link>
+                  <router-link to="editalbum">
+                    <fontAwesome
+                      :icon="['fas', 'pen']"
+                      style="color: #fdfbfb"
+                    />
+                  </router-link>
                 </td>
               </tr>
             </tbody>
