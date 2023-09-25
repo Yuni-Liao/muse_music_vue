@@ -294,7 +294,7 @@ export default {
                 audioElement.play()
                 .then(() => {
                     this.isPlaying = true;
-                    // 在音乐准备好后设置totalTime
+                    // 音樂準備好後重置時間
                     audioElement.onloadedmetadata = () => {
                         this.totalTime = audioElement.duration;
                     };
