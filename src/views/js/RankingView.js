@@ -14,6 +14,7 @@ import player from '@/components/player.vue';
 import AddFavBtn from '@/components/AddFavBtn.vue';
 import AddSlBtn from '@/components/AddSlBtn.vue';
 
+
 export default {
   components: {
     Swiper,
@@ -21,6 +22,7 @@ export default {
     player,
     AddFavBtn,
     AddSlBtn,
+   
   },
   setup() {
     return {

@@ -1,12 +1,12 @@
 @import "@/assets/scss/mixin/_mixin.scss";
     
-    #AddFavBtn {
+    :deep(#AddFavBtn) {
     @include music_btn_circle(25px);
       margin: 10px;
       text-align: center;
       line-height: 25px;
     }
-    #AddSlBtn {
+    :deep(#AddSlBtn)  {
     @include music_btn_circle(25px);
     text-align: center;
     line-height: 25px;

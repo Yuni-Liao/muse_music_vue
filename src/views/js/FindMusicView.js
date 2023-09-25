@@ -28,30 +28,64 @@ export default {
             styles: [
                 {
                     id: 0,
-                    styleName: "日語流行",
+                    styleName:"日語流行",
                     count: 563,
                 },
                 {
                     id: 1,
-                    styleName: "韓語流行",
+                    styleName:"韓語流行",
                     count: 742,
                 },
                 {
                     id: 2,
-                    styleName: "華語流行",
+                    styleName:"華語流行",
                     count: 1145,
                 },
                 {
                     id: 3,
-                    styleName: "西洋流行",
+                    styleName:"西洋流行",
                     count: 2637,
                 },
                 {
                     id: 4,
-                    styleName: "其他語言",
+                    styleName:"其他語言",
                     count: 452,
                 },
-
+                {
+                    id: 5,
+                    styleName:"流行音樂",
+                    count: 452,
+                },
+                {
+                    id: 6,
+                    styleName:"獨立音樂",
+                    count: 452,
+                },
+                {
+                    id: 7,
+                    styleName:"嘻哈",
+                    count: 452,
+                },
+                {
+                    id: 8,
+                    styleName:"搖滾",
+                    count: 452,
+                },
+                {
+                    id: 9,
+                    styleName:"藍調",
+                    count: 452,
+                },
+                {
+                    id: 10,
+                    styleName:"爵士",
+                    count: 452,
+                },
+                {
+                    id: 11,
+                    styleName:"古典",
+                    count: 452,
+                },
             ],
             songs: [
                 {
@@ -60,7 +94,7 @@ export default {
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -69,7 +103,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -78,7 +112,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -87,7 +121,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -96,7 +130,7 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -105,7 +139,7 @@ export default {
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -114,7 +148,7 @@ export default {
                     name: "Tired",
                     singer: "Rose",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -123,7 +157,7 @@ export default {
                     name: "Want To Go Home",
                     singer: "Apple Apple",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -132,7 +166,7 @@ export default {
                     name: "Sleep",
                     singer: "Cat Dog",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 },
                 {
@@ -141,18 +175,27 @@ export default {
                     name: "Bed",
                     singer: "Ruby",
                     time: "03:00",
-                    link: "/profilepage",
+                    link: "/home/profilepage",
                     showMoreBtn: false,
                 }
             ]
         }
     },
     methods: {
-        toggleMoreBtn(albumItem) {
-            albumItem.showMoreBtn = !albumItem.showMoreBtn;
+        closeMoreSpace(event) {
+            // 關閉所有打開的 moreBtnAlert 區塊
+            this.songs.forEach((albumItem) => {
+                albumItem.showMoreBtn = false;
+            });
         },
-        closeMoreBtn(albumItem) {
-            albumItem.showMoreBtn = false;
+        toggleMoreBtn(albumItem, event) {
+            if (this.openAlbumItem && this.openAlbumItem !== albumItem) {
+                this.openAlbumItem.showMoreBtn = false; // 關閉之前打開的
+            }
+            albumItem.showMoreBtn = !albumItem.showMoreBtn;
+            if (albumItem.showMoreBtn) {
+                event.stopPropagation();
+            }
         },
         openPlayer() {
             this.$refs.player.playMusic();
@@ -167,5 +210,17 @@ export default {
     mounted() {
         const idToFind = parseInt(this.$route.params.id);
         this.foundObject = this.styles.find(item => item.id === idToFind);
+        
+         // 建立事件聆聽:點空白處關閉
+        document.addEventListener('click', this.closeMoreSpace);
+    },
+    beforeUnmount() {
+        // 移除事件聆聽:點空白處關閉
+        document.removeEventListener('click', this.closeMoreSpace);
+    },
+    computed: {
+        openAlbumItem() {
+            return this.songs.find((albumItem) => albumItem.showMoreBtn);
+        },
     },
 }
