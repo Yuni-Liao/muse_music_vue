@@ -7,7 +7,7 @@
                     <span>前台</span>
                 </div>
             </router-link>
-            <router-link to="/backend">
+            <router-link to="/backendLogin">
                 <div class="path_backend_box">
                     <span>後台</span>
                 </div>
