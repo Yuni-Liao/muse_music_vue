@@ -182,11 +182,20 @@ export default {
         }
     },
     methods: {
-        toggleMoreBtn(albumItem) {
-            albumItem.showMoreBtn = !albumItem.showMoreBtn;
+        closeMoreSpace(event) {
+            // 關閉所有打開的 moreBtnAlert 區塊
+            this.songs.forEach((albumItem) => {
+                albumItem.showMoreBtn = false;
+            });
         },
-        closeMoreBtn(albumItem) {
-            albumItem.showMoreBtn = false;
+        toggleMoreBtn(albumItem, event) {
+            if (this.openAlbumItem && this.openAlbumItem !== albumItem) {
+                this.openAlbumItem.showMoreBtn = false; // 關閉之前打開的
+            }
+            albumItem.showMoreBtn = !albumItem.showMoreBtn;
+            if (albumItem.showMoreBtn) {
+                event.stopPropagation();
+            }
         },
         openPlayer() {
             this.$refs.player.playMusic();
@@ -201,5 +210,17 @@ export default {
     mounted() {
         const idToFind = parseInt(this.$route.params.id);
         this.foundObject = this.styles.find(item => item.id === idToFind);
+        
+         // 建立事件聆聽:點空白處關閉
+        document.addEventListener('click', this.closeMoreSpace);
+    },
+    beforeUnmount() {
+        // 移除事件聆聽:點空白處關閉
+        document.removeEventListener('click', this.closeMoreSpace);
+    },
+    computed: {
+        openAlbumItem() {
+            return this.songs.find((albumItem) => albumItem.showMoreBtn);
+        },
     },
 }

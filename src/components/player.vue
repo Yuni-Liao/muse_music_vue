@@ -9,7 +9,7 @@
                 <span>{{ currentSong.singer }}</span>
             </div>
             <!-- 音檔 -->
-            <audio id="myAudio" ref="music" @timeupdate="updateTime">
+            <audio id="myAudio" ref="music" @timeupdate="updateTime" @ended="songEnded">
                 <source :src="'/audio/' + currentSong.audio" type="audio/mpeg">
             </audio>
         </div>
@@ -303,6 +303,11 @@ export default {
                     console.error('音樂播放失敗：', error);
                 });
             }
+        },
+        songEnded() {
+            // 歌曲播完後重置
+            this.isPlaying = false;
+            this.currentTime = 0;
         },
     },
     computed: {
