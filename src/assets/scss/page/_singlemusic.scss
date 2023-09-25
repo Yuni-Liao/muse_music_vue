@@ -1,7 +1,8 @@
 .singleMusic h1,
 .singleMusic h2,
 .singleMusic h3,
-.singleMusic p {
+.singleMusic p,
+.singleMusic div {
     color: $white;
     letter-spacing: 1px;
     line-height: $fh;
@@ -391,10 +392,8 @@
                 .readMore {
                     @include btnBgNone;
                     color: $white;
-                    //justify-content: flex-end;
                     align-items: center;
                     gap: 10px;
-                    // display: flex;
                     margin: 25px 0 0px;
                     margin-left: 0;
                 }
@@ -480,10 +479,7 @@
                 #ShareBtn,
                 #AddSlBtn,
                 #AddFavBtn {
-                    // width: 25px;
-                    // height: 25px;
-                    margin: 10px;
-                    // border: 1px $dark solid;
+                    margin: 0 10px;
                 }
             }
 
