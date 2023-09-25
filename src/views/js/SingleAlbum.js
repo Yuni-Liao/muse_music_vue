@@ -4,9 +4,10 @@ import AddSlBtn from "@/components/AddSlBtn.vue";
 import ShareBtn from "@/components/ShareBtn.vue";
 import ReportBtn from "@/components/ReportBtn.vue";
 import LikeMesBtn from "@/components/LikeMesBtn.vue";
+import player from "@/components/player.vue";
 
 export default {
-    components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn },
+    components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn, player },
     data() {
         return {
             // 讓圖片 build 之後能顯示
@@ -73,6 +74,10 @@ export default {
         };
     },
     methods: {
+        //播放器
+        openPlayer() {
+            this.$refs.player.playMusic();
+        },
         toggleMoreBtn(albumItem) {
             albumItem.showMoreBtn = !albumItem.showMoreBtn;
         },

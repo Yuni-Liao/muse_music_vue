@@ -1,4 +1,5 @@
 <template>
+    <player ref="player"></player>
     <main class="singleMusic">
         <!-- 上方大圖 -->
         <div class="banner" v-for="(songItem, songIndex) in songs" :key="songIndex">
@@ -39,7 +40,7 @@
                             <ShareBtn></ShareBtn>
                             <AddSlBtn></AddSlBtn>
                             <AddFavBtn></AddFavBtn>
-                            <PlayBtnBig></PlayBtnBig>
+                            <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
                         </div>
                     </div>
                 </div>
@@ -131,7 +132,7 @@
                                 <div class="number">{{ item.id }}</div>
                                 <div class="songPic">
                                     <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
-                                    <div class="play">
+                                    <div class="play" @click="openPlayer()">
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>
                                 </div>

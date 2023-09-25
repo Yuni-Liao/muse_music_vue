@@ -4,6 +4,7 @@ import AddSlBtn from "@/components/AddSlBtn.vue";
 import ShareBtn from "@/components/ShareBtn.vue";
 import ReportBtn from "@/components/ReportBtn.vue";
 import LikeMesBtn from "@/components/LikeMesBtn.vue";
+import player from "@/components/player.vue";
 
 const clickOutside = {
     mounted(el, binding) {
@@ -29,7 +30,7 @@ const clickOutside = {
 
 
 export default {
-    components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn },
+    components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn, player},
     directives: {
         clickOutside,
     },
@@ -155,7 +156,11 @@ export default {
     },
 
     methods: {
-        // 創建新留
+        //播放器
+        openPlayer() {
+            this.$refs.player.playMusic();
+          },
+        // 創建新留言
         addNewMessage() {
             if (this.newMessage.trim() !== "") {
                 // 創建新留言對象，使用 Date.now() 作為唯一的 id
