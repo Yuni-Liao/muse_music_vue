@@ -308,15 +308,12 @@ export default {
     },
   },
   methods: {
-    hearted(item) {
-      item.hearted = !item.hearted;
-    },
-    plused(item) {
-      item.plused = !item.plused;
-    },
-
+    openPlayer() {
+      this.$refs.player.playMusic();
+  },
+   
     followed(item) {
       item.followed = !item.followed;
-    }
+    },
   },
 };
