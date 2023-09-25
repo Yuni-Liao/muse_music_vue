@@ -62,7 +62,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 50;
+  z-index: 400;
 
   background-color: #000000dd;
   box-shadow: 0px 0px 50px #00000030;
