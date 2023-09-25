@@ -8,9 +8,13 @@
                 <p>{{ item.songTitle }}</p>
                 <span>{{ item.singer }}</span>
             </div>
-            <!-- <audio controls id="myAudio" ref="music">
+            <!-- <audio controls id="myAudio" ref="music" >
                 <source :src="getSrc(item.audio)" type="audio/mpeg">
             </audio> -->
+            <!-- <audio controls v-if="playerOpen" id="myAudio" ref="music" @timeupdate="updateTime">
+                <source :src="item.audio" type="audio/mpeg">
+            </audio> -->
+           
         </div>
 
         <div class="player_center">
@@ -199,9 +203,8 @@ export default {
         // return require("audio/" + src)
         // },
         playMusic() {
-            //播放音樂
-            // 播放音樂
-            this.playerOpen = true;//先執行顯示
+        const audioElement = this.$refs.music;
+        this.playerOpen = true;//先執行顯示
             this.$nextTick(() => {//再執行播放
                 this.$refs.music.play();
                 this.isPlaying = true;
