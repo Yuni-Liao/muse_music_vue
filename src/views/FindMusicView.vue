@@ -50,13 +50,13 @@
                         <td class="btnArea">
                             <!-- <AddFavBtn></AddFavBtn>
                             <AddSlBtn></AddSlBtn> -->
-                            <button class="moreBtn" @click="toggleMoreBtn(albumItem)">
+                            <button class="moreBtn" @click="toggleMoreBtn(albumItem, $event)">
                                 <fontAwesome :icon="['fa', 'ellipsis']" style="color:#AAAAAA;" />
                             </button>
-                            <div class="moreBtnAlert" v-if="albumItem.showMoreBtn">
-                                <button class="close" @click="closeMoreBtn(albumItem)">
+                            <div class="moreBtnAlert" v-if="albumItem.showMoreBtn" >
+                                <!-- <button class="close" @click="closeMoreBtn(albumItem)">
                                     <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
-                                </button>
+                                </button> -->
                                 <a href="#">
                                     <img src="../../public/image/icon/share.png">
                                     <p>分享</p>

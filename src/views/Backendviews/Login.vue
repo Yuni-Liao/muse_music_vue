@@ -21,10 +21,16 @@
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    align-items: center;
+    background-color: $dark;
 
     .backend_muse_login {
         width: 400px !important;
         margin: 60px auto;
+    }
+
+    .backend_login_logo {
+        vertical-align: middle;
     }
 }
 </style>
