@@ -76,9 +76,9 @@
                                 <span class="time">{{ albumItem.time }}</span>
                                 <div class="btnArea">
                                     <!-- 更多_按鈕 -->
-                                    <AddFavBtn></AddFavBtn>
-                                    <AddSlBtn></AddSlBtn>
                                     <ShareBtn></ShareBtn>
+                                    <AddSlBtn></AddSlBtn>
+                                    <AddFavBtn></AddFavBtn>
                                 </div>
                             </li>
                         </ol>
