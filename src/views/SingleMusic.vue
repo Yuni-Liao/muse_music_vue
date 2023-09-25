@@ -84,8 +84,8 @@
                         <div class="board">
                             <h3>留言板</h3>
                             <div class="sendArea">
-                                <input type="text">
-                                <button class="send">
+                                <input type="text" v-model="newMessage">
+                                <button class="send" @click="addNewMessage">
                                     <fontAwesome :icon="['fa', 'paper-plane']" style="color:#74EBD5;" size="2xl" />
                                 </button>
                             </div>
