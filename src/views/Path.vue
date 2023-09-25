@@ -35,6 +35,7 @@
         justify-content: space-between;
 
         .path_title {
+            font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
             @include layout(100%);
             font-weight: 900;
             font-size: $superBig ;
