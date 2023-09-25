@@ -21,7 +21,7 @@
               <li v-for="(item, index) in weekFirstFiveSongs" :key="index" >
                 <div class="order">{{item.order}}</div>
                 <img  :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
-                
+
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>

@@ -8,9 +8,13 @@
                 <p>{{ item.songTitle }}</p>
                 <span>{{ item.singer }}</span>
             </div>
-            <!-- <audio controls id="myAudio" ref="music">
+            <!-- <audio controls id="myAudio" ref="music" >
                 <source :src="getSrc(item.audio)" type="audio/mpeg">
             </audio> -->
+            <!-- <audio controls v-if="playerOpen" id="myAudio" ref="music" @timeupdate="updateTime">
+                <source :src="item.audio" type="audio/mpeg">
+            </audio> -->
+           
         </div>
 
         <div class="player_center">
@@ -19,8 +23,9 @@
                     <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" />
                 </div >
                 <div id="play">
-                    <!-- <audio id="myAudio" ref="music" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/Post+Malone+-+rockstar+ft.+21+Savage+(Official+Audio).mp3"></audio> -->
+                   
                     <audio v-if="playerOpen" id="myAudio" ref="music" src="audio/Busy Day Ahead.mp3" @timeupdate="updateTime" @loadedmetadata="initializeAudio"></audio>
+                   
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
                         v-if="!isPlaying"
                         @click="playMusic"
@@ -201,8 +206,7 @@ export default {
         // return require("audio/" + src)
         // },
         playMusic() {
-        //播放音樂
-        // 播放音樂
+        const audioElement = this.$refs.music;
         this.playerOpen = true;//先執行顯示
             this.$nextTick(() => {//再執行播放
                 this.$refs.music.play();

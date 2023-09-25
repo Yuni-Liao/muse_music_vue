@@ -1,3 +1,4 @@
+  
 
   .swiper {
     width: 100%;
@@ -11,6 +12,7 @@
     /* Center slide text vertically */
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
     background-repeat: no-repeat;
@@ -72,6 +74,11 @@
         display: flex;
         align-items: center;
         margin: 50px 0px;
+        @include s(){
+          h1{
+           
+          }
+        }
         h1{
             color: #000;
             background-color: $green;
@@ -99,6 +106,9 @@
     position: absolute;
     margin-top: -170px;
     margin-left: -50px;
+    @include s(){
+      display: none;
+    }
   }
   .bigMonthTab{
     display: flex;
@@ -140,8 +150,7 @@
     margin: 100px 0px;
     .activityArea{
         background-color: #000;
-        width: 160px;
-        height: 350px;
+       
         margin-left: 100px;
         ul, li{
             list-style: none;
