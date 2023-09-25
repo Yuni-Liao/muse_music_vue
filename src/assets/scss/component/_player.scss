@@ -1,4 +1,14 @@
 @import "@/assets/scss/mixin/_mixin.scss";
+    :deep(#ShareBtn) {
+    @include music_btn_circle(25px);
+    };
+    :deep(#AddFavBtn) {
+    @include music_btn_circle(25px);
+    }
+    :deep(#AddSlBtn) {
+    @include music_btn_circle(25px);
+    margin:  0px 10px;
+    }
     .player{
         // display: none;
         display: flex;
