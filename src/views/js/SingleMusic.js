@@ -35,6 +35,8 @@ export default {
     },
     data() {
         return {
+            // 新留言的內容
+            newMessage: "",
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
@@ -146,10 +148,6 @@ export default {
             icon: 'arrayIcon',
         };
     },
-    created() {
-        // 全局監聽點擊事件
-        // window.addEventListener("click", this.handleGlobalClick);
-    },
 
     beforeDestroy() {
         // 監聽點擊事件
@@ -157,6 +155,27 @@ export default {
     },
 
     methods: {
+        // 創建新留
+        addNewMessage() {
+            if (this.newMessage.trim() !== "") {
+                // 創建新留言對象，使用 Date.now() 作為唯一的 id
+                const newMessageItem = {
+                    id: Date.now(),
+                    userPic: "userpic1.png", // 假設您有一個默認的用戶圖片
+                    userName: "Your Name", // 假設您希望新留言的用戶名稱為 "Your Name"
+                    date: new Date().toISOString().slice(0, 10), // 使用當前日期
+                    message: this.newMessage,
+                    like: "0", // 初始點贊數為0
+                    showReportBtn: false,
+                };
+
+                // 使用 unshift 方法將新留言插入到 messages 數組的開頭
+                this.messages.unshift(newMessageItem);
+
+                // 清空新留言的內容
+                this.newMessage = "";
+            }
+        },
         // 預設只顯示前三筆留言
         showMore() {
             console.log('1', this.isShow);
@@ -189,19 +208,5 @@ export default {
                 this.isShowSong = !this.isShowSong;
             },
         },
-        // handleGlobalClick(event) {
-        //     // 檢查是否是點在按鈕外的地方
-        //     const buttonElement = document.querySelectorAll(".more");
-        //     const btnElList = buttonElement.length ? Array.from(buttonElement) : []
-        //     if (btnElList.includes(event.target)) {
-        //         // 關閉打開的按鈕
-        //         this.messages.forEach((message) => {
-        //             if (message.showReportBtn) {
-        //                 message.showReportBtn = false;
-        //             }
-        //         });
-
-        //     }
-        // },
     },
 };
