@@ -1,7 +1,9 @@
-
+// import Robot from "@/components/Robot.vue";
 
 export default {
-    //script寫在這裡
+    // components: {
+    //     Robot
+    // },
     data() {
         return {
             // 讓圖片 build 之後能顯示
