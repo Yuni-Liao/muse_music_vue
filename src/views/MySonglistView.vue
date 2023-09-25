@@ -69,11 +69,16 @@
             >
               <ul>
                 <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
-                <li v-if="item.memid == 1" @click="deletesonglist()">
+                <li
+                  v-if="item.memid == 1"
+                  @click="deletesonglist(index, item.slid)"
+                >
                   刪除此歌單
                 </li>
                 <!-- 歌單擁有者非我，則顯示 取消追蹤此歌單 -->
-                <li v-else @click="unfolsonglist()">取消追蹤此歌單</li>
+                <li v-else @click="unfolsonglist(index, item.slid)">
+                  取消追蹤此歌單
+                </li>
               </ul>
             </div>
 

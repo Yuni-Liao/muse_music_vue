@@ -151,11 +151,13 @@ export default {
         },
       });
     },
-    deletesonglist() {
-      alert("刪除歌單");
+    deletesonglist(index, slid) {
+      this.songlists.splice(index, 1);
+      alert(`刪除歌單，歌單編號:${slid}`);
     },
-    unfolsonglist() {
-      alert("取消追蹤歌單");
+    unfolsonglist(index, slid) {
+      this.songlists.splice(index, 1);
+      alert(`取消追蹤歌單，歌單編號:${slid}`);
     },
     closemore(e) {
       this.morecurrent = -1;
