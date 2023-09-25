@@ -102,6 +102,10 @@
 
                 .liked {
                     margin-right: 30px;
+
+                    p {
+                        margin-top: $fh;
+                    }
                 }
 
                 .shared {
@@ -115,8 +119,7 @@
 
                 #ShareBtn,
                 #AddSlBtn,
-                #AddFavBtn,
-                #PlayBtnBig {
+                #AddFavBtn {
                     margin: 0 10px;
                 }
             }
@@ -416,7 +419,8 @@
                 background-color: rgba($green, 0.6);
                 justify-content: space-between;
                 margin-bottom: 40px;
-                &:hover{
+
+                &:hover {
                     background-color: rgba($green, 0.5);
                 }
 
@@ -476,10 +480,10 @@
                 #ShareBtn,
                 #AddSlBtn,
                 #AddFavBtn {
-                    width: 25px;
-                    height: 25px;
+                    // width: 25px;
+                    // height: 25px;
                     margin: 10px;
-                    border: 1px $dark solid;
+                    // border: 1px $dark solid;
                 }
             }
 
