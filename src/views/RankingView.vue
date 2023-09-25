@@ -1,4 +1,5 @@
 <template>
+  <player ref="player"></player>
   <div class="ranking">
     <swiper
       :direction="'vertical'"
@@ -20,7 +21,13 @@
             <ol >
               <li v-for="(item, index) in weekFirstFiveSongs" :key="index" >
                 <div class="order">{{item.order}}</div>
-                <img  :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
+                <div class="image">
+                  <img  @click="openPlayer" :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
+                  <div class="play" >
+                    <fontAwesome @click="openPlayer" class="faPlay" :icon="['fa', 'play']" />
+                  </div>
+                </div>
+               
 
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
@@ -40,11 +47,12 @@
             <ol>
               <li v-for="(item, index) in weekLastFiveSongs" :key="index">
                 <div class="order">{{item.order}}</div>
-                <img
-                  :src="require(`@/assets/image/index/${item.image}`)"
-                  alt=""
-                />
-                <!-- <button>PLAY</button> -->
+                 <div class="image">
+                  <img @click="openPlayer" :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
+                  <div class="play" @click="openPlayer">
+                    <fontAwesome class="faPlay" :icon="['fa', 'play']" />
+                  </div>
+                </div>
                 <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
@@ -162,7 +170,7 @@
     </swiper>
   </div>
   
-  <player/>
+
   
 </template>
 
