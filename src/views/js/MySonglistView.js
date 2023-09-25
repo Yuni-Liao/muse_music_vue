@@ -10,6 +10,7 @@ export default {
       //
       morecurrent: -1,
       currentType: 0, //0,1,2
+      isNewSlOpen: false,
       songlists: [
         {
           slid: 1,
@@ -156,11 +157,12 @@ export default {
     unfolsonglist() {
       alert("取消追蹤歌單");
     },
-    addnewsonglist() {
-      alert("新增一個新歌單");
-    },
     closemore(e) {
       this.morecurrent = -1;
+    },
+    isNewSlOpenupdate(val) {
+      this.isNewSlOpen = val;
+      // alert("已新增一個新歌單");
     },
   },
   mounted() {

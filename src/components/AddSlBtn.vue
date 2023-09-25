@@ -3,7 +3,7 @@
     <fontAwesome :icon="['fa', 'plus']" :style="AddSlBtnStyle" />
   </button>
   <teleport to="body">
-    <div id="addSl" v-show="isAddSlOpen">
+    <div id="addSl" v-if="isAddSlOpen">
       <form action="">
         <div class="title">
           <span>加入歌單</span>
@@ -37,7 +37,7 @@
   </teleport>
 
   <teleport to="body">
-    <NewSl v-show="isNewSlOpen"></NewSl>
+    <NewSl v-if="isNewSlOpen" @isNewSlOpenupdate="isNewSlOpenupdate"></NewSl>
   </teleport>
 </template>
 <script>
@@ -50,6 +50,7 @@ export default {
   name: "AddSlBtn",
   data() {
     return {
+      isAddSlBtn: false,
       isAddSlOpen: false,
       isNewSlOpen: false,
 
@@ -132,6 +133,10 @@ export default {
     },
     closeAddSl() {
       this.isAddSlOpen = false;
+    },
+    isNewSlOpenupdate(val) {
+      this.isNewSlOpen = val;
+      this.isAddSlOpen = true;
     },
   },
 };

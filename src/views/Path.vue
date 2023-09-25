@@ -1,13 +1,13 @@
 <template>
     <div class="path_page">
         <div class="path_wrap">
-            <h1 id="path_title">MUSE MUSIC</h1>
+            <h1 class="path_title" id="path_title">MUSE MUSIC</h1>
             <router-link to="/home">
                 <div class="path_front_box">
                     <span>前台</span>
                 </div>
             </router-link>
-            <router-link to="/backend">
+            <router-link to="/backendLogin">
                 <div class="path_backend_box">
                     <span>後台</span>
                 </div>
@@ -34,12 +34,12 @@
         flex-flow: row wrap;
         justify-content: space-between;
 
-        #path_title {
-            width: 100%;
-            font-size: $superBig;
+        .path_title {
+            @include layout(100%);
             font-weight: 900;
+            font-size: $superBig ;
             text-align: center;
-            padding: 1.5%;
+            padding: 5%;
             color: transparent;
             background-image: linear-gradient(to right, $blue, $pink 100%);
             -webkit-background-clip: text;
@@ -49,17 +49,15 @@
 
         .path_front_box,
         .path_backend_box {
-            @include rect(200px);
+            @include rect(300px);
             font-size: $big;
             border-radius: 100%;
-            /* background-image: linear-gradient(35deg, #373781, #9e1243 50%); */
             background: repeating-radial-gradient(circle,
                     #373781 0%,
                     #9e1243 1%,
                     $dark 2%);
             border: 4px solid $pink;
             color: $white;
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
