@@ -3,7 +3,7 @@
     <fontAwesome :icon="['fa', 'plus']" :style="AddSlBtnStyle" />
   </button>
   <teleport to="body">
-    <div id="addSl" v-if="isAddSlOpen">
+    <div id="AddSl" v-if="isAddSlOpen">
       <form action="">
         <div class="title">
           <span>加入歌單</span>
@@ -146,14 +146,14 @@ export default {
 #AddSlBtn {
   @include music_btn_circle(35px);
 }
-#addSl {
+#AddSl {
   width: 400px;
   // 水平垂直置中
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 40;
+  z-index: 300;
 
   background-color: #000000dd;
   backdrop-filter: blur(5px);

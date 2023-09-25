@@ -392,7 +392,6 @@ export default {
                 '價格:由高到低',
                 '價格:由低到高',
             ],
-            //selectedType: '商品排序',
             sortType: '商品排序',
             //郭凱芸 - 下拉數量選單:預設
             selectedPageSize: 20,

@@ -41,6 +41,7 @@
                     font-size: $big;
                     font-weight: 700;
                     width: 100%;
+                    padding-bottom: 20px;
 
                     &::after {
                         content: '';
@@ -103,6 +104,7 @@
         .description {
             width: 99%;
             margin: 0 auto 100px;
+            line-height: $fh;
 
             h3 {
                 font-size: $medium;
