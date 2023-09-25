@@ -1,268 +1,340 @@
 // 重推again
-.cover-image {
+.profilepageedit {
+  padding: 80px 0;
+  box-sizing: border-box;
+}
+//封面
+.cover-container {
+  position: relative;
+  .cover {
+    background-color: #232323dd;
     width: 100%;
-    height: 600px;
-    display: flex;
-}
-
-
-.profile-container {
+    height: 400px;
+    object-fit: cover;
+  }
+  //封面上傳按鈕
+  .coverupdate {
+    width: 50px;
+    height: 50px;
     position: absolute;
-    top: 400px;
-    left: 550px;
+    right: 120px;
+    bottom: 20px;
+    z-index: 20;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  //美化封面上傳按鈕
+  .coverupdate:after {
+    content: "";
+    background-image: url("@/assets/image/icon/upload.jpg");
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     overflow: hidden;
-
-}
-
-.update {
+    z-index: 10;
+  }
+  //頭貼照片
+  .profile-container {
     position: absolute;
-    top: 600px;
-    left: 780px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    z-index: 1;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    //頭貼
+    .profile {
+      background-color: #232323dd;
+      object-fit: cover;
+      object-position: top;
+      @include rect(300px);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    //頭貼上傳按鈕
+    .profileupdate {
+      // opacity: 0;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    //美化封面上傳按鈕
+    .profileupdate:after {
+      content: "";
+      background-image: url("@/assets/image/icon/upload.jpg");
+      background-position: center center;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 10;
+    }
+  }
 }
-
-.updatepic {
-    position: absolute;
-    top: 450px;
-    right: 100px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-
 .songpic {
-    border-radius: 50%;
-    margin: 20px;
+  border-radius: 50%;
+  margin: 20px;
 }
 
 .songpicupload {
-    border-radius: 50%;
-    margin: 20px;
-    width: 60px;
-    height: 60px;
-    display: inline-block;
-    align-items: left;
-    justify-content: left;
+  border-radius: 50%;
+  margin: 20px;
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  align-items: left;
+  justify-content: left;
 }
-
-.profile-container {
-    border-radius: 50%;
-    overflow: hidden;
-    width: 300px;
-    height: 300px;
-
-}
-
-.profile {
-    width: 100%;
-    height: auto;
-
-
-}
-
 
 .page-options {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .page-options :hover {
-    color: $purple
+  color: $purple;
 }
-
-
 
 .page-option button {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    color: $white;
-    font-size: $small;
-    margin-top: 300px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: $white;
+  font-size: $small;
+  margin-top: 300px;
 }
 
-
 .line {
-    height: 3px;
-    width: 100%;
-    background: linear-gradient(to right, $tp, $purple, $tp);
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(to right, $tp, $purple, $tp);
 }
 
 .form1 {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    margin: 130px;
-
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 130px;
 }
 
 .form-group {
-    padding: 10px;
-    text-align: left;
+  padding: 10px;
+  text-align: left;
 }
 
-
-
-.form-group input {
-    width: 100%;
-    height: 50px;
-    background-color: black;
-    color: $white;
-    padding: 10px;
-    text-align: left;
-    margin: 10px;
+.form-group > input,
+.form-group > select,
+.form-group > textarea {
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+  background-color: black;
+  color: $white;
+  padding: 15px 20px;
+  text-align: left;
+  margin: 10px;
+}
+//滾軸樣式
+select::-webkit-scrollbar {
+  margin: 5px;
+  width: 5px;
+  background-color: #252525;
+  border-radius: 10px;
+}
+select::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ffffff20;
 }
 
 button.active {
-    color: $purple;
+  color: $purple;
 }
 
 .button {
-    color: $green;
-    background-color: transparent;
-    border: $green 1px solid;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin: 50px 50px;
+  color: $green;
+  background-color: transparent;
+  border: $green 1px solid;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 50px 50px;
 }
 
 .label {
-    color: $white;
-    font-size: $small;
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    margin: 10px;
-
-}
-
-#inst {
-    background-color: black;
-    color: $white;
-    padding: 10px;
-    margin: 10px;
-    margin-top: 0;
+  color: $white;
+  font-size: $small;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  margin: 10px;
 }
 
 #location {
-    background-color: black;
-    color: $white;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    margin: 10px;
+  color: $white;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin: 10px;
 }
-
 
 .checkbox {
-    background-color: black;
-    padding: 20px 20px;
-    font-size: large;
+  // min-width: 200px;
+  // // background-color: black;
+  // box-sizing: border-box;
+  // text-align: left;
+  margin: 10px;
+  .songclass {
     width: 100%;
-    height: 350px;
     text-align: left;
-    margin: 10px;
+    background-color: black;
+    padding: 20px 20px 40px 20px;
     border-radius: 10px;
-}
-
-.songclass {
-    margin: 20px;
+    margin: 20px 10px;
+    .label {
+      font-size: $default;
+      margin: 20px 10px;
+    }
+    .opt {
+      display: inline-block;
+      margin: 5px 10px;
+      min-width: 125px;
+      color: $white;
+      .checkboxLabel {
+        position: relative;
+        margin-right: 10px;
+        padding-top: 2px;
+        input[type="checkbox"] {
+          cursor: pointer;
+          vertical-align: sub;
+          color: $white;
+          width: 23px;
+          height: 23px;
+          border-radius: 50%;
+          /*清除預設樣式*/
+          appearance: none;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          border: 2px solid #ffffff80;
+        }
+        .i {
+          position: absolute;
+          z-index: 10;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -40%);
+          font-size: 12px;
+          color: $green;
+          margin: 0;
+          opacity: 0;
+          pointer-events: none;
+        }
+        input[type="checkbox"]:hover,
+        input[type="checkbox"]:checked {
+          border: 2px solid $green;
+        }
+        input[type="checkbox"]:hover ~ .i,
+        input[type="checkbox"]:checked ~ .i {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
 #privacy {
-    color: $green;
-    background-color: black;
-    width: 100px;
-    height: 50px;
-    border-radius: 10px;
-    padding: 10px;
-    border: none;
-    margin: 10px 0px;
+  color: $green;
+  background-color: black;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  margin: 10px 0px;
 }
 
 label {
-    color: $white;
-    padding: 8px;
+  color: $white;
+  padding: 8px;
 }
 
 .plus-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 100px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
 }
 
 .plus {
-    border-radius: 20%;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    margin-right: 10px;
-    margin-bottom: 30px;
+  border-radius: 20%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 30px;
 }
 
 p.plus {
-    font-size: 25px;
-    color: $white;
-    padding: 20px;
-    margin-bottom: 50px;
-    display: inline;
-    width: 250px;
-    text-align: center;
+  font-size: 25px;
+  color: $white;
+  padding: 20px;
+  margin-bottom: 50px;
+  display: inline;
+  width: 250px;
+  text-align: center;
 }
 
-
 .song-table {
-    width: 80%;
-    margin: 100px;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 80%;
+  margin: 100px;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 .song-table th,
 .song-table td {
-    border: 1px solid #ccc;
-    padding: 15px;
-    text-align: left;
-    margin-bottom: 20px;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    vertical-align: top;
-    justify-content: space-evenly;
+  border: 1px solid #ccc;
+  padding: 15px;
+  text-align: left;
+  margin-bottom: 20px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  vertical-align: top;
+  justify-content: space-evenly;
 }
 
 .song-table th {
-    background-color: black;
-    color: $white;
-    text-align: left;
-    height: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  background-color: black;
+  color: $white;
+  text-align: left;
+  height: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .albumn {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .song-table td {
-    color: $white;
-    background-color: transparent;
-    font-size: 14px;
-    text-align: left;
-    align-items: center;
+  color: $white;
+  background-color: transparent;
+  font-size: 14px;
+  text-align: left;
+  align-items: center;
 }
 
 .song-table tr:hover {
-    background-color: black
+  background-color: black;
 }

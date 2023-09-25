@@ -37,7 +37,7 @@
             <div class="buttonArea">
               <FolBtnBig :functype="0"></FolBtnBig>
               <ShareBtn></ShareBtn>
-              <PlayBtnBig></PlayBtnBig>
+              <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
             </div>
           </div>
         </div>
