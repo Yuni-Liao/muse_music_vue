@@ -182,12 +182,6 @@ export default {
         }
     },
     methods: {
-        closeMoreSpace(event) {
-            // 關閉所有打開的 moreBtnAlert 區塊
-            this.songs.forEach((albumItem) => {
-                albumItem.showMoreBtn = false;
-            });
-        },
         toggleMoreBtn(albumItem, event) {
             if (this.openAlbumItem && this.openAlbumItem !== albumItem) {
                 this.openAlbumItem.showMoreBtn = false; // 關閉之前打開的
