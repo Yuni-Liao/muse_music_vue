@@ -45,10 +45,11 @@
     }
 
     .acc_editprofile{
-        padding: 2.5% 0 2.5% 2.5%;
+        padding: 2.5% 0% 2.5% 2.5%;
         text-align: left;
         color: $green;
         background-image: linear-gradient($dark,#333,#111 90%);
+        flex-direction: column;
         h1{
             font-size: $big;
             color: $white;
@@ -100,6 +101,7 @@
     }
     // 帳號安全驗證
     .acc_safe_wrap{
+        @include rect(700px, fit);
         padding: 2.5%;
         text-align: left;
         color: $green;
@@ -135,4 +137,43 @@
             }
         }
     }
+}
+
+
+
+// RWD - 廖妍榛
+.acc_setting{
+    @include s {
+    flex-direction: column;
+    .acc_sidebar{
+        @include rect(100%);
+        margin-right: 0%;
+        ul{ 
+            padding: 20% 0% 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            li{
+                width: 150px;
+                margin: 0%;
+                padding: 3%;
+            }
+        }
+    }
+
+    .acc_editprofile{
+        @include rect(100%);
+        padding-left: 2.5%;
+        .acc_box{
+            @include rect(100%);
+            }
+        }
+    }
+    // 帳號安全驗證
+    .acc_safe_wrap{
+        .acc_safe_box{
+            @include rect(100%);
+            padding: 0% 1%;
+            }
+        }
 }

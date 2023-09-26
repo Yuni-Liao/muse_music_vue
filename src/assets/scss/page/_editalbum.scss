@@ -1,85 +1,6 @@
-// 重推again
-.profilepageedit {
-  padding: 80px 0;
-  box-sizing: border-box;
-}
-//封面
-.cover-container {
-  position: relative;
-  .cover {
-    background-color: #232323dd;
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-  }
-  //封面上傳按鈕
-  .coverupdate {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    right: 120px;
-    bottom: 20px;
-    z-index: 20;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  //美化封面上傳按鈕
-  .coverupdate:after {
-    content: "";
-    background-image: url("@/assets/image/icon/upload.jpg");
-    background-position: center center;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    z-index: 10;
-  }
-  //頭貼照片
-  .profile-container {
-    position: absolute;
-    bottom: -150px;
-    left: 50%;
-    transform: translateX(-50%);
-    //頭貼
-    .profile {
-      background-color: #232323dd;
-      object-fit: cover;
-      object-position: top;
-      @include rect(300px);
-      border-radius: 50%;
-      overflow: hidden;
-    }
-    //頭貼上傳按鈕
-    .profileupdate {
-      // opacity: 0;
-      width: 50px;
-      height: 50px;
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    //美化封面上傳按鈕
-    .profileupdate:after {
-      content: "";
-      background-image: url("@/assets/image/icon/upload.jpg");
-      background-position: center center;
-      background-size: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      overflow: hidden;
-      z-index: 10;
-    }
-  }
+.main-wrapper {
+  @include layout(1200px);
+  padding: 130px 0;
 }
 .songpic {
   border-radius: 50%;
@@ -105,36 +26,11 @@
   color: $purple;
 }
 
-.page-option button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-  color: $white;
-  font-size: $small;
-  margin-top: 300px;
-}
-
-.line {
-  height: 3px;
-  width: 100%;
-  background: linear-gradient(to right, $tp, $purple, $tp);
-}
-.main-wrapper {
-  @include layout(1200px);
-}
-.page {
-  padding: 130px 30px;
-}
 .form1 {
-  text-align: left;
-  align-items: left;
-  justify-content: left;
-  margin: auto;
-  color: $green;
-}
-.form1 a {
-  color: $white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  //   margin: 130px;
 }
 
 .form-group {
@@ -155,13 +51,13 @@
   margin: 10px;
 }
 
-//滾軸樣式
 select::-webkit-scrollbar {
   margin: 5px;
   width: 5px;
   background-color: #252525;
   border-radius: 10px;
 }
+
 select::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #ffffff20;
@@ -189,21 +85,9 @@ button.active {
   margin: 10px;
 }
 
-#location {
-  color: $white;
-  width: 100%;
-  height: 50px;
-  padding: 10px;
-  margin: 10px;
-}
-
-// inpet[type=checkbex] 美化
 .checkbox {
-  // min-width: 200px;
-  // // background-color: black;
-  // box-sizing: border-box;
-  // text-align: left;
   margin: 10px;
+
   .songclass {
     width: 100%;
     text-align: left;
@@ -211,6 +95,7 @@ button.active {
     padding: 20px 20px 40px 20px;
     border-radius: 10px;
     margin: 20px 10px;
+
     .label {
       font-size: $default;
       margin: 20px 10px;
@@ -221,10 +106,12 @@ button.active {
       margin: 5px 10px;
       min-width: 125px;
       color: $white;
+
       .checkboxLabel {
         position: relative;
         margin-right: 10px;
         padding-top: 2px;
+
         input[type="checkbox"] {
           cursor: pointer;
           vertical-align: sub;
@@ -251,10 +138,12 @@ button.active {
           opacity: 0;
           pointer-events: none;
         }
+
         input[type="checkbox"]:hover,
         input[type="checkbox"]:checked {
           border: 2px solid $green;
         }
+
         input[type="checkbox"]:hover ~ .i,
         input[type="checkbox"]:checked ~ .i {
           opacity: 1;
@@ -263,11 +152,12 @@ button.active {
     }
   }
 }
-//其他頁面
+
 .checkboxLabel {
   position: relative;
   margin-right: 10px;
   padding-top: 2px;
+
   input[type="checkbox"] {
     cursor: pointer;
     vertical-align: sub;
@@ -294,15 +184,16 @@ button.active {
     opacity: 0;
     pointer-events: none;
   }
+
   input[type="checkbox"]:hover,
   input[type="checkbox"]:checked {
     border: 2px solid $green;
   }
+
   input[type="checkbox"]:checked ~ .i {
     opacity: 1;
   }
 }
-//---------------------
 
 .selcetcheck {
   color: $pink;
@@ -353,9 +244,10 @@ p.plus {
 }
 
 .song-table {
-  width: 100%;
-  margin: auto;
+  // width: 80%;
+  // margin: 100px;
   border-collapse: collapse;
+  margin-top: 20px;
 }
 
 .song-table th,
@@ -372,6 +264,7 @@ p.plus {
 }
 
 .song-table th {
+  background-color: black;
   color: $white;
   text-align: left;
   height: 50%;
@@ -379,6 +272,7 @@ p.plus {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .albumn {
   width: 200px;
   height: 200px;
@@ -390,121 +284,5 @@ p.plus {
   font-size: 14px;
   text-align: left;
   align-items: center;
-}
-
-.song-table tr:hover {
   background-color: black;
-}
-
-.top {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0 50px 0;
-  padding: 0 18px;
-  //歌曲管理
-  .newsong {
-    cursor: pointer;
-    img {
-      width: 30px;
-      vertical-align: top;
-      margin-right: 10px;
-    }
-    span {
-      color: $green;
-      font-size: $default;
-      line-height: 30px;
-    }
-  }
-  .search {
-    border: 2px solid $white;
-    border-radius: 50px;
-    padding: 5px 0;
-    input[type="search"] {
-      height: 16px;
-      width: 150px;
-      background-color: $tp;
-      border: none;
-      color: $green;
-      margin-left: 20px;
-      outline: none;
-      font-size: $tag;
-    }
-    button {
-      @include btnBgNone;
-      img {
-        width: 15px;
-        vertical-align: center;
-        margin: 0 10px;
-      }
-    }
-  }
-  //專輯管理
-  .newalbum {
-    height: 30px;
-    cursor: pointer;
-    color: $green;
-    font-size: $default;
-    padding: 5px 0;
-    .i {
-      width: 30px;
-      vertical-align: top;
-      margin-right: 10px;
-      color: $green;
-    }
-    span {
-      line-height: $default;
-    }
-  }
-}
-
-//歌曲管理table
-.song-table {
-  // tr {
-  //   max-height: 162px;
-  //   overflow: hidden;
-  // }
-  .timg {
-    width: 10%;
-    img {
-      @include rect(100px);
-      object-fit: cover;
-      overflow: hidden;
-      margin: auto;
-    }
-  }
-  .tname {
-    width: 15%;
-  }
-  .tintro {
-    width: 35%;
-    p {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 6;
-    }
-  }
-  .show {
-    width: 10%;
-    text-align: center;
-  }
-  .date {
-    width: 10%;
-    text-align: center;
-  }
-  .time {
-    width: 5%;
-    text-align: center;
-  }
-  .edit {
-    width: 5%;
-    text-align: center;
-  }
-}
-
-//新增歌曲至專輯
-.addsongtoalbum {
-  padding: 130px 0;
 }
