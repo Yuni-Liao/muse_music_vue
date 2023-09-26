@@ -54,38 +54,38 @@ export default {
                 {
                     id: 5,
                     styleName:"流行音樂",
-                    count: 452,
+                    count: 954,
                 },
                 {
                     id: 6,
                     styleName:"獨立音樂",
-                    count: 452,
+                    count: 738,
                 },
                 {
                     id: 7,
                     styleName:"嘻哈",
-                    count: 452,
+                    count: 653,
                 },
-                {
-                    id: 8,
-                    styleName:"搖滾",
-                    count: 452,
-                },
-                {
-                    id: 9,
-                    styleName:"藍調",
-                    count: 452,
-                },
-                {
-                    id: 10,
-                    styleName:"爵士",
-                    count: 452,
-                },
-                {
-                    id: 11,
-                    styleName:"古典",
-                    count: 452,
-                },
+                // {
+                //     id: 8,
+                //     styleName:"搖滾",
+                //     count: 452,
+                // },
+                // {
+                //     id: 9,
+                //     styleName:"藍調",
+                //     count: 452,
+                // },
+                // {
+                //     id: 10,
+                //     styleName:"爵士",
+                //     count: 452,
+                // },
+                // {
+                //     id: 11,
+                //     styleName:"古典",
+                //     count: 452,
+                // },
             ],
             songs: [
                 {
@@ -183,10 +183,11 @@ export default {
     },
     methods: {
         closeMoreSpace(event) {
-            // 關閉所有打開的 moreBtnAlert 區塊
-            this.songs.forEach((albumItem) => {
-                albumItem.showMoreBtn = false;
-            });
+            console.log('Clicked in closeMoreSpace');
+            // 檢查是否點擊的是需要关闭的元素之外的区域
+            if (this.openAlbumItem && !event.target.closest(".moreBtnAlert")) {
+                this.openAlbumItem.showMoreBtn = false;
+            }
         },
         toggleMoreBtn(albumItem, event) {
             if (this.openAlbumItem && this.openAlbumItem !== albumItem) {

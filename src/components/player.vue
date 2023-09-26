@@ -96,8 +96,8 @@
                         <p>{{ formatTime(totalTime) }}</p>
                     </div>
                     <div class="fcbtns">
-                        <img v-if="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute">
-                        <img v-if="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
+                        <img v-show="!isMuted" src="/image/icon/volume.svg" alt="" @click="toggleMute">
+                        <img v-show="isMuted" src="/image/icon/muted.svg" alt="" @click="toggleMute">
                         <div class="awsome">
                             <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" @click="prevSong" />
@@ -110,10 +110,10 @@
                             <fontAwesome :icon="['fa', 'fa-step-forward']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" @click="nextSong" />
                         </div>
-                        <fontAwesome :icon="['fa', 'arrow-rotate-right']" style="color: #fff; cursor: pointer;" />
+                        <fontAwesome :icon="['fa', 'arrow-rotate-right']" style="color: #fff; cursor: pointer;" @click="replay" />
                     </div>
                 </div>
-                <!-- 歌词内容 -->
+                <!-- 歌詞 -->
                 <div v-show="showLyrics" class="lyricsSection">
                     <p>
                     Tryin' my best to take it slowly
@@ -276,6 +276,14 @@ export default {
             if (audioElement) {
                 this.currentTime = audioElement.currentTime;
                 this.totalTime = audioElement.duration;
+                 // 檢查歌曲時間 不會顯示NaN
+                if (!isNaN(this.currentTime) && !isNaN(this.totalTime)) {
+                    this.currentTime = Math.floor(this.currentTime);
+                    this.totalTime = Math.floor(this.totalTime);
+                } else {
+                    this.currentTime = 0;
+                    this.totalTime = 0;
+                }
             }
         },
         loadAndPlayCurrentSong() {
@@ -309,6 +317,18 @@ export default {
             this.isPlaying = false;
             this.currentTime = 0;
         },
+        replay(){
+            //蓋板播放器 歌曲重播
+            const audioElement = document.getElementById("myAudio");
+            if (this.isPlaying) {
+                audioElement.pause();
+            } 
+            audioElement.currentTime = 0;
+            audioElement.play()
+            .then(() => {
+                this.isPlaying = true;
+            })
+        }
     },
     computed: {
         currentSong() {
