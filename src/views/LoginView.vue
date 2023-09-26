@@ -41,9 +41,8 @@
         <router-link to="home/register">立即註冊</router-link>
         </div>
 
-        <router-link to="/home">
         <button @click="loginBtn()" type="submit">登入</button>
-    </router-link>
+   
     </form>
     </div>
 </div>
