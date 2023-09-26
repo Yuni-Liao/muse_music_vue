@@ -122,10 +122,14 @@
 }
 
 .form1 {
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  text-align: left;
+  align-items: left;
+  justify-content: left;
   margin: 130px;
+  color:$green;
+}
+.form1 a{
+  color:$white;
 }
 
 .form-group {
@@ -204,6 +208,8 @@ button.active {
       font-size: $default;
       margin: 20px 10px;
     }
+
+    
     .opt {
       display: inline-block;
       margin: 5px 10px;
@@ -226,6 +232,7 @@ button.active {
           -webkit-appearance: none;
           border: 2px solid #ffffff80;
         }
+        
         .i {
           position: absolute;
           z-index: 10;
@@ -250,6 +257,52 @@ button.active {
     }
   }
 }
+
+.checkboxLabel {
+  position: relative;
+  margin-right: 10px;
+  padding-top: 2px;
+  input[type="checkbox"] {
+    cursor: pointer;
+    vertical-align: sub;
+    color: $white;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    /*清除預設樣式*/
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid #ffffff80;
+  }
+  
+  .i {
+    position: absolute;
+    z-index: 10;
+    top: 40%;
+    left: 50%;
+    transform: translate(40%, -90%);
+    font-size: 20px;
+    color: $green;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  input[type="checkbox"]:hover,
+  input[type="checkbox"]:checked {
+    border: 2px solid $green;
+  }
+  input[type="checkbox"]:checked ~ .i {
+    opacity: 1;
+  }
+}
+
+.selcetcheck{
+  color:$pink;
+  text-align: right;
+  padding: 0 200px;
+}
+
 
 #privacy {
   color: $green;
