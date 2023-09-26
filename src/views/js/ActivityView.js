@@ -8,10 +8,13 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination } from 'swiper/modules';
 
+import FolBtnBig from '@/components/FolBtnBig.vue';
+
 export default {
   components: {
     Swiper,
     SwiperSlide,
+    FolBtnBig,
   },
   setup() {
     return {
@@ -31,6 +34,7 @@ export default {
 
       activityList: [
         {
+          id: 0,
           calenderMoth: '5',
           date: '26',
           day: '五',
@@ -42,6 +46,7 @@ export default {
           month: 'MAY',
         },
         {
+          id: 1,
           calenderMoth: '6',
           date: '14',
           day: '三',
@@ -53,6 +58,7 @@ export default {
           month: 'JUN',
         },
         {
+          id: 2,
           calenderMoth: '7',
           date: '31',
           day: '一',
@@ -64,6 +70,7 @@ export default {
           month: 'JUL',
         },
         {
+          id: 3,
           calenderMoth: '9',
           date: '30',
           day: '六',
@@ -75,6 +82,55 @@ export default {
           month: 'SEP',
         },
         {
+          id: 4,
+          calenderMoth: '9',
+          date: '30',
+          day: '六',
+          img: 'activity01.png',
+          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
+          timePlace: '19:00・台北市・THE WALL 公館',
+          singer: 'Rosalyn',
+          area: '北部',
+          month: 'SEP',
+        },
+        {
+          id: 5,
+          calenderMoth: '9',
+          date: '30',
+          day: '六',
+          img: 'activity01.png',
+          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
+          timePlace: '19:00・台北市・THE WALL 公館',
+          singer: 'Rosalyn',
+          area: '北部',
+          month: 'SEP',
+        },
+        {
+          id: 6,
+          calenderMoth: '9',
+          date: '30',
+          day: '六',
+          img: 'activity01.png',
+          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
+          timePlace: '19:00・台北市・THE WALL 公館',
+          singer: 'Rosalyn',
+          area: '北部',
+          month: 'SEP',
+        },
+        {
+          id: 7,
+          calenderMoth: '9',
+          date: '30',
+          day: '六',
+          img: 'activity01.png',
+          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
+          timePlace: '19:00・台北市・THE WALL 公館',
+          singer: 'Rosalyn',
+          area: '北部',
+          month: 'SEP',
+        },
+        {
+          id: 8,
           calenderMoth: '10',
           date: '27',
           day: '五',
