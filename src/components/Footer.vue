@@ -1,4 +1,22 @@
 <template>
+    <div class="phone-show">
+      <router-link to="/home/find" style="margin: 0px 10px;">
+        <fontAwesome :icon="['fa', 'fa-compass']" size="xl" style="color: #fff; cursor: pointer;" />
+        <p>探索</p>
+      </router-link>
+      <router-link to="/home/ranking" style="margin: 0px 10px;">
+        <fontAwesome :icon="['fa', 'fa-arrow-trend-up']" size="xl" style="color: #fff; cursor: pointer;" />
+        <p>排行榜</p>
+      </router-link>
+      <router-link to="/home/shop" style="margin: 0px 10px;">
+        <fontAwesome :icon="['fa', 'fa-bag-shopping']" size="xl" style="color: #fff; cursor: pointer;" />
+        <p>周邊販售</p>
+      </router-link>
+      <router-link to="/home/activity" style="margin: 0px 10px;">
+        <fontAwesome :icon="['fa', 'fa-bolt']" size="xl" style="color: #fff; cursor: pointer;" />
+        <p>音樂快訊</p>
+      </router-link>
+    </div>
     <footer :style="{
         backgroundImage: `url( ${require('@/assets/image/footer_background.jpg')} )`,
         backgroundSize: '100% auto',
