@@ -46,7 +46,7 @@
                 </tr>
               </table>
             </div>
-            <p class="count">總金額： $ {{ total }}</p>
+            <p class="count">全館免運！<br>總金額： $ {{ total }}</p>
           </div>
         </div>
         <!-- ▲ 凱芸 測試帶入暫存的商品資訊 -->
