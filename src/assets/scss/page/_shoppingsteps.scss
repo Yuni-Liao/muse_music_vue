@@ -5,12 +5,14 @@ button {
     border-radius: 5px;
     padding: 10px 20px;
     margin: 40px;
+
+    a {
+        text-decoration: none;
+        color: $green;
+    }
 }
 
-a {
-    text-decoration: none;
-    color: $green;
-}
+
 
 .shopline {
     height: 3px;
@@ -49,9 +51,16 @@ textarea {
     justify-content: center;
 }
 
-.ivu-breadcrumb a {
-    color: $white;
+.ivu-breadcrumb {
+    text-align: left;
+    margin-left: 5%;
+    padding: 20px 0 20px;
+
+    a {
+        //color: $white;
+    }
 }
+
 
 .step {
     color: $white;
@@ -68,7 +77,7 @@ textarea {
 
 .progress-bar {
     margin-bottom: 20px;
-    padding: 80px;
+    margin-top: 85px;
 }
 
 p {
@@ -183,7 +192,6 @@ p {
 
                     .itemNum {
                         margin: auto;
-                        width: 5%;
                     }
 
                     .pic {
