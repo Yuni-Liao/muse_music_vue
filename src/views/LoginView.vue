@@ -30,7 +30,7 @@
             :class="{ 'invalid-password': passwordInvalid }"
             :type="showPassword ? 'text' : 'password'"
         />
-        <button class="show" @click="togglePasswordVisibility">
+        <button class="show" type="button" @click="togglePasswordVisibility">
             <fontAwesome :icon="['fas', 'eye']" style="color: #fdfbfb" />
             {{ showPassword ? "隱藏密碼" : "顯示密碼" }}
         </button>
@@ -42,7 +42,7 @@
         </div>
 
         <button @click="loginBtn()" type="submit">登入</button>
-   
+
     </form>
     </div>
 </div>
