@@ -54,7 +54,7 @@
           <div
             class="sl-item"
             :style="{
-              backgroundImage: `url(/image/SingleMusic/${item.image})`,
+              backgroundImage: `url(${publicPath}image/SingleMusic/${item.image})`,
             }"
             @click.self.prevent="gotosonglist(item.slid)"
           >
