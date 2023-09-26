@@ -2,11 +2,15 @@
   <div class="profilepageedit">
     <div class="cover-container">
       <img class="cover" alt="Cover Image" :src="member.coverimgURL" />
-      <input class="coverupdate" type="file" @change="coverImgChange" />
+      <input class="coverupdate" type="file" @change="coverImgChange($event)" />
       <!-- 頭貼 -->
       <div class="profile-container">
         <img class="profile" alt="Profile Image" :src="member.profileImgURL" />
-        <input type="file" @change="profileImgChange" class="profileupdate" />
+        <input
+          type="file"
+          @change="profileImgChange($event)"
+          class="profileupdate"
+        />
       </div>
     </div>
 

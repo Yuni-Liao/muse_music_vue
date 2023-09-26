@@ -187,26 +187,25 @@ export default {
   methods: {
     changeTab(tabNumber) {
       this.activeTab = tabNumber;
+    }, //封面相片
+    coverImgChange(e) {
+      let file = e.target.files[0];
+      let readFile = new FileReader();
+      readFile.readAsDataURL(file);
+      readFile.addEventListener("load", this.coverloadImage);
     },
-  },
-  //封面相片
-  coverImgChange(e) {
-    let file = e.target.files[0];
-    let readFile = new FileReader();
-    readFile.readAsDataURL(file);
-    readFile.addEventListener("load", this.coverloadImage);
-  },
-  coverloadImage(e) {
-    this.member.coverimgURL = e.target.result;
-  },
-  //頭貼相片
-  profileImgChange(e) {
-    let file = e.target.files[0];
-    let readFile = new FileReader();
-    readFile.readAsDataURL(file);
-    readFile.addEventListener("load", this.profileloadImage);
-  },
-  profileloadImage(e) {
-    this.member.profileImgURL = e.target.result;
+    coverloadImage(e) {
+      this.member.coverimgURL = e.target.result;
+    },
+    //頭貼相片
+    profileImgChange(e) {
+      let file = e.target.files[0];
+      let readFile = new FileReader();
+      readFile.readAsDataURL(file);
+      readFile.addEventListener("load", this.profileloadImage);
+    },
+    profileloadImage(e) {
+      this.member.profileImgURL = e.target.result;
+    },
   },
 };
