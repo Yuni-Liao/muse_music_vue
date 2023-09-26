@@ -58,9 +58,9 @@
             </div>
 
             <!-- 分頁 -->
-            <!-- <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
-                @on-change="handlePageChange" v-model="currentPage" /> -->
-                <Page :total="catList.length" :page-size="selectedPageSize" @on-change="handlePageChange" v-model="currentPage" />
+            <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
+                @on-change="handlePageChange" v-model="currentPage" />
+            <!-- <Page :total="catList.length" :page-size="selectedPageSize" @on-change="handlePageChange" v-model="currentPage" /> -->
         </div>
         <router-link to="/home/shoppingsteps">
             <button class="shopcart">

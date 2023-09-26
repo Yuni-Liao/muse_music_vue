@@ -1,15 +1,19 @@
 <template>
-    <div class="infoContainer" v-for="info in infoList" :key="info">
+    <div class="infoContainer" >
         <div class="infoTop">
-            <img :src="require(`/public/image/Activity/${info.img}`)">
+            <img :src="`/image/Activity/${foundObject.img}`">
             <div class="intro">
-                <h1>{{ info.title }}</h1>
-                <h4>{{ info.date }}</h4>
-                <h4>{{ info.place }}</h4>
-                <router-link to="#" class="singer">
-                    <fontAwesome :icon="['fa', 'user-large']" style="color: #fff; margin-left: 10px; cursor: pointer;" />
-                    <p>{{ info.singer }}</p>
-                </router-link>
+                <h1>{{ foundObject.title }}</h1>
+                <h4>{{ foundObject.date }}</h4>
+                <h4>{{ foundObject.place }}</h4>
+                <div class="followSingerr">
+                    <router-link to="profilepage" class="singer">
+                        <fontAwesome :icon="['fa', 'user-large']" style="color: #fff; margin-left: 10px; cursor: pointer;" />
+                        <p>{{ foundObject.singer }}</p>
+                    </router-link>
+                    <FolBtnBig :functype="2"/>
+                </div>
+                
             </div>
 
         </div>

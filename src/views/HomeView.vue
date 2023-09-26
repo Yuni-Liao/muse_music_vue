@@ -61,10 +61,7 @@
       <swiper-slide v-for="(item, sid) in songs" :key="sid">
         <div class="card">
           <div class="pic">
-            <img
-              :src="require(`/public/image/index/${item.image}`)"
-              @click="playmusic()"
-            />
+            <img :src="require(`/public/image/index/${item.image}`)" />
             <div class="play" @click="openplayer()">
               <fontAwesome class="i" :icon="['fa', 'play']" />
             </div>
