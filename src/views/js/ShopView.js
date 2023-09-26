@@ -428,7 +428,7 @@ export default {
                 func = (a, b) => a.prodPrice - b.prodPrice;
             }
 
-            return sortedProducts.sort(func); 
+            return sortedProducts.sort(func);
         }
     },
     //郭凱芸 - 下拉數量選單:預設
@@ -436,6 +436,14 @@ export default {
     //     this.handlePageSize(20)
 
     // },
+    watch: {
+        currentKind() {
+          this.currentPage = 1;
+        },
+        sortType() {
+          this.currentPage = 1;
+        },
+      },
     methods: {
         // 郭凱芸 - 增加商品數量
         incrementItem(item) {
@@ -452,7 +460,7 @@ export default {
         //郭凱芸 - 下拉數量選單:分頁
         handlePageChange(page) {
             console.log('handlePageChange', page)
-            this.currentPage = page;
+            this.selectedPageSize = page;
         },
 
         handlePageSize(page) {

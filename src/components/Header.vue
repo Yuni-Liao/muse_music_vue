@@ -1,8 +1,8 @@
 <template>
-  <header headroom headroom--unpinned id="navbar">
+  <header >
     <!-- 非v-bind的圖片載入方式 -->
     <!-- 注意:: 點擊logo>返回首頁的跳轉要用router-link to="___" 這方式套才不會404, 用<a>沒辦法 -->
-    <nav>
+    <nav headroom headroom--unpinned id="navbar">
       <div class="header_nav_left">
         <router-link to="/home">
           <img
@@ -11,10 +11,10 @@
             src="~@/assets/image/muse_logo.png"
           />
         </router-link>
-        <router-link to="/home/find">探索</router-link>
-        <router-link to="/home/ranking">排行榜</router-link>
-        <router-link to="/home/shop">周邊販售</router-link>
-        <router-link to="/home/activity">音樂快訊</router-link>
+        <router-link to="/home/find" class="find">探索</router-link>
+        <router-link to="/home/ranking" class="ranking">排行榜</router-link>
+        <router-link to="/home/shop" class="shop">周邊販售</router-link>
+        <router-link to="/home/activity" class="activity">音樂快訊</router-link>
       </div>
 
       <div class="header_nav_right">
@@ -25,6 +25,7 @@
           <img alt="search_icon" src="~@/assets/image/icon/search.png" />
         </div>
         <div class="notify_dropdown_reaction">
+          
           <img :alt="'bell_icon'" src="~@/assets/image/icon/bell.png" />
 
           <div class="notify_dropdown">
@@ -111,8 +112,57 @@
             <div class="loginbtn">登出</div>
           </div>
         </div>
+        <div class="hamburger" @click="isNavVisible = !isNavVisible">
+          <img  alt="hamburger_icon" src="~@/assets/image/icon/hamburger.svg"/>
+        </div>
       </div>
     </nav>
+    <div class="phone-show-nav" v-show="isNavVisible">
+      <div class="headshot">
+        <img src="@/assets/image/profileeditimage/profileimage.jpg" alt="">
+        <fontAwesome @click="isNavVisible = !isNavVisible" class="close" :icon="['fa', 'xmark']" size="2xl" style="color: #fff;" />
+      </div>
+      <router-link to="#" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/clipboard.png" alt=""/>
+        <p>訂單資訊</p>
+      </router-link>
+      <router-link to="/home/accsetting" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/settingicon.png" alt=""/>
+        <p>帳號設定</p>
+      </router-link>
+      <router-link to="/home/profilepage" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/personalPage.png" alt=""/>
+        <p>個人主頁</p>
+      </router-link>
+      <router-link to="/home/profilepageedit" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/development.png" alt=""/>
+        <p>個人管理頁面</p>
+      </router-link>
+      
+      <p style="margin: 30px 0px 20px 25px; font-size: 20px;">我的音樂庫</p>
+            
+      <router-link to="/home" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/clock.png" alt=""/>
+        <p>播放紀錄</p>
+      </router-link>
+      <router-link to="/home/mysonglist" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/list.png" alt=""/>
+        <p>我的歌單</p>
+      </router-link>
+      <router-link to="/home" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/heart.png" alt=""/>
+        <p>我的最愛</p>
+      </router-link>
+      <router-link to="/home" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/targeticon.png" alt=""/>
+        <p>我的追蹤</p>
+      </router-link>
+      
+      
+      <div class="loginbtn"><p style="margin: 30px 0px 10px 25px; font-size: 20px;">登出</p></div>
+
+    </div>
+    
   </header>
 </template>
 
@@ -128,6 +178,7 @@ const Animations = {
 export default {
   data() {
     return {
+      isNavVisible: false,
       notifyList: [
         {
           src: "creator01.jpg",
@@ -152,6 +203,9 @@ export default {
       }
       scrollold = this.scrollY;
     });
+  },
+  methods: {
+    
   },
 };
 </script>
