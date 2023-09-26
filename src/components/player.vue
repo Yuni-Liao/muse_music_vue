@@ -2,7 +2,7 @@
     <!-- -------------懸浮播放器範圍 -->
     <div class="player" v-if="playerOpen" ref="player">
         <div class="player_left">
-            <img @click="showModal" class="screen" src="/image/icon/screen.svg" alt="">
+            <img @click="showModal" class="screen" :src="`${publicPath}image/icon/screen.svg`" alt="">
             <img class="musicPic" :src="currentSong.cover" alt="">
             <div class="songInfo">
                 <p>{{ currentSong.songTitle }}</p>
@@ -23,15 +23,11 @@
                 </div>
                 <!-- 播放按钮 -->
                 <div id="play">
-                    <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
-                        v-if="!isPlaying"
-                        @click="playMusic"
-                    />
+                    <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
+                        v-if="!isPlaying" @click="playMusic" />
                     <!-- 暫停按钮 -->
-                    <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;" 
-                        v-else
-                        @click="pauseMusic"
-                    />
+                    <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
+                        v-else @click="pauseMusic" />
                 </div>
                 <!-- 下一首按鈕 -->
                 <div id="next" class="forwargBtn controlsItem">
@@ -42,7 +38,8 @@
             <!-- 時間進度條 -->
             <div class="timeBar">
                 <p>{{ formatTime(currentTime) }}</p>
-                <input class="input-range--custom" type="range" v-model="currentTime" @input="seekToTime" :min="0" :max="totalTime" step="0.01">
+                <input class="input-range--custom" type="range" v-model="currentTime" @input="seekToTime" :min="0"
+                    :max="totalTime" step="0.01">
                 <p>{{ formatTime(totalTime) }}</p>
             </div>
         </div>
@@ -61,10 +58,10 @@
         // backgroundImage: `url( ${require('@/assets/image/songPic.png')} )`,
         backgroundImage: `url('${currentSong.cover}')`,
         backgroundSize: '100% auto',
-        backgroundRepeat: no-repeat,
-        backgroundPosition:'center 20%',
+        backgroundRepeat: no - repeat,
+        backgroundPosition: 'center 20%',
     }">
-    
+
         <!-- 歌曲信息和控制按钮 -->
         <div class="modal-content">
             <div class="playerTop">
@@ -92,7 +89,8 @@
                     <h5>{{ currentSong.singer }}</h5>
                     <div class="timeBarr">
                         <p>{{ formatTime(currentTime) }}</p>
-                            <input class="input-range--custom" type="range" v-model="currentTime" @input="seekToTime" :min="0" :max="totalTime" step="0.01">
+                        <input class="input-range--custom" type="range" v-model="currentTime" @input="seekToTime" :min="0"
+                            :max="totalTime" step="0.01">
                         <p>{{ formatTime(totalTime) }}</p>
                     </div>
                     <div class="fcbtns">
@@ -110,52 +108,53 @@
                             <fontAwesome :icon="['fa', 'fa-step-forward']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" @click="nextSong" />
                         </div>
-                        <fontAwesome :icon="['fa', 'arrow-rotate-right']" style="color: #fff; cursor: pointer;" @click="replay" />
+                        <fontAwesome :icon="['fa', 'arrow-rotate-right']" style="color: #fff; cursor: pointer;"
+                            @click="replay" />
                     </div>
                 </div>
                 <!-- 歌詞 -->
                 <div v-show="showLyrics" class="lyricsSection">
                     <p>
-                    Tryin' my best to take it slowly
-                    To play it cool and keep it low key
-                    But I'm just a man I ain't a priest
-                    My mind's stuck on one thing
-                    And it ain't exactly holy
-                    No, it won't ever be the time to
+                        Tryin' my best to take it slowly
+                        To play it cool and keep it low key
+                        But I'm just a man I ain't a priest
+                        My mind's stuck on one thing
+                        And it ain't exactly holy
+                        No, it won't ever be the time to
 
-                    Cross that line with you
-                    But if only you knew
-                    We'd be causin' a commotion
-                    No more hopin'
-                    I leave my girl
-                    You leave your man
-                    Show you my world
-                    Drink your potion
-                    Unlimited oxytocin, Oh!
-                    I can't fake it
+                        Cross that line with you
+                        But if only you knew
+                        We'd be causin' a commotion
+                        No more hopin'
+                        I leave my girl
+                        You leave your man
+                        Show you my world
+                        Drink your potion
+                        Unlimited oxytocin, Oh!
+                        I can't fake it
 
-                    Girl, I'm breaking
-                    Tension's got me
-                    Tryin' my best to take it slowly
-                    To play it cool and keep it low key
-                    But I'm just a man I ain't a priest
-                    My mind's stuck on one thing
-                    And it ain't exactly holy
-                    No, it won't ever be the time to
+                        Girl, I'm breaking
+                        Tension's got me
+                        Tryin' my best to take it slowly
+                        To play it cool and keep it low key
+                        But I'm just a man I ain't a priest
+                        My mind's stuck on one thing
+                        And it ain't exactly holy
+                        No, it won't ever be the time to
 
-                    Cross that line with you
-                    But if only you knew
-                    We'd be causin' a commotion
-                    No more hopin'
-                    I leave my girl
-                    You leave your man
-                    Show you my world
-                    Drink your potion
-                    Unlimited oxytocin, Oh!
-                    I can't fake it
+                        Cross that line with you
+                        But if only you knew
+                        We'd be causin' a commotion
+                        No more hopin'
+                        I leave my girl
+                        You leave your man
+                        Show you my world
+                        Drink your potion
+                        Unlimited oxytocin, Oh!
+                        I can't fake it
 
-                    Girl, I'm breaking
-                    Tension's got me
+                        Girl, I'm breaking
+                        Tension's got me
                     </p>
                 </div>
             </div>
@@ -276,7 +275,7 @@ export default {
             if (audioElement) {
                 this.currentTime = audioElement.currentTime;
                 this.totalTime = audioElement.duration;
-                 // 檢查歌曲時間 不會顯示NaN
+                // 檢查歌曲時間 不會顯示NaN
                 if (!isNaN(this.currentTime) && !isNaN(this.totalTime)) {
                     this.currentTime = Math.floor(this.currentTime);
                     this.totalTime = Math.floor(this.totalTime);
@@ -300,16 +299,16 @@ export default {
 
                 // 播放新的音樂
                 audioElement.play()
-                .then(() => {
-                    this.isPlaying = true;
-                    // 音樂準備好後重置時間
-                    audioElement.onloadedmetadata = () => {
-                        this.totalTime = audioElement.duration;
-                    };
-                })
-                .catch((error) => {
-                    console.error('音樂播放失敗：', error);
-                });
+                    .then(() => {
+                        this.isPlaying = true;
+                        // 音樂準備好後重置時間
+                        audioElement.onloadedmetadata = () => {
+                            this.totalTime = audioElement.duration;
+                        };
+                    })
+                    .catch((error) => {
+                        console.error('音樂播放失敗：', error);
+                    });
             }
         },
         songEnded() {
@@ -317,17 +316,17 @@ export default {
             this.isPlaying = false;
             this.currentTime = 0;
         },
-        replay(){
+        replay() {
             //蓋板播放器 歌曲重播
             const audioElement = document.getElementById("myAudio");
             if (this.isPlaying) {
                 audioElement.pause();
-            } 
+            }
             audioElement.currentTime = 0;
             audioElement.play()
-            .then(() => {
-                this.isPlaying = true;
-            })
+                .then(() => {
+                    this.isPlaying = true;
+                })
         }
     },
     computed: {
@@ -344,7 +343,7 @@ export default {
         }
     },
     watch: {
-        volume: function(newVolume) {
+        volume: function (newVolume) {
             const audioElement = document.getElementById("myAudio");
             audioElement.volume = newVolume / 100;
         },
