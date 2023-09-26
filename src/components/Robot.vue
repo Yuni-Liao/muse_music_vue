@@ -71,6 +71,7 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
+            robotfaq: [],
             customerText: "",
             info: [
                 {
