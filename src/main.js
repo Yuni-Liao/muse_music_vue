@@ -59,6 +59,7 @@ import {
   faCirclePlus,
   faCircleMinus,
   faCheck,
+  faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -111,6 +112,8 @@ library.add(
   faCirclePlus,
   faCircleMinus,
   faCheck,
+  faPen,
+
 );
 
 const vueApp = createApp(App)

@@ -133,7 +133,7 @@
                                 <div class="songPic">
                                     <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
                                     <div class="play" @click="openPlayer()">
-                                        <fontAwesome class="i" :icon="['fa', 'play']" />
+                                        <fontAwesome class="i" :icon="['fa', 'play']" color="#fff"/>
                                     </div>
                                 </div>
                                 <router-link to="/home/singlemusic" class="songName">

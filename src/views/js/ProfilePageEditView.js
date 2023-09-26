@@ -188,23 +188,7 @@ export default {
     changeTab(tabNumber) {
       this.activeTab = tabNumber;
     },
-    nextStep() {
-      if (this.currentStep < this.totalSteps) {
-        this.currentStep++;
-      }
-    },
-    previousStep() {
-      if (this.currentStep > 1) {
-        this.currentStep--;
-      }
-    },
-    completeStep() {
-      if (this.currentStep < this.totalSteps) {
-        this.currentStep++;
-      }
-    },
-    alert() {
-      alert("確認送出");
+    
     },
     //封面相片
     coverImgChange(e) {
@@ -226,5 +210,4 @@ export default {
     profileloadImage(e) {
       this.member.profileImgURL = e.target.result;
     },
-  },
-};
+  }

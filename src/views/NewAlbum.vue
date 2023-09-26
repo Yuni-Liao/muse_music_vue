@@ -39,8 +39,14 @@
       </div>
   </form>
   <div class="plus-container">
-    <img class="plus" alt="Profile Image" src="@/assets/image/icon/plus.jpg" />
-    <p class="plus">新增單曲至專輯</p>
+    <router-link to="addsongtoalbum">
+      <img
+        class="plus"
+        alt="Profile Image"
+        src="@/assets/image/icon/plus.jpg"
+      />
+      <p class="plus">新增單曲至專輯</p>
+    </router-link>
   </div>
   
   <router-link to="profilepageedit"><button class="button" style="margin-bottom: 150px" @click="complete">
@@ -55,4 +61,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/profilepageedit";
 </style>
-<script src="./js/ProfilePageEditView"></script>
+<script src="./js/NewAlbum.js"></script>
