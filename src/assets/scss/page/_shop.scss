@@ -1,6 +1,5 @@
 * {
     background-color: $white;
-    line-height: $fh;
 }
 
 .bannerpic {
@@ -55,7 +54,7 @@ select {
         font-size: $medium;
         display: flex;
         flex-direction: column;
-        margin: 0 1% 0 4%;
+        margin: 0 1% 0 8%;
 
         h2 {
             color: $dark;
@@ -109,14 +108,18 @@ select {
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
-            gap: 6.5%;
+            gap: 4.5%;
+            margin-left: 50px;
 
             .prodCard {
-                width: calc(22% - 2%);
+                min-width: calc(22% - 2%);
                 height: 400px;
                 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
                 padding: 40px 0;
                 margin: 0 0 110px;
+                @media screen and (max-width: 768px){
+                    min-width:40%;
+                }
 
                 .prodPic {
                     
@@ -131,6 +134,7 @@ select {
                     padding: 10px;
 
                     .prodName {
+                        line-height: $fh;
                         padding-bottom: 10px;
                         color: $dark;
                     }

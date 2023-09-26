@@ -413,7 +413,7 @@ export default {
 
         //劉宜靜 - 商品排序
         sortedTypeOptions() {
-            const sortedProducts = this.catList.slice(); // 使用slice()创建浅拷贝
+            const sortedProducts = this.catList.slice();
             let func = (a, b) => new Date(b.date) - new Date(a.date);
 
             if (this.sortType === '上架時間(舊>新)') {
@@ -428,14 +428,14 @@ export default {
                 func = (a, b) => a.prodPrice - b.prodPrice;
             }
 
-            return sortedProducts.sort(func); // 对拷贝进行排序
+            return sortedProducts.sort(func);
         }
     },
     //郭凱芸 - 下拉數量選單:預設
-    mounted() {
-        //this.handlePageSize(20)
+    // mounted() {
+    //     this.handlePageSize(20)
 
-    },
+    // },
     methods: {
         // 郭凱芸 - 增加商品數量
         incrementItem(item) {
@@ -452,14 +452,15 @@ export default {
         //郭凱芸 - 下拉數量選單:分頁
         handlePageChange(page) {
             console.log('handlePageChange', page)
-            this.currentPage = page;
+            this.selectedPageSize = page;
         },
+
         handlePageSize(page) {
             // console.log('handlePageSize', page)
             this.selectedPageSize = page;
         },
 
-        priceClick(type) {
+        typeClick(type) {
             if (this.sortType != type) {
                 this.sortType = type;
             }

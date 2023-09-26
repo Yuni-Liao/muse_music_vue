@@ -3,7 +3,7 @@
     <div class="progress-bar">
       <div :style="{ width: progressWidth + '%' }"></div>
     </div>
-    <Breadcrumb separator=">" class="breadcrumb">
+    <Breadcrumb separator="/" class="breadcrumb">
       <BreadcrumbItem><router-link to="/home">首頁</router-link></BreadcrumbItem>
       <BreadcrumbItem><router-link to="/home/shop">周邊商品</router-link></BreadcrumbItem>
       <BreadcrumbItem><router-link to="/home/shoppingsteps"></router-link>購物車</BreadcrumbItem>
@@ -46,7 +46,7 @@
                 </tr>
               </table>
             </div>
-            <p class="count">總金額： $ {{ total }}</p>
+            <p class="count">全館免運！<br>總金額： $ {{ total }}</p>
           </div>
         </div>
         <!-- ▲ 凱芸 測試帶入暫存的商品資訊 -->

@@ -1,4 +1,5 @@
 .shopProdDetail {
+    line-height: $fh;
     position: relative;
     margin-top: 85px;
     background-color: rgb(255, 255, 255);
@@ -17,11 +18,20 @@
         flex-direction: column;
         text-align: left;
 
+        @media screen and (max-width: 768px) {
+            @include layout(100%);
+        }
+
         .mainInf {
 
             display: flex;
             margin-bottom: 10%;
             align-items: center;
+
+            // @media screen and (max-width: 768px) {
+            //     flex-direction: column;
+            //     width: 100%;
+            // }
 
             .pic {
                 width: 50%;
@@ -36,12 +46,13 @@
             .txt {
 
                 width: 50%;
+                line-height: $fh;
 
                 .title {
                     font-size: $big;
                     font-weight: 700;
                     width: 100%;
-                    padding-bottom: 20px;
+                    margin-bottom: 20px;
 
                     &::after {
                         content: '';

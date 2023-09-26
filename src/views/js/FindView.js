@@ -40,37 +40,37 @@ export default {
             // 語系
             language: [
                 {
-                    id: 1,
+                    id: 0,
                     name: '日語流行',
                     img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 2,
+                    id: 1,
                     name: '韓語流行',
                     img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 3,
+                    id: 2,
                     name: '華語流行',
                     img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 4,
+                    id: 3,
                     name: '西洋流行',
                     img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 5,
+                    id: 4,
                     name: '其他語言',
                     img: 'japan50.png',
                     link: 'findmusic',
                 },
                 // {
-                //     id: 6,
+                //     id: 5,
                 //     name: '流行音樂',
                 //     img: 'japan50.png',
                 //     link: 'findmusic',
@@ -115,90 +115,90 @@ export default {
             // 風格
             style: [
                 {
-                    id: 6,
+                    id: 0,
                     name: '流行音樂',
-                    imgUrl: 123,
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 7,
+                    id: 1,
                     name: '獨立音樂',
-                    imgUrl: 123,
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 8,
+                    id: 2,
                     name: '嘻哈',
-                    imgUrl: 123,
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 9,
+                    id: 3,
                     name: '搖滾',
-                    imgUrl: 123,
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 10,
+                    id: 4,
                     name: '藍調',
-                    imgUrl: 123,
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 11,
+                    id: 5,
                     name: '爵士',
-                    imgUrl: 123,
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
-                    id: 12,
+                    id: 6,
                     name: '古典',
-                    imgUrl: 123,
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
             ],
             // 心情
             emotion: [
                 {
-                    id: 1,
+                    id: 0,
                     name: '快樂',
-                    imgUrl: 123,
+                    img: 'japan50.png',
+                    link: 'findmusic',
+                },
+                {
+                    id: 1,
+                    name: '傷心',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 2,
-                    name: '傷心',
-                    imgUrl: 123,
+                    name: '運動',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 3,
-                    name: '運動',
-                    imgUrl: 123,
+                    name: '輕鬆',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 4,
-                    name: '輕鬆',
-                    imgUrl: 123,
+                    name: '舒眠',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 5,
-                    name: '舒眠',
-                    imgUrl: 123,
+                    name: '專注',
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
                 {
                     id: 6,
-                    name: '專注',
-                    imgUrl: 123,
-                    link: 'findmusic',
-                },
-                {
-                    id: 7,
                     name: '派對',
-                    imgUrl: 123,
+                    img: 'japan50.png',
                     link: 'findmusic',
                 },
             ],
@@ -302,5 +302,4 @@ export default {
     //     return {
     //     };
     // }
-
 }

@@ -9,7 +9,7 @@
     </Breadcrumb>
     <!-- 商品排序 -->
     <div class="selectArea">
-        <select class="prodSort obj_Radius" v-model="sortType" @change="priceClick(sortType)">
+        <select class="prodSort obj_Radius" v-model="sortType" @change="typeClick(sortType)">
             <option v-for="type in typeOptions" :value="type" :key="type">
                 {{ type }}
             </option>
@@ -32,12 +32,13 @@
         <!-- 商品 -->
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item, id) in getSelectedPageSize" :key="id">
-                    <router-link :to="`/home/shopproddetail/${id}`" class="prodPic">
+                <!-- <div class="prodCard" v-for="(item, id) in products" :key="id"> -->
+                <div class="prodCard" v-for="(item) in getSelectedPageSize" :key="item.id">
+                    <router-link :to="`/home/shopproddetail/${item.id}`" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
-                        <router-link :to="`/home/shopproddetail/${id}`" class="prodName">{{ item.prodName
+                        <router-link :to="`/home/shopproddetail/${item.id}`" class="prodName">{{ item.prodName
                         }}</router-link>
                         <p class="prodPrice">$ {{ item.prodPrice }}</p>
 
@@ -58,9 +59,9 @@
             </div>
 
             <!-- 分頁 -->
-            <!-- <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
-                @on-change="handlePageChange" v-model="currentPage" /> -->
-                <Page :total="catList.length" :page-size="selectedPageSize" @on-change="handlePageChange" v-model="currentPage" />
+            <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
+                @on-page-size-change="handlePageChange" v-model="currentPage" />
+            <!-- <Page :total="catList.length" :page-size="selectedPageSize" @on-change="handlePageChange" v-model="currentPage" /> -->
         </div>
         <router-link to="/home/shoppingsteps">
             <button class="shopcart">

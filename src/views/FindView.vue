@@ -16,7 +16,7 @@
 
     <div class="style">
         <div class="space" v-for="(item, id) in style" :key="id">
-            <img src="~@/assets/image/footer_background.jpg" alt="image">
+            <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
                 <router-link :to="`findmusic/${id}`">
                     {{ item.name }}
@@ -27,7 +27,7 @@
 
     <div class="emotion">
         <div class="space" v-for="(item, id) in emotion" :key="id">
-            <img src="~@/assets/image/footer_background.jpg" alt="image">
+            <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
                 <router-link :to="`findmusic/${id}`">
                     {{ item.name }}
