@@ -3,9 +3,10 @@
     <label for="name" class="label"></label>
 
     <form class="form1">
-      <router-link to="editalbum">專輯管理</router-link> > 新增單曲至專輯
+      <router-link to="editalbum">專輯管理</router-link> &nbsp/&nbsp
+      新增單曲至專輯
     </form>
-    <div class="selcetcheck">已勾選 {{ selectedCount }} 首歌曲</div>
+    <div class="selcetcheck">已勾選 {{ checked }} 首歌曲</div>
     <table class="song-table">
       <thead>
         <tr>
@@ -40,8 +41,7 @@
               <input
                 type="checkbox"
                 name="songclass"
-                v-model="song.isChecked"
-                @click="updateCount"
+                @click="updateCount($event)"
               />
               <fontAwesome class="i" :icon="['fa', 'fa-check']" />
             </label>
