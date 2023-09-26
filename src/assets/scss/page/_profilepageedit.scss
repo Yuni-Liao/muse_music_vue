@@ -222,9 +222,9 @@ button.active {
       min-width: 125px;
       color: $white;
       .checkboxLabel {
+        display: inline-block;
         position: relative;
         margin-right: 10px;
-        padding-top: 2px;
         input[type="checkbox"] {
           cursor: pointer;
           vertical-align: sub;
@@ -242,9 +242,9 @@ button.active {
         .i {
           position: absolute;
           z-index: 10;
-          top: 40%;
+          top: 50%;
           left: 50%;
-          transform: translate(-50%, -40%);
+          transform: translate(-50%, -50%);
           font-size: 12px;
           color: $green;
           margin: 0;
@@ -260,14 +260,21 @@ button.active {
           opacity: 1;
         }
       }
+      .classname {
+        line-height: 23px;
+        vertical-align: top;
+      }
     }
   }
 }
 //其他頁面
 .checkboxLabel {
+  display: inline-block;
   position: relative;
-  margin-right: 10px;
-  padding-top: 2px;
+  width: 23px;
+  height: 23px;
+  // margin-right: 10px;
+  padding: 0px;
   input[type="checkbox"] {
     cursor: pointer;
     vertical-align: sub;
@@ -285,10 +292,10 @@ button.active {
   .i {
     position: absolute;
     z-index: 10;
-    top: 40%;
+    top: 50%;
     left: 50%;
-    transform: translate(40%, -90%);
-    font-size: 20px;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
     color: $green;
     margin: 0;
     opacity: 0;
@@ -298,17 +305,12 @@ button.active {
   input[type="checkbox"]:checked {
     border: 2px solid $green;
   }
+  input[type="checkbox"]:hover ~ .i,
   input[type="checkbox"]:checked ~ .i {
     opacity: 1;
   }
 }
 //---------------------
-
-.selcetcheck {
-  color: $pink;
-  text-align: right;
-  padding: 0 200px;
-}
 
 #privacy {
   color: $green;
@@ -507,4 +509,9 @@ p.plus {
 //新增歌曲至專輯
 .addsongtoalbum {
   padding: 130px 0;
+  .selcetcheck {
+    color: $pink;
+    text-align: right;
+    line-height: 5;
+  }
 }
