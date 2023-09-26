@@ -9,7 +9,7 @@
     </Breadcrumb>
     <!-- 商品排序 -->
     <div class="selectArea">
-        <select class="prodSort obj_Radius" v-model="sortType" @change="priceClick(sortType)">
+        <select class="prodSort obj_Radius" v-model="sortType" @change="typeClick(sortType)">
             <option v-for="type in typeOptions" :value="type" :key="type">
                 {{ type }}
             </option>
@@ -32,7 +32,8 @@
         <!-- 商品 -->
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item, id) in getSelectedPageSize" :key="id">
+                <div class="prodCard" v-for="(item, id) in products" :key="id">
+                <!-- <div class="prodCard" v-for="(item, id) in getSelectedPageSize" :key="id"> -->
                     <router-link :to="`/home/shopproddetail/${id}`" class="prodPic">
                         <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
                     </router-link>
