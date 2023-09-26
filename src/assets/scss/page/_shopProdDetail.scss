@@ -18,16 +18,20 @@
         flex-direction: column;
         text-align: left;
 
+        @media screen and (max-width: 768px) {
+            @include layout(100%);
+        }
+
         .mainInf {
 
             display: flex;
             margin-bottom: 10%;
             align-items: center;
 
-            @media screen and (max-width: 768px) {
-                flex-direction: column;
-                width: 100%;
-            }
+            // @media screen and (max-width: 768px) {
+            //     flex-direction: column;
+            //     width: 100%;
+            // }
 
             .pic {
                 width: 50%;
