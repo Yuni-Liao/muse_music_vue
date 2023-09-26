@@ -3,7 +3,20 @@
         <swiper :slidesPerView="'auto'" :spaceBetween="30" :pagination="{
             clickable: true,
         }" :modules="modules" class="mySwiper">
-            <swiper-slide style="background-image: url('/image/Activity/activityBanner01.jpg');">
+            <swiper-slide v-for="(item, index) in actiTopBanner" :key="index">
+                <img class="acti_pic" :src="require(`/public/image/Activity/${item.image}`)" />
+                <div class="calender">
+                    <div class="month">
+                        {{ item.month }}
+                    </div>
+                    <p>{{ item.day }}</p>
+                    <p>{{ item.week }}</p>
+                </div>
+                <h3>{{ item.title }}</h3>
+                <h3>{{ item.info }}</h3>
+
+            </swiper-slide>
+            <!-- <swiper-slide style="background-image: url('/image/Activity/activityBanner01.jpg');">
                 <div class="calender">
                     <div class="month">
                         7月
@@ -15,7 +28,7 @@
                 <h3>19:00 / 台中市 / Legacy Taichung 傳 音樂展演空間</h3>
 
             </swiper-slide>
-            <swiper-slide style="background-image: url('/image/Activity/activityBanner02.jpg');"> 
+            <swiper-slide style="background-image: url('/image/Activity/activityBanner02.jpg');">
                 <div class="calender">
                     <div class="month">
                         8月
@@ -36,7 +49,7 @@
                 </div>
                 <h3>喧嘩祭</h3>
                 <h3>16:00/ 高雄市 / 百樂門酒館</h3>
-            </swiper-slide>
+            </swiper-slide> -->
 
         </swiper>
     </div>
@@ -82,7 +95,7 @@
 
     <!-- 月份TAB -->
     <div class="bigMonthTab">
-        <div class="outMonthTab" >
+        <div class="outMonthTab">
             <div class="left-arrow" @click="scrollMonth(-1)">
                 <fontAwesome :icon="['fa', 'fa-chevron-left']" size="2xl"
                     style="color: #fff; margin: 15px; cursor: pointer;" />
@@ -90,17 +103,10 @@
             <ul class="monthTab" ref="monthContainer">
                 <!-- <li v-for="month in visibleMonths" :key="month" @click="filterByMonth(month)" :style="monthStyle(month)">{{ month }}</li> -->
                 <li v-for="month in visibleMonths" :key="month">
-                    <span
-                    v-if="selectedMonth === month"
-                    @click="filterByMonth(month)"
-                    style="color: #74EBD5"
-                    >{{ month }}</span>
-                    <span
-                    v-else
-                    @click="filterByMonth(month)"
-                    style="color: white" 
-                    >{{ month }}</span>
-            </li>
+                    <span v-if="selectedMonth === month" @click="filterByMonth(month)" style="color: #74EBD5">{{ month
+                    }}</span>
+                    <span v-else @click="filterByMonth(month)" style="color: white">{{ month }}</span>
+                </li>
             </ul>
             <div class="right-arrow" @click="scrollMonth(1)">
                 <fontAwesome :icon="['fa', 'fa-chevron-right']" size="2xl"
@@ -118,13 +124,13 @@
                 <li @click="filterByArea('中部')" :class="{ active: selectedArea === '中部' }">中部</li>
                 <li @click="filterByArea('南部')" :class="{ active: selectedArea === '南部' }">南部</li>
                 <li @click="filterByArea('東部')" :class="{ active: selectedArea === '東部' }">東部</li>
-                
+
             </ul>
         </div>
 
         <!-- 活動資訊區 -->
         <div class="infoWrapper">
-            <div class="activityInfo" v-for="(activity, id) in filteredActivities" :key="id" >
+            <div class="activityInfo" v-for="(activity, id) in filteredActivities" :key="id">
                 <div class="calender">
                     <div class="month">
                         {{ activity.calenderMoth }}月
@@ -132,22 +138,29 @@
                     <p>{{ activity.date }}日</p>
                     <p>星期{{ activity.day }}</p>
                 </div>
-                <router-link :to="`ActivityInfo/${id}`"><img :src="require(`/public/image/Activity/${activity.img}`)"></router-link>
-                <div class="info" >
-                    <router-link :to="`ActivityInfo/${id}`"><p>{{ activity.title }}</p></router-link>
-                    <router-link :to="`ActivityInfo/${id}`"><p>{{ activity.timePlace }}</p></router-link>
+                <router-link :to="`ActivityInfo/${id}`"><img
+                        :src="require(`/public/image/Activity/${activity.img}`)"></router-link>
+                <div class="info">
+                    <router-link :to="`ActivityInfo/${id}`">
+                        <p>{{ activity.title }}</p>
+                    </router-link>
+                    <router-link :to="`ActivityInfo/${id}`">
+                        <p>{{ activity.timePlace }}</p>
+                    </router-link>
                     <div class="followSinger">
                         <router-link to="profilepage" class="singer">
                             <fontAwesome :icon="['fa', 'user-large']"
                                 style="color: #fff; margin-left: 10px; cursor: pointer;" />
                             <p>{{ activity.singer }}</p>
                         </router-link>
-                        <FolBtnBig :functype="2"/>
+                        <FolBtnBig :functype="2" />
                     </div>
-                    
+
                 </div>
             </div>
-            <button @click="loadMoreActivities" v-if="showMoreButton">查看更多<fontAwesome :icon="['fa', 'chevron-down']" style="margin-left: 5px;" /></button>
+            <!-- <button @click="loadMoreActivities" v-if="showMoreButton">查看更多
+                <fontAwesome :icon="['fa', 'chevron-down']" style="margin-left: 5px;" />
+            </button> -->
         </div>
     </div>
 </template>

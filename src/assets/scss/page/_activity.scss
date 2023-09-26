@@ -18,6 +18,12 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    .acti_pic{ //swiper banner跑迴圈 - 廖妍榛
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
     .calender{
       margin-left: 30px;
       margin-bottom: 10px;

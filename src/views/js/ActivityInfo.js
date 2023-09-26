@@ -9,7 +9,7 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-            foundObject:{},
+            foundObject: {},
             infoList: [
                 {
                     id: 0,
@@ -90,9 +90,9 @@ export default {
 
     methods: {
         fetchActivityDetail() {
-            
+
             const activitytId = this.$route.params.id;
-            
+
             this.activity = getActivityById(activitytId);
         },
     },

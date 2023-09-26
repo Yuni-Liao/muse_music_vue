@@ -26,6 +26,32 @@ export default {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
       //
+      actiTopBanner: [
+        {
+          image: "activityBanner01.jpg",
+          month: "7月",
+          day: "26日",
+          week: "星期三",
+          title: "音樂大排檔 : Showcase演唱會",
+          info: "19:00 / 台中市 / Legacy Taichung 傳 音樂展演空間"
+        },
+        {
+          image: "activityBanner02.jpg",
+          month: "8月",
+          day: "4日",
+          week: "星期五",
+          title: "初登場！夏日新聲企劃！",
+          info: "20:00 / 台北市 / Revolver"
+        },
+        {
+          image: "activityBanner03.jpg",
+          month: "8月",
+          day: "14日",
+          week: "星期一",
+          title: "喧嘩祭",
+          info: "16:00/ 高雄市 / 百樂門酒館"
+        },
+      ],
       months: [
         "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR"
       ],
