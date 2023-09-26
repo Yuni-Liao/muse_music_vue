@@ -271,8 +271,8 @@
                 vertical-align: baseline;
               }
 
-              #like.active {
-                background-color: $green; /* 这里可以设置喜欢状态的背景颜色 */
+              &#like.active {
+                background-color: $green;
               }
             }
           }
