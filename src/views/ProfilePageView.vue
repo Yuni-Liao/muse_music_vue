@@ -4,7 +4,7 @@
       <div
         class="cover-image"
         :style="{
-          backgroundImage: `url(/image/SingleMusic/coverimage.jpg)`,
+          backgroundImage: `url(${publicPath}image/SingleMusic/coverimage.jpg)`,
         }"
       >
         <!-- 圖片路徑待資料帶入後需調整  -->
@@ -77,7 +77,6 @@
       <!-- tab -->
       <div class="tabs">
         <button
-          style="display: none"
           @click="tabtype = 0"
           class="tab"
           :class="{ active: tabtype == 0 }"
@@ -103,7 +102,30 @@
       <!-- 由tab切換之顯示內容 -->
       <!-- 活動 -->
       <section v-show="tabtype === 0" class="activity container">
-        activity
+        <div v-for="(item, index) in act" class="act">
+          <div class="pic">
+            <img
+              src="@/assets/image/profileeditimage/profileimage.jpg"
+              alt=""
+            />
+          </div>
+          <div class="text">
+            <span class="date">{{ item.date }}</span>
+            <p>
+              <span class="txt">{{ item.content }}</span>
+            </p>
+            <div class="likespan">
+              <button id="like" @click="like($event, index)">
+                <fontAwesome
+                  :icon="['fa', 'thumbs-up']"
+                  class="i"
+                  style="color: #ffffff"
+                />
+              </button>
+              {{ item.num }}
+            </div>
+          </div>
+        </div>
       </section>
       <!-- 音樂 -->
       <section v-show="tabtype === 1" class="music container">
