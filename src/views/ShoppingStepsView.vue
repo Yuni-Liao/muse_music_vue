@@ -26,7 +26,7 @@
             <h2>購物清單</h2>
             <div id="cartList">
               <table>
-                <tr v-for="(item, itemId) in cartItems" :key="itemId" class="item">
+                <tr v-for="item,  in cartItems" :key="item.id" class="item">
                   <td class="itemNum">
                     {{ itemId + 1 }} <!-- 自動生成編號 -->
                   </td>
@@ -40,7 +40,7 @@
                   <td class="number">
                     <input type="number" v-model="item.inCart" min="1" @input="changeItemCount(item.id)" />
                   </td>
-                  <button @click="() => deleteItem(itemId)">
+                  <button @click="() => deleteItem(item.id)">
                     <font-awesome :icon="['fa', 'trash']" />
                   </button>
                 </tr>

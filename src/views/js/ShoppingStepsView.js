@@ -564,8 +564,9 @@ export default {
         },
         // 刪除購物車商品
         deleteItem(itemId) {
+            const index = this.cartItems.findIndex((v) => v.id === itemId);
             // 使用 splice 方法刪除對應id產品
-            this.cartItems.splice(itemId, 1);
+            this.cartItems.splice(index, 1);
 
             // 更新總金額
             this.total = this.cartItems.reduce((acc, item) => {
