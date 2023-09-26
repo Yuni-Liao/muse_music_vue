@@ -90,7 +90,7 @@ const routes = [
         },
       },
       {
-        path: "activityInfo",
+        path: "activityInfo/:id",
         name: "activityInfo",
         component: () =>
           import(
