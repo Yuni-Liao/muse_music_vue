@@ -60,6 +60,7 @@ import {
   faCircleMinus,
   faCheck,
   faPen,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -113,6 +114,7 @@ library.add(
   faCircleMinus,
   faCheck,
   faPen,
+  faEye,
 
 );
 

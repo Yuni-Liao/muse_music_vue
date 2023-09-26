@@ -64,8 +64,8 @@
                                     <!-- <img src="../../public/image/icon/addFav.png"> -->
                                     <p>加入我的最愛</p>
                                 </a>
-                                <a class="addSl">
-                                    <AddSlBtn></AddSlBtn>
+                                <a class="addSl"  @click.stop>
+                                    <AddSlBtn @click.stop></AddSlBtn>
                                     <!-- <img src="../../public/image/icon/addSl.png"> -->
                                     <p>加入歌單</p>
                                 </a>

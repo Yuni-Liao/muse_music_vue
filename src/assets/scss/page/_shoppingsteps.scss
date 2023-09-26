@@ -182,7 +182,7 @@ p {
 
                     .itemNum {
                         margin: auto;
-                        width: 10%;
+                        width: 5%;
                     }
 
                     .pic {
@@ -197,15 +197,18 @@ p {
 
                     .prodName {
                         width: 25%;
+                        line-height: $fh;
+                        margin: auto;
 
                         p {
                             font-size: $medium;
                             color: $white;
+                            align-items: center;
                         }
                     }
 
                     .price {
-                        width: 20%;
+                        width: 10%;
                         margin: auto;
 
                         p {
@@ -215,7 +218,7 @@ p {
 
                     .number {
                         margin: auto;
-                        width: 15%;
+                        width: 10%;
                     }
 
                     button {
@@ -229,6 +232,7 @@ p {
 
         .count {
             color: $pink;
+            line-height: $fh;
         }
     }
 }
