@@ -6,8 +6,16 @@ export default {
             password: "",
             emailInvalid: false,
             passwordInvalid: false,
-            showPassword: false 
+            showPassword: false,
+            predefinedCredentials: [
+                {
+                    email: "chd103@gmail.com",
+                    password: "11111111",
+                },
+            ]
+            
         };
+        
     },
     methods: {
         loginBtn() {
@@ -36,7 +44,18 @@ export default {
                 this.passwordInvalid = false;
             }
 
-            this.$router.push("/dashboard");
+            const matchingCredentials = this.predefinedCredentials.find(
+                (credentials) =>
+                    credentials.email === this.email && credentials.password === this.password
+            );
+        
+            if (matchingCredentials) {
+                alert("登入成功");
+                this.$router.push("/home");
+            } else {
+                alert("帳號或密碼不正確");
+            }
+
             fetch('https://fakestoreapi.com/auth/login', {
                 method: 'POST',
                 body: JSON.stringify({

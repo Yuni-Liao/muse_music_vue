@@ -37,10 +37,12 @@
         </div>
 
         <div class="links">
-        <router-link to="/home/forgetpsw">忘記密碼</router-link>
-        <router-link to="/home/register">立即註冊</router-link>
+        <router-link to="home/forgetpsw">忘記密碼</router-link>
+        <router-link to="home/register">立即註冊</router-link>
         </div>
+
         <button @click="loginBtn()" type="submit">登入</button>
+   
     </form>
     </div>
 </div>
