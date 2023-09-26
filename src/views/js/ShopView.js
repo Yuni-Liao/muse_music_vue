@@ -436,6 +436,14 @@ export default {
     //     this.handlePageSize(20)
 
     // },
+    watch: {
+        currentKind() {
+          this.currentPage = 1;
+        },
+        sortType() {
+          this.currentPage = 1;
+        },
+      },
     methods: {
         // 郭凱芸 - 增加商品數量
         incrementItem(item) {
