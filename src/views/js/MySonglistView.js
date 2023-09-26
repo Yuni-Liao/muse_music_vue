@@ -1,8 +1,9 @@
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
 import NewSl from "@/components/NewSl.vue";
+import player from "@/components/player.vue";
 
 export default {
-  components: { PlayBtnBig, NewSl },
+  components: { PlayBtnBig, NewSl, player },
   data() {
     return {
       // 讓圖片 build 之後能顯示
@@ -165,6 +166,10 @@ export default {
     isNewSlOpenupdate(val) {
       this.isNewSlOpen = val;
       // alert("已新增一個新歌單");
+    },
+    openplayer() {
+      // alert("呼叫懸浮播放器");
+      this.$refs.player.playMusic();
     },
   },
   mounted() {

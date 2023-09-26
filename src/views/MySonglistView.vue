@@ -1,4 +1,5 @@
 <template>
+  <player ref="player"></player>
   <teleport to="body">
     <NewSl v-if="isNewSlOpen" @isNewSlOpenupdate="isNewSlOpenupdate"></NewSl>
   </teleport>
@@ -97,7 +98,7 @@
                   <span>{{ item.creator }}</span>
                 </div>
               </div>
-              <PlayBtnBig></PlayBtnBig>
+              <PlayBtnBig @click="openplayer()"></PlayBtnBig>
             </div>
           </div>
         </div>
