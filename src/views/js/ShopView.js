@@ -404,7 +404,12 @@ export default {
             if (this.currentKind === 'All') return this.products;
             return this.products.filter((v, i) => v.kind.includes(this.currentKind))
         },
+<<<<<<< HEAD
         // 下拉數量選單:計算商品數量
+=======
+        
+        //郭凱芸 - 下拉數量選單:計算商品數量
+>>>>>>> sang
         getSelectedPageSize() {
             const startIdx = (this.currentPage - 1) * this.selectedPageSize;
             const endIdx = startIdx + this.selectedPageSize;
@@ -415,19 +420,19 @@ export default {
         sortedTypeOptions() {
             const sortedProducts = this.catList.slice();
             let func = (a, b) => new Date(b.date) - new Date(a.date);
-
             if (this.sortType === '上架時間(舊>新)') {
                 func = (a, b) => new Date(a.date) - new Date(b.date);
             }
-
             if (this.sortType === '價格:由高到低') {
                 func = (a, b) => b.prodPrice - a.prodPrice;
             }
-
             if (this.sortType === '價格:由低到高') {
                 func = (a, b) => a.prodPrice - b.prodPrice;
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> sang
             return sortedProducts.sort(func);
         }
     },
