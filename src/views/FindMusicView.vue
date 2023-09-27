@@ -38,6 +38,7 @@
                         <td class="pic">
                             <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)" alt="albumItem.name"
                                 @click="openPlayer">
+                                <fontAwesome class="f_play" :icon="['fa', 'play']" @click="openPlayer"/>
                         </td>
                         <td class="name">
                             <router-link to="/home/singlemusic">
