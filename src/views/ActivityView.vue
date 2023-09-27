@@ -115,6 +115,19 @@
         </div>
     </div>
 
+    <!-- 手機才會出現的地區篩選 -->
+    <div class="bigAreaTab">
+        <div class="outAreaTab">
+            <ul>
+                <li @click="filterByArea('全部')" :class="{ active: selectedArea === '全部' }">全部</li>
+                <li @click="filterByArea('北部')" :class="{ active: selectedArea === '北部' }">北部</li>
+                <li @click="filterByArea('中部')" :class="{ active: selectedArea === '中部' }">中部</li>
+                <li @click="filterByArea('南部')" :class="{ active: selectedArea === '南部' }">南部</li>
+                <li @click="filterByArea('東部')" :class="{ active: selectedArea === '東部' }">東部</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="areaInfoContainer">
         <!-- 地區 -->
         <div class="activityArea">
@@ -138,29 +151,30 @@
                     <p>{{ activity.date }}日</p>
                     <p>星期{{ activity.day }}</p>
                 </div>
-                <router-link :to="`ActivityInfo/${id}`"><img
-                        :src="require(`/public/image/Activity/${activity.img}`)"></router-link>
-                <div class="info">
-                    <router-link :to="`ActivityInfo/${id}`">
-                        <p>{{ activity.title }}</p>
+                <div class="actWrapper">
+                    <router-link :to="`ActivityInfo/${id}`"><img
+                        :src="require(`/public/image/Activity/${activity.img}`)">
                     </router-link>
-                    <router-link :to="`ActivityInfo/${id}`">
-                        <p>{{ activity.timePlace }}</p>
-                    </router-link>
-                    <div class="followSinger">
-                        <router-link to="profilepage" class="singer">
-                            <fontAwesome :icon="['fa', 'user-large']"
-                                style="color: #fff; margin-left: 10px; cursor: pointer;" />
-                            <p>{{ activity.singer }}</p>
+                    <div class="info">
+                        <router-link :to="`ActivityInfo/${id}`">
+                            <p>{{ activity.title }}</p>
                         </router-link>
-                        <FolBtnBig :functype="2" />
-                    </div>
+                        <router-link :to="`ActivityInfo/${id}`">
+                            <p>{{ activity.timePlace }}</p>
+                        </router-link>
+                        <div class="followSinger">
+                            <router-link to="profilepage" class="singer">
+                                <fontAwesome :icon="['fa', 'user-large']"
+                                    style="color: #fff; margin-left: 10px; cursor: pointer;" />
+                                <p>{{ activity.singer }}</p>
+                            </router-link>
+                            <FolBtnBig :functype="2" />
+                        </div>
 
+                    </div>
                 </div>
             </div>
-            <!-- <button @click="loadMoreActivities" v-if="showMoreButton">查看更多
-                <fontAwesome :icon="['fa', 'chevron-down']" style="margin-left: 5px;" />
-            </button> -->
+           
         </div>
     </div>
 </template>
