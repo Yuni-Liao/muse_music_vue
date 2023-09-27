@@ -45,6 +45,7 @@
                   type="checkbox"
                   name="songclass"
                   @click="updateCount($event)"
+                  v-model="song.isChecked"
                 />
                 <fontAwesome class="i" :icon="['fa', 'fa-check']" />
               </label>
@@ -73,90 +74,92 @@ export default {
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
         {
-          title: "新增加的歌1",
+          title: "新增加的歌2",
           description:
             "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
         {
-          title: "新增加的歌1",
+          title: "新增加的歌3",
           description:
             "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
         {
-          title: "新增加的歌1",
+          title: "新增加的歌4",
           description:
             "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
         {
-          title: "新增加的歌1",
+          title: "新增加的歌5",
           description:
             "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
         {
-          title: "新增加的歌1",
+          title: "新增加的歌6",
           description:
             "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
         {
-          title: "新增加的歌1",
+          title: "新增加的歌7",
           description:
             "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
         {
-          title: "新增加的歌1",
+          title: "新增加的歌8",
           description:
             "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
         {
-          title: "新增加的歌1",
+          title: "新增加的歌9",
           description:
             "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
           privacy: "公開",
           date: "2023-08-22",
           time: "03:58",
-          //   isChecked: true,
+          isChecked: false,
         },
       ],
     };
   },
   methods: {
     updateCount(e) {
-      //console.log(e.target.checked);
+      e.target.isChecked = e.target.checked;
       if (e.target.checked == true) {
         this.checked++;
+        console.log(e.target.isChecked);
       } else {
         this.checked--;
+        console.log(e.target.isChecked);
       }
     },
     cancelAddSong() {
@@ -269,7 +272,6 @@ export default {
     input[type="checkbox"]:checked {
       border: 2px solid $green;
     }
-    input[type="checkbox"]:hover ~ .i,
     input[type="checkbox"]:checked ~ .i {
       opacity: 1;
     }

@@ -51,17 +51,10 @@ export default {
           isChecked: true,
         },
       ],
-
       selectedCount: 4,
     };
   },
   methods: {
-    // changeTab(tabNumber) {
-    //   this.activeTab = tabNumber;
-    // },
-    // updateCount() {
-    //   this.selectedCount = this.songs.filter((song) => song.isChecked).length;
-    // },
     isAddSongOpenupdate(val) {
       this.isAddSongOpen = val;
     },
