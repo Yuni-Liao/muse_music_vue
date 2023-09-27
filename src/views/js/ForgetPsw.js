@@ -26,5 +26,11 @@ export default {
                 this.current -= 1;
             }
         },
-    }
+    },
+    computed: {
+        isEmailValid(){
+            const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+            return emailRegex.test(this.email);
+        }
+    },
 }

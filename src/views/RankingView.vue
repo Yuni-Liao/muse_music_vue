@@ -128,9 +128,7 @@
                   </p>
                 </div>
                 <div class="follow_icon">
-                  <img @click="followed(item)"
-                    :src="item.followed ? require(`@/assets/image/icon/followed.svg`) : require(`@/assets/image/icon/unfollow.svg`)"
-                    alt="" />
+                  <FolBtnBig :functype="0" />
                 </div>
               </li>
             </ol>
@@ -146,10 +144,7 @@
                   </p>
                 </div>
                 <div class="follow_icon">
-                  <img @click="followed(item)"
-                    :src="item.followed ? require(`@/assets/image/icon/followed.svg`) : require(`@/assets/image/icon/unfollow.svg`)"
-                    alt="" />
-
+                    <FolBtnBig :functype="0" />
                 </div>
 
               </li>

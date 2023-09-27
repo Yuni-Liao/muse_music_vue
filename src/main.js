@@ -59,6 +59,13 @@ import {
   faCirclePlus,
   faCircleMinus,
   faCheck,
+  faPen,
+  faCompass,
+  faArrowTrendUp,
+  faBagShopping,
+  faBolt,
+  faEye,
+  
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -71,7 +78,7 @@ library.add(
   faUserGroup,
   faComment,
   faUserLarge,
-  faBell,
+  
   faCircleUser,
   faCamera,
   faImage,
@@ -111,6 +118,13 @@ library.add(
   faCirclePlus,
   faCircleMinus,
   faCheck,
+  faPen,
+  faCompass,
+  faArrowTrendUp,
+  faBagShopping,
+  faBolt,
+  faBell,
+  faEye,
 );
 
 const vueApp = createApp(App)

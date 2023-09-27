@@ -10,8 +10,9 @@
         <section class="inner">
             <div class="mainInf">
                 <div class="pic">
-                    <!-- <img :src="foundObject.prodPic" :alt="foundObject.prodName"> -->
-                    <img :src="`/image/ShopImage/${foundObject.prodPic}`" :alt="foundObject.prodName" />
+                    <div class="image-wrapper">
+                        <img :src="`${publicPath}image/ShopImage/${foundObject.prodPic}`" :alt="foundObject.prodName" />
+                    </div>
                 </div>
                 <div class="txt">
                     <div class="title">
@@ -57,7 +58,7 @@
         </section>
         <router-link to="/home/shoppingsteps">
             <button class="shopcart">
-                <img src="/image/icon/shopcart.png" alt="shopcart">
+                <img :src="`${publicPath}image/icon/shopcart.png`" :alt="shopcart">
             </button>
         </router-link>
     </main>

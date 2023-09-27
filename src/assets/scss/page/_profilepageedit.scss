@@ -120,12 +120,21 @@
   width: 100%;
   background: linear-gradient(to right, $tp, $purple, $tp);
 }
-
+.main-wrapper {
+  @include layout(1200px);
+}
+.page {
+  padding: 130px 30px;
+}
 .form1 {
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  margin: 130px;
+  text-align: left;
+  align-items: left;
+  justify-content: left;
+  margin: auto;
+  color: $green;
+}
+.form1 a {
+  color: $white;
 }
 
 .form-group {
@@ -145,6 +154,7 @@
   text-align: left;
   margin: 10px;
 }
+
 //滾軸樣式
 select::-webkit-scrollbar {
   margin: 5px;
@@ -187,6 +197,7 @@ button.active {
   margin: 10px;
 }
 
+// inpet[type=checkbex] 美化
 .checkbox {
   // min-width: 200px;
   // // background-color: black;
@@ -204,15 +215,16 @@ button.active {
       font-size: $default;
       margin: 20px 10px;
     }
+
     .opt {
       display: inline-block;
       margin: 5px 10px;
       min-width: 125px;
       color: $white;
       .checkboxLabel {
+        display: inline-block;
         position: relative;
         margin-right: 10px;
-        padding-top: 2px;
         input[type="checkbox"] {
           cursor: pointer;
           vertical-align: sub;
@@ -226,12 +238,13 @@ button.active {
           -webkit-appearance: none;
           border: 2px solid #ffffff80;
         }
+
         .i {
           position: absolute;
           z-index: 10;
-          top: 40%;
+          top: 50%;
           left: 50%;
-          transform: translate(-50%, -40%);
+          transform: translate(-50%, -50%);
           font-size: 12px;
           color: $green;
           margin: 0;
@@ -242,14 +255,61 @@ button.active {
         input[type="checkbox"]:checked {
           border: 2px solid $green;
         }
-        input[type="checkbox"]:hover ~ .i,
         input[type="checkbox"]:checked ~ .i {
           opacity: 1;
         }
       }
+      .classname {
+        line-height: 23px;
+        vertical-align: top;
+      }
     }
   }
 }
+//其他頁面
+.checkboxLabel {
+  display: inline-block;
+  position: relative;
+  width: 23px;
+  height: 23px;
+  // margin-right: 10px;
+  padding: 0px;
+  input[type="checkbox"] {
+    cursor: pointer;
+    vertical-align: sub;
+    color: $white;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    /*清除預設樣式*/
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid #ffffff80;
+  }
+
+  .i {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: $green;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  input[type="checkbox"]:hover,
+  input[type="checkbox"]:checked {
+    border: 2px solid $green;
+  }
+
+  input[type="checkbox"]:checked ~ .i {
+    opacity: 1;
+  }
+}
+//---------------------
 
 #privacy {
   color: $green;
@@ -280,7 +340,7 @@ label {
   height: 50px;
   cursor: pointer;
   margin-right: 10px;
-  margin-bottom: 30px;
+  vertical-align: middle;
 }
 
 p.plus {
@@ -294,10 +354,9 @@ p.plus {
 }
 
 .song-table {
-  width: 80%;
-  margin: 100px;
+  width: 100%;
+  margin: auto;
   border-collapse: collapse;
-  margin-top: 20px;
 }
 
 .song-table th,
@@ -314,7 +373,6 @@ p.plus {
 }
 
 .song-table th {
-  background-color: black;
   color: $white;
   text-align: left;
   height: 50%;
@@ -337,4 +395,118 @@ p.plus {
 
 .song-table tr:hover {
   background-color: black;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 50px 0;
+  padding: 0 18px;
+  //歌曲管理
+  .newsong {
+    cursor: pointer;
+    img {
+      width: 30px;
+      vertical-align: top;
+      margin-right: 10px;
+    }
+    span {
+      color: $green;
+      font-size: $default;
+      line-height: 30px;
+    }
+  }
+  .search {
+    border: 2px solid $white;
+    border-radius: 50px;
+    padding: 5px 0;
+    input[type="search"] {
+      height: 16px;
+      width: 150px;
+      background-color: $tp;
+      border: none;
+      color: $green;
+      margin-left: 20px;
+      outline: none;
+      font-size: $tag;
+    }
+    button {
+      @include btnBgNone;
+      img {
+        width: 15px;
+        vertical-align: center;
+        margin: 0 10px;
+      }
+    }
+  }
+  //專輯管理
+  .newalbum {
+    height: 30px;
+    cursor: pointer;
+    color: $green;
+    font-size: $default;
+    padding: 5px 0;
+    .i {
+      width: 30px;
+      vertical-align: top;
+      margin-right: 10px;
+      color: $green;
+    }
+    span {
+      line-height: $default;
+    }
+  }
+}
+
+//歌曲管理table
+.song-table {
+  // tr {
+  //   max-height: 162px;
+  //   overflow: hidden;
+  // }
+  .timg {
+    width: 10%;
+    img {
+      @include rect(100px);
+      object-fit: cover;
+      overflow: hidden;
+      margin: auto;
+    }
+  }
+  .tname {
+    width: 15%;
+  }
+  .tintro {
+    width: 35%;
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+    }
+  }
+  .show {
+    width: 10%;
+    text-align: center;
+  }
+  .date {
+    width: 10%;
+    text-align: center;
+  }
+  .time {
+    width: 5%;
+    text-align: center;
+  }
+  .edit {
+    width: 5%;
+    text-align: center;
+  }
+}
+
+//歌曲編輯 新增專輯
+.editsong,
+.newalbum {
+  padding: 130px 0;
 }

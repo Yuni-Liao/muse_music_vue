@@ -1,14 +1,21 @@
 import { createRouter, createWebHistory } from "vue-router";
 // import FrontEnd from "../views/FrontEnd.vue";
 
-
 const routes = [
+  //yuni test
+  {
+    path: "/test",
+    name: "test",
+    component: () => import(/* webpackChunkName: "path" */ "../views/Test.vue"),
+    meta: {
+      title: "test",
+    },
+  },
   //g2  ----- 導航頁
   {
     path: "/",
     name: "path",
-    component: () =>
-      import(/* webpackChunkName: "path" */ "../views/Path.vue"),
+    component: () => import(/* webpackChunkName: "path" */ "../views/Path.vue"),
     meta: {
       title: "MUSE",
     },
@@ -90,7 +97,7 @@ const routes = [
         },
       },
       {
-        path: "activityInfo",
+        path: "activityInfo/:id",
         name: "activityInfo",
         component: () =>
           import(
@@ -254,34 +261,25 @@ const routes = [
           title: "個人主頁",
           //把它變成會員名稱
         },
-
       },
       {
         path: "editsong",
         name: "editsong",
         component: () =>
-          import(
-            /* webpackChunkName: "profilepage" */ "../views/EditSong.vue"
-          ),
+          import(/* webpackChunkName: "profilepage" */ "../views/EditSong.vue"),
         meta: {
           title: "編輯歌曲",
-
         },
-
       },
 
       {
         path: "newalbum",
         name: "newalbum",
         component: () =>
-          import(
-            /* webpackChunkName: "profilepage" */ "../views/NewAlbum.vue"
-          ),
+          import(/* webpackChunkName: "profilepage" */ "../views/NewAlbum.vue"),
         meta: {
           title: "新增專輯",
-
         },
-
       },
 
       {
@@ -293,10 +291,34 @@ const routes = [
           ),
         meta: {
           title: "編輯專輯",
-
         },
-
       },
+
+      {
+        path: "editalbumsong",
+        name: "editalbumsong",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepage" */ "../views/EditAlbumSong.vue"
+          ),
+        meta: {
+          title: "編輯專輯歌曲",
+        },
+      },
+
+      // {
+      //   path: "editsdsong",
+      //   name: "editsdsong",
+      //   component: () =>
+      //     import(
+      //       /* webpackChunkName: "profilepage" */ "../views/EditSdSong.vue"
+      //     ),
+      //   meta: {
+      //     title: "編輯專輯歌曲",
+
+      //   },
+
+      // },
 
       //以下是探索音樂內頁頁面
       {
@@ -322,9 +344,7 @@ const routes = [
           title: "帳號設定",
         },
       },
-
     ],
-
   },
   // 以下為後台登入頁面/g2/backendLogin
   {

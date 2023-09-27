@@ -71,6 +71,13 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            //
+            robotfaq: [],
+=======
+>>>>>>> dev
             // robotfaq:[],
             robotfaq: [
                 {
@@ -144,6 +151,10 @@ export default {
                     keywords: "不當言論留言檢舉"
                 }
             ],
+<<<<<<< HEAD
+=======
+>>>>>>> sang
+>>>>>>> dev
             customerText: "",
             info: [
                 {

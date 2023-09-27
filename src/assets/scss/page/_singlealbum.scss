@@ -191,6 +191,7 @@
             .playList {
                 @include layout(100%);
                 margin: 100px 0;
+
                 .musicTable {
                     @include layout(85%);
 
@@ -283,9 +284,7 @@
                             #AddFavBtn,
                             #AddSlBtn,
                             #ShareBtn {
-                                width: 30px;
-                                height: 30px;
-                                margin: 2.5px;
+                                margin:0 10px;
                             }
                         }
                     }

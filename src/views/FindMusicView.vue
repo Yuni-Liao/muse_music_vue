@@ -1,6 +1,9 @@
 <template>
     <player ref="player"></player>
-    <div class="banner">
+    <div class="banner"
+    :style="{
+        backgroundImage: `url(${`${this.publicPath}` + foundObject.img})`
+    }">
         <div class="wrapper">
             <div class="find">
                 <p>探索</p>
@@ -35,6 +38,7 @@
                         <td class="pic">
                             <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)" alt="albumItem.name"
                                 @click="openPlayer">
+                                <fontAwesome class="f_play" :icon="['fa', 'play']" @click="openPlayer"/>
                         </td>
                         <td class="name">
                             <router-link to="/home/singlemusic">
@@ -54,22 +58,22 @@
                                 <fontAwesome :icon="['fa', 'ellipsis']" style="color:#AAAAAA;" />
                             </button>
                             <div class="moreBtnAlert" v-if="albumItem.showMoreBtn" >
-                                <!-- <button class="close" @click="closeMoreBtn(albumItem)">
-                                    <fontAwesome :icon="['fa', 'fa-xmark']" style="color:#ffffff;" />
-                                </button> -->
-                                <a href="#">
-                                    <img src="../../public/image/icon/share.png">
+                                <a class="shareBtn" >
+                                    <ShareBtn></ShareBtn>
+                                    <!-- <img src="../../public/image/icon/share.png"> -->
                                     <p>分享</p>
                                 </a>
-                                <a href="#" class="addFav">
-                                    <img src="../../public/image/icon/addFav.png">
+                                <a class="addFav">
+                                    <AddFavBtn></AddFavBtn>
+                                    <!-- <img src="../../public/image/icon/addFav.png"> -->
                                     <p>加入我的最愛</p>
                                 </a>
-                                <a href="#" class="addSl">
-                                    <img src="../../public/image/icon/addSl.png">
+                                <a class="addSl"  @click.stop>
+                                    <AddSlBtn @click.stop></AddSlBtn>
+                                    <!-- <img src="../../public/image/icon/addSl.png"> -->
                                     <p>加入歌單</p>
                                 </a>
-                                <a href="#" class="readSong">
+                                <a class="readSong">
                                     <img src="../../public/image/icon/eyeopen.png" alt="" class="eyeopen">
                                     <p>檢視歌曲</p>
                                 </a>

@@ -4,7 +4,7 @@
         <h1>探索．Find Your MUSE</h1>
     </div>
     <div class="language">
-        <div class="space" v-for="(item, id) in language" :key="id">
+        <div class="space" v-for="(item, id) in language" :key="index">
             <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
             <div class="txt">
                 <router-link :to="`findmusic/${id}`">
@@ -15,22 +15,22 @@
     </div>
 
     <div class="style">
-        <div class="space" v-for="(item, id) in style" :key="id">
-            <img src="~@/assets/image/footer_background.jpg" alt="image">
+        <div class="space" v-for="sty in style" :key="sty.id">
+            <img :src="require(`/public/image/Find/${sty.img}`)" alt="image">
             <div class="txt">
-                <router-link :to="`findmusic/${id}`">
-                    {{ item.name }}
+                <router-link :to="`findmusic/${sty.id}`">
+                    {{ sty.name }}
                 </router-link>
             </div>
         </div>
     </div>
 
     <div class="emotion">
-        <div class="space" v-for="(item, id) in emotion" :key="id">
-            <img src="~@/assets/image/footer_background.jpg" alt="image">
+        <div class="space" v-for="em in emotion" :key="em.id">
+            <img :src="require(`/public/image/Find/${em.img}`)" alt="image">
             <div class="txt">
-                <router-link :to="`findmusic/${id}`">
-                    {{ item.name }}
+                <router-link :to="`findmusic/${em.id}`">
+                    {{ em.name }}
                 </router-link>
             </div>
         </div>

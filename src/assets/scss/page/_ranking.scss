@@ -36,7 +36,11 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        @include s(){
+          flex-direction: column;
+        }
         .weekTopTitle{
+          
           h1{
             color: $white;
             letter-spacing: 1px;
@@ -51,21 +55,40 @@
         .weekRanking {
           display: flex;
           flex-direction: row;
+          @media screen and (min-width: 413px){
+            width: 1000px;
+            height: 500px;
+            margin-top: 100px;
+          }
+          @include s(){
+            width: 500px;
+            overflow-x: scroll;
+            margin-top: -100px
+          }
           ol{
-            margin: 50px 20px 0px 20px;
+            margin: 0px 20px;
           }
           li {
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
-            margin: 10px 30px 10px 0px;
             border-bottom: 1px solid $white;
+            padding: 5px 0px;
+            margin: 10px 0px;
+            @media screen and (min-width: 413px){
+              justify-content: space-evenly;
+              width: 430px;
+              margin: 10px 30px 10px 0px;
+            }
+            @include s(){
+              justify-content: center;
+              width: 400px;
+            }
             .image{
               position: relative;
               img {
                 width: 70px;
                 height: 70px;
-                margin-right: 20px;
+                
               }
               .faPlay{
                 position: absolute;
@@ -85,8 +108,11 @@
               margin-right: 30px;
               
             }
-            .txt {
+            .txt { 
               text-align: left;
+              @include s(){
+                margin-left: 10px;
+              }
               h3{
                 color: $white;
                 font-size: $default;
@@ -97,6 +123,7 @@
                 color: #aaa;
                 font-size: 12px;
                 font-weight: 400;
+                line-height: 15px;
               }
             }
             .icon{
@@ -121,6 +148,9 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        @include s(){
+          flex-direction: column;
+        }
         .topAlbumsTitle{
           h1{
             color: $white;
@@ -136,19 +166,38 @@
         .topAlbumsRanking{
           display: flex;
           flex-direction: row;
+          @media screen and (min-width: 413px){
+            width: 1000px;
+            height: 500px;
+            margin-top: 100px;
+          }
+          @include s(){
+            width: 500px;
+            overflow-x: scroll;
+            margin-top: -100px
+          }
           ol{
-            margin: 50px 20px 0px 20px;
+            margin: 0px 20px;
+            
             li{
-              
               display: flex;
               flex-direction: row;
-              justify-content: space-evenly;
-              margin: 10px 30px 10px 0px;
               border-bottom: 1px solid $white;
+              padding: 5px 0px;
+              margin: 10px 0px;
+              @media screen and (min-width: 413px){
+                justify-content: space-evenly;
+                width: 430px;
+                margin: 10px 30px 10px 0px;
+              }
+              @include s(){
+                justify-content: center;
+                width: 400px;
+                margin-top: 30px 0px;
+              }
               img{
                 width: 70px;
                 height: 70px;
-                margin-right: 20px;
               }
               .order{
                 font-size: $superBig;
@@ -159,7 +208,10 @@
               }
               .txt {
                 text-align: left;
-                margin-right: 50px;
+                @include s(){
+                  margin-left: 10px;
+                }
+
                 h3{
                   color: $white;
                   font-size: $default;
@@ -170,6 +222,7 @@
                   color: #aaa;
                   font-size: 12px;
                   font-weight: 400;
+                  line-height: 15px;
                 }
               }
               .icon{
@@ -196,13 +249,15 @@
         width: 100%;
         height: 100vh;
         background-image: url("/public/image/Ranking/ranking03.png");
-        
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        @include s(){
+          flex-direction: column;
+        }
         .topSongListTitle{
           h1{
             color: $white;
@@ -218,9 +273,18 @@
         .topSongListRanking{
           display: flex;
           flex-direction: row;
+          @media screen and (min-width: 413px){
+            width: 1000px;
+            height: 500px;
+            margin-top: 100px;
+          }
+          @include s(){
+            width: 500px;
+            overflow-x: scroll;
+            margin-top: -100px
+          }
           ol{
             margin: 50px 20px 0px 20px;
-            color: $pink;
           }
           li{
             display: flex;
@@ -228,6 +292,15 @@
             justify-content: space-evenly;
             margin: 10px 30px 10px 0px;
             border-bottom: 1px solid $white;
+            @media screen and (min-width: 413px){
+              justify-content: space-evenly;
+              width: 430px;
+              margin: 10px 30px 10px 0px;
+            }
+            @include s(){
+              justify-content: center;
+              width: 400px;
+            }
             img{
               width: 70px;
               height: 70px;
@@ -244,6 +317,9 @@
           
           .txt {
             text-align: left;
+            @include s(){
+              margin-left: 10px;
+            }
             h3{
               color: $white;
               font-size: $default;
@@ -254,6 +330,7 @@
               color: #aaa;
               font-size: 12px;
               font-weight: 400;
+              line-height: 15px;
             }
           }
           .follow_icon{

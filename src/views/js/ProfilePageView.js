@@ -11,6 +11,7 @@ import FolBtnBig from "@/components/FolBtnBig.vue";
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
 import AddFavBtn from "@/components/AddFavBtn.vue";
 import AddSlBtn from "@/components/AddSlBtn.vue";
+
 export default {
   components: {
     FolBtnBig,
@@ -574,6 +575,35 @@ export default {
           public: true,
         },
       ],
+      act: [
+        {
+          date: "2023/8/1",
+          content:
+            "月色好美，有了一段新旋律，趕緊拿出紙和筆記下，期待與你們分享!",
+          num: 633,
+        },
+        {
+          date: "2023/7/25",
+          content: "8/23晚上8:00 信義區新光三越A11前，不見不散! 期待看到你們✨",
+          num: 358,
+        },
+        {
+          date: "2023/6/23",
+          content: "剛剛吃了火鍋🥘🥘🥘，好飽好睏! 晚上開直播聊聊天消化",
+          num: 103,
+        },
+        {
+          date: "2023/5/7",
+          content:
+            "剛寫了一段歌詞，猜猜是甚麼主題~ 按讚100明天晚上開直播小唱一段❤️",
+          num: 2343,
+        },
+        {
+          date: "2023/2/14",
+          content: "情人節快樂，各位都是我的情人~~~ ❤️❤️❤️",
+          num: 2138,
+        },
+      ],
     };
   },
   mounted() {
@@ -644,6 +674,15 @@ export default {
           q: slid,
         },
       });
+    },
+    like(e, index) {
+      if (e.target.classList.contains("active")) {
+        e.target.classList.remove("active");
+        this.act[index].num--;
+      } else {
+        e.target.classList.add("active");
+        this.act[index].num++;
+      }
     },
   },
 };

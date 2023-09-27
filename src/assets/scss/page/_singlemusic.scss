@@ -1,7 +1,8 @@
 .singleMusic h1,
 .singleMusic h2,
 .singleMusic h3,
-.singleMusic p {
+.singleMusic p,
+.singleMusic div {
     color: $white;
     letter-spacing: 1px;
     line-height: $fh;
@@ -102,6 +103,10 @@
 
                 .liked {
                     margin-right: 30px;
+
+                    p {
+                        margin-top: $fh;
+                    }
                 }
 
                 .shared {
@@ -115,8 +120,7 @@
 
                 #ShareBtn,
                 #AddSlBtn,
-                #AddFavBtn,
-                #PlayBtnBig {
+                #AddFavBtn {
                     margin: 0 10px;
                 }
             }
@@ -215,10 +219,7 @@
                 padding: 50px 20px 20px 0;
             }
 
-            @media screen and (max-width: 768px) {
-                width: 70%;
-                margin: 0 auto;
-            }
+            
         }
 
         .albumInf {
@@ -388,10 +389,8 @@
                 .readMore {
                     @include btnBgNone;
                     color: $white;
-                    //justify-content: flex-end;
                     align-items: center;
                     gap: 10px;
-                    // display: flex;
                     margin: 25px 0 0px;
                     margin-left: 0;
                 }
@@ -416,7 +415,8 @@
                 background-color: rgba($green, 0.6);
                 justify-content: space-between;
                 margin-bottom: 40px;
-                &:hover{
+
+                &:hover {
                     background-color: rgba($green, 0.5);
                 }
 
@@ -476,11 +476,16 @@
                 #ShareBtn,
                 #AddSlBtn,
                 #AddFavBtn {
-                    width: 25px;
-                    height: 25px;
-                    margin: 10px;
-                    border: 1px $dark solid;
+                    margin: 0 10px;
+
+                    @media screen and (max-width: 880px) {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                    }
                 }
+                
             }
 
             .readMore {

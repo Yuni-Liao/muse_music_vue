@@ -2,11 +2,15 @@
   <div class="profilepageedit">
     <div class="cover-container">
       <img class="cover" alt="Cover Image" :src="member.coverimgURL" />
-      <input class="coverupdate" type="file" @change="coverImgChange" />
+      <input class="coverupdate" type="file" @change="coverImgChange($event)" />
       <!-- 頭貼 -->
       <div class="profile-container">
         <img class="profile" alt="Profile Image" :src="member.profileImgURL" />
-        <input type="file" @change="profileImgChange" class="profileupdate" />
+        <input
+          type="file"
+          @change="profileImgChange($event)"
+          class="profileupdate"
+        />
       </div>
     </div>
 
@@ -37,7 +41,7 @@
       <div class="line"></div>
 
       <div class="page-content">
-        <div v-show="activeTab === 1">
+        <div v-show="activeTab === 1" class="page">
           <form class="form1">
             <div class="form-group">
               <label for="name" class="label">顯示名稱</label>
@@ -119,7 +123,7 @@
           >
         </div>
 
-        <div v-show="activeTab === 2">
+        <div v-show="activeTab === 2" class="page">
           <form class="form1">
             <div class="form-group">
               <label for="newalbumname" class="label">歌曲上傳</label>
@@ -272,13 +276,6 @@
                     <input type="checkbox" name="songclass" value="" />
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
-                  <span class="classname">其他曲風</span>
-                </div>
-                <div class="opt">
-                  <label class="checkboxLabel">
-                    <input type="checkbox" name="songclass" value="" />
-                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
-                  </label>
                   <span class="classname">快樂</span>
                 </div>
                 <div class="opt">
@@ -294,13 +291,6 @@
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
                   <span class="classname">運動</span>
-                </div>
-                <div class="opt">
-                  <label class="checkboxLabel">
-                    <input type="checkbox" name="songclass" value="" />
-                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
-                  </label>
-                  <span class="classname">輕鬆</span>
                 </div>
                 <div class="opt">
                   <label class="checkboxLabel">
@@ -330,6 +320,13 @@
                   </label>
                   <span class="classname">派對</span>
                 </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">其他曲風</span>
+                </div>
               </div>
             </div>
           </form>
@@ -354,41 +351,59 @@
             </button></router-link
           >
         </div>
-        <div v-show="activeTab === 3">
-          <div class="songsearch"></div>
+        <div v-show="activeTab === 3" class="page">
+          <div class="top">
+            <div class="newsong" @click="activeTab = 2">
+              <img
+                alt="Update Image"
+                :src="`${publicPath}image/icon/upload.svg`"
+              />
+              <span>上傳歌曲</span>
+            </div>
+            <label class="search"
+              ><input type="search" name="" id="" />
+              <button>
+                <img
+                  alt="search_icon"
+                  :src="`${publicPath}image/icon/search.svg`"
+                /></button
+            ></label>
+          </div>
           <table class="song-table">
             <thead>
               <tr>
-                <th></th>
-                <th>歌曲</th>
-                <th>歌曲簡介</th>
-                <th>瀏覽權限</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th class="timg"></th>
+                <th class="tname">歌曲</th>
+                <th class="tintro">歌曲簡介</th>
+                <th class="show">瀏覽權限</th>
+                <th class="date"></th>
+                <th class="time"></th>
+                <th class="edit"></th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(song, index) in songs" :key="index">
-                <td>
+                <td class="timg">
                   <img
                     class="song"
                     alt="song"
                     src="@/assets/image/profileeditimage/song.jpg"
                   />
                 </td>
-                <td>{{ song.title }}</td>
-                <td>{{ song.description }}</td>
-                <td>{{ song.privacy }}</td>
-                <td>{{ song.date }}</td>
-                <td>{{ song.time }}</td>
-                <td>
-                  <router-link to="editsong"
-                    ><img
-                      class="songpicupload"
-                      alt="Update Image"
-                      src="@/assets/image/icon/file.jpg"
-                  /></router-link>
+                <td class="tname">{{ song.title }}</td>
+                <td class="tintro">
+                  <p>{{ song.description }}</p>
+                </td>
+                <td class="show">{{ song.privacy }}</td>
+                <td class="date">{{ song.date }}</td>
+                <td class="time">{{ song.time }}</td>
+                <td class="edit">
+                  <router-link to="editsong">
+                    <fontAwesome
+                      :icon="['fas', 'pen']"
+                      style="color: #fdfbfb"
+                    />
+                  </router-link>
                 </td>
               </tr>
             </tbody>
@@ -396,48 +411,50 @@
           <Page :total="100" show-elevator /><br />
         </div>
 
-        <div v-show="activeTab === 4">
-          <div class="songsearch">
-            <router-link to="newalbum"
-              ><img
-                class="songpicupload"
-                alt="Update Image"
-                src="@/assets/image/icon/file.jpg"
-            /></router-link>
+        <div v-show="activeTab === 4" class="page">
+          <div class="top">
+            <router-link to="newalbum" class="newalbum"
+              ><fontAwesome class="i" :icon="['fa', 'plus']" /><span
+                >新增專輯</span
+              ></router-link
+            >
           </div>
           <table class="song-table">
             <thead>
               <tr>
-                <th></th>
-                <th>專輯</th>
-                <th>專輯簡介</th>
-                <th>瀏覽權限</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th class="timg"></th>
+                <th class="tname">專輯</th>
+                <th class="tintro">專輯簡介</th>
+                <th class="show">瀏覽權限</th>
+                <th class="date"></th>
+                <th class="time"></th>
+                <th class="edit"></th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(albumn, index) in albumns" :key="index">
-                <td>
+                <td class="timg">
                   <img
                     class="albumn"
                     alt="albumn"
                     src="@/assets/image/songPic.png"
                   />
                 </td>
-                <td>{{ albumn.title }}</td>
-                <td>{{ albumn.description }}</td>
-                <td>{{ albumn.privacy }}</td>
-                <td>{{ albumn.date }}</td>
-                <td>{{ albumn.time }}</td>
-                <td>
-                  <router-link to="editalbum"
-                    ><img
-                      class="songpicupload"
-                      alt="Update Image"
-                      src="@/assets/image/icon/file.jpg"
-                  /></router-link>
+                <td class="tname">{{ albumn.title }}</td>
+                <td class="tintro">
+                  <p>{{ albumn.description }}</p>
+                </td>
+                <td class="show">{{ albumn.privacy }}</td>
+                <td class="date">{{ albumn.date }}</td>
+                <td class="time">{{ albumn.time }}</td>
+
+                <td class="edit">
+                  <router-link to="editalbum">
+                    <fontAwesome
+                      :icon="['fas', 'pen']"
+                      style="color: #fdfbfb"
+                    />
+                  </router-link>
                 </td>
               </tr>
             </tbody>

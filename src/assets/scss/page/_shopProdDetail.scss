@@ -1,4 +1,5 @@
 .shopProdDetail {
+    line-height: $fh;
     position: relative;
     margin-top: 85px;
     background-color: rgb(255, 255, 255);
@@ -17,6 +18,10 @@
         flex-direction: column;
         text-align: left;
 
+        @media screen and (max-width: 768px) {
+            @include layout(100%);
+        }
+
         .mainInf {
 
             display: flex;
@@ -27,21 +32,34 @@
                 width: 50%;
                 margin-right: 7%;
 
-                img {
-                    width: 100%;
-                    vertical-align: top;
+                .image-wrapper {
+                    position: relative;
+                    padding-bottom: 65%;
+                    overflow: hidden;
+                    border-radius: 6px 6px 0px 0px;
+                    border: 1px solid $dark;
+
+                    img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        top: 0;
+                        left: 0;
+                    }
                 }
             }
 
             .txt {
 
                 width: 50%;
+                line-height: $fh;
 
                 .title {
                     font-size: $big;
                     font-weight: 700;
                     width: 100%;
-                    padding-bottom: 20px;
+                    margin-bottom: 20px;
 
                     &::after {
                         content: '';
