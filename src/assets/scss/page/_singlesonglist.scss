@@ -24,7 +24,10 @@
   }
   .inner {
     @include layout(1200px);
-
+    @media screen and (max-width: 800px) {
+      padding: 5%;
+      box-sizing: border-box;
+    }
     .topInf {
       position: relative;
       // margin-top: -25%;
@@ -73,6 +76,10 @@
         .iconBar {
           display: flex;
           justify-content: space-between;
+          @media screen and (max-width: 800px) {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
 
           .countArea {
             display: flex;
@@ -144,6 +151,9 @@
         .playList {
           @include layout(100%);
           margin: 100px 0;
+          @media screen and (max-width: 800px) {
+            margin: 30px 0;
+          }
           ol {
             margin-left: 5%;
             li {
@@ -153,6 +163,15 @@
               padding: 15px 0;
               border-bottom: 1px solid #ffffff40;
               font-size: $default;
+              @media screen and (max-width: 800px) {
+                .idx,
+                .album,
+                .time,
+                .singer,
+                &.title {
+                  display: none;
+                }
+              }
               span {
                 margin: 0 10px;
               }
