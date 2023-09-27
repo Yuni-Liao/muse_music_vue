@@ -1,5 +1,7 @@
 <template>
-    <player ref="player"></player>
+    <div class="find_style">
+
+        <player ref="player"></player>
     <div class="find">
         <h1>探索．Find Your MUSE</h1>
     </div>
@@ -65,7 +67,7 @@
                         <router-link :to="item.slink">
                             <img :src="require(`/public/image/index/${item.image}`)" />
                             <div class="text">
-                                <h3>{{ item.title }}</h3>
+                                <h3>{{ item.singer }}</h3>
                             </div>
                         </router-link>
                     </div>
@@ -122,6 +124,9 @@
                 </swiper-slide>
             </swiper>
         </section>
+    </div>
+
+
     </div>
 </template>
 

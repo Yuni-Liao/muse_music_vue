@@ -157,7 +157,6 @@ export default {
           input[type="radio"]:checked {
             border: 2px solid $green;
           }
-          input[type="radio"]:hover ~ .i,
           input[type="radio"]:checked ~ .i {
             opacity: 1;
           }
