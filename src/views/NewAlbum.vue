@@ -1,4 +1,7 @@
 <template>
+  <teleport to="body" v-if="isAddSongOpen"
+    ><AddSongtoAlbum @isAddSongOpenupdate="isAddSongOpenupdate"></AddSongtoAlbum
+  ></teleport>
   <div class="newalbum">
     <div class="main-wrapper">
       <label for="name" class="label"></label>
@@ -41,14 +44,14 @@
         </div>
       </form>
       <div class="plus-container">
-        <router-link to="addsongtoalbum">
+        <div @click="isAddSongOpen = !isAddSongOpen">
           <img
             alt="Profile Image"
             class="plus"
             src="@/assets/image/icon/plus.jpg"
           />
           <p class="plus">新增單曲至專輯</p>
-        </router-link>
+        </div>
       </div>
 
       <router-link to="profilepageedit"

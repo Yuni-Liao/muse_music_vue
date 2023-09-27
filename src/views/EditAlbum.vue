@@ -1,7 +1,9 @@
 <template>
+  <teleport to="body" v-if="isAddSongOpen"
+    ><AddSongtoAlbum @isAddSongOpenupdate="isAddSongOpenupdate"></AddSongtoAlbum
+  ></teleport>
   <div class="main-wrapper">
     <label for="name" class="label"></label>
-
     <form class="form1">
       <div class="form-group">
         <label for="name" class="label" color="white" margin-top="100px"
@@ -50,14 +52,14 @@
       </div>
     </form>
     <div class="plus-container">
-      <router-link to="addsongtoalbum">
+      <div @click="isAddSongOpen = !isAddSongOpen">
         <img
           class="plus"
           alt="Profile Image"
           src="@/assets/image/icon/plus.jpg"
         />
-      </router-link>
-      <p class="plus">新增單曲至專輯</p>
+        <p class="plus">新增單曲至專輯</p>
+      </div>
     </div>
 
     <table class="song-table">
@@ -120,4 +122,4 @@
 <style scoped lang="scss">
 @import "~@/assets/scss/page/editalbum";
 </style>
-<script src="./js/EditAlbum"></script>
+<script src="./js/EditAlbum.js"></script>
