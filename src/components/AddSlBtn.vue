@@ -235,7 +235,6 @@ export default {
         input[type="checkbox"]:checked {
           border: 2px solid $green;
         }
-        input[type="checkbox"]:hover ~ .i,
         input[type="checkbox"]:checked ~ .i {
           opacity: 1;
         }
