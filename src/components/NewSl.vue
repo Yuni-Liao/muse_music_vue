@@ -57,6 +57,10 @@ export default {
 <style scoped lang="scss">
 #NewSl {
   width: 400px;
+  @media screen and (max-width: 800px) {
+    width: 350px;
+    background-color: #2b2b2bee;
+  }
   // 水平垂直置中
   position: fixed;
   top: 50%;
