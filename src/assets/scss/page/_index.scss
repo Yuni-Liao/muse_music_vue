@@ -6,8 +6,25 @@
   text-align: center;
   position: relative;
   //這裡是系統內建的
+  //RWD 手機文字尺寸
+  @include s{
+    h1{
+      font-size: $pL;
+    };
+    h2{
+      font-size: $pM;
+    };
+    h3{
+      font-size: $pM;
+    }
+    h4,h5,p{
+      font-size: $pS;
+    }
+    span{
+      font-size: $pXS
+    }
+  }
 }
-
 // main{
 //   // overflow-x: hidden; //水平跑版--隱藏
 // }

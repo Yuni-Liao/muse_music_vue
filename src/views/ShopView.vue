@@ -35,7 +35,7 @@
                 <!-- <div class="prodCard" v-for="(item, id) in products" :key="id"> -->
                 <div class="prodCard" v-for="(item) in getSelectedPageSize" :key="item.id">
                     <router-link :to="`/home/shopproddetail/${item.id}`" class="prodPic">
-                        <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" alt="item.prodName">
+                        <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName">
                     </router-link>
                     <div class="prodTxt">
                         <router-link :to="`/home/shopproddetail/${item.id}`" class="prodName">{{ item.prodName
