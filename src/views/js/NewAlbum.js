@@ -96,5 +96,9 @@ export default {
     isAddSongOpenupdate(val) {
       this.isAddSongOpen = val;
     },
+    NewDataupdate(val) {
+      console.log(val);
+      // this.albumns.unshift(val);
+    },
   },
 };

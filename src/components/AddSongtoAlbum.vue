@@ -156,10 +156,8 @@ export default {
       e.target.isChecked = e.target.checked;
       if (e.target.checked == true) {
         this.checked++;
-        console.log(e.target.isChecked);
       } else {
         this.checked--;
-        console.log(e.target.isChecked);
       }
     },
     cancelAddSong() {
@@ -167,19 +165,11 @@ export default {
       this.$emit("isAddSongOpenupdate", this.isAddSongOpen);
     },
     submitAddSong() {
-      //   const NewSlData = {
-      //     slid: undefined,
-      //     slname: this.slname,
-      //     image: "songPic.png",
-      //     memid: 1,
-      //     creator: "我",
-      //     playnum: 0,
-      //     songnum: 0,
-      //     public: this.public,
-      //   };
+      const NewData = this.songs.filter((e) => e.isChecked);
+      //   console.log(NewData);
       this.isAddSongOpen = false;
       this.$emit("isAddSongOpenupdate", this.isAddSongOpen);
-      //   this.$emit("NewSlDatanupdate", NewSlData);
+      this.$emit("NewDataupdate", NewData);
     },
   },
 };

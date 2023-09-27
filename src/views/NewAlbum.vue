@@ -1,6 +1,9 @@
 <template>
   <teleport to="body" v-if="isAddSongOpen"
-    ><AddSongtoAlbum @isAddSongOpenupdate="isAddSongOpenupdate"></AddSongtoAlbum
+    ><AddSongtoAlbum
+      @isAddSongOpenupdate="isAddSongOpenupdate"
+      @NewDataupdate="NewDataupdate"
+    ></AddSongtoAlbum
   ></teleport>
   <div class="newalbum">
     <div class="main-wrapper">
