@@ -66,26 +66,61 @@ export default {
                     styleName:"嘻哈",
                     count: 653,
                 },
-                // {
-                //     id: 8,
-                //     styleName:"搖滾",
-                //     count: 452,
-                // },
-                // {
-                //     id: 9,
-                //     styleName:"藍調",
-                //     count: 452,
-                // },
-                // {
-                //     id: 10,
-                //     styleName:"爵士",
-                //     count: 452,
-                // },
-                // {
-                //     id: 11,
-                //     styleName:"古典",
-                //     count: 452,
-                // },
+                {
+                    id: 8,
+                    styleName:"搖滾",
+                    count: 452,
+                },
+                {
+                    id: 9,
+                    styleName:"藍調",
+                    count: 682,
+                },
+                {
+                    id: 10,
+                    styleName:"爵士",
+                    count: 458,
+                },
+                {
+                    id: 11,
+                    styleName:"古典",
+                    count: 142,
+                },
+                {
+                    id: 12,
+                    styleName:"快樂",
+                    count: 803,
+                },
+                {
+                    id: 13,
+                    styleName:"傷心",
+                    count: 741,
+                },
+                {
+                    id: 14,
+                    styleName:"運動",
+                    count: 683,
+                },
+                {
+                    id: 15,
+                    styleName:"輕鬆",
+                    count: 183,
+                },
+                {
+                    id: 16,
+                    styleName:"舒眠",
+                    count: 568,
+                },
+                {
+                    id: 17,
+                    styleName:"專注",
+                    count: 352,
+                },
+                {
+                    id: 18,
+                    styleName:"派對",
+                    count: 452,
+                },
             ],
             songs: [
                 {
