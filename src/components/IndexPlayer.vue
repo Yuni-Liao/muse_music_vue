@@ -16,19 +16,19 @@
                     <span></span>
                 </div>
                 <div class="dj_buttons">
-                    <button class="button prev obj_Radius">
+                    <button class="button prev obj_Radius" id="indexPrevBtn">
                         <fontAwesome :icon="['fa', 'fa-backward-step']" />
                     </button>
-                    <button class="button play obj_Radius">
+                    <button class="button play obj_Radius" id="indexPlayBtn" @click="indexPlay">
                         <fontAwesome :icon="['fa', 'fa-play']" />
                     </button>
-                    <button class="button pause obj_Radius">
+                    <button class="button pause obj_Radius" id="indexPauseBtn">
                         <fontAwesome :icon="['fa', 'fa-pause']" />
                     </button>
-                    <button class="button stop obj_Radius">
+                    <button class="button stop obj_Radius" id="indexStopBtn">
                         <fontAwesome :icon="['fa', 'fa-stop']" />
                     </button>
-                    <button class="button next obj_Radius">
+                    <button class="button next obj_Radius" id="indexNextBtn">
                         <fontAwesome :icon="['fa', 'fa-step-forward']" />
                     </button>
                 </div>
@@ -62,8 +62,22 @@
                 <div class="plate" id="plate_right">
                     <span></span>
                 </div>
+                <!-- <div class="special_buttons">
+                    <button class="button prev obj_Radius" id="oneBtn" @click="indexPlaySound(`cat_a`)">
+                        😄
+                    </button>
+                    <button class="button play obj_Radius" id="twoBtn" @click="indexPlaySound(`cat_b`)">
+                        😛
+                    </button>
+                    <button class="button pause obj_Radius" id="threeBtn" @click="indexPlaySound(`cat_c`)">
+                        😍
+                    </button>
+                    <button class="button stop obj_Radius" id="fourBtn" @click="indexPlaySound(`cat_d`)">
+                        🤑
+                    </button>
+                </div> -->
                 <div class="dj_buttons">
-                    <button class="button prev obj_Radius" id="">
+                    <button class="button prev obj_Radius">
                         <fontAwesome :icon="['fa', 'fa-backward-step']" />
                     </button>
                     <button class="button play obj_Radius">
@@ -84,7 +98,6 @@
     </div>
 </template>
 <style lang="scss" scoped>
-//音樂轉盤 - 廖妍榛
 // 轉盤區塊  - 廖妍榛
 .index_dj {
     @include layout(1100px);
@@ -174,6 +187,20 @@
 
             button:active {
                 background: linear-gradient($blue, $dark);
+                color: $dark;
+            }
+        }
+
+        .special_buttons {
+            button {
+                align-self: center;
+                color: $dark;
+                background: linear-gradient(lightpink, lightblue);
+                padding: 10px 20px;
+            }
+
+            button:active {
+                background: linear-gradient(lightblue, $purple);
                 color: $dark;
             }
         }
@@ -289,14 +316,54 @@
         transform: rotate(360deg);
     }
 }
+
+// 右半部按鈕效果
 </style>
 <script>
+import { Howl, Howler } from 'howler';
+
 export default {
     name: "IndexPlayer",
     data() {
         return {
-
-        };
+            voiceList: [
+                {
+                    name: "cat_a",
+                    voive: "audio/indexPlayer/cat_a.mp3"
+                },
+                {
+                    name: "cat_b",
+                    voive: "audio/indexPlayer/cat_b.mp3"
+                },
+                {
+                    name: "cat_c",
+                    voive: "audio/indexPlayer/cat_c.mp3"
+                },
+                {
+                    name: "cat_d",
+                    voive: "audio/indexPlayer/cat_d.mp3"
+                },
+            ],
+        }
+    },
+    methods: {
+        test() {
+            alert('hi')
+        },
+        indexPlaySound(soundName) {
+            const sound = new Howl({
+                src: [this.getAudioSrc(soundName)],
+                autoplay: true,
+                volume: 0.5,
+                onend: function () {
+                    console.log('Finished!');
+                }
+            })
+        },
+        getAudioSrc(soundName) {
+            const audio = this.voiceList.find((item) => item.name === soundName);
+            return audio ? audio.voive : null;
+        },
     }
 }
 </script>
