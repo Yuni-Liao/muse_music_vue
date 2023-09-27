@@ -90,6 +90,7 @@ export default {
           time: "04:30",
         },
       ],
+      songs: [],
     };
   },
   methods: {
@@ -97,8 +98,10 @@ export default {
       this.isAddSongOpen = val;
     },
     NewDataupdate(val) {
-      console.log(val);
-      // this.albumns.unshift(val);
+      //console.log(val);
+      for (let i = 0; i < val.length; i++) {
+        this.songs.unshift(val[i]);
+      }
     },
   },
 };

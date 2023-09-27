@@ -59,11 +59,11 @@ export default {
       this.isAddSongOpen = val;
     },
     NewDataupdate(val) {
-      console.log(val);
+      // console.log(val);
       for (let i = 0; i < val.length; i++) {
         this.songs.unshift(val[i]);
       }
-      console.log(this.songs);
+      //console.log(this.songs);
     },
   },
 };
