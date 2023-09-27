@@ -1,4 +1,6 @@
 import { createApp } from "vue";
+import PrimeVue from 'primevue/config';
+import "primevue/resources/themes/lara-light-indigo/theme.css";
 import ViewUIPlus from "view-ui-plus";
 import App from "./App.vue";
 import router from "./router";
@@ -126,6 +128,7 @@ library.add(
 );
 
 const vueApp = createApp(App)
+  .use( PrimeVue )
   .use(store)
   .use(router)
   .component("fontAwesome", FontAwesomeIcon)
