@@ -341,7 +341,8 @@ label {
   height: 50px;
   cursor: pointer;
   margin-right: 10px;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
+  vertical-align: middle;
 }
 
 p.plus {
@@ -514,4 +515,10 @@ p.plus {
     text-align: right;
     line-height: 5;
   }
+}
+
+//歌曲編輯 新增專輯
+.editsong,
+.newalbum {
+  padding: 130px 0;
 }
