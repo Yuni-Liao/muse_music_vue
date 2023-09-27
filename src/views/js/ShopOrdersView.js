@@ -18,7 +18,7 @@ export default {
                     totalprice: "890",
                     stat: "已出貨",
 
-                    prodpic: "prod6.jpg",
+                    prodpic: "shop_album6.jpg",
                     prod: "Bluemage 黑膠",
                     price: "890",
                     pcs: "1",
@@ -37,7 +37,7 @@ export default {
                     totalprice: "790",
                     stat: "已完成",
 
-                    prodpic: "prod1.jpg",
+                    prodpic: "shop_album1.jpg",
                     prod: "Killbeast 黑膠",
                     price: "790",
                     pcs: "1",
@@ -56,7 +56,7 @@ export default {
                     totalprice: "1190",
                     stat: "已完成",
 
-                    prodpic: "prod2.jpg",
+                    prodpic: "shop_album2.jpg",
                     prod: "西城男人 黑膠",
                     price: "1190",
                     pcs: "1",
@@ -75,7 +75,7 @@ export default {
                     totalprice: "590",
                     stat: "已完成",
 
-                    prodpic: "prod3.jpg",
+                    prodpic: "shop_album3.jpg",
                     prod: "Party Time 錄音帶",
                     price: "590",
                     pcs: "1",
@@ -94,14 +94,14 @@ export default {
                     totalprice: "890",
                     stat: "已完成",
 
-                    prodpic: "prod4.jpg",
+                    prodpic: "shop_album4.jpg",
                     prod: "Rose 黑膠",
                     price: "890",
                     pcs: "1",
                     projectprice: "890",
                 },
                 {
-                    id: 5,
+                    id: 6,
                     serial: "FK8645388",
                     date: "2023-07-22 15:33",
                     memid: 1,
@@ -113,7 +113,7 @@ export default {
                     totalprice: "1290",
                     stat: "已完成",
 
-                    prodpic: "prod5.jpg",
+                    prodpic: "shop_album5.jpg",
                     prod: "Over Over 黑膠",
                     price: "1290",
                     pcs: "1",

@@ -21,7 +21,8 @@
                 <div  class="main">
                     <router-link :to="`/home/shoporderdetail/${id}`">
                         <div class="product_pic order_item">
-                            <img :src="require(`/public/image/ShopImage/${item.prodpic}`)" alt="prod">
+                            <!-- <img :src="require(`/public/image/ShopImage/${item.prodpic}`)" :alt="item.id"> -->
+                            <img :src="`${publicPath}image/ShopImage/${item.prodpic}`" :alt="item.id">
                         </div>
                         <div class="product order_item">
                             {{item.prod}}
@@ -51,7 +52,7 @@
                 <div class="main">
                     <router-link :to="`/home/shoporderdetail/${id}`">
                         <div class="product_pic order_item">
-                            <img :src="require(`/public/image/ShopImage/${item.prodpic}`)" alt="prod">
+                            <img :src="`${publicPath}image/ShopImage/${item.prodpic}`" :alt="item.id">
                         </div>
                         <div class="product order_item">
                             {{item.prod}}
