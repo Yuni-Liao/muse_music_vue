@@ -38,9 +38,6 @@
               src="~@/assets/image/icon/user.png" /></router-link>
 
           <div class="user_dropdown">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             <router-link to=""><img src="~@/assets/image/icon/clipboard.png" alt="" />訂單資訊</router-link><br />
             <router-link to="/home/accsetting"><img src="~@/assets/image/icon/settingicon.png"
                 alt="" />帳號設定</router-link><br />
@@ -50,39 +47,6 @@
                 alt="" />個人主頁管理</router-link><br />
             <!-- <router-link to="/home/shoppingsteps"><img src="~@/assets/image/icon/development.png"
                 alt="" />購物車流程</router-link><br /> -->
-=======
->>>>>>> dev
-            <router-link to="/home/shoporders"
-              ><img
-                src="~@/assets/image/icon/clipboard.png"
-                alt=""
-              />訂單資訊</router-link
-            ><br />
-            <router-link to="/home/accsetting"
-              ><img
-                src="~@/assets/image/icon/settingicon.png"
-                alt=""
-              />帳號設定</router-link
-            ><br />
-            <router-link to="/home/profilepage"
-              ><img
-                src="~@/assets/image/icon/personalPage.png"
-                alt=""
-              />個人主頁</router-link
-            ><br />
-            <router-link to="/home/profilepageedit"
-              ><img
-                src="~@/assets/image/icon/development.png"
-                alt=""
-              />個人管理頁面</router-link
-            ><br />
-            <router-link to="/home/shoppingsteps"
-              ><img
-                src="~@/assets/image/icon/development.png"
-                alt=""
-              />購物車流程</router-link
-            ><br />
->>>>>>> sang
             <p>我的音樂庫</p>
             <!-- <router-link to="/home"
               ><img
@@ -118,7 +82,7 @@
         <fontAwesome @click="isNavVisible = !isNavVisible" class="close" :icon="['fa', 'xmark']" size="2xl"
           style="color: #fff;" />
       </div>
-      <router-link to="#" @click="isNavVisible = false">
+      <router-link to="/home/shoporders" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/clipboard.png" alt="" />
         <p>訂單資訊</p>
       </router-link>

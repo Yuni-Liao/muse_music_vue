@@ -71,14 +71,6 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-            //
-            robotfaq: [],
-=======
->>>>>>> dev
-            // robotfaq:[],
             robotfaq: [
                 {
                     id: 0,
@@ -151,10 +143,6 @@ export default {
                     keywords: "不當言論留言檢舉"
                 }
             ],
-<<<<<<< HEAD
-=======
->>>>>>> sang
->>>>>>> dev
             customerText: "",
             info: [
                 {
@@ -201,16 +189,16 @@ export default {
             }
         },
 
-            // 点击除robot_warp以外的区域时关闭robot
-        closeRobot(event) {
-            if (this.isOpen) {
-                const robotWarp = this.$refs.robotWarp; // 获取robot_warp的引用
-                if (!robotWarp.contains(event.target)) {
-                // 如果点击的不在robot_warp内部
-                this.isOpen = false; // 关闭robot界面
-                }
-            }
-        },
+        //     // 点击除robot_warp以外的区域时关闭robot
+        // closeRobot(event) {
+        //     if (this.isOpen) {
+        //         const robotWarp = this.$refs.robotWarp; // 获取robot_warp的引用
+        //         if (!robotWarp.contains(event.target)) {
+        //         // 如果点击的不在robot_warp内部
+        //         this.isOpen = false; // 关闭robot界面
+        //         }
+        //     }
+        // },
 
         // 發送使用者的訊息並將其附加到聊天歷史記錄中
         sentMsg() {

@@ -404,15 +404,8 @@ export default {
             if (this.currentKind === 'All') return this.products;
             return this.products.filter((v, i) => v.kind.includes(this.currentKind))
         },
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-        // 下拉數量選單:計算商品數量
-=======
->>>>>>> dev
         
-        //郭凱芸 - 下拉數量選單:計算商品數量
->>>>>>> sang
+        // 下拉數量選單:計算商品數量
         getSelectedPageSize() {
             const startIdx = (this.currentPage - 1) * this.selectedPageSize;
             const endIdx = startIdx + this.selectedPageSize;
@@ -432,13 +425,6 @@ export default {
             if (this.sortType === '價格:由低到高') {
                 func = (a, b) => a.prodPrice - b.prodPrice;
             }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> sang
->>>>>>> dev
             return sortedProducts.sort(func);
         }
     },
