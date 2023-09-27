@@ -10,23 +10,19 @@
     padding: 5% 0;
     text-align: left ;
     margin:3% 0 3% 2%;
+    @include s{
+      font-size: $pL;
+      margin:20% 0 3% 5%;
+    }
   }
   h2{
     font-size: $big;
     padding: 5% 0;
     text-align: left ;
     margin:0 0 0 2%;
-  }
-  @media screen and (max-width:768px){
-    h1{
-      font-size: $pL;
-      margin:20% 0 3% 5%;
-
-    }
-    h2{
+    @include s{
       margin:3% 5% 3% 5%;
-      font-size: $pM;
-    }
+      font-size: $pM;    }
   }
   .language,
   .style,
@@ -134,7 +130,7 @@
       padding: 3% 0;
       .swiper-slide {
         .h_card {
-          width: 150%;
+          width: 100%;
           margin: auto;
           cursor: pointer;
           img {
@@ -146,8 +142,8 @@
             h3 {
               text-align: center;
               font-size: $small;
-              @media screen and (max-width:768px) {
-                font-size: $pXS;
+              @include s{
+                font-size: 14px;
               }
             }
           }
