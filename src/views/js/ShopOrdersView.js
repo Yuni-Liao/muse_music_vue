@@ -75,7 +75,7 @@ export default {
                     totalprice: "590",
                     stat: "已完成",
 
-                    prodpic: "shop_album3.jpg",
+                    prodpic: "shop_album7.jpg",
                     prod: "Party Time 錄音帶",
                     price: "590",
                     pcs: "1",

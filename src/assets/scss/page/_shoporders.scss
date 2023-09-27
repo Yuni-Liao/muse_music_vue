@@ -51,6 +51,9 @@
                     border-bottom: 3px solid $dark;
                     .product_pic{
                         width: 30%;
+                        img{
+                            width: 70%;
+                        }
                     }
                 }
             }
