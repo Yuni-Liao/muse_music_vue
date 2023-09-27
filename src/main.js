@@ -64,6 +64,7 @@ import {
   faArrowTrendUp,
   faBagShopping,
   faBolt,
+  faEye,
   
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -123,6 +124,7 @@ library.add(
   faBagShopping,
   faBolt,
   faBell,
+  faEye,
 );
 
 const vueApp = createApp(App)
