@@ -38,7 +38,7 @@
   <NewSl
     v-if="isNewSlOpen"
     @isNewSlOpenupdate="isNewSlOpenupdate"
-    @NewSlDatanupdate="NewSlDatanupdate"
+    @NewSlDataupdate="NewSlDataupdate"
   ></NewSl>
 </template>
 <script>
@@ -139,7 +139,7 @@ export default {
       this.isNewSlOpen = val;
       this.isAddSlOpen = true;
     },
-    NewSlDatanupdate(val) {
+    NewSlDataupdate(val) {
       this.songlists.unshift(val);
       console.log(val);
       console.log(this.songlists);

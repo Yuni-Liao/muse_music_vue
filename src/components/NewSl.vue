@@ -70,7 +70,7 @@ export default {
         public: this.public,
       };
       this.$emit("isNewSlOpenupdate", this.isNewSlOpen);
-      this.$emit("NewSlDatanupdate", NewSlData);
+      this.$emit("NewSlDataupdate", NewSlData);
     },
   },
 };
