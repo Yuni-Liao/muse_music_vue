@@ -6,8 +6,7 @@ const routes = [
   {
     path: "/test",
     name: "test",
-    component: () =>
-      import(/* webpackChunkName: "path" */ "../views/Test.vue"),
+    component: () => import(/* webpackChunkName: "path" */ "../views/Test.vue"),
     meta: {
       title: "test",
     },
@@ -270,18 +269,6 @@ const routes = [
           ),
         meta: {
           title: "編輯專輯",
-        },
-      },
-
-      {
-        path: "addsongtoalbum",
-        name: "addsongtoalbum",
-        component: () =>
-          import(
-            /* webpackChunkName: "profilepage" */ "../views/AddSongtoAlbum.vue"
-          ),
-        meta: {
-          title: "新增歌曲至專輯",
         },
       },
 
