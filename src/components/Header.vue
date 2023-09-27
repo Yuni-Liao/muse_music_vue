@@ -52,7 +52,7 @@
           /></router-link>
 
           <div class="user_dropdown">
-            <router-link to=""
+            <router-link to="/home/shoporders"
               ><img
                 src="~@/assets/image/icon/clipboard.png"
                 alt=""
