@@ -1,9 +1,4 @@
-// import Robot from "@/components/Robot.vue";
-
 export default {
-    // components: {
-    //     Robot
-    // },
     data() {
         return {
             // 讓圖片 build 之後能顯示
@@ -128,12 +123,14 @@ export default {
                     open: false,
                 },
             ],
+            timer: null
         }
     },
 
     methods: {
         // 常見問題-收合
         toggleQuestion(index) {
+            console.log(index)
             this.faqList[index].open = !this.faqList[index].open;
         },
 
@@ -143,7 +140,43 @@ export default {
         },
         resumeAnimation(event) {
             this.isActive = true
-        }
+        },
+
+        //機器人導向問題
+        async scrollToTarget(hash) {
+            if (!hash) return;
+            const el = document.querySelector(hash)
+            console.log(el)
+            await this.$nextTick()
+            if (el) {
+                clearTimeout(this.timer)
+                const top = el.getBoundingClientRect().y;
+                console.log(top)
+                this.timer = setTimeout(() => {
+                    if (!top || top < 0) return;
+                    window.scrollTo({
+                        top: top,
+                        behavior: 'smooth'
+                    })
+                    this.toggleQuestion(hash.split('#faq')[1])
+                }, 200)
+            }
+        },
+    },
+
+    //監聽機器人導向網址的hash是否更改
+    watch: {
+        "$route.hash"(nVal) {
+            if (nVal) {
+                this.scrollToTarget(nVal)
+            }
+        },
+    },
+
+    //抓取機器人導向網址的hash
+    mounted() {
+        console.log('mounted')
+        this.scrollToTarget(this.$route.hash)
     },
 
 }

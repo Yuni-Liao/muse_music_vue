@@ -123,7 +123,7 @@
           style="color: #fff"
         />
       </div>
-      <router-link to="#" @click="isNavVisible = false">
+      <router-link to="/home/shoporders" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/clipboard.png" alt="" />
         <p>訂單資訊</p>
       </router-link>

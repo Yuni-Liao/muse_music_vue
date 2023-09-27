@@ -5,58 +5,59 @@
         <img alt="robot_icon" :src="`${publicPath}image/icon/robot.svg`" @click="openRobot" />
     </div>
 
-    <div class="robot" v-show="isOpen">
-        <div class="container">
-            <div class="main">
-                <div class="box">
-                    <div class="title">
-                        <img :src="`${publicPath}image/icon/robot_in.svg`" alt="logo" class="logo" /> <!-- logo -->
-                        <span class="title-hn">MUSE 智慧客服</span>
-                        <div class="closebtn" @click="openRobot">
-                            <div class="close"></div>
-                            <div class="close"></div>
+    <div class="robot_warp" v-show="isOpen"  @click="closeRobot" ref="robotWarp">
+        <div class="robot">
+            <div class="container">
+                <div class="main">
+                    <div class="box">
+                        <div class="title">
+                            <img :src="`${publicPath}image/icon/robot_in.svg`" alt="logo" class="logo" /> <!-- logo -->
+                            <span class="title-hn">MUSE 智慧客服</span>
+                            <div class="closebtn" @click="openRobot"> <!-- x -->
+                                <div class="close"></div>
+                                <div class="close"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div id="content" class="content"> <!-- 對話介面 -->
-                        <div v-for="(item, index) in info" :key="index"> <!-- 所有對話框 -->
-                            <div class="info_r info_default" v-if="item.type === 'leftinfo'"> <!-- 客服對話框 -->
-                                <div class="con_r con_text"> <!-- 客服對話框文字框 -->
-                                    <div>{{ item.content }}</div>
-                                    <!-- 客服對話框文字 -->
-                                    <div v-for="(item2, index) in item.question" :key="index" div class="con_que"
-                                        @click="() => clickRobot(item2.content, item2.id)">
-                                        <!-- 輸入後可能想問robotQuestion -->
-                                        <div class="czkj-question-msg">
-                                            {{ item2.content }}
+                        <div id="content" class="content"> <!-- 對話介面 -->
+                            <div v-for="(item, index) in info" :key="index"> <!-- 所有對話框 -->
+                                <div class="info_r info_default" v-if="item.type === 'leftinfo'"> <!-- 客服對話框 -->
+                                    <div class="con_r con_text"> <!-- 客服對話框文字框 -->
+                                        <div v-html="item.content"></div>
+                                        <!-- 客服對話框文字 -->
+                                        <div v-for="(item2, index) in item.question" :key="index" class="con_que" @click="() => clickRobot(item2.content, item2.id)">
+                                            <!-- 輸入後可能想問robotQuestion -->
+                                            <div class="czkj-question-msg" v-html="item2.content">
+                                            </div>
+
                                         </div>
-
                                     </div>
-                                </div>
-                                <div class="time_r">{{ item.time }}</div> <!-- 客服目前時間 -->
+                                    <div class="time_r">{{ item.time }}</div> <!-- 客服目前時間 -->
 
-                            </div>
-
-                            <div class="info_l" v-if="item.type === 'rightinfo'"> <!-- 提問對話框 -->
-                                <div class="con_r con_text con_i">
-                                    <span class="con_l">{{ item.content }}</span> <!-- 提問對話框文字框 -->
                                 </div>
-                                <div class="time_l">{{ item.time }}</div> <!-- 提問目前時間 -->
+
+                                <div class="info_l" v-if="item.type === 'rightinfo'"> <!-- 提問對話框 -->
+                                    <div class="con_r con_text con_i">
+                                        <span class="con_l">{{ item.content }}</span> <!-- 提問對話框文字框 -->
+                                    </div>
+                                    <div class="time_l">{{ item.time }}</div> <!-- 提問目前時間 -->
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="question_wrap">您可能會感興趣的問題：</div>
-                    <div class="question-container"><!-- 問題小框 -->
-                        <div v-for="(faq, index) in robotfaq" :key="index" class="question"
-                            @click="sentMsgById(faq.question, faq.id)">
-                            {{ faq.question }}
+                        <div class="question_wrap">您可能會感興趣的問題：</div>
+                        <div class="question-container" ref="questionContainer" @wheel="handleScroll"><!-- 問題小框 -->
+                            <div v-for="(faq, index) in robotfaq" :key="index" class="question"
+                                @click="sentMsgById(faq.question, faq.id)">
+                                {{ faq.question }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="setproblem"> <!-- 輸入框 -->
-                        <textarea placeholder="Type a message... " id="text" v-model="customerText"
-                            @keyup.enter="sentMsg()"></textarea>
-                        <img :src="`${publicPath}image/icon/send.svg`" @click="sentMsg()" class="setproblems" alt="enter">
+                        <div class="setproblem"> <!-- 輸入框 -->
+                            <textarea placeholder="Type a message... " id="text" v-model="customerText"
+                                @keyup.enter="sentMsg()"></textarea>
+                            <img :src="`${publicPath}image/icon/send.svg`" @click="sentMsg()" class="setproblems"
+                                alt="enter">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -70,8 +71,78 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            //
-            robotfaq: [],
+            robotfaq: [
+                {
+                    id: 0,
+                    question: "上傳音樂要付錢嗎？",
+                    answer: "上傳音樂作品到MUSE平台讓樂迷聆聽是完全免費的！只要點擊導覽列小頭像，登入或註冊成為會員，即可免費上傳作品。",
+                    short: "只要擁有會員，即可免費上傳作品到MUSE平台！",
+                    keywords: "上傳付錢付費收錢收費"
+                },
+                {
+                    id: 1,
+                    question: "要怎麼上傳音樂？",
+                    answer: "音樂上傳的頁面在「會員專區」裡的「個人頁面管理」，進到頁面後點選「歌曲上傳」即可進行上傳！音樂上傳後需要待管理員審核(1~3天)，經審核後作品就會在平台上線，供樂迷聆聽。",
+                    short: "「會員專區」裡的「個人頁面管理」，進到頁面後點選「歌曲上傳」即可進行上傳！",
+                    keywords: "上傳"
+                },
+                {
+                    id: 2,
+                    question: "上傳的音樂檔案有規定的格式嗎？",
+                    answer: "上傳的檔案須為 MP3 (MPEG-1 Audio Layer-3) 編碼格式，且位元率至少需為 192 kbit/s；如作品為 WAV / WMA / MP4 等其他編碼格式，需先自行使用轉檔軟體進行轉檔。",
+                    short: "上傳的檔案須為 MP3 格式，如作品為其他編碼格式，需自行進行轉檔！",
+                    keywords: "上傳格式"
+                },
+                {
+                    id: 3,
+                    question: "可以上傳翻唱的作品嗎？",
+                    answer: "上傳的作品必須是您或您所屬團體的原創性作品。音樂作品中若包含他人的著作則需取得合法授權，亦須遵守MUSE之使用條款。",
+                    short: "上傳的作品必須是您或您所屬團體的原創性作品！",
+                    keywords: "上傳翻唱原創"
+                },
+                {
+                    id: 4,
+                    question: "為什麼無法上傳音樂？",
+                    answer: "1.您的網頁瀏覽器可能需要更新，請確認瀏覽器為最新版本。2.嘗試在隱私 / 無痕模式視窗中操作，排除瀏覽器外掛 / 擴充功能的干擾。3.如若仍無法解決問題，可填寫表單獲得協助。",
+                    short: "請確認瀏覽器為最新版本，或嘗試在隱私 / 無痕模式視窗中操作。也可填寫表單獲得協助！",
+                    keywords: "上傳無法錯誤"
+                },
+                {
+                    id: 5,
+                    question: "音樂上傳後會不會被拿去賣錢？",
+                    answer: "MUSE平台為音樂人社群平台，作品僅會使用於推廣使用，不會把創作者的作品賣掉喔！",
+                    short: "作品僅只用於推廣，不會進行販售！",
+                    keywords: "賣錢販售推廣"
+                },
+                {
+                    id: 6,
+                    question: "所有人都可以收聽我的作品嗎？",
+                    answer: "只要是經過管理員審核的作品，就會公開在MUSE平台上，所有聽眾都可以輕鬆收聽！",
+                    short: "經過管理員審核後，即公開於平台上供免費聆聽！",
+                    keywords: "收聽資格"
+                },
+                {
+                    id: 7,
+                    question: "我的最愛跟建立歌單有什麼差別？",
+                    answer: "我的最愛屬於預設歌單，只要樂迷按「愛心」該首音樂就會加入我的最愛。建立歌單則是樂迷可以依照喜好創建個人歌單，只要樂迷按「+」建立歌單並加入歌曲，即可將喜歡的歌曲們加入到該歌單中。在「會員專區」裡的「我的最愛歌曲」及「我的歌單」可詳閱清單和內容歌曲。",
+                    short: "我的最愛屬於預設歌單，建立歌單則是樂迷可以依照喜好創建個人歌單。皆可在會員專區中查看！",
+                    keywords: "我的最愛建立歌單"
+                },
+                {
+                    id: 8,
+                    question: "所有人都可以上傳音樂嗎？",
+                    answer: "作品只要是您或您所屬團體的原創性作品，每一位使用者皆可以到「會員專區」裡的「個人頁面管理」上傳音樂！音樂上傳後需要待管理員審核(1~3天)，經審核後作品就會在平台上線，供樂迷聆聽。",
+                    short: "只要擁有會員，即可免費上傳作品到MUSE平台！",
+                    keywords: "上傳資格"
+                },
+                {
+                    id: 9,
+                    question: "如果有人在我的音樂底下留不當言論可以怎麼處理？",
+                    answer: "可以點選該則留言後方的「…」，再點擊檢舉按鈕，並輸入相關內容送出，管理員會再審核該則留言是否不當，經確認屬實會移除該則留言。",
+                    short: "可以點選該則留言後方的「…」，再點選檢舉按鈕，即可輸入相關內容進行檢舉！",
+                    keywords: "不當言論留言檢舉"
+                }
+            ],
             customerText: "",
             info: [
                 {
@@ -106,7 +177,28 @@ export default {
         //開關robot
         openRobot() {
             this.isOpen = !this.isOpen;
+            if (!this.isOpen) {
+                // 如果robot被收起，清空id:content，只留初始的info
+                this.info = [
+                    {
+                        type: "leftinfo",
+                        time: this.getTodayTime(),
+                        content: "逼逼！您需要什麼幫助？",
+                    },
+                ];
+            }
         },
+
+        //     // 点击除robot_warp以外的区域时关闭robot
+        // closeRobot(event) {
+        //     if (this.isOpen) {
+        //         const robotWarp = this.$refs.robotWarp; // 获取robot_warp的引用
+        //         if (!robotWarp.contains(event.target)) {
+        //         // 如果点击的不在robot_warp内部
+        //         this.isOpen = false; // 关闭robot界面
+        //         }
+        //     }
+        // },
 
         // 發送使用者的訊息並將其附加到聊天歷史記錄中
         sentMsg() {
@@ -124,8 +216,6 @@ export default {
                 this.customerText = ""; //清空輸入框
             }
         },
-
-
 
         // 基於使用者輸入生成機器人回覆，並將其附加到聊天中
         appendRobotMsg(text) {
@@ -164,7 +254,6 @@ export default {
                 };
                 this.info.push(obj);
             }
-            // }
             this.$nextTick(() => {
                 var contentHeight = document.getElementById("content");
                 contentHeight.scrollTop = contentHeight.scrollHeight;
@@ -174,37 +263,22 @@ export default {
         // 查找與使用者輸入匹配的預定義問題
         getMatchingQuestions(text) {
             let matchingQuestions = [];
-            text = text.trim(); // 將輸入轉換去除空格
+            text = text.trim(); // 去除空格
+
             for (let i = 0; i < this.robotfaq.length; i++) {
                 const keywords = this.robotfaq[i].keywords;
-                if (keywords.includes(text)) { // 使用關鍵字包含判斷部分匹配
-                    matchingQuestions.push({
-                        content: this.robotfaq[i].question,
-                        id: this.robotfaq[i].id,
-                    });
+                for (let j = 0; j < keywords.length; j++) {
+                    if (text.includes(keywords[j])) {
+                        matchingQuestions.push({
+                            content: this.robotfaq[i].question,
+                            id: this.robotfaq[i].id,
+                        });
+                        break;
+                    }
                 }
             }
             return matchingQuestions;
         },
-
-
-        // getMatchingQuestions(text) {
-        //     let matchingQuestions = [];
-        //     text = text.trim(); // 將輸入轉換去除空格
-        //     for (let i = 0; i < this.robotfaq.length; i++) {
-        //         const keywords = this.robotfaq[i].keywords.split(' '); // 將關鍵字拆分成陣列
-        //         for (let j = 0; j < keywords.length; j++) {
-        //             if (text.includes(keywords[j])) { // 如果輸入文字包含關鍵字的一部分
-        //                 matchingQuestions.push({
-        //                     content: this.robotfaq[i].question,
-        //                     id: this.robotfaq[i].id,
-        //                 });
-        //             }
-        //         }
-        //     }
-        //     return matchingQuestions;
-        // },
-
 
         // 處理使用者點擊預定義問題，並發送使用者的問題和機器人的回覆
         sentMsgById(val, id) {
@@ -227,7 +301,8 @@ export default {
                 type: "leftinfo",
                 time: this.getTodayTime(),
                 name: "robot",
-                content: robotAnswer.short,
+                content: robotAnswer.short +
+                    `<br><a href='/home/about#faq${id}'>逼！點這看更多答案</a>`,
             };
 
             // 添加對話至列表
@@ -265,17 +340,35 @@ export default {
                 day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDate() + " " + day.getHours() + ":" + minutes + ":" + seconds;
             return time;
         },
-    },
 
-    mounted() {
-        fetch('/data/robotfaq.json')
-            .then(res => {
-                return res.json()
-            })
-            .then(json => {
-                this.robotfaq = json
-            })
+        //問題小框水平滾軸滑鼠滾輪感應
+        handleScroll(event) {
+            // 阻止滾輪事件繼續傳播，以防止外部滾動
+            event.preventDefault();
+
+            // 獲取滾動容器的引用
+            const container = this.$refs.questionContainer;
+
+            // 計算滾動距離，根據滑鼠滾輪事件的deltaX屬性
+            const delta = event.deltaX || event.deltaY;
+
+            // 調整滾動容器的滾動位置
+            container.scrollLeft += delta;
+        },
+
     },
+    // mounted() {
+    //     fetch('/data/robotfaq.json')
+    //         .then(res => {
+    //             return res.json()
+    //         })
+    //         .then(json => {
+    //             this.robotfaq = json
+    //         });
+
+    // },
+
+
 };
 </script>
 

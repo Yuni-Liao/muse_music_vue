@@ -146,6 +146,28 @@ const routes = [
           title: "關於謬思",
         },
       },
+      {
+        path: "shoporders",
+        name: "shoporders",
+        component: () =>
+          import(/* webpackChunkName: "shoporders" */ "../views/ShopOrdersView.vue"),
+        meta: {
+          title: "訂單資訊",
+        },
+      },
+      // 以下是訂單資訊詳情共用頁面
+      {
+        //設定動態路由參數":id"
+        path: "shoporderdetail/:id",
+        name: "shoporderdetail",
+        component: () =>
+          import(
+            /* webpackChunkName: "shoporderdetail" */ "../views/ShopOrderDetailView.vue"
+          ),
+        meta: {
+          title: "訂單資訊",
+        },
+      },
       // {
       //   //faq的component還沒改還沒導,試試看能不能用茅點
       //   path: "faq",
