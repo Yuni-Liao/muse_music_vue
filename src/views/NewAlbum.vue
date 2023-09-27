@@ -43,8 +43,8 @@
       <div class="plus-container">
         <router-link to="addsongtoalbum">
           <img
-            class="plus"
             alt="Profile Image"
+            class="plus"
             src="@/assets/image/icon/plus.jpg"
           />
           <p class="plus">新增單曲至專輯</p>

@@ -276,13 +276,6 @@
                     <input type="checkbox" name="songclass" value="" />
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
-                  <span class="classname">其他曲風</span>
-                </div>
-                <div class="opt">
-                  <label class="checkboxLabel">
-                    <input type="checkbox" name="songclass" value="" />
-                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
-                  </label>
                   <span class="classname">快樂</span>
                 </div>
                 <div class="opt">
@@ -311,13 +304,6 @@
                     <input type="checkbox" name="songclass" value="" />
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
-                  <span class="classname">輕鬆</span>
-                </div>
-                <div class="opt">
-                  <label class="checkboxLabel">
-                    <input type="checkbox" name="songclass" value="" />
-                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
-                  </label>
                   <span class="classname">舒眠</span>
                 </div>
                 <div class="opt">
@@ -333,6 +319,13 @@
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
                   <span class="classname">派對</span>
+                </div>
+                <div class="opt">
+                  <label class="checkboxLabel">
+                    <input type="checkbox" name="songclass" value="" />
+                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+                  </label>
+                  <span class="classname">其他曲風</span>
                 </div>
               </div>
             </div>

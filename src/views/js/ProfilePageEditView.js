@@ -4,7 +4,7 @@ export default {
     return {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
-      activeTab: 4,
+      activeTab: 1,
       currentStep: 0,
       member: {
         coverimgURL: require(`/public/dataimage/member/1-2.jpg`),
