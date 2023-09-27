@@ -10,7 +10,9 @@
         <section class="inner">
             <div class="mainInf">
                 <div class="pic">
-                    <img :src="`/image/ShopImage/${foundObject.prodPic}`" :alt="foundObject.prodName" />
+                    <div class="image-wrapper">
+                        <img :src="`/image/ShopImage/${foundObject.prodPic}`" :alt="foundObject.prodName" />
+                    </div>
                 </div>
                 <div class="txt">
                     <div class="title">
