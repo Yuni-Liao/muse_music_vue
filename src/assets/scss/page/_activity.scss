@@ -48,6 +48,9 @@
       color: $white;
       margin: 3px 30px;
       text-shadow: black 0.1em 0.1em 0.2em;
+      @include s(){
+        font-size: $default;
+      }
     }
   }
   
@@ -81,11 +84,6 @@
         display: flex;
         align-items: center;
         margin: 50px 0px;
-        @include s(){
-          h1{
-           
-          }
-        }
         h1{
             color: #000;
             background-color: $green;
@@ -97,6 +95,7 @@
             line-height: 60px;
             letter-spacing: 2px;
             font-weight: bolder;
+            margin: 5px;
         }
         p{
             color: $green;
@@ -122,7 +121,10 @@
     align-items: center;
     justify-content: center;
     .outMonthTab{
+      max-width: 80%;
       display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: #000;
       .monthTab{
         display: flex;
@@ -145,20 +147,51 @@
         }
     }
     }
-    
-    
-    
+  }
+
+  // 手機才會出現的地區篩選
+  .bigAreaTab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+    .outAreaTab{
+      max-width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000;
+      ul{
+        display: flex;
+        align-items: center;
+      justify-content: center;
+        width: 500px;
+        li{
+          cursor: pointer;
+            list-style: none;
+            color: $white;
+            font-size: $small;
+            letter-spacing: 3px;
+            margin: 10px;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 413px){
+    .bigAreaTab{
+      display: none;
+    }
   }
 
   .areaInfoContainer{
+    max-width: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     margin: 100px 0px;
     .activityArea{
         background-color: #000;
-       
-        margin-left: 100px;
+        margin-right: 100px;
         ul, li{
             list-style: none;
             color: $white;
@@ -169,11 +202,14 @@
         li.active{
           color: #74EBD5;
         }
+        @include s(){
+          display: none;
+        }
       }
       .infoWrapper{
-        margin-left: 130px;
+        
+        
         .activityInfo{
-          // width: 900px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -185,27 +221,43 @@
               background-color: $white;
               border-top-right-radius: 10px;
               border-top-left-radius: 10px;
-              
+             
               .month{
+                  width: 90px;
                   color: $white;
                   background-color: $blue;
                   border-top-right-radius: 10px;
                   border-top-left-radius: 10px;
-                  padding: 5px 25px;
-                  font-weight: bolder;
+                  padding: 5px 30px;
+                  
               }
               p{
                   color: #000;
                   padding: 5px 0px;
               }
           }
-          img{
-              width: 200px;
-          }
-          .info{
+          .actWrapper{
+            display: flex;
+            @include s(){
+              flex-direction: column;
+            }
+            img{
+              width: 230px;
+            }
+            .info{
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              align-items: flex-start;
               text-align: left;
               margin-left: 20px;
               cursor: pointer;
+              @include s(){
+                margin-left: -10px;
+                p{
+                  margin: 5px 0px;
+                }
+              }
               p{
                   padding: 5px 10px;
                   color: $white;
@@ -222,17 +274,16 @@
                   margin: 10px;
                   p{
                       padding: 5px 10px;
+                      font-size: $tag;
                   }
+                }
               }
-              }
+              
+            }
           }
-          
-        }
-        button{
-          color: $white;
-          background: #252525;
-          border: 1px solid transparent;
-          outline: none;
-        }
+        
+
+        } 
       }
   }
+  

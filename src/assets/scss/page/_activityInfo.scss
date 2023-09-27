@@ -1,15 +1,22 @@
-.infoContainer{
+
+.topncenter{
     background-image: url("/public/image/Activity/activitybac.avif");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
     .infoTop{
-       
-        height: 500px;
+        
         display: flex;
         justify-content: center;
-        align-items: flex-start;
-        
+        align-items: center;
+        @include s(){
+            flex-direction: column;
+          }
         img{
             width: 350px;
             height: 200px;
@@ -20,14 +27,22 @@
             margin-left: 30px;
             color: $white;
             text-align: left;
-            margin-top: 200px;
+            
             display: flex;
             flex-direction: column;
             line-height: 30px;
-            h1{
+            @media screen and (min-width: 413px){
+                margin-top: 200px;
+            }
+            @include s(){
+                margin: 10px;
+            }
+            section{
                 font-size: $small;
                 letter-spacing: 2px;
-                
+                p{
+                    text-align: left;
+                }
             }
             .singer{
                 width: 110px;
@@ -44,55 +59,75 @@
         }
     }
     .infoCenter{
+        margin-top: 50px;
+        text-align: left;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        color: $white;
-        text-align: left;
+        justify-content: flex-start;
+        align-items: flex-start;
+        @media screen and (min-width: 413px){
+            margin-left: -200px;
+        }
+        @include s(){
+            margin: 10px;
+          }
         h1{
-            font-size: $small;
-            margin: 50px 300px;
+            color: $white;
+            font-size: $medium;
+            margin: 10px;
         }
         p{
-            letter-spacing: 2px;
+            color: $white;
+            font-size: $tag;
             line-height: 25px;
-            margin: 10px 0px 30px 300px;
+            letter-spacing: 2px;
+            margin: 10px ;
         }
     }
-    .infoBottom{
+    
+}
+.infoBottom{
+   
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-size: $small;
+        margin: 50px 0px;
+        color: $white;
+        text-align: left;
+    }
+    .related{
         display: flex;
-        flex-direction: column;
-        
-        h1{
-            font-size: $small;
-            margin: 50px 300px;
+        align-items: center;
+        margin: 30px 300px;
+        .calender{
+            margin-right: 30px;
+            background-color: $white;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            
+            .month{
+            width: 90px;
             color: $white;
-            text-align: left;
-        }
-        .related{
-            display: flex;
-            align-items: center;
-            margin: 30px 300px;
-            .calender{
-                
-                margin-right: 30px;
-                background-color: $white;
-                border-top-right-radius: 10px;
-                border-top-left-radius: 10px;
-                
-                .month{
-                color: $white;
-                background-color: $blue;
-                border-top-right-radius: 10px;
-                border-top-left-radius: 10px;
-                padding: 5px 20px;
-                font-weight: bolder;
-                }   
-                p{
-                    color: #000;
-                    padding: 5px 0px;
-                }
+            background-color: $blue;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            padding: 5px 30px;
+            
+            }   
+            p{
+                color: #000;
+                padding: 5px 0px;
             }
+        }
+        .relatedWrapper{
+            display: flex;
+            @include s(){
+                flex-direction: column;
+              }
             img{
                 width: 230px;
             }

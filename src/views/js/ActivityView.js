@@ -32,15 +32,15 @@ export default {
           month: "7月",
           day: "26日",
           week: "星期三",
-          title: "音樂大排檔 : Showcase演唱會",
-          info: "19:00 / 台中市 / Legacy Taichung 傳 音樂展演空間"
+          title: "音樂大排檔 Showcase演唱會",
+          info: "19:00 / 台中市 / Legacy"
         },
         {
           image: "activityBanner02.jpg",
           month: "8月",
           day: "4日",
           week: "星期五",
-          title: "初登場！夏日新聲企劃！",
+          title: "夏日新聲企劃！",
           info: "20:00 / 台北市 / Revolver"
         },
         {
@@ -182,22 +182,22 @@ export default {
   },
   mounted() {
     this.updateVisibleMonths();
-    this.selectedArea = '全部'; // 默认选择全部地区
-    this.filterByMonth('SEP'); // 默认选择九月的活动
+    this.selectedArea = '全部'; 
+    this.filterByMonth('SEP'); 
   },
   computed: {
-    filteredActivities() {
-      // 根据选中的月份和地区筛选活动
-      return this.activityList.filter((activity) => {
-        const monthMatches = !this.selectedMonth || activity.month === this.selectedMonth;
-        const areaMatches = this.selectedArea === "全部" || activity.area === this.selectedArea;
-        return monthMatches && areaMatches;
-      });
-    },
+    // filteredActivities() {
+      
+    //   return this.activityList.filter((activity) => {
+    //     const monthMatches = !this.selectedMonth || activity.month === this.selectedMonth;
+    //     const areaMatches = this.selectedArea === "全部" || activity.area === this.selectedArea;
+    //     return monthMatches && areaMatches;
+    //   });
+    // },
   },
   created() {
-    this.selectedArea = '全部'; // 默认选择全部地区
-    this.filterActivities(); // 显示所有活动
+    this.selectedArea = '全部'; 
+    this.filterActivities(); 
   },
   methods: {
     updateVisibleMonths() {
@@ -241,11 +241,11 @@ export default {
     },
     monthStyle() {
       return function (month) {
-        // 根据月份设置字体颜色
+        
         if (this.selectedMonth === month) {
           return { color: '#74EBD5' };
         } else {
-          return { color: '#fff' }; // 默认颜色或你希望的颜色
+          return { color: '#fff' }; 
         }
       };
     }
