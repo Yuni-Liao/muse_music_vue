@@ -83,40 +83,40 @@
           style="color: #fff" />
       </div>
       <router-link to="/home/shoporders" @click="isNavVisible = false">
-        <img src="~@/assets/image/icon/clipboard.png" alt="" />
+        <img src="~@/assets/image/icon/clipboard.png" />
         <p>訂單資訊</p>
       </router-link>
       <router-link to="/home/accsetting" @click="isNavVisible = false">
-        <img src="~@/assets/image/icon/settingicon.png" alt="" />
+        <img src="~@/assets/image/icon/settingicon.png" />
         <p>帳號設定</p>
       </router-link>
       <router-link to="/home/profilepage" @click="isNavVisible = false">
-        <img src="~@/assets/image/icon/personalPage.png" alt="" />
+        <img src="~@/assets/image/icon/personalPage.png" />
         <p>個人主頁</p>
       </router-link>
       <router-link to="/home/profilepageedit" @click="isNavVisible = false">
-        <img src="~@/assets/image/icon/development.png" alt="" />
+        <img src="~@/assets/image/icon/development.png" />
         <p>個人管理頁面</p>
       </router-link>
 
       <p style="margin: 30px 0px 20px 25px; font-size: 20px">我的音樂庫</p>
 
-      <router-link to="/home" @click="isNavVisible = false">
+      <!-- <router-link to="/home" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/clock.png" alt="" />
         <p>播放紀錄</p>
-      </router-link>
+      </router-link> -->
       <router-link to="/home/mysonglist" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/list.png" alt="" />
         <p>我的歌單</p>
       </router-link>
-      <router-link to="/home" @click="isNavVisible = false">
+      <!-- <router-link to="/home" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/heart.png" alt="" />
         <p>我的最愛</p>
-      </router-link>
-      <router-link to="/home" @click="isNavVisible = false">
+      </router-link> -->
+      <!-- <router-link to="/home" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/targeticon.png" alt="" />
         <p>我的追蹤</p>
-      </router-link>
+      </router-link> -->
 
       <div class="loginbtn">
         <p style="margin: 30px 0px 10px 25px; font-size: 20px">登出</p>

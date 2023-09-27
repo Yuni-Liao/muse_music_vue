@@ -5,7 +5,7 @@
         <img alt="robot_icon" :src="`${publicPath}image/icon/robot.svg`" @click="openRobot" />
     </div>
 
-    <div class="robot_warp" v-show="isOpen"  @click="closeRobot" ref="robotWarp">
+    <div class="robot_warp" v-show="isOpen" @click="closeRobot" ref="robotWarp">
         <div class="robot">
             <div class="container">
                 <div class="main">
@@ -24,7 +24,8 @@
                                     <div class="con_r con_text"> <!-- 客服對話框文字框 -->
                                         <div v-html="item.content"></div>
                                         <!-- 客服對話框文字 -->
-                                        <div v-for="(item2, index) in item.question" :key="index" class="con_que" @click="() => clickRobot(item2.content, item2.id)">
+                                        <div v-for="(item2, index) in item.question" :key="index" class="con_que"
+                                            @click="() => clickRobot(item2.content, item2.id)">
                                             <!-- 輸入後可能想問robotQuestion -->
                                             <div class="czkj-question-msg" v-html="item2.content">
                                             </div>
