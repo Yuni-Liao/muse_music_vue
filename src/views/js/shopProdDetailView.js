@@ -3,7 +3,6 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            //
             //用來存儲查找到的商品物件
             foundObject: {},
             //商品：product.json
