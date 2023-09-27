@@ -2,47 +2,44 @@
   <button id="AddSlBtn" @click="isAddSlOpen = true">
     <fontAwesome :icon="['fa', 'plus']" :style="AddSlBtnStyle" />
   </button>
-  <teleport to="body">
-    <div id="AddSl" v-if="isAddSlOpen">
-      <form action="">
-        <div class="title">
-          <span>加入歌單</span>
-          <button class="addNewSl" type="button" @click="addNewSl()">
-            <fontAwesome class="i" :icon="['fa', 'plus']" />
-          </button>
-        </div>
-        <ul>
-          <li v-for="(item, index) in songlists" class="opt">
-            <label class="checkboxLabel">
-              <input type="checkbox" name="slid" :value="item.slid" />
-              <fontAwesome class="i" :icon="['fa', 'fa-check']" />
-            </label>
-            <span class="slname">{{ item.slname }}</span>
-            <span class="public">
-              <fontAwesome
-                v-if="item.public === true"
-                class="i"
-                :icon="['fa', 'lock-open']" />
-              <fontAwesome v-else class="i" :icon="['fa', 'lock']"
-            /></span>
-          </li>
-        </ul>
-        <div class="submit">
-          <button type="button" @click="closeAddSl()">
-            <fontAwesome class="i" :icon="['fa', 'fa-check']" />完成
-          </button>
-        </div>
-      </form>
-    </div>
-  </teleport>
 
-  <teleport to="body">
-    <NewSl
-      v-if="isNewSlOpen"
-      @isNewSlOpenupdate="isNewSlOpenupdate"
-      @NewSlDatanupdate="NewSlDatanupdate"
-    ></NewSl>
-  </teleport>
+  <div id="AddSl" v-if="isAddSlOpen">
+    <form action="">
+      <div class="title">
+        <span>加入歌單</span>
+        <button class="addNewSl" type="button" @click="addNewSl()">
+          <fontAwesome class="i" :icon="['fa', 'plus']" />
+        </button>
+      </div>
+      <ul>
+        <li v-for="(item, index) in songlists" class="opt">
+          <label class="checkboxLabel">
+            <input type="checkbox" name="slid" :value="item.slid" />
+            <fontAwesome class="i" :icon="['fa', 'fa-check']" />
+          </label>
+          <span class="slname">{{ item.slname }}</span>
+          <span class="public">
+            <fontAwesome
+              v-if="item.public === true"
+              class="i"
+              :icon="['fa', 'lock-open']" />
+            <fontAwesome v-else class="i" :icon="['fa', 'lock']"
+          /></span>
+        </li>
+      </ul>
+      <div class="submit">
+        <button type="button" @click="closeAddSl()">
+          <fontAwesome class="i" :icon="['fa', 'fa-check']" />完成
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <NewSl
+    v-if="isNewSlOpen"
+    @isNewSlOpenupdate="isNewSlOpenupdate"
+    @NewSlDataupdate="NewSlDataupdate"
+  ></NewSl>
 </template>
 <script>
 import NewSl from "@/components/NewSl.vue";
@@ -62,7 +59,7 @@ export default {
       songlists: [
         {
           slid: 1,
-          slname: "測驗私人我的早晨歌單",
+          slname: "我的早晨私人歌單",
           image: "songPic.png",
           memid: 1,
           creator: "我",
@@ -82,7 +79,7 @@ export default {
         },
         {
           slid: 5,
-          slname: "測驗2公開我的假日歌單",
+          slname: "我的假日公開歌單",
           image: "songPic.png",
           memid: 1,
           creator: "我",
@@ -142,7 +139,7 @@ export default {
       this.isNewSlOpen = val;
       this.isAddSlOpen = true;
     },
-    NewSlDatanupdate(val) {
+    NewSlDataupdate(val) {
       this.songlists.unshift(val);
       console.log(val);
       console.log(this.songlists);

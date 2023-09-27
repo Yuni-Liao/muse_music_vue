@@ -1,0 +1,66 @@
+.shoporders{
+    background-color: #fff;
+    padding: 180px 0 100px;
+    .orders_change{
+        font-size: $medium;
+        display: flex;
+        justify-content: center;        
+        padding: 0 50px 60px;
+        color: $dark;
+        .recent, .history{
+            cursor: pointer;
+        }
+        .change{
+            margin: 0 100px;
+            width: 40px;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    .active{
+        color: $pink;
+    }
+
+    .orders{
+        .order{
+            margin: auto; 
+            max-width: 1300px;
+            padding: 40px;
+            .menu{
+                display: flex;
+                justify-content: center;
+                padding: 20px 0;
+                background-color: $dark;
+                color: $white;
+                font-size: $small;
+                .serial{
+                    width: 30%;
+                    display: flex;
+                    justify-content: center;
+                }                
+            }
+            .main{
+                transition: all .2s;
+                a{
+                    display: flex;
+                    align-items: center;
+                    padding: 30px 0;
+                    color: $dark;
+                    font-size: $default;
+                    border-bottom: 3px solid $dark;
+                    .product_pic{
+                        width: 30%;
+                    }
+                }
+            }
+            .order_item{
+                width: 14%;
+                text-align: center;
+            }
+            .main:hover{
+                box-shadow: inset 0 0 30px #d7d7ea;
+            }
+        }
+    }
+}

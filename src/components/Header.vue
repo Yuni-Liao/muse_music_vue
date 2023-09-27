@@ -5,7 +5,11 @@
     <nav>
       <div class="header_nav_left">
         <router-link to="/home">
-          <img class="logo_header" alt="Vue logo" src="~@/assets/image/muse_logo.png" />
+          <img
+            class="logo_header"
+            alt="Vue logo"
+            src="~@/assets/image/muse_logo.png"
+          />
         </router-link>
         <router-link to="/home/find" class="find">探索</router-link>
         <router-link to="/home/ranking" class="ranking">排行榜</router-link>
@@ -21,30 +25,57 @@
           <img alt="search_icon" src="~@/assets/image/icon/search.png" />
         </div>
         <div class="notify_dropdown_reaction">
-
           <img :alt="'bell_icon'" src="~@/assets/image/icon/bell.png" />
 
           <div class="notify_dropdown">
             <p>通知中心</p>
             <hr />
-            <div class="notify" v-for="(item, index) in notifyList" :key="index">
-              <img :src="require(`@/assets/image/creator/${item.src}`)" alt="" />
+            <div
+              class="notify"
+              v-for="(item, index) in notifyList"
+              :key="index"
+            >
+              <img
+                :src="require(`@/assets/image/creator/${item.src}`)"
+                alt=""
+              />
               <p>{{ item.notifytxt }}</p>
             </div>
           </div>
         </div>
         <div class="user_dropdown_reaction">
-          <router-link to="/home/login"><img style="margin-top: -1px" alt="user_icon"
-              src="~@/assets/image/icon/user.png" /></router-link>
+          <router-link to="/home/login"
+            ><img
+              style="margin-top: -1px"
+              alt="user_icon"
+              src="~@/assets/image/icon/user.png"
+          /></router-link>
 
           <div class="user_dropdown">
-            <router-link to=""><img src="~@/assets/image/icon/clipboard.png" alt="" />訂單資訊</router-link><br />
-            <router-link to="/home/accsetting"><img src="~@/assets/image/icon/settingicon.png"
-                alt="" />帳號設定</router-link><br />
-            <router-link to="/home/profilepage"><img src="~@/assets/image/icon/personalPage.png"
-                alt="" />個人主頁</router-link><br />
-            <router-link to="/home/profilepageedit"><img src="~@/assets/image/icon/development.png"
-                alt="" />個人主頁管理</router-link><br />
+            <router-link to=""
+              ><img
+                src="~@/assets/image/icon/clipboard.png"
+                alt=""
+              />訂單資訊</router-link
+            ><br />
+            <router-link to="/home/accsetting"
+              ><img
+                src="~@/assets/image/icon/settingicon.png"
+                alt=""
+              />帳號設定</router-link
+            ><br />
+            <router-link to="/home/profilepage"
+              ><img
+                src="~@/assets/image/icon/personalPage.png"
+                alt=""
+              />個人主頁</router-link
+            ><br />
+            <router-link to="/home/profilepageedit"
+              ><img
+                src="~@/assets/image/icon/development.png"
+                alt=""
+              />個人主頁管理</router-link
+            ><br />
             <!-- <router-link to="/home/shoppingsteps"><img src="~@/assets/image/icon/development.png"
                 alt="" />購物車流程</router-link><br /> -->
             <p>我的音樂庫</p>
@@ -54,7 +85,12 @@
                 alt=""
               />播放紀錄</router-link
             ><br /> -->
-            <router-link to="/home/mysonglist"><img src="~@/assets/image/icon/list.png" alt="" />我的歌單</router-link><br />
+            <router-link to="/home/mysonglist"
+              ><img
+                src="~@/assets/image/icon/list.png"
+                alt=""
+              />我的歌單</router-link
+            ><br />
             <!-- <router-link to="/home"
               ><img
                 src="~@/assets/image/icon/heart.png"
@@ -78,11 +114,16 @@
     </nav>
     <div class="phone-show-nav" v-show="isNavVisible">
       <div class="headshot">
-        <img src="@/assets/image/profileeditimage/profileimage.jpg" alt="">
-        <fontAwesome @click="isNavVisible = !isNavVisible" class="close" :icon="['fa', 'xmark']" size="2xl"
-          style="color: #fff;" />
+        <img src="@/assets/image/profileeditimage/profileimage.jpg" alt="" />
+        <fontAwesome
+          @click="isNavVisible = !isNavVisible"
+          class="close"
+          :icon="['fa', 'xmark']"
+          size="2xl"
+          style="color: #fff"
+        />
       </div>
-      <router-link to="#" @click="isNavVisible = false">
+      <router-link to="/home/shoporders" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/clipboard.png" alt="" />
         <p>訂單資訊</p>
       </router-link>
@@ -99,7 +140,7 @@
         <p>個人管理頁面</p>
       </router-link>
 
-      <p style="margin: 30px 0px 20px 25px; font-size: 20px;">我的音樂庫</p>
+      <p style="margin: 30px 0px 20px 25px; font-size: 20px">我的音樂庫</p>
 
       <router-link to="/home" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/clock.png" alt="" />
@@ -118,13 +159,10 @@
         <p>我的追蹤</p>
       </router-link>
 
-
       <div class="loginbtn">
-        <p style="margin: 30px 0px 10px 25px; font-size: 20px;">登出</p>
+        <p style="margin: 30px 0px 10px 25px; font-size: 20px">登出</p>
       </div>
-
     </div>
-
   </header>
 </template>
 
@@ -166,9 +204,7 @@ export default {
       scrollold = this.scrollY;
     });
   },
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 

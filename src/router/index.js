@@ -6,8 +6,7 @@ const routes = [
   {
     path: "/test",
     name: "test",
-    component: () =>
-      import(/* webpackChunkName: "path" */ "../views/Test.vue"),
+    component: () => import(/* webpackChunkName: "path" */ "../views/Test.vue"),
     meta: {
       title: "test",
     },
@@ -147,6 +146,28 @@ const routes = [
           title: "關於謬思",
         },
       },
+      {
+        path: "shoporders",
+        name: "shoporders",
+        component: () =>
+          import(/* webpackChunkName: "shoporders" */ "../views/ShopOrdersView.vue"),
+        meta: {
+          title: "訂單資訊",
+        },
+      },
+      // 以下是訂單資訊詳情共用頁面
+      {
+        //設定動態路由參數":id"
+        path: "shoporderdetail/:id",
+        name: "shoporderdetail",
+        component: () =>
+          import(
+            /* webpackChunkName: "shoporderdetail" */ "../views/ShopOrderDetailView.vue"
+          ),
+        meta: {
+          title: "訂單資訊",
+        },
+      },
       // {
       //   //faq的component還沒改還沒導,試試看能不能用茅點
       //   path: "faq",
@@ -270,18 +291,6 @@ const routes = [
           ),
         meta: {
           title: "編輯專輯",
-        },
-      },
-
-      {
-        path: "addsongtoalbum",
-        name: "addsongtoalbum",
-        component: () =>
-          import(
-            /* webpackChunkName: "profilepage" */ "../views/AddSongtoAlbum.vue"
-          ),
-        meta: {
-          title: "新增歌曲至專輯",
         },
       },
 

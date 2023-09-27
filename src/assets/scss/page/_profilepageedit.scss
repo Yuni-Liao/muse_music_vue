@@ -255,7 +255,6 @@ button.active {
         input[type="checkbox"]:checked {
           border: 2px solid $green;
         }
-        input[type="checkbox"]:hover ~ .i,
         input[type="checkbox"]:checked ~ .i {
           opacity: 1;
         }
@@ -305,7 +304,7 @@ button.active {
   input[type="checkbox"]:checked {
     border: 2px solid $green;
   }
-  input[type="checkbox"]:hover ~ .i,
+
   input[type="checkbox"]:checked ~ .i {
     opacity: 1;
   }
@@ -341,7 +340,6 @@ label {
   height: 50px;
   cursor: pointer;
   margin-right: 10px;
-  // margin-bottom: 30px;
   vertical-align: middle;
 }
 
@@ -504,16 +502,6 @@ p.plus {
   .edit {
     width: 5%;
     text-align: center;
-  }
-}
-
-//新增歌曲至專輯
-.addsongtoalbum {
-  padding: 130px 0;
-  .selcetcheck {
-    color: $pink;
-    text-align: right;
-    line-height: 5;
   }
 }
 

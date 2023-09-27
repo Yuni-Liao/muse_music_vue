@@ -70,7 +70,7 @@ export default {
         public: this.public,
       };
       this.$emit("isNewSlOpenupdate", this.isNewSlOpen);
-      this.$emit("NewSlDatanupdate", NewSlData);
+      this.$emit("NewSlDataupdate", NewSlData);
     },
   },
 };
@@ -92,7 +92,6 @@ export default {
 
   background-color: #000000dd;
   box-shadow: 0px 0px 50px #00000030;
-  backdrop-filter: blur(5px);
   border-radius: 10px;
   color: $white;
   padding: 0 30px;

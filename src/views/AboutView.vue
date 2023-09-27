@@ -20,7 +20,7 @@
                     <div class="partnerwall" @mouseenter="pauseAnimation" @mouseleave="resumeAnimation">
                         <div class="partnerwrapper" :class="{ 'active': isActive }">
                             <div v-for="(item, user) in userList" :key="user" class="partnerpic">
-                                <router-link :to="item.link">
+                                <router-link :to="`/home/profilepage`">
                                     <img :src="require(`/public/image/About/${item.prodPic}`)" :alt="item.id">
                                 </router-link>
                             </div>
@@ -28,7 +28,7 @@
 
                         <div class="partnerwrapper" :class="{ 'active': isActive }">
                             <div v-for="(item, user) in userList" :key="user" class="partnerpic">
-                                <router-link :to="item.link">
+                                <router-link :to="`/home/profilepage`">
                                     <img :src="require(`/public/image/About/${item.prodPic}`)" :alt="item.id">
                                 </router-link>
                             </div>
@@ -39,8 +39,8 @@
         </div>
 
 
-        <h2>常見問題．FAQ</h2>
-        <div v-for="(item, index) in faqList" :key="index" class="faq">
+        <h2 id="faq">常見問題．FAQ</h2>
+        <div v-for="(item, index) in faqList" :key="index" class="faq" :id="`faq${index}`">
             <!-- Q -->
             <div class="question" @click="toggleQuestion(index)">
                 <div class="faqtitle">Q：</div>
@@ -55,7 +55,7 @@
 
         <h2>聯絡謬思．Contact MUSE</h2>
         <form class="contact">
-            <div class="email">
+            <div class="email"> 
                 <span>信箱*</span>
                 <input type="email" required>
             </div>

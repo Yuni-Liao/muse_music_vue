@@ -138,6 +138,7 @@
             color: $dark;
             background-color: $green;
             display: flex;
+            cursor: pointer;
         }
         .answer {
             width: 100%;
@@ -204,7 +205,8 @@
 
     .contactbtn{
         @include rect(160px !important, 50px !important);
-        @include btnColor($green, $border: true, $hover: true)
+        @include btnColor($green, $border: true, $hover: true);
+        cursor: pointer;
     }
 
 }
