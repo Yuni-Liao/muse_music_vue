@@ -8,6 +8,13 @@
                 <p>{{ currentSong.songTitle }}</p>
                 <span>{{ currentSong.singer }}</span>
             </div>
+            <div id="play" class="phone-play">
+                    <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
+                        v-if="!isPlaying" @click="playMusic" />
+                    <!-- 暫停按钮 -->
+                    <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
+                        v-else @click="pauseMusic" />
+            </div>
             <!-- 音檔 -->
             <audio id="myAudio" ref="music" @timeupdate="updateTime" @ended="songEnded">
                 <source :src="`${publicPath}audio/` + currentSong.audio" type="audio/mpeg">
@@ -19,7 +26,7 @@
                 <!-- 上一首按鈕 -->
                 <div id="prev" class="backwardBtn controlsItem">
                     <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl"
-                        style="color: #fff; margin: 15px; cursor: pointer;" @click="prevSong" />
+                        style="color: #fff;  cursor: pointer;" @click="prevSong" />
                 </div>
                 <!-- 播放按钮 -->
                 <div id="play">
@@ -32,7 +39,7 @@
                 <!-- 下一首按鈕 -->
                 <div id="next" class="forwargBtn controlsItem">
                     <fontAwesome :icon="['fa', 'fa-step-forward']" size="2xl"
-                        style="color: #fff; margin: 15px; cursor: pointer;" @click="nextSong" />
+                        style="color: #fff; cursor: pointer;" @click="nextSong" />
                 </div>
             </div>
             <!-- 時間進度條 -->
@@ -43,7 +50,7 @@
                 <p>{{ formatTime(totalTime) }}</p>
             </div>
         </div>
-        <!-- 控制音量和歌詞顯示 -->
+        <!-- 控制音量 -->
         <div class="player_right">
             <!-- <fontAwesome class="loopSong" @click="toggleLoop" :class="{ 'loopSong-active': isLooping }" :icon="['fa', 'arrow-rotate-right']" size="xl" style="color: #fff; cursor: pointer; margin-right: 10px;" /> -->
             <img v-if="!isMuted" :src="`${publicPath}image/icon/volume.svg`" @click="toggleMute">
