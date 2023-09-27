@@ -6,7 +6,7 @@
     <Breadcrumb separator="/" class="breadcrumb">
       <BreadcrumbItem><router-link to="/home">首頁</router-link></BreadcrumbItem>
       <BreadcrumbItem><router-link to="/home/shop">周邊商品</router-link></BreadcrumbItem>
-      <BreadcrumbItem><router-link to="/home/shoppingsteps"></router-link>購物車</BreadcrumbItem>
+      <BreadcrumbItem class="nowBreadcrumb"><router-link to="/home/shoppingsteps"></router-link>購物車</BreadcrumbItem>
     </Breadcrumb>
     <div class="checkout-steps">
       <div :class="{ active: currentStep === 1 }">1.選取商品加入購物車</div>
@@ -26,12 +26,14 @@
             <h2>購物清單</h2>
             <div id="cartList">
               <table>
-                <tr v-for="item,  in cartItems" :key="item.id" class="item">
+                <tr v-for="(item,index)  in cartItems" :key="item.id" class="item">
                   <td class="itemNum">
-                    {{ itemId + 1 }} <!-- 自動生成編號 -->
+                    {{ index + 1 }} <!-- 自動生成編號 -->
                   </td>
                   <td class="pic">
+                    <div class="image-wrapper">
                     <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName" />
+                  </div>
                   </td>
                   <td class="prodName">
                     <p>{{ item.prodName }}</p>

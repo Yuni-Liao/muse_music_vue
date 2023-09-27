@@ -4,7 +4,7 @@
     </div>
     <!-- 麵包屑 -->
     <Breadcrumb separator="/">
-        <BreadcrumbItem><router-link to="/">首頁</router-link></BreadcrumbItem>
+        <BreadcrumbItem><router-link to="/home">首頁</router-link></BreadcrumbItem>
         <BreadcrumbItem>周邊商品</BreadcrumbItem>
     </Breadcrumb>
     <!-- 商品排序 -->
