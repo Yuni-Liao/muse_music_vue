@@ -1,6 +1,9 @@
 <template>
     <player ref="player"></player>
-    <div class="banner">
+    <div class="banner"
+    :style="{
+        backgroundImage: `url(${`${this.publicPath}` + foundObject.img})`
+    }">
         <div class="wrapper">
             <div class="find">
                 <p>探索</p>
