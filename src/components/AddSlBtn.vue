@@ -12,7 +12,7 @@
           </button>
         </div>
         <ul>
-          <li v-for="(item, index) in songlists" :key="item.slid" class="opt">
+          <li v-for="(item, index) in songlists" class="opt">
             <label class="checkboxLabel">
               <input type="checkbox" name="slid" :value="item.slid" />
               <fontAwesome class="i" :icon="['fa', 'fa-check']" />
@@ -20,7 +20,7 @@
             <span class="slname">{{ item.slname }}</span>
             <span class="public">
               <fontAwesome
-                v-if="item.public"
+                v-if="item.public === true"
                 class="i"
                 :icon="['fa', 'lock-open']" />
               <fontAwesome v-else class="i" :icon="['fa', 'lock']"
@@ -37,7 +37,11 @@
   </teleport>
 
   <teleport to="body">
-    <NewSl v-if="isNewSlOpen" @isNewSlOpenupdate="isNewSlOpenupdate"></NewSl>
+    <NewSl
+      v-if="isNewSlOpen"
+      @isNewSlOpenupdate="isNewSlOpenupdate"
+      @NewSlDatanupdate="NewSlDatanupdate"
+    ></NewSl>
   </teleport>
 </template>
 <script>
@@ -58,7 +62,7 @@ export default {
       songlists: [
         {
           slid: 1,
-          slname: "我的早晨歌單",
+          slname: "測驗私人我的早晨歌單",
           image: "songPic.png",
           memid: 1,
           creator: "我",
@@ -78,7 +82,7 @@ export default {
         },
         {
           slid: 5,
-          slname: "我的假日歌單",
+          slname: "測驗2公開我的假日歌單",
           image: "songPic.png",
           memid: 1,
           creator: "我",
@@ -137,6 +141,11 @@ export default {
     isNewSlOpenupdate(val) {
       this.isNewSlOpen = val;
       this.isAddSlOpen = true;
+    },
+    NewSlDatanupdate(val) {
+      this.songlists.unshift(val);
+      console.log(val);
+      console.log(this.songlists);
     },
   },
 };

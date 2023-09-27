@@ -4,13 +4,18 @@
       <div class="content">
         <div class="newSlName title">
           <p>新增歌單</p>
-          <input type="text" name="" />
+          <input type="text" name="" v-model="this.slname" />
         </div>
         <div class="public title">
           <p>隱私設定</p>
           <div class="opt">
             <label class="radioLabel">
-              <input type="radio" name="public" value="1" required />
+              <input
+                type="radio"
+                name="public"
+                value="true"
+                required
+                v-model="this.public" />
               <fontAwesome class="i" :icon="['fa', 'fa-check']"
             /></label>
             <span
@@ -20,7 +25,11 @@
             </span>
 
             <label class="radioLabel">
-              <input type="radio" name="public" value="0" />
+              <input
+                type="radio"
+                name="public"
+                value="false"
+                v-model="this.public" />
               <fontAwesome class="i" :icon="['fa', 'fa-check']"
             /></label>
             <span
@@ -44,11 +53,24 @@ export default {
   data() {
     return {
       isNewSlOpen: false,
+      slname: "",
+      public: true,
     };
   },
   methods: {
     submitNewSl() {
+      const NewSlData = {
+        slid: undefined,
+        slname: this.slname,
+        image: "songPic.png",
+        memid: 1,
+        creator: "我",
+        playnum: 0,
+        songnum: 0,
+        public: this.public,
+      };
       this.$emit("isNewSlOpenupdate", this.isNewSlOpen);
+      this.$emit("NewSlDatanupdate", NewSlData);
     },
   },
 };
