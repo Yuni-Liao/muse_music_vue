@@ -13,7 +13,7 @@ import { Mousewheel, Pagination } from "swiper/modules";
 import player from '@/components/player.vue';
 import AddFavBtn from '@/components/AddFavBtn.vue';
 import AddSlBtn from '@/components/AddSlBtn.vue';
-
+import FolBtnBig from '@/components/FolBtnBig.vue';
 
 export default {
   components: {
@@ -22,7 +22,7 @@ export default {
     player,
     AddFavBtn,
     AddSlBtn,
-   
+    FolBtnBig,
   },
   setup() {
     return {
