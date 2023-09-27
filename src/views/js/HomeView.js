@@ -1,3 +1,4 @@
+import IndexPlayer from "@/components/IndexPlayer.vue";
 import MuseBoy from "@/components/MuseBoy.vue";
 import Typed from "@/components/Typed.vue";
 import player from "@/components/player.vue";
@@ -35,6 +36,7 @@ export default {
     MuseBoy,
     Typed,
     player,
+    IndexPlayer,
   },
   data() {
     return {

@@ -39,9 +39,9 @@ a:hover{
     img{
       transform: skewX(-45deg);
       position: absolute;
-      display: none;
       width: 150%;
-      margin: 0 0 0 -50%;
+      margin: 0 0 0 -70%;
+      opacity: 0;
     }
     .txt{
       transform: skewX(-45deg);
@@ -53,7 +53,8 @@ a:hover{
     }
   }
   :hover img{
-    display: block;
+    opacity: 1;
+    transition: .4s;
   }
   :first-child{
     border-left:0 ;
@@ -77,9 +78,9 @@ a:hover{
     img{
       transform: skewX(-45deg);
       position: absolute;
-      display: none;
       width: 150%;
-      margin: 0 0 0 -50%;
+      margin: 0 0 0 -100%;
+      opacity: 0;
     }
     .txt{
       transform: skewX(-45deg);
@@ -91,7 +92,8 @@ a:hover{
     }
   }
   :hover img{
-    display: block;
+    opacity: 1;
+    transition: .4s;
   }
   :first-child{
     border-left:0 ;

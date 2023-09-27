@@ -1,6 +1,9 @@
 <template>
     <player ref="player"></player>
-    <div class="banner">
+    <div class="banner"
+    :style="{
+        backgroundImage: `url(${`${this.publicPath}` + foundObject.img})`
+    }">
         <div class="wrapper">
             <div class="find">
                 <p>探索</p>
@@ -35,6 +38,7 @@
                         <td class="pic">
                             <img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)" alt="albumItem.name"
                                 @click="openPlayer">
+                                <fontAwesome class="f_play" :icon="['fa', 'play']" @click="openPlayer"/>
                         </td>
                         <td class="name">
                             <router-link to="/home/singlemusic">
