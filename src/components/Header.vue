@@ -78,7 +78,7 @@
     </nav>
     <div class="phone-show-nav" v-show="isNavVisible">
       <div class="headshot">
-        <img src="@/assets/image/profileeditimage/profileimage.jpg" alt="" />
+        <img src="@/assets/image/profileeditimage/profileimage.jpg" />
         <fontAwesome @click="isNavVisible = !isNavVisible" class="close" :icon="['fa', 'xmark']" size="2xl"
           style="color: #fff" />
       </div>

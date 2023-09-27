@@ -1,4 +1,3 @@
-// 此頁為Yuni測試,可以修改編輯
 .phone-show{
     width: 100%;
     height: 80px;
@@ -17,6 +16,10 @@
   }
 
 footer {
+    // RWD - 廖妍榛
+    @include s{
+        display: none;
+    };
     display: flex;
     flex-direction: column;
     align-items: center;
