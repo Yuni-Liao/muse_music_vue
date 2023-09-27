@@ -171,6 +171,7 @@
     }
     // 帳號安全驗證
     .acc_safe_wrap{
+        @include rect(100%);
         .acc_safe_box{
             @include rect(100%);
             padding: 0% 1%;

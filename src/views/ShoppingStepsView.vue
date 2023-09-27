@@ -26,14 +26,14 @@
             <h2>購物清單</h2>
             <div id="cartList">
               <table>
-                <tr v-for="(item,index)  in cartItems" :key="item.id" class="item">
+                <tr v-for="(item, index)  in cartItems" :key="item.id" class="item">
                   <td class="itemNum">
                     {{ index + 1 }} <!-- 自動生成編號 -->
                   </td>
                   <td class="pic">
                     <div class="image-wrapper">
-                    <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName" />
-                  </div>
+                      <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName" />
+                    </div>
                   </td>
                   <td class="prodName">
                     <p>{{ item.prodName }}</p>
@@ -161,7 +161,7 @@
         <div class="shopline"></div>
         <p>已完成訂購，預計2~3天內出貨，感謝您的支持!</p>
         <button @click="completeStep">
-          <router-link to="/home/shop">會員專區</router-link>
+          <router-link to="/home/shoporders">會員專區</router-link>
         </button>
         <button @click="completeStep">
           <router-link to="/home">回到首頁</router-link>
