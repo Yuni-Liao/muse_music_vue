@@ -2,7 +2,8 @@
     
         <div class="topncenter">
             <div class="infoTop">
-                <img :src="`/image/Activity/${foundObject.img}`">
+                <!-- <img :src="`${publicPath}/image/Activity/${foundObject.img}`"> -->
+                <img :src="`${publicPath}image/Activity/activity01.png`" alt="">
                 <div class="intro">
                     <h1>{{ foundObject.title }}</h1>
                     <h4>{{ foundObject.date }}</h4>
