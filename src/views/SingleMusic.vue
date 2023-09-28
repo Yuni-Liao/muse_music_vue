@@ -4,7 +4,7 @@
         <!-- 上方大圖 -->
         <div class="banner" v-for="(songItem, songIndex) in songs" :key="songIndex">
             <div class="overlay"></div>
-            <img class="backPic" :src="require(`/public/image/SingleMusic/${songItem.bannerPic}`)" alt="songItem.bannerPic">
+            <img class="backPic" :src="require(`/public/image/SingleMusic/${songs[0].songPic}`)">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
