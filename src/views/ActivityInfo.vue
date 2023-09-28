@@ -65,45 +65,6 @@
             </div>
         </div>
     </div>
-    <hr>
-
-    <div class="infoBottom">
-        <h1>相關活動</h1>
-        <div class="related">
-            <div class="calender">
-                <div class="month">
-                    7月
-                </div>
-                <p>13日</p>
-                <p>星期四</p>
-            </div>
-            <div class="relatedWrapper">
-                <img :src="`${publicPath}image/Activity/activityBanner01.jpg`" alt="">
-                <div class="relatedInfo">
-                    <p>音樂大排檔 : Showcase演唱會</p>
-                    <p>2023年7月13日 / 星期四 / 18:00</p>
-                    <p>台中市・Legacy Taichung 傳 音樂展演空間</p>
-                </div>
-            </div>
-        </div>
-        <div class="related">
-            <div class="calender">
-                <div class="month">
-                    7月
-                </div>
-                <p>13日</p>
-                <p>星期四</p>
-            </div>
-            <div class="relatedWrapper">
-                <img :src="`${publicPath}image/Activity/activityBanner01.jpg`" alt="">
-                <div class="relatedInfo">
-                    <p>音樂大排檔 : Showcase演唱會</p>
-                    <p>2023年7月13日 / 星期四 / 18:00</p>
-                    <p>台中市・Legacy Taichung 傳 音樂展演空間</p>
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 
 <style scoped lang="scss">
