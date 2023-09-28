@@ -67,7 +67,7 @@
                         <router-link :to="item.slink">
                             <img :src="require(`/public/image/index/${item.image}`)" />
                             <div class="text">
-                                <h3>{{ item.singer }}</h3>
+                                <h4>{{ item.singer }}</h4>
                             </div>
                         </router-link>
                     </div>
@@ -112,7 +112,7 @@
                             @click="openPlayer"/>
                         </div>
                         <div class="text">
-                            <h3>{{ item.title }}</h3>
+                            <h4>{{ item.title }}</h4>
                             <p>
                                 <router-link :to="item.slink">
                                     {{ item.singer }}

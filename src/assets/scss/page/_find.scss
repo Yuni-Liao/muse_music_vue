@@ -22,7 +22,8 @@
     margin:0 0 0 2%;
     @include s{
       margin:3% 5% 3% 5%;
-      font-size: $pM;    }
+      font-size: $pM;    
+    }
   }
   .language,
   .style,
@@ -57,7 +58,7 @@
         a{
           padding: 5% 25%;
           font-size: $medium;
-          @media screen and (max-width:768px) {
+          @include s{
             font-size: $pXS;
             padding: 0 5%;
           }
@@ -100,7 +101,7 @@
         a{
           padding: 5% 25%;
           font-size: $small;
-          @media screen and (max-width:768px) {
+          @include s{
             font-size: $pXS;
             padding: 0 3%;
           }
@@ -116,15 +117,7 @@
     }
   }
 
-
   .hot_creator{
-    @media screen and (max-width:768px) {
-      @include s{
-        h3{
-          font-size: 14px;
-        }
-      }
-    }
     .find_swiper {
       width: 100%;
       padding: 3% 0;
@@ -139,12 +132,9 @@
           }
           .text{
             margin: 5% 0;
-            h3 {
+            h4 {
               text-align: center;
               font-size: $small;
-              @include s{
-                font-size: 14px;
-              }
             }
           }
         }
@@ -153,10 +143,8 @@
   }
   //------------------------------------------------
   .new_release{
-    @media screen and (max-width:768px){
-      h3{
-        font-size: 14px;
-      }
+    @include s{
+      padding:0 0 15% 0;
       #PlayBtnBig{
         display: none;
       }
@@ -188,20 +176,18 @@
             }
             .text{
               margin: 3% 0;
-              h3 {
+              h4 {
                 font-size: $small;
                 margin: 2% 0;
-                @media screen and (max-width:768px) {
-                  @include s{
-                    font-size: 14px;
-                  }
+                @include s{
+                  padding: 10% 0 0 0;
                 }
               }
               p {
                 @include mini_Tag($tag);
                 display: flex;
                 justify-content: space-between;
-                @media screen and (max-width:768px) {
+                @include s{
                   display: none;
                 }
               }
