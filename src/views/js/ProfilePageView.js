@@ -11,6 +11,7 @@ import FolBtnBig from "@/components/FolBtnBig.vue";
 import PlayBtnBig from "@/components/PlayBtnBig.vue";
 import AddFavBtn from "@/components/AddFavBtn.vue";
 import AddSlBtn from "@/components/AddSlBtn.vue";
+import player from "@/components/player.vue";
 
 export default {
   components: {
@@ -18,6 +19,7 @@ export default {
     PlayBtnBig,
     AddSlBtn,
     AddFavBtn,
+    player,
     Swiper,
     SwiperSlide,
   },
@@ -646,8 +648,8 @@ export default {
         }
       }
     },
-    playmusic() {
-      alert("呼叫懸浮播放器");
+    openPlayer() {
+      this.$refs.player.playMusic();
     },
     //頁面切換----------------------
     gotosinglealbum(abid) {

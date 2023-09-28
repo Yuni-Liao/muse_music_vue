@@ -4,12 +4,12 @@
             <h1 class="path_title" id="path_title">MUSE MUSIC</h1>
             <router-link to="/home">
                 <div class="path_front_box">
-                    <span>前台</span>
+                    <h3>前台</h3>
                 </div>
             </router-link>
             <router-link to="/backendLogin">
                 <div class="path_backend_box">
-                    <span>後台</span>
+                    <h3>後台</h3>
                 </div>
             </router-link>
         </div>
@@ -29,10 +29,21 @@
     background-size: cover;
     background-position: 100%;
 
+    // RWD
+    @include s {
+        background-image: url("/public/image/Path/path_h5_bg.jpg");
+        background-position: 60%;
+    }
+
     .path_wrap {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
+
+        // RWD
+        @include s {
+            justify-content: space-around;
+        }
 
         .path_title {
             font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
@@ -46,6 +57,11 @@
             -webkit-background-clip: text;
             background-clip: text;
             text-shadow: -5.5px -5.5px 5px rgba(#fff, 0.3), 6.5px 6.5px 1px $green;
+
+            // RWD
+            @include s {
+                text-shadow: -5.5px -5.5px 5px rgba(#fff, 0.3), 6.5px 6.5px 1px $white;
+            }
         }
 
         .path_front_box,
@@ -64,6 +80,19 @@
             align-items: center;
             cursor: pointer;
             transition: .3s;
+
+            // RWD
+            @include s {
+                font-size: $big;
+                @include rect(150px);
+                background: repeating-radial-gradient(circle,
+                        #004D83 0%,
+                        #075277 1%,
+                        $dark 2%);
+                border: 4px solid #e28583;
+                color: rgb(246, 246, 181);
+                font-weight: 600;
+            }
         }
 
         .path_front_box:hover,

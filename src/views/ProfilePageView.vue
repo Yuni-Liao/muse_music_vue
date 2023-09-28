@@ -1,4 +1,5 @@
 <template>
+  <player ref="player"></player>
   <div class="profilepage">
     <section class="hd">
       <div
@@ -202,7 +203,7 @@
                     :src="require(`/public/image/SingleMusic/${item.songPic}`)"
                     :alt="item.songName"
                   />
-                  <div class="play" @click="playmusic()">
+                  <div class="play" @click="openPlayer()">
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </div>

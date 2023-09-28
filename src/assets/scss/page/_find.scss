@@ -1,166 +1,196 @@
-*{
-  color: $white;
-}
-h1{
-  font-size: $big;
-  padding: 5% 0;
-  text-align: left ;
-  margin:3% 0 3% 2%;
-}
-h2{
-  font-size: $big;
-  padding: 5% 0;
-  text-align: left ;
-  margin:0 0 0 2%;
-}
-a:hover{
-  color: $green;
-}
-.language,
-.style,
-.emotion{
-  @include layout(100%);
-  margin: 3% 0;
-  border-top:1px solid ;
-  border-bottom:1px solid ;
-}
-.language{
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  overflow: hidden;
-  .space{
-    transform: skewX(45deg);
-    width: 20%;
-    border-left: 2px solid;
-    border-right: 2px solid;
-    position: relative;
-    overflow:hidden;
-    img{
-      transform: skewX(-45deg);
-      position: absolute;
-      width: 150%;
-      margin: 0 0 0 -70%;
-      opacity: 0;
-    }
-    .txt{
-      transform: skewX(-45deg);
-      padding: 5% 0;
-      a{
-        padding: 5% 25%;
-        font-size: $medium;
-      }
+.find_style{
+  *{
+    color: $white;
+  }
+  a:hover{
+    color: $green;
+  }
+  h1{
+    font-size: $big;
+    padding: 5% 0;
+    text-align: left ;
+    margin:3% 0 3% 2%;
+    @include s{
+      font-size: $pL;
+      margin:20% 0 3% 5%;
     }
   }
-  :hover img{
-    opacity: 1;
-    transition: .4s;
-  }
-  :first-child{
-    border-left:0 ;
-  }
-  :last-child{
-    border-right:0 ;
-  }
-}
-.style,
-.emotion{
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  overflow: hidden;
-  .space{
-    transform: skewX(45deg);
-    width: 20%;
-    border-left:2px solid ;
-    position: relative;
-    overflow: hidden;
-    img{
-      transform: skewX(-45deg);
-      position: absolute;
-      width: 150%;
-      margin: 0 0 0 -100%;
-      opacity: 0;
-    }
-    .txt{
-      transform: skewX(-45deg);
-      padding: 5% 0;
-      a{
-        padding: 5% 25%;
-        font-size: $small;
-      }
+  h2{
+    font-size: $big;
+    padding: 5% 0;
+    text-align: left ;
+    margin:0 0 0 2%;
+    @include s{
+      margin:3% 5% 3% 5%;
+      font-size: $pM;    
     }
   }
-  :hover img{
-    opacity: 1;
-    transition: .4s;
+  .language,
+  .style,
+  .emotion{
+    @include layout(100%);
+    margin: 3% 0;
+    border-top:1px solid ;
+    border-bottom:1px solid ;
   }
-  :first-child{
-    border-left:0 ;
-  }
-}
-.hot_creator{
-  .find_swiper {
+  .language{
     width: 100%;
-    padding: 3% 0;
-    .swiper-slide {
-      .h_card {
-        width: 90%;
-        margin: auto;
-        // background-color: $tp;
-        cursor: pointer;
-        img {
-          width: 100%;
-          border-radius: 100%;
-        }
-        .text{
-          margin: 5% 0;
-          h3 {
-            text-align: center;
-            font-size: $small;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+    .space{
+      transform: skewX(45deg);
+      width: 20%;
+      border-left: 2px solid;
+      border-right: 2px solid;
+      position: relative;
+      overflow:hidden;
+      img{
+        transform: skewX(-45deg);
+        position: absolute;
+        width: 150%;
+        margin: 0 0 0 -70%;
+        opacity: 0;
+      }
+      .txt{
+        transform: skewX(-45deg);
+        padding: 5% 0;
+        a{
+          padding: 5% 25%;
+          font-size: $medium;
+          @include s{
+            font-size: $pXS;
+            padding: 0 5%;
           }
         }
       }
     }
+    :hover img{
+      opacity: 1;
+      transition: .4s;
+    }
+    :first-child{
+      border-left:0 ;
+    }
+    :last-child{
+      border-right:0 ;
+    }
   }
-}
-//------------------------------------------------
-.new_release{
-  .swiper {
+  .style,
+  .emotion{
     width: 100%;
-    padding: 3% 0;
-    .swiper-wrapper {
-      background-color: $tp;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+    .space{
+      transform: skewX(45deg);
+      width: 20%;
+      border-left:2px solid ;
+      position: relative;
+      overflow: hidden;
+      img{
+        transform: skewX(-45deg);
+        position: absolute;
+        width: 150%;
+        margin: 0 0 0 -100%;
+        opacity: 0;
+      }
+      .txt{
+        transform: skewX(-45deg);
+        padding: 5% 0;
+        a{
+          padding: 5% 25%;
+          font-size: $small;
+          @include s{
+            font-size: $pXS;
+            padding: 0 3%;
+          }
+        }
+      }
+    }
+    :hover img{
+      opacity: 1;
+      transition: .4s;
+    }
+    :first-child{
+      border-left:0 ;
+    }
+  }
+
+  .hot_creator{
+    .find_swiper {
+      width: 100%;
+      padding: 3% 0;
       .swiper-slide {
-        .n_card {
-          width: 90%;
+        .h_card {
+          width: 100%;
           margin: auto;
-          background-color: $tp;
           cursor: pointer;
-          .image{
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            #PlayBtnBig {
-              @include btnColor($green, $border: true, $hover: true);
-              position: absolute;
-              background-color: $white;
-            }
-            img {
-              width: 100%;
-            }
+          img {
+            width: 100%;
+            border-radius: 100%;
           }
           .text{
-            margin: 3% 0;
-            h3 {
+            margin: 5% 0;
+            h4 {
+              text-align: center;
               font-size: $small;
-              margin: 2% 0;
             }
-            p {
-              @include mini_Tag($tag);
+          }
+        }
+      }
+    }
+  }
+  //------------------------------------------------
+  .new_release{
+    @include s{
+      padding:0 0 15% 0;
+      #PlayBtnBig{
+        display: none;
+      }
+    }
+    .swiper {
+      width: 100%;
+      padding: 3% 0;
+      .swiper-wrapper {
+        background-color: $tp;
+        .swiper-slide {
+          .n_card {
+            width: 90%;
+            margin: auto;
+            background-color: $tp;
+            cursor: pointer;
+            .image{
+              position: relative;
               display: flex;
-              justify-content: space-between;
+              justify-content: center;
+              align-items: center;
+              #PlayBtnBig {
+                @include btnColor($green, $border: true, $hover: true);
+                position: absolute;
+                background-color: $white;
+              }
+              img {
+                width: 100%;
+              }
+            }
+            .text{
+              margin: 3% 0;
+              h4 {
+                font-size: $small;
+                margin: 2% 0;
+                @include s{
+                  padding: 10% 0 0 0;
+                }
+              }
+              p {
+                @include mini_Tag($tag);
+                display: flex;
+                justify-content: space-between;
+                @include s{
+                  display: none;
+                }
+              }
             }
           }
         }
