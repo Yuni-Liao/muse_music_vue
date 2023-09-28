@@ -78,14 +78,18 @@
             <ol>
               <li v-for="(item, index) in albumsFirstFiveSongs" :key="index">
                 <div class="order">{{ item.order }}</div>
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+                <router-link to="singlealbum">
+                  <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+                </router-link>
 
-                <div class="txt">
+                <router-link to="singlealbum">
+                  <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
                     {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
                   </p>
                 </div>
+                </router-link>
 
               </li>
             </ol>
@@ -93,13 +97,18 @@
             <ol>
               <li v-for="(item, index) in albumsLastFiveSongs" :key="index">
                 <div class="order">{{ item.order }}</div>
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
-                <div class="txt">
+                <router-link to="singlealbum">
+                  <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+                </router-link>
+                <router-link to="singlealbum">
+                  <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
                     {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
                   </p>
                 </div>
+                </router-link>
+                
 
               </li>
             </ol>
@@ -117,16 +126,22 @@
           <div class="topSongListRanking">
             <!-- 1-5名 -->
             <ol>
+              
               <li v-for="(item, index) in songListFirstFiveSongs" :key="index">
                 <div class="order">{{ item.order }}</div>
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
-
-                <div class="txt">
+                <router-link to="singlesonglist">
+                  <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+                </router-link>
+                
+                <router-link to="singlesonglist">
+                  <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
                     {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
                   </p>
                 </div>
+                </router-link>
+                
                 <div class="follow_icon">
                   <FolBtnBig :functype="0" />
                 </div>
@@ -134,15 +149,21 @@
             </ol>
             <!-- 6-10名 -->
             <ol>
+              
               <li v-for="(item, index) in songListLastFiveSongs" :key="index">
                 <div class="order">{{ item.order }}</div>
-                <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
-                <div class="txt">
+                <router-link to="singlesonglist">
+                  <img :src="require(`@/assets/image/index/${item.image}`)" alt="" />
+                </router-link>
+                
+                <router-link to="singlesonglist">
+                  <div class="txt">
                   <h3>{{ item.title }}</h3>
                   <p>
                     {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
                   </p>
                 </div>
+                </router-link>
                 <div class="follow_icon">
                     <FolBtnBig :functype="0" />
                 </div>
