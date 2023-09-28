@@ -68,7 +68,7 @@
                 </div>
                 <div class="main">
                     <div class="product_pic order_item">
-                        <img :src="`/image/ShopImage/${foundObject.prodpic}`" alt="prod">
+                        <img :src="`${publicPath}/image/ShopImage/${foundObject.prodpic}`" alt="prod">
                     </div>
                     <div class="product order_item">
                         {{ foundObject.prod }}
