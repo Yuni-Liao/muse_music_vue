@@ -108,8 +108,9 @@ select {
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
-            gap: 4.5%;
+            gap: 4%;
             margin-left: 50px;
+            margin-right: 50px;
 
             .prodCard {
                 min-width: calc(22% - 2%);
