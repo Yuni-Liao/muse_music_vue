@@ -69,7 +69,7 @@ select {
                 width: 120px;
                 height: 1px;
                 background-color: $dark;
-                margin: 10px 0 30px -10px;
+                margin: 10px 0 0px -10px;
             }
         }
 
@@ -95,6 +95,10 @@ select {
                     &::after {
                         color: $green;
                     }
+                }
+
+                .chooseType.--active {
+                    color: $green;
                 }
             }
         }
