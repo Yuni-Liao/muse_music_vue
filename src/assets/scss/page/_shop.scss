@@ -29,7 +29,7 @@
 .ivu-breadcrumb {
     text-align: left;
     padding-left: 5%;
-    padding-bottom: 70px;
+    padding-bottom: 50px;
 }
 
 .ivu-page {
@@ -41,7 +41,7 @@ select {
     color: $dark;
     border-color: $dark;
     height: 35px;
-    margin-bottom: 125px;
+    margin-bottom: 50px;
 }
 
 .shop {
@@ -54,7 +54,7 @@ select {
         font-size: $medium;
         display: flex;
         flex-direction: column;
-        margin: 0 1% 0 8%;
+        margin: 0 1% 0 5%;
 
         h2 {
             color: $dark;
@@ -108,8 +108,8 @@ select {
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
-            gap: 4%;
-            margin-left: 50px;
+            gap: 4.5%;
+            //margin-left: 50px;
             margin-right: 50px;
 
             .prodCard {
