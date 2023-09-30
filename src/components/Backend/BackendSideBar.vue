@@ -8,7 +8,7 @@
                         歌曲管理
                     </template>
                     <MenuItem name=" 1-1" to="/backend/songreview">歌曲審核管理</MenuItem>
-                    <MenuItem name="1-2" to="/backend/songtype">歌曲類別管理</MenuItem>
+                    <!-- <MenuItem name="1-2" to="/backend/songtype">歌曲類別管理</MenuItem> -->
                 </Submenu>
                 <Submenu name="2" style="margin: -50px 0;">
                     <template #title>

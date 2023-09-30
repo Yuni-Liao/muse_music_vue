@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="songtype_table_box">
         <h1>歌曲管理 | 歌曲類別管理</h1>
         <Input v-model="value3" placeholder="輸入類別編號或名稱" style="width: 180px;  margin-bottom: 1%; margin-left: 70%;">
@@ -25,7 +25,7 @@
 </template>
 <!-- 請照figma核對一下該出現的按鈕~~ -->
 
-<style scoped lang="scss">
+<!-- <style scoped lang="scss">
 @import "~@/assets/scss/page/Backend/songtype.scss";
 </style>
-<script src="../js/Backendjs/SongType.js"></script>
+<script src="../js/Backendjs/SongType.js"></script> --> 
