@@ -379,18 +379,18 @@ const routes = [
           title: "歌曲審核管理",
         },
       },
-      // 以下為歌曲類別管理頁面
-      {
-        path: "songtype",
-        name: "songtype",
-        component: () =>
-          import(
-            /* webpackChunkName: "songtype" */ "../views/Backendviews/SongType.vue"
-          ),
-        meta: {
-          title: "歌曲類別管理",
-        },
-      },
+      // 以下為歌曲類別管理頁面 -- 暫時不做
+      // {
+      //   path: "songtype",
+      //   name: "songtype",
+      //   component: () =>
+      //     import(
+      //       /* webpackChunkName: "songtype" */ "../views/Backendviews/SongType.vue"
+      //     ),
+      //   meta: {
+      //     title: "歌曲類別管理",
+      //   },
+      // },
       // 以下為訂單管理頁面
       {
         path: "ordermgmt",
