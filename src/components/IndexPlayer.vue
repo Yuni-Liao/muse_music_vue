@@ -16,10 +16,10 @@
                     <span></span>
                 </div>
                 <div class="dj_buttons">
-                    <button class="button prev obj_Radius" id="indexPrevBtn">
+                    <button class="button prev obj_Radius" id="indexPrevBtn" @click="playSong()">
                         <fontAwesome :icon="['fa', 'fa-backward-step']" />
                     </button>
-                    <button class="button play obj_Radius" id="indexPlayBtn" @click="indexPlay">
+                    <button class="button play obj_Radius" id="indexPlayBtn">
                         <fontAwesome :icon="['fa', 'fa-play']" />
                     </button>
                     <button class="button pause obj_Radius" id="indexPauseBtn">
@@ -35,21 +35,22 @@
             </div>
             <div class="dj_center">
                 <div class="plates_vols">
-                    <div class="vol vol_left">
-                        <input class="left_vol obj_Radius" type="range" name="vol_left" id="volume_left" min="0"
-                            max="100" />
+                    <div class="vol vol_left" @click="leftInputSong(`leftSong`)">
+                        <input class="left_vol obj_Radius" type="range" v-model="leftVolumeValue" name="vol_left"
+                            id="volume_left" min="0" max="100" @input="leftAdjustVolume" />
                     </div>
-                    <div class="vol vol_right">
-                        <input class="right_vol obj_Radius" type="range" name="volume_right" id="volume_right" min="0"
-                            max="100" />
+                    <div class="vol vol_right" @click="rightInputSong(`rightSong`)">
+                        <input class="right_vol obj_Radius" type="range" v-model="rightVolumeValue" name="volume_right"
+                            id="volume_right" min="0" max="100" @input="rightAdjustVolume" />
                     </div>
                 </div>
                 <div class="vol vol_mix">
-                    <input class="mix_vol obj_Radius" type="range" name="volume_mix" id="volume_mix" min="0" max="100" />
+                    <input class="mix_vol obj_Radius" type="range" v-model="globalVolume" name="volume_mix" id="volume_mix"
+                        min="0" max="100" />
                 </div>
             </div>
             <div class="dj_right">
-                <div class="song_info">
+                <!-- <div class="song_info">
                     <div class="song_title">
                         <fontAwesome :icon="['fa', 'music']" />
                         <span>第二首歌</span>
@@ -61,22 +62,50 @@
                 </div>
                 <div class="plate" id="plate_right">
                     <span></span>
-                </div>
-                <!-- <div class="special_buttons">
-                    <button class="button prev obj_Radius" id="oneBtn" @click="indexPlaySound(`cat_a`)">
-                        😄
-                    </button>
-                    <button class="button play obj_Radius" id="twoBtn" @click="indexPlaySound(`cat_b`)">
-                        😛
-                    </button>
-                    <button class="button pause obj_Radius" id="threeBtn" @click="indexPlaySound(`cat_c`)">
-                        😍
-                    </button>
-                    <button class="button stop obj_Radius" id="fourBtn" @click="indexPlaySound(`cat_d`)">
-                        🤑
-                    </button>
                 </div> -->
-                <div class="dj_buttons">
+                <div class="special_buttons">
+                    <button class="button prev obj_Radius" id="oneBtn" @click="indexPlaySound(`muzA`)">
+                        🎹
+                    </button>
+                    <button class="button play obj_Radius" id="twoBtn" @click="indexPlaySound(`muzH`)">
+                        🎹
+                    </button>
+                    <button class="button pause obj_Radius" id="threeBtn" @click="indexPlaySound(`muzI`)">
+                        🎹
+                    </button>
+                    <button class="button stop obj_Radius" id="fourBtn" @click="indexPlaySound(`muzJ`)">
+                        🎹
+                    </button>
+                </div>
+                <div class="special_buttons">
+                    <button class="button prev obj_Radius" id="fiveBtn" @click="indexPlaySound(`muzG`)">
+                        🥁
+                    </button>
+                    <button class="button play obj_Radius" id="sixBtn" @click="indexPlaySound(`muzB`)">
+                        🥁
+                    </button>
+                    <button class="button pause obj_Radius" id="sevenBtn" @click="indexPlaySound(`muzC`)">
+                        🥁
+                    </button>
+                    <button class="button stop obj_Radius" id="drumBtn" @click="indexPlaySound(`muzD`)">
+                        🥁
+                    </button>
+                </div>
+                <div class="special_buttons">
+                    <button class="button prev obj_Radius" id="nineBtn" @click="indexPlaySound(`muzK`)">
+                        🎼
+                    </button>
+                    <button class="button pause obj_Radius" id="guitarBtn" @click="indexPlaySound(`muzF`)">
+                        🎸
+                    </button>
+                    <button class="button play obj_Radius" id="tenBtn" @click="indexPlaySound(`muzL`)">
+                        💿
+                    </button>
+                    <button class="button stop obj_Radius" id="clapBtn" @click="indexPlaySound(`muzE`)">
+                        👏🏻
+                    </button>
+                </div>
+                <!-- <div class="dj_buttons">
                     <button class="button prev obj_Radius">
                         <fontAwesome :icon="['fa', 'fa-backward-step']" />
                     </button>
@@ -92,7 +121,7 @@
                     <button class="button next obj_Radius">
                         <fontAwesome :icon="['fa', 'fa-step-forward']" />
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -320,50 +349,192 @@
 // 右半部按鈕效果
 </style>
 <script>
-
-
+import { Howl, Howler } from 'howler';
 export default {
     name: "IndexPlayer",
     data() {
         return {
+            currentLeftAudio: null,
+            currentRightAudio: null,
+            leftVolumeValue: 50,
+            rightVolumeValue: 0,
+            globalVolume: 50,
             voiceList: [
                 {
-                    name: "cat_a",
-                    voive: "audio/indexPlayer/cat_a.mp3"
+                    name: "muzA", //六弦琴
+                    voice: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_2008040913595742245_88011.mp3"
                 },
                 {
-                    name: "cat_b",
-                    voive: "audio/indexPlayer/cat_b.mp3"
+                    name: "muzB", //牛鈴
+                    voice: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_2008040914572333111_88011.mp3"
                 },
                 {
-                    name: "cat_c",
-                    voive: "audio/indexPlayer/cat_c.mp3"
+                    name: "muzC", //民族鼓
+                    voice: "//tw.yisell.com/2IxLwF/yisell/ycys2020111852017888/sound/yisell_sound_2014081414195949420_66366.mp3"
                 },
                 {
-                    name: "cat_d",
-                    voive: "audio/indexPlayer/cat_d.mp3"
+                    name: "muzD", //鼓聲
+                    voice: "//tw.yisell.com/2IxLwF/yisell/ycys2020111852017888/sound/yisell_sound_201408141431355112_66366.mp3"
+                },
+                {
+                    name: "muzE", //掌聲
+                    voice: "//tw.yisell.com/2IxLwF/yisell/ybys2020111852017888/sound/yisell_sound_2014031523453683073_88366.mp3"
+                },
+                {
+                    name: "muzF", //吉他聲
+                    voice: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_2008040113564043882_88011.mp3"
+                },
+                {
+                    name: "muzG", //小手鼓
+                    voice: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_2008041014263566386_88011.mp3"
+                },
+                {
+                    name: "muzH", //模擬鋼琴聲
+                    voice: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_2008030614450613720_88011.mp3"
+                },
+                {
+                    name: "muzI", //克林巴琴
+                    voice: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_200804081705251913_88011.mp3"
+                },
+                {
+                    name: "muzJ", //Clock bells
+                    voice: "https://assets.mixkit.co/active_storage/sfx/1069/1069-preview.mp3"
+                },
+                {
+                    name: "muzK", //輕音樂
+                    voice: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_2007_11_9_1_37_274127.mp3"
+                },
+                {
+                    name: "muzL", //123 go
+                    voice: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_2008040817004736835_88011.mp3"
                 },
             ],
+            songList: [
+                {
+                    name: "Good Night",
+                    songURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011071001335667082_88016.mp3"
+                },
+                {
+                    name: "Say GoodBye",
+                    songURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011071001335667082_88016.mp3"
+                },
+                {
+                    name: "High High",
+                    songURL: "https://assets.mixkit.co/active_storage/sfx/689/689-preview.mp3"
+                }
+            ],
+            inputSongList: [
+                {
+                    name: "leftSong",
+                    songURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011033115173287398_88016.mp3",
+                },
+                {
+                    name: "rightSong",
+                    songURL: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_200804081705251913_88011.mp3",
+                },
+            ]
         }
     },
-    methods: {
-        test() {
-            alert('hi')
+    computed: {
+        // 下方拉條
+        volumeControl() {
+            const leftVolume = this.globalVolume - this.globalVolume / 2;
+            const rightVolume = this.globalVolume / 2;
+            return {
+                leftVolume,
+                rightVolume,
+            };
         },
+    },
+    methods: {
+        // 右邊小按鈕們
         indexPlaySound(soundName) {
             const sound = new Howl({
                 src: [this.getAudioSrc(soundName)],
                 autoplay: true,
                 volume: 0.5,
                 onend: function () {
-                    console.log('Finished!');
+                    console.log('Done');
                 }
             })
         },
         getAudioSrc(soundName) {
             const audio = this.voiceList.find((item) => item.name === soundName);
-            return audio ? audio.voive : null;
+            return audio ? audio.voice : null;
         },
+        // 左邊黑膠唱片
+        playSong(songName) {
+            const randomIndex = Math.floor(Math.random() * this.songList.length);
+            const selectedSong = this.songList[randomIndex];
+
+            if (selectedSong) {
+                const cdSound = new Howl({
+                    src: [selectedSong.songURL],
+                    autoplay: true,
+                    volume: 1,
+                    onend: function () {
+                        console.log('Done');
+                    }
+                });
+            } else {
+                console.error('No songs.');
+            }
+        },
+
+        // 左邊input拉條
+        leftInputSong(inputSongName) {
+            if (this.currentLeftAudio) {
+                this.currentLeftAudio.stop();
+            }
+
+            const inputSound = new Howl({
+                src: [this.getInputSrc(inputSongName)],
+                autoplay: true,
+                onend: function () {
+                    console.log('Done');
+                }
+            });
+            inputSound.volume(this.leftVolumeValue / 100);
+            this.currentLeftAudio = inputSound;
+            this.updateGlobalVolume(); //更新全局音量
+            console.log('Left Volume:', this.leftVolumeValue);
+        },
+
+        // 右邊input拉條
+        rightInputSong(inputSongName) {
+            if (this.currentRightAudio) {
+                this.currentRightAudio.stop();
+            }
+
+            const inputSound = new Howl({
+                src: [this.getInputSrc(inputSongName)],
+                autoplay: true,
+                onend: function () {
+                    console.log('Done');
+                }
+            });
+            inputSound.volume(this.rightVolumeValue / 100);
+            this.currentRightAudio = inputSound;
+            this.updateGlobalVolume(); //更新全局音量
+            console.log('Right Volume:', this.rightVolumeValue);
+        },
+        getInputSrc(inputSongName) {
+            const inputAudio = this.inputSongList.find(item => item.name === inputSongName);
+            return inputAudio ? inputAudio.songURL : null;
+        },
+
+        // //下方拉條更新音量 ---- 還沒寫完
+        updateGlobalVolume() {
+            const newLeftVolume = this.leftVolumeValue;
+            const newRightVolume = this.rightVolumeValue;
+            this.globalVolume = (newLeftVolume + newRightVolume) / 2;
+            if (this.currentLeftAudio) {
+                this.currentLeftAudio.volume(this.leftVolumeValue / 100);
+            }
+            if (this.currentRightAudio) {
+                this.currentRightAudio.volume(this.rightVolumeValue / 100);
+            }
+        }
     }
 }
 </script>
