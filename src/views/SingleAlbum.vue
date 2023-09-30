@@ -4,7 +4,7 @@
         <!-- 上方大圖 -->
         <div class="banner" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
             <div class="overlay"></div>
-            <img class="backPic" :src="require(`/public/image/SingleAlbum/${albumItem.bannerPic}`)"
+            <img class="backPic" :src="require(`/public/image/SingleAlbum/${album[0].albumPic}`)"
                 alt="albumItem.bannerPic">
         </div>
         <!-- 以下是 1200px 內容區 -->
@@ -67,7 +67,7 @@
                             </li>
                             <li v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
                                 <span class="id">{{ albumItem.id }}</span>
-                                <span class="pic"><img :src="require(`/public/image/SingleMusic/${albumItem.albumPic}`)" />
+                                <span class="pic"><img :src="require(`/public/image/SingleMusic/${albumItem.songPic}`)" />
                                     <div class="play" @click="openPlayer()">
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>

@@ -32,7 +32,7 @@ export default {
             songs: [
                 {
                     id: 1,
-                    albumPic: "othaersong1.png",
+                    songPic: "othaersong1.png",
                     name: "Fly Like",
                     singer: "Lisa",
                     time: "03:00",
@@ -40,7 +40,7 @@ export default {
                 },
                 {
                     id: 2,
-                    albumPic: "othaersong2.png",
+                    songPic: "othaersong2.png",
                     name: "Tired",
                     singer: "Lisa",
                     time: "03:00",
@@ -48,7 +48,7 @@ export default {
                 },
                 {
                     id: 3,
-                    albumPic: "othaersong3.png",
+                    songPic: "othaersong3.png",
                     name: "Want To Go Home",
                     singer: "Lisa",
                     time: "03:00",
@@ -56,7 +56,7 @@ export default {
                 },
                 {
                     id: 4,
-                    albumPic: "othaersong1.png",
+                    songPic: "othaersong1.png",
                     name: "Sleep",
                     singer: "Lisa",
                     time: "03:00",
@@ -64,7 +64,7 @@ export default {
                 },
                 {
                     id: 5,
-                    albumPic: "othaersong2.png",
+                    songPic: "othaersong2.png",
                     name: "Bed",
                     singer: "Lisa",
                     time: "03:00",
