@@ -33,49 +33,55 @@
     border-top:1px solid ;
     border-bottom:1px solid ;
   }
-  .language{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+  .find_select{
+    background-color: #303030;
+    // position: relative;
     overflow: hidden;
-    .space{
-      transform: skewX(45deg);
-      width: 20%;
-      border-left: 2px solid;
-      border-right: 2px solid;
-      position: relative;
-      overflow:hidden;
-      img{
-        transform: skewX(-45deg);
-        position: absolute;
-        width: 150%;
-        margin: 0 0 0 -70%;
-        opacity: 0;
-      }
-      .txt{
-        transform: skewX(-45deg);
-        padding: 5% 0;
-        a{
-          padding: 5% 25%;
-          font-size: $medium;
-          @include s{
-            font-size: $pXS;
-            padding: 0 5%;
+    .language{
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      // overflow: hidden;
+      .space{
+        transform: skewX(45deg);
+        width: 20%;
+        border-left: 2px solid;
+        border-right: 2px solid;
+        // position: relative;
+        // overflow:hidden;
+        img{
+          transform: skewX(-45deg);
+          position: absolute;
+          width: 150%;
+          margin: 0 0 0 -70%;
+          opacity: 0;
+        }
+        .txt{
+          transform: skewX(-45deg);
+          padding: 5% 0;
+          a{
+            padding: 5% 25%;
+            font-size: $medium;
+            @include s{
+              font-size: $pXS;
+              padding: 0 5%;
+            }
           }
         }
       }
-    }
-    :hover img{
-      opacity: 1;
-      transition: .4s;
-    }
-    :first-child{
-      border-left:0 ;
-    }
-    :last-child{
-      border-right:0 ;
+      :hover img{
+        opacity: 1;
+        transition: .4s;
+      }
+      :first-child{
+        border-left:0 ;
+      }
+      :last-child{
+        border-right:0 ;
+      }
     }
   }
+
   .style,
   .emotion{
     width: 100%;
