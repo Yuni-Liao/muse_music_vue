@@ -2,15 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 // import FrontEnd from "../views/FrontEnd.vue";
 
 const routes = [
-  //yuni test
-  {
-    path: "/test",
-    name: "test",
-    component: () => import(/* webpackChunkName: "path" */ "../views/Test.vue"),
-    meta: {
-      title: "test",
-    },
-  },
   //g2  ----- 導航頁
   {
     path: "/",
