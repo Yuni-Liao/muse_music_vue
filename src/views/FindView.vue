@@ -7,7 +7,7 @@
         </div>
         <div class="language">
             <div class="space" v-for="(item, id) in language" :key="index">
-                <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
+                <img class="bgi" :src="require(`/public/image/Find/${item.img}`)" alt="image">
                 <div class="txt">
                     <router-link :to="`findmusic/${id}`">
                         {{ item.name }}
