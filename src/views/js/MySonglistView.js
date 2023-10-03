@@ -144,11 +144,11 @@ export default {
     // },
 
     gotosonglist(slid) {
-      // this.$router.push("/singlesonglist");
+      // this.$router.push("/singlesonglist/:slid");
       this.$router.push({
         name: "singlesonglist",
-        query: {
-          q: slid,
+        params: {
+          slid: slid,
         },
       });
     },
