@@ -191,7 +191,7 @@ export default {
     fetchSonglistDetail() {
       const slid = this.$route.params.slid;
       const apiURL = new URL(
-        `http://localhost/MUSE_MUSIC/public/api/getSonglistDetail.php?slid=${slid}`
+        `http://localhost/muse_music/public/api/getSonglistDetail.php?slid=${slid}`
       );
       fetch(apiURL).then(async (response) => {
         this.songlist = await response.json();
@@ -203,7 +203,7 @@ export default {
     fetchSonglistSong() {
       const slid = this.$route.params.slid;
       const apiURL = new URL(
-        `http://localhost/MUSE_MUSIC/public/api/getSonglistSong.php?slid=${slid}`
+        `http://localhost/muse_music/public/api/getSonglistSong.php?slid=${slid}`
       );
       fetch(apiURL).then(async (response) => {
         this.slSongs = await response.json();
