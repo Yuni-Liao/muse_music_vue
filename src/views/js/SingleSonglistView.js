@@ -11,18 +11,21 @@ export default {
       publicPath: process.env.BASE_URL,
       //
       morecurrent: -1,
-      songlists: {
-        slid: 2,
-        memid: 2,
-        creator: "George Makridis, Hannah Hampton",
-        creatorimg: "singerPic.png",
-        slname: "wake up with George",
-        songnum: 5,
-        sharenum: 121,
-        folnum: 99,
-        public: false,
-        //歌單封面照片抓第一首歌曲的圖片
-      },
+      pageslid: 0,
+      songlist: [], //歌單資訊
+      slSongs: [], //歌單歌曲
+      // songlists: {
+      //   slid: 2,
+      //   memid: 2,
+      //   creator: "George Makridis, Hannah Hampton",
+      //   creatorimg: "singerPic.png",
+      //   slname: "wake up with George",
+      //   songnum: 5,
+      //   sharenum: 121,
+      //   folnum: 99,
+      //   public: false,
+      //   //歌單封面照片抓第一首歌曲的圖片
+      // },
 
       songs: [
         {
@@ -184,6 +187,42 @@ export default {
     },
   },
   methods: {
+    // 獲取歌單資訊
+    fetchSonglistDetail() {
+      const slid = this.$route.params.slid;
+      const apiURL = new URL(
+        `http://localhost/MUSE_MUSIC/public/api/getSonglistDetail.php?slid=${slid}`
+      );
+      fetch(apiURL).then(async (response) => {
+        this.songlist = await response.json();
+      });
+      console.log(this.songlist);
+    },
+
+    // 獲取歌單歌曲
+    fetchSonglistSong() {
+      const slid = this.$route.params.slid;
+      const apiURL = new URL(
+        `http://localhost/MUSE_MUSIC/public/api/getSonglistSong.php?slid=${slid}`
+      );
+      fetch(apiURL).then(async (response) => {
+        this.slSongs = await response.json();
+      });
+      console.log(this.slSongs);
+    },
+    // fetchSonglistDetail() {
+    //   const slid = this.$route.params.slid;
+    //   const apiURL = new URL(`${BASE_URL}/getProductDetail.php?slid=${slid}`);
+    //   fetch(apiURL)
+    //     .then((res) => res.json())
+    //     .then((json) => {
+    //       this.source = json.prod_detail;
+    //       this.images = json.prod_detail.images.filter((item) => {
+    //         return item !== "";
+    //       });
+    //       this.relProducts = json.relProd;
+    //     });
+    // },
     //選單 顯示隱藏
     showtoggle(e, index) {
       // console.log(e.target.nextElementSibling);
@@ -237,6 +276,10 @@ export default {
   mounted() {
     //建立事件聆聽:點空白處關閉
     document.addEventListener("click", this.closemore, true);
+    this.pageslid = parseInt(this.$route.params.slid);
+    //console.log(this.pageslid);
+    this.fetchSonglistDetail();
+    this.fetchSonglistSong();
   },
   beforeUnmount() {
     //移除事件聆聽:點空白處關閉
