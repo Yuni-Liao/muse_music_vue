@@ -169,7 +169,7 @@
                       <span>{{ item.singer }}</span>
                       <span>{{ item.date }}</span>
                     </div>
-                    <div class="tag" v-if="item.mcatid">
+                    <!-- <div class="tag" v-if="item.mcatid">
                       <fontAwesome class="i" :icon="['fa', 'tags']" />
                       <div>
                         <span
@@ -178,7 +178,7 @@
                         >
                         <span v-if="item.mcatid.length > 3">... </span>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </swiper-slide>
