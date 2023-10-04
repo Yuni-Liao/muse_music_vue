@@ -11,7 +11,6 @@ export default {
       publicPath: process.env.BASE_URL,
       //more 顯示狀態
       morecurrent: -1,
-      pageslid: 0,
       songlist: [], //歌單資訊 (fetch)
       slSongs: [], //歌單歌曲 (fetch)
     };
