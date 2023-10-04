@@ -250,11 +250,25 @@ export default {
                 EffectFade,
                 EffectCards
             ],
+            styleList:[],
+            fetchFindStyle() {
+                const styleId = this.$route.params.styleId;
+                const apiURL = new URL(
+                    `http://localhost/muse_music/public/api/getSonglistSong.php?styleId=${styleId}`
+                );
+                fetch(apiURL).then(async (response) => {
+                    this.styleList = await response.json();
+                });
+                console.log(this.styleList);
+            }
         }
     },
     methods: {
         openPlayer() {
             this.$refs.player.playMusic();
         },
+    },
+    mounted() {
+        this.fetchFindStyle();
     },
 }
