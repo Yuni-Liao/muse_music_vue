@@ -203,6 +203,14 @@ export default {
       let readFile = new FileReader();
       readFile.readAsDataURL(file);
       readFile.addEventListener("load", this.profileloadImage);
+
+      //再加FormData
+      const fd = new FormData()
+      fd.append('member_imageURL',file )
+      fetch('http://localhost/muse_music/public/api/getProfileDetail.php', {
+        method: 'POST',
+        body: fd
+      });
     },
     profileloadImage(e) {
       this.member.profileImgURL = e.target.result;
