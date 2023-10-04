@@ -98,7 +98,7 @@ export default {
     methods: {
         fetchprod() {
             const apiURL = new URL(
-                `http://localhost/musemusic/public/api/getProducts.php`
+                `http://localhost/muse_music/public/api/getProducts.php`
             );
             fetch(apiURL).then(async (response) => {
                 this.products = await response.json();

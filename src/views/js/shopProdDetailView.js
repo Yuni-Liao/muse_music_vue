@@ -11,7 +11,7 @@ export default {
     },
     methods: {
         fetchProdDetail() {
-            fetch(`http://localhost/musemusic/public/api/getProducts.php`).then(async (response) => {
+            fetch(`http://localhost/muse_music/public/api/getProducts.php`).then(async (response) => {
                 this.products = await response.json();
                 const idToFind = this.$route.params.prod_id;
                 this.foundObject = this.products.find((item) => item.prod_id === idToFind);
