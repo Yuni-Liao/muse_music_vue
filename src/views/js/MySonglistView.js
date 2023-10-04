@@ -9,7 +9,7 @@ export default {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
       //
-      login_mem_id: 1,
+      login_mem_id: 1, //這個之後要再改
       morecurrent: -1,
       currentType: 0, //0,1,2
       isNewSlOpen: false,
@@ -22,7 +22,7 @@ export default {
       return this.Myallsonglists.filter((item, index, array) => {
         if (this.currentType === 0) return true;
         if (this.currentType === 1) return item.creater_id == this.login_mem_id;
-        return item.creater_id !== this.login_mem_id;
+        return item.creater_id != this.login_mem_id;
       });
     },
   },
@@ -38,16 +38,14 @@ export default {
         .then((res) => res.json())
         .then((res) => {
           Myallsonglist = res;
+          //根據創建日期排序
           this.Myallsonglists = Myallsonglist.sort(function (a, b) {
             return a.update_date < b.update_date ? 1 : -1;
           });
-          console.log(this.Myallsonglists);
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
         });
-
-      //根據創建日期排序;
-      // this.Myallsonglists = Myallsonglist.sort(function (a, b) {
-      //   return a.update_date < b.update_date ? 1 : -1;
-      // });
     },
 
     //更多選單 顯示隱藏

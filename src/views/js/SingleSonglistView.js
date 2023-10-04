@@ -22,9 +22,13 @@ export default {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getSonglistDetail.php?slid=${slid}`
       );
-      fetch(apiURL).then(async (response) => {
-        this.songlist = await response.json();
-      });
+      fetch(apiURL)
+        .then(async (response) => {
+          this.songlist = await response.json();
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
     },
 
     // 獲取歌單歌曲資訊
@@ -33,9 +37,13 @@ export default {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getSonglistSong.php?slid=${slid}`
       );
-      fetch(apiURL).then(async (response) => {
-        this.slSongs = await response.json();
-      });
+      fetch(apiURL)
+        .then(async (response) => {
+          this.slSongs = await response.json();
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
     },
 
     //切換 more 開啟
