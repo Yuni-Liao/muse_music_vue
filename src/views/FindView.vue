@@ -10,27 +10,27 @@
                     <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
                     <div class="txt">
                         <router-link :to="`findmusic/${id}`">
-                            {{ item.name }}
+                            {{ item.mcat_name }}
                         </router-link>
                     </div>
                 </div>
             </div>
             <div class="style">
                 <div class="space" v-for="sty in style" :key="sty.id">
-                    <img :src="require(`/public/image/Find/${sty.img}`)" alt="image">
+                    <!-- <img :src="require(`/public/image/Find/${sty.img}`)" alt="image"> -->
                     <div class="txt">
                         <router-link :to="`findmusic/${sty.id}`">
-                            {{ sty.name }}
+                            {{ sty.mcat_name }}
                         </router-link>
                     </div>
                 </div>
             </div>
             <div class="emotion">
                 <div class="space" v-for="em in emotion" :key="em.id">
-                    <img :src="require(`/public/image/Find/${em.img}`)" alt="image">
+                    <!-- <img :src="require(`/public/image/Find/${em.img}`)" alt="image"> -->
                     <div class="txt">
                         <router-link :to="`findmusic/${em.id}`">
-                            {{ em.name }}
+                            {{ em.mcat_name }}
                         </router-link>
                     </div>
                 </div>
