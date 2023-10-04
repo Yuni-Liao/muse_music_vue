@@ -28,7 +28,8 @@ export default {
     return {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
-      //
+      login_mem_id: 1, //這個之後要再改
+      pageMemid: 0,
       //swiper
       modules: [Scrollbar],
       isReadmoreBtn: Boolean,
@@ -623,6 +624,27 @@ export default {
   },
   computed: {},
   methods: {
+    // 獲取個人主頁會員之資料
+    // fetchMyallsonglist() {
+    //   const loginMemId = this.login_mem_id;
+    //   const apiURL = new URL(
+    //     `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
+    //   );
+    //   let Myallsonglist;
+    //   fetch(apiURL)
+    //     .then((res) => res.json())
+    //     .then((res) => {
+    //       Myallsonglist = res;
+    //       //根據創建日期排序
+    //       this.Myallsonglists = Myallsonglist.sort(function (a, b) {
+    //         return a.update_date < b.update_date ? 1 : -1;
+    //       });
+    //     })
+    //     .catch((error) => {
+    //       console.error("發生錯誤:", error);
+    //     });
+    // },
+
     //切換簡介顯示內容
     readmore() {
       this.isReadMore = !this.isReadMore;
