@@ -136,9 +136,20 @@
             width: 100%;
             font-size: $small;
             color: $dark;
-            background-color: $green;
+            background: linear-gradient(to right, $green, $green, #d3d3fd);
+            // background: linear-gradient(to right, olive, green, purple);
+            background-size: 200%;
+            transition: background-position .5s; 
             display: flex;
             cursor: pointer;
+            .arrow{
+                @include btnBgNone;
+                color: $dark;
+                margin: auto;
+            }
+        }
+        .question:hover{
+            background-position: 100% 0;
         }
         .answer {
             width: 100%;
@@ -149,7 +160,6 @@
             display: flex;
             margin-top: 10px;
         }    
-
     }
 
     .faqtitle{

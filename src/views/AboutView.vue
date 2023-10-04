@@ -1,4 +1,5 @@
 <template>
+    <!-- <form action="about.php" method="POST"> -->
     <div class="about">
         <!-- <h1>這是關於謬思頁面</h1> -->
         <div class="banner">
@@ -44,12 +45,16 @@
             <!-- Q -->
             <div class="question" @click="toggleQuestion(index)">
                 <div class="faqtitle">Q：</div>
-                <div class="faqcontent">{{ item.question }}</div>
+                <div class="faqcontent" id="que">{{ item.question }}</div>
+                <button class="arrow">
+                    <fontAwesome v-if="!item.open" :icon="['fa', 'angle-down']" />
+                    <fontAwesome v-else :icon="['fa', 'angle-up']" />
+                </button>
             </div>
             <!-- A -->
             <div class="answer" v-if="item.open">
                 <div class="faqtitle">A：</div>
-                <div class="faqcontent">{{ item.answer }}</div>
+                <div class="faqcontent" id="ans">{{ item.answer }}</div>
             </div>
         </div>
 
@@ -80,8 +85,8 @@
             </div>
             <div><input type="submit" value="提交" class="contactbtn obj_Rounded"></div>
         </form>
-        <!-- <Robot /> -->
     </div>
+<!-- </form> -->
 </template>
 
 
