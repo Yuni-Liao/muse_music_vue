@@ -39,128 +39,128 @@ export default {
             publicPath: process.env.BASE_URL,
             //
             // 語系
-            language: [
-                {
-                    id: 0,
-                    name: '日語流行',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 1,
-                    name: '韓語流行',
-                    img: 'korea50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 2,
-                    name: '華語流行',
-                    img: 'asia50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 3,
-                    name: '西洋流行',
-                    img: 'westernUp.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 4,
-                    name: '其他語言',
-                    img: 'animalUp.png',
-                    link: 'findmusic',
-                },
-            ],
+            // language: [
+            //     {
+            //         id: 0,
+            //         name: '日語流行',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 1,
+            //         name: '韓語流行',
+            //         img: 'korea50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 2,
+            //         name: '華語流行',
+            //         img: 'asia50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 3,
+            //         name: '西洋流行',
+            //         img: 'westernUp.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 4,
+            //         name: '其他語言',
+            //         img: 'animalUp.png',
+            //         link: 'findmusic',
+            //     },
+            // ],
             // 風格
-            style: [
-                {
-                    id: 5,
-                    name: '流行音樂',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 6,
-                    name: '獨立音樂',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 7,
-                    name: '嘻哈',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 8,
-                    name: '搖滾',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 9,
-                    name: '藍調',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 10,
-                    name: '爵士',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 11,
-                    name: '古典',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-            ],
+            // style: [
+            //     {
+            //         id: 5,
+            //         name: '流行音樂',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 6,
+            //         name: '獨立音樂',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 7,
+            //         name: '嘻哈',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 8,
+            //         name: '搖滾',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 9,
+            //         name: '藍調',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 10,
+            //         name: '爵士',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 11,
+            //         name: '古典',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            // ],
             // 心情
-            emotion: [
-                {
-                    id: 12,
-                    name: '快樂',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 13,
-                    name: '傷心',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 14,
-                    name: '運動',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 15,
-                    name: '輕鬆',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 16,
-                    name: '舒眠',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 17,
-                    name: '專注',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-                {
-                    id: 18,
-                    name: '派對',
-                    img: 'japan50.png',
-                    link: 'findmusic',
-                },
-            ],
+            // emotion: [
+            //     {
+            //         id: 12,
+            //         name: '快樂',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 13,
+            //         name: '傷心',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 14,
+            //         name: '運動',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 15,
+            //         name: '輕鬆',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 16,
+            //         name: '舒眠',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 17,
+            //         name: '專注',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            //     {
+            //         id: 18,
+            //         name: '派對',
+            //         img: 'japan50.png',
+            //         link: 'findmusic',
+            //     },
+            // ],
             singers: [
                 {
                     sid: 1,
@@ -250,6 +250,17 @@ export default {
                 EffectFade,
                 EffectCards
             ],
+            styleList:[],
+            fetchType() {
+                // const styleId = this.$route.params.styleId;
+                const apiURL = new URL(
+                    `http://localhost/muse_music/public/api/getFindStyle.php?`
+                );
+                fetch(apiURL).then(async (response) => {
+                    this.styleList = await response.json();
+                });
+                console.log(this.styleList);
+            }
         }
     },
     methods: {
@@ -257,4 +268,18 @@ export default {
             this.$refs.player.playMusic();
         },
     },
+    mounted() {
+        this.fetchType();
+    },
+    computed: {
+        language() {
+            return this.styleList.filter(v => v.mcat_type === '0')
+        },
+        style() {
+            return this.styleList.filter(v => v.mcat_type === '1')
+        },
+        emotion() {
+            return this.styleList.filter(v => v.mcat_type === '2')
+        },
+    }
 }
