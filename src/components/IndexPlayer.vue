@@ -41,13 +41,13 @@
                             id="volume_right" min="0" max="100" @input="rightInputVolume" />
                     </div>
                 </div>
-                <div class="vol vol_mix">
+                <div class="vol vol_cd">
                     <input class="mix_vol obj_Radius" @click="cdSongVolume()" type="range" v-model="cdVolumeValue"
-                        name="volume_mix" id="volume_mix" min="0" max="100" @input="cdSongVolume" />
+                        name="volume_cd" id="volume_cd" min="0" max="100" @input="cdSongVolume" />
                 </div>
             </div>
             <div class="dj_right">
-                <div class="special_buttons">
+                <div class="special_buttons topbuttons">
                     <button class="button prev obj_Radius" id="oneBtn" @click="indexPlaySound(`muzA`)">
                         🎹
                     </button>
@@ -61,7 +61,7 @@
                         🎹
                     </button>
                 </div>
-                <div class="special_buttons">
+                <div class="special_buttons centerbuttons">
                     <button class="button prev obj_Radius" id="fiveBtn" @click="indexPlaySound(`muzG`)">
                         🥁
                     </button>
@@ -75,7 +75,7 @@
                         🥁
                     </button>
                 </div>
-                <div class="special_buttons">
+                <div class="special_buttons bottombuttons">
                     <button class="button prev obj_Radius" id="nineBtn" @click="indexPlaySound(`muzK`)">
                         🎼
                     </button>
@@ -193,14 +193,41 @@
         .special_buttons {
             button {
                 align-self: center;
-                color: $dark;
-                background: linear-gradient(lightpink, lightblue);
-                padding: 10px 20px;
+                @include rect(60px, 50px);
+                margin: 0.5rem;
+            }
+        }
+
+        .topbuttons {
+            button {
+
+                background: linear-gradient(rgb(241, 241, 142), rgb(210, 210, 41));
             }
 
             button:active {
-                background: linear-gradient(lightblue, $purple);
-                color: $dark;
+                background: linear-gradient(rgb(210, 210, 41), rgb(247, 247, 192));
+            }
+        }
+
+        .centerbuttons {
+            button {
+
+                background: linear-gradient(rgb(235, 140, 211), rgb(216, 49, 185));
+            }
+
+            button:active {
+                background: linear-gradient(rgb(233, 61, 190), rgb(251, 227, 245));
+            }
+        }
+
+        .bottombuttons {
+            button {
+
+                background: linear-gradient(rgb(150, 241, 142), rgb(74, 220, 72));
+            }
+
+            button:active {
+                background: linear-gradient(rgb(74, 220, 72), rgb(197, 246, 196));
             }
         }
 
@@ -231,7 +258,7 @@
                 width: 20%;
             }
 
-            .vol_mix {
+            .vol_cd {
                 display: flex;
                 align-self: center;
                 margin: 20px;
@@ -340,7 +367,6 @@ export default {
             cdVolumeValue: 50,
             leftVolumeValue: 0,
             rightVolumeValue: 0,
-            globalVolume: 50,
 
             // 左右拉條的音樂
             leftSongURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011033115173287398_88016.mp3",
@@ -407,7 +433,7 @@ export default {
             songList: [
                 {
                     name: "Good Night",
-                    songURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011071001335667082_88016.mp3",
+                    songURL: "https://cms-public-artifacts.artlist.io/content/music/aac/840070_839468_Yonatan_Riklis_-_Maple_Leaf_Rag_-_AO-001096-1_-_Master_-_90bpm_-_260323_-_BOV_-_ORG_-_2444.aac",
                     songTime: "01:30:20",
                 },
                 {
