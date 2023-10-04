@@ -141,7 +141,9 @@ const routes = [
         path: "shoporders",
         name: "shoporders",
         component: () =>
-          import(/* webpackChunkName: "shoporders" */ "../views/ShopOrdersView.vue"),
+          import(
+            /* webpackChunkName: "shoporders" */ "../views/ShopOrdersView.vue"
+          ),
         meta: {
           title: "訂單資訊",
         },
@@ -186,10 +188,10 @@ const routes = [
           title: "我的歌單",
         },
       },
-
       //以下歌單頁面
+      //設定動態路由參數":slid"
       {
-        path: "singlesonglist",
+        path: "singlesonglist/:slid",
         name: "singlesonglist",
         component: () =>
           import(

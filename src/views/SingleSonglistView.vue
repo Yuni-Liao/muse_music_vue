@@ -5,7 +5,13 @@
     <section class="banner">
       <div class="overlay"></div>
       <img
-        :src="require(`/public/image/SingleMusic/${chooseCoverImg}`)"
+        v-if="this.slSongs.length == 0"
+        :src="`${publicPath}image/footer_background.jpg`"
+        alt="歌單封面預設圖片"
+      />
+      <img
+        v-else
+        :src="`${publicPath}dataimage/song/${songlist.sl_pic}`"
         alt="歌單封面照片"
       />
     </section>
@@ -14,24 +20,33 @@
       <div class="topInf">
         <div class="pic">
           <img
-            :src="require(`/public/image/SingleMusic/${chooseCoverImg}`)"
+            v-if="this.slSongs.length == 0"
+            :src="`${publicPath}dataimage/song/pre.jpg`"
+            alt="歌單預設圖片"
+          />
+          <img
+            v-else
+            :src="`${publicPath}dataimage/song/${songlist.sl_pic}`"
             alt="歌單照片"
           />
+          <!-- :src="require(`/public/dataimage/song/${songlist.sl_pic}`)" -->
         </div>
         <div class="slInf">
           <div class="sl">
-            <p>歌單</p>
-            <h1>{{ songlists.slname }}</h1>
+            <span>歌單</span>
+            <h1>{{ songlist.sl_name }}</h1>
           </div>
           <div class="iconBar">
             <div class="countArea">
               <div class="played">
                 <p>追蹤</p>
-                <p>{{ songlists.folnum }}</p>
+                <p>{{ songlist.fol_num }}</p>
               </div>
               <div class="shared">
-                <fontAwesome :icon="['fa', 'share']" style="color: #fff" />
-                <p>{{ songlists.sharenum }}</p>
+                <p>
+                  <fontAwesome :icon="['fa', 'share']" style="color: #fff" />
+                </p>
+                <p>{{ songlist.share_num }}</p>
               </div>
             </div>
             <div class="buttonArea">
@@ -46,19 +61,21 @@
         <div class="creatorInf">
           <div class="pic">
             <img
-              :src="
-                require(`/public/image/SingleMusic/${songlists.creatorimg}`)
-              "
+              :src="`${publicPath}dataimage/member/${songlist.creater_pic}`"
               alt="歌單擁有者頭像"
             />
+            <!-- :src="require(`/public/dataimage/member/${songlist.creater_pic}`)" -->
           </div>
-          <p class="creatorName" @click="gotosinger(songlists.singerid)">
-            {{ songlists.creator }}
+          <p class="creatorName" @click="gotosinger(songlist.creater_id)">
+            {{ songlist.creater_name }}
           </p>
         </div>
         <div class="detail">
           <div class="playList">
-            <ol>
+            <div class="nodata" v-if="this.slSongs.length == 0">
+              此歌單無新增歌曲
+            </div>
+            <ol v-else>
               <li class="title">
                 <span class="idx">#</span>
                 <span class="pic"></span>
@@ -70,32 +87,31 @@
                 /></span>
                 <div class="moreWrap"></div>
               </li>
-              <li v-for="(item, index) in songs" :key="item.id">
+              <li v-for="(item, index) in slSongs" :key="item.id">
                 <span class="idx">{{ index + 1 }}</span
-                ><span class="pic"
-                  ><img
-                    :src="require(`/public/image/SingleMusic/${item.image}`)"
-                  />
+                ><span class="pic">
+                  <img :src="`${publicPath}dataimage/song/${item.s_img}`" />
+                  <!-- :src="require(`/public/image/SingleMusic/${item.image}`)" -->
                   <div class="play" @click="openPlayer()">
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </span>
 
-                <h3 v-line-clamp="2" @click="gotosinglemusic(item.sid)">
-                  {{ item.name }}
+                <h3 v-line-clamp="2" @click="gotosinglemusic(item.s_id)">
+                  {{ item.s_name }}
                 </h3>
                 <span
                   v-line-clamp="2"
                   class="singer"
-                  @click="gotosinger(item.singerid)"
+                  @click="gotosinger(item.singer_id)"
                   >{{ item.singer }}</span
                 ><span
                   v-line-clamp="2"
                   class="album"
-                  @click="gotosinglealbum(item.albumid)"
-                  >{{ item.album }}</span
+                  @click="gotosinglealbum(item.alb_id)"
+                  >{{ item.alb_name }}</span
                 >
-                <span class="time">{{ item.time }}</span>
+                <span class="time">{{ item.s_length }}</span>
                 <div class="moreWrap">
                   <!-- 更多_按鈕 -->
                   <button class="moreBtn" @click="showtoggle($event, index)">
@@ -103,19 +119,19 @@
                   </button>
                   <!-- 更多_選項-->
                   <div class="more" :class="{ show: index === morecurrent }">
-                    <div @click="share(item.id)">
+                    <div @click="share(item.s_id)">
                       <img src="../../public/image/icon/share.png" />
                       <p>分享</p>
                     </div>
-                    <div class="addFav" @click="addFav(item.id)">
+                    <div class="addFav" @click="addFav(item.s_id)">
                       <img src="../../public/image/icon/addFav.png" />
                       <p>加入我的最愛</p>
                     </div>
-                    <div class="addSl" @click="addSonglist(item.id)">
+                    <div class="addSl" @click="addSonglist(item.s_id)">
                       <img src="../../public/image/icon/addSl.png" />
                       <p>加入歌單</p>
                     </div>
-                    <div class="readSong" @click="gotosinglemusic(item.id)">
+                    <div class="readSong" @click="gotosinglemusic(item.s_id)">
                       <img
                         src="../../public/image/icon/eyeopen.png"
                         class="eyeopen"
