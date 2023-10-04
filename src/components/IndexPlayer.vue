@@ -34,16 +34,16 @@
                 <div class="plates_vols">
                     <div class="vol vol_left" @click="leftInputVolume()">
                         <input class="left_vol obj_Radius" type="range" v-model="leftVolumeValue" name="vol_left"
-                            id="volume_left" min="0" max="100" @input="leftAdjustVolume" />
+                            id="volume_left" min="0" max="100" @input="leftInputVolume" />
                     </div>
                     <div class="vol vol_right" @click="rightInputVolume()">
                         <input class="right_vol obj_Radius" type="range" v-model="rightVolumeValue" name="volume_right"
-                            id="volume_right" min="0" max="100" @input="rightAdjustVolume" />
+                            id="volume_right" min="0" max="100" @input="rightInputVolume" />
                     </div>
                 </div>
                 <div class="vol vol_mix">
-                    <input class="mix_vol obj_Radius" type="range" v-model="globalVolume" name="volume_mix" id="volume_mix"
-                        min="0" max="100" />
+                    <input class="mix_vol obj_Radius" @click="cdSongVolume()" type="range" v-model="cdVolumeValue"
+                        name="volume_mix" id="volume_mix" min="0" max="100" @input="cdSongVolume" />
                 </div>
             </div>
             <div class="dj_right">
@@ -126,7 +126,7 @@
             }
 
             .song_info {
-                height: 50px;
+                height: fit-content;
                 display: flex;
                 justify-content: space-between;
                 color: #fff;
@@ -332,12 +332,14 @@ export default {
 
             // 存放音樂
             cdSound: null,
+            cdAudio: null,
             currentLeftAudio: null,
             currentRightAudio: null,
 
             // 拉條的預設input位置
-            leftVolumeValue: 50,
-            rightVolumeValue: 50,
+            cdVolumeValue: 50,
+            leftVolumeValue: 0,
+            rightVolumeValue: 0,
             globalVolume: 50,
 
             // 左右拉條的音樂
@@ -441,6 +443,21 @@ export default {
         },
     },
     methods: {
+        // 停止播放全域音樂
+        stopAllSong() {
+            if (this.cdSound) {
+                this.cdSound.stop();
+            }
+            if (this.currentLeftAudio) {
+                this.currentLeftAudio.stop();
+            }
+            if (this.currentRightAudio) {
+                this.currentRightAudio.stop();
+            }
+            if (this.sound) {
+                this.sound.stop();
+            }
+        },
         // 右邊小按鈕們
         indexPlaySound(soundName) {
             const sound = new Howl({
@@ -473,8 +490,8 @@ export default {
                 }
 
             } else {
-                this.leftPlaySong("leftSongName");
-                this.rightPlaySong("rightSongName");
+                this.leftPlaySong();
+                this.rightPlaySong();
                 const selectedSong = this.songList[songIndex];
 
                 if (selectedSong) {
@@ -522,6 +539,11 @@ export default {
 
             // 計算索引值, 上一首 -1
             this.currentSongIndex = (this.currentSongIndex - 1 + this.songList.length) % this.songList.length;
+
+            // 換一首歌就要播一次拉條的音樂
+            this.leftPlaySong();
+            this.rightPlaySong();
+
             const selectedSong = this.songList[this.currentSongIndex];
 
             if (selectedSong) {
@@ -542,7 +564,6 @@ export default {
             }
         },
 
-
         // 下一首
         playNextSong() {
             if (this.cdSound) {
@@ -558,7 +579,12 @@ export default {
 
             this.currentSongIndex = (this.currentSongIndex + 1) % this.songList.length;
 
+            // 換一首歌就要播一次拉條的音樂
+            this.leftPlaySong();
+            this.rightPlaySong();
+
             const selectedSong = this.songList[this.currentSongIndex];
+
             if (selectedSong) {
                 this.cdSound = new Howl({
                     src: [selectedSong.songURL],
@@ -579,82 +605,69 @@ export default {
         },
 
         // 左邊input拉條
-        leftPlaySong(leftSongName) {
+        leftPlaySong() {
             if (this.currentLeftAudio) {
-                if (this.currentLeftAudio === 0) {
-                    this.currentLeftAudio.stop();
-                }
-                this.currentLeftAudio = null;
-
-            } else {
-                this.currentLeftAudio = new Howl({
-                    src: [this.leftSongURL],
-                    autoplay: true,
-                    onend: function () {
-                        console.log('Left Done');
-                    }
-                });
+                this.currentLeftAudio.stop();
             }
-        },
-        leftInputVolume() {
-            if (this.currentLeftAudio) {
-                if (this.currentLeftAudio === 0) {
-                    this.currentLeftAudio.stop();
-                } else {
-                    this.currentLeftAudio.volume(this.leftVolumeValue / 100);
-                    // this.updateGlobalVolume(); // 更新全局音量
+            this.currentLeftAudio = new Howl({
+                src: [this.leftSongURL],
+                autoplay: true,
+                volume: this.leftVolumeValue / 100,
+                onend: function () {
+                    console.log('Left Done');
                 }
-            }
-            console.log('Left Volume:', this.leftVolumeValue);
+            });
         },
 
         // 右邊input拉條
-        rightPlaySong(rightSongName) {
+        rightPlaySong() {
             if (this.currentRightAudio) {
-                if (this.currentRightAudio === 0) {
-                    this.currentRightAudio.stop();
-                }
-                this.currentRightAudio = null;
-
-            } else {
-                this.currentRightAudio = new Howl({
-                    src: [this.rightSongURL],
-                    autoplay: true,
-                    onend: function () {
-                        console.log('Right Done');
-                    }
-                });
+                this.currentRightAudio.stop();
             }
+
+            this.currentRightAudio = new Howl({
+                src: [this.rightSongURL],
+                autoplay: true,
+                volume: this.rightVolumeValue / 100,
+                onend: function () {
+                    console.log('Right Done');
+                }
+            });
         },
+
+        // 調整音量
+        cdSongVolume() {
+            if (this.cdSound) {
+                this.cdSound.volume(this.cdVolumeValue / 100);
+            }
+            console.log('CD Volume:', this.cdVolumeValue);
+        },
+
         rightInputVolume() {
             if (this.currentRightAudio) {
-                if (this.currentRightAudio === 0) {
+                if (this.rightInputVolume === 0) {
                     this.currentRightAudio.stop();
                 }
                 else {
                     this.currentRightAudio.volume(this.rightVolumeValue / 100);
-                    // this.updateGlobalVolume(); // 更新全局音量
+
                 }
             }
             console.log('Right Volume:', this.rightVolumeValue);
         },
 
-        // //下方拉條更新音量 ---- 還沒寫完
-        // updateGlobalVolume() {
-        //     const newLeftVolume = this.leftVolumeValue;
-        //     const newRightVolume = this.rightVolumeValue;
-        //     this.globalVolume = (newLeftVolume + newRightVolume) / 2;
+        leftInputVolume() {
+            if (this.currentLeftAudio) {
+                if (this.leftInputVolume === 0) {
+                    this.currentLeftAudio.stop();
+                } else {
+                    this.currentLeftAudio.volume(this.leftVolumeValue / 100);
+                }
+            }
+            console.log('Left Volume:', this.leftVolumeValue);
+        },
 
-        //     if (this.currentLeftAudio) {
-        //         this.currentLeftAudio.volume(this.leftVolumeValue / 100);
-        //     }
-
-        //     if (this.currentRightAudio) {
-        //         this.currentRightAudio.volume(this.rightVolumeValue / 100);
-        //     }
-
-        //     console.log('Global Volume:', this.globalVolume);
-        // }
-    }
+    },
 }
+
 </script>
