@@ -5,6 +5,12 @@
     <section class="banner">
       <div class="overlay"></div>
       <img
+        v-if="this.slSongs.length == 0"
+        :src="`${publicPath}image/footer_background.jpg`"
+        alt="歌單封面預設圖片"
+      />
+      <img
+        v-else
         :src="`${publicPath}dataimage/song/${songlist.sl_pic}`"
         alt="歌單封面照片"
       />
@@ -14,6 +20,12 @@
       <div class="topInf">
         <div class="pic">
           <img
+            v-if="this.slSongs.length == 0"
+            :src="`${publicPath}dataimage/song/pre.jpg`"
+            alt="歌單預設圖片"
+          />
+          <img
+            v-else
             :src="`${publicPath}dataimage/song/${songlist.sl_pic}`"
             alt="歌單照片"
           />
@@ -60,7 +72,10 @@
         </div>
         <div class="detail">
           <div class="playList">
-            <ol>
+            <div class="nodata" v-if="this.slSongs.length == 0">
+              此歌單無新增歌曲
+            </div>
+            <ol v-else>
               <li class="title">
                 <span class="idx">#</span>
                 <span class="pic"></span>
@@ -74,8 +89,8 @@
               </li>
               <li v-for="(item, index) in slSongs" :key="item.id">
                 <span class="idx">{{ index + 1 }}</span
-                ><span class="pic"
-                  ><img :src="`${publicPath}dataimage/song/${item.s_img}`" />
+                ><span class="pic">
+                  <img :src="`${publicPath}dataimage/song/${item.s_img}`" />
                   <!-- :src="require(`/public/image/SingleMusic/${item.image}`)" -->
                   <div class="play" @click="openPlayer()">
                     <fontAwesome class="i" :icon="['fa', 'play']" />

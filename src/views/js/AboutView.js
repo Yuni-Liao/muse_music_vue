@@ -59,7 +59,7 @@ export default {
                     question: "上傳音樂要付錢嗎？",
                     answer: `上傳音樂作品到MUSE平台讓樂迷聆聽是完全免費的！
                     只要註冊成為會員，並完成帳號驗證即可開始上傳作品。`,
-                    open: false,
+                    open: true,
                 },
                 {
                     id: 2,
@@ -123,14 +123,18 @@ export default {
                     open: false,
                 },
             ],
-            timer: null
+            // faqList: [],
+
+            timer: null,
+
+            //常見問題icon
+            isShow: false,
         }
     },
 
     methods: {
         // 常見問題-收合
         toggleQuestion(index) {
-            console.log(index)
             this.faqList[index].open = !this.faqList[index].open;
         },
 
@@ -162,6 +166,17 @@ export default {
                 }, 200)
             }
         },
+
+        // async fetchFAQs() {
+        //     try {
+        //       const response = await fetch('/api/faqs');
+        //       const data = await response.json();
+        //       this.faqList = data; // 假設你的 API 響應是一個包含常見問題的陣列
+        //     } catch (error) {
+        //       console.error('獲取常見問題時發生錯誤', error);
+        //     }
+        // },
+
     },
 
     //監聽機器人導向網址的hash是否更改
