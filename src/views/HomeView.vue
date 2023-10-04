@@ -27,7 +27,7 @@
   <!--本週熱門歌曲輪播 - 黃珮菁 -->
   <section class="index_WeekTopmusic">
     <h2>本週熱門歌曲．Popular Songs This Week</h2>
-    <swiper class="mySwiper" :initialSlide="4" :effect="slide" :slideToClickedSlide="false" :grabCursor="false"
+    <swiper class="mySwiper" :initialSlide="4" :effect="'slide'" :slideToClickedSlide="false" :grabCursor="false"
       :centeredSlides="true" :breakpoints="{
         '414': {
           slidesPerView: 3,
