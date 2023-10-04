@@ -369,8 +369,8 @@ export default {
             rightVolumeValue: 0,
 
             // 左右拉條的音樂
-            leftSongURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011033115173287398_88016.mp3",
-            rightSongURL: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_200804081705251913_88011.mp3",
+            leftSongURL: "https://cms-public-artifacts.artlist.io/content/music/aac/844606_843784_Zachary_JR_Nelson_-_Birds_Eye_View_2_-_AO-001164-2_-_Master_V2_-_100_Bpm_-_050423_-_BOV_-_ORG_-_2444.aac",
+            rightSongURL: "https://cms-public-artifacts.artlist.io/content/music/aac/853576_Jan_Michal_Sanejko_-_Jan_Sanejko_-_TBD_-_BO-000042-1_-_Master_-_180723_-_124bpm_-_IV_-fixed-_-_ORG_-_2444.aac",
             // 目前音樂的資料存放
             currentSongName: "點擊播放一起聽 ^^",
             currentSongTime: "00:00:00",
@@ -432,18 +432,18 @@ export default {
             // 轉盤音樂的陣列
             songList: [
                 {
-                    name: "Good Night",
-                    songURL: "https://cms-public-artifacts.artlist.io/content/music/aac/840070_839468_Yonatan_Riklis_-_Maple_Leaf_Rag_-_AO-001096-1_-_Master_-_90bpm_-_260323_-_BOV_-_ORG_-_2444.aac",
+                    name: "Getaway",
+                    songURL: "https://cms-public-artifacts.artlist.io/content/music/aac/848251_848010_Gregory_Mark_Sgrulloni_-_K-Hits_-_AO-001149-2_-_Master_V1_-_110_Bpm_-_240523_-__BOV_-_ORG_-_2444_-_RX.aac",
                     songTime: "01:30:20",
                 },
                 {
-                    name: "Say GoodBye",
-                    songURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011071001335667082_88016.mp3",
+                    name: "Blah Blah Blah",
+                    songURL: "https://cms-public-artifacts.artlist.io/content/music/aac/858010_857968_Wesley_Eugene_Smith_-_Blah_Blah_Blah_-_Camille_Alyssa_de_la_Cruz_-_AO-001309-1_-_Master_V2_-_110_Bpm_-_310723_-_BOV_-_ORG_-_2444.aac",
                     songTime: "01:20:20",
                 },
                 {
-                    name: "High High",
-                    songURL: "https://assets.mixkit.co/active_storage/sfx/689/689-preview.mp3",
+                    name: "Human",
+                    songURL: "https://cms-public-artifacts.artlist.io/content/music/aac/851064_850435_Sean_Leslie_Fischer_-_Go_Pro_TLV_-_AO-001329-1_-_Master_V1_-_75_Bpm_-_130623_-_BOV_-_ORG_-_2444_-_From_Stems.aac",
                     songTime: "01:00:05",
                 }
             ],
