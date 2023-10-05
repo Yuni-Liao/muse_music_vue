@@ -97,17 +97,17 @@
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </span>
-
+                <AddSlBtn ref="AddSl" :addSlSid="item.s_id"></AddSlBtn>
                 <h3 v-line-clamp="2" @click="gotosinglemusic(item.s_id)">
                   {{ item.s_name }}
                 </h3>
                 <span
-                  v-line-clamp="2"
+                  v-line-clamp="1"
                   class="singer"
                   @click="gotosinger(item.singer_id)"
                   >{{ item.singer }}</span
                 ><span
-                  v-line-clamp="2"
+                  v-line-clamp="1"
                   class="album"
                   @click="gotosinglealbum(item.alb_id)"
                   >{{ item.alb_name }}</span
@@ -128,7 +128,7 @@
                       <img src="../../public/image/icon/addFav.png" />
                       <p>加入我的最愛</p>
                     </div>
-                    <div class="addSl" @click="addSonglist(item.s_id)">
+                    <div class="addSl" @click="addSonglist(index)">
                       <img src="../../public/image/icon/addSl.png" />
                       <p>加入歌單</p>
                     </div>

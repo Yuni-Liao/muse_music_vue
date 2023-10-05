@@ -180,6 +180,9 @@
                   display: none;
                 }
               }
+              :deep(#AddSlBtn) {
+                display: none;
+              }
               span {
                 margin: 0 10px;
               }
@@ -281,7 +284,6 @@
                       margin: 0 0px 0 20px;
                       font-size: $tag;
                     }
-
                     .eyeopen {
                       width: 20px;
                       height: 13px;
