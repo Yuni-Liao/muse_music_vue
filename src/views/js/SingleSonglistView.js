@@ -205,7 +205,8 @@ export default {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getSonglistSong.php?slid=${slid}`
       );
-      fetch(apiURL).then(async (response) => {
+      fetch(apiURL)
+      .then(async (response) => {
         this.slSongs = await response.json();
       });
       console.log(this.slSongs);

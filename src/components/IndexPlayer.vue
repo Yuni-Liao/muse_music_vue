@@ -319,7 +319,7 @@
 // 右半部按鈕效果
 </style>
 <script>
-import { Howl, Howler } from 'howler';
+
 
 export default {
     name: "IndexPlayer",
