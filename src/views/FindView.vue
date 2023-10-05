@@ -6,31 +6,31 @@
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
-                <div class="space" v-for="(item, id) in language" :key="id">
-                    <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
+                <div class="space" v-for="(item, id) in language" :key="item.mcat_id">
+                    <!-- <img :src="require(`/public/image/Find/${item.img}`)" alt="image"> -->
                     <div class="txt">
-                        <router-link :to="`findmusic/${id}`">
-                            {{ item.name }}
+                        <router-link :to="`findmusic/${item.mcat_id}`">
+                            {{ item.mcat_name }}
                         </router-link>
                     </div>
                 </div>
             </div>
             <div class="style">
-                <div class="space" v-for="sty in style" :key="sty.id">
-                    <img :src="require(`/public/image/Find/${sty.img}`)" alt="image">
+                <div class="space" v-for="sty in style" :key="sty.mcat_id">
+                    <!-- <img :src="require(`/public/image/Find/${sty.img}`)" alt="image"> -->
                     <div class="txt">
-                        <router-link :to="`findmusic/${sty.id}`">
-                            {{ sty.name }}
+                        <router-link :to="`findmusic/${sty.mcat_id}`">
+                            {{ sty.mcat_name }}
                         </router-link>
                     </div>
                 </div>
             </div>
             <div class="emotion">
-                <div class="space" v-for="em in emotion" :key="em.id">
-                    <img :src="require(`/public/image/Find/${em.img}`)" alt="image">
+                <div class="space" v-for="em in emotion" :key="em.mcat_id">
+                    <!-- <img :src="require(`/public/image/Find/${em.img}`)" alt="image"> -->
                     <div class="txt">
-                        <router-link :to="`findmusic/${em.id}`">
-                            {{ em.name }}
+                        <router-link :to="`findmusic/${em.mcat_id}`">
+                            {{ em.mcat_name }}
                         </router-link>
                     </div>
                 </div>

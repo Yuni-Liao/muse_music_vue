@@ -51,12 +51,14 @@
           :key="item.slid"
         >
           <!-- 單一歌單 -->
+          <!-- 假如歌單沒有歌曲，就設定預設圖片 -->
           <div
+            v-if="item.sl_pic == null"
             class="sl-item"
             :style="{
-              backgroundImage: `url(${publicPath}image/SingleMusic/${item.image})`,
+              backgroundImage: `url(${publicPath}dataimage/song/pre.jpg)`,
             }"
-            @click.self.prevent="gotosonglist(item.slid)"
+            @click.self.prevent="gotosonglist(item.sl_id)"
           >
             <!-- 更多_按鈕 -->
             <button class="moreBtn" @click="showtoggle($event, index)">
@@ -71,13 +73,13 @@
               <ul>
                 <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
                 <li
-                  v-if="item.memid == 1"
-                  @click="deletesonglist(index, item.slid)"
+                  v-if="item.creater_id == login_mem_id"
+                  @click="deletesonglist(index, item.sl_id)"
                 >
                   刪除此歌單
                 </li>
                 <!-- 歌單擁有者非我，則顯示 取消追蹤此歌單 -->
-                <li v-else @click="unfolsonglist(index, item.slid)">
+                <li v-else @click="unfolsonglist(index, item.sl_id)">
                   取消追蹤此歌單
                 </li>
               </ul>
@@ -86,16 +88,70 @@
             <div class="txt">
               <div>
                 <h3>
-                  {{ item.slname }}
+                  {{ item.sl_name }}
                   <!-- 歌單擁有者是我且狀態為私人，則顯示鎖頭 -->
-                  <span v-if="item.memid == 1 && item.public == false"
+                  <span
+                    v-if="item.creater_id == login_mem_id && item.public == 0"
                     ><fontAwesome :icon="['fa', 'lock']" class="lock"
                   /></span>
                 </h3>
 
                 <div>
-                  <span>共有{{ item.songnum }}首歌</span>
-                  <span>{{ item.creator }}</span>
+                  <span>共有{{ item.song_count }}首歌</span>
+                  <span v-line-clamp="1">{{ item.creater_name }}</span>
+                </div>
+              </div>
+              <PlayBtnBig @click="openplayer()"></PlayBtnBig>
+            </div>
+          </div>
+
+          <div
+            v-else
+            class="sl-item"
+            :style="{
+              backgroundImage: `url(${publicPath}dataimage/song/${item.sl_pic})`,
+            }"
+            @click.self.prevent="gotosonglist(item.sl_id)"
+          >
+            <!-- 更多_按鈕 -->
+            <button class="moreBtn" @click="showtoggle($event, index)">
+              <fontAwesome class="i" :icon="['fa', 'ellipsis']" />
+            </button>
+
+            <!-- 更多_選項 -->
+            <div
+              class="more obj_Radius"
+              :class="{ show: index == morecurrent }"
+            >
+              <ul>
+                <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
+                <li
+                  v-if="item.creater_id == login_mem_id"
+                  @click="deletesonglist(index, item.sl_id)"
+                >
+                  刪除此歌單
+                </li>
+                <!-- 歌單擁有者非我，則顯示 取消追蹤此歌單 -->
+                <li v-else @click="unfolsonglist(index, item.sl_id)">
+                  取消追蹤此歌單
+                </li>
+              </ul>
+            </div>
+
+            <div class="txt">
+              <div>
+                <h3>
+                  {{ item.sl_name }}
+                  <!-- 歌單擁有者是我且狀態為私人，則顯示鎖頭 -->
+                  <span
+                    v-if="item.creater_id == login_mem_id && item.public == 0"
+                    ><fontAwesome :icon="['fa', 'lock']" class="lock"
+                  /></span>
+                </h3>
+
+                <div>
+                  <span>共有{{ item.song_count }}首歌</span>
+                  <span v-line-clamp="1">{{ item.creater_name }}</span>
                 </div>
               </div>
               <PlayBtnBig @click="openplayer()"></PlayBtnBig>

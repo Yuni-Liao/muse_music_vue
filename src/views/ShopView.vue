@@ -22,22 +22,23 @@
             <!-- 分類篩選 -->
             <ul>
                 <li v-for="item in items" :key="item.id">
-                    <p class="chooseType" @click="currentKind = item.kind" :class="{ '--active': currentKind === item.kind }">{{ item.label }}</p>
+                    <p class="chooseType" @click="setCurrentKind(item.kind)"
+                        :class="{ '--active': currentKind === item.kind }">{{ item.label }}</p>
                 </li>
             </ul>
+
         </div>
 
         <!-- 商品 -->
         <div class="inner">
             <div class="prod">
-                <div class="prodCard" v-for="(item) in getSelectedPageSize" :key="item.id">
-                    <router-link :to="`/home/shopproddetail/${item.id}`" class="prodPic">
-                        <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName">
+                <div class="prodCard" v-for="item in getSelectedPageSize" :key="item.prod_id">
+                    <router-link :to="`/home/shopproddetail/${item.prod_id}`" class="prodPic">
+                        <img :src="`${publicPath}image/ShopImage/${item.prod_pic}`" :alt="item.prod_name">
                     </router-link>
                     <div class="prodTxt">
-                        <router-link :to="`/home/shopproddetail/${item.id}`" class="prodName">{{ item.prodName
-                        }}</router-link>
-                        <p class="prodPrice">$ {{ item.prodPrice }}</p>
+                        <router-link :to="`/hetail/${item.prod_id}`" class="prodName">{{ item.prod_name }}</router-link>
+                        <p class="prodPrice">$ {{ item.prod_price }}</p>
 
                         <!-- 數量加減 -->
                         <span class="prodCount">
@@ -45,7 +46,7 @@
                                 <fontAwesome :icon="['fa', 'circle-minus']" style="color: #252525;" />
                             </button>
 
-                            <p>{{ item.inCart }}</p>
+                            <p>{{ item.chat_num }}</p>
                             <button class="prodBtn" @click="incrementItem(item)">
                                 <fontAwesome :icon="['fa', 'circle-plus']" style="color: #252525;" />
                             </button>
@@ -58,7 +59,6 @@
             <!-- 分頁 -->
             <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
                 @on-page-size-change="handlePageChange" v-model="currentPage" />
-            <!-- <Page :total="catList.length" :page-size="selectedPageSize" @on-change="handlePageChange" v-model="currentPage" /> -->
         </div>
         <router-link to="/home/shoppingsteps">
             <button class="shopcart">

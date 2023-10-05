@@ -55,7 +55,7 @@ const routes = [
       // 以下是商城商品詳情共用頁面
       {
         //設定動態路由參數":id"
-        path: "shopproddetail/:id",
+        path: "shopproddetail/:prod_id",
         name: "shopproddetail",
         component: () =>
           import(
@@ -231,7 +231,7 @@ const routes = [
         },
       },
 
-      //以下是個人主頁頁面
+      //以下是個人主頁管理頁面
       {
         path: "profilepageedit",
         name: "profilepageedit",
@@ -244,7 +244,9 @@ const routes = [
         },
       },
       {
-        path: "profilepage",
+        //以下是個人主頁頁面
+        //設定動態路由參數":memid"
+        path: "profilepage/:memid",
         name: "profilepage",
         component: () =>
           import(

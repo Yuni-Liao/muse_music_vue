@@ -1,6 +1,5 @@
 
-<?php
- $dbname = "musemusic";
+<? $dbname = "musemusic";
 $user = "root";
 $password = "";
 
