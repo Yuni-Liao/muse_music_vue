@@ -6,13 +6,9 @@
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
-<<<<<<< HEAD
-                <div class="space" v-for="(item, id) in language" :key="id" :class="item.className"
+                <div class="space" v-for="(item, index) in language" :key="item.mcat_id" :class="item.className"
                     @mouseenter="spaceHover(item.img)">
-=======
-                <div class="space" v-for="(item, index) in language" :key="item.mcat_id">
                     <img :src="require(`/public/dataimage/find/${item.mcat_pic}`)" alt="image">
->>>>>>> c52755e1e5dc3157ef2a8165303cb5d230a1f6e9
                     <div class="txt">
                         <router-link :to="`findmusic/${item.mcat_id}`">
                             {{ item.mcat_name }}
@@ -52,11 +48,9 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                    }" 
-                    :pagination="{
-                        clickable: true,
-                    }" 
-                    :modules="modules">
+                    }" :pagination="{
+    clickable: true,
+}" :modules="modules">
                     <swiper-slide v-for="h in singers" :key="h.mem_id">
                         <div class="h_card">
                             <router-link :to="`/home/profilepage/:memid`">
@@ -82,11 +76,9 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                        }" 
-                        :pagination="{
-                            clickable: true,
-                        }" 
-                        :modules="modules">
+                    }" :pagination="{
+    clickable: true,
+}" :modules="modules">
                     <swiper-slide v-for="n in songs" :key="n.mem_id">
                         <div class="n_card">
                             <div class="image">

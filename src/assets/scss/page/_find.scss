@@ -5,7 +5,6 @@
     a:hover{
       color: $green;
     }
-<<<<<<< HEAD
   }
   .language,
   .style,
@@ -28,104 +27,6 @@
         border-right: 2px solid;
         opacity: 1;
         transition: .4s;
-=======
-    h1{
-      font-size: $big;
-      padding: 5% 0;
-      text-align: left ;
-      margin:3% 0 3% 2%;
-      @include s{
-        font-size: $pL;
-        margin:20% 0 3% 5%;
-      }
-    }
-    h2{
-      font-size: $big;
-      padding: 5% 0;
-      text-align: left ;
-      margin:0 0 0 2%;
-      @include s{
-        margin:3% 5% 3% 5%;
-        font-size: $pM;    
-      }
-    }
-    .language,
-    .style,
-    .emotion{
-      @include layout(100%);
-      margin: 3% 0;
-      border-top:1px solid ;
-      border-bottom:1px solid ;
-    }
-    .find_select{
-      background-color: #303030;
-      position: relative;
-      overflow: hidden;
-      .language{
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        // overflow: hidden;
-        .space{
-          transform: skewX(45deg);
-          width: 20%;
-          border-left: 2px solid;
-          border-right: 2px solid;
-          // position: relative;
-          // overflow:hidden;
-          img{
-            transform: skewX(-45deg);
-            position: absolute;
-            width: 150%;
-            margin: 0 0 0 -70%;
-            opacity: 0;
-          }
-          .txt{
-            transform: skewX(-45deg);
-            padding: 5% 0;
-            a{
-              padding: 5% 25%;
-              font-size: $medium;
-              @include s{
-                font-size: $pXS;
-                padding: 0 5%;
-              }
-            }
-          }
-        }
-        :hover img{
-          opacity: 1;
-          transition: .4s;
-        }
-        :first-child{
-          border-left:0 ;
-        }
-        :last-child{
-          border-right:0 ;
-        }
-      }
-    }
-
-    .style,
-    .emotion{
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-      overflow: hidden;
-      .space{
-        transform: skewX(45deg);
-        width: 20%;
-        border-left:2px solid ;
-        position: relative;
-        overflow: hidden;
-        img{
-          transform: skewX(-45deg);
-          position: absolute;
-          width: 150%;
-          margin: 0 0 0 -100%;
-          opacity: 0;
-        }
->>>>>>> c52755e1e5dc3157ef2a8165303cb5d230a1f6e9
         .txt{
           transform: skewX(-45deg);
           padding: 5% 0;
