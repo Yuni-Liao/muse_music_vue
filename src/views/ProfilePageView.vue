@@ -288,7 +288,7 @@
                   {{ item.s_name }}
                 </h4>
                 <span class="time">{{ item.s_length }}</span>
-                <span> <AddSlBtn></AddSlBtn></span>
+                <span> <AddSlBtn :addSlSid="item.s_id"></AddSlBtn></span>
                 <span> <AddFavBtn></AddFavBtn></span>
               </li>
               <button

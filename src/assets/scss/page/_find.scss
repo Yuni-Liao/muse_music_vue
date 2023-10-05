@@ -7,7 +7,7 @@
     }
     h1{
       font-size: $big;
-      padding: 5% 0;
+      padding: 3% 0;
       text-align: left ;
       margin:3% 0 3% 2%;
       @include s{
@@ -34,28 +34,23 @@
       border-bottom:1px solid ;
     }
     .find_select{
-      background-color: #303030;
-      position: relative;
-      overflow: hidden;
+      background-image: url(/public/image/Find/japan50.png); //預設背景圖 -- 廖妍榛      
       .language{
         width: 100%;
         display: flex;
         justify-content: space-evenly;
-        // overflow: hidden;
         .space{
           transform: skewX(45deg);
           width: 20%;
           border-left: 2px solid;
           border-right: 2px solid;
-          // position: relative;
-          // overflow:hidden;
-          img{
-            transform: skewX(-45deg);
-            position: absolute;
-            width: 150%;
-            margin: 0 0 0 -70%;
-            opacity: 0;
-          }
+          // img{
+          //   transform: skewX(-45deg);
+          //   position: absolute;
+          //   width: 150%;
+          //   margin: 0 0 0 -70%;
+          //   opacity: 0;
+          // }
           .txt{
             transform: skewX(-45deg);
             padding: 5% 0;
@@ -79,6 +74,40 @@
         :last-child{
           border-right:0 ;
         }
+        .space_0:hover {
+          background-image: url('/public/image/Find/japan50.png');
+          background-position: 50%;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+        
+        .space_1:hover {
+          background-image: url('/public/image/Find/korea50.png');
+          background-position: 50%;
+          background-size: cover;
+          background-repeat: no-repeat;
+  
+        }
+        .space_2:hover {
+          background-image: url('/public/image/Find/asia50.png');
+          background-position: 50%;
+          background-size: cover;
+          background-repeat: no-repeat;
+  
+        }
+        .space_3:hover {
+          background-image: url('/public/image/Find/westernUp.png');
+          background-position: 50%;
+          background-size: cover;
+          background-repeat: no-repeat;
+  
+        }
+        .space_4:hover {
+          background-image: url('/public/image/Find/animalUp.png');
+          background-position: 50%;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
       }
     }
 
@@ -87,20 +116,20 @@
       width: 100%;
       display: flex;
       justify-content: space-evenly;
-      overflow: hidden;
+      // overflow: hidden;
       .space{
         transform: skewX(45deg);
         width: 20%;
         border-left:2px solid ;
-        position: relative;
-        overflow: hidden;
-        img{
-          transform: skewX(-45deg);
-          position: absolute;
-          width: 150%;
-          margin: 0 0 0 -100%;
-          opacity: 0;
-        }
+        // position: relative;
+        // overflow: hidden;
+        // img{
+        //   transform: skewX(-45deg);
+        //   position: absolute;
+        //   width: 150%;
+        //   margin: 0 0 0 -100%;
+        //   opacity: 0;
+        // }
         .txt{
           transform: skewX(-45deg);
           padding: 5% 0;

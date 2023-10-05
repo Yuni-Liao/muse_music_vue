@@ -1,14 +1,26 @@
 <template>
     <div class="find_style">
         <player ref="player"></player>
-        <div class="find_select">
-            
+        <div class="find_select" 
+        :style="{ 
+            'background-image': bgImage,
+            }">
             <div class="find">
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
-                <div class="space" v-for="(item, index) in language" :key="item.mcat_id">
-                    <img :src="`${publicPath}dataimage/find/${item.mcat_pic}`" alt="image">
+
+                <!-- <div class="space" v-for="(item, index) in language" :key="item.mcat_id"> -->
+
+                    <!-- <img :src="`${publicPath}dataimage/find/${item.mcat_pic}`" alt="image"> -->
+
+<!---------------------------------------------------------------------------->
+
+                <div class="space" v-for="(item, index) in language" :key="item.mcat_id" :class="item.className"
+                    @mouseenter="spaceHover(item.mcat_pic)">
+
+                    <!-- <img :src="require(`/public/dataimage/find/${item.mcat_pic}`)" alt="image"> -->
+
                     <div class="txt">
                         <router-link :to="`findmusic/${item.mcat_id}`">
                             {{ item.mcat_name }}
@@ -18,7 +30,7 @@
             </div>
             <div class="style">
                 <div class="space" v-for="sty in style" :key="sty.mcat_id">
-                    <img :src="`${publicPath}dataimage/find/${sty.mcat_pic}`" alt="image">
+                    <!-- <img :src="`${publicPath}dataimage/find/${sty.mcat_pic}`" alt="image"> -->
                     <div class="txt">
                         <router-link :to="`findmusic/${sty.mcat_id}`">
                             {{ sty.mcat_name }}
@@ -28,7 +40,7 @@
             </div>
             <div class="emotion">
                 <div class="space" v-for="em in emotion" :key="em.mcat_id">
-                    <img :src="`${publicPath}dataimage/find/${em.mcat_pic}`" alt="image">
+                    <!-- <img :src="`${publicPath}dataimage/find/${em.mcat_pic}`" alt="image"> -->
                     <div class="txt">
                         <router-link :to="`findmusic/${em.mcat_id}`">
                             {{ em.mcat_name }}
@@ -51,8 +63,7 @@
                     }" 
                     :pagination="{
                         clickable: true,
-                    }" 
-                    :modules="modules">
+                    }" :modules="modules">
                     <swiper-slide v-for="h in singers" :key="h.mem_id">
                         <div class="h_card">
                             <router-link :to="`/home/profilepage/:memid`">
@@ -78,11 +89,10 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                        }" 
-                        :pagination="{
-                            clickable: true,
-                        }" 
-                        :modules="modules">
+                    }" 
+                    :pagination="{
+                        clickable: true,
+                    }" :modules="modules">
                     <swiper-slide v-for="n in songs" :key="n.mem_id">
                         <div class="n_card">
                             <div class="image">
@@ -104,8 +114,6 @@
                 </swiper>
             </section>
         </div>
-
-
     </div>
 </template>
 

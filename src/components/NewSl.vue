@@ -90,7 +90,7 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 400;
 
-  background-color: #000000dd;
+  background-color: #2b2b2bf6;
   box-shadow: 0px 0px 50px #00000030;
   border-radius: 10px;
   color: $white;
