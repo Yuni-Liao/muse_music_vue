@@ -67,7 +67,7 @@
                             </li>
                             <li v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
                                 <span class="id">{{ albumItem.id }}</span>
-                                <span class="pic"><img :src="`/${publicPath}image/SingleMusic/${albumItem.songPic}`" />
+                                <span class="pic"><img :src="`${publicPath}image/SingleMusic/${albumItem.songPic}`" />
                                     <div class="play" @click="openPlayer()">
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>

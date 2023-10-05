@@ -1,4 +1,3 @@
-<!-- 單曲頁面：抓取該首歌曲的資料 -->
 <?php
 try {
     //引入連線工作的檔案
@@ -7,33 +6,26 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    $sid = $_GET['sid'];
-    // $sid = 1;
+    $salid = $_GET['salid'];
+    // $salid = 1;
     //SQL指令: 查詢專輯內容
-    //
     $sql = "select 
-    s.s_id as id,
-    s.s_img as songPic,
-    s.s_name as songName,
-    s.upload_date as date,
-    s.s_intro as songInf,
-    s.s_length as time,
-    s.play_num as played,
-    s.fav_num as liked,
-    s.share_num as shared,
-    a.alb_img as albumPic,
-    a.alb_name as album,
-    m.intro as albumInf,
+    al.alb_id,
+    al.alb_name,
+    al.alb_intro,
+    al.alb_img,
+    al.mem_id as singer_id,
+    al.share_num,
     m.mem_name as singer,
     m.mem_pic as singerPic,
-    mc.mcat_name as type
-    from song s
-    left join album a on s.alb_id = a.alb_id or s.alb_id IS NULL
-    left join member m on s.mem_id = m.mem_id
-    left join song_cat sc on s.s_id = sc.s_id
-    left join music_cat mc on sc.mcat_id = mc.mcat_id
-    where a.alb_id = $sid
-    order by s.update_date;";
+    s.s_id,
+    s.s_name,
+    s.s_img,
+    s.s_length
+    from album al
+    join member m on al.mem_id = m.mem_id
+    join song s on s.alb_id = al.alb_id
+    where al.alb_id = $salid;";
 
     $singleAlbum = $pdo->query($sql);
     //如果找得資料，取回資料，送出json

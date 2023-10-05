@@ -12,7 +12,14 @@ try {
 
     //SQL指令: 查詢歌單資料
     //含抓歌單圖片(歌單中第一首歌的歌曲圖片)
-    $sql = "select sl.sl_id, sl.mem_id as creater_id, m.mem_name as creater_name, m.mem_pic as creater_pic, sl.sl_name, sl.fol_num, sl.share_num,
+    $sql = "select 
+    sl.sl_id, 
+    sl.mem_id as creater_id, 
+    m.mem_name as creater_name, 
+    m.mem_pic as creater_pic, 
+    sl.sl_name, 
+    sl.fol_num, 
+    sl.share_num,
     (select s_img
      from song
      where s_id = (select s_id 
@@ -20,7 +27,8 @@ try {
                     where sl_id = sl.sl_id 
                     limit 1)
     ) as sl_pic
-    from song_list sl join member m on sl.mem_id = m.mem_id
+    from song_list sl 
+    join member m on sl.mem_id = m.mem_id
     where  sl.sl_id = $slid;";
 
     $songlistDetail = $pdo->query($sql);

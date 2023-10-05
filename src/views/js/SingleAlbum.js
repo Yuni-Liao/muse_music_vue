@@ -12,8 +12,6 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            //
-            //歌曲清單
             album: [
                 {
                     id: 1,
@@ -71,9 +69,39 @@ export default {
                     showMoreBtn: false,
                 }
             ],
+            //album: [],//專輯資訊 (fetch)
+            //songs: [],//專輯歌曲資訊 (fetch)
         };
     },
     methods: {
+        //獲取專輯資訊
+        // fetchSingleAlbum() {
+        //     const salid = this.$route.params.salid;
+        //     const apiURL = new URL(
+        //         `http://localhost/muse_music/public/api/getSingleAlbum.php?slid=${salid}`
+        //     );
+        //     fetch(apiURL)
+        //         .then(async (response) => {
+        //             this.album = await response.json();
+        //         })
+        //         .catch((error) => {
+        //             console.error("發生錯誤:", error);
+        //         });
+        // },
+        //獲取專輯歌曲資訊
+        // fetchSingleAlbumSong() {
+        //     const salid = this.$route.params.salid;
+        //     const apiURL = new URL(
+        //         `http://localhost/muse_music/public/api/getSingleAlbumSong.php?slid=${salid}`
+        //     );
+        //     fetch(apiURL)
+        //         .then(async (response) => {
+        //             this.songs = await response.json();
+        //         })
+        //         .catch((error) => {
+        //             console.error("發生錯誤:", error);
+        //         });
+        // },
         //播放器
         openPlayer() {
             this.$refs.player.playMusic();
@@ -85,4 +113,10 @@ export default {
             albumItem.showMoreBtn = false;
         }
     },
+    mounted() {
+        // 獲取專輯資訊
+        //this.fetchSingleAlbum();
+        //獲取專輯歌曲資訊
+        //this.fetchSingleAlbumSong();
+    }
 };

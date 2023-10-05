@@ -4,6 +4,7 @@
     <!-- 上方大圖 -->
     <section class="banner">
       <div class="overlay"></div>
+      <!-- 假如沒有歌單內沒有歌曲，則使用預設圖片 -->
       <img
         v-if="this.slSongs.length == 0"
         :src="`${publicPath}image/footer_background.jpg`"

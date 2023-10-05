@@ -8,11 +8,13 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    //$memid = $_GET['memid'];
-    $memid = 1;
+    $memid = $_GET['memid'];
+    //$memid = 1;
 
-    //SQL指令: 查詢會員資料
-    $sql = "select mem_id, mem_name, mem_aka, mem_acc, email, bind_acc, stat, county, intro, mem_pic, cover_pic, privacy,r_date, social_media, fol_num
+    //SQL指令: 查詢會員資料(含會員上傳歌曲數量 及 會員追蹤之創作者數量)
+    $sql = "select mem_id, mem_name, mem_aka, stat,county, intro, mem_pic, cover_pic, privacy, social_media, fol_num,
+    (select  count(*) from song where song.mem_id = mem_id )as song_count,
+    (select  count(*) from cre_fol where cre_fol.mem_id = mem_id )as crefol_count
     from member 
     where mem_id = $memid;";
 
@@ -22,7 +24,7 @@ try {
     if ($memData->rowCount() === 0) {
         echo "查無此會員";
     } else {
-        $mRow = $memData->fetchAll(PDO::FETCH_ASSOC);
+        $mRow = $memData->fetch(PDO::FETCH_ASSOC);
         echo json_encode($mRow); //送出json字串
     }
 } catch (Exception $e) {
