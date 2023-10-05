@@ -27,27 +27,6 @@ export default {
     },
   },
   methods: {
-    // 獲取我的歌單(含追蹤創建及追蹤)
-    fetchMyallsonglist() {
-      const loginMemId = this.login_mem_id;
-      const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
-      );
-      let Myallsonglist;
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => {
-          Myallsonglist = res;
-          //根據創建日期排序
-          this.Myallsonglists = Myallsonglist.sort(function (a, b) {
-            return a.update_date < b.update_date ? 1 : -1;
-          });
-        })
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
-    },
-
     //更多選單 顯示隱藏
     showtoggle(e, index) {
       if (e.target.nextElementSibling.classList.contains("show")) {
@@ -93,10 +72,32 @@ export default {
     },
   },
   mounted() {
+    // fetch我的歌單(含追蹤創建及追蹤)
+    const fetchMyallsonglist = () => {
+      const loginMemId = this.login_mem_id;
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
+      );
+      let Myallsonglist;
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => {
+          Myallsonglist = res;
+          //根據創建日期排序
+          this.Myallsonglists = Myallsonglist.sort(function (a, b) {
+            return a.update_date < b.update_date ? 1 : -1;
+          });
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+
+    // 執行fetch
+    fetchMyallsonglist();
+
     //建立事件聆聽:點空白處關閉
     document.addEventListener("click", this.closemore, true);
-    // 獲取我的歌單(含追蹤創建及追蹤)
-    this.fetchMyallsonglist();
   },
   beforeUnmount() {
     //移除事件聆聽:點空白處關閉
