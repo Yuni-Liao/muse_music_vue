@@ -34,6 +34,11 @@
 .singleAlbum .inner {
     @include layout(1200px);
 
+    @media screen and (max-width: 800px) {
+        padding: 5%;
+        box-sizing: border-box;
+    }
+
     .topInf {
         position: relative;
         margin-top: -310px;
@@ -284,7 +289,7 @@
                             #AddFavBtn,
                             #AddSlBtn,
                             #ShareBtn {
-                                margin:0 10px;
+                                margin: 0 10px;
                             }
                         }
                     }
