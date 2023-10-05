@@ -1,4 +1,4 @@
-
+<!-- 專輯頁面：抓取該張專輯的歌曲資料 -->
 <?php
 try {
     //引入連線工作的檔案
@@ -7,22 +7,23 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    $slid = $_GET['salid'];
-    // $salid = 1;
+    //$slid = $_GET['salid'];
+    $salid = 1;
 
     //SQL指令: 查詢專輯歌曲資料
     $sql = "select 
     al.alb_id, 
-    s.mem_id as singer_id, 
+    s.mem_id, 
     m.mem_name as singer,
-    s.alb_id , 
-    s.s_length, 
-    s.s_name
+    s.alb_id,
+    s.s_id as id, 
+    s.s_length as time, 
+    s.s_name as singer
     from album al
     join song s on s.alb_id = al.alb_id
     join member m on s.mem_id = m.mem_id
-    where  al.al_id = $salid
-    order by al.update_date;";
+    where  al.alb_id = $salid
+    order by s.s_id;";
 
     $singleAlbumSong = $pdo->query($sql);
 
