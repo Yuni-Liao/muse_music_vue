@@ -2,12 +2,13 @@
     <div class="find_style">
         <player ref="player"></player>
         <div class="find_select">
+            
             <div class="find">
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
                 <div class="space" v-for="(item, index) in language" :key="item.mcat_id">
-                    <img :src="require(`/public/dataimage/find/${item.mcat_pic}`)" alt="image">
+                    <img :src="`${publicPath}dataimage/find/${item.mcat_pic}`" alt="image">
                     <div class="txt">
                         <router-link :to="`findmusic/${item.mcat_id}`">
                             {{ item.mcat_name }}
@@ -17,7 +18,7 @@
             </div>
             <div class="style">
                 <div class="space" v-for="sty in style" :key="sty.mcat_id">
-                    <img :src="require(`/public/dataimage/find/${sty.mcat_pic}`)" alt="image">
+                    <img :src="`${publicPath}dataimage/find/${sty.mcat_pic}`" alt="image">
                     <div class="txt">
                         <router-link :to="`findmusic/${sty.mcat_id}`">
                             {{ sty.mcat_name }}
@@ -27,7 +28,7 @@
             </div>
             <div class="emotion">
                 <div class="space" v-for="em in emotion" :key="em.mcat_id">
-                    <img :src="require(`/public/dataimage/find/${em.mcat_pic}`)" alt="image">
+                    <img :src="`${publicPath}dataimage/find/${em.mcat_pic}`" alt="image">
                     <div class="txt">
                         <router-link :to="`findmusic/${em.mcat_id}`">
                             {{ em.mcat_name }}
@@ -55,7 +56,7 @@
                     <swiper-slide v-for="h in singers" :key="h.mem_id">
                         <div class="h_card">
                             <router-link :to="`/home/profilepage/:memid`">
-                                <img :src="require(`/public/dataimage/member/${h.mem_pic}`)" />
+                                <img :src="`${publicPath}dataimage/member/${h.mem_pic}`" />
                                 <div class="text">
                                     <h4>{{ h.mem_name }}</h4>
                                 </div>
@@ -87,7 +88,7 @@
                             <div class="image">
                                 <PlayBtnBig class="play_btn" @click="openPlayer">
                                 </PlayBtnBig>
-                                <img :src="require(`/public/dataimage/song/${n.s_img}`)" @click="openPlayer" />
+                                <img :src="`${publicPath}dataimage/song/${n.s_img}`" @click="openPlayer" />
                             </div>
                             <div class="text">
                                 <h4>{{ n.s_name }}</h4>
