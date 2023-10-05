@@ -25,7 +25,7 @@ try {
     from album al
     join member m on al.mem_id = m.mem_id
     join song s on s.alb_id = al.alb_id
-    where al.alb_id = $salid";
+    where al.alb_id = $salid;";
 
     $singleAlbum = $pdo->query($sql);
     //如果找得資料，取回資料，送出json
