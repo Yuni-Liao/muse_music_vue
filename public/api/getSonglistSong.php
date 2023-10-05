@@ -8,7 +8,7 @@ try {
 
     //執行sql指令並取得pdoStatement
     $slid = $_GET['slid'];
-    // $slid = 1;
+    //$slid = 1;
     //SQL指令: 查詢歌單歌曲
     $sql = "select  sli.s_id, s.s_img , s.s_name, s.mem_id as singer_id, m.mem_name as singer ,s.alb_id ,a.alb_name, s.s_length,sli.update_date
     from slitem sli join song s on sli.s_id = s.s_id 
