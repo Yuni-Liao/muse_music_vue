@@ -38,6 +38,7 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
+            bgImage: '', // 存放背景圖 -- 廖妍榛
             // 語系
             language: [
                 {
@@ -45,30 +46,35 @@ export default {
                     name: '日語流行',
                     img: 'japan50.png',
                     link: 'findmusic',
+                    className: 'space_0',
                 },
                 {
                     id: 1,
                     name: '韓語流行',
                     img: 'korea50.png',
                     link: 'findmusic',
+                    className: 'space_1',
                 },
                 {
                     id: 2,
                     name: '華語流行',
                     img: 'asia50.png',
                     link: 'findmusic',
+                    className: 'space_2',
                 },
                 {
                     id: 3,
                     name: '西洋流行',
                     img: 'westernUp.png',
                     link: 'findmusic',
+                    className: 'space_3',
                 },
                 {
                     id: 4,
                     name: '其他語言',
                     img: 'animalUp.png',
                     link: 'findmusic',
+                    className: 'space_4',
                 },
             ],
             // 風格
@@ -255,6 +261,11 @@ export default {
     methods: {
         openPlayer() {
             this.$refs.player.playMusic();
+        },
+        //  更換父組件背景圖 -- 廖妍榛
+        spaceHover(imgUrl) {
+            this.bgImage = `url(${this.publicPath}image/Find/${imgUrl})`;
+            console.log('Hovered image URL:', this.bgImage);
         },
     },
 }

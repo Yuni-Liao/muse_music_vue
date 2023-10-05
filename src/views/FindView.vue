@@ -1,13 +1,13 @@
 <template>
     <div class="find_style">
         <player ref="player"></player>
-        <div class="find_select">
+        <div class="find_select" :style="{ 'background-image': bgImage }">
             <div class="find">
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
-                <div class="space" v-for="(item, id) in language" :key="id">
-                    <img :src="require(`/public/image/Find/${item.img}`)" alt="image">
+                <div class="space" v-for="(item, id) in language" :key="id" :class="item.className"
+                    @mouseenter="spaceHover(item.img)">
                     <div class="txt">
                         <router-link :to="`findmusic/${id}`">
                             {{ item.name }}
