@@ -133,8 +133,13 @@
             margin: auto;
             cursor: pointer;
             img {
-              width: 100%;
+              width: 350px;
+              height: 350px;
               border-radius: 100%;
+              @include s{
+                width: 100px;
+                height: 100px;
+              }
             }
             .text{
               margin: 5% 0;
@@ -149,6 +154,7 @@
     }
     //------------------------------------------------
     .new_release{
+      margin:0 0 4% 0;
       @include s{
         padding:0 0 15% 0;
         #PlayBtnBig{

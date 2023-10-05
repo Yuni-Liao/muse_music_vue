@@ -8,7 +8,7 @@ try{
     //執行sql指令並取得pdoStatement
     //SQL指令: 查詢music_cat
 
-    $sql = "select * from music_cat;";
+    $sql = "select * from member;";
 
     $styles = $pdo->query($sql);
 

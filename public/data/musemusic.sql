@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2023-10-04 08:46:58
+-- 產生時間： 2023-10-04 16:50:12
 -- 伺服器版本： 8.0.31
 -- PHP 版本： 8.0.26
 
@@ -219,8 +219,8 @@ CREATE TABLE IF NOT EXISTS `member` (
   `stat` tinyint(1) DEFAULT '1',
   `county` varchar(10) DEFAULT NULL,
   `intro` varchar(100) DEFAULT NULL,
-  `mem_pic` varchar(25) DEFAULT NULL,
-  `cover_pic` varchar(25) DEFAULT NULL,
+  `mem_pic` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'pre.jpg',
+  `cover_pic` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'precover.jpg',
   `privacy` tinyint(1) DEFAULT '1',
   `r_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `mem_aka` varchar(10) DEFAULT NULL,
@@ -315,6 +315,7 @@ CREATE TABLE IF NOT EXISTS `music_cat` (
   `mcat_id` int NOT NULL AUTO_INCREMENT,
   `mcat_name` varchar(15) DEFAULT NULL,
   `mcat_type` tinyint DEFAULT NULL,
+  `mcat_pic` varchar(25) DEFAULT 'pre.jpg',
   PRIMARY KEY (`mcat_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='音樂類別';
 
@@ -322,26 +323,26 @@ CREATE TABLE IF NOT EXISTS `music_cat` (
 -- 傾印資料表的資料 `music_cat`
 --
 
-INSERT INTO `music_cat` (`mcat_id`, `mcat_name`, `mcat_type`) VALUES
-(1, '日語', 0),
-(2, '韓語', 0),
-(3, '華語', 0),
-(4, '西洋', 0),
-(5, '其他語言', 0),
-(6, '流行音樂', 1),
-(7, '獨立音樂', 1),
-(8, '嘻哈', 1),
-(9, '搖滾', 1),
-(10, '藍調', 1),
-(11, '爵士', 1),
-(12, '古典', 1),
-(13, '快樂', 2),
-(14, '傷心', 2),
-(15, '輕鬆', 2),
-(16, '舒眠', 2),
-(17, '專注', 2),
-(18, '運動', 2),
-(19, '派對', 2);
+INSERT INTO `music_cat` (`mcat_id`, `mcat_name`, `mcat_type`, `mcat_pic`) VALUES
+(1, '日語', 0, '1.jpg'),
+(2, '韓語', 0, '2.jpg'),
+(3, '華語', 0, '3.jpg'),
+(4, '西洋', 0, '4.jpg'),
+(5, '其他語言', 0, '5.jpg'),
+(6, '流行音樂', 1, '6.jpg'),
+(7, '獨立音樂', 1, '7.jpg'),
+(8, '嘻哈', 1, '8.jpg'),
+(9, '搖滾', 1, '9.jpg'),
+(10, '藍調', 1, '10.jpg'),
+(11, '爵士', 1, '11.jpg'),
+(12, '古典', 1, '12.jpg'),
+(13, '快樂', 2, '13.jpg'),
+(14, '傷心', 2, '14.jpg'),
+(15, '輕鬆', 2, '15.jpg'),
+(16, '舒眠', 2, '16.jpg'),
+(17, '專注', 2, '17.jpg'),
+(18, '運動', 2, '18.jpg'),
+(19, '派對', 2, '19.jpg');
 
 -- --------------------------------------------------------
 
@@ -674,7 +675,7 @@ CREATE TABLE IF NOT EXISTS `song` (
   `alb_id` int DEFAULT NULL,
   `s_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `s_intro` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `s_img` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `s_img` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'pre.jpg',
   `s_src` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `s_lyrics` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `s_length` time DEFAULT NULL,
