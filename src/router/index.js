@@ -220,6 +220,7 @@ const routes = [
       //以下是專輯頁面
       {
         path: "singlealbum",
+        //path: "singlealbum/:salid",
         name: "singlealbum",
         component: () =>
           import(

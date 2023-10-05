@@ -103,7 +103,7 @@ export default {
             fetch(apiURL).then(async (response) => {
                 this.products = await response.json();
             });
-            console.log(this.products);
+            //console.log(this.products);
         },
         setCurrentKind(kind) {
             console.log('Clicked on kind:', kind);
