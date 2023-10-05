@@ -6,38 +6,41 @@
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
+<<<<<<< HEAD
                 <div class="space" v-for="(item, id) in language" :key="id" :class="item.className"
                     @mouseenter="spaceHover(item.img)">
+=======
+                <div class="space" v-for="(item, index) in language" :key="item.mcat_id">
+                    <img :src="require(`/public/dataimage/find/${item.mcat_pic}`)" alt="image">
+>>>>>>> c52755e1e5dc3157ef2a8165303cb5d230a1f6e9
                     <div class="txt">
-                        <router-link :to="`findmusic/${id}`">
-                            {{ item.name }}
+                        <router-link :to="`findmusic/${item.mcat_id}`">
+                            {{ item.mcat_name }}
                         </router-link>
                     </div>
                 </div>
             </div>
             <div class="style">
-                <div class="space" v-for="sty in style" :key="sty.id">
-                    <img :src="require(`/public/image/Find/${sty.img}`)" alt="image">
+                <div class="space" v-for="sty in style" :key="sty.mcat_id">
+                    <img :src="require(`/public/dataimage/find/${sty.mcat_pic}`)" alt="image">
                     <div class="txt">
-                        <router-link :to="`findmusic/${sty.id}`">
-                            {{ sty.name }}
+                        <router-link :to="`findmusic/${sty.mcat_id}`">
+                            {{ sty.mcat_name }}
                         </router-link>
                     </div>
                 </div>
             </div>
             <div class="emotion">
-                <div class="space" v-for="em in emotion" :key="em.id">
-                    <img :src="require(`/public/image/Find/${em.img}`)" alt="image">
+                <div class="space" v-for="em in emotion" :key="em.mcat_id">
+                    <img :src="require(`/public/dataimage/find/${em.mcat_pic}`)" alt="image">
                     <div class="txt">
-                        <router-link :to="`findmusic/${em.id}`">
-                            {{ em.name }}
+                        <router-link :to="`findmusic/${em.mcat_id}`">
+                            {{ em.mcat_name }}
                         </router-link>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="hot_creator">
             <h2>熱門創作者．Hot Creator</h2>
             <section>
@@ -49,15 +52,17 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                    }" :pagination="{
-    clickable: true,
-}" :modules="modules">
-                    <swiper-slide v-for="(item, sid) in singers" :key="sid">
+                    }" 
+                    :pagination="{
+                        clickable: true,
+                    }" 
+                    :modules="modules">
+                    <swiper-slide v-for="h in singers" :key="h.mem_id">
                         <div class="h_card">
-                            <router-link :to="item.slink">
-                                <img :src="require(`/public/image/index/${item.image}`)" />
+                            <router-link :to="`/home/profilepage/:memid`">
+                                <img :src="require(`/public/dataimage/member/${h.mem_pic}`)" />
                                 <div class="text">
-                                    <h4>{{ item.singer }}</h4>
+                                    <h4>{{ h.mem_name }}</h4>
                                 </div>
                             </router-link>
                         </div>
@@ -77,24 +82,25 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                    }" :pagination="{
-    clickable: true,
-}" :modules="modules">
-                    <swiper-slide v-for="(item, index) in singers" :key="index">
+                        }" 
+                        :pagination="{
+                            clickable: true,
+                        }" 
+                        :modules="modules">
+                    <swiper-slide v-for="n in songs" :key="n.mem_id">
                         <div class="n_card">
                             <div class="image">
                                 <PlayBtnBig class="play_btn" @click="openPlayer">
-
                                 </PlayBtnBig>
-                                <img :src="require(`/public/image/index/${item.image}`)" @click="openPlayer" />
+                                <img :src="require(`/public/dataimage/song/${n.s_img}`)" @click="openPlayer" />
                             </div>
                             <div class="text">
-                                <h4>{{ item.title }}</h4>
+                                <h4>{{ n.s_name }}</h4>
                                 <p>
-                                    <router-link :to="item.slink">
-                                        {{ item.singer }}
+                                    <router-link :to="`/home/profilepage/:memid`">
+                                        {{ n.h_name }}
                                     </router-link>
-                                    <span>播放量{{ item.views }}</span>
+                                    <span>播放量{{ n.play_num }}</span>
                                 </p>
                             </div>
                         </div>

@@ -16,40 +16,7 @@
                 <h3>{{ item.info }}</h3>
 
             </swiper-slide>
-            <!-- <swiper-slide style="background-image: url('/image/Activity/activityBanner01.jpg');">
-                <div class="calender">
-                    <div class="month">
-                        7月
-                    </div>
-                    <p>26日</p>
-                    <p>星期三</p>
-                </div>
-                <h3>音樂大排檔 : Showcase演唱會</h3>
-                <h3>19:00 / 台中市 / Legacy Taichung 傳 音樂展演空間</h3>
-
-            </swiper-slide>
-            <swiper-slide style="background-image: url('/image/Activity/activityBanner02.jpg');">
-                <div class="calender">
-                    <div class="month">
-                        8月
-                    </div>
-                    <p>4日</p>
-                    <p>星期五</p>
-                </div>
-                <h3>初登場！夏日新聲企劃！</h3>
-                <h3>20:00 / 台北市 / Revolver</h3>
-            </swiper-slide>
-            <swiper-slide style="background-image: url('/image/Activity/activityBanner03.jpg');">
-                <div class="calender">
-                    <div class="month">
-                        8月
-                    </div>
-                    <p>14日</p>
-                    <p>星期一</p>
-                </div>
-                <h3>喧嘩祭</h3>
-                <h3>16:00/ 高雄市 / 百樂門酒館</h3>
-            </swiper-slide> -->
+            
 
         </swiper>
     </div>
@@ -157,17 +124,15 @@
                     </router-link>
                     <div class="info">
                         <router-link :to="`ActivityInfo/${id}`">
-                            <p>{{ activity.title }}</p>
+                            <p>{{ news.news_neame }}</p>
                         </router-link>
                         <router-link :to="`ActivityInfo/${id}`">
-                            <p>{{ activity.timePlace }}</p>
+                            <p>{{ news.news_place }}</p>
                         </router-link>
                         <div class="followSinger">
-                            <router-link to="profilepage" class="singer">
-                                <fontAwesome :icon="['fa', 'user-large']"
+                            <fontAwesome :icon="['fa', 'user-large']"
                                     style="color: #fff; margin-left: 10px; cursor: pointer;" />
-                                <p>{{ activity.singer }}</p>
-                            </router-link>
+                                <p>{{ news.singer }}</p>
                             <FolBtnBig :functype="2" />
                         </div>
 

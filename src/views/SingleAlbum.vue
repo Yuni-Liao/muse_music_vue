@@ -4,14 +4,14 @@
         <!-- 上方大圖 -->
         <div class="banner" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
             <div class="overlay"></div>
-            <img class="backPic" :src="require(`/public/image/SingleAlbum/${album[0].albumPic}`)"
+            <img class="backPic" :src="`${publicPath}image/SingleAlbum/${album[0].albumPic}`"
                 alt="albumItem.bannerPic">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
             <div class="topInf" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
                 <div class="albumPic">
-                    <img :src="require(`/public/image/SingleAlbum/${albumItem.albumPic}`)" alt="albumItem.songName">
+                    <img :src="`${publicPath}image/SingleAlbum/${albumItem.albumPic}`" alt="albumItem.songName">
                 </div>
                 <div class="albumInf">
                     <div class="album">
@@ -41,7 +41,7 @@
                 <div class="singerInf">
                     <router-link to="/home/profilepage" class="singer">
                         <div class="singerPic">
-                            <img :src="require(`/public/image/SingleMusic/${albumItem.singerPic}`)" alt="albumItem.singer">
+                            <img :src="`${publicPath}image/SingleMusic/${albumItem.singerPic}`" alt="albumItem.singer">
                         </div>
                         <p class="singerName">{{ albumItem.singer }}</p>
                     </router-link>
@@ -67,7 +67,7 @@
                             </li>
                             <li v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
                                 <span class="id">{{ albumItem.id }}</span>
-                                <span class="pic"><img :src="require(`/public/image/SingleMusic/${albumItem.songPic}`)" />
+                                <span class="pic"><img :src="`${publicPath}image/SingleMusic/${albumItem.songPic}`" />
                                     <div class="play" @click="openPlayer()">
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>
