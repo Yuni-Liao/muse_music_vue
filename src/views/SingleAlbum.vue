@@ -39,7 +39,8 @@
             </div>
             <div class="mainInf" v-for="albumItem in album" :key="alb_id">
                 <div class="singerInf">
-                    <router-link to="/home/profilepage" class="singer">
+                    <!-- 路徑還要修改抓id -->
+                    <router-link to="/home/profilepage/1" class="singer">
                         <div class="singerPic">
                             <img :src="`${publicPath}dataimage/member/${albumItem.singerpic}`" alt="albumItem.singer">
                         </div>
@@ -73,8 +74,9 @@
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>
                                 </span>
-                                <h3 v-line-clamp="2" class="name">
-                                    <router-link to="/home/singlemusic">{{ item.name }}</router-link>
+                                <h3 v-line-clamp="2" class="name" @click="gotosinglemusic(item.id)">
+                                    <!-- <router-link to="/home/singlemusic">{{ item.name }}</router-link> -->
+                                    {{ item.name }}
                                 </h3>
                                 <span class="time">{{ item.time }}</span>
                                 <div class="btnArea">
