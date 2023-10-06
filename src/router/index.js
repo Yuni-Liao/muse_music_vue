@@ -318,7 +318,7 @@ const routes = [
 
       //以下是探索音樂內頁頁面
       {
-        path: "findmusic/:id",
+        path: "findmusic/:mcat_id",
         name: "findmusic",
         component: () =>
           import(

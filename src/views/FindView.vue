@@ -3,24 +3,14 @@
         <player ref="player"></player>
         <div class="find_select" 
         :style="{ 
-            'background-image': bgImage,
+            'backgroundImage': bgImage,
             }">
             <div class="find">
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
-
-                <!-- <div class="space" v-for="(item, index) in language" :key="item.mcat_id"> -->
-
-                    <!-- <img :src="`${publicPath}dataimage/find/${item.mcat_pic}`" alt="image"> -->
-
-<!---------------------------------------------------------------------------->
-
                 <div class="space" v-for="(item, index) in language" :key="item.mcat_id" :class="item.className"
                     @mouseenter="spaceHover(item.mcat_pic)">
-
-                    <!-- <img :src="require(`/public/dataimage/find/${item.mcat_pic}`)" alt="image"> -->
-
                     <div class="txt">
                         <router-link :to="`findmusic/${item.mcat_id}`">
                             {{ item.mcat_name }}
@@ -29,7 +19,7 @@
                 </div>
             </div>
             <div class="style">
-                <div class="space" v-for="sty in style" :key="sty.mcat_id">
+                <div class="space" v-for="sty in style" :key="sty.mcat_id" @mouseenter="spaceHover(sty.mcat_pic)">
                     <!-- <img :src="`${publicPath}dataimage/find/${sty.mcat_pic}`" alt="image"> -->
                     <div class="txt">
                         <router-link :to="`findmusic/${sty.mcat_id}`">
@@ -39,7 +29,7 @@
                 </div>
             </div>
             <div class="emotion">
-                <div class="space" v-for="em in emotion" :key="em.mcat_id">
+                <div class="space" v-for="em in emotion" :key="em.mcat_id" @mouseenter="spaceHover(em.mcat_pic)">
                     <!-- <img :src="`${publicPath}dataimage/find/${em.mcat_pic}`" alt="image"> -->
                     <div class="txt">
                         <router-link :to="`findmusic/${em.mcat_id}`">
