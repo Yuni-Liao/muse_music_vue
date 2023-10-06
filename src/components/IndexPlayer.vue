@@ -34,20 +34,20 @@
                 <div class="plates_vols">
                     <div class="vol vol_left" @click="leftInputVolume()">
                         <input class="left_vol obj_Radius" type="range" v-model="leftVolumeValue" name="vol_left"
-                            id="volume_left" min="0" max="100" @input="leftAdjustVolume" />
+                            id="volume_left" min="0" max="100" @input="leftInputVolume" />
                     </div>
                     <div class="vol vol_right" @click="rightInputVolume()">
                         <input class="right_vol obj_Radius" type="range" v-model="rightVolumeValue" name="volume_right"
-                            id="volume_right" min="0" max="100" @input="rightAdjustVolume" />
+                            id="volume_right" min="0" max="100" @input="rightInputVolume" />
                     </div>
                 </div>
-                <div class="vol vol_mix">
-                    <input class="mix_vol obj_Radius" type="range" v-model="globalVolume" name="volume_mix" id="volume_mix"
-                        min="0" max="100" />
+                <div class="vol vol_cd">
+                    <input class="mix_vol obj_Radius" @click="cdSongVolume()" type="range" v-model="cdVolumeValue"
+                        name="volume_cd" id="volume_cd" min="0" max="100" @input="cdSongVolume" />
                 </div>
             </div>
             <div class="dj_right">
-                <div class="special_buttons">
+                <div class="special_buttons topbuttons">
                     <button class="button prev obj_Radius" id="oneBtn" @click="indexPlaySound(`muzA`)">
                         🎹
                     </button>
@@ -61,7 +61,7 @@
                         🎹
                     </button>
                 </div>
-                <div class="special_buttons">
+                <div class="special_buttons centerbuttons">
                     <button class="button prev obj_Radius" id="fiveBtn" @click="indexPlaySound(`muzG`)">
                         🥁
                     </button>
@@ -75,7 +75,7 @@
                         🥁
                     </button>
                 </div>
-                <div class="special_buttons">
+                <div class="special_buttons bottombuttons">
                     <button class="button prev obj_Radius" id="nineBtn" @click="indexPlaySound(`muzK`)">
                         🎼
                     </button>
@@ -126,7 +126,7 @@
             }
 
             .song_info {
-                height: 50px;
+                height: fit-content;
                 display: flex;
                 justify-content: space-between;
                 color: #fff;
@@ -193,14 +193,41 @@
         .special_buttons {
             button {
                 align-self: center;
-                color: $dark;
-                background: linear-gradient(lightpink, lightblue);
-                padding: 10px 20px;
+                @include rect(60px, 50px);
+                margin: 0.5rem;
+            }
+        }
+
+        .topbuttons {
+            button {
+
+                background: linear-gradient(rgb(241, 241, 142), rgb(210, 210, 41));
             }
 
             button:active {
-                background: linear-gradient(lightblue, $purple);
-                color: $dark;
+                background: linear-gradient(rgb(210, 210, 41), rgb(247, 247, 192));
+            }
+        }
+
+        .centerbuttons {
+            button {
+
+                background: linear-gradient(rgb(235, 140, 211), rgb(216, 49, 185));
+            }
+
+            button:active {
+                background: linear-gradient(rgb(233, 61, 190), rgb(251, 227, 245));
+            }
+        }
+
+        .bottombuttons {
+            button {
+
+                background: linear-gradient(rgb(150, 241, 142), rgb(74, 220, 72));
+            }
+
+            button:active {
+                background: linear-gradient(rgb(74, 220, 72), rgb(197, 246, 196));
             }
         }
 
@@ -231,7 +258,7 @@
                 width: 20%;
             }
 
-            .vol_mix {
+            .vol_cd {
                 display: flex;
                 align-self: center;
                 margin: 20px;
@@ -319,7 +346,7 @@
 // 右半部按鈕效果
 </style>
 <script>
-import { Howl, Howler } from 'howler';
+
 
 export default {
     name: "IndexPlayer",
@@ -332,17 +359,18 @@ export default {
 
             // 存放音樂
             cdSound: null,
+            cdAudio: null,
             currentLeftAudio: null,
             currentRightAudio: null,
 
             // 拉條的預設input位置
-            leftVolumeValue: 50,
-            rightVolumeValue: 50,
-            globalVolume: 50,
+            cdVolumeValue: 50,
+            leftVolumeValue: 0,
+            rightVolumeValue: 0,
 
             // 左右拉條的音樂
-            leftSongURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011033115173287398_88016.mp3",
-            rightSongURL: "//tw.yisell.com/2IxLwF/yisell/pays2020111852017888/sound/yisell_sound_200804081705251913_88011.mp3",
+            leftSongURL: "https://cms-public-artifacts.artlist.io/content/music/aac/844606_843784_Zachary_JR_Nelson_-_Birds_Eye_View_2_-_AO-001164-2_-_Master_V2_-_100_Bpm_-_050423_-_BOV_-_ORG_-_2444.aac",
+            rightSongURL: "https://cms-public-artifacts.artlist.io/content/music/aac/853576_Jan_Michal_Sanejko_-_Jan_Sanejko_-_TBD_-_BO-000042-1_-_Master_-_180723_-_124bpm_-_IV_-fixed-_-_ORG_-_2444.aac",
             // 目前音樂的資料存放
             currentSongName: "點擊播放一起聽 ^^",
             currentSongTime: "00:00:00",
@@ -404,18 +432,18 @@ export default {
             // 轉盤音樂的陣列
             songList: [
                 {
-                    name: "Good Night",
-                    songURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011071001335667082_88016.mp3",
+                    name: "Getaway",
+                    songURL: "https://cms-public-artifacts.artlist.io/content/music/aac/848251_848010_Gregory_Mark_Sgrulloni_-_K-Hits_-_AO-001149-2_-_Master_V1_-_110_Bpm_-_240523_-__BOV_-_ORG_-_2444_-_RX.aac",
                     songTime: "01:30:20",
                 },
                 {
-                    name: "Say GoodBye",
-                    songURL: "//tw.yisell.com/2IxLwF/yisell/yays2020111852017888/sound/yisell_sound_2011071001335667082_88016.mp3",
+                    name: "Blah Blah Blah",
+                    songURL: "https://cms-public-artifacts.artlist.io/content/music/aac/858010_857968_Wesley_Eugene_Smith_-_Blah_Blah_Blah_-_Camille_Alyssa_de_la_Cruz_-_AO-001309-1_-_Master_V2_-_110_Bpm_-_310723_-_BOV_-_ORG_-_2444.aac",
                     songTime: "01:20:20",
                 },
                 {
-                    name: "High High",
-                    songURL: "https://assets.mixkit.co/active_storage/sfx/689/689-preview.mp3",
+                    name: "Human",
+                    songURL: "https://cms-public-artifacts.artlist.io/content/music/aac/851064_850435_Sean_Leslie_Fischer_-_Go_Pro_TLV_-_AO-001329-1_-_Master_V1_-_75_Bpm_-_130623_-_BOV_-_ORG_-_2444_-_From_Stems.aac",
                     songTime: "01:00:05",
                 }
             ],
@@ -441,6 +469,21 @@ export default {
         },
     },
     methods: {
+        // 停止播放全域音樂
+        stopAllSong() {
+            if (this.cdSound) {
+                this.cdSound.stop();
+            }
+            if (this.currentLeftAudio) {
+                this.currentLeftAudio.stop();
+            }
+            if (this.currentRightAudio) {
+                this.currentRightAudio.stop();
+            }
+            if (this.sound) {
+                this.sound.stop();
+            }
+        },
         // 右邊小按鈕們
         indexPlaySound(soundName) {
             const sound = new Howl({
@@ -473,8 +516,8 @@ export default {
                 }
 
             } else {
-                this.leftPlaySong("leftSongName");
-                this.rightPlaySong("rightSongName");
+                this.leftPlaySong();
+                this.rightPlaySong();
                 const selectedSong = this.songList[songIndex];
 
                 if (selectedSong) {
@@ -522,6 +565,11 @@ export default {
 
             // 計算索引值, 上一首 -1
             this.currentSongIndex = (this.currentSongIndex - 1 + this.songList.length) % this.songList.length;
+
+            // 換一首歌就要播一次拉條的音樂
+            this.leftPlaySong();
+            this.rightPlaySong();
+
             const selectedSong = this.songList[this.currentSongIndex];
 
             if (selectedSong) {
@@ -542,7 +590,6 @@ export default {
             }
         },
 
-
         // 下一首
         playNextSong() {
             if (this.cdSound) {
@@ -558,7 +605,12 @@ export default {
 
             this.currentSongIndex = (this.currentSongIndex + 1) % this.songList.length;
 
+            // 換一首歌就要播一次拉條的音樂
+            this.leftPlaySong();
+            this.rightPlaySong();
+
             const selectedSong = this.songList[this.currentSongIndex];
+
             if (selectedSong) {
                 this.cdSound = new Howl({
                     src: [selectedSong.songURL],
@@ -579,82 +631,69 @@ export default {
         },
 
         // 左邊input拉條
-        leftPlaySong(leftSongName) {
+        leftPlaySong() {
             if (this.currentLeftAudio) {
-                if (this.currentLeftAudio === 0) {
-                    this.currentLeftAudio.stop();
-                }
-                this.currentLeftAudio = null;
-
-            } else {
-                this.currentLeftAudio = new Howl({
-                    src: [this.leftSongURL],
-                    autoplay: true,
-                    onend: function () {
-                        console.log('Left Done');
-                    }
-                });
+                this.currentLeftAudio.stop();
             }
-        },
-        leftInputVolume() {
-            if (this.currentLeftAudio) {
-                if (this.currentLeftAudio === 0) {
-                    this.currentLeftAudio.stop();
-                } else {
-                    this.currentLeftAudio.volume(this.leftVolumeValue / 100);
-                    // this.updateGlobalVolume(); // 更新全局音量
+            this.currentLeftAudio = new Howl({
+                src: [this.leftSongURL],
+                autoplay: true,
+                volume: this.leftVolumeValue / 100,
+                onend: function () {
+                    console.log('Left Done');
                 }
-            }
-            console.log('Left Volume:', this.leftVolumeValue);
+            });
         },
 
         // 右邊input拉條
-        rightPlaySong(rightSongName) {
+        rightPlaySong() {
             if (this.currentRightAudio) {
-                if (this.currentRightAudio === 0) {
-                    this.currentRightAudio.stop();
-                }
-                this.currentRightAudio = null;
-
-            } else {
-                this.currentRightAudio = new Howl({
-                    src: [this.rightSongURL],
-                    autoplay: true,
-                    onend: function () {
-                        console.log('Right Done');
-                    }
-                });
+                this.currentRightAudio.stop();
             }
+
+            this.currentRightAudio = new Howl({
+                src: [this.rightSongURL],
+                autoplay: true,
+                volume: this.rightVolumeValue / 100,
+                onend: function () {
+                    console.log('Right Done');
+                }
+            });
         },
+
+        // 調整音量
+        cdSongVolume() {
+            if (this.cdSound) {
+                this.cdSound.volume(this.cdVolumeValue / 100);
+            }
+            console.log('CD Volume:', this.cdVolumeValue);
+        },
+
         rightInputVolume() {
             if (this.currentRightAudio) {
-                if (this.currentRightAudio === 0) {
+                if (this.rightInputVolume === 0) {
                     this.currentRightAudio.stop();
                 }
                 else {
                     this.currentRightAudio.volume(this.rightVolumeValue / 100);
-                    // this.updateGlobalVolume(); // 更新全局音量
+
                 }
             }
             console.log('Right Volume:', this.rightVolumeValue);
         },
 
-        // //下方拉條更新音量 ---- 還沒寫完
-        // updateGlobalVolume() {
-        //     const newLeftVolume = this.leftVolumeValue;
-        //     const newRightVolume = this.rightVolumeValue;
-        //     this.globalVolume = (newLeftVolume + newRightVolume) / 2;
+        leftInputVolume() {
+            if (this.currentLeftAudio) {
+                if (this.leftInputVolume === 0) {
+                    this.currentLeftAudio.stop();
+                } else {
+                    this.currentLeftAudio.volume(this.leftVolumeValue / 100);
+                }
+            }
+            console.log('Left Volume:', this.leftVolumeValue);
+        },
 
-        //     if (this.currentLeftAudio) {
-        //         this.currentLeftAudio.volume(this.leftVolumeValue / 100);
-        //     }
-
-        //     if (this.currentRightAudio) {
-        //         this.currentRightAudio.volume(this.rightVolumeValue / 100);
-        //     }
-
-        //     console.log('Global Volume:', this.globalVolume);
-        // }
-    }
+    },
 }
+
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="progress-bar">
-      <div :style="{ width: progressWidth + '%' }"></div>
+      <!-- <div :style="{ width: progressWidth + '%' }"></div> -->
     </div>
     <Breadcrumb separator="/" class="breadcrumb">
       <BreadcrumbItem><router-link to="/home">首頁</router-link></BreadcrumbItem>
@@ -26,23 +26,23 @@
             <h2>購物清單</h2>
             <div id="cartList">
               <table>
-                <tr v-for="(item, index)  in cartItems" :key="item.id" class="item">
+                <tr v-for="(item, index)  in cartItems" :key="item.prod_id" class="item">
                   <td class="itemNum">
                     {{ index + 1 }} <!-- 自動生成編號 -->
                   </td>
                   <td class="pic">
                     <div class="image-wrapper">
-                      <img :src="require(`/public/image/ShopImage/${item.prodPic}`)" :alt="item.prodName" />
+                      <img :src="`${publicPath}image/ShopImage/${item.prod_pic}`" :alt="item.prod_name" />
                     </div>
                   </td>
                   <td class="prodName">
-                    <p>{{ item.prodName }}</p>
+                    <p>{{ item.prod_name }}</p>
                   </td>
-                  <td class="price">$ {{ item.prodPrice }}</td>
+                  <td class="price">$ {{ item.prod_price }}</td>
                   <td class="number">
-                    <input type="number" v-model="item.inCart" min="1" @input="changeItemCount(item.id)" />
+                    <input type="number" v-model="item.chat_num" min="1" @input="changeItemCount(item.prod_id)" />
                   </td>
-                  <button @click="() => deleteItem(item.id)">
+                  <button @click="() => deleteItem(item.prod_id)">
                     <font-awesome :icon="['fa', 'trash']" />
                   </button>
                 </tr>

@@ -1,6 +1,6 @@
 <template>
   <button id="AddSlBtn" @click="isAddSlOpen = true">
-    <fontAwesome :icon="['fa', 'plus']" :style="AddSlBtnStyle" />
+    <fontAwesome class="i" :icon="['fa', 'plus']" :style="AddSlBtnStyle" />
   </button>
 
   <div id="AddSl" v-if="isAddSlOpen">
@@ -12,15 +12,15 @@
         </button>
       </div>
       <ul>
-        <li v-for="(item, index) in songlists" class="opt">
+        <li v-for="(item, index) in slData" class="opt">
           <label class="checkboxLabel">
-            <input type="checkbox" name="slid" :value="item.slid" />
+            <input type="checkbox" name="slid" :value="item.sl_id" />
             <fontAwesome class="i" :icon="['fa', 'fa-check']" />
           </label>
-          <span class="slname">{{ item.slname }}</span>
+          <span class="slname">{{ item.sl_name }}</span>
           <span class="public">
             <fontAwesome
-              v-if="item.public === true"
+              v-if="item.public == 0"
               class="i"
               :icon="['fa', 'lock-open']" />
             <fontAwesome v-else class="i" :icon="['fa', 'lock']"
@@ -44,9 +44,13 @@
 <script>
 import NewSl from "@/components/NewSl.vue";
 export default {
-  // props: {
-  //   sid,
-  // },
+  props: {
+    addSlSid: [String, Number],
+    // isAddSlOpen: {
+    //   type: Boolean,
+    //   default: false,
+    // },
+  },
   components: { NewSl },
   name: "AddSlBtn",
   data() {
@@ -54,70 +58,10 @@ export default {
       isAddSlBtn: false,
       isAddSlOpen: false,
       isNewSlOpen: false,
+      login_mem_id: 1, //這個之後要再改
 
       //撈取該會員的歌單清單
-      songlists: [
-        {
-          slid: 1,
-          slname: "我的早晨私人歌單",
-          image: "songPic.png",
-          memid: 1,
-          creator: "我",
-          playnum: 0,
-          songnum: 123,
-          public: false,
-        },
-        {
-          slid: 4,
-          slname: "我的睡前歌單",
-          image: "songPic.png",
-          memid: 1,
-          creator: "我",
-          playnum: 0,
-          songnum: 123,
-          public: false,
-        },
-        {
-          slid: 5,
-          slname: "我的假日公開歌單",
-          image: "songPic.png",
-          memid: 1,
-          creator: "我",
-          playnum: 0,
-          songnum: 123,
-          public: true,
-        },
-        {
-          slid: 6,
-          slname: "我的早晨歌單",
-          image: "songPic.png",
-          memid: 1,
-          creator: "我",
-          playnum: 0,
-          songnum: 123,
-          public: false,
-        },
-        {
-          slid: 9,
-          slname: "我的睡前歌單",
-          image: "songPic.png",
-          memid: 1,
-          creator: "我",
-          playnum: 0,
-          songnum: 123,
-          public: false,
-        },
-        {
-          slid: 10,
-          slname: "我的假日歌單",
-          image: "songPic.png",
-          memid: 1,
-          creator: "我",
-          playnum: 0,
-          songnum: 123,
-          public: true,
-        },
-      ],
+      slData: [],
     };
   },
   computed: {
@@ -134,16 +78,45 @@ export default {
     },
     closeAddSl() {
       this.isAddSlOpen = false;
+      console.log(this.addSlSid);
     },
     isNewSlOpenupdate(val) {
       this.isNewSlOpen = val;
       this.isAddSlOpen = true;
     },
     NewSlDataupdate(val) {
-      this.songlists.unshift(val);
-      console.log(val);
-      console.log(this.songlists);
+      this.slData.unshift(val);
+      // console.log(val);
+      // console.log(this.slData);
     },
+    openAddSl() {
+      this.isAddSlOpen = true;
+    },
+  },
+  mounted() {
+    // fetch我的歌單(含追蹤創建及追蹤)
+    const fetchMyallsonglist = () => {
+      const loginMemId = this.login_mem_id;
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
+      );
+      let Myallsonglist;
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => {
+          Myallsonglist = res;
+          //根據創建日期排序
+          this.slData = Myallsonglist.sort(function (a, b) {
+            return a.update_date < b.update_date ? 1 : -1;
+          });
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+
+    // 執行fetch
+    fetchMyallsonglist();
   },
 };
 </script>
@@ -156,7 +129,7 @@ export default {
   width: 400px;
   @media screen and (max-width: 800px) {
     width: 350px;
-    background-color: #2b2b2bee;
+    background-color: #2b2b2bf6;
   }
   // 水平垂直置中
   position: fixed;
@@ -165,7 +138,8 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 300;
 
-  background-color: #000000dd;
+  // background-color: #000000ee;
+  background-color: #2b2b2bee;
   backdrop-filter: blur(5px);
   border-radius: 10px;
   color: $white;

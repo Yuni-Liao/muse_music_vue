@@ -4,13 +4,13 @@
         <!-- 上方大圖 -->
         <div class="banner" v-for="(songItem, songIndex) in songs" :key="songIndex">
             <div class="overlay"></div>
-            <img class="backPic" :src="require(`/public/image/SingleMusic/${songs[0].songPic}`)">
+            <img class="backPic" :src="`${publicPath}image/SingleMusic/${songs[0].songPic}`">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
             <div class="topInf" v-for="(songItem, songIndex) in songs" :key="songIndex">
                 <div class="singlePic">
-                    <img :src="require(`/public/image/SingleMusic/${songItem.songPic}`)" alt="songItem.songName">
+                    <img :src="`${publicPath}image/SingleMusic/${songItem.songPic}`" alt="songItem.songName">
                 </div>
                 <div class="singleInf">
                     <div class="song">
@@ -49,13 +49,13 @@
                 <div class="singerInf">
                     <router-link to="/home/profilepage" class="singer">
                         <div class="singerPic">
-                            <img :src="require(`/public/image/SingleMusic/${songItem.singerPic}`)" alt="songItem.singer">
+                            <img :src="`${publicPath}image/SingleMusic/${songItem.singerPic}`" alt="songItem.singer">
                         </div>
                         <p class="singerName">{{ songItem.singer }}</p>
                     </router-link>
                     <router-link to="/home/singlealbum" class="album">
                         <div class="albumPic">
-                            <img :src="require(`/public/image/SingleMusic/${songItem.albumPic}`)" alt="songItem.album">
+                            <img :src="`${publicPath}image/SingleMusic/${songItem.albumPic}`" alt="songItem.album">
                         </div>
                         <p>專輯</p>
                         <p class="albumName">{{ songItem.album }}</p>
@@ -95,7 +95,7 @@
                                 <div class="infBar">
                                     <div class="user">
                                         <div class="pic">
-                                            <img :src="require(`/public/image/SingleMusic/${messageItem.userPic}`)"
+                                            <img :src="`${publicPath}image/SingleMusic/${messageItem.userPic}`"
                                                 alt="messageItem.userName">
                                         </div>
                                         <p class="userName">{{ messageItem.userName }}</p>
@@ -131,7 +131,7 @@
                             <div class="list">
                                 <div class="number">{{ item.id }}</div>
                                 <div class="songPic">
-                                    <img :src="require(`/public/image/SingleMusic/${item.albumPic}`)" alt="item.name">
+                                    <img :src="`${publicPath}image/SingleMusic/${item.albumPic}`" alt="item.name">
                                     <div class="play" @click="openPlayer()">
                                         <fontAwesome class="i" :icon="['fa', 'play']" color="#fff"/>
                                     </div>

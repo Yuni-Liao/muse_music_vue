@@ -34,6 +34,11 @@
 .singleAlbum .inner {
     @include layout(1200px);
 
+    @media screen and (max-width: 800px) {
+        padding: 5%;
+        box-sizing: border-box;
+    }
+
     .topInf {
         position: relative;
         margin-top: -310px;
@@ -143,11 +148,15 @@
 
                 .singerPic {
                     width: 70px;
+                    height: 70px;
                     border: 1px solid #FFF;
                     border-radius: 50%;
+                    overflow: hidden;
 
                     img {
                         width: 100%;
+                        height: 100%;
+                        object-fit: cover;
                         vertical-align: top;
                     }
                 }
@@ -284,7 +293,7 @@
                             #AddFavBtn,
                             #AddSlBtn,
                             #ShareBtn {
-                                margin:0 10px;
+                                margin: 0 10px;
                             }
                         }
                     }

@@ -73,11 +73,13 @@ h1{
                     opacity: 0;
                     position: absolute;
                     left: 45%;
-                    top: 50%;
+                    top: 41%;
                     cursor: pointer;
+                    height: 30%;
                 }
                 .pic:hover .f_play{
                     opacity: 1;
+                    transition: .5s;
                 }
                 img {
                     vertical-align: middle;

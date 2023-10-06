@@ -97,8 +97,8 @@
           left: 0;
           bottom: 0;
           width: 100%;
-          padding: 25px 15px 15px 15px;
-          background: linear-gradient(to top, rgba(0, 0, 0, 0.6), $tp);
+          padding: 40px 15px 15px 15px;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.8), $tp);
           //取消動作
           pointer-events: none;
 
@@ -111,6 +111,7 @@
           }
           h3 {
             font-size: $small;
+            line-height: 2;
             .lock {
               margin-left: 5px;
               color: $pink;
@@ -118,6 +119,7 @@
             }
           }
           span {
+            line-height: 1.5;
             margin-right: 20px;
             font-size: 12px;
           }

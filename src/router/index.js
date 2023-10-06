@@ -219,7 +219,8 @@ const routes = [
 
       //以下是專輯頁面
       {
-        path: "singlealbum",
+        //path: "singlealbum",
+        path: "singlealbum/:salid",
         name: "singlealbum",
         component: () =>
           import(
@@ -231,7 +232,7 @@ const routes = [
         },
       },
 
-      //以下是個人主頁頁面
+      //以下是個人主頁管理頁面
       {
         path: "profilepageedit",
         name: "profilepageedit",
@@ -244,7 +245,9 @@ const routes = [
         },
       },
       {
-        path: "profilepage",
+        //以下是個人主頁頁面
+        //設定動態路由參數":memid"
+        path: "profilepage/:memid",
         name: "profilepage",
         component: () =>
           import(
@@ -315,7 +318,7 @@ const routes = [
 
       //以下是探索音樂內頁頁面
       {
-        path: "findmusic/:id",
+        path: "findmusic/:mcat_id",
         name: "findmusic",
         component: () =>
           import(

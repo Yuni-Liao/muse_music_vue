@@ -178,7 +178,7 @@ export default {
 // @import "~@/assets/scss/page/profilepageedit";
 //新增歌曲至專輯
 .addsongtoalbum {
-  background-color: #2b2b2b;
+  background-color: #2b2b2bf6;
   box-shadow: 0px 0px 50px #00000030;
   border-radius: 10px;
   position: fixed;

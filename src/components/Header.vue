@@ -66,7 +66,7 @@
                 alt=""
               />帳號設定</router-link
             ><br />
-            <router-link to="/home/profilepage"
+            <router-link :to="`/home/profilepage/${login_mem_id}`"
               ><img
                 src="~@/assets/image/icon/personalPage.png"
                 alt=""
@@ -180,6 +180,7 @@ const Animations = {
 export default {
   data() {
     return {
+      login_mem_id: 1, //這個之後要再改，等zac寫好登入後到暫存去抓
       isNavVisible: false,
       notifyList: [
         {

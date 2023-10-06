@@ -172,6 +172,7 @@ export default {
       selectedArea: '全部',
       selectedMonth: 'SEP',
       filteredActivities: [],
+      news: [],
     }
   },
   watch: {
@@ -185,21 +186,21 @@ export default {
     this.selectedArea = '全部'; 
     this.filterByMonth('SEP'); 
   },
-  computed: {
-    // filteredActivities() {
-      
-    //   return this.activityList.filter((activity) => {
-    //     const monthMatches = !this.selectedMonth || activity.month === this.selectedMonth;
-    //     const areaMatches = this.selectedArea === "全部" || activity.area === this.selectedArea;
-    //     return monthMatches && areaMatches;
-    //   });
-    // },
-  },
   created() {
     this.selectedArea = '全部'; 
     this.filterActivities(); 
   },
   methods: {
+    //獲取news資訊
+    fetchNews(){
+      const apiURL = new URL(`http://localhost/muse_music/public/api/getNews.php`);
+      fetch(apiURL)
+      .then(async (response) => {
+        this.news = await response.json();
+      });
+      
+    },
+
     updateVisibleMonths() {
       const endIndex = this.currentIndex + 8;
       this.visibleMonths = this.months.slice(this.currentIndex, endIndex);
@@ -250,6 +251,8 @@ export default {
       };
     }
   },
-
+  mounted() {
+    this.fetchNews();
+  },
 
 }
