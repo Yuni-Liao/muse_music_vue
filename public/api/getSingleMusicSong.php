@@ -1,4 +1,3 @@
-<!-- 單曲頁面：抓取同專輯其他首歌曲的資料 -->
 <?php
 try {
     //引入連線工作的檔案
@@ -21,13 +20,13 @@ try {
     inner join album a ON s.alb_id = a.alb_id
     where s.alb_id = (SELECT alb_id FROM song WHERE s_id = $sid);";
 
-    $singleAlbumSong = $pdo->query($sql);
+    $singleMusicSong = $pdo->query($sql);
 
     //如果找得資料，取回資料，送出json
-    if ($singleAlbumSong->rowCount() === 0) {
+    if ($singleMusicSong->rowCount() === 0) {
         echo "查無歌曲資料";
     } else {
-        $sRow = $singleAlbumSong->fetchAll(PDO::FETCH_ASSOC);
+        $sRow = $singleMusicSong->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($sRow); //送出json字串
     }
 } catch (Exception $e) {

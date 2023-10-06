@@ -1,4 +1,3 @@
-<!-- 單曲頁面：抓取該首歌曲的資料 -->
 <?php
 try {
     //引入連線工作的檔案
@@ -8,9 +7,8 @@ try {
 
     //執行sql指令並取得pdoStatement
     //$sid = $_GET['sid'];
-    $sid = 1;
-    //SQL指令: 查詢專輯內容
-    //
+    $sid = 6;
+    //SQL指令: 單曲頁面：抓取該首歌曲的資料
     $sql = "select
     s.s_id as id,
     s.s_img as songpic,
@@ -21,7 +19,6 @@ try {
     s.upload_date as date,
     m.intro as albumInf,
     s.s_intro as songInf,
-    mc.mcat_name as type,
     s.s_length as time,
     s.play_num as played,
     s.fav_num as liked,
@@ -30,16 +27,14 @@ try {
     from song s
     left join album a on s.alb_id = a.alb_id
     left join member m on s.mem_id = m.mem_id
-    left join song_cat sc on s.s_id = sc.s_id
-    left join music_cat mc on sc.mcat_id = mc.mcat_id
     where s.s_id = $sid;";
 
-    $singleAlbum = $pdo->query($sql);
+    $singleMusic = $pdo->query($sql);
     //如果找得資料，取回資料，送出json
-    if ($singleAlbum->rowCount() === 0) {
+    if ($singleMusic->rowCount() === 0) {
         echo "查無專輯資料";
     } else {
-        $aRow = $singleAlbum->fetchAll(PDO::FETCH_ASSOC);
+        $aRow = $singleMusic->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($aRow); //送出json字串
     }
 } catch (Exception $e) {
