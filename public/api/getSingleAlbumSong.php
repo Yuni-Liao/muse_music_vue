@@ -13,16 +13,15 @@ try {
     al.alb_id,
     al.alb_name,
     al.update_date,
-    s.mem_id,
+    al.mem_id,
     m.mem_name as singer,
-    s.alb_id,
     s.s_id as id,
     s.s_length as time,
     s.s_img as songPic,
     s.s_name as name
     from album al
     join song s on al.alb_id = s.alb_id
-    join member m on s.mem_id = m.mem_id
+    join member m on al.mem_id = m.mem_id
     where al.alb_id = $salid
     order by s.s_id;";
 
@@ -31,7 +30,7 @@ try {
     if ($singleAlbumSong->rowCount() === 0) {
         echo "查無歌曲資料";
     } else {
-        $sRow = $singleAlbumSong->fetch(PDO::FETCH_ASSOC);
+        $sRow = $singleAlbumSong->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($sRow);//送出json字串
     }
 } catch (Exception $e) {

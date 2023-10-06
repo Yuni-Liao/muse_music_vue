@@ -13,7 +13,7 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             salid: null,
-            played:999,
+            played: 999,
             // album: [
             //     {
             //         id: 1,
@@ -85,7 +85,15 @@ export default {
         },
         closeMoreBtn(albumItem) {
             albumItem.showMoreBtn = false;
-        }
+        },
+        gotosinglemusic(id) {
+            this.$router.push({
+                name: "singlemusic",
+                params: {
+                    id,
+                },
+            });
+        },
     },
     mounted() {
         this.salid = parseInt(this.$route.params.salid);
@@ -103,7 +111,7 @@ export default {
                     console.error("發生錯誤:", error);
                 });
         };
-    
+
         // fetch 專輯歌曲資訊
         const fetchSingleAlbumSong = () => {
             const salid = this.$route.params.salid;
@@ -118,7 +126,7 @@ export default {
                     console.error("發生錯誤:", error);
                 });
         };
-    
+
         // 執行 fetch
         fetchSingleAlbum();
         fetchSingleAlbumSong();
