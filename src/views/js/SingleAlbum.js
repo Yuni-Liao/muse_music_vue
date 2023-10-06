@@ -96,6 +96,7 @@ export default {
         },
     },
     mounted() {
+        //this.memid = parseInt(this.$route.params.memid);
         this.salid = parseInt(this.$route.params.salid);
         // fetch 專輯資訊
         const fetchSingleAlbum = () => {

@@ -40,7 +40,7 @@
             <div class="mainInf" v-for="albumItem in album" :key="alb_id">
                 <div class="singerInf">
                     <!-- 路徑還要修改抓id -->
-                    <router-link to="/home/profilepage/1" class="singer">
+                    <router-link :to="`/home/profilepage/${albumItem.singer_id}`" class="singer">
                         <div class="singerPic">
                             <img :src="`${publicPath}dataimage/member/${albumItem.singerpic}`" alt="albumItem.singer">
                         </div>

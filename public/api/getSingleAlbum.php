@@ -6,8 +6,8 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    //$salid = $_GET['salid'];
-    $salid = 1;
+    $salid = $_GET['salid'];
+    //$salid = 1;
     //SQL指令: 查詢專輯內容
     $sql = "select 
     al.alb_id,
