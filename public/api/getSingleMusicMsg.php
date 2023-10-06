@@ -1,4 +1,3 @@
-<!-- 單曲頁面：抓取留言資料 -->
 <?php
 try {
     //引入連線工作的檔案
@@ -7,10 +6,10 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    $slid = $_GET['msgid'];
-    // $msgid = 6;
+    //$slid = $_GET['msgid'];
+    $msgid = 6;
 
-    //SQL指令: 單曲頁面 查詢同專輯的其他歌曲資料
+    //SQL指令: 單曲頁面 取得留言資料
     $sql = "select
     m.msg_id as id,
     m.mem_id,
@@ -25,13 +24,13 @@ try {
     where m.s_id = $msgid
     order by m.msg_date DESC;";
 
-    $singleAlbumSong = $pdo->query($sql);
+    $singleMusicMsg = $pdo->query($sql);
 
     //如果找得資料，取回資料，送出json
-    if ($singleAlbumSong->rowCount() === 0) {
+    if ($singleMusicMsg->rowCount() === 0) {
         echo "查無歌曲資料";
     } else {
-        $sRow = $singleAlbumSong->fetch(PDO::FETCH_ASSOC);
+        $sRow = $singleMusicMsg->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($sRow); //送出json字串
     }
 } catch (Exception $e) {
