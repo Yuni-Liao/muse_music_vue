@@ -190,10 +190,10 @@ export default {
     },
     //頁面切換----------------------
     gotosinglealbum(abid) {
-      this.$router.push({
+      let aa = this.$router.push({
         name: "singlealbum",
         params: {
-          abid,
+          salid: abid,
         },
       });
     },
