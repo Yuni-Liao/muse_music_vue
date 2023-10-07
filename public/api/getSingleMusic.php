@@ -6,24 +6,26 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    //$sid = $_GET['sid'];
-    $sid = 6;
+    $sid = $_GET['sid'];
+    //$sid = 6;
     //SQL指令: 單曲頁面：抓取該首歌曲的資料
     $sql = "select
     s.s_id as id,
     s.s_img as songpic,
     s.s_name as songname,
+    m.mem_id,
     m.mem_name as singer,
     m.mem_pic as singerPic,
     a.alb_img as albumPic,
     s.upload_date as date,
-    m.intro as albumInf,
+    m.intro as memInf,
     s.s_intro as songInf,
     s.s_length as time,
     s.play_num as played,
     s.fav_num as liked,
     s.share_num as shared,
-    a.alb_name as album
+    a.alb_name as album,
+    a.alb_id
     from song s
     left join album a on s.alb_id = a.alb_id
     left join member m on s.mem_id = m.mem_id
