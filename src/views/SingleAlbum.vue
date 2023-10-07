@@ -4,8 +4,7 @@
         <!-- 上方大圖 -->
         <div class="banner" v-for="albumItem in album" :key="albumItem.id">
             <div class="overlay"></div>
-            <img class="backPic" :src="`${publicPath}dataimage/album/${albumItem.albumpic}`"
-                :alt="albumItem.albumname">
+            <img class="backPic" :src="`${publicPath}dataimage/album/${albumItem.albumpic}`" :alt="albumItem.albumname">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
@@ -37,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mainInf" v-for="albumItem in album" :key="albumItem.id">
+            <div class="mainInf" v-for="albumItem in  album " :key="albumItem.id">
                 <div class="singerInf">
                     <router-link :to="`/home/profilepage/${albumItem.singer_id}`" class="singer">
                         <div class="singerPic">
@@ -65,7 +64,7 @@
                                 </span>
                                 <span class="more"></span>
                             </li>
-                            <li v-for="(item, index) in songs" :key="id" class="songArea">
+                            <li v-for="(item, index) in  songs " :key="id" class="songArea">
                                 <span class="id">{{ index + 1 }}</span>
                                 <span class="pic">
                                     <img :src="`${publicPath}dataimage/song/${item.songpic}`" />
@@ -73,10 +72,11 @@
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>
                                 </span>
-                                <h3 v-line-clamp="2" class="name" @click="gotosinglemusic(item.id)">
-                                    <!-- <router-link to="/home/singlemusic">{{ item.name }}</router-link> -->
-                                    {{ item.name }}
-                                </h3>
+                                <router-link :to="`/home/singlemusic/${ item.id }`">
+                                    <h3 v-line-clamp=" 2 " class="name">
+                                        {{ item.name }}
+                                    </h3>
+                                </router-link>
                                 <span class="time">{{ item.time }}</span>
                                 <div class="btnArea">
                                     <!-- 更多_按鈕 -->

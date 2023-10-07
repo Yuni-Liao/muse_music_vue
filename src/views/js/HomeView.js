@@ -51,6 +51,7 @@ export default {
       startMuz: false,
       // 倒數計時器
       timerValue: null,
+      showWeekTopmusic: false,
       // 首頁頂部Banner - 廖妍榛
       topBanner: [
         {
@@ -67,89 +68,7 @@ export default {
         },
       ],
       // 本週熱門歌曲輪播 - 黃珮菁
-      songs: [
-        {
-          sid: 1,
-          title: "宇宙飛行1",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 2,
-          title: "宇宙飛行2",
-          image: "index_grid_05.png",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 3,
-          title: "宇宙飛行3",
-          image: "index_grid_08.png",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 4,
-          title: "宇宙飛行4",
-          image: "index_grid_06.png",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 5,
-          title: "宇宙飛行5",
-          image: "index_grid_04.png",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 6,
-          title: "宇宙飛行6",
-          image: "index_grid_03.png",
-          songLink: "/shopProd/1",
-          singer: "桌子樂團7",
-          views: 0,
-        },
-        {
-          sid: 7,
-          title: "宇宙飛行7",
-          image: "song01.jpg",
-          songLink: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 8,
-          title: "宇宙飛行8",
-          image: "index_grid_05.png",
-          songLink: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 8,
-          title: "宇宙飛行9",
-          image: "index_grid_02.png",
-          songLink: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 9,
-          title: "宇宙飛行10",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-      ],
-
+      SongRank: [],
       // 本週熱門專輯 -廖妍榛
       a: [
         {
@@ -283,8 +202,8 @@ export default {
     gotosinglemusic(sid) {
       this.$router.push({
         name: "singlemusic",
-        query: {
-          q: sid,
+        params: {
+          sid,
         },
       });
     },
@@ -337,7 +256,25 @@ export default {
     },
   },
   mounted() {
+    //fetch 本週熱門歌曲
+    const fetchSongRank = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getRankSong.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.SongRank = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchSongRank();
     this.startTimer();
+
+    setTimeout(() => {
+      this.showWeekTopmusic = true;
+    }, 100);
   },
   beforeUnmount() {
     // 清除計時器

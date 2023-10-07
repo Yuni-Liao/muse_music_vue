@@ -54,7 +54,7 @@
                 <CountUp
                   v-if="showCountUp"
                   :end="changeNum(memData.song_count)"
-                  :duration="5"
+                  :duration="6"
                   :decimals="0"
                 />
                 <span>K</span>
@@ -63,7 +63,7 @@
                 <CountUp
                   v-if="showCountUp"
                   :end="changeNum(memData.song_count)"
-                  :duration="5"
+                  :duration="6"
                   :decimals="0"
                 />
               </span>
@@ -75,7 +75,7 @@
                 <CountUp
                   v-if="showCountUp"
                   :end="changeNum(memData.fol_num)"
-                  :duration="5"
+                  :duration="6"
                   :decimals="1"
                 />
                 <span>K</span>
@@ -84,7 +84,7 @@
                 <CountUp
                   v-if="showCountUp"
                   :end="changeNum(memData.fol_num)"
-                  :duration="3"
+                  :duration="6"
                   :decimals="0"
                 >
                 </CountUp>
@@ -97,7 +97,7 @@
                 <CountUp
                   v-if="showCountUp"
                   :end="changeNum(memData.crefol_count)"
-                  :duration="3"
+                  :duration="6"
                   :decimals="1"
                 />
                 <span>K</span>
@@ -106,7 +106,7 @@
                 <CountUp
                   v-if="showCountUp"
                   :end="changeNum(memData.crefol_count)"
-                  :duration="3"
+                  :duration="6"
                   :decimals="0"
                 />
               </span>
