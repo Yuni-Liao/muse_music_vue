@@ -283,8 +283,8 @@ export default {
     gotosinglemusic(sid) {
       this.$router.push({
         name: "singlemusic",
-        query: {
-          q: sid,
+        params: {
+          sid,
         },
       });
     },

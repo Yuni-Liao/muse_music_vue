@@ -68,7 +68,7 @@ export default {
       this.$router.push({
         name: "singlealbum",
         params: {
-          abid,
+          salid: abid,
         },
       });
     },
