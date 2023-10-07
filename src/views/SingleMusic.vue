@@ -2,19 +2,19 @@
     <player ref="player"></player>
     <main class="singleMusic">
         <!-- 上方大圖 -->
-        <div class="banner" v-for="(songItem, songIndex) in songs" :key="songIndex">
+        <div class="banner" v-for="songItem in songs" :key="songItem.id">
             <div class="overlay"></div>
-            <img class="backPic" :src="`${publicPath}image/SingleMusic/${songs[0].songPic}`">
+            <img class="backPic" :src="`${publicPath}dataimage/song/${songItem.songpic}`" :alt="songItem.songname">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
-            <div class="topInf" v-for="(songItem, songIndex) in songs" :key="songIndex">
+            <div class="topInf" v-for="songItem in songs" :key="songItem.id">
                 <div class="singlePic">
-                    <img :src="`${publicPath}image/SingleMusic/${songItem.songPic}`" alt="songItem.songName">
+                    <img :src="`${publicPath}dataimage/song/${songItem.songpic}`" :alt="songItem.songname">
                 </div>
                 <div class="singleInf">
                     <div class="song">
-                        <h1 class="songName">{{ songItem.songName }}</h1>
+                        <h1 class="songName">{{ songItem.songname }}</h1>
                         <h2 class="singer">{{ songItem.singer }}</h2>
                     </div>
                     <div class="iconBar">
@@ -45,9 +45,9 @@
                     </div>
                 </div>
             </div>
-            <div class="mainInf" v-for="(songItem, songIndex) in songs" :key="songIndex">
+            <div class="mainInf" v-for="songItem in songs" :key="songItem.id">
                 <div class="singerInf">
-                    <router-link to="/home/profilepage" class="singer">
+                    <router-link :to="`/home/profilepage/${albumItem.singer_id}`" class="singer">
                         <div class="singerPic">
                             <img :src="`${publicPath}image/SingleMusic/${songItem.singerPic}`" alt="songItem.singer">
                         </div>
@@ -90,7 +90,7 @@
                                     <fontAwesome :icon="['fa', 'paper-plane']" style="color:#74EBD5;" size="2xl" />
                                 </button>
                             </div>
-                            <div class="message" v-for="(messageItem, messageIndex) in messages.slice(0, num)"
+                            <div class="message" v-for="messageItem in messages.slice(0, num)"
                                 :key="messageIndex">
                                 <div class="infBar">
                                     <div class="user">
@@ -127,7 +127,7 @@
                     </div>
                     <div class="otherSong">
                         <h3>專輯其他歌曲</h3>
-                        <div class="song" v-for="(item, index) in otherSongs.slice(0, num2)" :key="index">
+                        <div class="song" v-for="item in otherSongs.slice(0, num2)" :key="index">
                             <div class="list">
                                 <div class="number">{{ item.id }}</div>
                                 <div class="songPic">
