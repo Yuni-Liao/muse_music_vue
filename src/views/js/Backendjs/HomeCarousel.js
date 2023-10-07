@@ -4,91 +4,53 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-            bannerBox: false,
+            // bannerBox: false, //新增輪播按鈕先隱藏-yuni
+            carouselItem: [],
             columns: [
-
                 {
                     title: 'No',
-                    key: 'no',
+                    key: 'car_id',
                     align: 'center',
-                    width: 60,
+                    width: 100,
 
                 },
                 {
                     title: '輪播名稱',
-                    key: 'carouselName',
+                    key: 'name',
                     align: 'center',
-                    width: 150,
+                    width: 200,
                 },
                 {
                     title: '圖片',
-                    key: 'imageLink',
+                    key: 'img',
                     align: 'center',
-                    width: 200,
+                    width: 100,
                 },
                 {
                     title: '上/下架',
                     slot: 'upDownBtn',
                     align: 'center',
-                    width: 100,
+                    width: 90,
                 },
                 {
-                    title: '更新者',
-                    key: 'adminAcc',
+                    title: '連結網址',
+                    key: 'link',
                     align: 'center',
-                    width: 150,
+                    width: 300,
                 },
                 {
                     title: '更新時間',
-                    key: 'updateTime',
+                    key: 'update_time',
                     align: 'center',
-                    width: 200,
+                    width: 150,
                 },
                 {
                     title: '操作',
                     slot: 'editBtn',
                     align: 'center',
-                    width: 100,
+                    width: 50,
                 }
             ],
-            carouselItem: [],
-            // data: [
-            //     {
-            //         no: 1,
-            //         carouselName: '左右情緒-告八人',
-            //         imageLink: '#放圖',
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            //     {
-            //         no: 2,
-            //         carouselName: '溫蒂漫步',
-            //         imageLink: '#放圖',
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            //     {
-            //         no: 3,
-            //         carouselName: 'Jolin揪令',
-            //         imageLink: '#放圖',
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            //     {
-            //         no: 4,
-            //         carouselName: '蕭靜疼',
-            //         imageLink: '#放圖',
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            //     {
-            //         no: 5,
-            //         carouselName: '羅痣想',
-            //         imageLink: '#放圖',
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            // ],
         }
     },
     // created() {
@@ -108,14 +70,24 @@ export default {
     //         });
     // },
     methods: {
-        addBannerBtn() {
-            this.bannerBox = true;
-        },
+        // addBannerBtn() {
+        //     this.bannerBox = true; //新增輪播按鈕先隱藏-yuni
+        // },
         upDownBtn(row) {
             alert('上/下架');
         },
         editBtn(row) {
-            alert('編輯');
+            if (id != undefined) {
+                const url = `http://localhost/muse_music/public/api/editIndexCarousel.php`;
+                let headers = {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                };
+                fetch(url, {
+                    method: "POST",
+                    headers: headers,
+                })
+            }
         },
     },
     mounted() {
@@ -139,7 +111,9 @@ export default {
                 }
             })
             .then((json) => {
-                this.news = json;
+                this.carouselItem = json;
+                console.log(this.carouselItem);
+
             })
             .catch((error) => {
                 console.log(error.message);
