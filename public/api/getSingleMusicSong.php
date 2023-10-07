@@ -6,8 +6,8 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    //$slid = $_GET['sid'];
-    $sid = 6;
+    $sid = $_GET['sid'];
+    //$sid = 6;
 
     //SQL指令: 單曲頁面 查詢同專輯的其他歌曲資料
     $sql = "select

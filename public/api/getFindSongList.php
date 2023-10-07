@@ -1,4 +1,3 @@
-
 <?php
 try {
     //引入連線工作的檔案
@@ -7,23 +6,27 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    //SQL指令: 查詢歌單歌曲
+    $mcat_id = $_GET['mcat_id'];
+    //SQL指令: 查詢探索內頁對應的歌曲
     $sql = "
-    select
-        s.s_img , 
-        s.s_name, 
-        m.mem_name as h_name,
-        s.upload_date ,
-        s.play_num
-    from 
-        member m 
-    join 
-        song s on m.mem_id = s.mem_id
-    order by 
-        s.upload_date desc
-    limit 10;
+        select
+            s.s_img, 
+            s.s_name,
+            m.mem_id,
+            m.mem_name as h_name,
+            s.s_length,
+            sc.mcat_id
+        from 
+            member m 
+        join 
+            song s on m.mem_id = s.mem_id
+        join
+            song_cat sc on s.s_id = sc.s_id    
+        join
+            music_cat mc on sc.mcat_id = mc.mcat_id
+        where 
+            mc.mcat_id = $mcat_id;
     ";
-
     $song = $pdo->query($sql);
     //如果找得資料，取回資料，送出json
     if ($song->rowCount() === 0) {

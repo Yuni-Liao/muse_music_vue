@@ -6,11 +6,12 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    //$sid = $_GET['sid'];
-    $sid = 6;
+    $sid = $_GET['sid'];
+    //$sid = 6;
     //SQL指令: 單曲頁面：抓取該首歌曲分類
     $sql = "select
-    group_concat(mc.mcat_name) as types
+    mc.mcat_name as type,
+    mc.mcat_id
     from song s
     inner join song_cat sc on s.s_id = sc.s_id
     inner join music_cat mc on sc.mcat_id = mc.mcat_id
@@ -21,9 +22,11 @@ try {
     if ($singleMusicType->rowCount() === 0) {
         echo "查無專輯資料";
     } else {
-        $row = $singleMusicType->fetch(PDO::FETCH_ASSOC);
-        $types = explode(",", $row["types"]);
-        echo json_encode($types); //送出json字串
+        // $row = $singleMusicType->fetch(PDO::FETCH_ASSOC);
+        // $types = explode(",", $row["types"]);
+        // echo json_encode($types); //送出json字串
+        $row = $singleMusicType->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($row); //送出json字串
     }
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";

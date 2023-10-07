@@ -14,63 +14,6 @@ export default {
             publicPath: process.env.BASE_URL,
             salid: null,
             played: 999,
-            // album: [
-            //     {
-            //         id: 1,
-            //         bannerPic: "banner_albumPic1.png",
-            //         singer: "George Makridis, Hannah Hampton",
-            //         singerPage: "/profilepage",
-            //         singerPic: "singerPic.png",
-            //         albumPic: "albumPic.png",
-            //         albumName: "Countlary",
-            //         date: "2023-08-22",
-            //         albumInf: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-            //         played: "2,855",
-            //         shared: "39"
-            //     }
-            // ],
-            // songs: [
-            //     {
-            //         id: 1,
-            //         songPic: "othaersong1.png",
-            //         name: "Fly Like",
-            //         singer: "Lisa",
-            //         time: "03:00",
-            //         showMoreBtn: false,
-            //     },
-            //     {
-            //         id: 2,
-            //         songPic: "othaersong2.png",
-            //         name: "Tired",
-            //         singer: "Lisa",
-            //         time: "03:00",
-            //         showMoreBtn: false,
-            //     },
-            //     {
-            //         id: 3,
-            //         songPic: "othaersong3.png",
-            //         name: "Want To Go Home",
-            //         singer: "Lisa",
-            //         time: "03:00",
-            //         showMoreBtn: false,
-            //     },
-            //     {
-            //         id: 4,
-            //         songPic: "othaersong1.png",
-            //         name: "Sleep",
-            //         singer: "Lisa",
-            //         time: "03:00",
-            //         showMoreBtn: false,
-            //     },
-            //     {
-            //         id: 5,
-            //         songPic: "othaersong2.png",
-            //         name: "Bed",
-            //         singer: "Lisa",
-            //         time: "03:00",
-            //         showMoreBtn: false,
-            //     }
-            // ],
             album: [],//專輯資訊 (fetch)
             songs: [],//專輯歌曲資訊 (fetch)
         };
@@ -96,9 +39,8 @@ export default {
         },
     },
     mounted() {
-        //this.memid = parseInt(this.$route.params.memid);
         this.salid = parseInt(this.$route.params.salid);
-        // fetch 專輯資訊
+        // fetch 專輯資訊 album:[]
         const fetchSingleAlbum = () => {
             const salid = this.$route.params.salid;
             const apiURL = new URL(
@@ -113,7 +55,7 @@ export default {
                 });
         };
 
-        // fetch 專輯歌曲資訊
+        // fetch 專輯歌曲資訊 songs:[]
         const fetchSingleAlbumSong = () => {
             const salid = this.$route.params.salid;
             const apiURL = new URL(
