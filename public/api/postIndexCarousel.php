@@ -18,7 +18,7 @@ try {
     }
 } catch (PDOException $e) {
     // 返回 JSON 錯誤響應
-    $errorResponse = ["message" => "查询失败：" . $e->getMessage()];
+    $errorResponse = ["message" => "查詢失敗：" . $e->getMessage()];
     echo json_encode($errorResponse);
 }
 ?>
