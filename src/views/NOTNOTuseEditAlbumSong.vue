@@ -1,5 +1,6 @@
 <template>
-    <label for="name" class="label"></label>
+  <!-- 這頁不使用  -->
+  <!-- <label for="name" class="label"></label>
   
     <form class="form1">
       <div class="form-group">
@@ -59,11 +60,10 @@
       ><button class="button" style="margin-bottom: 150px" @click="complete">
         儲存變更
       </button></router-link
-    >
-  </template>
-  
-  <style scoped lang="scss">
-  @import "~@/assets/scss/page/profilepageedit";
-  </style>
-  <script src="./js/EditSong.js"></script>
-  
+    > -->
+</template>
+
+<style scoped lang="scss">
+@import "~@/assets/scss/page/profilepageedit";
+</style>
+<script src="./js/EditSong.js"></script>

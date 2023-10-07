@@ -59,14 +59,14 @@
       <table class="song-table" v-if="songs.length > 0">
         <thead>
           <tr>
-            <th></th>
-            <th></th>
-            <th>歌曲</th>
-            <th>歌曲簡介</th>
-            <th>瀏覽權限</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th class="tno"></th>
+            <th class="timg"></th>
+            <th class="tname">歌曲</th>
+            <th class="tintro">歌曲簡介</th>
+            <th class="tshow">瀏覽權限</th>
+            <th class="tdate">更新日期</th>
+            <th class="ttime"><fontAwesome :icon="['fa', 'fa-clock']" /></th>
+            <th class="check"></th>
           </tr>
         </thead>
         <tbody>
@@ -115,6 +115,6 @@
 </template>
 
 <style scoped lang="scss">
-@import "~@/assets/scss/page/profilepageedit";
+@import "~@/assets/scss/page/editalbum";
 </style>
 <script src="./js/NewAlbum.js"></script>
