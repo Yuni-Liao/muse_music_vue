@@ -13,7 +13,6 @@
             </template>
         </Table>
     </div>
-
     <!-- 新增輪播彈窗 -->
     <!-- <Modal v-model="bannerBox" title="新增輪播圖" width="300" okText="新增">
         <p>上傳輪播圖!!!!</p>
@@ -24,6 +23,24 @@
             </div>
         </Upload>
     </Modal> -->
+    <Modal v-model:modelValue="editBox" title="編輯" width="300" okText="確認" @on-ok="confirmEdit">
+        <!-- 輪播id -->
+        <input type="text" name="car_id" v-model="editBanner[0].id" style="display: none;">
+        <!-- 更新輪播名稱 -->
+        <p>輪播名稱:</p><input type="text" id="nameValue" v-model="editBanner[0].nameValue"
+            style="margin-bottom:10px; width: 250px;">
+        <!-- 更新網址 -->
+        <p>連結網址:</p><input type="text" id="bannerLink" v-model="editBanner[0].bannerLink"
+            style="margin-bottom:10px; width: 250px;">
+        <!-- 上傳圖片 -->
+        <Upload type="drag" action="/public/api/editIndexCarousel.php">
+            <div style="padding: 20px 0">
+                <Icon size="100" style="color: #3399ff" v-model="editBanner[0].uploadImg" id="uploadImg"></Icon>
+                <p>Click or drag files here to upload</p>
+            </div>
+        </Upload>
+
+    </Modal>
 </template>
 <!-- 補搜尋框 -->
 <style scoped lang="scss">
