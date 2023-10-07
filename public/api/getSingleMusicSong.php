@@ -18,7 +18,8 @@ try {
     a.alb_name as album
     from song s
     inner join album a ON s.alb_id = a.alb_id
-    where s.alb_id = (SELECT alb_id FROM song WHERE s_id = $sid);";
+    where s.alb_id = (SELECT alb_id FROM song WHERE s_id = $sid)
+    and s.s_id != $sid;";
 
     $singleMusicSong = $pdo->query($sql);
 
