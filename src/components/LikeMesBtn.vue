@@ -14,56 +14,7 @@ export default {
     },
     data() {
         return {
-            messages: [
-                {
-                    id: 1,
-                    userPic: "userpic1.png",
-                    userName: "Euterpe",
-                    date: "2023-08-23",
-                    message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.",
-                    like: "12"
-                },
-                {
-                    id: 2,
-                    userPic: "userpic2.png",
-                    userName: "Auterpe",
-                    date: "2023-06-23",
-                    message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.",
-                    like: "24"
-                },
-                {
-                    id: 3,
-                    userPic: "userpic3.png",
-                    userName: "Zuterpe",
-                    date: "2023-04-23",
-                    message: "dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.",
-                    like: "33"
-                },
-                {
-                    id: 4,
-                    userPic: "userpic1.png",
-                    userName: "Jisoo",
-                    date: "2023-07-23",
-                    message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                    like: "666"
-                },
-                {
-                    id: 5,
-                    userPic: "userpic2.png",
-                    userName: "Lisa",
-                    date: "2023-05-23",
-                    message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore.",
-                    like: "999"
-                },
-                {
-                    id: 6,
-                    userPic: "userpic3.png",
-                    userName: "Rose",
-                    date: "2023-03-23",
-                    message: " rem dolor ipsum dolore, facilis nam tenetur unde.",
-                    like: "888"
-                }
-            ],
+            messages:[],
             likeCount: 0,
         }
     },
@@ -77,6 +28,25 @@ export default {
             this.messageItem.isLiked = !this.messageItem.isLiked;
         },
     },
+    mounted(){
+        //this.sid = parseInt(this.$route.params.sid);
+        //留言資訊 (fetch) messages:[]
+        const fetchSingleMusicMsg = () => {
+            const msgid = this.$route.params.msgid;
+            const apiURL = new URL(
+                `http://localhost/muse_music/public/api/getSingleMusicMsg.php?$msgid=${msgid}`
+            );
+            fetch(apiURL)
+                .then(async (response) => {
+                    this.messages = await response.json();
+                })
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
+        };
+        // 執行 fetch
+        fetchSingleMusicMsg();
+    }
 }
 
 </script>
@@ -86,9 +56,13 @@ export default {
     @include music_btn_circle(35px);
     background-color: $tp;
     border: 1px solid $white;
+    line-height: $fh;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #LikeMesBtn.active {
-    background-color: $green; /* 这里可以设置喜欢状态的背景颜色 */
+    background-color: $green; 
 }
 </style>

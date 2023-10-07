@@ -2,14 +2,14 @@
     <player ref="player"></player>
     <main class="singleAlbum">
         <!-- 上方大圖 -->
-        <div class="banner" v-for="albumItem in album" :key="alb_id">
+        <div class="banner" v-for="albumItem in album" :key="albumItem.id">
             <div class="overlay"></div>
             <img class="backPic" :src="`${publicPath}dataimage/album/${albumItem.albumpic}`"
                 :alt="albumItem.albumname">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
-            <div class="topInf" v-for="albumItem in album" :key="alb_id">
+            <div class="topInf" v-for="albumItem in album" :key="albumItem.id">
                 <div class="albumPic">
                     <img :src="`${publicPath}dataimage/album/${albumItem.albumpic}`" :alt="album.albumname">
                 </div>
@@ -37,12 +37,11 @@
                     </div>
                 </div>
             </div>
-            <div class="mainInf" v-for="albumItem in album" :key="alb_id">
+            <div class="mainInf" v-for="albumItem in album" :key="albumItem.id">
                 <div class="singerInf">
-                    <!-- 路徑還要修改抓id -->
                     <router-link :to="`/home/profilepage/${albumItem.singer_id}`" class="singer">
                         <div class="singerPic">
-                            <img :src="`${publicPath}dataimage/member/${albumItem.singerpic}`" alt="albumItem.singer">
+                            <img :src="`${publicPath}dataimage/member/${albumItem.singerpic}`" :alt="albumItem.singer">
                         </div>
                         <p class="singerName">{{ albumItem.singer }}</p>
                     </router-link>

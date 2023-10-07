@@ -195,10 +195,14 @@
 
             .albumPic {
                 width: 69px;
+                height: 69px;
                 border: 1px solid #FFF;
+                overflow: hidden;
 
                 img {
                     width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                     vertical-align: top;
                 }
             }
@@ -221,12 +225,20 @@
                 font-size: $tag;
                 display: inline-block;
                 padding: 50px 20px 20px 0;
+
+                @media screen and (max-width: 768px) {
+                    padding: 0px 20px 0px 0;
+                }
             }
 
+            @media screen and (max-width: 768px) {
+                width: 70%;
+                margin: 0 auto 10%;
+            }
 
         }
 
-        .albumInf {
+        .memInf {
             font-size: $default;
 
             @media screen and (max-width: 768px) {
@@ -257,11 +269,12 @@
 
             .songCat {
                 display: flex;
+                
 
                 .categorize {
                     padding: 0 10px 0px 0;
-                    line-height: $default/1.5;
                     color: $white;
+                    line-height: $default/1.5;
                 }
             }
         }
@@ -318,9 +331,15 @@
 
                             .pic {
                                 width: 60px;
-
+                                height: 60px;
+                                border: 1px solid #FFF;
+                                border-radius: 50%;
+                                overflow: hidden;
+                
                                 img {
                                     width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
                                     vertical-align: top;
                                 }
                             }
@@ -379,12 +398,6 @@
 
                         .likeCount {
                             font-size: $tag;
-                        }
-
-                        .btn_likeMes {
-                            @include music_btn_circle(35px);
-                            background-color: $tp;
-                            border: 1px solid $white;
                         }
                     }
 

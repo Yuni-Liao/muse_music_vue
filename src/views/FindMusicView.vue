@@ -2,7 +2,7 @@
     <player ref="player"></player>
     <div class="banner"
     :style="{
-        backgroundImage: `url(${`${this.publicPath}` + foundObject.img})`
+        backgroundImage: `url(${publicPath}dataimage/find/${foundObject.mcat_pic})`
     }"
     >
         <div class="wrapper">
@@ -11,8 +11,8 @@
             </div>
             <div class="container1">
                 <div class="title">
-                    <h1>{{ foundObject.styleName }}</h1>
-                    <p>共{{ foundObject.count }}首歌</p>
+                    <h1>{{ foundObject.mcat_name }}</h1>
+                    <p>共首歌</p>
                 </div>
                 <div class="btn">
                     <PlayBtnBig @click="openPlayer"></PlayBtnBig>

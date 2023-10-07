@@ -137,11 +137,13 @@
             font-size: $small;
             color: $dark;
             background: linear-gradient(to right, $green, $green, #d3d3fd);
-            // background: linear-gradient(to right, olive, green, purple);
             background-size: 200%;
-            transition: background-position .5s; 
+            transition: background-position .5s,right 0.3s; 
             display: flex;
             cursor: pointer;
+        &.open{
+          right: 0px;
+        }
             .arrow{
                 @include btnBgNone;
                 color: $dark;
@@ -159,7 +161,7 @@
             white-space: pre-line;
             display: flex;
             margin-top: 10px;
-        }    
+        }
     }
 
     .faqtitle{

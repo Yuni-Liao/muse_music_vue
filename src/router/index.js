@@ -205,7 +205,7 @@ const routes = [
 
       //以下是單曲頁面
       {
-        path: "singlemusic",
+        path: "singlemusic/:sid",
         name: "singlemusic",
         component: () =>
           import(
@@ -213,7 +213,7 @@ const routes = [
           ),
         meta: {
           title: "單曲",
-          //把它變成專輯名稱
+          //把它變成單曲名稱
         },
       },
 
@@ -318,7 +318,7 @@ const routes = [
 
       //以下是探索音樂內頁頁面
       {
-        path: "findmusic/:id",
+        path: "findmusic/:mcat_id",
         name: "findmusic",
         component: () =>
           import(
