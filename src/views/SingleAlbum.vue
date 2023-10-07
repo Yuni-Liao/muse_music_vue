@@ -41,7 +41,7 @@
                 <div class="singerInf">
                     <router-link :to="`/home/profilepage/${albumItem.singer_id}`" class="singer">
                         <div class="singerPic">
-                            <img :src="`${publicPath}dataimage/member/${albumItem.singerpic}`" alt="albumItem.singer">
+                            <img :src="`${publicPath}dataimage/member/${albumItem.singerpic}`" :alt="albumItem.singer">
                         </div>
                         <p class="singerName">{{ albumItem.singer }}</p>
                     </router-link>
