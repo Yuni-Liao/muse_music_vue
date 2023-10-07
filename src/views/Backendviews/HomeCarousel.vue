@@ -8,7 +8,7 @@
                 <Switch @click="upDownBtn()" true-color="#13ce66" false-color="#ff4949" />
             </template>
             <template #editBtn="{ row }">
-                <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
+                <fontAwesome @click="editCarousel()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
         </Table>
     </div>
