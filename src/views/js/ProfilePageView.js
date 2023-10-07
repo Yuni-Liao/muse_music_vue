@@ -110,7 +110,7 @@ export default {
     //fetch 會員歌曲
     const fetchsongData = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.pageMemid}`
+        `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.pageMemid}&stat=1`
       );
 
       fetch(apiURL)
