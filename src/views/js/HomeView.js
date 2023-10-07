@@ -259,7 +259,7 @@ export default {
     //fetch 本週熱門歌曲
     const fetchSongRank = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getSongRank.php`
+        `http://localhost/muse_music/public/api/getRankSong.php`
       );
 
       fetch(apiURL)
