@@ -19,7 +19,6 @@ const clickOutside = {
         }
         // 用于销毁前注销事件监听
         el.__click_outside__ = eventHandler
-        // 添加事件监听
         document.addEventListener('click', eventHandler)
     },
     beforeUnmount(el) {
@@ -40,107 +39,10 @@ export default {
             newMessage: "",
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            //歌曲清單
-            // songs: [
-            //     {
-            //         id: 1,
-            //         songPic: "songPic.png",
-            //         bannerPic: "banner_songPic1.png",
-            //         songName: "Say It",
-            //         singer: "George Makridis, Hannah Hampton",
-            //         singerPic: "singerPic.png",
-            //         albumPic: "albumPic.png",
-            //         album: "Countlary",
-            //         date: "2023-08-22",
-            //         albumInf: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-            //         songInf: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-            //         type1: "西洋語系",
-            //         type2: "嘻哈",
-            //         type3: "派對",
-            //         time: "03:58",
-            //         played: "5,223",
-            //         liked: "68",
-            //         shared: "39"
-            //     }
-            // ],
-            // messages: [
-            //     {
-            //         id: 1,
-            //         userPic: "userpic1.png",
-            //         userName: "Euterpe",
-            //         date: "2023-08-23",
-            //         message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.",
-            //         like: "12",
-            //         showReportBtn: false,
-            //     },
-            //     {
-            //         id: 2,
-            //         userPic: "userpic2.png",
-            //         userName: "Auterpe",
-            //         date: "2023-06-23",
-            //         message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem .",
-            //         like: "24",
-            //         showReportBtn: false,
-            //     },
-            //     {
-            //         id: 3,
-            //         userPic: "userpic3.png",
-            //         userName: "Zuterpe",
-            //         date: "2023-04-23",
-            //         message: "dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore, facilis nam tenetur unde.Lorem ",
-            //         like: "33",
-            //         showReportBtn: false,
-            //     },
-            //     {
-            //         id: 4,
-            //         userPic: "userpic1.png",
-            //         userName: "Jisoo",
-            //         date: "2023-07-23",
-            //         message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            //         like: "666",
-            //         showReportBtn: false,
-            //     },
-            //     {
-            //         id: 5,
-            //         userPic: "userpic2.png",
-            //         userName: "Lisa",
-            //         date: "2023-05-23",
-            //         message: "facilis Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquam quo rem dolor ipsum dolore.",
-            //         like: "999",
-            //         showReportBtn: false,
-            //     }
-            // ],
-            // otherSongs: [
-            //     {
-            //         id: 1,
-            //         albumPic: "othaersong1.png",
-            //         name: "Fly Like",
-            //     },
-            //     {
-            //         id: 2,
-            //         albumPic: "othaersong2.png",
-            //         name: "Tired",
-            //     },
-            //     {
-            //         id: 3,
-            //         albumPic: "othaersong3.png",
-            //         name: "Want To Go Home",
-            //     },
-            //     {
-            //         id: 4,
-            //         albumPic: "othaersong1.png",
-            //         name: "Sleep",
-            //     },
-            //     {
-            //         id: 5,
-            //         albumPic: "othaersong2.png",
-            //         name: "Bed",
-            //     }
-            // ],
-            songs:[], //歌曲資訊 (fetch)
-            messages:[], //留言資訊 (fetch)
-            otherSongs:[], //相關歌曲 (fetch)
-            songTypes:[], //歌曲類別 (fetch)
+            songs: [], //歌曲資訊 (fetch)
+            messages: [], //留言資訊 (fetch)
+            otherSongs: [], //相關歌曲 (fetch)
+            songTypes: [], //歌曲類別 (fetch)
             isShow: true,
             isShowSong: true,
             num: 3,
@@ -164,12 +66,21 @@ export default {
         // 創建新留言
         addNewMessage() {
             if (this.newMessage.trim() !== "") {
+                // 獲取當前日期的年月日時分秒
+                const currentDate = new Date();
+                const year = currentDate.getFullYear();
+                const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // 補零
+                const day = currentDate.getDate().toString().padStart(2, '0'); // 補零
+                const hours = currentDate.getHours().toString().padStart(2, '0'); // 補零
+                const minutes = currentDate.getMinutes().toString().padStart(2, '0'); // 補零
+                const seconds = currentDate.getSeconds().toString().padStart(2, '0'); // 補零
+
                 // 創建新留言對象，使用 Date.now() 作為唯一的 id
                 const newMessageItem = {
                     id: Date.now(),
-                    userPic: "userpic1.png", // 假設您有一個默認的用戶圖片
+                    userPic: "pre.jpg", // 假設您有一個默認的用戶圖片
                     userName: "Your Name", // 假設您希望新留言的用戶名稱為 "Your Name"
-                    date: new Date().toISOString().slice(0, 10), // 使用當前日期
+                    date: `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`, // 使用當前日期時間
                     message: this.newMessage,
                     like: "0", // 初始點贊數為0
                     showReportBtn: false,
@@ -213,13 +124,13 @@ export default {
             this.isShowSong = !this.isShowSong;
         },
     },
-    mounted(){
+    mounted() {
         this.sid = parseInt(this.$route.params.sid);
         //歌曲資訊 (fetch) songs:[]
         const fetchSingleMusic = () => {
             const sid = this.$route.params.sid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusic.php?salid=${sid}`
+                `http://localhost/muse_music/public/api/getSingleMusic.php?sid=${sid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
@@ -233,7 +144,7 @@ export default {
         const fetchSingleMusicType = () => {
             const sid = this.$route.params.sid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusicType.php?salid=${sid}`
+                `http://localhost/muse_music/public/api/getSingleMusicType.php?sid=${sid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
@@ -245,9 +156,9 @@ export default {
         };
         //留言資訊 (fetch) messages:[]
         const fetchSingleMusicMsg = () => {
-            const $msgid = this.$route.params.$msgid;
+            const msgid = this.$route.params.msgid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusicMsg.php?salid=${$msgid}`
+                `http://localhost/muse_music/public/api/getSingleMusicMsg.php?msgid=${msgid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
@@ -261,7 +172,7 @@ export default {
         const fetchSingleMusicSong = () => {
             const sid = this.$route.params.sid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusicSong.php?salid=${sid}`
+                `http://localhost/muse_music/public/api/getSingleMusicSong.php?sid=${sid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
