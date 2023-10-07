@@ -6,8 +6,8 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    //$msgid = $_GET['msgid'];
-    $msgid = 1;
+    $msgid = $_GET['msgid'];
+    //$msgid = 1;
 
     //SQL指令: 單曲頁面 取得留言資料
     $sql = "select

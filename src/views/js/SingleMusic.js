@@ -156,7 +156,7 @@ export default {
         };
         //留言資訊 (fetch) messages:[]
         const fetchSingleMusicMsg = () => {
-            const msgid = this.$route.params.msgid;
+            const msgid = this.$route.params.sid;
             const apiURL = new URL(
                 `http://localhost/muse_music/public/api/getSingleMusicMsg.php?msgid=${msgid}`
             );

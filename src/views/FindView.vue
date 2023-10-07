@@ -3,13 +3,20 @@
         <player ref="player"></player>
         <div class="find_select" 
         :style="{ 
-            'backgroundImage': bgImage,
-            }">
+            backgroundImage: bgImage,
+            backgroundColor: 'rgba(0, 0, 0, .3)',
+            backdropFilter:'blur(5px)',
+            }"
+            >
+            <div class="blur"></div>
             <div class="find">
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
-                <div class="space" v-for="(item, index) in language" :key="item.mcat_id" :class="item.className"
+                <div class="space" 
+                
+                
+                v-for="(item, index) in language" :key="item.mcat_id"
                     @mouseenter="spaceHover(item.mcat_pic)">
                     <div class="txt">
                         <router-link :to="`findmusic/${item.mcat_id}`">
@@ -56,7 +63,7 @@
                     }" :modules="modules">
                     <swiper-slide v-for="h in singers" :key="h.mem_id">
                         <div class="h_card">
-                            <router-link :to="`/home/profilepage/:memid`">
+                            <router-link :to="`/home/profilepage/${h.mem_id}`">
                                 <img :src="`${publicPath}dataimage/member/${h.mem_pic}`" />
                                 <div class="text">
                                     <h4>{{ h.mem_name }}</h4>
@@ -93,7 +100,7 @@
                             <div class="text">
                                 <h4>{{ n.s_name }}</h4>
                                 <p>
-                                    <router-link :to="`/home/profilepage/:memid`">
+                                    <router-link :to="`/home/profilepage/${n.mem_id}`">
                                         {{ n.h_name }}
                                     </router-link>
                                     <span>播放量{{ n.play_num }}</span>
