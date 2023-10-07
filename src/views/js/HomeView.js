@@ -53,20 +53,10 @@ export default {
       timerValue: null,
       showWeekTopmusic: false,
       // 首頁頂部Banner - 廖妍榛
-      topBanner: [
-        {
-          image: "index_topbanner_01.jpg",
-        },
-        {
-          image: "song01.jpg",
-        },
-        {
-          image: "index_topbanner_01.jpg",
-        },
-        {
-          image: "song01.jpg",
-        },
-      ],
+      topBanner: [{
+        img: '',
+      }], // 存放輪播圖的空陣列
+
       // 本週熱門歌曲輪播 - 黃珮菁
       SongRank: [],
       // 本週熱門專輯 -廖妍榛
@@ -196,8 +186,6 @@ export default {
       modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
     };
   },
-
-  computed: {},
   methods: {
     gotosinglemusic(sid) {
       this.$router.push({
@@ -271,6 +259,29 @@ export default {
     };
     fetchSongRank();
     this.startTimer();
+    //先檢查資料格式是否符合DB規則
+    const url = `http://localhost/muse_music/public/api/postIndexBanner.php`;
+    let headers = {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    };
+    fetch(url, {
+      method: "POST",
+      headers: headers,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("取得 data 失敗");
+        }
+      })
+      .then((json) => {
+        this.topBanner = json;
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
 
     setTimeout(() => {
       this.showWeekTopmusic = true;

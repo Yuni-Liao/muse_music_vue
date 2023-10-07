@@ -155,8 +155,8 @@
                                             <fontAwesome class="i" :icon="['fa', 'play']" color="#fff" />
                                         </div>
                                     </div>
-                                    <router-link to="/home/singlemusic" class="songName">
-                                        {{ songItem.songname }}
+                                    <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
+                                            {{ songItem.songname }}
                                     </router-link>
                                 </div>
                                 <div class="btnArea">

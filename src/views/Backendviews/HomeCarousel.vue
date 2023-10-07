@@ -1,20 +1,20 @@
 <template>
     <div class="homecarousel_box">
         <h1>網站資訊管理 | 首頁輪播管理</h1>
-        <Button type="primary" @click="addBannerBtn()"
-            style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增輪播</Button>
-        <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" :columns="columns" :data="data">
+        <!-- <Button type="primary" @click="addBannerBtn()"
+            style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增輪播</Button> -->
+        <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" :columns="columns"
+            :data="carouselItem">
             <template #upDownBtn="{ row }">
-                <Switch @click="upDownBtn()" true-color="#13ce66" false-color="#ff4949" />
+                <Switch @click="upDownBtn(row)" true-color="#13ce66" false-color="#ff4949" />
             </template>
             <template #editBtn="{ row }">
-                <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
+                <fontAwesome @click="editCarousel(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
         </Table>
     </div>
-
     <!-- 新增輪播彈窗 -->
-    <Modal v-model="bannerBox" title="新增輪播圖" width="300" okText="新增">
+    <!-- <Modal v-model="bannerBox" title="新增輪播圖" width="300" okText="新增">
         <p>上傳輪播圖!!!!</p>
         <Upload multiple type="drag" action="//jsonplaceholder.typicode.com/posts/">
             <div style="padding: 20px 0">
@@ -22,6 +22,24 @@
                 <p>Click or drag files here to upload</p>
             </div>
         </Upload>
+    </Modal> -->
+    <Modal v-model:modelValue="editBox" title="編輯" width="300" okText="確認" @on-ok="confirmEdit">
+        <!-- 輪播id -->
+        <input type="text" name="car_id" v-model="editBanner[0].id" style="display: none;">
+        <!-- 更新輪播名稱 -->
+        <p>輪播名稱:</p><input type="text" id="nameValue" v-model="editBanner[0].nameValue"
+            style="margin-bottom:10px; width: 250px;">
+        <!-- 更新網址 -->
+        <p>連結網址:</p><input type="text" id="bannerLink" v-model="editBanner[0].bannerLink"
+            style="margin-bottom:10px; width: 250px;">
+        <!-- 上傳圖片 -->
+        <Upload type="drag" action="/public/api/editIndexCarousel.php">
+            <div style="padding: 20px 0">
+                <Icon size="100" style="color: #3399ff" v-model="editBanner[0].uploadImg" id="uploadImg"></Icon>
+                <p>Click or drag files here to upload</p>
+            </div>
+        </Upload>
+
     </Modal>
 </template>
 <!-- 補搜尋框 -->
