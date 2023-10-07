@@ -15,21 +15,23 @@
         ></Button>
       </template>
     </Input>
-    <Table
-      highlight-row
-      stripe
-      class="song_review_table cellHeight"
-      :columns="columns"
-      :data="data"
-    >
-      <template #editBtn="{ row }">
-        <fontAwesome
-          @click="editBtn()"
-          :icon="['far', 'pen-to-square']"
-          style="cursor: pointer"
-        />
-      </template>
-    </Table>
+    <div class="content">
+      <Table
+        highlight-row
+        stripe
+        class="song_review_table cellHeight"
+        :columns="columns"
+        :data="data"
+      >
+        <template #editBtn="{ row }">
+          <fontAwesome
+            @click="editBtn()"
+            :icon="['far', 'pen-to-square']"
+            style="cursor: pointer"
+          />
+        </template>
+      </Table>
+    </div>
   </div>
 </template>
 <!--
