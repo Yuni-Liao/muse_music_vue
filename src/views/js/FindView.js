@@ -34,11 +34,13 @@ export default {
     },
     data() {
         return {
+            
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
             bgImage: '', // 存放背景圖 -- 廖妍榛
             //
+            hover: false, // 鼠标悬停状态
             styleList: [],
             singers: [],
             songs: [],
@@ -53,7 +55,6 @@ export default {
     },
     methods: {
         fetchType() {
-            // const styleId = this.$route.params.styleId;
             const apiURL = new URL(
                 `http://localhost/muse_music/public/api/getFindStyle.php?`
             );
@@ -73,7 +74,7 @@ export default {
         },
         fetchSong() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindSong.php?`
+                `http://localhost/muse_music/public/api/getFindNewSong.php?`
             );
             fetch(apiURL).then(async (response) => {
                 this.songs = await response.json();

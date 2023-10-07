@@ -4,10 +4,8 @@ try{
     header('Access-Control-Allow-Origin:*');
     header("Content-Type:application/json;charset=utf-8");
     require_once("./connectMusemusic.php");
-
     //執行sql指令並取得pdoStatement
-    //SQL指令: 查詢music_cat
-
+    //SQL指令: 連接member資料庫
     $sql = "select * from member;";
 
     $styles = $pdo->query($sql);
@@ -19,9 +17,8 @@ try{
         $styRow = $styles->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($styRow); //送出json字串
     }
-
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";
     echo "錯誤原因 : ", $e->getMessage(), "<br>";
 }
-
+?>

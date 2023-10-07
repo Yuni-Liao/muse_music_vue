@@ -34,10 +34,15 @@
       border-bottom:1px solid ;
     }
     .find_select{
-      
-      background-image: url(/public/image/Find/japan50.png); //預設背景圖 -- 廖妍榛      
-      // background-color: rgba(42, 42, 42, 0.8);
-      backdrop-filter:blur(5px);
+      position: relative;
+      .blur{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .3);
+        backdrop-filter:blur(5px);
+        z-index: -100;
+      }
       .language{
         width: 100%;
         display: flex;
@@ -66,40 +71,6 @@
         :last-child{
           border-right:0 ;
         }
-        // .space_0:hover {
-        //   background-image: url('/public/image/Find/japan50.png');
-        //   background-position: 50%;
-        //   background-size: cover;
-        //   background-repeat: no-repeat;
-        // }
-        
-        // .space_1:hover {
-        //   background-image: url('/public/image/Find/korea50.png');
-        //   background-position: 50%;
-        //   background-size: cover;
-        //   background-repeat: no-repeat;
-  
-        // }
-        // .space_2:hover {
-        //   background-image: url('/public/image/Find/asia50.png');
-        //   background-position: 50%;
-        //   background-size: cover;
-        //   background-repeat: no-repeat;
-  
-        // }
-        // .space_3:hover {
-        //   background-image: url('/public/image/Find/westernUp.png');
-        //   background-position: 50%;
-        //   background-size: cover;
-        //   background-repeat: no-repeat;
-  
-        // }
-        // .space_4:hover {
-        //   background-image: url('/public/image/Find/animalUp.png');
-        //   background-position: 50%;
-        //   background-size: cover;
-        //   background-repeat: no-repeat;
-        // }
       }
     }
     .style,
