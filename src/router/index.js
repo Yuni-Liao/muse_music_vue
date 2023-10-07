@@ -205,7 +205,7 @@ const routes = [
 
       //以下是單曲頁面
       {
-        path: "singlemusic",
+        path: "singlemusic/:sid",
         name: "singlemusic",
         component: () =>
           import(
