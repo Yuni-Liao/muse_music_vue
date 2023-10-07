@@ -10,10 +10,10 @@ try {
     //$memid = 1;
 
     //SQL指令: 查詢會員專輯
-    $sql = "select a.alb_id,a.alb_img, a.alb_name, a.mem_id, m.mem_name, a.upload_date
+    $sql = "select a.alb_id,a.alb_img, a.alb_name, a.mem_id, m.mem_name, a.upload_date , a.alb_intro
     from album a join member m on a.mem_id = m.mem_id
     where a.mem_id = $memid
-    order by a.upload_date;";
+    order by a.upload_date desc;";
 
     $alb = $pdo->query($sql);
 

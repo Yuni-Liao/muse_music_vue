@@ -259,6 +259,7 @@ const routes = [
         },
       },
       {
+        //以下是編輯歌曲頁面
         path: "editsong",
         name: "editsong",
         component: () =>
@@ -290,17 +291,17 @@ const routes = [
         },
       },
 
-      {
-        path: "editalbumsong",
-        name: "editalbumsong",
-        component: () =>
-          import(
-            /* webpackChunkName: "profilepage" */ "../views/EditAlbumSong.vue"
-          ),
-        meta: {
-          title: "編輯專輯歌曲",
-        },
-      },
+      // {
+      //   path: "editalbumsong",
+      //   name: "editalbumsong",
+      //   component: () =>
+      //     import(
+      //       /* webpackChunkName: "profilepage" */ "../views/EditAlbumSong.vue"
+      //     ),
+      //   meta: {
+      //     title: "編輯專輯歌曲",
+      //   },
+      // },
 
       // {
       //   path: "editsdsong",
