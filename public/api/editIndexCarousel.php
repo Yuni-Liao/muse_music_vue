@@ -2,8 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header('Content-Type: application/json');
-
+header("Content-Type:application/json;charset=utf-8");
 try {
     switch ($_FILES["img"]["error"]) {
 
