@@ -6,10 +6,11 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 header('Content-Type: application/json');
 
 try {
+    //這裡還沒寫 - 廖妍榛
     switch ($_FILES["image"]["error"]) {
 
         case UPLOAD_ERR_OK :
-            $dir = "../image/index/";
+            $dir = "../dataimage/index/carousel/";
             if( !file_exists($dir) ){
                 mkdir($dir);
             }
@@ -53,7 +54,6 @@ try {
 catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";
     echo "錯誤原因 : ", $e->getMessage(), "<br>";
-    //echo "系統暫時不能正常運行，請稍後再試<br>";  
 }
 
 ?>
