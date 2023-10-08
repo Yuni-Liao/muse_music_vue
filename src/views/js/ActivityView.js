@@ -69,15 +69,15 @@ export default {
     },
     filteredNews() {
       if (this.selectedArea === '全部' && this.selectedMonth === '全部') {
-        return this.news; // 如果选择全部地区和全部月份，返回所有活动信息
+        return this.news; // 如選擇全部地區和全部月份，return所有活動訊息
       } else if (this.selectedArea === '全部') {
-        // 根据月份筛选活动信息
+        // 根據月份篩選活動訊息
         return this.news.filter(newsItem => newsItem.month_abbr === this.selectedMonth);
       } else if (this.selectedMonth === '全部') {
-        // 根据地区筛选活动信息
+        // 根據地區篩選活動訊息
         return this.news.filter(newsItem => newsItem.news_area === this.selectedArea);
       } else {
-        // 同时根据地区和月份筛选活动信息
+        // 同時根據和月份篩選活動訊息
         return this.news.filter(newsItem => newsItem.news_area === this.selectedArea && newsItem.month_abbr === this.selectedMonth);
       }
     },

@@ -1,12 +1,11 @@
 <template>
     <div class="topncenter">
         <div class="infoTop">
-            <!-- <img :src="`${publicPath}/image/Activity/${foundObject.img}`"> -->
-            <img :src="`${publicPath}image/Activity/activity01.png`" alt="">
+            <img :src="`${publicPath}dataimage/news/${foundObject.news_pic}`" alt="">
             <div class="intro">
-                <h1>{{ foundObject.title }}</h1>
-                <h4>{{ foundObject.date }}</h4>
-                <h4>{{ foundObject.place }}</h4>
+                <h1 >{{ foundObject.news_name }}</h1>
+                <h4></h4>
+                <h4>{{ foundObject.news_place }}</h4>
                 <div class="followSingerr">
                     <router-link to="profilepage" class="singer">
                         <fontAwesome :icon="['fa', 'user-large']"
