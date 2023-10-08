@@ -1,3 +1,4 @@
+// import axios from 'axios';
 export default {
   // 重推again
   data() {
@@ -6,16 +7,15 @@ export default {
       publicPath: process.env.BASE_URL,
       activeTab: 1,
       currentStep: 0,
-      login_mem_id: 1, //這個之後要再改
       member: {
+        mem_id: 1,
         coverimgURL: require(`/public/dataimage/member/1-2.jpg`),
         profileImgURL: require(`/public/dataimage/member/1-1.jpg`),
-        name: "Anonyous",
-        introduction:
-          "桃園人，喜歡古典樂，最近嘗試個人創作，將古典樂結合搖滾，如果各位還喜歡，請追蹤我會不定時更新創作，謝謝支持~~~",
-        location: "",
+        name: "",
+        introduction: "",
+        county: "",
         socialMedia: "",
-        privacy: "公開",
+        privacy: "",
       },
       profileSongs: [],
       profileAlbums: [],
@@ -41,6 +41,7 @@ export default {
       readFile.readAsDataURL(file);
       readFile.addEventListener("load", this.profileloadImage);
 
+
       //再加FormData
       const fd = new FormData();
       fd.append("member_imageURL", file);
@@ -48,10 +49,18 @@ export default {
         method: "POST",
         body: fd,
       });
+
+
+    },
+
+    updateMemberData(updatedData) {
+      // 將更新後的會員資料設置到 member 數據中
+      this.member = updatedData;
     },
     profileloadImage(e) {
       this.member.profileImgURL = e.target.result;
     },
+
     editSong(s_id, s_img, s_name, s_intro, show_stat) {
       this.$router.push({
         name: "editsong",
@@ -77,6 +86,51 @@ export default {
     },
   },
   mounted() {
+
+    //fetch 會員基本資料
+    fetch('http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=1')
+      // axios.get('http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=1')
+      // .then(response => response.json())
+      .then(response => {
+        // const data = response.data;
+        const data = response;
+        const locations = [
+          "基隆市",
+          "台北市",
+          "新北市",
+          "桃園市",
+          "新竹市",
+          "新竹縣",
+          "苗栗縣",
+          "台中市",
+          "彰化縣",
+          "南投縣",
+          "雲林縣",
+          "嘉義市",
+          "嘉義縣",
+          "台南市",
+          "高雄市",
+          "屏東縣",
+          "台東縣",
+          "花蓮縣",
+          "宜蘭縣",
+          "澎湖縣",
+          "金門縣",
+          "連江縣"
+        ];
+
+        // 以陣列方式顯示縣市
+        this.member.location = locations[10];
+        this.member.name = data.name;
+        this.member.introduction = data.introduction;
+        this.member.county = data.county;
+        this.member.socialMedia = data.socialMedia;
+        this.member.privacy = data.privacy;
+      })
+      .catch(error => {
+        console.error('獲取資料庫失敗:', error);
+      });
+
     //fetch 會員歌曲
     const fetchSongData = () => {
       const apiURL = new URL(
