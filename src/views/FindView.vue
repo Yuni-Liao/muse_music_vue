@@ -1,22 +1,17 @@
 <template>
     <div class="find_style">
         <player ref="player"></player>
-        <div class="find_select" 
-        :style="{ 
+        <div class="find_select" :style="{
             backgroundImage: bgImage,
             backgroundColor: 'rgba(0, 0, 0, .3)',
-            backdropFilter:'blur(5px)',
-            }"
-            >
+            backdropFilter: 'blur(5px)',
+        }">
             <div class="blur"></div>
             <div class="find">
                 <h1>探索．Find Your MUSE</h1>
             </div>
             <div class="language">
-                <div class="space" 
-                
-                
-                v-for="(item, index) in language" :key="item.mcat_id"
+                <div class="space" v-for="(item, index) in language" :key="item.mcat_id"
                     @mouseenter="spaceHover(item.mcat_pic)">
                     <div class="txt">
                         <router-link :to="`findmusic/${item.mcat_id}`">
@@ -57,10 +52,9 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                    }" 
-                    :pagination="{
-                        clickable: true,
-                    }" :modules="modules">
+                    }" :pagination="{
+    clickable: true,
+}" :modules="modules">
                     <swiper-slide v-for="h in singers" :key="h.mem_id">
                         <div class="h_card">
                             <router-link :to="`/home/profilepage/${h.mem_id}`">
@@ -86,10 +80,9 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                    }" 
-                    :pagination="{
-                        clickable: true,
-                    }" :modules="modules">
+                    }" :pagination="{
+    clickable: true,
+}" :modules="modules">
                     <swiper-slide v-for="n in songs" :key="n.mem_id">
                         <div class="n_card">
                             <div class="image">

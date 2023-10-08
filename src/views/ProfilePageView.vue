@@ -175,7 +175,7 @@
       <!-- 音樂 -->
       <section v-show="tabtype === 1" class="music container">
         <!-- 假如沒有專輯就不顯示專輯區塊 -->
-        <div v-if="albData.length > 0" class="album">
+        <div v-if="albData" class="album">
           <h3>專輯． Album</h3>
           <div class="content">
             <!-- 假如專輯數量 <4 就不渲染輪播 -->
@@ -264,7 +264,7 @@
           <h3>所有歌曲． Songs</h3>
 
           <!-- 判斷是否有data -->
-          <div v-if="songData.length === 0" class="nodata">
+          <div v-if="songData.length == 0" class="nodata">
             {{ memData.mem_name }}目前沒有上傳歌曲
           </div>
 

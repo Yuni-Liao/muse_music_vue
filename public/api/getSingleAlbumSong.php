@@ -18,7 +18,9 @@ try {
     s.s_id as id,
     s.s_length as time,
     s.s_img as songPic,
-    s.s_name as name
+    s.s_name as name,
+    s.s_intro,
+    s.show_stat
     from album al
     join song s on al.alb_id = s.alb_id
     join member m on al.mem_id = m.mem_id
@@ -31,7 +33,7 @@ try {
         echo "查無歌曲資料";
     } else {
         $sRow = $singleAlbumSong->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($sRow);//送出json字串
+        echo json_encode($sRow); //送出json字串
     }
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";

@@ -13,7 +13,7 @@
       :autoplay="{ delay: 2500, disableOnInteraction: false }"
     >
       <swiper-slide v-for="(item, index) in topBanner" :key="index">
-        <img class="pic" :src="require(`/public/image/index/${item.image}`)" />
+        <img class="pic" :src="`${publicPath}dataimage/index/carousel/${item.img}`" />
       </swiper-slide>
     </swiper>
   </section>

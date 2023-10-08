@@ -1,3 +1,4 @@
+
 <?php
 try {
     //引入連線工作的檔案
@@ -6,22 +7,18 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    $memid = $_GET['memid'];
-    //$memid = 1;
 
-    //SQL指令: 查詢會員專輯
-    $sql = "select a.alb_id,a.alb_img, a.alb_name, a.mem_id, m.mem_name, a.upload_date , a.alb_intro
-    from album a join member m on a.mem_id = m.mem_id
-    where a.mem_id = $memid
-    order by a.upload_date desc;";
+    $sql = "select(@sno=@sno=1) as no, s.upload_date as submitTime, s.s_name as songName, s.s_length as timeRange, s.mem_id ,m.mem_acc as memberAcc, s.s_stat as songStatus, s.s_id
+    from song s join member m on s.mem_id = m.mem_id,(select @sno:=0) as sno
+    where s_stat = false
+    order by  upload_date desc;";
 
-    $alb = $pdo->query($sql);
-
+    $reviewSong = $pdo->query($sql);
     //如果找得資料，取回資料，送出json
-    if ($alb->rowCount() === 0) {
-        echo "查無資料";
+    if ($reviewSong->rowCount() === 0) {
+        echo "無待審核歌曲";
     } else {
-        $result = $alb->fetchAll(PDO::FETCH_ASSOC);
+        $result = $reviewSong->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result); //送出json字串
     }
 } catch (Exception $e) {
@@ -29,3 +26,4 @@ try {
     echo "錯誤原因 : ", $e->getMessage(), "<br>";
     //echo "系統暫時不能正常運行，請稍後再試<br>";	
 }
+?>
