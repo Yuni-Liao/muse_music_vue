@@ -72,8 +72,8 @@
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>
                                 </span>
-                                <router-link :to="`/home/singlemusic/${ item.id }`">
-                                    <h3 v-line-clamp=" 2 " class="name">
+                                <router-link v-line-clamp=" 2 " :to="`/home/singlemusic/${ item.id }`" class="name">
+                                    <h3 >
                                         {{ item.name }}
                                     </h3>
                                 </router-link>
