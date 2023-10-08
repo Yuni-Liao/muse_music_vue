@@ -74,25 +74,51 @@ export default {
                 const hours = currentDate.getHours().toString().padStart(2, '0'); // 補零
                 const minutes = currentDate.getMinutes().toString().padStart(2, '0'); // 補零
                 const seconds = currentDate.getSeconds().toString().padStart(2, '0'); // 補零
-
+        
                 // 創建新留言對象，使用 Date.now() 作為唯一的 id
                 const newMessageItem = {
                     id: Date.now(),
-                    userPic: "pre.jpg", // 假設您有一個默認的用戶圖片
-                    userName: "Your Name", // 假設您希望新留言的用戶名稱為 "Your Name"
+                    userPic: "pre.jpg", // 假設默認的用戶圖片
+                    userName: "Your Name", // 假設新留言的用戶名
                     date: `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`, // 使用當前日期時間
                     message: this.newMessage,
-                    like: "0", // 初始點贊數為0
+                    like: "0", // 初始點讚數為0
                     showReportBtn: false,
                 };
-
-                // 使用 unshift 方法將新留言插入到 messages 數組的開頭
-                this.messages.unshift(newMessageItem);
-
-                // 清空新留言的內容
-                this.newMessage = "";
+        
+                // 添加下面的调试语句
+                console.log("Attempting to send a message:", newMessageItem);
+        
+                // 使用 POST 將數據發送给後端
+                fetch('http://localhost/muse_music/public/api/postSingleMusicMsg.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: newMessageItem }), // 將 newMessageItem 作為對象傳遞給 JSON.stringify
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("Response from server:", data); 
+                    if (data.success) {
+                        // 清空新留言的内容
+                        this.newMessage = "";
+        
+                        // 更新前台留言列表
+                        this.messages.unshift(newMessageItem);
+                    } else {
+                        // 留言失敗
+                        console.error(data.msg);
+                    }
+                })
+                .catch((error) => {
+                    console.error('留言發送失敗:', error);
+                });
             }
         },
+        
+        
+
         // 預設只顯示前三筆留言
         showMore() {
             console.log('1', this.isShow);

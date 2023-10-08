@@ -6,29 +6,28 @@ export default {
             //
             // bannerBox: false, //新增輪播按鈕先隱藏-yuni
             editBox: false,
-            editBanner: [ // 編輯資料的暫存陣列
-                {
-                    car_id: '',
-                    nameValue: '',
-                    bannerLink: '',
-                    uploadImg: '',
-                }
-            ],
+            // editBanner: [ // 編輯資料的暫存陣列
+            //     {
+            //         carId: '',
+            //         nameValue: '',
+            //         bannerLink: '',
+            //         // uploadImg: '',
+            //     }
+            // ],
             imageData: null, // 圖片編譯Base64
             carouselItem: [], // 渲染資料的暫存陣列
-            editItem: [],
             columns: [
                 {
                     title: 'No',
                     key: 'car_id',
                     align: 'center',
-                    width: 100,
+                    width: 60,
                 },
                 {
                     title: '輪播名稱',
                     key: 'name',
                     align: 'center',
-                    width: 150,
+                    width: 140,
                 },
                 {
                     title: '圖片',
@@ -52,7 +51,7 @@ export default {
                     title: '更新時間',
                     key: 'update_time',
                     align: 'center',
-                    width: 150,
+                    width: 200,
                 },
                 {
                     title: '操作',
@@ -61,6 +60,12 @@ export default {
                     width: 100,
                 }
             ],
+            editItem: {
+                car_id: '',
+                nameValue: '',
+                bannerLink: '',
+                uploadImg: '',
+            },
         }
     },
     methods: {
@@ -72,32 +77,39 @@ export default {
         },
         editCarousel(row) {
             this.editBox = true;
-            this.editItem = row;
+            this.editItem.car_id = row.car_id;
+            this.editItem.nameValue = row.nameValue;
+            this.editItem.bannerLink = row.bannerLink;
+            this.editItem.uploadImg = row.uploadImg;
         },
         confirmEdit() {
             const url = `http://localhost/muse_music/public/api/editIndexCarousel.php`;
-            const data = {
-                car_id: this.editItem.car_id,
-                name: this.editBanner[0].nameValue,
-                link: this.editBanner[0].bannerLink,
-                img: this.editBanner[0].uploadImg,
-            };
             let headers = {
                 "Content-Type": "application/json",
                 Accept: "application/json",
             };
-            console.log(data);
+            const dataToSend = {
+                car_id: this.editItem.car_id,
+                name: this.editItem.nameValue,
+                link: this.editItem.bannerLink,
+                img: this.editItem.uploadImg,
+            };
             fetch(url, {
                 method: "POST",
                 headers: headers,
-                body: JSON.stringify(data),
+                body: JSON.stringify(dataToSend),
             })
-                .then((responseData) => {
-                    console.log('編輯成功', responseData);
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("取得 data 失敗");
+                    }
                 })
                 .catch((error) => {
-                    console.error('編輯失敗', error);
-                })
+                    console.log(error.message);
+                });
+            console.log(dataToSend);
         },
     },
     mounted() {

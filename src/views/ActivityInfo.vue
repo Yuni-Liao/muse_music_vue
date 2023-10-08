@@ -1,12 +1,11 @@
 <template>
     <div class="topncenter">
         <div class="infoTop">
-            <!-- <img :src="`${publicPath}/image/Activity/${foundObject.img}`"> -->
-            <img :src="`${publicPath}image/Activity/activity01.png`" alt="">
+            <img :src="`${publicPath}dataimage/news/${foundObject.news_pic}`" alt="">
             <div class="intro">
-                <h1>{{ foundObject.title }}</h1>
-                <h4>{{ foundObject.date }}</h4>
-                <h4>{{ foundObject.place }}</h4>
+                <h1 >{{ foundObject.news_name }}</h1>
+                <h4></h4>
+                <h4>{{ foundObject.news_place }}</h4>
                 <div class="followSingerr">
                     <router-link to="profilepage" class="singer">
                         <fontAwesome :icon="['fa', 'user-large']"
@@ -19,9 +18,7 @@
         </div>
         <div class="infoCenter">
             <h1>活動介紹</h1>
-            <p>一步一步，踩著得意的步伐一步一步，<br>踏著自己的節拍在自己的時區裡跟自己比較只要比上一秒再愜意一點點<br>就表示我們已經在普通的生活裡活出不普通的樣子<br>而這些腳印會被大家看見超近距離，<br>Acoustic小巡迴賀EP募資順利達標還超標讓我們先得意的見上一面！
-            </p>
-            <p>7/17 中午12點，全面啟售<br>單人票$680｜雙人票$1000｜現場票$700<br>購票請上 iNDIEVOX<br>*入場時間預計為開演前半小時，可能因現場狀況異動</p>
+            <p>{{ foundObject.news_con }}</p>
         </div>
 
     </div>
