@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: http://localhost:8080");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header('Content-Type: application/json');
+header("Content-Type:application/json;charset=utf-8");
 
 try {
     //這裡還沒寫 - 廖妍榛

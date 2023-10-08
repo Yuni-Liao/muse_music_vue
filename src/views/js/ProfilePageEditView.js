@@ -90,9 +90,7 @@ export default {
     //fetch 會員基本資料
     fetch('http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=1')
       // axios.get('http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=1')
-      // .then(response => response.json())
       .then(response => {
-        // const data = response.data;
         const data = response;
         const locations = [
           "基隆市",
