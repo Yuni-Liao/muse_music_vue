@@ -64,30 +64,37 @@
         <div v-show="activeTab === 1" class="page">
           <form class="form1">
             <div class="form-group">
+              
               <label for="name" class="label">顯示名稱</label>
               <input
                 type="text"
                 style=""
                 id="name"
-                v-model="name"
-                :placeholder="member.name"
+                v-model="member.name"
               />
             </div>
+
+            
             <div class="form-group">
+              <!-- <div>
+                <p>Name: {{ member.name }}</p>
+                <p>Introduction: {{ member.introduction }}</p>
+                <p>County: {{ member.county }}</p>
+                <p>Social Media: {{ member.socialMedia }}</p>
+                <p>Privacy: {{ member.privacy }}</p>
+              </div> -->
               <label for="inst" class="label">介紹</label>
               <textarea
                 name=""
                 id="inst"
-                v-model="inst"
+                v-model="member.introduction"
                 rows="10"
                 wrap="hard"
-                :placeholder="member.introduction"
               ></textarea>
             </div>
             <div class="form-group">
               <label for="location" class="label">位置</label>
-              <select id="location" v-model="location">
-                <option value="" disabled>請選擇縣市</option>
+              <select id="location" v-model="member.location" >
                 <option value="基隆市">基隆市,台灣</option>
                 <option value="台北市">台北市,台灣</option>
                 <option value="新北市">新北市,台灣</option>
@@ -117,8 +124,7 @@
               <input
                 type="text"
                 id="social"
-                v-model="social"
-                placeholder="社群網站"
+                v-model="member.socialMedia"
               />
             </div>
           </form>
