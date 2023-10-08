@@ -96,7 +96,7 @@
                         <div class="board">
                             <h3>留言板</h3>
                             <div class="sendArea">
-                                <input type="text" v-model="newMessage">
+                                <input type="text" v-model="newMessage" placeholder="  我想對創作者說...">
                                 <button class="send" @click="addNewMessage">
                                     <fontAwesome :icon="['fa', 'paper-plane']" style="color:#74EBD5;" size="2xl" />
                                 </button>
@@ -127,7 +127,7 @@
                                 </p>
                                 <div class="likeMes" v-if="messageItem">
                                     <p class="likeCount">{{ messageItem.liked }}</p>
-                                    <!-- <LikeMesBtn :messageItem="messageItem"></LikeMesBtn> -->
+                                    <LikeMesBtn :messageItem="messageItem"></LikeMesBtn>
                                 </div>
                             </div>
                             <button v-if="messages.length > 3" class="readMore" @click.prevent="showMore">
