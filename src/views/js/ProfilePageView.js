@@ -32,552 +32,21 @@ export default {
       pageMemid: 0,
       //swiper
       modules: [Scrollbar],
+      showCountUp: false,
+      tabtype: 1,
+      // 簡介顯示更多
+      introline: 4,
       isReadmoreBtn: Boolean,
       isReadMore: false,
+      //歌曲顯示更多
       songnum: 5,
       isShowMoreSong: false,
-      tabtype: 1,
-      introline: 4,
-      //會員資料
-      mem: {
-        memid: 1,
-        memname: "Anonymous",
-        loc: "桃園市",
-        //intro:
-        //  "桃園人，喜歡古典樂，最近嘗試個人創作，將古典樂結合搖滾，如果各位還喜歡，請追蹤我會不定時更新創作，謝謝支持~~~",
-        intro:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam itaque, cupiditate ea odit, laboriosam omnis officiis soluta excepturi placeat deleniti harum consequatur explicabo qui enim? Odio expedita libero fugiat ab eligendi atque eos exercitationem dignissimos, alias quo consectetur iste, ipsa aliquid tempora iusto unde cupiditate quibusdam sequi totam facilis. Impedit obcaecati fuga, ut tempora ducimus assumenda, repudiandae ea accusamus placeat adipisci inventore! Minus alias soluta tempore quis? Eligendi autem ipsa reiciendis adipisci minima necessitatibus cumque dolor quos, sunt cum possimus earum dolore at officiis esse amet odit aliquid neque harum commodi consequuntur fugiat sapiente iste? Quo, quia! In, veritatis facere.",
-        songcount: 12,
-        fans: 1264,
-        follower: 10,
-        coverimg: "coverimage.jpg",
-        profileimg: "profileimage.jpg",
-      },
-      // 專輯資料
-      album: [
-        {
-          id: 1,
-          bannerPic: "banner_albumPic1.png",
-          singer: "George Makridis, Hannah Hampton",
-          singerPage: "/profilepage",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          albumName: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          played: "2,855",
-          shared: "39",
-          mcatid: ["日語流行", "搖滾", "派對"],
-        },
-        {
-          id: 2,
-          bannerPic: "banner_albumPic1.png",
-          singer: "George Makridis, Hannah Hampton",
-          singerPage: "/profilepage",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          albumName: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          played: "2,855",
-          shared: "39",
-          mcatid: ["日語流行"],
-        },
-        {
-          id: 3,
-          bannerPic: "banner_albumPic1.png",
-          singer: "George Makridis, Hannah Hampton",
-          singerPage: "/profilepage",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          albumName: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          played: "2,855",
-          shared: "39",
-          mcatid: ["日語流行", "搖滾", "派對", "輕鬆", "更多類別"],
-        },
-        {
-          id: 5,
-          bannerPic: "banner_albumPic1.png",
-          singer: "George Makridis, Hannah Hampton",
-          singerPage: "/profilepage",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          albumName: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          played: "2,855",
-          shared: "39",
-          mcatid: ["日語流行", "搖滾", "派對"],
-        },
-        {
-          id: 5,
-          bannerPic: "banner_albumPic1.png",
-          singer: "George Makridis, Hannah Hampton",
-          singerPage: "/profilepage",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          albumName: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          played: "2,855",
-          shared: "39",
-          mcatid: ["日語流行", "搖滾", "派對"],
-        },
-      ],
-      //歌曲資料
-      songs: [
-        {
-          id: 1,
-          songPic: "songPic.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It 1",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 2,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It 2",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
 
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 3,
-          songPic: "songPic3.png",
-          bannerPic: "banner_songPic1.png",
-          songName:
-            "Say It3Say It3Say It3Say It3Say It3Say It3Say It3Say It3Say It3Say It3Say It3Say It3Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio quod cupiditate minima tempora ex iste, quasi in, ipsum expedita blanditiis ullam? A neque non maxime ducimus ipsum culpa? Quidem eum beatae debitis aspernatur, eveniet incidunt cupiditate sit earum neque inventore dolores tempora labore architecto animi obcaecati minus qui facilis non.",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 4,
-          songPic: "songPic3.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It4",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 5,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It5",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 6,
-          songPic: "songPic.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It6",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 7,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It7",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 8,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It5",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 9,
-          songPic: "songPic.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It6",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 10,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It7",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 11,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It5",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 12,
-          songPic: "songPic.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It6",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 13,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It7",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 14,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It5",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 15,
-          songPic: "songPic.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It6",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 16,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It7",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 17,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It5",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 18,
-          songPic: "songPic.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It6",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-        {
-          id: 19,
-          songPic: "songPic2.png",
-          bannerPic: "banner_songPic1.png",
-          songName: "Say It7",
-          singer: "George Makridis, Hannah Hampton",
-          singerPic: "singerPic.png",
-          albumPic: "albumPic.png",
-          album: "Countlary",
-          date: "2023-08-22",
-          albumInf:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident beatae dolorum repellendus veniam aspernatur blanditiis quae, mollitia ea consequatur non eos. Accusantium sint distinctio mollitia explicabo natus quidem sequi illo?",
-          songInf:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio rem fuga, est ipsum corporis eum ratione fugiat laudantium cum, dolore aut enim veritatis iure, nulla accusantium eaque nostrum placeat quia?",
-          type1: "西洋語系",
-          type2: "嘻哈",
-          type3: "派對",
-          time: "03:58",
-          played: "5,223",
-          liked: "68",
-          shared: "39",
-        },
-      ],
-      // 歌單資料
-      //要注意撈來的資料有沒有包含public: false!!!!!
-      songlists: [
-        {
-          slid: 5,
-          slname: "我的假日歌單",
-          image: "songPic.png",
-          memid: 1,
-          creator: "我",
-          playnum: 0,
-          songnum: 123,
-          public: true,
-        },
-        {
-          slid: 10,
-          slname: "我的假日歌單",
-          image: "songPic.png",
-          memid: 1,
-          creator: "我",
-          playnum: 0,
-          songnum: 123,
-          public: true,
-        },
-      ],
+      memData: {}, //會員資料，物件
+      albData: [],
+      songData: [],
+      slData: [],
+      //活動
       act: [
         {
           date: "2023/8/1",
@@ -610,62 +79,108 @@ export default {
     };
   },
   mounted() {
+    this.pageMemid = this.$route.params.memid;
+
+    //fetch 個人主頁會員資料
+    const fetchProfileMemData = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getMemDetail.php?memid=${this.pageMemid}`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.memData = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    //fetch 會員專輯
+    const fetchalbData = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getProfileAlbum.php?memid=${this.pageMemid}`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.albData = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    //fetch 會員歌曲
+    const fetchsongData = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.pageMemid}&stat=1`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.songData = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    //fetch 會員公開歌單
+    const fetchslData = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getProfilePublicSonglist.php?memid=${this.pageMemid}`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.slData = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+
+    //執行fetch
+    fetchProfileMemData();
+    fetchslData();
+    fetchalbData();
+    fetchsongData();
+
     //是否顯示"顯示更多"按鈕
     const readmoreBtn = () => {
       let itlSH = this.$refs.itl.scrollHeight;
-      //console.log(itlSH);
       if (itlSH > 54) {
         this.isReadmoreBtn = true;
       } else {
         this.isReadmoreBtn = false;
       }
     };
-    readmoreBtn();
+
+    setTimeout(() => {
+      readmoreBtn();
+    }, 300);
+    setTimeout(() => {
+      this.showCountUp = true;
+    }, 300);
   },
   computed: {},
   methods: {
-    // 獲取個人主頁會員之資料
-    // fetchMyallsonglist() {
-    //   const loginMemId = this.login_mem_id;
-    //   const apiURL = new URL(
-    //     `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
-    //   );
-    //   let Myallsonglist;
-    //   fetch(apiURL)
-    //     .then((res) => res.json())
-    //     .then((res) => {
-    //       Myallsonglist = res;
-    //       //根據創建日期排序
-    //       this.Myallsonglists = Myallsonglist.sort(function (a, b) {
-    //         return a.update_date < b.update_date ? 1 : -1;
-    //       });
-    //     })
-    //     .catch((error) => {
-    //       console.error("發生錯誤:", error);
-    //     });
-    // },
-
     //切換簡介顯示內容
     readmore() {
       this.isReadMore = !this.isReadMore;
     },
     //轉換K單位
     changeNum(num) {
+      //let nnum = Number(num);
       if (num > 1000) {
-        let knum = num / 1000;
-        return knum;
+        return num / 1000;
       } else {
-        return num;
+        let numm = parseInt(num);
+        return numm;
       }
     },
     //顯示更多歌曲
     showMoreSong() {
-      if (this.songnum >= this.songs.length) {
+      if (this.songnum >= this.songData.length) {
         this.isShowMoreSong = !this.isShowMoreSong;
         this.songnum = 5;
       } else {
         this.songnum += 5;
-        if (this.songnum >= this.songs.length) {
+        if (this.songnum >= this.songData.length) {
           this.isShowMoreSong = !this.isShowMoreSong;
         }
       }
@@ -675,18 +190,18 @@ export default {
     },
     //頁面切換----------------------
     gotosinglealbum(abid) {
-      this.$router.push({
+      let aa = this.$router.push({
         name: "singlealbum",
-        query: {
-          q: abid,
+        params: {
+          salid: abid,
         },
       });
     },
     gotosinglemusic(sid) {
       this.$router.push({
         name: "singlemusic",
-        query: {
-          q: sid,
+        params: {
+          sid,
         },
       });
     },
@@ -695,7 +210,7 @@ export default {
       this.$router.push({
         name: "singlesonglist",
         params: {
-          slid: slid,
+          slid,
         },
       });
     },

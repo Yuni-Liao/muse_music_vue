@@ -1,5 +1,4 @@
 <template>
-    <!-- <form action="about.php" method="POST"> -->
     <div class="about">
         <!-- <h1>這是關於謬思頁面</h1> -->
         <div class="banner">
@@ -41,11 +40,11 @@
 
 
         <h2 id="faq">常見問題．FAQ</h2>
-        <div v-for="(item, index) in faqList" :key="index" class="faq" :id="`faq${index}`">
+        <div v-for="(item, index) in faqArray" :key="index" class="faq" :id="`faq${index}`">
             <!-- Q -->
             <div class="question" @click="toggleQuestion(index)">
                 <div class="faqtitle">Q：</div>
-                <div class="faqcontent" id="que">{{ item.question }}</div>
+                <div class="faqcontent">{{ item.que }}</div>
                 <button class="arrow">
                     <fontAwesome v-if="!item.open" :icon="['fa', 'angle-down']" />
                     <fontAwesome v-else :icon="['fa', 'angle-up']" />
@@ -54,13 +53,13 @@
             <!-- A -->
             <div class="answer" v-if="item.open">
                 <div class="faqtitle">A：</div>
-                <div class="faqcontent" id="ans">{{ item.answer }}</div>
+                <div class="faqcontent">{{ item.ans }}</div>
             </div>
         </div>
 
         <h2>聯絡謬思．Contact MUSE</h2>
-        <form class="contact">
-            <div class="email"> 
+        <form class="contact" @submit.prevent="submitForm">
+            <div class="email">
                 <span>信箱*</span>
                 <input type="email" required>
             </div>
@@ -72,11 +71,11 @@
                 <span>問題類型*</span>
                 <select required>
                     <option value="">問題類型</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="1">會員個人主頁</option>
+                    <option value="2">會員權限</option>
+                    <option value="3">會員訂單</option>
+                    <option value="4">疑難解答</option>
+                    <option value="5">其他回饋</option>
                 </select>
             </div>
             <div class="describe">
@@ -86,7 +85,6 @@
             <div><input type="submit" value="提交" class="contactbtn obj_Rounded"></div>
         </form>
     </div>
-<!-- </form> -->
 </template>
 
 

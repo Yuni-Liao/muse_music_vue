@@ -121,30 +121,28 @@ export default {
                 },
 
             ],
+
             isRecentOrdersVisible: true,
             isHistoryOrdersVisible: false,
-            isRecentActive: true,
-            isHistoryActive: false,
 
         };
     },
     computed: {
+        historyOrders() {
+            return this.orders.filter(item => item.stat === '已完成' || item.stat === '已取消');
+        },
         recentOrders() {
-            return this.orders.slice(0, 5);
+            return this.orders.filter(item => item.stat === '已成立' || item.stat === '已付款' || item.stat === '已出貨' || item.stat === '已送達');
         },
     },
     methods: {
         showRecentOrders() {
             this.isRecentOrdersVisible = true;
             this.isHistoryOrdersVisible = false;
-            this.isRecentActive = true;
-            this.isHistoryActive = false;
         },
         showHistoryOrders() {
             this.isRecentOrdersVisible = false;
             this.isHistoryOrdersVisible = true;
-            this.isRecentActive = false;
-            this.isHistoryActive = true;
         },
     }
 

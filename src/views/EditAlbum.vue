@@ -23,6 +23,7 @@
             <br />
             <p style="color: white">
               ☸ 建議尺寸:500x500px以上，圖片檔案大小不可超過2MB
+              {{ albumData.alb_img }}
             </p>
           </div>
         </Upload>
@@ -30,28 +31,18 @@
 
       <div class="form-group">
         <label for="editalbumname" class="label">編輯專輯名稱</label>
-        <input
-          type="text"
-          id="editalbumname"
-          v-model="editalbumname"
-          :placeholder="album.editalbumname"
-        />
+        <input type="text" id="editalbumname" v-model="albumData.alb_name" />
       </div>
       <div class="form-group">
         <label for="editalbuminfo" class="label">編輯專輯介紹</label>
-        <input
-          type="text"
+        <textarea
+          name=""
           id="editalbuminfo"
-          v-model="editalbuminfo"
-          :placeholder="album.editalbuminfo"
-        />
-      </div>
-      <div class="form-group">
-        <label for="privacy" class="label">瀏覽權限</label>
-        <select id="privacy" v-model="privacy">
-          <option value="公開">公開</option>
-          <option value="私人">私人</option>
-        </select>
+          cols="30"
+          rows="10"
+          v-model="albumData.alb_intro"
+        >
+        </textarea>
       </div>
     </form>
     <div class="plus-container">
@@ -68,38 +59,42 @@
     <table class="song-table">
       <thead>
         <tr>
-          <th></th>
-          <th></th>
-          <th>歌曲</th>
-          <th>歌曲簡介</th>
-          <th>瀏覽權限</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th class="tno"></th>
+          <th class="timg"></th>
+          <th class="tname">歌曲</th>
+          <th class="tintro">歌曲簡介</th>
+          <th class="tshow">瀏覽權限</th>
+          <th class="tdate">更新日期</th>
+          <th class="ttime"><fontAwesome :icon="['fa', 'fa-clock']" /></th>
+          <th class="check"></th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(song, index) in songs" :key="index">
-          <td>{{ index + 1 }}</td>
-          <td>
-            <img
-              class="profile"
-              alt="Profile Image"
-              src="@/assets/image/profileeditimage/song.jpg"
-            />
+        <tr v-for="(item, index) in albumSongsData" :key="item.alb_id">
+          <td class="tno">{{ index + 1 }}</td>
+          <td class="timg">
+            <div class="pic">
+              <img
+                class="profile"
+                alt="歌曲照片"
+                :src="`${publicPath}dataimage/song/${item.songPic}`"
+              />
+            </div>
           </td>
-          <td>{{ song.title }}</td>
-          <td>{{ song.description }}</td>
-          <td>{{ song.privacy }}</td>
-          <td>{{ song.date }}</td>
-          <td>{{ song.time }}</td>
-          <td>
+          <td class="tname">{{ item.name }}</td>
+          <td class="tintro">{{ item.s_intro }}</td>
+          <td class="tshow">
+            {{ Number(item.show_stat) ? "公開" : "私人" }}
+          </td>
+          <td class="tdate">{{ item.update_date }}</td>
+          <td class="ttime">{{ item.time }}</td>
+          <td class="check">
             <br />
             <label class="checkboxLabel">
               <input
                 type="checkbox"
                 name="songclass"
-                v-model="song.isChecked"
+                v-model="item.isChecked"
                 @click="updateCount"
               />
               <fontAwesome class="i" :icon="['fa', 'fa-check']" />

@@ -205,7 +205,7 @@ const routes = [
 
       //以下是單曲頁面
       {
-        path: "singlemusic",
+        path: "singlemusic/:sid",
         name: "singlemusic",
         component: () =>
           import(
@@ -213,13 +213,14 @@ const routes = [
           ),
         meta: {
           title: "單曲",
-          //把它變成專輯名稱
+          //把它變成單曲名稱
         },
       },
 
       //以下是專輯頁面
       {
-        path: "singlealbum",
+        //path: "singlealbum",
+        path: "singlealbum/:salid",
         name: "singlealbum",
         component: () =>
           import(
@@ -258,6 +259,7 @@ const routes = [
         },
       },
       {
+        //以下是編輯歌曲頁面
         path: "editsong",
         name: "editsong",
         component: () =>
@@ -289,17 +291,17 @@ const routes = [
         },
       },
 
-      {
-        path: "editalbumsong",
-        name: "editalbumsong",
-        component: () =>
-          import(
-            /* webpackChunkName: "profilepage" */ "../views/EditAlbumSong.vue"
-          ),
-        meta: {
-          title: "編輯專輯歌曲",
-        },
-      },
+      // {
+      //   path: "editalbumsong",
+      //   name: "editalbumsong",
+      //   component: () =>
+      //     import(
+      //       /* webpackChunkName: "profilepage" */ "../views/EditAlbumSong.vue"
+      //     ),
+      //   meta: {
+      //     title: "編輯專輯歌曲",
+      //   },
+      // },
 
       // {
       //   path: "editsdsong",
@@ -317,7 +319,7 @@ const routes = [
 
       //以下是探索音樂內頁頁面
       {
-        path: "findmusic/:id",
+        path: "findmusic/:mcat_id",
         name: "findmusic",
         component: () =>
           import(

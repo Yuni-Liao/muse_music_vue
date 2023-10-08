@@ -2,28 +2,27 @@
     <player ref="player"></player>
     <main class="singleAlbum">
         <!-- 上方大圖 -->
-        <div class="banner" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
+        <div class="banner" v-for="albumItem in album" :key="albumItem.id">
             <div class="overlay"></div>
-            <img class="backPic" :src="`${publicPath}image/SingleAlbum/${album[0].albumPic}`"
-                alt="albumItem.bannerPic">
+            <img class="backPic" :src="`${publicPath}dataimage/album/${albumItem.albumpic}`" :alt="albumItem.albumname">
         </div>
         <!-- 以下是 1200px 內容區 -->
         <section class="inner">
-            <div class="topInf" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
+            <div class="topInf" v-for="albumItem in album" :key="albumItem.id">
                 <div class="albumPic">
-                    <img :src="`${publicPath}image/SingleAlbum/${albumItem.albumPic}`" alt="albumItem.songName">
+                    <img :src="`${publicPath}dataimage/album/${albumItem.albumpic}`" :alt="album.albumname">
                 </div>
                 <div class="albumInf">
                     <div class="album">
                         <p>專輯</p>
-                        <h1 class="albumName">{{ albumItem.albumName }}</h1>
+                        <h1 class="albumName">{{ albumItem.albumname }}</h1>
                         <h2 class="singer">{{ albumItem.singer }}</h2>
                     </div>
                     <div class="iconBar">
                         <div class="countArea">
                             <div class="played">
                                 <p>播放次數</p>
-                                <p>{{ albumItem.played }}</p>
+                                <p>{{ played }}</p>
                             </div>
                             <div class="shared">
                                 <fontAwesome :icon="['fa', 'share']" style="color: #fff;" />
@@ -37,11 +36,11 @@
                     </div>
                 </div>
             </div>
-            <div class="mainInf" v-for="(albumItem, albumIndex) in album" :key="albumIndex">
+            <div class="mainInf" v-for="albumItem in  album " :key="albumItem.id">
                 <div class="singerInf">
-                    <router-link to="/home/profilepage" class="singer">
+                    <router-link :to="`/home/profilepage/${albumItem.singer_id}`" class="singer">
                         <div class="singerPic">
-                            <img :src="`${publicPath}image/SingleMusic/${albumItem.singerPic}`" alt="albumItem.singer">
+                            <img :src="`${publicPath}dataimage/member/${albumItem.singerpic}`" :alt="albumItem.singer">
                         </div>
                         <p class="singerName">{{ albumItem.singer }}</p>
                     </router-link>
@@ -50,7 +49,7 @@
                         <p class="releasDate">{{ albumItem.date }}</p>
                     </div>
                     <p class="albumInf">
-                        {{ albumItem.albumInf }}
+                        {{ albumItem.albuminf }}
                     </p>
                 </div>
                 <div class="detail">
@@ -65,15 +64,20 @@
                                 </span>
                                 <span class="more"></span>
                             </li>
-                            <li v-for="(albumItem, albumIndex) in songs" :key="albumIndex" class="songArea">
-                                <span class="id">{{ albumItem.id }}</span>
-                                <span class="pic"><img :src="`/${publicPath}image/SingleMusic/${albumItem.songPic}`" />
+                            <li v-for="(item, index) in  songs " :key="id" class="songArea">
+                                <span class="id">{{ index + 1 }}</span>
+                                <span class="pic">
+                                    <img :src="`${publicPath}dataimage/song/${item.songpic}`" />
                                     <div class="play" @click="openPlayer()">
                                         <fontAwesome class="i" :icon="['fa', 'play']" />
                                     </div>
                                 </span>
-                                <h3 class="name"><router-link to="/home/singlemusic">{{ albumItem.name }}</router-link></h3>
-                                <span class="time">{{ albumItem.time }}</span>
+                                <router-link v-line-clamp=" 2 " :to="`/home/singlemusic/${ item.id }`" class="name">
+                                    <h3 >
+                                        {{ item.name }}
+                                    </h3>
+                                </router-link>
+                                <span class="time">{{ item.time }}</span>
                                 <div class="btnArea">
                                     <!-- 更多_按鈕 -->
                                     <ShareBtn></ShareBtn>

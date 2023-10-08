@@ -4,9 +4,8 @@ try{
     header('Access-Control-Allow-Origin:*');
     header("Content-Type:application/json;charset=utf-8");
     require_once("./connectMusemusic.php");
-
     //執行sql指令並取得pdoStatement
-    //SQL指令: 查詢music_cat
+    //SQL指令: 連接music_cat資料庫
 
     $sql = "select * from music_cat;";
 

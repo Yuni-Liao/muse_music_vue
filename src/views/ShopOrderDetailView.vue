@@ -6,7 +6,7 @@
                     <div class="pic">
                         <img :src="`${publicPath}image/ShopOrders/shoporderdetail_return.png`" alt="shoporderdetail_return">
                     </div>
-                    <div class="txt">回上頁</div>
+                    <div class="txt">回到總覽頁面</div>
                 </router-link>
             </div>
             <div class="order">
