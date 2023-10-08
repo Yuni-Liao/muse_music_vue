@@ -3,10 +3,10 @@
         <h1>網站資訊管理 | 排行榜管理</h1>
         <Button type="primary" @click="addRank()" style="width:100px; margin-bottom: 1%;margin-left: 70%;">編輯排行</Button>
 
-        <Tabs value="name1" capture-focus v-width="1000" style="overflow-x: hidden;">
+        <Tabs value="name" capture-focus v-width="1000" style="overflow-x: hidden;">
             <TabPane label="單曲排行" name="singleSongRanking" width="1000" height="450">
                 <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1000" height="450"
-                    :columns="columns" :data="data">
+                    :columns="songColumns" :data="songRankGroup">
                     <template #editBtn="{ row }">
                         <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
                     </template>
@@ -14,7 +14,7 @@
             </TabPane>
             <TabPane label="專輯排行" name="albumRanking">
                 <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1000" height="450"
-                    :columns="columns" :data="data">
+                    :columns="albColumns" :data="albumRankGroup">
                     <template #editBtn="{ row }">
                         <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
                     </template>

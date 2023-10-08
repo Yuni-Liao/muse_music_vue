@@ -4,22 +4,24 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-            columns: [
+            songRankGroup: [], // 渲染單曲排行資料的暫存陣列
+            albumRankGroup: [], // 渲染專輯排行資料的暫存陣列
+            songColumns: [
                 {
                     title: 'No',
-                    key: 'no',
+                    key: 'rank_id',
                     width: 230,
                     align: 'center'
                 },
                 {
                     title: '會員編號',
-                    key: 'memNo',
+                    key: 'mem_id',
                     width: 250,
                     align: 'center'
                 },
                 {
                     title: '單曲名稱',
-                    key: 'songName',
+                    key: 's_name',
                     width: 250,
                     align: 'center'
                 },
@@ -30,57 +32,31 @@ export default {
                     align: 'center'
                 }
             ],
-            data: [
+            albColumns: [
                 {
-                    no: 1,
-                    memNo: 'P-00001',
-                    songName: '八里香'
+                    title: 'No',
+                    key: 'rank_id',
+                    width: 230,
+                    align: 'center'
                 },
                 {
-                    no: 2,
-                    memNo: 'P-00001',
-                    songName: '八里香'
+                    title: '會員編號',
+                    key: 'mem_id',
+                    width: 250,
+                    align: 'center'
                 },
                 {
-                    no: 3,
-                    memNo: 'P-00001',
-                    songName: '八里香'
+                    title: '專輯名稱',
+                    key: 'alb_name',
+                    width: 250,
+                    align: 'center'
                 },
                 {
-                    no: 4,
-                    memNo: 'P-00001',
-                    songName: '八里香'
-                },
-                {
-                    no: 5,
-                    memNo: 'P-00001',
-                    songName: '八里香'
-                },
-                {
-                    no: 6,
-                    memNo: 'P-00001',
-                    songName: '八里香'
-                },
-                {
-                    no: 7,
-                    memNo: 'P-00001',
-                    songName: '八里香'
-                },
-                {
-                    no: 8,
-                    memNo: 'P-00001',
-                    songName: '八里香'
-                },
-                {
-                    no: 9,
-                    memNo: 'P-00001',
-                    songName: '八里香'
-                },
-                {
-                    no: 10,
-                    memNo: 'P-00001',
-                    songName: '八里香'
-                },
+                    title: '操作',
+                    slot: 'editBtn',
+                    width: 250,
+                    align: 'center'
+                }
             ],
         }
     },
@@ -92,5 +68,55 @@ export default {
             alert('編輯排行');
         }
     },
+    mounted() {
+        //先檢查資料格式是否符合DB規則
+        // 單曲排行渲染
+        const url = `http://localhost/muse_music/public/api/postSongRankMgmt.php`;
+        let headers = {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        };
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("取得 data 失敗");
+                }
+            })
+            .then((json) => {
+                this.songRankGroup = json;
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+
+        // 專輯排行渲染
+        const alburl = `http://localhost/muse_music/public/api/postAlbumRankMgmt.php`;
+        let albHeaders = {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        };
+        fetch(alburl, {
+            method: "POST",
+            headers: albHeaders,
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("取得 data 失敗");
+                }
+            })
+            .then((json) => {
+                this.albumRankGroup = json;
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+    }
 }
 
