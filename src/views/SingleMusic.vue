@@ -127,7 +127,7 @@
                                 </p>
                                 <div class="likeMes" v-if="messageItem">
                                     <p class="likeCount">{{ messageItem.liked }}</p>
-                                    <LikeMesBtn :messageItem="messageItem"></LikeMesBtn>
+                                    <!-- <LikeMesBtn :messageItem="messageItem"></LikeMesBtn> -->
                                 </div>
                             </div>
                             <button v-if="messages.length > 3" class="readMore" @click.prevent="showMore">
