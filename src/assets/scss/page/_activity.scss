@@ -1,4 +1,4 @@
-  
+
 
   .swiper {
     width: 100%;
@@ -126,6 +126,7 @@
       align-items: center;
       justify-content: center;
       background-color: #000;
+    
       .monthTab{
         display: flex;
         width: 530px;
@@ -189,7 +190,12 @@
     align-items: flex-start;
     justify-content: center;
     margin: 100px 0px;
+    position: relative;
+    min-height: 100vh;
     .activityArea{
+        position: absolute;
+        left: 10%;
+        border: 1px solid #fff;
         background-color: #000;
         margin-right: 100px;
         ul, li{
@@ -207,7 +213,13 @@
         }
       }
       .infoWrapper{
-        
+        .noActivity{
+          h1{
+            font-size: $big;
+            color: $white;
+            letter-spacing: 3px;
+          }
+        }
         
         .activityInfo{
           display: flex;
@@ -221,9 +233,9 @@
               background-color: $white;
               border-top-right-radius: 10px;
               border-top-left-radius: 10px;
-             
+              width: 95px;
               .month{
-                  width: 90px;
+                  width: 95px;
                   color: $white;
                   background-color: $blue;
                   border-top-right-radius: 10px;
@@ -251,7 +263,8 @@
               align-items: flex-start;
               text-align: left;
               margin-left: 20px;
-              cursor: pointer;
+              width: 250px;
+              
               @include s(){
                 margin-left: -10px;
                 p{
@@ -266,15 +279,17 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                margin-top: 30px;
                 .singer{
                   background-color: $pink;
                   border-radius: 30px;
                   display: flex;
                   align-items: center;
-                  margin: 10px;
+                  margin-right: 10px;
                   p{
                       padding: 5px 10px;
                       font-size: $tag;
+                      
                   }
                 }
               }
