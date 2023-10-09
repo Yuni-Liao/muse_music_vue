@@ -6,7 +6,9 @@
       clickable: true,
     }" :autoplay="{ delay: 2500, disableOnInteraction: false }">
       <swiper-slide v-for="(item, index) in topBanner" :key="index">
-        <img class="pic" :src="`${publicPath}dataimage/index/carousel/${item.img}`" />
+        <a :href="item.link">
+          <img class="pic" :src="`${publicPath}dataimage/index/carousel/${item.img}`" />
+        </a>
       </swiper-slide>
     </swiper>
   </section>
