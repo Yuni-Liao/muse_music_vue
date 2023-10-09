@@ -31,7 +31,14 @@ try {
 
     echo json_encode($result);
 } catch (Exception $e) {
-    echo "錯誤行號 : ", $e->getLine(), "<br>";
-    echo "錯誤原因 : ", $e->getMessage(), "<br>";
+    $errorResponse = [
+        "error" => [
+            "message" => "新增失敗",
+            "line" => $e->getLine(),
+            "details" => $e->getMessage(),
+        ],
+    ];
+
+    echo json_encode($errorResponse);
 }
 ?>
