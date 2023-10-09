@@ -4,6 +4,18 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
+            editSingleSongRank: false,
+            editAlbumRank: false,
+            selectedSongRank: '',
+            selectedAlbumRank: '',
+            selectedSong:
+            {
+                s_id: '',
+                s_name: '',
+            }
+            ,
+            allSong: [], // 全部歌曲暫存陣列
+            allAlbum: [], // 全部專輯暫存陣列
             songRankGroup: [], // 渲染單曲排行資料的暫存陣列
             albumRankGroup: [], // 渲染專輯排行資料的暫存陣列
             songColumns: [
@@ -61,12 +73,62 @@ export default {
         }
     },
     methods: {
-        editBtn(row) {
-            alert('編輯');
+        editAlbumBtn(row) {
+            this.editAlbumRank = true
+            this.editSingleSongRank = false
+            this.selectedAlbumRank = row.rank_id
         },
-        addRank() {
-            alert('編輯排行');
-        }
+        editSongBtn(row) {
+            this.editSingleSongRank = true
+            this.editAlbumRank = false
+            this.selectedSongRank = row.rank_id
+            console.log("Row s_name:", row.s_name);
+            console.log("Row s_id:", row.s_id);
+
+            this.selectedSong = [{
+                s_id: row.s_id,
+                s_name: row.s_name
+            }];
+            console.log("Row s_name:", this.selectedSong.s_name);
+
+            console.log("Row s_id:", this.selectedSong.s_id);
+        },
+        saveSongBtn() {
+            console.log("Selected Song:", this.selectedSong);
+            const url = `http://localhost/muse_music/public/api/editSongRankMgmt.php`;
+            let headers = {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            };
+            const dataToSend = {
+                s_id: this.selectedSong.s_id,
+                s_name: this.selectedSong.s_name,
+            };
+
+            fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(dataToSend),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("編輯失敗");
+                    }
+                })
+                // .then(() => {
+                //     window.location.reload();
+                // })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+            console.log(dataToSend);
+        },
+        closeBtn() {
+            this.editSingleSongRank = false
+            this.editAlbumRank = false
+        },
     },
     mounted() {
         //先檢查資料格式是否符合DB規則
@@ -117,6 +179,33 @@ export default {
             .catch((error) => {
                 console.log(error.message);
             });
-    }
-}
+        // fetch 全部單曲
+        const fetchAllSingleMusic = () => {
+            const apiURL = new URL(
+                `http://localhost/muse_music/public/api/getAllSingleMusic.php`
+            );
 
+            fetch(apiURL)
+                .then((res) => res.json())
+                .then((res) => (this.allSong = res))
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
+        };
+        fetchAllSingleMusic();
+        // fetch 全部專輯
+        const fetchAllAlbum = () => {
+            const apiURL = new URL(
+                `http://localhost/muse_music/public/api/getAllAlbum.php`
+            );
+
+            fetch(apiURL)
+                .then((res) => res.json())
+                .then((res) => (this.allAlbum = res))
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
+        };
+        fetchAllAlbum();
+    },
+}
