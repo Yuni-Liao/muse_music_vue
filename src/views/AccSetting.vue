@@ -27,12 +27,14 @@
                     <div class="nation">
                         <p>國家或地區</p>
                         <input class="nation_box obj_Radius" type="text" readonly placeholder="臺灣">
-                        <!-- 還沒渲染完 -->
-                        <select class="city obj_Radius" id="city">
-                            <option v-for="(   item, index   ) in    cityName   " :key="index" value="{{ item }}">{{ item
+                        <select class="city obj_Radius" id="city" v-if="editCity" v-model="memInfo[0].county">
+                            <option v-for="(item, index) in cityName" :key="index" :value="item">{{ item
                             }}
                             </option>
                         </select>
+                        <input class="city obj_Radius" type="text" v-else v-model="memInfo[0].county">
+                        <fontAwesome @click="toggleEditCity" :icon="['far', 'pen-to-square']" size="lg"
+                            style="cursor: pointer; margin-left: 3%;" />
                     </div>
                 </div>
             </div>
@@ -50,12 +52,9 @@
                     <input class="name_box obj_Radius" type="text" ref="copyInput" readonly v-model="urlCopy">
                     <span @click="copyLink()">
                         <fontAwesome :icon="['fa', 'copy']" size="xl"
-                            style="margin-left: 30%; cursor: pointer; color: #74EBD5" />
+                            style="cursor: pointer; color: #74EBD5; margin-left: 30%; " />
                     </span>
                 </div>
-                <!-- <div class="acc_btn">
-                    <button @click="saveBtn()" class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">儲存變更</button>
-                </div> -->
             </div>
         </div>
         <!-- 帳號安全驗證 -->

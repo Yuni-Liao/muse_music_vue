@@ -40,6 +40,7 @@ export default {
             }], // 暫存會員資料物件
             memChangePsw: '',
             urlCopy: '',
+            editCity: false,
             cityName: [
                 '台北市', '新北市', '基隆市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '嘉義市', '臺南市', '高雄市', '屏東縣', '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'
             ],
@@ -97,15 +98,10 @@ export default {
                 });
             console.log(dataToSend);
         },
-        // 帳號資訊 - 複製網址
-        // copyLink() {
-        //     const textToCopy = this.urlCopy;
-        //     VueClipboard.toClipboard(textToCopy).then(() => {
-        //         alert(`已複製網址: ${textToCopy}`);
-        //     }).catch(() => {
-        //         alert('複製失敗');
-        //     });
-        // },
+        // 修改居住地
+        toggleEditCity() {
+            this.editCity = !this.editCity;
+        },
 
         // 安全驗證
         setSafeBtn() {
