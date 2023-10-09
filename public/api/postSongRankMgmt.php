@@ -9,12 +9,12 @@ try {
     require_once("./connectMusemusic.php");
     
     $sql ="select sub.rank_id, sub.mem_id, sub.s_name, sub.share_num
-    FROM (
+    from (
         select sr.rank_id, s.mem_id, s.s_name, s.share_num
-        FROM s_rank sr
-        join song s ON sr.s_id = s.s_id
+        from s_rank sr
+        join song s on sr.s_id = s.s_id
         order by s.share_num DESC
-    ) aS sub
+    ) as sub
     order by sub.rank_id ASC";
 
     $songRank = $pdo->query($sql);
