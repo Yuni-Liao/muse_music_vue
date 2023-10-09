@@ -32,7 +32,7 @@
                             }}
                             </option>
                         </select>
-                        <input class="city obj_Radius" type="text" v-else v-model="memInfo[0].county">
+                        <input class="city obj_Radius" type="text" readonly v-else v-model="memInfo[0].county">
                         <fontAwesome @click="toggleEditCity" :icon="['far', 'pen-to-square']" size="lg"
                             style="cursor: pointer; margin-left: 3%;" />
                     </div>
