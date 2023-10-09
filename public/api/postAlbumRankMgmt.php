@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-// header("Content-Type: application/json"); 
+header("Content-Type:application/json;charset=utf-8");
 
 // 後台 - 專輯排行榜 畫面 - 廖妍榛
 try {
@@ -17,7 +17,7 @@ try {
     $albumRank = $pdo->query($sql);
 
     if($albumRank->rowCount()===0){
-        echo json_encode(["message" => "查無輪播圖"]);
+        echo json_encode(["message" => "查無資料"]);
     }else{
         $albumRank = $albumRank->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($albumRank);
