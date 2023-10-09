@@ -61,32 +61,6 @@ export default {
       SongRank: [],
       // 本週熱門專輯 -廖妍榛
       albumRank: [], // 存放本週熱門專輯的空陣列
-      a: [
-        {
-          image: [
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-          ],
-          name: [
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-          ],
-        },
-      ],
 
       // 情緒歌單測驗題 - 廖妍榛
       ques: [
