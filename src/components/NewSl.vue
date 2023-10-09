@@ -89,6 +89,7 @@ export default {
             if (this.btntype == 1) {
               this.$emit("isNewSlOpenupdate", this.isNewSlOpen);
             } else {
+              this.$emit("isNewSlOpenupdate", this.isNewSlOpen);
               window.location.reload();
             }
           })

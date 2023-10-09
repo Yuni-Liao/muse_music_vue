@@ -27,11 +27,20 @@
         flex-wrap: wrap;
         margin-bottom: 100px;
       }
-
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 60%;
+        z-index: 50;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.3), $tp);
+      }
       .profile-container {
         position: relative;
         bottom: -130px;
         margin: 0 30px;
+        z-index: 150;
         @media screen and (max-width: 800px) {
           margin-bottom: 30px;
           bottom: -35px;
@@ -52,6 +61,7 @@
         max-width: 55%;
         position: relative;
         bottom: -130px;
+        z-index: 150;
         @media screen and (max-width: 880px) {
           margin: 0;
           max-width: 95%;
