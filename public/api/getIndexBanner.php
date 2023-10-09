@@ -2,11 +2,12 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header("Content-Type: application/json"); 
+// header("Content-Type: application/json"); 
 
 // 前台 - 首頁輪播渲染 - 廖妍榛
 try {
     require_once("./connectMusemusic.php");
+
     $sql = "select img from carousel";
     $carousel = $pdo->query($sql);
 

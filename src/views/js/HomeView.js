@@ -259,29 +259,23 @@ export default {
     };
     fetchSongRank();
     this.startTimer();
-    //先檢查資料格式是否符合DB規則
-    const url = `http://localhost/muse_music/public/api/postIndexBanner.php`;
-    let headers = {
-      "Content-Type": "application/json",
-      Accept: "application/json",
+
+    // get 首頁輪播圖
+    const getCarousel = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getIndexBanner.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => {
+          this.topBanner = res;
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
     };
-    fetch(url, {
-      method: "POST",
-      headers: headers,
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("取得 data 失敗");
-        }
-      })
-      .then((json) => {
-        this.topBanner = json;
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    getCarousel();
 
     setTimeout(() => {
       this.showWeekTopmusic = true;
