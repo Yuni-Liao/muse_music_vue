@@ -34,88 +34,7 @@ export default {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
       //
-      weekTopSongs: [
-        {
-          order: 1,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 2,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 3,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 4,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 5,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 6,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 7,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 8,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 9,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 10,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-      ],
+      
       topAlbums: [
         {
           order: 1,
@@ -281,7 +200,7 @@ export default {
           views: 0,
         },
       ],
-
+      SongRank: [],
     };
   },
   computed: {
@@ -311,9 +230,31 @@ export default {
     openPlayer() {
       this.$refs.player.playMusic();
   },
-   
-    followed(item) {
-      item.followed = !item.followed;
-    },
+  gotosinglemusic(sid) {
+    this.$router.push({
+      name: "singlemusic",
+      params: {
+        sid,
+      },
+    });
+  },
+    
+  },
+  mounted() {
+    const fetchSongRank = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getRankSong.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => {
+          this.SongRank = res; 
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchSongRank();
   },
 };
