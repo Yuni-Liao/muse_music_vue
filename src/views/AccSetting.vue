@@ -16,17 +16,13 @@
             <h1>編輯個人檔案</h1>
             <div class="acc_box">
                 <div class="acc_name acc_item">
-                    <p>使用者名稱</p>
+                    <p>會員姓名</p>
                     <input class="name_box obj_Radius" type="text" v-model="memInfo[0].mem_name">
                 </div>
                 <div class="acc_mail acc_item">
                     <p>E-mail</p>
                     <input class="mail_box obj_Radius" type="mail" v-model="memInfo[0].email">
                 </div>
-                <!-- <div class="acc_birthday acc_item">
-                    <p>出生日期</p>
-                    <input class="bth_box obj_Radius" type="date">
-                </div> -->
                 <div class="acc_zonebox acc_item">
                     <div class="nation">
                         <p>國家或地區</p>
@@ -47,21 +43,19 @@
         <!-- 帳號資訊 -->
         <div v-else-if="currentTab == 'showMyAcc'" class="acc_editprofile obj_Radius">
             <h1>帳號: <span class="accEmailEdit">{{ memInfo[0].email }}</span>
-                <fontAwesome @click="editAccount()" :icon="['far', 'pen-to-square']" size="2xs" style="cursor: pointer;" />
             </h1>
             <div class="acc_box">
                 <div class="acc_name acc_item">
                     <p>會員網址: </p>
-                    <input class="name_box obj_Radius" type="text" readonly placeholder="https://www.muse.com/ooxx123">
+                    <input class="name_box obj_Radius" type="text" ref="copyInput" readonly v-model="urlCopy">
                     <span @click="copyLink()">
                         <fontAwesome :icon="['fa', 'copy']" size="xl"
                             style="margin-left: 30%; cursor: pointer; color: #74EBD5" />
                     </span>
-                    <span>帳號僅能變更一次</span>
                 </div>
-                <div class="acc_btn">
+                <!-- <div class="acc_btn">
                     <button @click="saveBtn()" class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">儲存變更</button>
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- 帳號安全驗證 -->

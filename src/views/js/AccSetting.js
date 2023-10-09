@@ -1,10 +1,37 @@
+import { ref } from 'vue';
+import useClipboard from 'vue-clipboard3';
+
+
 export default {
+    setup() {
+        // urlCopy 初始值
+        const urlCopy = ref('');
+
+        function copyLink() {
+            copy(urlCopy.value)
+        }
+
+        // 使用 vue-clipboard3
+        const { toClipboard } = useClipboard()
+
+        const copy = async (msg) => {
+            try {
+                await toClipboard(msg)
+                alert('複製網址成功')
+            } catch (e) {
+                alert('複製失敗')
+            }
+        }
+        return {
+            urlCopy,
+            copyLink
+        }
+    },
     data() {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-            pageMemid: 0,
             memInfo: [{
                 mem_name: '',
                 email: '',
@@ -12,6 +39,7 @@ export default {
                 mem_id: '',
             }], // 暫存會員資料物件
             memChangePsw: '',
+            urlCopy: '',
             cityName: [
                 '台北市', '新北市', '基隆市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '嘉義市', '臺南市', '高雄市', '屏東縣', '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'
             ],
@@ -69,14 +97,16 @@ export default {
                 });
             console.log(dataToSend);
         },
+        // 帳號資訊 - 複製網址
+        // copyLink() {
+        //     const textToCopy = this.urlCopy;
+        //     VueClipboard.toClipboard(textToCopy).then(() => {
+        //         alert(`已複製網址: ${textToCopy}`);
+        //     }).catch(() => {
+        //         alert('複製失敗');
+        //     });
+        // },
 
-        // 帳號資訊 - 複製網址 && 修改帳號
-        copyLink() {
-            alert('複製網址');
-        },
-        editAccount() {
-            alert('修改帳號');
-        },
         // 安全驗證
         setSafeBtn() {
             alert('設定安全驗證')
@@ -91,7 +121,10 @@ export default {
 
             fetch(apiURL)
                 .then((res) => res.json())
-                .then((res) => (this.memInfo = res))
+                .then((res) => {
+                    this.memInfo = res;
+                    this.urlCopy = `https://tibamef2e.com/chd103/g2/home/profilepage/${this.memInfo[0].mem_id}`;
+                })
                 .catch((error) => {
                     console.error("發生錯誤:", error);
                 });

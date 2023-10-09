@@ -55,6 +55,7 @@ export default {
       // 首頁頂部Banner - 廖妍榛
       topBanner: [{
         img: '',
+        link: '',
       }], // 存放輪播圖的空陣列
 
       // 本週熱門歌曲輪播 - 黃珮菁
