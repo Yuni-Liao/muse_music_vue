@@ -60,6 +60,7 @@ export default {
       // 本週熱門歌曲輪播 - 黃珮菁
       SongRank: [],
       // 本週熱門專輯 -廖妍榛
+      albumRank: [], // 存放本週熱門專輯的空陣列
       a: [
         {
           image: [
@@ -84,62 +85,6 @@ export default {
             "RockYou",
             "RockYou",
           ],
-        },
-      ],
-      album: [
-        {
-          ranking: "1",
-          alb: "Aden Scott",
-          name: "RockYou",
-          image: "index_grid_01.png",
-        },
-        {
-          ranking: "2",
-          alb: "桌子樂團",
-          name: "藍色",
-          image: "index_grid_02.png",
-        },
-        {
-          alb: "東西肯恩",
-          ranking: "3",
-          name: "LOVE",
-          image: "index_grid_03.png",
-        },
-        {
-          alb: "溫室花朵",
-          ranking: "4",
-          name: "Faded",
-          image: "index_grid_04.png",
-        },
-        {
-          alb: "潛水大象",
-          ranking: "5",
-          name: "有個念頭",
-          image: "index_grid_05.png",
-        },
-        {
-          alb: "Apple Jump",
-          ranking: "6",
-          name: "作夢的顏色",
-          image: "index_grid_06.png",
-        },
-        {
-          alb: "消防車",
-          ranking: "7",
-          name: "花火",
-          image: "index_grid_07.png",
-        },
-        {
-          alb: "榕樹幫",
-          ranking: "8",
-          name: "你看不見",
-          image: "index_grid_08.png",
-        },
-        {
-          alb: "Bye Bye Lucy",
-          ranking: "9",
-          name: "芭比",
-          image: "index_grid_09.png",
         },
       ],
 
@@ -259,9 +204,22 @@ export default {
     };
     fetchSongRank();
     this.startTimer();
+    // fetch 本週熱門專輯 - 廖妍榛
+    const fetchAlbumRank = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getIndexPopularAlbum.php`
+      );
 
-    // get 首頁輪播圖
-    const getCarousel = () => {
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.albumRank = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchAlbumRank();
+    // fetch 首頁輪播圖 - 廖妍榛
+    const fetchCarousel = () => {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getIndexBanner.php`
       );
@@ -275,7 +233,7 @@ export default {
           console.error("發生錯誤:", error);
         });
     };
-    getCarousel();
+    fetchCarousel();
 
     setTimeout(() => {
       this.showWeekTopmusic = true;
