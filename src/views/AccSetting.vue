@@ -97,15 +97,15 @@
             <div class="acc_box">
                 <div class="acc_name acc_item">
                     <p>{{ changePsw[0].title }}</p>
-                    <input class="name_box obj_Radius" type="password">
+                    <input class="name_box obj_Radius" type="password" v-model="changePsw[0].oldPsw">
                 </div>
                 <div class="acc_name acc_item">
                     <p>{{ changePsw[1].title }}</p>
-                    <input class="name_box obj_Radius" type="password">
+                    <input class="name_box obj_Radius" type="password" v-model="changePsw[1].newPsw">
                 </div>
                 <div class="acc_name acc_item">
                     <p>{{ changePsw[2].title }}</p>
-                    <input class="name_box obj_Radius" type="password" v-model="memChangePsw">
+                    <input class="name_box obj_Radius" type="password" v-model="changePsw[2].confiremAgainPsw">
                 </div>
             </div>
             <div class="btn">
