@@ -20,7 +20,7 @@
           <span class="slname">{{ item.sl_name }}</span>
           <span class="public">
             <fontAwesome
-              v-if="item.public == 0"
+              v-if="item.public == 1"
               class="i"
               :icon="['fa', 'lock-open']" />
             <fontAwesome v-else class="i" :icon="['fa', 'lock']"
@@ -38,7 +38,7 @@
   <NewSl
     v-if="isNewSlOpen"
     @isNewSlOpenupdate="isNewSlOpenupdate"
-    @NewSlDataupdate="NewSlDataupdate"
+    :btntype="1"
   ></NewSl>
 </template>
 <script>
@@ -72,30 +72,8 @@ export default {
     },
   },
   methods: {
-    addNewSl() {
-      this.isAddSlOpen = false;
-      this.isNewSlOpen = true;
-    },
-    closeAddSl() {
-      this.isAddSlOpen = false;
-      console.log(this.addSlSid);
-    },
-    isNewSlOpenupdate(val) {
-      this.isNewSlOpen = val;
-      this.isAddSlOpen = true;
-    },
-    NewSlDataupdate(val) {
-      this.slData.unshift(val);
-      // console.log(val);
-      // console.log(this.slData);
-    },
-    openAddSl() {
-      this.isAddSlOpen = true;
-    },
-  },
-  mounted() {
-    // fetch我的歌單(含追蹤創建及追蹤)
-    const fetchMyallsonglist = () => {
+    //fetch我的歌單(含追蹤創建及追蹤)
+    fetchMyallsonglist() {
       const loginMemId = this.login_mem_id;
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
@@ -113,10 +91,27 @@ export default {
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
-    };
-
+    },
+    addNewSl() {
+      this.isAddSlOpen = false;
+      this.isNewSlOpen = true;
+    },
+    closeAddSl() {
+      this.isAddSlOpen = false;
+      console.log(this.addSlSid);
+    },
+    isNewSlOpenupdate(val) {
+      this.isNewSlOpen = val;
+      this.isAddSlOpen = true;
+      this.fetchMyallsonglist();
+    },
+    openAddSl() {
+      this.isAddSlOpen = true;
+    },
+  },
+  mounted() {
     // 執行fetch
-    fetchMyallsonglist();
+    this.fetchMyallsonglist();
   },
 };
 </script>

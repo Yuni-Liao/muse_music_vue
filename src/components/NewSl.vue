@@ -1,6 +1,6 @@
 <template>
   <div id="NewSl">
-    <form action="">
+    <form method="post">
       <div class="content">
         <div class="newSlName title">
           <p>新增歌單</p>
@@ -13,7 +13,7 @@
               <input
                 type="radio"
                 name="public"
-                value="true"
+                value="1"
                 required
                 v-model="this.public" />
               <fontAwesome class="i" :icon="['fa', 'fa-check']"
@@ -28,7 +28,7 @@
               <input
                 type="radio"
                 name="public"
-                value="false"
+                value="0"
                 v-model="this.public" />
               <fontAwesome class="i" :icon="['fa', 'fa-check']"
             /></label>
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="submit">
-        <button type="button" @click="submitNewSl">
+        <button type="button" @click="AddNewSl()">
           <fontAwesome class="i" :icon="['fa', 'fa-check']" />完成
         </button>
       </div>
@@ -50,27 +50,54 @@
 <script>
 export default {
   name: "NewSl",
+  props: ["btntype"],
   data() {
     return {
       isNewSlOpen: false,
       slname: "",
-      public: true,
+      public: 1,
+      login_mem_id: 1, //這個之後要再改
     };
   },
+  mounted() {},
   methods: {
-    submitNewSl() {
-      const NewSlData = {
-        slid: undefined,
-        slname: this.slname,
-        image: "songPic.png",
-        memid: 1,
-        creator: "我",
-        playnum: 0,
-        songnum: 0,
-        public: this.public,
+    AddNewSl() {
+      const url = `http://localhost/muse_music/public/api/addNewSl.php`;
+      let headers = {
+        Accept: "application/json",
       };
-      this.$emit("isNewSlOpenupdate", this.isNewSlOpen);
-      this.$emit("NewSlDataupdate", NewSlData);
+      const formData = new FormData();
+      formData.append("memid", this.login_mem_id);
+      formData.append("slName", this.slname);
+      formData.append("slPublic", this.public);
+      fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: formData,
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("新增失敗");
+          }
+        })
+        .then((json) => {
+          // console.log(formData.get("car_id"));
+          // console.log(formData.get("memid"));
+          // console.log(formData.get("slName"));
+          // console.log(formData.get("slPublic"));
+          console.log(json);
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+
+      if (this.btntype == 1) {
+        this.$emit("isNewSlOpenupdate", this.isNewSlOpen);
+      } else {
+        window.location.reload();
+      }
     },
   },
 };

@@ -341,7 +341,7 @@
                   </h4>
                   <div>
                     <span>共有{{ item.song_count }}首歌</span>
-                    <span>{{ creater_name }}</span>
+                    <span>{{ item.creater_name }}</span>
                   </div>
                 </div>
                 <PlayBtnBig></PlayBtnBig>
