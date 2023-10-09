@@ -28,16 +28,17 @@ try {
     order by sli.update_date;";
 
     $songlistSongs = $pdo->query($sql);
-    //如果找得資料，取回資料，送出json
-    if ($songlistSongs->rowCount() === 0) {
-        echo "查無歌單資料";
-    } else {
-        $sRow = $songlistSongs->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($sRow); //送出json字串
-    }
+    $sRow = $songlistSongs->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($sRow); //送出json字串
 } catch (Exception $e) {
-    echo "錯誤行號 : ", $e->getLine(), "<br>";
-    echo "錯誤原因 : ", $e->getMessage(), "<br>";
-    //echo "系統暫時不能正常運行，請稍後再試<br>";	
+    $errorResponse = [
+        "error" => [
+            "message" => "新增失敗",
+            "line" => $e->getLine(),
+            "details" => $e->getMessage(),
+        ],
+    ];
+
+    echo json_encode($errorResponse);
 }
 ?>

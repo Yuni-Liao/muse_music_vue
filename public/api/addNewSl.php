@@ -24,7 +24,6 @@ try {
                 $successResponse = [
                         "message" => "新增成功",
                 ];
-
                 echo json_encode($successResponse);
         } else {
                 // 如果執行失敗，可以生成一個錯誤響應
@@ -34,7 +33,6 @@ try {
                                 "details" => "無法執行 SQL 語句",
                         ],
                 ];
-
                 echo json_encode($errorResponse);
         }
 } catch (Exception $e) {

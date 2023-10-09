@@ -29,7 +29,7 @@
           </li>
         </ul>
         <div class="submit">
-          <button type="button" @click="closeAddSl()">
+          <button @click.prevent="addSongtoSl()">
             <fontAwesome class="i" :icon="['fa', 'fa-check']" />完成
           </button>
         </div>
@@ -74,33 +74,70 @@ export default {
     },
   },
   methods: {
-    //fetch我的歌單(含追蹤創建及追蹤)
+    //fetch我的歌單(僅創建)
     fetchMyallsonglist() {
       const loginMemId = this.login_mem_id;
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
+        `http://localhost/muse_music/public/api/getMyCreateSonglists.php?loginMemId=${loginMemId}`
       );
-      let Myallsonglist;
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => {
-          Myallsonglist = res;
-          //根據創建日期排序
-          this.slData = Myallsonglist.sort(function (a, b) {
-            return a.update_date < b.update_date ? 1 : -1;
-          });
+          this.slData = res;
         })
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
     },
+    //打開新增歌單彈窗
     addNewSl() {
       this.isAddSlOpen = false;
       this.isNewSlOpen = true;
     },
+    //關閉加入歌單彈窗 (點擊空白處)
     closeAddSl(e) {
       if (e.target.classList.contains("AddSl_close")) {
         this.isAddSlOpen = false;
+      }
+    },
+    addSongtoSl() {
+      // 獲取所有已選擇的歌單的 sl_id
+      const selectedSls = Array.from(
+        document.querySelectorAll("input[name='slid']:checked")
+      ).map((checkSl) => checkSl.value);
+
+      console.log(selectedSls);
+      // 如果沒有選中歌曲，不執行後續操作
+
+      if (selectedSls.length != 0) {
+        const url = `http://localhost/muse_music/public/api/addSongtoSl.php`;
+        let headers = {
+          Accept: "application/json",
+        };
+        const formData = new FormData();
+        formData.append("s_id", this.addSlSid);
+        formData.append("selectedSls", JSON.stringify(selectedSls));
+        fetch(url, {
+          method: "POST",
+          headers: headers,
+          body: formData,
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("新增失敗");
+            }
+          })
+          .then(() => {
+            this.isAddSlOpen = false;
+          })
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      } else {
+        alert("請選擇歌單名稱");
+        return;
       }
     },
     isNewSlOpenupdate(val) {
