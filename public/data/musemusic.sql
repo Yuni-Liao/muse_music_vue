@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2023-10-07 20:17:28
+-- 產生時間： 2023-10-09 07:47:36
 -- 伺服器版本： 8.0.31
 -- PHP 版本： 8.0.26
 
@@ -784,9 +784,9 @@ CREATE TABLE IF NOT EXISTS `song_list` (
   `mem_id` int NOT NULL,
   `sl_name` varchar(15) DEFAULT NULL,
   `public` tinyint(1) DEFAULT NULL,
-  `fol_num` int DEFAULT NULL,
-  `share_num` int DEFAULT NULL,
-  `song_count` int DEFAULT NULL,
+  `fol_num` int DEFAULT '0',
+  `share_num` int DEFAULT '0',
+  `song_count` int DEFAULT '0',
   `update_date` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`sl_id`),
   KEY `mem_id` (`mem_id`)

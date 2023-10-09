@@ -54,53 +54,6 @@ export default {
                 }
             ],
             editBox: false,
-            // data: [
-            //     {
-            //         no: 1,
-            //         prodNo: '#9453',
-            //         prodName: 'Lisa 黑膠',
-            //         prodType: '女藝人',
-            //         amount: 1200,
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            //     {
-            //         no: 2,
-            //         prodNo: '#9453',
-            //         prodName: 'Lisa 黑膠',
-            //         prodType: '女藝人',
-            //         amount: 1200,
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            //     {
-            //         no: 3,
-            //         prodNo: '#9453',
-            //         prodName: 'Lisa 黑膠',
-            //         prodType: '女藝人',
-            //         amount: 1200,
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            //     {
-            //         no: 4,
-            //         prodNo: '#9453',
-            //         prodName: 'Lisa 黑膠',
-            //         prodType: '女藝人',
-            //         amount: 1200,
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            //     {
-            //         no: 5,
-            //         prodNo: '#9453',
-            //         prodName: 'Lisa 黑膠',
-            //         prodType: '女藝人',
-            //         amount: 1200,
-            //         adminAcc: 'admin01',
-            //         updateTime: '2023-09-15 00:30:22',
-            //     },
-            // ],
             productData: [], // 渲染資料的陣列
             // editItem: {
             //     prod_id: '',
@@ -151,7 +104,7 @@ export default {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    throw new Error("取得 data 失敗");
+                    throw new Error("取得 dta 失敗");
                 }
             })
             .then((json) => {
