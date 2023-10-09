@@ -74,7 +74,7 @@ export default {
     },
   },
   methods: {
-    //fetch我的歌單(僅創建)
+    //fetch我的歌單(僅我創建的)
     fetchMyallsonglist() {
       const loginMemId = this.login_mem_id;
       const apiURL = new URL(
@@ -89,26 +89,20 @@ export default {
           console.error("發生錯誤:", error);
         });
     },
-    //打開新增歌單彈窗
-    addNewSl() {
-      this.isAddSlOpen = false;
-      this.isNewSlOpen = true;
-    },
     //關閉加入歌單彈窗 (點擊空白處)
     closeAddSl(e) {
       if (e.target.classList.contains("AddSl_close")) {
         this.isAddSlOpen = false;
       }
     },
+    //加入歌單動作
     addSongtoSl() {
       // 獲取所有已選擇的歌單的 sl_id
       const selectedSls = Array.from(
         document.querySelectorAll("input[name='slid']:checked")
       ).map((checkSl) => checkSl.value);
 
-      console.log(selectedSls);
-      // 如果沒有選中歌曲，不執行後續操作
-
+      // 如果沒有選擇歌單，則alert提示
       if (selectedSls.length != 0) {
         const url = `http://localhost/muse_music/public/api/addSongtoSl.php`;
         let headers = {
@@ -140,14 +134,24 @@ export default {
         return;
       }
     },
+
+    //與新增歌單相關-------------------------------------------------
+
+    //打開新增歌單彈窗
+    addNewSl() {
+      this.isAddSlOpen = false;
+      this.isNewSlOpen = true;
+    },
+    //關閉新增歌單彈窗(接子組件值)
     isNewSlOpenupdate(val) {
       this.isNewSlOpen = val;
       this.isAddSlOpen = true;
       this.fetchMyallsonglist();
     },
-    openAddSl() {
-      this.isAddSlOpen = true;
-    },
+
+    // openAddSl() {
+    //   this.isAddSlOpen = true;
+    // },
   },
   mounted() {
     // 執行fetch

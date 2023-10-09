@@ -19,6 +19,7 @@ export default {
       },
       profileSongs: [],
       profileAlbums: [],
+      login_mem_id: 1,
     };
   },
   methods: {
@@ -41,7 +42,6 @@ export default {
       readFile.readAsDataURL(file);
       readFile.addEventListener("load", this.profileloadImage);
 
-
       //再加FormData
       const fd = new FormData();
       fd.append("member_imageURL", file);
@@ -49,8 +49,6 @@ export default {
         method: "POST",
         body: fd,
       });
-
-
     },
 
     updateMemberData(updatedData) {
@@ -86,11 +84,12 @@ export default {
     },
   },
   mounted() {
-
     //fetch 會員基本資料
-    fetch('http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=1')
+    fetch(
+      "http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=1"
+    )
       // axios.get('http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=1')
-      .then(response => {
+      .then((response) => {
         const data = response;
         const locations = [
           "基隆市",
@@ -114,7 +113,7 @@ export default {
           "宜蘭縣",
           "澎湖縣",
           "金門縣",
-          "連江縣"
+          "連江縣",
         ];
 
         // 以陣列方式顯示縣市
@@ -125,8 +124,8 @@ export default {
         this.member.socialMedia = data.socialMedia;
         this.member.privacy = data.privacy;
       })
-      .catch(error => {
-        console.error('獲取資料庫失敗:', error);
+      .catch((error) => {
+        console.error("獲取資料庫失敗:", error);
       });
 
     //fetch 會員歌曲
