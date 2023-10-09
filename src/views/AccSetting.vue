@@ -4,9 +4,9 @@
         <nav class="acc_sidebar">
             <ul class="obj_Radius">
                 <li @click="setCurrentTab('showMe')" :class="{ active: currentTabType === 'showMe' }">
-                    編輯個人檔案</li>
+                    個人檔案</li>
                 <li @click="setCurrentTab('showMyAcc')" :class="{ active: currentTabType === 'showMyAcc' }">帳號資訊</li>
-                <li @click="setCurrentTab('showAccSafe')" :class="{ active: currentTabType === 'showAccSafe' }">帳號安全驗證</li>
+                <li @click="setCurrentTab('showAccSafe')" :class="{ active: currentTabType === 'showAccSafe' }">安全驗證</li>
                 <li @click="setCurrentTab('showChangePsw')" :class="{ active: currentTabType === 'showChangePsw' }">更改密碼
                 </li>
             </ul>
@@ -17,20 +17,21 @@
             <div class="acc_box">
                 <div class="acc_name acc_item">
                     <p>使用者名稱</p>
-                    <input class="name_box obj_Radius" type="text">
+                    <input class="name_box obj_Radius" type="text" v-model="memInfo[0].mem_name">
                 </div>
                 <div class="acc_mail acc_item">
                     <p>E-mail</p>
-                    <input class="mail_box obj_Radius" type="mail">
+                    <input class="mail_box obj_Radius" type="mail" v-model="memInfo[0].email">
                 </div>
-                <div class="acc_birthday acc_item">
+                <!-- <div class="acc_birthday acc_item">
                     <p>出生日期</p>
                     <input class="bth_box obj_Radius" type="date">
-                </div>
+                </div> -->
                 <div class="acc_zonebox acc_item">
                     <div class="nation">
                         <p>國家或地區</p>
                         <input class="nation_box obj_Radius" type="text" readonly placeholder="臺灣">
+                        <!-- 還沒渲染完 -->
                         <select class="city obj_Radius" id="city">
                             <option v-for="(   item, index   ) in    cityName   " :key="index" value="{{ item }}">{{ item
                             }}
@@ -44,8 +45,8 @@
             </div>
         </div>
         <!-- 帳號資訊 -->
-        <div v-else-if="currentTab == 'showMyAcc'" class="acc_editprofile obj_Radius acc_info_box">
-            <h1>帳號: ooxxx123
+        <div v-else-if="currentTab == 'showMyAcc'" class="acc_editprofile obj_Radius">
+            <h1>帳號: <span class="accEmailEdit">{{ memInfo[0].email }}</span>
                 <fontAwesome @click="editAccount()" :icon="['far', 'pen-to-square']" size="2xs" style="cursor: pointer;" />
             </h1>
             <div class="acc_box">
@@ -64,10 +65,10 @@
             </div>
         </div>
         <!-- 帳號安全驗證 -->
-        <div v-else-if="currentTab == 'showAccSafe'" class="obj_Radius acc_safe_wrap">
+        <div v-else-if="currentTab == 'showAccSafe'" class="  obj_Radius acc_safe_wrap">
             <h1>帳號安全驗證
             </h1>
-            <div class="acc_safe_box">
+            <div class="acc_safe_box acc_item">
                 <div class="acc_safe_item">
                     <div class="txt">
                         <fontAwesome :icon="['far', 'circle-xmark']"
@@ -92,7 +93,7 @@
                             style="color: #FE1C6C; margin-right: 3%; text-align: center; width: 50px;" />
                         <span>未完成</span>
                     </div>
-                    <p>完善會員詳細資料</p>
+                    <p>會員詳細資料</p>
                     <button @click="setSafeBtn()" class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">設定</button>
                 </div>
             </div>
@@ -101,9 +102,17 @@
         <div v-else class="acc_editprofile obj_Radius">
             <h1>更改密碼</h1>
             <div class="acc_box">
-                <div class="acc_name acc_item" v-for="(psw, index) in changePsw" :key="index">
-                    <p>{{ psw.title }}</p>
+                <div class="acc_name acc_item">
+                    <p>{{ changePsw[0].title }}</p>
                     <input class="name_box obj_Radius" type="password">
+                </div>
+                <div class="acc_name acc_item">
+                    <p>{{ changePsw[1].title }}</p>
+                    <input class="name_box obj_Radius" type="password">
+                </div>
+                <div class="acc_name acc_item">
+                    <p>{{ changePsw[2].title }}</p>
+                    <input class="name_box obj_Radius" type="password" v-model="memChangePsw">
                 </div>
             </div>
             <div class="btn">
