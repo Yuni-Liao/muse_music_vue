@@ -1,6 +1,7 @@
 <template>
   <teleport to="body" v-if="isAddSongOpen"
     ><AddSongtoAlbum
+      :NoAlbumsongs="this.NoAlbumsongs"
       @isAddSongOpenupdate="isAddSongOpenupdate"
       @NewDataupdate="NewDataupdate"
     ></AddSongtoAlbum
@@ -30,11 +31,13 @@
       </div>
 
       <div class="form-group">
-        <label for="editalbumname" class="label">編輯專輯名稱</label>
+        <label for="editalbumname" class="label" required>編輯專輯名稱</label>
         <input type="text" id="editalbumname" v-model="albumData.alb_name" />
       </div>
       <div class="form-group">
-        <label for="editalbuminfo" class="label">編輯專輯介紹</label>
+        <label for="editalbuminfo" class="label"
+          >編輯專輯介紹 （限300字以下）</label
+        >
         <textarea
           name=""
           id="editalbuminfo"
@@ -46,7 +49,7 @@
       </div>
     </form>
     <div class="plus-container">
-      <div @click="isAddSongOpen = !isAddSongOpen">
+      <div @click.prevent="isAddSongOpen = !isAddSongOpen">
         <img
           class="plus"
           alt="Profile Image"
@@ -70,7 +73,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in albumSongsData" :key="item.alb_id">
+        <tr v-for="(item, index) in allsong" :key="item.alb_id">
           <td class="tno">{{ index + 1 }}</td>
           <td class="timg">
             <div class="pic">
@@ -86,7 +89,7 @@
           <td class="tshow">
             {{ Number(item.show_stat) ? "公開" : "私人" }}
           </td>
-          <td class="tdate">{{ item.update_date }}</td>
+          <td class="tdate">{{ item.s_update_date }}</td>
           <td class="ttime">{{ item.time }}</td>
           <td class="check">
             <br />

@@ -1,6 +1,7 @@
 <template>
   <teleport to="body" v-if="isAddSongOpen"
     ><AddSongtoAlbum
+      :NoAlbumsongs="this.NoAlbumsongs"
       @isAddSongOpenupdate="isAddSongOpenupdate"
       @NewDataupdate="NewDataupdate"
     ></AddSongtoAlbum
@@ -24,7 +25,9 @@
               <p style="color: white">上傳封面相片</p>
               <br />
               <p style="color: white">
-                ☸ 建議尺寸:500x500px以上，圖片檔案大小不可超過2MB
+                ☸ 建議尺寸:500x500px以上，圖片檔案大小不可超過2MB{{
+                  albumData.alb_img
+                }}
               </p>
             </div>
           </Upload>
@@ -32,22 +35,29 @@
 
         <div class="form-group">
           <label for="newalbumname" class="label">輸入專輯名稱</label>
-          <input type="text" id="newalbumname" v-model="newalbumname" />
+          <input
+            type="text"
+            id="newalbumname"
+            v-model="albumData.alb_name"
+            required
+          />
         </div>
         <div class="form-group">
-          <label for="newalbuminfo" class="label">輸入專輯介紹</label>
-          <input type="text" id="newalbuminfo" v-model="newalbuminfo" />
-        </div>
-        <div class="form-group">
-          <label for="privacy" class="label">瀏覽權限</label>
-          <select id="privacy" v-model="privacy">
-            <option value="公開">公開</option>
-            <option value="私人">私人</option>
-          </select>
+          <label for="newalbuminfo" class="label"
+            >輸入專輯介紹 （限300字以下）</label
+          >
+          <textarea
+            name=""
+            id="editalbuminfo"
+            cols="30"
+            rows="10"
+            v-model="albumData.alb_intro"
+          >
+          </textarea>
         </div>
       </form>
       <div class="plus-container">
-        <div @click="isAddSongOpen = !isAddSongOpen">
+        <div @click.prevent="isAddSongOpen = !isAddSongOpen">
           <img
             alt="Profile Image"
             class="plus"
@@ -56,7 +66,7 @@
           <p class="plus">新增單曲至專輯</p>
         </div>
       </div>
-      <table class="song-table" v-if="songs.length > 0">
+      <table class="song-table" v-if="this.allsong.length > 0">
         <thead>
           <tr>
             <th class="tno"></th>
@@ -70,27 +80,31 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(song, index) in songs" :key="index">
-            <td>{{ index + 1 }}</td>
-            <td>
-              <img
-                class="profile"
-                alt="Profile Image"
-                src="@/assets/image/profileeditimage/song.jpg"
-              />
+          <tr v-for="(item, index) in allsong" :key="item.alb_id">
+            <td class="tno">{{ index + 1 }}</td>
+            <td class="timg">
+              <div class="pic">
+                <img
+                  class="profile"
+                  alt="歌曲照片"
+                  :src="`${publicPath}dataimage/song/${item.songPic}`"
+                />
+              </div>
             </td>
-            <td>{{ song.title }}</td>
-            <td>{{ song.description }}</td>
-            <td>{{ song.privacy }}</td>
-            <td>{{ song.date }}</td>
-            <td>{{ song.time }}</td>
-            <td>
+            <td class="tname">{{ item.name }}</td>
+            <td class="tintro">{{ item.s_intro }}</td>
+            <td class="tshow">
+              {{ Number(item.show_stat) ? "公開" : "私人" }}
+            </td>
+            <td class="tdate">{{ item.s_update_date }}</td>
+            <td class="ttime">{{ item.time }}</td>
+            <td class="check">
               <br />
               <label class="checkboxLabel">
                 <input
                   type="checkbox"
                   name="songclass"
-                  v-model="song.isChecked"
+                  v-model="item.isChecked"
                   @click="updateCount"
                 />
                 <fontAwesome class="i" :icon="['fa', 'fa-check']" />
