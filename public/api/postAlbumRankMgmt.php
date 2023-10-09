@@ -11,7 +11,7 @@ try {
     $sql = "select sub.rank_id, sub.mem_id, sub.alb_name, sub.share_num from (
         select a.alb_id, ar.rank_id, a.mem_id, a.alb_name, a.share_num from album a join alb_rank ar ON a.alb_id = ar.alb_id
         order by a.share_num DESC) as sub
-    order by sub.rank_id ASC";
+    order by sub.rank_id ASC limit 10";
 
     
     $albumRank = $pdo->query($sql);

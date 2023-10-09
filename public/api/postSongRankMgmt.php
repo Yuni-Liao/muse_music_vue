@@ -15,7 +15,7 @@ try {
         join song s on sr.s_id = s.s_id
         order by s.share_num DESC
     ) as sub
-    order by sub.rank_id ASC";
+    order by sub.rank_id ASC limit 10";
 
     $songRank = $pdo->query($sql);
 
