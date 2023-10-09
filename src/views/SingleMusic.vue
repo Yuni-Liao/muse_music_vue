@@ -38,7 +38,7 @@
                         </div>
                         <div class="buttonArea">
                             <ShareBtn></ShareBtn>
-                            <AddSlBtn></AddSlBtn>
+                            <AddSlBtn  :addSlSid="songItem.id"></AddSlBtn>
                             <AddFavBtn></AddFavBtn>
                             <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
                         </div>
