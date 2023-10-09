@@ -37,8 +37,8 @@ export default {
                 email: '',
                 county: '',
                 mem_id: '',
+                mem_psw: '',
             }], // 暫存會員資料物件
-            memChangePsw: '',
             urlCopy: '',
             editCity: false,
             cityName: [
@@ -48,13 +48,16 @@ export default {
                 'showMe',
             currentTabType: 'showMe',
             changePsw: [{
-                title: '舊密碼'
+                title: '舊密碼',
+                oldPsw: '',
             },
             {
-                title: '新密碼'
+                title: '新密碼',
+                newPsw: '',
             },
             {
-                title: '確認密碼'
+                title: '確認密碼',
+                confiremAgainPsw: '', // 確認密碼
             },
             ],
         }
@@ -76,8 +79,22 @@ export default {
                 email: this.memInfo[0].email,
                 county: this.memInfo[0].county,
                 mem_id: this.memInfo[0].mem_id,
-                mem_psw: this.memChangePsw,
             };
+
+            // 判斷 新密碼 && 確認密碼不為空值
+            if (this.changePsw[1].newPsw !== '' && this.changePsw[2].confiremAgainPsw !== '') {
+                // 判斷 舊密碼必須與DB相同
+                if (this.changePsw[0].oldPsw === this.memInfo[0].mem_psw) {
+                    dataToSend.mem_psw = this.changePsw[2].confiremAgainPsw;
+                } else {
+                    alert('請確認已輸入欄位的正確性');
+                    return;
+                }
+            } else {
+                // 若沒有要改密碼就傳回原本的密碼給data
+                dataToSend.mem_psw = this.memInfo[0].mem_psw;
+            };
+
             fetch(url, {
                 method: "POST",
                 headers: headers,
@@ -106,7 +123,12 @@ export default {
         // 安全驗證
         setSafeBtn() {
             alert('設定安全驗證')
-        }
+        },
+        changeNewPsw() {
+            if (this.changePsw[0].oldPsw === this.memInfo[0].mem_psw) { } else {
+                alert('密碼有錯誤')
+            }
+        },
     },
     mounted() {
         //fetch 會員資料 - 編號 1 , 之後改動態
