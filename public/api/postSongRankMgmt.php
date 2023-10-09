@@ -8,9 +8,9 @@ header("Content-Type:application/json;charset=utf-8");
 try {
     require_once("./connectMusemusic.php");
     
-    $sql ="select sub.rank_id, sub.mem_id, sub.s_name, sub.share_num
+    $sql ="select sub.rank_id, sub.s_id, sub.mem_id, sub.s_name, sub.share_num
     from (
-        select sr.rank_id, s.mem_id, s.s_name, s.share_num
+        select sr.rank_id, s.mem_id, s.s_name, s.s_id, s.share_num
         from s_rank sr
         join song s on sr.s_id = s.s_id
         order by s.share_num DESC
