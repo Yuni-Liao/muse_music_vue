@@ -67,15 +67,17 @@
     <div class="index_albumBox">
       <Grid center square :border="false">
         <GridItem v-for="(item, index) in albumRank" :key="index">
-          <div class="imgbox">
-            <img :src="`${publicPath}dataimage/album/${item.alb_img}`" alt="專輯照片" />
-            <span class="ranking">
-              {{ item.rank_id }}<br />
-              <span class="name">{{ item.alb_name }}<br />
-                <span class="alb">{{ item.mem_name }}</span>
+          <router-link :to="`/home/singlealbum/${item.alb_id}`">
+            <div class="imgbox">
+              <img :src="`${publicPath}dataimage/album/${item.alb_img}`" alt="專輯照片" />
+              <span class="ranking">
+                {{ item.rank_id }}<br />
+                <span class="name">{{ item.alb_name }}<br />
+                  <span class="alb">{{ item.mem_name }}</span>
+                </span>
               </span>
-            </span>
-          </div>
+            </div>
+          </router-link>
         </GridItem>
       </Grid>
     </div>
