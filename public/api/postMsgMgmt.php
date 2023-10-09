@@ -7,12 +7,22 @@ header("Content-Type: application/json");
 // 後台 - 檢舉留言管理 - 郭凱芸
 try {
     require_once("./connectMusemusic.php");
-    //取得所有留言資料
-    $sql = "select * from msg";
+    //取得檢舉留言相關資料
+    $sql = "select 
+    mr.msgrep_id,
+    mr.rep_rsn,
+    mr.mem_id,
+    m.mem_name,
+    mr.msg_id,
+    mr.rep_date,
+    msg.msg_con
+    from msg_rep as mr
+    join member as m on mr.mem_id = m.mem_id
+    join msg on mr.msg_id = msg.msg_id;";
     $msg = $pdo->query($sql);
 
     if($msg->rowCount()===0){
-        echo json_encode(["message" => "查無商品"]);
+        echo json_encode(["message" => "查無留言"]);
     }else{
         $msgData = $msg->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($msgData);
