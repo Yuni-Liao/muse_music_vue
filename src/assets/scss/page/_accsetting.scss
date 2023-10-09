@@ -86,6 +86,10 @@
             text-align: center;
             }
         }
+        // 帳號資訊的帳號 title
+        .accEmailEdit{
+            font-size: $small;
+        }
     }
     .btn{
         @include rect(80%, fit);
@@ -101,7 +105,7 @@
     }
     // 帳號安全驗證
     .acc_safe_wrap{
-        @include rect(700px, fit);
+        @include rect(340px, fit);
         padding: 2.5%;
         text-align: left;
         color: $green;
@@ -111,25 +115,29 @@
             color: $white;
         }
         .acc_safe_box{
-            @include rect(700px, fit);
+            @include rect(100%);
             padding: 0% 5%;
             font-size: $tag;
             .acc_safe_item{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 6%;
+            margin-top: 15%;
             border-bottom: 2px solid #d9d9d9;
             .txt{
                 display: flex;
                 flex-flow: column wrap;
+                margin-bottom: 3%;
+
             span{
                 @include mini_Tag($tag);
-                margin-bottom: 5%;
+                margin: 5% 0%;
                 }
             }
             p{
                 color: $white;
+                width: 80%;
+                margin-left: 5%
             }
             button{
                 @include rect(fit, fit);
@@ -168,8 +176,7 @@
             @include rect(100%);
             }
         }
-    }
-    // 帳號安全驗證
+        // 帳號安全驗證
     .acc_safe_wrap{
         @include rect(100%);
         .acc_safe_box{
@@ -177,4 +184,5 @@
             padding: 0% 1%;
             }
         }
+    }
 }
