@@ -7,14 +7,20 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 // 後台 - 專輯排行榜 畫面 - 廖妍榛
 try {
     require_once("./connectMusemusic.php");
-    $sql = "select rank_id, mem_id, alb_name from album a join alb_rank albr where a.alb_id = albr.alb_id order by share_num DESC";
-    $songRank = $pdo->query($sql);
 
-    if($songRank->rowCount()===0){
+    $sql = "select sub.rank_id, sub.mem_id, sub.alb_name, sub.share_num from (
+        select a.alb_id, ar.rank_id, a.mem_id, a.alb_name, a.share_num from album a join alb_rank ar ON a.alb_id = ar.alb_id
+        order by a.share_num DESC) as sub
+    order by sub.rank_id ASC";
+
+    
+    $albumRank = $pdo->query($sql);
+
+    if($albumRank->rowCount()===0){
         echo json_encode(["message" => "查無輪播圖"]);
     }else{
-        $songRank = $songRank->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($songRank);
+        $albumRank = $albumRank->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($albumRank);
     }
 } catch (PDOException $e) {
     // 返回 JSON 錯誤響應
