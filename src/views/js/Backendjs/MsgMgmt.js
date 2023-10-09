@@ -10,23 +10,24 @@ export default {
                     width: 60,
                     align: 'center'
                 },
-                // {
-                //     title: '來源',
-                //     key: 'source',
-                //     width: 100,
-                //     align: 'center'
-                // },
                 {
-                    title: '留言帳號',
-                    key: 'mem_name',
-                    width: 150,
-                    align: 'center',
+                    title: '編號',
+                    key: 'msgrep_id',
+                    width: 100,
+                    align: 'center'
                 },
                 {
                     title: '留言內容',
                     key: 'msg_con',
                     align: 'center',
                 },
+                {
+                    title: '檢舉人',
+                    key: 'mem_name',
+                    width: 150,
+                    align: 'center',
+                },
+
                 {
                     title: '檢舉原因',
                     key: 'rep_rsn',
