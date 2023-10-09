@@ -1,3 +1,4 @@
+
 <?php
 try {
     //引入連線工作的檔案
@@ -6,11 +7,13 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    $memid = $_GET['memid'];
-    //$memid = 1;
+    // $loginMemId = $_GET['loginMemId'];
+    $loginMemId = 1;
 
-    //SQL指令: 查詢會員創建之公開歌單
-    $sql = "select  sl.sl_id, sl.sl_name, sl.mem_id as creater_id, m.mem_name as creater_name, sl.public,
+
+    //SQL指令: 查詢我創建的歌單
+    //count(*): 歌單中的歌曲數量
+    $sql1 = "select sl.sl_id, sl.sl_name, sl.mem_id as creater_id, m.mem_name as creater_name, sl.public, sl.update_date,
     (select count(*) from slitem where slitem.sl_id = sl.sl_id) as song_count,
     (select s.s_img
     from song s
@@ -18,22 +21,17 @@ try {
                     from slitem sli
                     where sli.sl_id = sl.sl_id 
                     limit 1)
-                    )as sl_pic
+    )as sl_pic
     from song_list sl join member m on sl.mem_id = m.mem_id
-    where (sl.mem_id = $memid)and  (sl.public=1)
-    order by sl.update_date desc ;";
+    where sl.mem_id = $loginMemId
+    order by sl.update_date desc";
 
-    $sl = $pdo->query($sql);
+    $MyCreatesl = $pdo->query($sql1);
+    $result = $MyCreatesl->fetchAll(PDO::FETCH_ASSOC);
 
-    //如果找得資料，取回資料，送出json
-    if ($sl->rowCount() === 0) {
-        echo "查無此會員公開歌單";
-    } else {
-        $result = $sl->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result); //送出json字串
-    }
+    echo json_encode($result);
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";
     echo "錯誤原因 : ", $e->getMessage(), "<br>";
-    //echo "系統暫時不能正常運行，請稍後再試<br>";	
 }
+?>
