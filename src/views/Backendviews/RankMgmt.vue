@@ -3,7 +3,7 @@
         <h1>網站資訊管理 | 排行榜管理</h1>
         <div v-if="editSingleSongRank == true" class="popSongSelect obj_Radius">
             <input class="allSong obj_Radius selectedrank" type="text" readonly :value="`No. ` + selectedSongRank">
-            <select class="allSong obj_Radius" id="allSong" v-model="selectedSong.s_id">
+            <select class="allSong obj_Radius" id="allSong" v-model="selectedSong">
                 <option v-for="(item, index) in allSong" :key="index" :value="item.s_id">{{ item.s_name
                 }}
                 </option>

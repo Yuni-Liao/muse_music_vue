@@ -8,12 +8,7 @@ export default {
             editAlbumRank: false,
             selectedSongRank: '',
             selectedAlbumRank: '',
-            selectedSong:
-            {
-                s_id: '',
-                s_name: '',
-            }
-            ,
+            selectedSong: '',
             allSong: [], // 全部歌曲暫存陣列
             allAlbum: [], // 全部專輯暫存陣列
             songRankGroup: [], // 渲染單曲排行資料的暫存陣列
@@ -84,27 +79,19 @@ export default {
             this.selectedSongRank = row.rank_id
             console.log("Row s_name:", row.s_name);
             console.log("Row s_id:", row.s_id);
-
-            this.selectedSong = [{
-                s_id: row.s_id,
-                s_name: row.s_name
-            }];
-            console.log("Row s_name:", this.selectedSong.s_name);
-
-            console.log("Row s_id:", this.selectedSong.s_id);
         },
         saveSongBtn() {
-            console.log("Selected Song:", this.selectedSong);
+            console.log("Selected Song ID:", this.selectedSong);
             const url = `http://localhost/muse_music/public/api/editSongRankMgmt.php`;
             let headers = {
                 "Content-Type": "application/json",
                 Accept: "application/json",
             };
-            const dataToSend = {
-                s_id: this.selectedSong.s_id,
-                s_name: this.selectedSong.s_name,
-            };
-
+            // const dataToSend = {
+            //     s_id: this.selectedSong.s_id,
+            //     s_name: this.selectedSong.s_name,
+            // };
+            const dataToSend = this.selectedSong;
             fetch(url, {
                 method: "POST",
                 headers: headers,
