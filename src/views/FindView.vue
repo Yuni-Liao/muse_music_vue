@@ -22,7 +22,6 @@
             </div>
             <div class="style">
                 <div class="space" v-for="sty in style" :key="sty.mcat_id" @mouseenter="spaceHover(sty.mcat_pic)">
-                    <!-- <img :src="`${publicPath}dataimage/find/${sty.mcat_pic}`" alt="image"> -->
                     <div class="txt">
                         <router-link :to="`findmusic/${sty.mcat_id}`">
                             {{ sty.mcat_name }}
@@ -32,7 +31,6 @@
             </div>
             <div class="emotion">
                 <div class="space" v-for="em in emotion" :key="em.mcat_id" @mouseenter="spaceHover(em.mcat_pic)">
-                    <!-- <img :src="`${publicPath}dataimage/find/${em.mcat_pic}`" alt="image"> -->
                     <div class="txt">
                         <router-link :to="`findmusic/${em.mcat_id}`">
                             {{ em.mcat_name }}
@@ -52,9 +50,11 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                    }" :pagination="{
-    clickable: true,
-}" :modules="modules">
+                    }" 
+                    :pagination="{
+                        clickable: true
+                    }" 
+                    :modules="modules">
                     <swiper-slide v-for="h in singers" :key="h.mem_id">
                         <div class="h_card">
                             <router-link :to="`/home/profilepage/${h.mem_id}`">
@@ -80,9 +80,11 @@
                         depth: 300,
                         modifier: 2.5,
                         slideShadows: false,
-                    }" :pagination="{
-    clickable: true,
-}" :modules="modules">
+                    }" 
+                    :pagination="{
+                        clickable: true
+                    }" 
+                    :modules="modules">
                     <swiper-slide v-for="n in songs" :key="n.mem_id">
                         <div class="n_card">
                             <router-link :to="`/home/singlemusic/${n.s_id}`">

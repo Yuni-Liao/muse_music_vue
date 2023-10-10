@@ -85,8 +85,10 @@
             </div>
             <div class="playerBottom">
                 <div class="songSection">
-                    <img class="musicPic" 
-                    :src="`${publicPath}dataimage/song/${currentSong.s_img}`" alt="封面">
+                    <div class="pic">
+                        <img class="musicPic" 
+                        :src="`${publicPath}dataimage/song/${currentSong.s_img}`" alt="封面">
+                    </div>
                     <div class="titleBtns">
                         <h4>{{ currentSong.s_name }}</h4>
                         <div class="btns">
@@ -176,58 +178,58 @@ export default {
         }
     },
     methods: {
-        // async playMusic() {
-        //         //顯示播放器
-        //         this.playerOpen = true;
-        //         // 获取歌曲数据
-        //         await this.fetchSong(this.s_id); 
-
-        //         this.$nextTick(() => {
-        //             const audioElement = document.getElementById("myAudio");
-        //             if (audioElement && typeof audioElement.play === 'function') {
-        //                 audioElement.play();
-        //                 this.isPlaying = true;
-        //             } else {
-        //                 console.error('音樂無法播放。');
-        //             }
-        //         });
-        //     },
         async playMusic() {
-            if (this.s_id) { // 检查是否存在有效的 s_id
-                const s_id = this.s_id;
-
+                //顯示播放器
+                this.playerOpen = true;
                 // 获取歌曲数据
-                await this.fetchSong(s_id);
+                await this.fetchSong(this.s_id); 
 
                 this.$nextTick(() => {
                     const audioElement = document.getElementById("myAudio");
                     if (audioElement && typeof audioElement.play === 'function') {
-                        audioElement.addEventListener('canplaythrough', () => {
-                            // 检查从数据库中获取的歌曲的 s_id 是否与 props 中的 s_id 匹配
-                            if (this.currentSong && this.currentSong.s_id === s_id) {
-                                audioElement.play()
-                                    .then(() => {
-                                        console.log('音乐已成功播放。');
-                                        // 使用 $emit 触发 playMusic 事件，传递 s_id 作为参数
-                                        this.$emit('playMusic', s_id);
-                                        this.isPlaying = true;
-                                    })
-                                    .catch((error) => {
-                                        console.error('音乐播放失败：', error);
-                                    });
-                            } else {
-                                console.log('歌曲信息不匹配，不播放歌曲。');
-                            }
-                        });
+                        audioElement.play();
+                        this.isPlaying = true;
                     } else {
-                        console.log('playMusic 被调用了，s_id 是', s_id);
-                        console.error('音乐无法播放。');
+                        console.error('音樂無法播放。');
                     }
                 });
-            } else {
-                console.error('当前歌曲不存在。');
-            }
-        },
+            },
+        // async playMusic() {
+        //     if (this.s_id) { // 检查是否存在有效的 s_id
+        //         const s_id = this.s_id;
+
+        //         // 获取歌曲数据
+        //         await this.fetchSong(s_id);
+
+        //         this.$nextTick(() => {
+        //             const audioElement = document.getElementById("myAudio");
+        //             if (audioElement && typeof audioElement.play === 'function') {
+        //                 audioElement.addEventListener('canplaythrough', () => {
+        //                     // 检查从数据库中获取的歌曲的 s_id 是否与 props 中的 s_id 匹配
+        //                     if (this.currentSong && this.currentSong.s_id === s_id) {
+        //                         audioElement.play()
+        //                             .then(() => {
+        //                                 console.log('音乐已成功播放。');
+        //                                 // 使用 $emit 触发 playMusic 事件，传递 s_id 作为参数
+        //                                 this.$emit('playMusic', s_id);
+        //                                 this.isPlaying = true;
+        //                             })
+        //                             .catch((error) => {
+        //                                 console.error('音乐播放失败：', error);
+        //                             });
+        //                     } else {
+        //                         console.log('歌曲信息不匹配，不播放歌曲。');
+        //                     }
+        //                 });
+        //             } else {
+        //                 console.log('playMusic 被调用了，s_id 是', s_id);
+        //                 console.error('音乐无法播放。');
+        //             }
+        //         });
+        //     } else {
+        //         console.error('当前歌曲不存在。');
+        //     }
+        // },
 
         async fetchSong() {
             // const s_id = this.$route.params.s_id;

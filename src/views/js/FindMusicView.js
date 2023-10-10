@@ -61,7 +61,7 @@ export default {
                 console.log("點擊的歌曲s_id:", this.s_id);
         
                 // 使用 $emit 触发 playMusic 事件，将 s_id 作为参数传递给父组件
-                // this.$emit('playMusic', this.s_id);
+                this.$emit('playMusic', this.s_id);
         
                 // 调用播放器组件的 playMusic 方法
                 this.$refs.player.playMusic();

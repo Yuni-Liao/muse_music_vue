@@ -190,8 +190,17 @@
             .songSection{
                 display: flex;
                 flex-direction: column;
-                img{
+                .pic{
                     width: 270px;
+                    height: 270px;
+                    overflow: hidden;
+                    img{
+                        background-repeat:no-repeat ;
+                        // object-fit: cover;
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                    }
                 }
                 .titleBtns{
                     display: flex;
