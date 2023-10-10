@@ -156,10 +156,12 @@ button.active {
 // }
 
 .checkboxLabel {
+  display: inline-block;
   position: relative;
-  margin-right: 10px;
-  padding-top: 2px;
-
+  width: 23px;
+  height: 23px;
+  // margin-right: 10px;
+  padding: 0px;
   input[type="checkbox"] {
     cursor: pointer;
     vertical-align: sub;
@@ -177,19 +179,16 @@ button.active {
   .i {
     position: absolute;
     z-index: 10;
-    top: 40%;
+    top: 50%;
     left: 50%;
-    transform: translate(40%, -90%);
-    font-size: 20px;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
     color: $green;
     margin: 0;
     opacity: 0;
     pointer-events: none;
   }
-
-  input[type="checkbox"]:hover {
-    border: 2px solid $green;
-  }
+  input[type="checkbox"]:hover,
   input[type="checkbox"]:checked {
     border: 2px solid $green;
   }
@@ -225,7 +224,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 100px;
+  margin: 100px 0;
 }
 
 .plus {
@@ -252,6 +251,34 @@ p.plus {
   // margin: 100px;
   border-collapse: collapse;
   margin-top: 20px;
+  .tno,
+  .ttime,
+  .check {
+    width: 5%;
+    min-width: 20px;
+    text-align: center;
+  }
+  .timg {
+    width: 130px;
+    .pic {
+      width: 100px;
+      height: 100px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .tname {
+    width: 20%;
+  }
+  .tintro {
+    width: 40%;
+  }
+  .tdate {
+    width: 10%;
+  }
 }
 
 .song-table th,
@@ -276,10 +303,10 @@ p.plus {
   text-overflow: ellipsis;
 }
 
-.albumn {
-  width: 200px;
-  height: 200px;
-}
+// .album {
+//   width: 200px;
+//   height: 200px;
+// }
 
 .song-table td {
   color: $white;

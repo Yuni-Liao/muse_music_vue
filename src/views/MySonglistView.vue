@@ -1,7 +1,11 @@
 <template>
   <player ref="player"></player>
   <teleport to="body">
-    <NewSl v-if="isNewSlOpen" @isNewSlOpenupdate="isNewSlOpenupdate"></NewSl>
+    <NewSl
+      v-if="isNewSlOpen"
+      :btntype="2"
+      @isNewSlOpenupdate="isNewSlOpenupdate"
+    ></NewSl>
   </teleport>
   <div class="mysonglist">
     <section>

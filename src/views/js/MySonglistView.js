@@ -72,9 +72,9 @@ export default {
     },
   },
   mounted() {
+    const loginMemId = this.login_mem_id;
     // fetch我的歌單(含追蹤創建及追蹤)
-    const fetchMyallsonglist = () => {
-      const loginMemId = this.login_mem_id;
+    if (loginMemId) {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
       );
@@ -91,10 +91,7 @@ export default {
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
-    };
-
-    // 執行fetch
-    fetchMyallsonglist();
+    }
 
     //建立事件聆聽:點空白處關閉
     document.addEventListener("click", this.closemore, true);

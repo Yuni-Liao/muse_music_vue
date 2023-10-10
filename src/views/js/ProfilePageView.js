@@ -110,7 +110,7 @@ export default {
     //fetch 會員歌曲
     const fetchsongData = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.pageMemid}`
+        `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.pageMemid}&stat=1`
       );
 
       fetch(apiURL)
@@ -190,10 +190,10 @@ export default {
     },
     //頁面切換----------------------
     gotosinglealbum(abid) {
-      this.$router.push({
+      let aa = this.$router.push({
         name: "singlealbum",
         params: {
-          abid,
+          salid: abid,
         },
       });
     },

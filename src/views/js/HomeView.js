@@ -51,188 +51,17 @@ export default {
       startMuz: false,
       // 倒數計時器
       timerValue: null,
+      showWeekTopmusic: false,
       // 首頁頂部Banner - 廖妍榛
-      topBanner: [
-        {
-          image: "index_topbanner_01.jpg",
-        },
-        {
-          image: "song01.jpg",
-        },
-        {
-          image: "index_topbanner_01.jpg",
-        },
-        {
-          image: "song01.jpg",
-        },
-      ],
-      // 本週熱門歌曲輪播 - 黃珮菁
-      songs: [
-        {
-          sid: 1,
-          title: "宇宙飛行1",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 2,
-          title: "宇宙飛行2",
-          image: "index_grid_05.png",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 3,
-          title: "宇宙飛行3",
-          image: "index_grid_08.png",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 4,
-          title: "宇宙飛行4",
-          image: "index_grid_06.png",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 5,
-          title: "宇宙飛行5",
-          image: "index_grid_04.png",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 6,
-          title: "宇宙飛行6",
-          image: "index_grid_03.png",
-          songLink: "/shopProd/1",
-          singer: "桌子樂團7",
-          views: 0,
-        },
-        {
-          sid: 7,
-          title: "宇宙飛行7",
-          image: "song01.jpg",
-          songLink: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 8,
-          title: "宇宙飛行8",
-          image: "index_grid_05.png",
-          songLink: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 8,
-          title: "宇宙飛行9",
-          image: "index_grid_02.png",
-          songLink: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          sid: 9,
-          title: "宇宙飛行10",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-      ],
+      topBanner: [{
+        img: '',
+        link: '',
+      }], // 存放輪播圖的空陣列
 
+      // 本週熱門歌曲輪播 - 黃珮菁
+      SongRank: [],
       // 本週熱門專輯 -廖妍榛
-      a: [
-        {
-          image: [
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-            "index_grid_01.png",
-          ],
-          name: [
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-            "RockYou",
-          ],
-        },
-      ],
-      album: [
-        {
-          ranking: "1",
-          alb: "Aden Scott",
-          name: "RockYou",
-          image: "index_grid_01.png",
-        },
-        {
-          ranking: "2",
-          alb: "桌子樂團",
-          name: "藍色",
-          image: "index_grid_02.png",
-        },
-        {
-          alb: "東西肯恩",
-          ranking: "3",
-          name: "LOVE",
-          image: "index_grid_03.png",
-        },
-        {
-          alb: "溫室花朵",
-          ranking: "4",
-          name: "Faded",
-          image: "index_grid_04.png",
-        },
-        {
-          alb: "潛水大象",
-          ranking: "5",
-          name: "有個念頭",
-          image: "index_grid_05.png",
-        },
-        {
-          alb: "Apple Jump",
-          ranking: "6",
-          name: "作夢的顏色",
-          image: "index_grid_06.png",
-        },
-        {
-          alb: "消防車",
-          ranking: "7",
-          name: "花火",
-          image: "index_grid_07.png",
-        },
-        {
-          alb: "榕樹幫",
-          ranking: "8",
-          name: "你看不見",
-          image: "index_grid_08.png",
-        },
-        {
-          alb: "Bye Bye Lucy",
-          ranking: "9",
-          name: "芭比",
-          image: "index_grid_09.png",
-        },
-      ],
+      albumRank: [], // 存放本週熱門專輯的空陣列
 
       // 情緒歌單測驗題 - 廖妍榛
       ques: [
@@ -277,14 +106,12 @@ export default {
       modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
     };
   },
-
-  computed: {},
   methods: {
     gotosinglemusic(sid) {
       this.$router.push({
         name: "singlemusic",
-        query: {
-          q: sid,
+        params: {
+          sid,
         },
       });
     },
@@ -337,7 +164,55 @@ export default {
     },
   },
   mounted() {
+    //fetch 本週熱門歌曲
+    const fetchSongRank = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getRankSong.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.SongRank = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchSongRank();
     this.startTimer();
+    // fetch 本週熱門專輯 - 廖妍榛
+    const fetchAlbumRank = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getIndexPopularAlbum.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.albumRank = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchAlbumRank();
+    // fetch 首頁輪播圖 - 廖妍榛
+    const fetchCarousel = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getIndexBanner.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => {
+          this.topBanner = res;
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchCarousel();
+
+    setTimeout(() => {
+      this.showWeekTopmusic = true;
+    }, 100);
   },
   beforeUnmount() {
     // 清除計時器

@@ -10,10 +10,10 @@ try {
     //$memid = 1;
 
     //SQL指令: 查詢會員專輯
-    $sql = "select a.alb_id,a.alb_img, a.alb_name, a.mem_id, m.mem_name, a.upload_date
+    $sql = "select a.alb_id,a.alb_img, a.alb_name, a.mem_id, m.mem_name, a.upload_date , a.alb_intro
     from album a join member m on a.mem_id = m.mem_id
     where a.mem_id = $memid
-    order by a.upload_date;";
+    order by a.upload_date desc;";
 
     $alb = $pdo->query($sql);
 
@@ -25,7 +25,13 @@ try {
         echo json_encode($result); //送出json字串
     }
 } catch (Exception $e) {
-    echo "錯誤行號 : ", $e->getLine(), "<br>";
-    echo "錯誤原因 : ", $e->getMessage(), "<br>";
-    //echo "系統暫時不能正常運行，請稍後再試<br>";	
+    $errorResponse = [
+        "error" => [
+            "message" => "新增失敗",
+            "line" => $e->getLine(),
+            "details" => $e->getMessage(),
+        ],
+    ];
+
+    echo json_encode($errorResponse);
 }

@@ -100,7 +100,7 @@
 
                 .countArea {
                     display: flex;
-                    //text-align: center;
+                    text-align: center;
 
                     .played {
                         margin-right: 30px;
@@ -134,6 +134,7 @@
             height: fit-content;
             flex: 0.9;
             text-align: left;
+            align-items: center;
 
             .singer {
                 display: flex;
@@ -204,6 +205,10 @@
                 @include layout(100%);
                 margin: 100px 0;
 
+                @media screen and (max-width: 800px) {
+                    margin: 30px 0;
+                }
+
                 .musicTable {
                     @include layout(85%);
 
@@ -214,10 +219,12 @@
                         padding: 15px 0;
                         border-bottom: 1px solid #ffffff40;
                         font-size: $default;
-
-                        // span {
-                        //     margin: 0 10px;
-                        // }
+                        @media screen and (max-width: 800px) {
+                            .time,
+                            &.playListHeader {
+                                display: none;
+                            }
+                        }
 
                         .id {
                             min-width: 20px;

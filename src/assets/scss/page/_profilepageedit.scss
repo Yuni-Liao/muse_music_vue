@@ -153,6 +153,7 @@
   padding: 15px 20px;
   text-align: left;
   margin: 10px;
+  line-height: $fh;
 }
 
 //滾軸樣式
@@ -465,6 +466,7 @@ p.plus {
   //   max-height: 162px;
   //   overflow: hidden;
   // }
+  line-height: 1.4;
   .timg {
     width: 10%;
     img {
@@ -502,6 +504,9 @@ p.plus {
   .edit {
     width: 5%;
     text-align: center;
+    button {
+      @include btnBgNone;
+    }
   }
 }
 
@@ -509,4 +514,10 @@ p.plus {
 .editsong,
 .newalbum {
   padding: 130px 0;
+}
+
+.editsong {
+  #privacy {
+    margin-left: 10px;
+  }
 }

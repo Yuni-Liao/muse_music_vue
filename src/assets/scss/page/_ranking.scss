@@ -1,15 +1,15 @@
 @import "@/assets/scss/mixin/_mixin.scss";
     
     :deep(#AddFavBtn) {
-    @include music_btn_circle(25px);
+    @include music_btn_circle(30px);
       margin: 10px;
       text-align: center;
-      line-height: 25px;
+      line-height: 20px;
     }
     :deep(#AddSlBtn)  {
-    @include music_btn_circle(25px);
+    @include music_btn_circle(30px);
     text-align: center;
-    line-height: 25px;
+    line-height: 20px;
     }
 .ranking {
   .swiper {
@@ -18,10 +18,8 @@
     .swiper-slide {
       text-align: center;
       font-size: 18px;
-      
       background-size: cover;
       background-repeat: no-repeat;
-
       /* Center slide text vertically */
       display: flex;
       justify-content: center;
@@ -40,7 +38,6 @@
           flex-direction: column;
         }
         .weekTopTitle{
-          
           h1{
             color: $white;
             letter-spacing: 1px;
@@ -55,25 +52,21 @@
         .weekRanking {
           display: flex;
           flex-direction: row;
-          @media screen and (min-width: 413px){
-            width: 1000px;
-            height: 500px;
-            margin-top: 100px;
-          }
-          @include s(){
-            width: 500px;
-            overflow-x: scroll;
-            margin-top: -100px
-          }
+          justify-content: space-between;
           ol{
-            margin: 0px 20px;
-          }
-          li {
+            
+            padding: 0;
             display: flex;
-            flex-direction: row;
-            border-bottom: 1px solid $white;
-            padding: 5px 0px;
-            margin: 10px 0px;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100%;
+           
+            li{
+              font-size: 36px;
+              color: $pink;
+              border-bottom: 1px solid $white;
+              display: flex;
+              
             @media screen and (min-width: 413px){
               justify-content: space-evenly;
               width: 430px;
@@ -88,28 +81,38 @@
               img {
                 width: 70px;
                 height: 70px;
-                
+                margin-right: 30px;
+                margin-left: 30px; 
               }
-              .faPlay{
+              .play{
                 position: absolute;
-                font-size: 35px;
-                color: $white;
-                top: 30%;
+                width: 60px;
+                height: 60px;
+                padding: 10px;
+                top: 10%;
                 left: 30%;
-                
+                opacity: 0;
+                .faPlay{
+                 
+                  font-size: 35px;
+                  color: $white;
+                  
+                  
+                }
               }
-
+              img:hover{
+                opacity: 0.6;
+              }
+             .play:hover{
+              opacity: 1;
+             }
+          
             }
-           
-            .order{
-              font-size: $superBig;
-              color: $pink;
-              font-weight: bold;
-              margin-right: 30px;
-              
-            }
-            .txt { 
+            
+            .txt {
+              min-width: 150px;
               text-align: left;
+              cursor: pointer;
               @include s(){
                 margin-left: 10px;
               }
@@ -126,16 +129,23 @@
                 line-height: 15px;
               }
             }
-            .icon{
-              cursor: pointer;
-              margin-left: 30px;
-              
-              img{
-                width: 20px;
-                margin: 3px;
-              }
             }
+          @media screen and (min-width: 415px){
+            width: 1000px;
+            height: 500px;
+          
+           
+            }
+            }
+            
           }
+          @include s(){
+            width: 500px;
+            overflow-x: scroll;
+            margin-top: -100px
+          }
+         
+          
         }
       }
       .topAlbums{
@@ -347,4 +357,4 @@
       
     }
   }
-}
+

@@ -63,19 +63,14 @@
     <!-- 月份TAB -->
     <div class="bigMonthTab">
         <div class="outMonthTab">
-            <div class="left-arrow" @click="scrollMonth(-1)">
+            <div class="left-arrow" @click="prevMonthRange">
                 <fontAwesome :icon="['fa', 'fa-chevron-left']" size="2xl"
                     style="color: #fff; margin: 15px; cursor: pointer;" />
             </div>
-            <ul class="monthTab" ref="monthContainer">
-                <!-- <li v-for="month in visibleMonths" :key="month" @click="filterByMonth(month)" :style="monthStyle(month)">{{ month }}</li> -->
-                <li v-for="month in visibleMonths" :key="month">
-                    <span v-if="selectedMonth === month" @click="filterByMonth(month)" style="color: #74EBD5">{{ month
-                    }}</span>
-                    <span v-else @click="filterByMonth(month)" style="color: white">{{ month }}</span>
-                </li>
+            <ul class="monthTab" >
+                <li v-for="month in visibleMonths" :key="month" @click="selectedMonth = month" :style="{ color: selectedMonth === month ? textColor : '#fff' }">{{ month }}</li>
             </ul>
-            <div class="right-arrow" @click="scrollMonth(1)">
+            <div class="right-arrow"  @click="nextMonthRange">
                 <fontAwesome :icon="['fa', 'fa-chevron-right']" size="2xl"
                     style="color: #fff; margin: 15px; cursor: pointer;" />
             </div>
@@ -86,11 +81,11 @@
     <div class="bigAreaTab">
         <div class="outAreaTab">
             <ul>
-                <li @click="filterByArea('全部')" :class="{ active: selectedArea === '全部' }">全部</li>
-                <li @click="filterByArea('北部')" :class="{ active: selectedArea === '北部' }">北部</li>
-                <li @click="filterByArea('中部')" :class="{ active: selectedArea === '中部' }">中部</li>
-                <li @click="filterByArea('南部')" :class="{ active: selectedArea === '南部' }">南部</li>
-                <li @click="filterByArea('東部')" :class="{ active: selectedArea === '東部' }">東部</li>
+                <li @click="selectedArea = '全部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '全部' ? textColor : '#fff' }">全部</li>
+                <li @click="selectedArea = '北部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '北部' ? textColor : '#fff' }">北部</li>
+                <li @click="selectedArea = '中部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '中部' ? textColor : '#fff' }">中部</li>
+                <li @click="selectedArea = '南部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '南部' ? textColor : '#fff' }">南部</li>
+                <li @click="selectedArea = '東部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '東部' ? textColor : '#fff' }">東部</li>
             </ul>
         </div>
     </div>
@@ -99,40 +94,43 @@
         <!-- 地區 -->
         <div class="activityArea">
             <ul>
-                <li @click="filterByArea('全部')" :class="{ active: selectedArea === '全部' }">全部</li>
-                <li @click="filterByArea('北部')" :class="{ active: selectedArea === '北部' }">北部</li>
-                <li @click="filterByArea('中部')" :class="{ active: selectedArea === '中部' }">中部</li>
-                <li @click="filterByArea('南部')" :class="{ active: selectedArea === '南部' }">南部</li>
-                <li @click="filterByArea('東部')" :class="{ active: selectedArea === '東部' }">東部</li>
+                <li @click="selectedArea = '全部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '全部' ? textColor : '#fff' }">全部</li>
+                <li @click="selectedArea = '北部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '北部' ? textColor : '#fff' }">北部</li>
+                <li @click="selectedArea = '中部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '中部' ? textColor : '#fff' }">中部</li>
+                <li @click="selectedArea = '南部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '南部' ? textColor : '#fff' }">南部</li>
+                <li @click="selectedArea = '東部'; textColor = '#74EBD5';" :style="{ color: selectedArea === '東部' ? textColor : '#fff' }">東部</li>
 
             </ul>
         </div>
 
         <!-- 活動資訊區 -->
         <div class="infoWrapper">
-            <div class="activityInfo" v-for="(activity, id) in filteredActivities" :key="id">
+            <div v-if="filteredNews.length === 0" class="noActivity"><h1>目前沒有演出活動!</h1></div>
+            <div v-else class="activityInfo" v-for="(news, id) in filteredNews" :key="news.news_id">
                 <div class="calender">
                     <div class="month">
-                        {{ activity.calenderMoth }}月
+                        {{ news.month }}月
                     </div>
-                    <p>{{ activity.date }}日</p>
-                    <p>星期{{ activity.day }}</p>
+                    <p>{{ news.day }}日</p>
+                    <p>星期{{ news.chinese_day_of_week }}</p> 
                 </div>
                 <div class="actWrapper">
                     <router-link :to="`ActivityInfo/${id}`"><img
-                        :src="require(`/public/image/Activity/${activity.img}`)">
+                        :src="`${publicPath}dataimage/news/${news.news_pic}`">
                     </router-link>
                     <div class="info">
                         <router-link :to="`ActivityInfo/${id}`">
-                            <p>{{ news.news_neame }}</p>
+                            <p>{{ news.news_name }}</p>
                         </router-link>
                         <router-link :to="`ActivityInfo/${id}`">
                             <p>{{ news.news_place }}</p>
                         </router-link>
                         <div class="followSinger">
+                           <div class="singer">
                             <fontAwesome :icon="['fa', 'user-large']"
                                     style="color: #fff; margin-left: 10px; cursor: pointer;" />
                                 <p>{{ news.singer }}</p>
+                           </div>
                             <FolBtnBig :functype="2" />
                         </div>
 

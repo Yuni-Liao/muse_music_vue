@@ -29,230 +29,86 @@ export default {
       actiTopBanner: [
         {
           image: "activityBanner01.jpg",
-          month: "7月",
-          day: "26日",
-          week: "星期三",
-          title: "音樂大排檔 Showcase演唱會",
-          info: "19:00 / 台中市 / Legacy"
+          month: "4月",
+          day: "28日",
+          week: "星期五",
+          title: "造夢人夢幻之夜",
+          info: "台北市・THE WALL 公館"
         },
         {
           image: "activityBanner02.jpg",
-          month: "8月",
-          day: "4日",
-          week: "星期五",
-          title: "夏日新聲企劃！",
-          info: "20:00 / 台北市 / Revolver"
+          month: "9月",
+          day: "12日",
+          week: "星期二",
+          title: "沙發馬鈴薯音樂之夜",
+          info: "臺北市・樂悠悠之口 光復南"
         },
         {
           image: "activityBanner03.jpg",
-          month: "8月",
-          day: "14日",
-          week: "星期一",
-          title: "喧嘩祭",
-          info: "16:00/ 高雄市 / 百樂門酒館"
+          month: "9月",
+          day: "24日",
+          week: "星期日",
+          title: "醉心吉他 新歌小巡迴",
+          info: "台北市・女巫店"
         },
       ],
-      months: [
-        "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR"
-      ],
-      currentIndex: 0,
-      visibleMonths: [],
-
-      activityList: [
-        {
-          id: 0,
-          calenderMoth: '5',
-          date: '26',
-          day: '五',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '北部',
-          month: 'MAY',
-        },
-        {
-          id: 1,
-          calenderMoth: '6',
-          date: '14',
-          day: '三',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '中部',
-          month: 'JUN',
-        },
-        {
-          id: 2,
-          calenderMoth: '7',
-          date: '31',
-          day: '一',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '中部',
-          month: 'JUL',
-        },
-        {
-          id: 3,
-          calenderMoth: '9',
-          date: '30',
-          day: '六',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '北部',
-          month: 'SEP',
-        },
-        {
-          id: 4,
-          calenderMoth: '9',
-          date: '30',
-          day: '六',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '北部',
-          month: 'SEP',
-        },
-        {
-          id: 5,
-          calenderMoth: '9',
-          date: '30',
-          day: '六',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '北部',
-          month: 'SEP',
-        },
-        {
-          id: 6,
-          calenderMoth: '9',
-          date: '30',
-          day: '六',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '北部',
-          month: 'SEP',
-        },
-        {
-          id: 7,
-          calenderMoth: '9',
-          date: '30',
-          day: '六',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '北部',
-          month: 'SEP',
-        },
-        {
-          id: 8,
-          calenderMoth: '10',
-          date: '27',
-          day: '五',
-          img: 'activity01.png',
-          title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-          timePlace: '19:00・台北市・THE WALL 公館',
-          singer: 'Rosalyn',
-          area: '北部',
-          month: 'OCT',
-        },
-      ],
-
-      selectedArea: '全部',
-      selectedMonth: 'SEP',
-      filteredActivities: [],
+      months: ["MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR"],
+      currentMonthIndex: 2,
+      visibleMonthCount: 6,
+      selectedMonth: 'SEP',//預設月份為SEP
+      selectedArea: '全部',//預設地區為全部
+      textColor: '#74EBD5',//預設顏色為綠色
       news: [],
     }
   },
-  watch: {
-    selectedArea() {
-
-      this.filterActivities();
-    }
-  },
-  mounted() {
-    this.updateVisibleMonths();
-    this.selectedArea = '全部'; 
-    this.filterByMonth('SEP'); 
-  },
-  created() {
-    this.selectedArea = '全部'; 
-    this.filterActivities(); 
+  computed: {
+    visibleMonths() {
+      const start = this.currentMonthIndex;
+      const end = start + this.visibleMonthCount;
+      return this.months.slice(start, end);
+    },
+    filteredNews() {
+      if (this.selectedArea === '全部' && this.selectedMonth === '全部') {
+        return this.news; // 如選擇全部地區和全部月份，return所有活動訊息
+      } else if (this.selectedArea === '全部') {
+        // 根據月份篩選活動訊息
+        return this.news.filter(newsItem => newsItem.month_abbr === this.selectedMonth);
+      } else if (this.selectedMonth === '全部') {
+        // 根據地區篩選活動訊息
+        return this.news.filter(newsItem => newsItem.news_area === this.selectedArea);
+      } else {
+        // 同時根據和月份篩選活動訊息
+        return this.news.filter(newsItem => newsItem.news_area === this.selectedArea && newsItem.month_abbr === this.selectedMonth);
+      }
+    },
   },
   methods: {
     //獲取news資訊
     fetchNews(){
-      const apiURL = new URL(`http://localhost/muse_music/public/api/getNews.php`);
+      const apiURL = new URL(`http://localhost/muse_music/public/api/getNews.php?`);
       fetch(apiURL)
       .then(async (response) => {
         this.news = await response.json();
-      });
-      
-    },
-
-    updateVisibleMonths() {
-      const endIndex = this.currentIndex + 8;
-      this.visibleMonths = this.months.slice(this.currentIndex, endIndex);
-    },
-    scrollMonth(step) {
-      this.currentIndex += step;
-      if (this.currentIndex < 0) {
-        this.currentIndex = 0;
-      } else if (this.currentIndex + 8 > this.months.length) {
-        this.currentIndex = this.months.length - 8;
-      }
-      this.updateVisibleMonths();
-    },
-
-    filterByArea(area) {
-      if (area === '全部') {
-        this.selectedArea = '全部';
-      } else {
-        this.selectedArea = area;
-      }
-
-      this.filterActivities();
-    },
-
-    filterByMonth(month) {
-      this.selectedMonth = month;
-      this.filterActivities();
-    },
-    filterActivities() {
-      if (this.selectedArea === '全部' && this.selectedMonth === '全部') {
-        this.filteredActivities = this.activityList;
-      } else {
-        this.filteredActivities = this.activityList.filter(activity => {
-          const monthMatches = this.selectedMonth === '全部' || activity.month === this.selectedMonth;
-          const areaMatches = this.selectedArea === '全部' || activity.area === this.selectedArea;
-          return monthMatches && areaMatches;
-        });
-      }
-    },
-    monthStyle() {
-      return function (month) {
         
-        if (this.selectedMonth === month) {
-          return { color: '#74EBD5' };
-        } else {
-          return { color: '#fff' }; 
-        }
-      };
+      });
+    },
+    prevMonthRange() {
+      if (this.currentMonthIndex > 0) {
+        this.currentMonthIndex -= 1;
+      }
+    },
+    nextMonthRange() {
+      if (this.currentMonthIndex + this.visibleMonthCount < this.months.length) {
+        this.currentMonthIndex += 1;
+      }
     }
   },
   mounted() {
     this.fetchNews();
+    
   },
-
+  created() {
+    this.selectedArea = '全部';
+    this.textColor = '#74EBD5';
+  },
 }

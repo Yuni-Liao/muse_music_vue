@@ -9,48 +9,21 @@
             <h1>當週單曲排行榜</h1>
             <section></section>
           </div>
-          <section class="weekRanking">
-            <!-- 1-5名 -->
-           
+
+          <div class="weekRanking">
             <ol >
-              <li v-for="(item, index) in weekFirstFiveSongs" :key="index" >
-                <div class="order">{{item.order}}</div>
+              <li v-for="(item, index) in SongRank" :key="item.s_id" >
+                {{ (index < 5 ? index + 1 : index - 4 + 5) }}.
                 <div class="image">
-                  <img  @click="openPlayer" :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
+                  <img  @click="openPlayer" :src="`${publicPath}dataimage/song/${item.s_img}`" alt=""/>
                   <div class="play" >
                     <fontAwesome @click="openPlayer" class="faPlay" :icon="['fa', 'play']" />
                   </div>
                 </div>
-               
-
-                <div class="txt">
-                  <h3>{{ item.title }}</h3>
+                <div class="txt" @click="gotosinglemusic(item.s_id)">
+                  <h3>{{ item.s_name }}</h3>
                   <p>
-                    {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
-                  </p>
-                </div>
-                <div class="icon">
-                  <AddFavBtn />
-                  <AddSlBtn />
-
-
-                </div>
-              </li>
-            </ol>
-            <!-- 6-10名 -->
-            <ol>
-              <li v-for="(item, index) in weekLastFiveSongs" :key="index">
-                <div class="order">{{item.order}}</div>
-                 <div class="image">
-                  <img @click="openPlayer" :src="require(`@/assets/image/index/${item.image}`)" alt=""/>
-                  <div class="play" @click="openPlayer">
-                    <fontAwesome class="faPlay" :icon="['fa', 'play']" />
-                  </div>
-                </div>
-                <div class="txt">
-                  <h3>{{ item.title }}</h3>
-                  <p>
-                    {{ item.singer }}<span><br>播放次數:{{ item.views }}次</span>
+                    {{ item.mem_name }}<span><br>播放次數:{{ item.play_num }}次</span>
                   </p>
                 </div>
                 <div class="icon">
@@ -59,7 +32,7 @@
                 </div>
               </li>
             </ol>
-          </section>
+          </div>
         </div>
 
 

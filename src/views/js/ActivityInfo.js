@@ -8,96 +8,31 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            //
             foundObject: {},
-            infoList: [
-                {
-                    id: 0,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-
-                },
-                {
-                    id: 1,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-                },
-                {
-                    id: 2,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-                },
-                {
-                    id: 3,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-                },
-                {
-                    id: 4,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-                },
-                {
-                    id: 5,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-                },
-                {
-                    id: 6,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-                },
-                {
-                    id: 7,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-                },
-                {
-                    id: 8,
-                    img: 'activity01.png',
-                    title: 'Rosalyn Live in Taipei w/ 溫蒂漫步 Wendy Wander !',
-                    date: '2023年5月26日 / 星期五 / 19:00',
-                    place: '台北市・THE WALL 公館',
-                    singer: 'Rosalyn',
-                },
-            ]
+            news: [],
         }
     },
 
     methods: {
         fetchActivityDetail() {
+            fetch(`http://localhost/muse_music/public/api/getNews.php`).then(async (response) => {
+                this.news = await response.json();
+                const idToFind =  this.$route.params.news_id;
+                this.foundObject = this.news.find((item) => item.news_id === idToFind);
+                // 檢查是否成功收到
+                if (this.news.length === 0) {
+                    console.warn('未收到');
+                } else {
+                    console.log('已收到:', this.news);
+                }
+                    
+            })
+                
 
-            const activitytId = this.$route.params.id;
-
-            this.activity = getActivityById(activitytId);
+            
         },
     },
     mounted() {
-        const idToFind = parseInt(this.$route.params.id);
-        this.foundObject = this.infoList.find(item => item.id === idToFind);
+        this.fetchActivityDetail();
     },
 }

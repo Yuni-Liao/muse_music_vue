@@ -6,7 +6,9 @@
       clickable: true,
     }" :autoplay="{ delay: 2500, disableOnInteraction: false }">
       <swiper-slide v-for="(item, index) in topBanner" :key="index">
-        <img class="pic" :src="require(`/public/image/index/${item.image}`)" />
+        <a :href="item.link">
+          <img class="pic" :src="`${publicPath}dataimage/index/carousel/${item.img}`" />
+        </a>
       </swiper-slide>
     </swiper>
   </section>
@@ -27,31 +29,30 @@
   <!--本週熱門歌曲輪播 - 黃珮菁 -->
   <section class="index_WeekTopmusic">
     <h2>本週熱門歌曲．Popular Songs This Week</h2>
-    <swiper class="mySwiper" :initialSlide="4" :effect="'slide'" :slideToClickedSlide="false" :grabCursor="false"
-      :centeredSlides="true" :breakpoints="{
+    <swiper v-if="showWeekTopmusic" class="mySwiper" :initialSlide="4" :effect="'slide'" :slideToClickedSlide="false"
+      :grabCursor="false" :centeredSlides="true" :breakpoints="{
         '414': {
           slidesPerView: 3,
         },
         '1200': {
           slidesPerView: 5,
         },
-      }" :slidesPerView="1" :slidesPerGroup="1" :speed="0.001" :autoplay="{
-  delay: 4000,
+      }" :slidesPerView="1" :slidesPerGroup="1" :speed="4" :autoplay="{
   disableOnInteraction: false,
 }" :modules="modules">
-      <swiper-slide v-for="(item, sid) in songs" :key="sid">
+      <swiper-slide v-for="(item, index) in SongRank" :key="item.s_id">
         <div class="card">
           <div class="pic">
-            <img :src="require(`/public/image/index/${item.image}`)" />
+            <img :src="`${publicPath}dataimage/song/${item.s_img}`" alt="歌曲照片" />
             <div class="play" @click="openplayer()">
               <fontAwesome class="i" :icon="['fa', 'play']" />
             </div>
           </div>
 
-          <div class="text" @click="gotosinglemusic(item.sid)">
-            <h3>{{ item.title }}</h3>
+          <div class="text" @click="gotosinglemusic(item.s_id)">
+            <h3>{{ item.s_name }}</h3>
             <p>
-              {{ item.singer }}<span>播放量{{ item.views }}</span>
+              {{ item.mem_name }}<span>播放量{{ item.play_num }}</span>
             </p>
           </div>
         </div>
@@ -67,16 +68,18 @@
     <h2>本週熱門專輯．Popular Album This Week</h2>
     <div class="index_albumBox">
       <Grid center square :border="false">
-        <GridItem v-for="(item, index) in album" :key="index">
-          <div class="imgbox">
-            <img :src="require(`/public/image/index/${item.image}`)" />
-            <span class="ranking">
-              {{ item.ranking }}<br />
-              <span class="name">{{ item.name }}<br />
-                <span class="alb">{{ item.alb }}</span>
+        <GridItem v-for="(item, index) in albumRank" :key="index">
+          <router-link :to="`/home/singlealbum/${item.alb_id}`">
+            <div class="imgbox">
+              <img :src="`${publicPath}dataimage/album/${item.alb_img}`" alt="專輯照片" />
+              <span class="ranking">
+                {{ item.rank_id }}<br />
+                <span class="name">{{ item.alb_name }}<br />
+                  <span class="alb">{{ item.mem_name }}</span>
+                </span>
               </span>
-            </span>
-          </div>
+            </div>
+          </router-link>
         </GridItem>
       </Grid>
     </div>

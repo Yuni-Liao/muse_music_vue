@@ -1,5 +1,6 @@
 main{
     position: relative;
+    
     .prodmgmt_box{
         display: flex;
         flex-flow: column wrap;
@@ -9,6 +10,7 @@ main{
         left: 18%;
         display: flex;
         justify-content: center;
+        padding-bottom: 5%;
         h1{
             font-size: $big;
             text-align: left;

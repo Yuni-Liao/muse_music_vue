@@ -38,7 +38,7 @@
                         </div>
                         <div class="buttonArea">
                             <ShareBtn></ShareBtn>
-                            <AddSlBtn></AddSlBtn>
+                            <AddSlBtn  :addSlSid="songItem.id"></AddSlBtn>
                             <AddFavBtn></AddFavBtn>
                             <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
                         </div>
@@ -96,7 +96,7 @@
                         <div class="board">
                             <h3>留言板</h3>
                             <div class="sendArea">
-                                <input type="text" v-model="newMessage">
+                                <input type="text" v-model="newMessage" placeholder="  我想對創作者說...">
                                 <button class="send" @click="addNewMessage">
                                     <fontAwesome :icon="['fa', 'paper-plane']" style="color:#74EBD5;" size="2xl" />
                                 </button>
@@ -155,8 +155,8 @@
                                             <fontAwesome class="i" :icon="['fa', 'play']" color="#fff" />
                                         </div>
                                     </div>
-                                    <router-link to="/home/singlemusic" class="songName">
-                                        {{ songItem.songname }}
+                                    <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
+                                            {{ songItem.songname }}
                                     </router-link>
                                 </div>
                                 <div class="btnArea">

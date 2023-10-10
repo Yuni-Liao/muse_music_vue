@@ -34,14 +34,19 @@ try {
     $songlistDetail = $pdo->query($sql);
 
     //如果找得資料，取回資料，送出json
-    if ($songlistDetail->rowCount() === 0) {
-        echo "查無歌曲資料";
-    } else {
+    if ($songlistDetail->rowCount() != 0) {
         $slRow = $songlistDetail->fetch(PDO::FETCH_ASSOC);
         echo json_encode($slRow);; //送出json字串
     }
 } catch (Exception $e) {
-    echo "錯誤行號 : ", $e->getLine(), "<br>";
-    echo "錯誤原因 : ", $e->getMessage(), "<br>";
+    $errorResponse = [
+        "error" => [
+            "message" => "新增失敗",
+            "line" => $e->getLine(),
+            "details" => $e->getMessage(),
+        ],
+    ];
+
+    echo json_encode($errorResponse);
 }
 ?>
