@@ -1,12 +1,13 @@
 <template>
     <!-- -------------懸浮播放器範圍 -->
-    <div class="player" v-if="playerOpen" ref="player">
+    <div class="player" :s_id="currentSong.s_id" v-if="playerOpen && currentSong" ref="player">
         <div class="player_left">
             <img @click="showModal" class="screen" :src="`${publicPath}image/icon/screen.svg`" alt="放大視窗">
-            <img class="musicPic" :src="`${publicPath}` + currentSong.cover">
+            <img class="musicPic"
+            :src="`${publicPath}dataimage/song/${currentSong.s_img}`">
             <div class="songInfo">
-                <p>{{ currentSong.songTitle }}</p>
-                <span>{{ currentSong.singer }}</span>
+                <p>{{ currentSong.s_name }}</p>
+                <span>{{ currentSong.mem_name }}</span>
             </div>
             <div id="play" class="phone-play">
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
@@ -17,7 +18,8 @@
             </div>
             <!-- 音檔 -->
             <audio id="myAudio" ref="music" @timeupdate="updateTime" @ended="songEnded">
-                <source :src="`${publicPath}audio/` + currentSong.audio" type="audio/mpeg">
+                <source 
+                :src="`${publicPath}audio/${currentSong.s_src}`" type="audio/mpeg">
             </audio>
         </div>
 
@@ -52,7 +54,6 @@
         </div>
         <!-- 控制音量 -->
         <div class="player_right">
-            <!-- <fontAwesome class="loopSong" @click="toggleLoop" :class="{ 'loopSong-active': isLooping }" :icon="['fa', 'arrow-rotate-right']" size="xl" style="color: #fff; cursor: pointer; margin-right: 10px;" /> -->
             <img v-if="!isMuted" :src="`${publicPath}image/icon/volume.svg`" @click="toggleMute">
             <img v-if="isMuted" :src="`${publicPath}image/icon/muted.svg`" @click="toggleMute">
             <input type="range" id="volumeSlider" v-model="volume" min="0" max="100">
@@ -62,9 +63,8 @@
 
     <!-- -------------蓋板播放器範圍------------- -->
     <div class="modal" v-if="isModalVisible" :style="{
-        // backgroundImage: `url( ${require('@/assets/image/songPic.png')} )`,
-        // backgroundImage: `url('${currentSong.cover}')`,
-        backgroundImage: `url(${`${this.publicPath}` + currentSong.cover})`,
+        backgroundImage: 
+        `url(${publicPath}dataimage/song/${currentSong.s_img})`,
         backgroundSize: '100% auto',
         backgroundRepeat: no - repeat,
         backgroundPosition: 'center 20%',
@@ -85,16 +85,17 @@
             </div>
             <div class="playerBottom">
                 <div class="songSection">
-                    <img class="musicPic" :src="`${publicPath}` + currentSong.cover" alt="封面">
+                    <img class="musicPic" 
+                    :src="`${publicPath}dataimage/song/${currentSong.s_img}`" alt="封面">
                     <div class="titleBtns">
-                        <h4>{{ currentSong.songTitle }}</h4>
+                        <h4>{{ currentSong.s_name }}</h4>
                         <div class="btns">
                             <ShareBtn />
                             <AddSlBtn />
                             <AddFavBtn />
                         </div>
                     </div>
-                    <h5>{{ currentSong.singer }}</h5>
+                    <h5>{{ currentSong.mem_name }}</h5>
                     <div class="timeBarr">
                         <p>{{ formatTime(currentTime) }}</p>
                         <input class="input-range--custom" type="range" v-model="currentTime" @input="seekToTime" :min="0"
@@ -123,46 +124,7 @@
                 <!-- 歌詞 -->
                 <div v-show="showLyrics" class="lyricsSection">
                     <p>
-                        Tryin' my best to take it slowly
-                        To play it cool and keep it low key
-                        But I'm just a man I ain't a priest
-                        My mind's stuck on one thing
-                        And it ain't exactly holy
-                        No, it won't ever be the time to
-
-                        Cross that line with you
-                        But if only you knew
-                        We'd be causin' a commotion
-                        No more hopin'
-                        I leave my girl
-                        You leave your man
-                        Show you my world
-                        Drink your potion
-                        Unlimited oxytocin, Oh!
-                        I can't fake it
-
-                        Girl, I'm breaking
-                        Tension's got me
-                        Tryin' my best to take it slowly
-                        To play it cool and keep it low key
-                        But I'm just a man I ain't a priest
-                        My mind's stuck on one thing
-                        And it ain't exactly holy
-                        No, it won't ever be the time to
-
-                        Cross that line with you
-                        But if only you knew
-                        We'd be causin' a commotion
-                        No more hopin'
-                        I leave my girl
-                        You leave your man
-                        Show you my world
-                        Drink your potion
-                        Unlimited oxytocin, Oh!
-                        I can't fake it
-
-                        Girl, I'm breaking
-                        Tension's got me
+                        {{ currentSong.s_lyrics }}
                     </p>
                 </div>
             </div>
@@ -182,33 +144,23 @@ export default {
         AddSlBtn,
         AddFavBtn,
     },
+    emits: ['playMusic'],
+
+    props: {
+        s_id: {
+            type: String, // 假設 s_id 是字符串
+            required: true // 如果需要 s_id，則將其標記為必需
+        }
+    },
     data() {
+        
         return {
+            
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
             currentSongIndex: 0,
-            songList: [
-                {
-                    cover: 'image/SingleMusic/songPic2.png',
-                    // cover: 'songPic2.png',
-                    songTitle: 'Cant Fight This Feel',
-                    singer: 'Raquel Castro',
-                    audio: 'Cant_Fight_This_Feel.mp3',
-                },
-                {
-                    cover: 'image/SingleMusic/smile.png',
-                    songTitle: 'Moon Mother',
-                    singer: 'Richard Farrell',
-                    audio: 'Moon_Mother.mp3',
-                },
-                {
-                    cover: 'image/SingleMusic/songPic.png',
-                    songTitle: 'Say it',
-                    singer: 'George Makridis',
-                    audio: 'Busy_Day_Ahead.mp3',
-                },
-            ],
+            songList: [],
             //播放器狀態預設關閉
             playerOpen: false,
             isPlaying: false,
@@ -217,25 +169,95 @@ export default {
             currentVolume: 0.5,
             isModalVisible: false,
             showLyrics: false,
-            volume: 50,
+            volume: 100,
             showPlayer: false,
             currentTime: 0,
             totalTime: 0,
         }
     },
     methods: {
-        playMusic() {
-            this.playerOpen = true;
-            this.$nextTick(() => {
-                const audioElement = document.getElementById("myAudio");
-                if (audioElement && typeof audioElement.play === 'function') {
-                    audioElement.play();
-                    this.isPlaying = true;
-                } else {
-                    console.error('音樂無法播放。');
-                }
+        // async playMusic() {
+        //         //顯示播放器
+        //         this.playerOpen = true;
+        //         // 获取歌曲数据
+        //         await this.fetchSong(this.s_id); 
+
+        //         this.$nextTick(() => {
+        //             const audioElement = document.getElementById("myAudio");
+        //             if (audioElement && typeof audioElement.play === 'function') {
+        //                 audioElement.play();
+        //                 this.isPlaying = true;
+        //             } else {
+        //                 console.error('音樂無法播放。');
+        //             }
+        //         });
+        //     },
+        async playMusic() {
+            if (this.s_id) { // 检查是否存在有效的 s_id
+                const s_id = this.s_id;
+
+                // 获取歌曲数据
+                await this.fetchSong(s_id);
+
+                this.$nextTick(() => {
+                    const audioElement = document.getElementById("myAudio");
+                    if (audioElement && typeof audioElement.play === 'function') {
+                        audioElement.addEventListener('canplaythrough', () => {
+                            // 检查从数据库中获取的歌曲的 s_id 是否与 props 中的 s_id 匹配
+                            if (this.currentSong && this.currentSong.s_id === s_id) {
+                                audioElement.play()
+                                    .then(() => {
+                                        console.log('音乐已成功播放。');
+                                        // 使用 $emit 触发 playMusic 事件，传递 s_id 作为参数
+                                        this.$emit('playMusic', s_id);
+                                        this.isPlaying = true;
+                                    })
+                                    .catch((error) => {
+                                        console.error('音乐播放失败：', error);
+                                    });
+                            } else {
+                                console.log('歌曲信息不匹配，不播放歌曲。');
+                            }
+                        });
+                    } else {
+                        console.log('playMusic 被调用了，s_id 是', s_id);
+                        console.error('音乐无法播放。');
+                    }
+                });
+            } else {
+                console.error('当前歌曲不存在。');
+            }
+        },
+
+        async fetchSong() {
+            // const s_id = this.$route.params.s_id;
+            const apiURL = new URL(
+                `http://localhost/muse_music/public/api/getPlayerSong.php?`
+            );
+            fetch(apiURL)
+            .then(async (response) => {
+                this.songList = await response.json();
+            })
+            .catch((error) => {
+                console.error("發生錯誤:", error.message);
             });
         },
+        // async fetchSong(s_id) {
+        //     console.log('Fetching song with s_id:', s_id);
+        //     const apiURL = new URL(
+        //         `http://localhost/muse_music/public/api/getPlayerSong.php?s_id=${s_id}`
+        //     );
+        //     try {
+        //         const response = await fetch(apiURL);
+        //         if (response.ok) {
+        //             this.songList = await response.json();
+        //         } else {
+        //             console.error("獲取歌曲數據失敗:", response.status);
+        //         }
+        //     } catch (error) {
+        //         console.error("發生錯誤:", error.message);
+        //     }
+        // },
         pauseMusic() {
             const audioElement = document.getElementById("myAudio");
             if (audioElement) {
@@ -300,26 +322,26 @@ export default {
         loadAndPlayCurrentSong() {
             const audioElement = document.getElementById("myAudio");
             if (audioElement) {
-                // 暂停當前播放的音樂
+                // 暂停当前播放的音乐
                 audioElement.pause();
 
-                // 更新音樂
-                audioElement.src = `${this.publicPath}audio/${this.currentSong.audio}`;
+                // 更新音乐
+                audioElement.src = `${this.publicPath}audio/${this.currentSong.s_src}`;
 
-                // 重新載入新的音樂
+                // 重新加载新的音乐
                 audioElement.load();
 
-                // 播放新的音樂
+                // 播放新的音乐
                 audioElement.play()
                     .then(() => {
                         this.isPlaying = true;
-                        // 音樂準備好後重置時間
+                        // 音乐准备好后重置时间
                         audioElement.onloadedmetadata = () => {
                             this.totalTime = audioElement.duration;
                         };
                     })
                     .catch((error) => {
-                        console.error('音樂播放失敗：', error);
+                        console.error('音樂播放失敗', error);
                     });
             }
         },
@@ -359,7 +381,11 @@ export default {
             const audioElement = document.getElementById("myAudio");
             audioElement.volume = newVolume / 100;
         },
-    }
+    },
+    mounted() {
+        this.fetchSong();
+        // fetchSong();
+    },
 };
 </script>
 

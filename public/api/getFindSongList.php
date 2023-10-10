@@ -15,7 +15,8 @@ try {
             m.mem_id,
             m.mem_name as h_name,
             s.s_length,
-            sc.mcat_id
+            sc.mcat_id,
+            s.s_id
         from 
             member m 
         join 
