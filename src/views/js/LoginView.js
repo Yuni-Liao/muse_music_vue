@@ -53,7 +53,7 @@ export default {
                         const userName = data.mem_name;
 
                         // 彈出對應會員訊息~~~
-                        alert(`Hi! ${userName} 歡迎回到MuseMusi！`);
+                        alert(`Hi! ${userName} 歡迎回到MuseMusic！`);
 
                         // 導回首頁
                         this.$router.push("/home");
