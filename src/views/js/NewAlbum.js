@@ -14,7 +14,7 @@ export default {
       }, //專輯的詳細資料
       albumSongsData: [], //專輯內原有的歌曲資料
       allsong: [], //用於渲染
-      NoAlbumsongs: [], //沒有專輯的歌曲資料
+      noAlbumsongs: [], //沒有專輯的歌曲資料
     };
   },
   methods: {
@@ -22,16 +22,16 @@ export default {
       this.isAddSongOpen = val;
     },
     NewDataupdate(val) {
-      this.NoAlbumsongs = val;
-      // this.allsong = [...this.NoAlbumsongs, ...this.albumSongsData];
+      this.noAlbumsongs = val;
+      // this.allsong = [...this.noAlbumsongs, ...this.albumSongsData];
       this.allsong = [
-        ...this.NoAlbumsongs.filter((item) => item.isChecked === true),
+        ...this.noAlbumsongs.filter((item) => item.isChecked === true),
         ...this.albumSongsData,
       ];
     },
   },
   mounted() {
-    // fetch 該會員未有專輯id的歌曲 ( 表示可以被加入專輯中 ) ，放入 NoAlbumsongs 中
+    // fetch 該會員未有專輯id的歌曲 ( 表示可以被加入專輯中 ) ，放入 noAlbumsongs 中
     const memid = this.login_mem_id;
     const apiURL = new URL(
       `http://localhost/muse_music/public/api/getNoAlbumsong.php?memid=${memid}`
@@ -42,7 +42,7 @@ export default {
         for (let i = 0; i < res.length; i++) {
           res[i].isChecked = false;
         }
-        this.NoAlbumsongs = res;
+        this.noAlbumsongs = res;
       })
       .catch((error) => {
         console.error("發生錯誤:", error);

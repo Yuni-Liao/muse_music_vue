@@ -6,38 +6,53 @@
       <!-- 頭貼 -->
       <div class="profile-container">
         <img class="profile" alt="Profile Image" :src="member.profileImgURL" />
-        <input type="file" @change="profileImgChange($event)" class="profileupdate" />
-      
+        <input
+          type="file"
+          @change="profileImgChange($event)"
+          class="profileupdate"
+        />
       </div>
     </div>
 
     <div class="main-wrapper">
       <div class="page-options">
         <div class="page-option">
-          <button @click="changeTab(1)" :class="{
-            active: activeTab === 1,
-          }">
+          <button
+            @click="changeTab(1)"
+            :class="{
+              active: activeTab === 1,
+            }"
+          >
             編輯個人主頁
           </button>
         </div>
         <div class="page-option">
-          <button @click="changeTab(2)" :class="{
-            active: activeTab === 2,
-          }">
+          <button
+            @click="changeTab(2)"
+            :class="{
+              active: activeTab === 2,
+            }"
+          >
             音樂上傳
           </button>
         </div>
         <div class="page-option">
-          <button @click="changeTab(3)" :class="{
-            active: activeTab === 3,
-          }">
+          <button
+            @click="changeTab(3)"
+            :class="{
+              active: activeTab === 3,
+            }"
+          >
             歌曲管理
           </button>
         </div>
         <div class="page-option">
-          <button @click="changeTab(4)" :class="{
-            active: activeTab === 4,
-          }">
+          <button
+            @click="changeTab(4)"
+            :class="{
+              active: activeTab === 4,
+            }"
+          >
             專輯管理
           </button>
         </div>
@@ -49,15 +64,24 @@
         <div v-show="activeTab === 1" class="page">
           <form class="form1">
             <div class="form-group">
-
               <label for="name" class="label">顯示名稱</label>
-              <input type="text" style="" id="name" v-model="member[0].mem_name" />
+              <input
+                type="text"
+                style=""
+                id="name"
+                v-model="member[0].mem_name"
+              />
             </div>
 
             <div class="form-group">
-              
               <label for="inst" class="label">介紹</label>
-              <textarea name="" id="inst" v-model="member[0].intro" rows="10" wrap="hard"></textarea>
+              <textarea
+                name=""
+                id="inst"
+                v-model="member[0].intro"
+                rows="10"
+                wrap="hard"
+              ></textarea>
             </div>
             <div class="form-group">
               <label for="location" class="label">位置</label>
@@ -91,22 +115,39 @@
               <input type="text" id="social" v-model="member[0].social_media" />
             </div>
           </form>
-          <router-link to="profilepageedit"><button class="button" style="margin-bottom: 150px" @click="complete">
+          <router-link to="profilepageedit"
+            ><button
+              class="button"
+              style="margin-bottom: 150px"
+              @click="complete"
+            >
               取消變更
-            </button></router-link>
+            </button></router-link
+          >
 
-          <button @click="saveBtn()" class="button" style="margin-bottom: 150px">
-              儲存變更
-            </button>
+          <button
+            @click="saveBtn()"
+            class="button"
+            style="margin-bottom: 150px"
+          >
+            儲存變更
+          </button>
         </div>
 
         <div v-show="activeTab === 2" class="page">
           <form class="form1">
             <div class="form-group">
               <label for="newalbumname" class="label">歌曲上傳</label>
-              <Upload type="drag" action="//jsonplaceholder.typicode.com/posts/">
+              <Upload
+                type="drag"
+                action="//jsonplaceholder.typicode.com/posts/"
+              >
                 <div style="padding: 60px 0; background-color: black">
-                  <img class="songpic" alt="Update Image" src="@/assets/image/icon/file.jpg" />
+                  <img
+                    class="songpic"
+                    alt="Update Image"
+                    src="@/assets/image/icon/file.jpg"
+                  />
                   <p style="color: white">上傳檔案或將檔案拖曳到這裡</p>
                   <br />
                   <p style="color: white">
@@ -118,9 +159,16 @@
 
             <div class="form-group">
               <label for="newalbumname" class="label">歌曲封面</label>
-              <Upload type="drag" action="//jsonplaceholder.typicode.com/posts/">
+              <Upload
+                type="drag"
+                action="//jsonplaceholder.typicode.com/posts/"
+              >
                 <div style="padding: 60px 0; background-color: black">
-                  <img class="songpic" alt="Update Image" src="@/assets/image/icon/camera.jpg" />
+                  <img
+                    class="songpic"
+                    alt="Update Image"
+                    src="@/assets/image/icon/camera.jpg"
+                  />
                   <p style="color: white">上傳封面相片</p>
                   <br />
                   <p style="color: white">
@@ -297,23 +345,41 @@
             </div>
           </form>
 
-          <router-link to="profilepageedit"><button class="button" style="margin-bottom: 150px" @click="complete">
+          <router-link to="profilepageedit"
+            ><button
+              class="button"
+              style="margin-bottom: 150px"
+              @click="complete"
+            >
               取消變更
-            </button></router-link>
+            </button></router-link
+          >
 
-          <button @click="saveBtn()" class="button" style="margin-bottom: 150px">
-              儲存變更
-            </button>
+          <button
+            @click="saveBtn()"
+            class="button"
+            style="margin-bottom: 150px"
+          >
+            儲存變更
+          </button>
         </div>
         <div v-show="activeTab === 3" class="page">
           <div class="top">
             <div class="newsong" @click="activeTab = 2">
-              <img alt="Update Image" :src="`${publicPath}image/icon/upload.svg`" />
+              <img
+                alt="Update Image"
+                :src="`${publicPath}image/icon/upload.svg`"
+              />
               <span>上傳歌曲</span>
             </div>
-            <label class="search"><input type="search" name="" id="" />
+            <label class="search"
+              ><input type="search" name="" id="" />
               <button>
-                <img alt="search_icon" :src="`${publicPath}image/icon/search.svg`" /></button></label>
+                <img
+                  alt="search_icon"
+                  :src="`${publicPath}image/icon/search.svg`"
+                /></button
+            ></label>
           </div>
           <table class="song-table">
             <thead>
@@ -332,7 +398,11 @@
             <tbody>
               <tr v-for="(item, index) in profileSongs" :key="item.s_id">
                 <td class="timg">
-                  <img class="song" :src="`${publicPath}dataimage/song/${item.s_img}`" :alt="item.s_name" />
+                  <img
+                    class="song"
+                    :src="`${publicPath}dataimage/song/${item.s_img}`"
+                    :alt="item.s_name"
+                  />
                 </td>
                 <td class="tname">
                   {{ item.s_name }}
@@ -352,28 +422,36 @@
                   {{ item.S_length }}
                 </td>
                 <td class="edit">
-                  <button @click="
-                    editSong(
-                      item.s_id,
-                      item.s_img,
-                      item.s_name,
-                      item.s_intro,
-                      item.show_stat
-                    )
-                    ">
-                    <fontAwesome v-if="item.s_stat == 1" :icon="['fas', 'pen']" style="color: #fdfbfb" />
+                  <button
+                    @click="
+                      editSong(
+                        item.s_id,
+                        item.s_img,
+                        item.s_name,
+                        item.s_intro,
+                        item.show_stat
+                      )
+                    "
+                  >
+                    <fontAwesome
+                      v-if="item.s_stat == 1"
+                      :icon="['fas', 'pen']"
+                      style="color: #fdfbfb"
+                    />
                   </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <Page :total="100" show-elevator /><br />
+          <!-- <Page :total="100" show-elevator /><br /> -->
         </div>
 
         <div v-show="activeTab === 4" class="page">
           <div class="top">
             <router-link to="newalbum" class="newalbum">
-              <fontAwesome class="i" :icon="['fa', 'plus']" /><span>新增專輯</span>
+              <fontAwesome class="i" :icon="['fa', 'plus']" /><span
+                >新增專輯</span
+              >
             </router-link>
           </div>
           <table class="song-table">
@@ -389,7 +467,11 @@
             <tbody>
               <tr v-for="(item, index) in profileAlbums" :key="item.alb_id">
                 <td class="timg">
-                  <img class="albumn" alt="專輯照片" :src="`${publicPath}dataimage/album/${item.alb_img}`" />
+                  <img
+                    class="albumn"
+                    alt="專輯照片"
+                    :src="`${publicPath}dataimage/album/${item.alb_img}`"
+                  />
                 </td>
                 <td class="tname">
                   {{ item.alb_name }}
@@ -409,21 +491,26 @@
                       style="color: #fdfbfb"
                     />
                   </router-link> -->
-                  <button @click="
-                    editalbum(
-                      item.alb_id,
-                      item.alb_img,
-                      item.alb_name,
-                      item.alb_intro
-                    )
-                    ">
-                    <fontAwesome :icon="['fas', 'pen']" style="color: #fdfbfb" />
+                  <button
+                    @click="
+                      editalbum(
+                        item.alb_id,
+                        item.alb_img,
+                        item.alb_name,
+                        item.alb_intro
+                      )
+                    "
+                  >
+                    <fontAwesome
+                      :icon="['fas', 'pen']"
+                      style="color: #fdfbfb"
+                    />
                   </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <Page :total="100" show-elevator /><br />
+          <!-- <Page :total="100" show-elevator /><br /> -->
         </div>
       </div>
     </div>

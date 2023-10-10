@@ -10,15 +10,16 @@ try {
 
     //準備sql
     $sql = "
-    UPDATE `song` SET 
-    s_name=:s_name, s_intro=:s_intro, show_stat=:show_stat
+    UPDATE `album` SET 
+    alb_name=:alb_name, alb_intro=:alb_intro, alb_img=:alb_img
     WHERE 
-    s_id =:s_id;";
+    alb_id =:alb_id;";
     $editSong = $pdo->prepare($sql);
-    $editSong->bindValue(":s_id", $_POST["s_id"]);
-    $editSong->bindValue(":s_name", $_POST["s_name"]);
-    $editSong->bindValue(":s_intro", $_POST["s_intro"]);
-    $editSong->bindValue(":show_stat", $_POST["show_stat"]);
+    $editSong->bindValue(":alb_id", $_POST["alb_id"]);
+    $editSong->bindValue(":alb_img", $_POST["alb_img"]);
+    $editSong->bindValue(":alb_name", $_POST["alb_name"]);
+    $editSong->bindValue(":alb_intro", $_POST["alb_intro"]);
+
 
     // 執行sql
     if ($editSong->execute()) {

@@ -1,7 +1,7 @@
 <template>
   <teleport to="body" v-if="isAddSongOpen"
     ><AddSongtoAlbum
-      :NoAlbumsongs="this.NoAlbumsongs"
+      :noAlbumsongs="this.noAlbumsongs"
       @isAddSongOpenupdate="isAddSongOpenupdate"
       @NewDataupdate="NewDataupdate"
     ></AddSongtoAlbum
