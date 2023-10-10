@@ -55,8 +55,9 @@ export default {
                 }
             ],
             productData: [], // 渲染資料的陣列
-            editBox: false, // 控制编辑模态框的显示与隐藏
-            editItem:[],
+            editBox: false, // 預設跳窗隱藏
+            editItem: [],
+            privacy: "公開",
         }
     },
     methods: {
@@ -73,17 +74,54 @@ export default {
         //     alert('新增商品');
         // }
 
-        // 点击编辑按钮时触发编辑模态框
+        // 點擊編輯按鈕後跳窗出現
         editProd(row) {
-            this.editItem = { ...row }; // 传入编辑的数据
-            this.editBox = true; // 显示编辑模态框
+            this.editItem = { ...row }; // 傳入編輯數據
+            this.editBox = true; // 顯示編輯跳窗
         },
 
-        // 编辑确认按钮点击事件
+        // 編輯確認按鈕點擊事件
         prodEdit() {
-            // 编辑逻辑
-            // ...
-            this.editBox = false; // 关闭编辑模态框
+            const url = `http://localhost/muse_music/public/api/editProd.php`;
+            let headers = {
+                Accept: "application/json",
+            };
+
+            const formData = new FormData();
+            formData.append("prod_id", this.editItem.prod_id);
+            // formData.append("prod_pic", this.editItem.prod_pic);
+            formData.append("prod_name", this.editItem.prod_name);
+            formData.append("prod_price", this.editItem.prod_price);
+            formData.append("prod_date", this.editItem.prod_date);
+            formData.append("prod_type", this.editItem.prod_type);
+            formData.append("prod_inf", this.editItem.prod_inf);
+            formData.append("prod_int", this.editItem.prod_int);
+            formData.append("show_stat", this.editItem.show_stat);
+            
+
+            fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("新增失敗");
+                    }
+                })
+                .then(() => {
+                    this.$router.push({
+                        name: "prodmgmt",
+                    });
+                })
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
+
+            this.editBox = false; // 關閉編輯跳窗
+            console.log("formData", formData);
         },
     },
     mounted() {
@@ -101,15 +139,34 @@ export default {
                 if (response.ok) {
                     return response.json();
                 } else {
+                    console.error('API 錯誤回應:', response);
                     throw new Error("取得 dta 失敗");
                 }
             })
             .then((json) => {
+                console.log('API 成功回應:', json);
                 this.productData = json;
+                // 將 prod_type 設定為正確的值
             })
             .catch((error) => {
-                console.log(error.message);
+                console.error('API 請求失敗:', error);
             });
+
+        //接值，把值放入 this.editItem 中
+        const puteditItem = () => {
+            const obj = {};
+            obj.prod_id = this.$route.query.prod_id;
+            obj.prod_pic = this.$route.query.prod_pic;
+            obj.prod_name = this.$route.query.prod_name;
+            obj.prod_price = this.$route.query.prod_price;
+            obj.prod_type = this.$route.query.prod_type;
+            obj.prod_date = this.$route.query.prod_date;
+            obj.prod_inf = this.$route.query.prod_inf;
+            obj.prod_int = this.$route.query.prod_int;
+            obj.show_stat = this.$route.query.show_stat;
+            this.editItem = obj;
+        };
+        puteditItem();
     }
 }
 
