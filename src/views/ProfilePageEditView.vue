@@ -1,11 +1,19 @@
 <template>
   <div class="profilepageedit">
     <div class="cover-container">
-      <img class="cover" alt="Cover Image" :src="member.coverimgURL" />
+      <img
+        class="cover"
+        alt="CoverImage"
+        :src="`${publicPath}dataimage/member/` + member[0].cover_pic"
+      />
       <input class="coverupdate" type="file" @change="coverImgChange($event)" />
       <!-- 頭貼 -->
       <div class="profile-container">
-        <img class="profile" alt="Profile Image" :src="member.profileImgURL" />
+        <img
+          class="profile"
+          alt="ProfileImage"
+          :src="`${publicPath}dataimage/member/` + member[0].mem_pic"
+        />
         <input
           type="file"
           @change="profileImgChange($event)"

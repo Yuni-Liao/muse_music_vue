@@ -114,26 +114,9 @@
 
   <!-- 音樂轉盤 -廖妍榛 -->
   <section class="index_revolve">
-    <h2>轉出你的音樂．Revolve</h2>
+    <h2>混出你的音樂．Mix Music</h2>
     <div class="step">
-      <div class="pic">
-        <img :src="`${publicPath}image/index/index_revolveBook.svg`" alt="選出你現在的情緒" />
-        <div class="txt">
-          <p>選出你現在的情緒</p>
-        </div>
-      </div>
-      <div class="pic">
-        <img :src="`${publicPath}image/index/index_revolveCd.svg`" alt="音樂旋轉挑選中" />
-        <div class="txt">
-          <p>音樂旋轉挑選中</p>
-        </div>
-      </div>
-      <div class="pic">
-        <img :src="`${publicPath}image/index/index_revolveNote.svg`" alt="轉出你的情緒音樂!" />
-        <div class="txt">
-          <p>屬於你的情緒音樂！</p>
-        </div>
-      </div>
+      <p>此區裝飾待處理</p>
     </div>
     <!-- 轉盤播放器組件 - 廖妍榛-->
     <IndexPlayer />

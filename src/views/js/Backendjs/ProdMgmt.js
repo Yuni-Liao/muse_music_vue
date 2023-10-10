@@ -3,6 +3,7 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
+            uploadedImg: null, // 上傳圖片暫存
             columns: [
                 {
                     title: 'No',
@@ -41,30 +42,21 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '操作',
+                    title: '上/下架',
                     slot: 'upDownBtn',
                     width: 100,
                     align: 'center'
                 },
                 {
-                    title:'編輯',
+                    title: '編輯',
                     slot: 'editBtn',
                     width: 100,
                     align: 'center'
                 }
             ],
-            editBox: false,
             productData: [], // 渲染資料的陣列
-            // editItem: {
-            //     prod_id: '',
-            //     prod_type: '',
-            //     prod_name: '',
-            //     prod_inf: '',
-            //     prod_int: '',
-            //     prod_count:'',
-            //     prod_price:'',
-            //     prod_date:'',
-            // },
+            editBox: false, // 控制编辑模态框的显示与隐藏
+            editItem:[],
         }
     },
     methods: {
@@ -80,14 +72,19 @@ export default {
         // addProdBtn() {
         //     alert('新增商品');
         // }
-        // editProd(row) {
-        //     this.editBox = true;
-        //     this.editItem.prod_id = row.prod_id;
-        //     this.editItem.prod_name = row.prod_name;
-        //     this.editItem.prod_type = row.prod_type;
-        //     this.editItem.prod_price = row.prod_price;
-        //     this.editItem.prod_date = row.prod_date;
-        // },
+
+        // 点击编辑按钮时触发编辑模态框
+        editProd(row) {
+            this.editItem = { ...row }; // 传入编辑的数据
+            this.editBox = true; // 显示编辑模态框
+        },
+
+        // 编辑确认按钮点击事件
+        prodEdit() {
+            // 编辑逻辑
+            // ...
+            this.editBox = false; // 关闭编辑模态框
+        },
     },
     mounted() {
         //先檢查資料格式是否符合DB規則
