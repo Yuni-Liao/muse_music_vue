@@ -3,7 +3,7 @@
         <h1>網站資訊管理 | 排行榜管理</h1>
         <div v-if="editSingleSongRank == true" class="popSongSelect obj_Radius">
             <input class="allSong obj_Radius selectedrank" type="text" readonly :value="`No. ` + selectedSongRank">
-            <select class="allSong obj_Radius" id="allSong" v-model="selectedSong">
+            <select class="allSong obj_Radius" id="allSong" v-model="selectedSong.s_id">
                 <option v-for="(item, index) in allSong" :key="index" :value="item.s_id">{{ item.s_name
                 }}
                 </option>
@@ -15,14 +15,14 @@
         </div>
         <div v-if="editAlbumRank == true" class="popAlbumSelect obj_Radius">
             <input class="allSong obj_Radius selectedrank" type="text" readonly :value="`No. ` + selectedAlbumRank">
-            <select class="allAlbum obj_Radius" id="allAlbum">
-                <option v-for="(item, index) in allAlbum" :key="index" :value="item.alb_name">{{ item.alb_name
+            <select class="allAlbum obj_Radius" id="allAlbum" v-model="selectedAlbum.alb_id">
+                <option v-for="(item, index) in allAlbum" :key="index" :value="item.alb_id">{{ item.alb_name
                 }}
                 </option>
             </select>
             <div class="btngroup">
                 <button @click="closeBtn()" class=" default_Btn obj_Radius closeBtn">取消</button>
-                <button @click="saveBtn()" class="rankBtn default_Btn  obj_Radius">儲存</button>
+                <button @click="saveAlbumBtn()" class="rankBtn default_Btn obj_Radius">儲存</button>
             </div>
         </div>
         <Tabs value="name" capture-focus v-width="1000" style="overflow-x: hidden;">
@@ -45,7 +45,6 @@
         </Tabs>
     </div>
 </template>
-<!-- 補 編輯排行按鈕、搜尋框、新增按鈕、分頁按鈕-vue動態改變內容、調整字距 -->
 
 <style scoped lang="scss">
 @import "~@/assets/scss/page/Backend/rankmgmt.scss";

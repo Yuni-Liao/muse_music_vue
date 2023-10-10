@@ -2,24 +2,21 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-// header("Content-Type: application/json"); 
+header("Content-Type:application/json;charset=utf-8");
 
 // 後台 - 排行榜管理 - 編輯專輯排行 - 廖妍榛
 try {
     require_once("./connectMusemusic.php");
 
-    $sql = "update member set mem_name = :mem_name, email = :email, county = :county, mem_psw = :mem_psw where mem_id = :mem_id";
+    $sql = "update alb_rank set alb_id = :alb_id where rank_id = :rank_id";
 
     $data = json_decode(file_get_contents('php://input'), true);
 
-    if (isset($data['mem_name'], $data['email'], $data['county'], $data['mem_id'], $data['mem_psw'])) {
-        $editMem = $pdo->prepare($sql);
-        $editMem->bindValue(":mem_name", $data["mem_name"]);
-        $editMem->bindValue(":email", $data["email"]);
-        $editMem->bindValue(":county", $data["county"]);
-        $editMem->bindValue(":mem_id", $data["mem_id"]);
-        $editMem->bindValue(":mem_psw", $data["mem_psw"]);
-        $editMem->execute();
+    if (isset($data["alb_id"], $data["rank_id"])) {
+        $editAlbum = $pdo->prepare($sql);
+        $editAlbum->bindValue(":alb_id", $data["alb_id"]);
+        $editAlbum->bindValue(":rank_id", $data["rank_id"]);
+        $editAlbum->execute();
 
         echo json_encode(["message" => "編輯成功"]);
     }else {
@@ -32,4 +29,3 @@ try {
     echo json_encode($errorResponse);
 }
 ?>
-
