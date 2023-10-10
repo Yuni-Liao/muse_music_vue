@@ -87,7 +87,7 @@ export default {
         //  更換父組件背景圖 -- 廖妍榛
         spaceHover(imgUrl) {
             this.bgImage = `url(${this.publicPath}dataimage/find/${imgUrl})`;
-            console.log('Hovered image URL:', this.bgImage);
+            // console.log('Hovered image URL:', this.bgImage);
         },
     },
     mounted() {

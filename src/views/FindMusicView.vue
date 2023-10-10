@@ -1,5 +1,5 @@
 <template>
-    <player ref="player"></player>
+    <player @playMusic="handlePlayMusic" :s_id="s_id" ref="player"></player>
     <div class="banner"
     :style="{
         backgroundImage: `url(${publicPath}dataimage/find/${foundObject.mcat_pic})`
@@ -15,7 +15,7 @@
                     <p>共首歌</p>
                 </div>
                 <div class="btn">
-                    <PlayBtnBig @click="openPlayer"></PlayBtnBig>
+                    <!-- <PlayBtnBig @click="openPlayer"></PlayBtnBig> -->
                 </div>
             </div>
         </div>
@@ -39,8 +39,8 @@
                         <td class="pic">
                             <img :src="`${publicPath}dataimage/song/${s.s_img}`"
                             alt="albumItem.name"
-                                @click="openPlayer">
-                                <fontAwesome class="f_play" :icon="['fa', 'play']" @click="openPlayer"/>
+                                @click="openPlayer(s.s_id)">
+                                <fontAwesome class="f_play" :icon="['fa', 'play']" @click="openPlayer(s.s_id)"/>
                         </td>
                         <td class="name">
                             <!-- <router-link to="/home"> -->
