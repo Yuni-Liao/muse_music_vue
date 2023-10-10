@@ -92,13 +92,15 @@
                     }" :modules="modules">
                     <swiper-slide v-for="n in songs" :key="n.mem_id">
                         <div class="n_card">
-                            <div class="image">
-                                <PlayBtnBig class="play_btn" @click="openPlayer">
-                                </PlayBtnBig>
-                                <img :src="`${publicPath}dataimage/song/${n.s_img}`" @click="openPlayer" />
-                            </div>
+                            <router-link :to="`/home/singlemusic/${n.s_id}`">
+                                <div class="image">
+                                    <img :src="`${publicPath}dataimage/song/${n.s_img}`" />
+                                </div>
+                            </router-link>
                             <div class="text">
-                                <h4>{{ n.s_name }}</h4>
+                                <router-link :to="`/home/singlemusic/${n.s_id}`">
+                                    <h4>{{ n.s_name }}</h4>
+                                </router-link>
                                 <p>
                                     <router-link :to="`/home/profilepage/${n.mem_id}`">
                                         {{ n.h_name }}

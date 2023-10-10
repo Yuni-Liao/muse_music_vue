@@ -327,6 +327,17 @@ const routes = [
         meta: {
           title: "探索",
         },
+        // children:[
+        //   {
+        //     path: "player",
+        //     name: "player",
+        //     component: () =>
+        //       import(/* webpackChunkName: "player" */ "../components/player.vue"),
+        //     meta: {
+        //       title: "播放器",
+        //     },
+        //   }  
+        // ]
       },
       //以下是前台-帳號設定頁面
       {
