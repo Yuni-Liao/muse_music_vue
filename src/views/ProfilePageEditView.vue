@@ -1,13 +1,12 @@
 <template>
   <div class="profilepageedit">
     <div class="cover-container">
-      <img class="cover" alt="Cover Image" :src="member.coverimgURL" />
+      <img class="cover" alt="CoverImage" :src="`${publicPath}dataimage/member/` + member[0].cover_pic" />
       <input class="coverupdate" type="file" @change="coverImgChange($event)" />
       <!-- 頭貼 -->
       <div class="profile-container">
-        <img class="profile" alt="Profile Image" :src="member.profileImgURL" />
+        <img class="profile" alt="ProfileImage" :src="`${publicPath}dataimage/member/` + member[0].mem_pic" />
         <input type="file" @change="profileImgChange($event)" class="profileupdate" />
-      
       </div>
     </div>
 
@@ -55,7 +54,7 @@
             </div>
 
             <div class="form-group">
-              
+
               <label for="inst" class="label">介紹</label>
               <textarea name="" id="inst" v-model="member[0].intro" rows="10" wrap="hard"></textarea>
             </div>
@@ -96,8 +95,8 @@
             </button></router-link>
 
           <button @click="saveBtn()" class="button" style="margin-bottom: 150px">
-              儲存變更
-            </button>
+            儲存變更
+          </button>
         </div>
 
         <div v-show="activeTab === 2" class="page">
@@ -302,8 +301,8 @@
             </button></router-link>
 
           <button @click="saveBtn()" class="button" style="margin-bottom: 150px">
-              儲存變更
-            </button>
+            儲存變更
+          </button>
         </div>
         <div v-show="activeTab === 3" class="page">
           <div class="top">
