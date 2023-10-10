@@ -8,12 +8,12 @@ export default {
       activeTab: 1,
       currentStep: 0,
       member: [{
-        cover_pic: '1-2.jpg',
-        mem_pic: '1-1.jpg',
-        name: '',
-        introduction: '',
+        cover_pic: '',
+        mem_pic: '',
+        mem_name: '',
+        intro: '',
         county: '',
-        socialMedia: '',
+        social_media: '',
       }],
       profileSongs: [],
       profileAlbums: [],
@@ -57,10 +57,10 @@ export default {
         Accept: "application/json",
       };
       const dataToSend = {
-        mem_name: this.member[0].name,
-        intro: this.member[0].introduction,
+        mem_name: this.member[0].mem_name,
+        intro: this.member[0].intro,
         county: this.member[0].county,
-        social_media: this.member[0].socialMedia,
+        social_media: this.member[0].social_media,
         mem_id: this.member[0].mem_id,
       };
 
@@ -76,9 +76,9 @@ export default {
             throw new Error("編輯失敗");
           }
         })
-        .then(() => {
-          window.location.reload();
-        })
+        // .then(() => {
+        //   window.location.reload();
+        // })
         .catch((error) => {
           console.log(error.message);
         });
