@@ -1,11 +1,10 @@
 <?php
 //新增單曲留言失敗中QQ
+//前台 - 單曲頁面 - 留言區 - 郭凱芸
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 try {
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    header("Content-Type: application/json");
-
     // 取得前端發送的JSON數據
     $json_data = file_get_contents('php://input');
     $data = json_decode($json_data);
@@ -36,10 +35,10 @@ try {
         // 返回成功和新留言对象
         echo json_encode(["success" => true, "message" => $newMessage]);
     } else {
-        echo json_encode(["success" => false, "msg" => "留言失败"]);
+        echo json_encode(["success" => false, "msg" => "留言失敗"]);
     }
 } catch (Exception $e) {
-    $errorResponse = ["success" => false, "msg" => "留言发生错误：" . $e->getMessage()];
+    $errorResponse = ["success" => false, "msg" => "留言失敗：" . $e->getMessage()];
     echo json_encode($errorResponse);
 }
 ?>
