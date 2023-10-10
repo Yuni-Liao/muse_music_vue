@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in NoAlbumsongs" :key="index">
+          <tr v-for="(item, index) in noAlbumsongs" :key="index">
             <td>{{ index + 1 }}</td>
             <td class="simg">
               <div class="pic">
@@ -63,7 +63,7 @@
 <script>
 export default {
   props: {
-    NoAlbumsongs: [Object],
+    noAlbumsongs: [Object],
   },
   data() {
     return {
@@ -76,8 +76,8 @@ export default {
   mounted() {
     //計算已勾選歌曲數字
     let checkcount = 0;
-    for (let i = 0; i < this.NoAlbumsongs.length; i++) {
-      if (this.NoAlbumsongs[i].isChecked) {
+    for (let i = 0; i < this.noAlbumsongs.length; i++) {
+      if (this.noAlbumsongs[i].isChecked) {
         checkcount += 1;
       }
     }
@@ -99,7 +99,7 @@ export default {
       this.$emit("isAddSongOpenupdate", this.isAddSongOpen);
     },
     submitAddSong() {
-      const NewData = this.NoAlbumsongs;
+      const NewData = this.noAlbumsongs;
       this.isAddSongOpen = false;
       this.$emit("isAddSongOpenupdate", this.isAddSongOpen);
       this.$emit("NewDataupdate", NewData);

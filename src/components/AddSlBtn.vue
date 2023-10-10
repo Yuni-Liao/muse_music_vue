@@ -101,6 +101,7 @@ export default {
       const selectedSls = Array.from(
         document.querySelectorAll("input[name='slid']:checked")
       ).map((checkSl) => checkSl.value);
+      console.log(selectedSls);
 
       // 如果沒有選擇歌單，則alert提示
       if (selectedSls.length != 0) {
@@ -148,10 +149,6 @@ export default {
       this.isAddSlOpen = true;
       this.fetchMyallsonglist();
     },
-
-    // openAddSl() {
-    //   this.isAddSlOpen = true;
-    // },
   },
   mounted() {
     // 執行fetch

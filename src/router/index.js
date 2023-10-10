@@ -291,17 +291,15 @@ const routes = [
         },
       },
 
-      // {
-      //   path: "editalbumsong",
-      //   name: "editalbumsong",
-      //   component: () =>
-      //     import(
-      //       /* webpackChunkName: "profilepage" */ "../views/EditAlbumSong.vue"
-      //     ),
-      //   meta: {
-      //     title: "編輯專輯歌曲",
-      //   },
-      // },
+      {
+        path: "test",
+        name: "test",
+        component: () =>
+          import(/* webpackChunkName: "profilepage" */ "../views/Test.vue"),
+        meta: {
+          title: "test",
+        },
+      },
 
       // {
       //   path: "editsdsong",
@@ -337,7 +335,7 @@ const routes = [
         //     meta: {
         //       title: "播放器",
         //     },
-        //   }  
+        //   }
         // ]
       },
       //以下是前台-帳號設定頁面
