@@ -19,11 +19,45 @@
                 <Switch @click="upDownBtn(row)" true-color="#13ce66" false-color="#ff4949" />
             </template>
             <template #editBtn="{ row }">
-                <fontAwesome @click="editProd(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
+                <font-awesome @click="editProd(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
         </Table>
     </div>
-
+    <!-- 以下是跳窗編輯區 -->
+    <Modal v-model:modelValue="editBox" title="編輯商品" width="300" okText="確認" @on-ok="prodEdit">
+        <Form enctype="multipart/form-data">
+            <!-- 編輯的內容 -->
+            <input type="text" name="car_id" v-model="editItem.car_id" style="display: none;" />
+            <p>商品編號:</p>
+            <input type="text" id="prod_id" name="id" v-model="editItem.prod_id"
+                style="margin-bottom: 10px; width: 268px;" />
+            <p>商品名稱:</p>
+            <input type="text" id="prod_name" name="name" v-model="editItem.prod_name"
+                style="margin-bottom: 10px; width: 268px;" />
+            <p>商品售價:</p>
+            <input type="text" id="prod_price" name="name" v-model="editItem.prod_price"
+                style="margin-bottom: 10px; width: 268px;" />
+            <p>上架時間:</p>
+            <input type="text" id="prod_date" name="name" v-model="editItem.prod_date"
+                style="margin-bottom: 10px; width: 268px;" />
+            <p>商品分類:</p>
+            <input type="text" id="prod_type" name="name" v-model="editItem.prod_type"
+                style="margin-bottom: 10px; width: 268px;" />
+            <p>商品詳情:</p>
+            <input type="text" id="prod_inf" name="name" v-model="editItem.prod_inf"
+                style="margin-bottom: 10px; width: 268px;height: 80px;" />
+            <p>商品介紹:</p>
+            <input type="text" id="prod_int" name="name" v-model="editItem.prod_int"
+                style="margin-bottom: 10px; width: 268px;height: 80px;" />
+            <Upload type="drag" name="img" id="uploadImg" :action="`${$store.state.phpPublicPath}editIndexCarousel.php`"
+                accept="image/*" @change="imgChange">
+                <div style="padding: 20px 0;">
+                    <Icon size="100" style="color: #3399ff"></Icon>
+                    <p>點擊/拖曳上傳商品圖片</p>
+                </div>
+            </Upload>
+        </Form>
+    </Modal>
 </template>
 
 <!-- 補分頁按鈕、下拉式選單按鈕、調整字距 -->
