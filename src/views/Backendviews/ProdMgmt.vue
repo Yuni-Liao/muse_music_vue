@@ -27,7 +27,6 @@
     <Modal v-model:modelValue="editBox" title="編輯商品" width="300" okText="確認" @on-ok="prodEdit">
         <Form enctype="multipart/form-data">
             <!-- 編輯的內容 -->
-            <input type="text" name="car_id" v-model="editItem.car_id" style="display: none;" />
             <p>商品編號:</p>
             <input type="text" id="prod_id" name="id" v-model="editItem.prod_id"
                 style="margin-bottom: 10px; width: 268px;" />
@@ -41,14 +40,18 @@
             <input type="text" id="prod_date" name="name" v-model="editItem.prod_date"
                 style="margin-bottom: 10px; width: 268px;" />
             <p>商品分類:</p>
-            <input type="text" id="prod_type" name="name" v-model="editItem.prod_type"
-                style="margin-bottom: 10px; width: 268px;" />
+            <Select v-model="editItem.prod_type" style="width: 268px;">
+                <option value="男藝人">男藝人</option>
+                <option value="女藝人">女藝人</option>
+                <option value="錄音帶">錄音帶</option>
+                <option value="樂團團體">樂團團體</option>
+            </Select>
             <p>商品詳情:</p>
-            <input type="text" id="prod_inf" name="name" v-model="editItem.prod_inf"
-                style="margin-bottom: 10px; width: 268px;height: 80px;" />
+            <textarea id="prod_inf" name="name" v-model="editItem.prod_inf"
+                style="margin-bottom: 10px; width: 268px; height: 80px;"></textarea>
             <p>商品介紹:</p>
-            <input type="text" id="prod_int" name="name" v-model="editItem.prod_int"
-                style="margin-bottom: 10px; width: 268px;height: 80px;" />
+            <textarea id="prod_int" name="name" v-model="editItem.prod_int"
+                style="margin-bottom: 10px; width: 268px; height: 80px;"></textarea>
             <Upload type="drag" name="img" id="uploadImg" :action="`${$store.state.phpPublicPath}editIndexCarousel.php`"
                 accept="image/*" @change="imgChange">
                 <div style="padding: 20px 0;">
