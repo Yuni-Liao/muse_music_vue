@@ -13,7 +13,7 @@
     </div>
 </template>
 
-<!-- 補上 新增按鈕、分頁按鈕、彈跳視窗、調整字距 -->
+<!-- 補上 分頁按鈕、彈跳視窗、調整字距 -->
 
 <style scoped lang="scss">
 @import "~@/assets/scss/page/Backend/robotmgmt.scss";

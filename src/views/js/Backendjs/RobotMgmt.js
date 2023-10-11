@@ -8,6 +8,7 @@ export default {
                 {
                     title: 'No',
                     key: 'no',
+                    // key值是資料庫表格抬頭名字
                     width: 60,
                     align: 'center'
                 },
