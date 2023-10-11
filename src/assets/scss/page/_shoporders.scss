@@ -33,12 +33,7 @@
                 padding: 20px 0;
                 background-color: $dark;
                 color: $white;
-                font-size: $small;
-                .serial{
-                    width: 30%;
-                    display: flex;
-                    justify-content: center;
-                }                
+                font-size: $small;       
             }
             .main{
                 background: linear-gradient(to right, $white, $white, #e7e7ff);
@@ -46,17 +41,11 @@
                 transition: background-position .5s,right 0.3s; 
                 a{
                     display: flex;
-                    align-items: center;
+                    justify-content: center;
                     padding: 30px 0;
                     color: $dark;
                     font-size: $default;
                     border-bottom: 3px solid $dark;
-                    .product_pic{
-                        width: 30%;
-                        img{
-                            width: 70%;
-                        }
-                    }
                     .arrow{
                         color: $dark;
                         padding-left: 15px;
@@ -65,14 +54,18 @@
             }
 
             .order_item{
-                width: 15%;
+                width: 18%;
                 text-align: center;
+                transition: all .3s;
             }
+            .order_item:hover{
+                color: #55a899;
+            }
+            .serial, .date{
+                width: 23%;
+            }             
             .main:hover{
                 background-position: 100% 0;
-            }
-            .pcs{
-                width: 10%;
             }
         }
     }

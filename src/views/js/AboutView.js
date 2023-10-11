@@ -68,7 +68,7 @@ export default {
         // 獲取faq資料庫資訊
         fetchFaqArray(){
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFaqs.php?`
+                `${this.$store.state.phpPublicPath}getFaqs.php?`
               );
               fetch(apiURL).then(async (response) => {
                 this.faqArray = await response.json();

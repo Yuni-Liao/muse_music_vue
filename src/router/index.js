@@ -151,7 +151,7 @@ const routes = [
       // 以下是訂單資訊詳情共用頁面
       {
         //設定動態路由參數":id"
-        path: "shoporderdetail/:id",
+        path: "shoporderdetail/:slid",
         name: "shoporderdetail",
         component: () =>
           import(
