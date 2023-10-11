@@ -114,16 +114,12 @@
                     <p>{{ news.day }}日</p>
                     <p>星期{{ news.chinese_day_of_week }}</p> 
                 </div>
-                <div class="actWrapper">
+                <div class="actWrapper" >
                     <img @click="gotoNewsDetail(news.news_id)"
                         :src="`${publicPath}dataimage/news/${news.news_pic}`">
-                    <div class="info">
-                        <router-link :to="`ActivityInfo/${id}`">
-                            <p>{{ news.news_name }}</p>
-                        </router-link>
-                        <router-link :to="`ActivityInfo/${id}`">
-                            <p>{{ news.news_place }}</p>
-                        </router-link>
+                    <div class="info" @click="gotoNewsDetail(news.news_id)">
+                        <p>{{ news.news_name }}</p>
+                        <p>{{ news.news_place }}</p>
                         <div class="followSinger">
                            <div class="singer">
                             <fontAwesome :icon="['fa', 'user-large']"
