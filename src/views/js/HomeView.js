@@ -53,12 +53,7 @@ export default {
       timerValue: null,
       showWeekTopmusic: false,
       // 首頁頂部Banner - 廖妍榛
-      topBanner: [
-        {
-          img: "",
-          link: "",
-        },
-      ], // 存放輪播圖的空陣列
+      topBanner: [], // 存放輪播圖的空陣列
 
       // 本週熱門歌曲輪播 - 黃珮菁
       SongRank: [],
@@ -205,6 +200,8 @@ export default {
         .then((res) => res.json())
         .then((res) => {
           this.topBanner = res;
+          console.log(this.topBanner);
+
         })
         .catch((error) => {
           console.error("發生錯誤:", error);

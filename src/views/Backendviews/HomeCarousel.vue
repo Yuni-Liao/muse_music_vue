@@ -3,8 +3,17 @@
         <h1>網站資訊管理 | 首頁輪播管理</h1>
         <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" :columns="columns"
             :data="carouselItem">
+            <!-- <template #upDownBtn="{ row }">
+                <Switch @on-change="upDownBtn(row)" 
+                    :false-color="editItem.status === 0 ? '#ff4949' : '#13ce66'"
+                    :true-color="editItem.status === 1 ? '#13ce66' : '#ff4949'" :before-change="confirmBeforeChange"
+                    />
+            </template> -->
             <template #upDownBtn="{ row }">
-                <Switch @click="upDownBtn(row)" true-color="#13ce66" false-color="#ff4949" />
+                <Switch @on-change="toggleBtn(row)" v-model="editItem.status"
+                    :true-color="editItem.status === 1 ? '#13ce66' : '#ff4949'"
+                    :false-color="editItem.status === 0 ? '#ff4949' : '#13ce66'" :true-value="1" :false-value="0"
+                    :before-change="confirmBeforeChange" />
             </template>
             <template #editBtn="{ row }">
                 <fontAwesome @click="editCarousel(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
@@ -13,8 +22,6 @@
     </div>
     <!-- 編輯輪播彈窗 -->
     <div v-if="editBox == true" class="editcarousel obj_Radius">
-        <!-- 輪播id -->
-        <!-- <input class="carno obj_Radius" type="text" v-model="editItem.car_id" readonly :value="`No. ` + selectedCarRank"> -->
         <!-- 更新輪播名稱 -->
         <p>輪播名稱:</p>
         <input type="text" id="name" name="name" v-model="editItem.name" style="margin-bottom:10px; width: 250px;">
