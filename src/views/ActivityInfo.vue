@@ -1,16 +1,16 @@
 <template>
     <div class="topncenter">
         <div class="infoTop">
-            <img :src="`${publicPath}dataimage/news/${foundObject.news_pic}`" alt="">
+            <!-- <img :src="`${publicPath}dataimage/news/${newsList.news_pic}`" alt=""> -->
             <div class="intro">
-                <h1 >{{ foundObject.news_name }}</h1>
+                <h1 >{{ newsList.news_name }}</h1>
                 <h4></h4>
-                <h4>{{ foundObject.news_place }}</h4>
+                <h4>{{ newsList.news_place }}</h4>
                 <div class="followSingerr">
                     <router-link to="profilepage" class="singer">
                         <fontAwesome :icon="['fa', 'user-large']"
                             style="color: #fff; margin-left: 10px; cursor: pointer;" />
-                        <p>{{ foundObject.singer }}</p>
+                        <p>{{ newsList.singer }}</p>
                     </router-link>
                     <FolBtnBig :functype="2" />
                 </div>
@@ -18,7 +18,7 @@
         </div>
         <div class="infoCenter">
             <h1>活動介紹</h1>
-            <p>{{ foundObject.news_con }}</p>
+            <p>{{ newsList.news_con }}</p>
         </div>
 
     </div>

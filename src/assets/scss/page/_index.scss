@@ -487,7 +487,7 @@
     }
 }
 
-//音樂轉盤 - 廖妍榛
+// 混出你的音樂 - 廖妍榛
 .index_revolve {
   @include layout(100%);
   padding-bottom: 5%;
@@ -505,24 +505,17 @@
     text-align: start;
     margin: 40px;
   }
+  // 裝飾區待處理
   .step {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    .pic {
-      width: 150px;
-      height: 110px;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+    p {
+      font-size: 1rem;
+      color: $white
     }
-    .txt {
-      p {
-        @include mini_Tag($tag);
-      }
-    }
-  }}
+  }
+}
 
 //找到屬於你的歌 - 廖妍榛
 .index_emo {
