@@ -15,10 +15,12 @@ export default {
       //isAddSlOpen: false,
       songlist: [], //歌單資訊 (fetch)
       slSongs: [], //歌單歌曲 (fetch)
+      login_mem_id: "",
+      showDelSl: false, //顯示刪除歌單按鈕和移除歌單按鈕
     };
   },
   methods: {
-    //切換 more 開啟
+    //切換 more 開啟------------------------------------------------------------------
     showtoggle(e, index) {
       // console.log(e.target.nextElementSibling);
       if (e.target.nextElementSibling.classList.contains("show")) {
@@ -27,7 +29,7 @@ export default {
         this.morecurrent = index;
       }
     },
-    //關閉 more
+    //關閉 more------------------------------------------------------------------
     closemore(e) {
       this.morecurrent = -1;
     },
@@ -40,6 +42,7 @@ export default {
     addFav(e) {
       alert(`歌曲ID${e}，加入我的最愛`);
     },
+    //將歌加入歌單------------------------------------------------------------------
     addSonglist(index) {
       // alert(`歌曲ID${e}，加入我的歌單`);
       // this.isAddSlOpen = true;
@@ -47,7 +50,45 @@ export default {
       this.$refs.AddSl[index].openAddSl();
       //console.log(this.$refs.AddSl[index]);
     },
-    //頁面切換--------------
+    //刪除歌單------------------------------------------------------------------
+    deleSl() {
+      if (this.showDelSl == true) {
+        let confirm = window.confirm(`確定刪除歌單?`);
+        if (confirm == true) {
+          const slid = this.songlist.sl_id;
+          const apiURL = new URL(
+            `${this.$store.state.phpPublicPath}deleSl.php?slid=${slid}`
+          );
+          fetch(apiURL)
+            .then((res) => res.json())
+            .then(() => {
+              this.$router.push({
+                name: "mysonglist",
+              });
+            })
+            .catch((error) => {
+              console.error("發生錯誤:", error);
+            });
+        }
+      }
+    },
+    //將歌移除歌單------------------------------------------------------------------
+    delSongfromSl(sid, sname) {
+      let confirm = window.confirm(`確定要將 ${sname} 移除此歌單?`);
+      if (confirm == true) {
+        const slid = this.songlist.sl_id;
+        const apiURL = new URL(
+          `${this.$store.state.phpPublicPath}deleSongFromSl.php?sid=${sid}&slid=${slid}`
+        );
+        fetch(apiURL)
+          .then((res) => res.json())
+          .then((res) => location.reload())
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      }
+    },
+    //頁面切換------------------------------------------------------------------
     gotosinglemusic(sid) {
       this.$router.push({
         name: "singlemusic",
@@ -74,10 +115,11 @@ export default {
     },
   },
   mounted() {
+    this.login_mem_id = localStorage.getItem("mem_id");
 
-    // fetch歌單資訊
-    const fetchSonglistDetail = () => {
-      const slid = this.$route.params.slid;
+    // fetch歌單資訊------------------------------------------------------------------
+    const slid = this.$route.params.slid;
+    if (slid) {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getSonglistDetail.php?slid=${slid}`
       );
@@ -88,11 +130,11 @@ export default {
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
-    };
+    }
 
-    // fetch歌單歌曲資訊
-    const fetchSonglistSong = () => {
-      const slid = this.$route.params.slid;
+    // fetch歌單歌曲資訊------------------------------------------------------------------
+
+    if (slid) {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getSonglistSong.php?slid=${slid}`
       );
@@ -103,11 +145,18 @@ export default {
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
-    };
+    }
 
-    //執行fetch
-    fetchSonglistDetail();
-    fetchSonglistSong();
+    //判斷是否已登入，歌單擁有者是否為登入會員
+    setTimeout(() => {
+      console.log(this.login_mem_id, this.songlist.creater_id);
+      if (
+        this.login_mem_id != undefined &&
+        this.login_mem_id == this.songlist.creater_id
+      ) {
+        this.showDelSl = true;
+      }
+    }, 300);
 
     //建立事件聆聽:點空白處關閉
     document.addEventListener("click", this.closemore, true);

@@ -51,7 +51,14 @@
               </div>
             </div>
             <div class="buttonArea">
-              <FolBtnBig :functype="0"></FolBtnBig>
+              <button
+                v-if="showDelSl"
+                class="deleSlBtn"
+                @click.prevent="deleSl()"
+              >
+                刪除歌單
+              </button>
+              <FolBtnBig v-if="showDelSl == false" :functype="0"></FolBtnBig>
               <ShareBtn></ShareBtn>
               <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
             </div>
@@ -131,6 +138,16 @@
                     <div class="addSl" @click="addSonglist(index)">
                       <img src="../../public/image/icon/addSl.png" />
                       <p>加入歌單</p>
+                    </div>
+                    <!-- 當已登入，且登入會員與歌單創作者相同，才顯示移除歌單按鈕 -->
+                    <div
+                      v-if="showDelSl"
+                      @click="delSongfromSl(item.s_id, item.s_name)"
+                    >
+                      <div class="img">
+                        <fontAwesome class="i" :icon="['fa', 'fa-minus']" />
+                      </div>
+                      <p>移除歌單</p>
                     </div>
                     <div class="readSong" @click="gotosinglemusic(item.s_id)">
                       <img
