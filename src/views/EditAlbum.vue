@@ -1,7 +1,7 @@
 <template>
   <teleport to="body" v-if="isAddSongOpen"
     ><AddSongtoAlbum
-      :NoAlbumsongs="this.NoAlbumsongs"
+      :noAlbumsongs="this.noAlbumsongs"
       @isAddSongOpenupdate="isAddSongOpenupdate"
       @NewDataupdate="NewDataupdate"
     ></AddSongtoAlbum
@@ -31,8 +31,13 @@
       </div>
 
       <div class="form-group">
-        <label for="editalbumname" class="label" required>編輯專輯名稱</label>
-        <input type="text" id="editalbumname" v-model="albumData.alb_name" />
+        <label for="editalbumname" class="label">編輯專輯名稱</label>
+        <input
+          type="text"
+          id="editalbumname"
+          v-model="albumData.alb_name"
+          required
+        />
       </div>
       <div class="form-group">
         <label for="editalbuminfo" class="label"
@@ -44,6 +49,7 @@
           cols="30"
           rows="10"
           v-model="albumData.alb_intro"
+          required
         >
         </textarea>
       </div>
@@ -111,12 +117,13 @@
         取消變更
       </button></router-link
     >
-
-    <router-link to="profilepageedit"
-      ><button class="button" style="margin-bottom: 150px">
-        儲存變更
-      </button></router-link
+    <button
+      class="button"
+      style="margin-bottom: 150px"
+      @click.prevent="submit()"
     >
+      儲存變更
+    </button>
   </div>
 </template>
 

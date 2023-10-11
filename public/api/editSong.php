@@ -13,7 +13,7 @@ try {
     UPDATE `song` SET 
     s_name=:s_name, s_intro=:s_intro, show_stat=:show_stat
     WHERE 
-    s_id =:s_id";
+    s_id =:s_id;";
     $editSong = $pdo->prepare($sql);
     $editSong->bindValue(":s_id", $_POST["s_id"]);
     $editSong->bindValue(":s_name", $_POST["s_name"]);

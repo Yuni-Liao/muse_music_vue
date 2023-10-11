@@ -1,7 +1,7 @@
 import FolBtnBig from '@/components/FolBtnBig.vue';
 
 export default {
-    component: {
+    components: {
         FolBtnBig,
     },
     data() {
@@ -9,30 +9,25 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             foundObject: {},
-            news: [],
+            newsList: [],
         }
     },
 
-    methods: {
-        fetchActivityDetail() {
-            fetch(`http://localhost/muse_music/public/api/getNews.php`).then(async (response) => {
-                this.news = await response.json();
-                const idToFind =  this.$route.params.news_id;
-                this.foundObject = this.news.find((item) => item.news_id === idToFind);
-                // 檢查是否成功收到
-                if (this.news.length === 0) {
-                    console.warn('未收到');
-                } else {
-                    console.log('已收到:', this.news);
-                }
-                    
-            })
-                
-
-            
-        },
-    },
     mounted() {
-        this.fetchActivityDetail();
+        this.pageid = parseInt(this.$route.params.nid);
+        const fetchnewsDetail = () => {
+            const nid = this.$route.params.nid;
+            const apiURL = new URL(
+                `http://localhost/muse_music/public/api/getNewsDetail.php?slid=${nid}`
+            );
+            fetch(apiURL)
+                .then(async (response) => {
+                this.newsList = await response.json();
+                })
+                .catch((error) => {
+                console.error("發生錯誤:", error);
+                });
+        };
+        fetchnewsDetail();
     },
 }

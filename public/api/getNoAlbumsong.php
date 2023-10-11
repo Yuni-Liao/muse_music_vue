@@ -9,7 +9,7 @@ try {
     $memid = $_GET['memid'];
     //SQL指令: 查詢該會員中，未有專輯編號的歌曲
     $sql = "
-    select s_id as id, s_name as name, s_img as songPic, s_intro, show_stat, s_length as time,update_date as s_update_date
+    select s_id as id, s_name as name, s_img as songPic, s_intro, show_stat, s_length as time,update_date as s_update_date,alb_id
     from song 
     where mem_id = $memid and (alb_id is null or  alb_id = '')
     order by s_update_date desc;";
