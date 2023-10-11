@@ -208,28 +208,28 @@
                     <input type="checkbox" name="songclass" value="" />
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
-                  <span class="classname">日語流行</span>
+                  <span class="classname">日語</span>
                 </div>
                 <div class="opt">
                   <label class="checkboxLabel">
                     <input type="checkbox" name="songclass" value="" />
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
-                  <span class="classname">韓語流行</span>
+                  <span class="classname">韓語</span>
                 </div>
                 <div class="opt">
                   <label class="checkboxLabel">
                     <input type="checkbox" name="songclass" value="" />
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
-                  <span class="classname">華語流行</span>
+                  <span class="classname">華語</span>
                 </div>
                 <div class="opt">
                   <label class="checkboxLabel">
                     <input type="checkbox" name="songclass" value="" />
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
-                  <span class="classname">西洋流行</span>
+                  <span class="classname">西洋</span>
                 </div>
                 <div class="opt">
                   <label class="checkboxLabel">
@@ -341,13 +341,6 @@
                     <fontAwesome class="i" :icon="['fa', 'fa-check']" />
                   </label>
                   <span class="classname">派對</span>
-                </div>
-                <div class="opt">
-                  <label class="checkboxLabel">
-                    <input type="checkbox" name="songclass" value="" />
-                    <fontAwesome class="i" :icon="['fa', 'fa-check']" />
-                  </label>
-                  <span class="classname">其他曲風</span>
                 </div>
               </div>
             </div>
