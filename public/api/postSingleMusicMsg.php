@@ -1,5 +1,4 @@
 <?php
-//新增單曲留言失敗中QQ
 //前台 - 單曲頁面 - 留言區 - 郭凱芸
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -18,18 +17,20 @@ try {
     // 取得單曲頁面新留言内容
     $newMessage = $data->message;
 
-    // SQL新增回傳到msg表格
-    $sql = "INSERT INTO msg (mem_id, s_id, msg_con, msg_date, msg_like) VALUES (:mem_id, :s_id, :msg_con, :msg_date, :msg_like)";
+    // SQL 新增回傳到msg表格
+    // $msg_id=$pdo->lastInsertId(); //自動創號
+    $sql = "INSERT INTO msg (msg_id,mem_id, s_id, msg_con, msg_date, msg_like) VALUES (:msg_id,:mem_id, :s_id, :msg_con, now(), null)";
     $stmt = $pdo->prepare($sql);
 
-    $stmt->bindParam(':mem_id', $mem_id, PDO::PARAM_INT);
-    $stmt->bindParam(':s_id', $s_id, PDO::PARAM_INT);
-    $stmt->bindParam(':msg_con', $newMessage->message, PDO::PARAM_STR);
-    $stmt->bindParam(':msg_date', $newMessage->date, PDO::PARAM_STR);
-    $stmt->bindParam(':msg_like', $newMessage->like, PDO::PARAM_INT);
+    $stmt->bindValue(':msg_id', $msg_id, PDO::PARAM_INT);
+    $stmt->bindValue(':mem_id', $mem_id, PDO::PARAM_INT);
+    $stmt->bindValue(':s_id', $s_id, PDO::PARAM_INT);
+    $stmt->bindValue(':msg_con', $newMessage->message, PDO::PARAM_STR);
+    $stmt->bindValue(':msg_date', $newMessage->date, PDO::PARAM_STR);
+    $stmt->bindValue(':msg_like', $newMessage->like, PDO::PARAM_INT);
 
-    $mem_id = 1; // 先假設 mem_id 是 1
-    $s_id = 1; // 先假設 s_id 是 1
+    // $mem_id = 1; // 先假設 mem_id 是 1
+    // $s_id = 1; // 先假設 s_id 是 1
 
     if ($stmt->execute()) {
         // 返回成功和新留言对象

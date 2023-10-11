@@ -61,13 +61,13 @@
                 <option value="0">私人</option>
             </select>
             <!-- 圖片 -->
-            <Upload type="drag" name="img" id="uploadImg" :action="`${$store.state.phpPublicPath}editIndexCarousel.php`"
+            <!-- <Upload type="drag" name="img" id="uploadImg" :action="`${$store.state.phpPublicPath}editIndexCarousel.php`"
                 accept="image/*" @change="imgChange()">
                 <div style="padding: 20px 0;">
                     <Icon size="100" style="color: #3399ff"></Icon>
                     <p>點擊/拖曳上傳商品圖片</p>
                 </div>
-            </Upload>
+            </Upload> -->
         </Form>
     </Modal>
 </template>

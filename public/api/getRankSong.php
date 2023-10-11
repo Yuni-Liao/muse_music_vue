@@ -11,7 +11,7 @@ try {
     from s_rank r join song s on r.s_id= s.s_id
                 join member m on s.mem_id = m.mem_id
     order by r.rank_id
-    limit 10;";
+    ;";
 
     $songRank = $pdo->query($sql);
     //如果找得資料，取回資料，送出json

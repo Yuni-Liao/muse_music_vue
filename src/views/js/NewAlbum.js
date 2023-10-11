@@ -27,23 +27,25 @@ export default {
         ...this.noAlbumsongs.filter((item) => item.isChecked === true),
       ];
     },
-
     submit() {
+      //編輯專輯歌曲 & 未有歌曲做新增(在該歌曲資訊中 update 上 alb_id 的值) & 已有歌曲做刪除(alb_id set null)------
       const selectedAddSongs = this.noAlbumsongs
         .filter((obj) => obj.isChecked === true)
         .map((obj) => obj.id);
-
+      this.albumData.alb_id = 44;
       if (selectedAddSongs != 0) {
-        //新增專輯歌曲------
-        const url = `http://localhost/muse_music/public/api/addNewAlbum.php`;
+        const url = `${this.$store.state.phpPublicPath}addAlbumAndsong.php`;
         let headers = {
           Accept: "application/json",
         };
+
         const formData = new FormData();
+        formData.append("memid", this.login_mem_id);
+        formData.append("alb_id", this.albumData.alb_id);
+        formData.append("alb_img", this.albumData.alb_img);
         formData.append("alb_name", this.albumData.alb_name);
         formData.append("alb_intro", this.albumData.alb_intro);
-        formData.append("alb_img", this.albumData.alb_img);
-        formData.append("memid", this.login_mem_id);
+        formData.append("selectedAddSongs", JSON.stringify(selectedAddSongs));
 
         fetch(url, {
           method: "POST",
@@ -51,43 +53,9 @@ export default {
           body: formData,
         })
           .then((response) => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error("新增失敗");
-            }
-          })
-          .then((response) => {
-            //把專輯編號填上
-            this.albumData.alb_id = response;
-
-            //未有歌曲做新增(在該歌曲資訊中 update 上 alb_id 的值)------
-            const url = `http://localhost/muse_music/public/api/editSongofAlbum.php`;
-            let headers = {
-              Accept: "application/json",
-            };
-            const formData = new FormData();
-            formData.append("acttype", "1"); //PHP做新增動作
-            formData.append("alb_id", this.albumData.alb_id);
-            formData.append("selectedSongs", JSON.stringify(selectedAddSongs));
-            fetch(url, {
-              method: "POST",
-              headers: headers,
-              body: formData,
-            })
-              .then((response) => {
-                if (response.ok) {
-                  return response.json();
-                } else {
-                  throw new Error("新增歌曲失敗");
-                }
-              })
-              .catch((error) => {
-                console.error("發生錯誤:", error);
-              });
+            return response.json();
           })
           .then(() => {
-            //頁面跳轉
             this.$router.push({
               name: "profilepageedit",
             });
