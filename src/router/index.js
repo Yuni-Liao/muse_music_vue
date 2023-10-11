@@ -88,7 +88,7 @@ const routes = [
         },
       },
       {
-        path: "activityInfo/:id",
+        path: "activityInfo/:nid",
         name: "activityInfo",
         component: () =>
           import(

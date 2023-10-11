@@ -6,9 +6,9 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 try {
     require_once("./connectMusemusic.php");
 
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = validate($_POST['username']);
-        $password = validate($_POST['password']);
+    if (isset($_POST['mem_acc']) && isset($_POST['mem_psw'])) { // 修改字段名为 mem_acc 和 mem_psw
+        $username = validate($_POST['mem_acc']);
+        $password = validate($_POST['mem_psw']);
 
         // 帳密輸入時，自動去掉空格~~~
         $username = trim($username);
@@ -27,16 +27,18 @@ try {
             // 檢查帳密
             if ($stmt->rowCount() > 0) {
 
-                // 查詢會員帳密
-                $sql = "SELECT mem_name FROM member WHERE mem_acc = :username";
+                // 查詢會員帳密，新增id綁定
+                $sql = "SELECT mem_id, mem_name FROM member WHERE mem_acc = :username";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':username', $username);
                 $stmt->execute();
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 if ($result) {
+                    //新增會員id
+                    $userId = $result['mem_id'];
                     $userName = $result['mem_name'];
-                    echo json_encode(["message" => "登入成功", "mem_name" => $userName]);
+                    echo json_encode(["message" => "登入成功", "mem_id" => $userId, "mem_name" => $userName]);
                 }
             } else {
                 echo json_encode(["error" => "帳戶密碼不正確"]);

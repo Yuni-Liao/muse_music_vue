@@ -101,7 +101,15 @@ export default {
       if (this.currentMonthIndex + this.visibleMonthCount < this.months.length) {
         this.currentMonthIndex += 1;
       }
-    }
+    },
+    gotoNewsDetail(nid) {
+      this.$router.push({
+        name: "activityInfo",
+        params: {
+          nid,
+        },
+      });
+    },
   },
   mounted() {
     this.fetchNews();

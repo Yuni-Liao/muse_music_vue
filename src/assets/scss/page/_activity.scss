@@ -255,6 +255,7 @@
             }
             img{
               width: 230px;
+              cursor: pointer;
             }
             .info{
               display: flex;
@@ -264,7 +265,7 @@
               text-align: left;
               margin-left: 20px;
               width: 250px;
-              
+              cursor: pointer;
               @include s(){
                 margin-left: -10px;
                 p{

@@ -44,7 +44,7 @@ export default {
         const fetchSingleAlbum = () => {
             const salid = this.$route.params.salid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleAlbum.php?salid=${salid}`
+                `${this.$store.state.phpPublicPath}getSingleAlbum.php?salid=${salid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
@@ -59,7 +59,7 @@ export default {
         const fetchSingleAlbumSong = () => {
             const salid = this.$route.params.salid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleAlbumSong.php?salid=${salid}`
+                `${this.$store.state.phpPublicPath}getSingleAlbumSong.php?salid=${salid}`
             );
             fetch(apiURL)
                 .then(async (response) => {

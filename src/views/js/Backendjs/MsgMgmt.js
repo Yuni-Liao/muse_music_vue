@@ -74,7 +74,7 @@ export default {
     },
     mounted() {
         //先檢查資料格式是否符合DB規則
-        const url = `http://localhost/muse_music/public/api/postMsgMgmt.php`;
+        const url = `${this.$store.state.phpPublicPath}postMsgMgmt.php`;
         let headers = {
             "Content-Type": "application/json",
             Accept: "application/json",
