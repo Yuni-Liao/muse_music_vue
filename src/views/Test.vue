@@ -43,9 +43,7 @@ export default {
   },
   methods: {
     getdata() {
-      const apiURL = new URL(
-        `http://localhost/muse_music/public/api/gettest.php`
-      );
+      const apiURL = new URL(`${this.$store.state.phpPublicPath}gettest.php`);
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.gdata = res))
@@ -106,7 +104,7 @@ export default {
 
       // 如果沒有選擇歌單，則alert提示
 
-      const url = `http://localhost/muse_music/public/api/edittest.php`;
+      const url = `${this.$store.state.phpPublicPath}edittest.php`;
       let headers = {
         Accept: "application/json",
       };

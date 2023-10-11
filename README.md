@@ -1,19 +1,5 @@
-# muse_music
+# Muse Music 謬思音樂平台
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## page
+https://tibamef2e.com/chd103/g2/
+https://tibamef2e.com/chd103/g2/home

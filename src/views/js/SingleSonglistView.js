@@ -74,12 +74,12 @@ export default {
     },
   },
   mounted() {
-    this.pageslid = parseInt(this.$route.params.slid);
+
     // fetch歌單資訊
     const fetchSonglistDetail = () => {
       const slid = this.$route.params.slid;
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getSonglistDetail.php?slid=${slid}`
+        `${this.$store.state.phpPublicPath}getSonglistDetail.php?slid=${slid}`
       );
       fetch(apiURL)
         .then(async (response) => {
@@ -94,7 +94,7 @@ export default {
     const fetchSonglistSong = () => {
       const slid = this.$route.params.slid;
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getSonglistSong.php?slid=${slid}`
+        `${this.$store.state.phpPublicPath}getSonglistSong.php?slid=${slid}`
       );
       fetch(apiURL)
         .then(async (response) => {
