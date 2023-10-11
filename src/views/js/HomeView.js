@@ -184,7 +184,7 @@ export default {
     // fetch 本週熱門專輯 - 廖妍榛
     const fetchAlbumRank = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getIndexPopularAlbum.php`
+        `${this.$store.state.phpPublicPath}getIndexPopularAlbum.php`
       );
 
       fetch(apiURL)
@@ -198,7 +198,7 @@ export default {
     // fetch 首頁輪播圖 - 廖妍榛
     const fetchCarousel = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getIndexBanner.php`
+        `${this.$store.state.phpPublicPath}getIndexBanner.php`
       );
 
       fetch(apiURL)

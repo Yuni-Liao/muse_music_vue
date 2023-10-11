@@ -88,8 +88,7 @@ export default {
         },
 
         saveBtn() {
-            const url = `http://localhost/muse_music/public/api/editIndexCarousel.php`;
-
+            const url = `${this.$store.state.phpPublicPath}editIndexCarousel.php`;
             const formData = new FormData();
             formData.append("car_id", this.editItem.car_id);
             formData.append("name", this.editItem.name);
@@ -123,7 +122,7 @@ export default {
     },
     mounted() {
         //先檢查資料格式是否符合DB規則
-        const url = `http://localhost/muse_music/public/api/postIndexCarousel.php`;
+        const url = `${this.$store.state.phpPublicPath}postIndexCarousel.php`;
         let headers = {
             "Content-Type": "application/json",
             Accept: "application/json",

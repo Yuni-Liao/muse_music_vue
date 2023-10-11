@@ -69,7 +69,7 @@ export default {
         },
         // 個人檔案 - 編輯
         saveBtn() {
-            const url = `http://localhost/muse_music/public/api/editAccSetting.php`;
+            const url = `${this.$store.state.phpPublicPath}editAccSetting.php`;
             let headers = {
                 "Content-Type": "application/json",
                 Accept: "application/json",
@@ -134,7 +134,7 @@ export default {
         //fetch 會員資料 - 編號 1 , 之後改動態
         const fetchMemberInfo = () => {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getAccSetting.php`
+                `${this.$store.state.phpPublicPath}getAccSetting.php`
             );
 
             fetch(apiURL)
