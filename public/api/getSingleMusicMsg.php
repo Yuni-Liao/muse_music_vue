@@ -14,12 +14,12 @@ try {
     s.s_id,
     m.msg_id,
     m.mem_id,
-    m.msg_con as message,
-    m.msg_date as date,
-    m.msg_like as liked,
-    me.mem_id as userid,
-    me.mem_pic as userpic,
-    me.mem_name as username
+    m.msg_con,
+    m.msg_date,
+    m.msg_like,
+    me.mem_id,
+    me.mem_pic,
+    me.mem_name
     from song s
     join msg m on m.s_id = s.s_id
     left join member me on m.mem_id = me.mem_id

@@ -68,25 +68,26 @@ export default {
             if (this.newMessage.trim() !== "") {
                 // 獲取當前日期的年月日時分秒
                 const currentDate = new Date();
-                const year = currentDate.getFullYear();
-                const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-                const day = currentDate.getDate().toString().padStart(2, '0');
-                const hours = currentDate.getHours().toString().padStart(2, '0');
-                const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-                const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+                // const year = currentDate.getFullYear();
+                // const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+                // const day = currentDate.getDate().toString().padStart(2, '0');
+                // const hours = currentDate.getHours().toString().padStart(2, '0');
+                // const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+                // const seconds = currentDate.getSeconds().toString().padStart(2, '0');
 
                 // 創建新留言對象
                 const newMessageItem = {
-                    userPic: "pre.jpg",
-                    userName: "Your Name",
-                    date: `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`,
-                    message: this.newMessage,
-                    like: "0",
-                    showReportBtn: false,
+                    //userPic: "pre.jpg",
+                    //userName: "",
+                    //date: `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`,
+                    msg_date: "",
+                    message_con: this.newMessage,
+                    msg_like: "0",
+                    //showReportBtn: false,
                 };
 
                 // 發送新留言到後端
-                fetch('http://localhost/muse_music/public/api/postSingleMusicMsg.php', {
+                fetch('${this.$store.state.phpPublicPath}postSingleMusicMsg.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -109,6 +110,7 @@ export default {
                     .catch((error) => {
                         console.error('留言發送失敗:', error);
                     });
+                console.log(newMessageItem);
             }
         },
 
@@ -149,7 +151,7 @@ export default {
         const fetchSingleMusic = () => {
             const sid = this.$route.params.sid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusic.php?sid=${sid}`
+                `${this.$store.state.phpPublicPath}getSingleMusic.php?sid=${sid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
@@ -163,7 +165,7 @@ export default {
         const fetchSingleMusicType = () => {
             const sid = this.$route.params.sid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusicType.php?sid=${sid}`
+                `${this.$store.state.phpPublicPath}getSingleMusicType.php?sid=${sid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
@@ -177,7 +179,7 @@ export default {
         const fetchSingleMusicMsg = () => {
             const msgid = this.$route.params.sid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusicMsg.php?msgid=${msgid}`
+                `${this.$store.state.phpPublicPath}getSingleMusicMsg.php?msgid=${msgid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
@@ -191,15 +193,15 @@ export default {
         const fetchSingleMusicSong = () => {
             const sid = this.$route.params.sid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusicSong.php?sid=${sid}`
+                `${this.$store.state.phpPublicPath}getSingleMusicSong.php?sid=${sid}`
             );
             fetch(apiURL)
                 .then(async (response) => {
                     this.otherSongs = await response.json();
                 })
-                .catch((error) => {
-                    console.error("發生錯誤:", error);
-                });
+            // .catch((error) => {
+            //     console.error("發生錯誤:", error);
+            // });
         };
 
         // 執行 fetch
