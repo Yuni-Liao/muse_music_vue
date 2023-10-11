@@ -50,9 +50,9 @@ export default {
       });
     },
 
-    // 個人檔案 - 編輯 
+    // 個人檔案 - 編輯
     saveBtn() {
-      const url = `http://localhost/muse_music/public/api/editProfileData.php`;
+      const url = `${this.$store.state.phpPublicPath}editProfileData.php`;
       let headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -85,8 +85,6 @@ export default {
         });
       console.log(dataToSend);
     },
-
-
 
     editSong(s_id, s_img, s_name, s_intro, show_stat) {
       this.$router.push({
@@ -133,7 +131,7 @@ export default {
     // Fetch 歌曲資訊
     const fetchSongData = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.login_mem_id}&stat=0`
+        `${this.$store.state.phpPublicPath}getProfileSong.php?memid=${this.login_mem_id}&stat=0`
       );
   
       fetch(apiURL)
@@ -146,7 +144,7 @@ export default {
   
     const fetchAlbumData = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfileAlbum.php?memid=${this.login_mem_id}`
+        `${this.$store.state.phpPublicPath}getProfileAlbum.php?memid=${this.login_mem_id}`
       );
   
       fetch(apiURL)

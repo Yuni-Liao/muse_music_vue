@@ -99,6 +99,9 @@ export default {
         }
     },
     methods: {
+        addfaqBtn(row){
+            alert('新增')
+        },
         editBtn(row) {
             alert('編輯');
         },

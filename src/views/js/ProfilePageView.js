@@ -84,7 +84,7 @@ export default {
     //fetch 個人主頁會員資料
     const fetchProfileMemData = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getMemDetail.php?memid=${this.pageMemid}`
+        `${this.$store.state.phpPublicPath}getMemDetail.php?memid=${this.pageMemid}`
       );
 
       fetch(apiURL)
@@ -97,7 +97,7 @@ export default {
     //fetch 會員專輯
     const fetchalbData = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfileAlbum.php?memid=${this.pageMemid}`
+        `${this.$store.state.phpPublicPath}getProfileAlbum.php?memid=${this.pageMemid}`
       );
 
       fetch(apiURL)
@@ -110,7 +110,7 @@ export default {
     //fetch 會員歌曲
     const fetchsongData = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.pageMemid}&stat=1`
+        `${this.$store.state.phpPublicPath}getProfileSong.php?memid=${this.pageMemid}&stat=1`
       );
 
       fetch(apiURL)
@@ -123,7 +123,7 @@ export default {
     //fetch 會員公開歌單
     const fetchslData = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfilePublicSonglist.php?memid=${this.pageMemid}`
+        `${this.$store.state.phpPublicPath}getProfilePublicSonglist.php?memid=${this.pageMemid}`
       );
 
       fetch(apiURL)

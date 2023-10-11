@@ -10,7 +10,7 @@ export default {
       this.activeTab = tabNumber;
     },
     editSong() {
-      const url = `http://localhost/muse_music/public/api/editSong.php`;
+      const url = `${this.$store.state.phpPublicPath}editSong.php`;
       let headers = {
         Accept: "application/json",
       };
