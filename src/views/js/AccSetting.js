@@ -24,7 +24,7 @@ export default {
         }
         return {
             urlCopy,
-            copyLink
+            copyLink,
         }
     },
     data() {
@@ -32,11 +32,12 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
+            login_mem_id: '',
             memInfo: [{
+                mem_id: '',
                 mem_name: '',
                 email: '',
                 county: '',
-                mem_id: '',
                 mem_psw: '',
             }], // 暫存會員資料物件
             urlCopy: '',
@@ -132,21 +133,23 @@ export default {
     },
     mounted() {
         //fetch 會員資料 - 編號 1 , 之後改動態
+        this.login_mem_id = localStorage.getItem('mem_id');
         const fetchMemberInfo = () => {
             const apiURL = new URL(
-                `${this.$store.state.phpPublicPath}getAccSetting.php`
+                `${this.$store.state.phpPublicPath}getAccSetting.php?mem_id=${this.login_mem_id}`
             );
 
             fetch(apiURL)
                 .then((res) => res.json())
                 .then((res) => {
                     this.memInfo = res;
-                    this.urlCopy = `https://tibamef2e.com/chd103/g2/home/profilepage/${this.memInfo[0].mem_id}`;
+                    this.urlCopy = `https://tibamef2e.com/chd103/g2/home/profilepage/${this.login_mem_id}`;
                 })
                 .catch((error) => {
                     console.error("發生錯誤:", error);
                 });
         };
+        console.log(this.memInfo)
         fetchMemberInfo();
     }
 }
