@@ -35,6 +35,7 @@ export default {
     },
     data() {
         return {
+            id: '', 
             // 新留言的內容
             newMessage: "",
             // 讓圖片 build 之後能顯示
@@ -60,9 +61,25 @@ export default {
 
     methods: {
         //播放器
-        openPlayer() {
-            this.$refs.player.playMusic();
+        // openPlayer() {
+        //     this.$refs.player.playMusic();
+        // },
+        openPlayer(song) {
+            
+            this.id = song;
+            
+            this.$nextTick(() => {
+                // 打印歌曲的 id
+                // console.log("點擊的歌曲id:", this.id);
+
+                 // 调用播放器组件的 playMusic 
+                this.$refs.player.playMusic(this.id);
+            });
         },
+        // changeSId(newSId) {
+        //     // 切換上下首--使用從子組件接收的新 id 更新 id prop
+        //     this.id = newSId;
+        // },
         // 創建新留言
         addNewMessage() {
             if (this.newMessage.trim() !== "") {

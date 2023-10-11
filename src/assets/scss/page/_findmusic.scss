@@ -3,7 +3,7 @@
 }
 h1{
     font-size: $big;
-    margin: 0 2% -1% 0;
+    margin: 0 2% 0 0;
 }
 .banner{
     display: flex;
@@ -31,6 +31,7 @@ h1{
                 display: flex;
                 width: 50%;
                 align-items:flex-end;
+                margin: 2% 0;
             }
         }
     }
@@ -52,6 +53,7 @@ h1{
                 border-bottom: 1px solid $white;
                 height: 80px;
                 cursor: pointer;
+                
                 td {
                     padding-top: 20px;
                 }
@@ -77,10 +79,6 @@ h1{
                     top: 41%;
                     cursor: pointer;
                     height: 30%;
-                }
-                .pic:hover .f_play{
-                    opacity: 1;
-                    transition: .5s;
                 }
                 img {
                     vertical-align: middle;
@@ -145,8 +143,12 @@ h1{
                 }
             }
             .songArea:hover{
-                transition: .4s;
+                transition: .3s;
                 background-color: rgba(255, 255, 255, 0.14);
+            }
+            .songArea:hover .f_play{
+                opacity: 1;
+                transition: .5s;
             }
         }
     }

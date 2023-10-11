@@ -30,8 +30,11 @@ export default {
         }
     },
     methods: {
+        stopPropagation(event) {
+            event.stopPropagation(); // 阻止事件冒泡，子元素的点击不会触发父元素的点击事件
+        },
         fetchSongDetail() {
-            fetch(`http://localhost/muse_music/public/api/getFindStyle.php?`)
+            fetch(`${this.$store.state.phpPublicPath}getFindStyle.php?`)
             .then(async (response) => {
                 this.styles = await response.json();
                 const idToFind = this.$route.params.mcat_id;
@@ -53,12 +56,6 @@ export default {
         // openPlayer() {
         //     this.$refs.player.playMusic();
         // },
-
-
-
-
-
-
         openPlayer(song) {
             
             this.s_id = song;
@@ -66,13 +63,14 @@ export default {
             this.$nextTick(() => {
                 // 打印歌曲的 s_id
                 // console.log("點擊的歌曲s_id:", this.s_id);
-        
-                // 使用 $emit 触发 playMusic 事件，将 s_id 作为参数传递给父组件
-                // this.$emit('playMusic', this.s_id);
-        
+
                  // 调用播放器组件的 playMusic 
                 this.$refs.player.playMusic(this.s_id);
             });
+        },
+        changeSId(newSId) {
+            // 切換上下首--使用從子組件接收的新 s_id 更新 s_id prop
+            this.s_id = newSId;
         },
     },
     mounted() {
@@ -80,7 +78,7 @@ export default {
         const fetchSongList = () => {
             const mcat_id = this.$route.params.mcat_id;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindSongList.php?mcat_id=${mcat_id}`
+                `${this.$store.state.phpPublicPath}getFindSongList.php?mcat_id=${mcat_id}`
             );
             fetch(apiURL)
             .then(async (response) => {
@@ -92,7 +90,6 @@ export default {
         };
         fetchSongList();
 
-        
         //建立事件聆聽:點空白處關閉
         document.addEventListener('click', this.closeMoreSpace);
     },

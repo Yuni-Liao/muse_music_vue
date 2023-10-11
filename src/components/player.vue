@@ -62,11 +62,11 @@
     </div>
 
     <!-- -------------蓋板播放器範圍------------- -->
-    <div class="modal" v-if="isModalVisible" :style="{
+    <div class="modal" :s_id="currentSong.s_id" v-if="isModalVisible" :style="{
         backgroundImage: 
         `url(${publicPath}dataimage/song/${currentSong.s_img})`,
         backgroundSize: '100% auto',
-        backgroundRepeat: no - repeat,
+        backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center 20%',
     }">
 
@@ -111,7 +111,7 @@
                             <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" @click="prevSong" />
                             <fontAwesome :icon="['fa', 'play']" size="2xl"
-                                style="color: #fff; margin: 15px; cursor: pointer;" v-if="!isPlaying" @click="playMusic"
+                                style="color: #fff; margin: 15px; cursor: pointer;" v-if="!isPlaying" @click="goingMusic"
                                 class="play_pause" />
                             <fontAwesome :icon="['fa', 'pause']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" v-else @click="pauseMusic"
@@ -147,7 +147,7 @@ export default {
         AddFavBtn,
     },
     // emits: ['playMusic'],
-
+    emits: ['change-s-id'],
     props: {
         s_id: {
             type: String, // 假設 s_id 是字符串
@@ -161,7 +161,7 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-            currentSongIndex: 0,
+            // currentSongIndex: 0,
             songList: [],
             //播放器狀態預設關閉
             playerOpen: false,
@@ -194,9 +194,6 @@ export default {
         //         }
         //     });
         // },
-
-
-
         async playMusic() {
         //顯示播放器
             this.playerOpen = true;
@@ -210,7 +207,7 @@ export default {
                     const song = this.songList.find(item => item.s_id === this.s_id);
                     console.log('步骤2：比對到的歌曲訊息:', song);
                     if (song) {
-                    // 步骤3：检查從數據庫中獲取的歌曲 s_id 是否與 props 中的 s_id 匹配
+                    // 步骤3：檢查從數據庫中獲取的歌曲 s_id 是否與 props 中的 s_id 匹配
                     if (this.currentSong && this.currentSong.s_id === this.s_id) {
                         // 重置歌曲当前时间
                         audioElement.load();
@@ -222,7 +219,7 @@ export default {
                             this.isPlaying = true;
                         })
                         .catch((error) => {
-                            console.error('步骤4：音乐播放失败：', error);
+                            console.error('步骤4：音樂播放失敗：', error);
                         });
                     } else {
                         console.log('步骤3：歌曲信息不匹配，不播放歌曲。');
@@ -231,19 +228,16 @@ export default {
                     console.warn('步骤2：找不到匹配的歌曲信息。');
                     }
                 } else {
-                    console.error('步骤1：当前歌曲不存在。');
+                    console.error('步骤1：當前歌曲不存在。');
                 }
                 } else {
                 console.error('步骤3：音樂無法播放。');
                 }
             });
         },
-
-
-
         async fetchSong() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getPlayerSong.php?`
+                `${this.$store.state.phpPublicPath}getPlayerSong.php?`
             );
             fetch(apiURL)
             .then(async (response) => {
@@ -284,26 +278,32 @@ export default {
                 this.isPlaying = true;
             }
         },
-        // nextSong() {
-        //     if (this.currentSongIndex < this.songList.length - 1) {
-        //         this.currentSongIndex += 1;//更新目前索引
-        //         this.playMusic();
-        //     } else {
-        //         this.currentSongIndex = 0;//回到第一首
-        //         this.playMusic();
-        //     }
-        //     this.loadAndPlayCurrentSong();
+        // changeSId(newSId) {
+        //     // 使用從子組件接收的新 s_id 更新 s_id 數據
+        //     this.s_id = newSId;
         // },
-        // prevSong() {
-        //     if (this.currentSongIndex > 0) {
-        //         this.currentSongIndex -= 1;
-        //         this.playMusic();
-        //     } else {
-        //         this.currentSongIndex = this.songList.length - 1;
-        //         this.playMusic();
-        //     }
-        //     this.loadAndPlayCurrentSong();
-        // },
+        nextSong() {
+            const currentIndex = this.songList.findIndex(song => song.s_id === this.s_id);
+            const nextIndex = (currentIndex + 1) % this.songList.length;
+            const nextSId = this.songList[nextIndex].s_id;
+
+            if (nextIndex >= 0 && nextIndex < this.songList.length) {
+                // 只有當 nextIndex 在合理的範圍內時才更新 s_id
+                this.$emit('change-s-id', nextSId);
+                this.playMusic();
+            }
+        },
+        prevSong() {
+            const currentIndex = this.songList.findIndex(song => song.s_id === this.s_id);
+            const nextIndex = (currentIndex - 1 + this.songList.length) % this.songList.length;
+            const nextSId = this.songList[nextIndex].s_id;
+
+            if (nextIndex >= 0 && nextIndex < this.songList.length) {
+                // 只有當 nextIndex 在合理的範圍內時才更新 s_id
+                this.$emit('change-s-id', nextSId);
+                this.playMusic();
+            }
+        },
         toggleMute() {
             if (this.isMuted) {
                 this.$refs.music.volume = this.currentVolume;

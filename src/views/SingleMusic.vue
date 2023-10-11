@@ -1,5 +1,5 @@
 <template>
-    <player ref="player"></player>
+    <player :s_id="id" ref="player"></player>
     <main class="singleMusic">
         <!-- 上方大圖 -->
         <div class="banner" v-for="songItem in songs" :key="songItem.id">
@@ -40,7 +40,7 @@
                             <ShareBtn></ShareBtn>
                             <AddSlBtn  :addSlSid="songItem.id"></AddSlBtn>
                             <AddFavBtn></AddFavBtn>
-                            <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
+                            <PlayBtnBig @click="openPlayer(songItem.id)"></PlayBtnBig>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                                     <div class="songPic">
                                         <img :src="`${publicPath}dataimage/song/${songItem.songpic}`"
                                             :alt="songItem.songname">
-                                        <div class="play" @click="openPlayer()">
+                                        <div class="play" @click="openPlayer(songItem.id)">
                                             <fontAwesome class="i" :icon="['fa', 'play']" color="#fff" />
                                         </div>
                                     </div>

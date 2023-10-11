@@ -56,7 +56,7 @@
             transform: skewX(-45deg);
             padding: 5% 0;
             a{
-              padding: 5% 25%;
+              padding: 3% 25%;
               font-size: $medium;
               @include s{
                 font-size: $pXS;
@@ -86,7 +86,7 @@
           transform: skewX(-45deg);
           padding: 5% 0;
           a{
-            padding: 5% 25%;
+            padding: 3% 25%;
             font-size: $small;
             @include s{
               font-size: $pXS;

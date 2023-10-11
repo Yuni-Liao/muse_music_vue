@@ -56,7 +56,7 @@ export default {
     methods: {
         fetchType() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindStyle.php?`
+                `${this.$store.state.phpPublicPath}getFindStyle.php?`
             );
             fetch(apiURL).then(async (response) => {
                 this.styleList = await response.json();
@@ -65,7 +65,7 @@ export default {
         },
         fetchMember() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindMember.php?`
+                `${this.$store.state.phpPublicPath}getFindMember.php?`
             );
             fetch(apiURL).then(async (response) => {
                 this.singers = await response.json();
@@ -74,15 +74,12 @@ export default {
         },
         fetchSong() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindNewSong.php?`
+                `${this.$store.state.phpPublicPath}getFindNewSong.php?`
             );
             fetch(apiURL).then(async (response) => {
                 this.songs = await response.json();
             });
             // console.log(this.songs);
-        },
-        openPlayer() {
-            this.$refs.player.playMusic();
         },
         //  更換父組件背景圖 -- 廖妍榛
         spaceHover(imgUrl) {

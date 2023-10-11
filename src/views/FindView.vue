@@ -1,6 +1,5 @@
 <template>
     <div class="find_style">
-        <!-- <player ref="player"></player> -->
         <div class="find_select" :style="{
             backgroundImage: bgImage,
             backgroundColor: 'rgba(0, 0, 0, .3)',
