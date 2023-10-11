@@ -80,7 +80,7 @@
               <li v-for="(item, index) in songs" :key="id" class="songArea">
                 <span class="id">{{ index + 1 }}</span>
                 <span class="pic">
-                  <img :src="`${publicPath}dataimage/song/${item.songpic}`" />
+                  <img :src="`${publicPath}dataimage/song/${item.songPic}`" />
                   <div class="play" @click="openPlayer()">
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>

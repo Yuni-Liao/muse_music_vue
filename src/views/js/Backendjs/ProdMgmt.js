@@ -82,7 +82,7 @@ export default {
 
         // 編輯確認按鈕點擊事件
         prodEdit() {
-            const url = `http://localhost/muse_music/public/api/editProd.php`;
+            const url = `${this.$store.state.phpPublicPath}editProd.php`;
             let headers = {
                 Accept: "application/json",
             };
@@ -126,7 +126,7 @@ export default {
     },
     mounted() {
         //先檢查資料格式是否符合DB規則
-        const url = `http://localhost/muse_music/public/api/postProdMgmt.php`;
+        const url = `${this.$store.state.phpPublicPath}postProdMgmt.php`;
         let headers = {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -156,7 +156,7 @@ export default {
         const puteditItem = () => {
             const obj = {};
             obj.prod_id = this.$route.query.prod_id;
-            obj.prod_pic = this.$route.query.prod_pic;
+            //obj.prod_pic = this.$route.query.prod_pic;
             obj.prod_name = this.$route.query.prod_name;
             obj.prod_price = this.$route.query.prod_price;
             obj.prod_type = this.$route.query.prod_type;
