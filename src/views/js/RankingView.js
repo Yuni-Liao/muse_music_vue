@@ -33,198 +33,11 @@ export default {
     return {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
-      //
-      
-      topAlbums: [
-        {
-          order: 1,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 2,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 3,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 4,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 5,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 6,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 7,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 8,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 9,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 10,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-
-      ],
-      topSongList: [
-        {
-          order: 1,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 2,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 3,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 4,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 5,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 6,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 7,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 8,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 9,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-        {
-          order: 10,
-          title: "宇宙飛行",
-          image: "song01.jpg",
-          link: "/shopProd/1",
-          singer: "桌子樂團",
-          views: 0,
-        },
-      ],
+    
       SongRank: [],
+      albumRank: [],
+      SLRank: [],
     };
-  },
-  computed: {
-    weekFirstFiveSongs() {
-      return this.weekTopSongs.slice(0, 5);
-    },
-    weekLastFiveSongs() {
-      const total = this.weekTopSongs.length;
-      return this.weekTopSongs.slice(total - 5, total);
-    },
-    albumsFirstFiveSongs() {
-      return this.topAlbums.slice(0, 5);
-    },
-    albumsLastFiveSongs() {
-      const total = this.topAlbums.length;
-      return this.topAlbums.slice(total - 5, total);
-    },
-    songListFirstFiveSongs() {
-      return this.topSongList.slice(0, 5);
-    },
-    songListLastFiveSongs() {
-      const total = this.topSongList.length;
-      return this.topSongList.slice(total - 5, total);
-    },
   },
   methods: {
     openPlayer() {
@@ -238,7 +51,30 @@ export default {
       },
     });
   },
-    
+  gotosinglealbum(abid) {
+    let aa = this.$router.push({
+      name: "singlealbum",
+      params: {
+        salid: abid,
+      },
+    });
+  },
+  gotosonglist(slid) {
+    this.$router.push({
+      name: "singlesonglist",
+      params: {
+        slid,
+      },
+    });
+  },
+  gotosinger(memid) {
+    this.$router.push({
+      name: "profilepage",
+      params: {
+        memid,
+      },
+    });
+  },
   },
   mounted() {
     const fetchSongRank = () => {
@@ -256,5 +92,33 @@ export default {
         });
     };
     fetchSongRank();
+
+    const fetchAlbumRank = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getRankAlbum.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.albumRank = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+      });
+    };
+    fetchAlbumRank();
+
+    const fetchSLRank = () =>{
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getRankSL.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.SLRank = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+      });
+    };
+    fetchSLRank();
   },
 };

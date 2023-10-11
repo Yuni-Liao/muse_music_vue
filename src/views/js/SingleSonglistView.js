@@ -74,7 +74,7 @@ export default {
     },
   },
   mounted() {
-    this.pageslid = parseInt(this.$route.params.slid);
+
     // fetch歌單資訊
     const fetchSonglistDetail = () => {
       const slid = this.$route.params.slid;

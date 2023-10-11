@@ -1,17 +1,16 @@
 <template>
     <div class="topncenter">
         <div class="infoTop">
-            <!-- <img :src="`${publicPath}dataimage/news/${newsList.news_pic}`" alt=""> -->
+            <img :src="`${publicPath}dataimage/news/${newsList.news_pic}`" alt="">
             <div class="intro">
                 <h1 >{{ newsList.news_name }}</h1>
-                <h4></h4>
-                <h4>{{ newsList.news_place }}</h4>
+                <p>{{ newsList.news_place }}</p>
                 <div class="followSingerr">
-                    <router-link to="profilepage" class="singer">
+                    <div  class="singer">
                         <fontAwesome :icon="['fa', 'user-large']"
                             style="color: #fff; margin-left: 10px; cursor: pointer;" />
                         <p>{{ newsList.singer }}</p>
-                    </router-link>
+                    </div>
                     <FolBtnBig :functype="2" />
                 </div>
             </div>
@@ -30,21 +29,30 @@
         <div class="related">
             <div class="calender">
                 <div class="month">
-                    7月
+                    4月
                 </div>
-                <p>13日</p>
-                <p>星期四</p>
+                <p>28日</p>
+                <p>星期五</p>
             </div>
             <div class="relatedWrapper">
                 <img :src="`${publicPath}image/Activity/activityBanner01.jpg`" alt="">
-                <div class="relatedInfo">
-                    <p>音樂大排檔 : Showcase演唱會</p>
-                    <p>2023年7月13日 / 星期四 / 18:00</p>
-                    <p>台中市・Legacy Taichung 傳 音樂展演空間</p>
+                <div class="intro">
+                    <div class="relatedInfo">
+                        <p>造夢人夢幻之夜</p>
+                        <p>台北市・ THE WALL公館</p>
+                    </div>
+                    <div class="followSinger">
+                        <div  class="singer">
+                            <fontAwesome :icon="['fa', 'user-large']"
+                                style="color: #fff; margin-left: 10px; cursor: pointer;" />
+                            <p>造夢人</p>
+                        </div>
+                        <FolBtnBig :functype="2" />
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="related">
+        <div class="related" >
             <div class="calender">
                 <div class="month">
                     7月
@@ -53,11 +61,20 @@
                 <p>星期四</p>
             </div>
             <div class="relatedWrapper">
-                <img :src="`${publicPath}image/Activity/activityBanner01.jpg`" alt="">
-                <div class="relatedInfo">
-                    <p>音樂大排檔 : Showcase演唱會</p>
-                    <p>2023年7月13日 / 星期四 / 18:00</p>
-                    <p>台中市・Legacy Taichung 傳 音樂展演空間</p>
+                <img :src="`${publicPath}image/Activity/activityBanner03.jpg`" alt="">
+                <div class="intro">
+                    <div class="relatedInfo">
+                    <p>醉心吉他 新歌小巡迴</p>
+                    <p>台北市・女巫店</p>
+                </div>
+                <div class="followSinger">
+                        <div  class="singer">
+                            <fontAwesome :icon="['fa', 'user-large']"
+                                style="color: #fff; margin-left: 10px; cursor: pointer;" />
+                            <p>醉心吉他</p>
+                        </div>
+                        <FolBtnBig :functype="2" />
+                </div>
                 </div>
             </div>
         </div>
