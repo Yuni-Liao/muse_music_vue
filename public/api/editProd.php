@@ -4,7 +4,7 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header("Content-Type: application/json; charset=utf-8");
 
-// 後台 - 商品管理 - 編輯商品 - 郭凱芸
+// 後台 - 商品管理 - 編輯商品 - 郭凱芸 (上傳圖片功能還沒好)
 try {
     // 引入連線工作的檔案
     if (isset($_POST["prod_type"]) && isset($_POST["prod_name"])) {
@@ -42,8 +42,8 @@ try {
         // 如果问题更新成功，设置响应消息为 "更新成功"
         $responseMessage = "更新成功";
     } else {
-        // 如果商品名稱或價格為空，設置回應消息為 "商品名稱或價格不能為空"
-        $responseMessage = "商品名稱或價格不能為空";
+        // 如果商品名稱或價格為空，設置回應消息為 "商品種類或商品名稱不能為空值"
+        $responseMessage = "商品種類或商品名稱不能為空值";
     }
 
     echo json_encode($responseMessage);
@@ -52,4 +52,3 @@ try {
     echo "錯誤原因 : ", $e->getMessage(), "<br>";
     //echo "系統暫時不能正常運行，請稍後再試<br>";  
 }
-?>
