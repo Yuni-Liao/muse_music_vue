@@ -9,7 +9,7 @@ export default {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
       //
-      login_mem_id: 1, //這個之後要再改
+      login_mem_id: "", //這個之後要再改
       morecurrent: -1,
       currentType: 0, //0,1,2
       isNewSlOpen: false,
@@ -72,6 +72,7 @@ export default {
     },
   },
   mounted() {
+    this.login_mem_id = localStorage.getItem('mem_id');
     const loginMemId = this.login_mem_id;
     // fetch我的歌單(含追蹤創建及追蹤)
     if (loginMemId) {

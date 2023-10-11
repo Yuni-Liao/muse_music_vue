@@ -6,7 +6,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 try {
     require_once("./connectMusemusic.php");
 
-    if (isset($_POST['mem_acc']) && isset($_POST['mem_psw'])) { // 修改字段名为 mem_acc 和 mem_psw
+    if (isset($_POST['mem_acc']) && isset($_POST['mem_psw'])) { 
         $username = validate($_POST['mem_acc']);
         $password = validate($_POST['mem_psw']);
 

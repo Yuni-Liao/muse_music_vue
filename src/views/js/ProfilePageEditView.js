@@ -7,6 +7,7 @@ export default {
       //
       activeTab: 1,
       currentStep: 0,
+    
       member: [{
         cover_pic: '',
         mem_pic: '',
@@ -15,9 +16,9 @@ export default {
         county: '',
         social_media: '',
       }],
+      login_mem_id: '',
       profileSongs: [],
       profileAlbums: [],
-      login_mem_id: 1,
     };
   },
   methods: {
@@ -112,12 +113,14 @@ export default {
     },
   },
   mounted() {
-    //fetch 會員基本資料
+    this.login_mem_id = localStorage.getItem('mem_id');
+
+    // Fetch 會員資料
     const fetchMemberInfo = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfileDetail.php`
+        `http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=${this.login_mem_id}`
       );
-
+  
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.member = res))
@@ -126,13 +129,13 @@ export default {
         });
     };
     fetchMemberInfo();
-
-    // //fetch 會員歌曲
+  
+    // Fetch 歌曲資訊
     const fetchSongData = () => {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.login_mem_id}&stat=0`
       );
-
+  
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.profileSongs = res))
@@ -140,11 +143,12 @@ export default {
           console.error("發生錯誤:", error);
         });
     };
-    //fetch 會員專輯
+  
     const fetchAlbumData = () => {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getProfileAlbum.php?memid=${this.login_mem_id}`
       );
+  
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.profileAlbums = res))
@@ -152,7 +156,9 @@ export default {
           console.error("發生錯誤:", error);
         });
     };
+  
     fetchSongData();
     fetchAlbumData();
   },
+  
 };
