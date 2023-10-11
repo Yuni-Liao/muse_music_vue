@@ -1,5 +1,5 @@
 <template>
-    <player @playMusic="handlePlayMusic" :s_id="s_id" ref="player"></player>
+    <player :s_id="s_id" ref="player"></player>
     <div class="banner"
     :style="{
         backgroundImage: `url(${publicPath}dataimage/find/${foundObject.mcat_pic})`
@@ -34,18 +34,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(s, index) in songs" :key="s.s_id" class="songArea">
+                    <tr v-for="(s, index) in songs" :key="s.s_id" class="songArea" @click="openPlayer(s.s_id)">
                         <td class="id">{{ index + 1 }}</td>
                         <td class="pic">
                             <img :src="`${publicPath}dataimage/song/${s.s_img}`"
                             alt="albumItem.name"
-                                @click="openPlayer(s.s_id)">
-                                <fontAwesome class="f_play" :icon="['fa', 'play']" @click="openPlayer(s.s_id)"/>
+                                >
+                                <fontAwesome class="f_play" :icon="['fa', 'play']" />
                         </td>
                         <td class="name">
-                            <!-- <router-link to="/home"> -->
+                            <router-link :to="`/home/singlemusic/${s.s_id}`">
                             {{ s.s_name }}
-                            <!-- </router-link> -->
+                            </router-link>
                         </td>
                         <td class="singer">
                             <router-link :to="`/home/profilepage/${s.mem_id}`">

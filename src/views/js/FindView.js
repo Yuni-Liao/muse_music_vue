@@ -61,7 +61,7 @@ export default {
             fetch(apiURL).then(async (response) => {
                 this.styleList = await response.json();
             });
-            console.log(this.styleList);
+            // console.log(this.styleList);
         },
         fetchMember() {
             const apiURL = new URL(
@@ -70,7 +70,7 @@ export default {
             fetch(apiURL).then(async (response) => {
                 this.singers = await response.json();
             });
-            console.log(this.singers);
+            // console.log(this.singers);
         },
         fetchSong() {
             const apiURL = new URL(
@@ -79,7 +79,7 @@ export default {
             fetch(apiURL).then(async (response) => {
                 this.songs = await response.json();
             });
-            console.log(this.songs);
+            // console.log(this.songs);
         },
         openPlayer() {
             this.$refs.player.playMusic();

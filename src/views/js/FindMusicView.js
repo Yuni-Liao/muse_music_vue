@@ -19,7 +19,7 @@ export default {
     data() {
         return {
             // 設置初始值
-            s_id: '1', 
+            s_id: '', 
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //用來存儲查找到的風格
@@ -53,28 +53,27 @@ export default {
         // openPlayer() {
         //     this.$refs.player.playMusic();
         // },
+
+
+
+
+
+
         openPlayer(song) {
-            // 使用 Vue.nextTick 来等待 Vue 更新 DOM
+            
             this.s_id = song;
+            
             this.$nextTick(() => {
                 // 打印歌曲的 s_id
-                console.log("點擊的歌曲s_id:", this.s_id);
+                // console.log("點擊的歌曲s_id:", this.s_id);
         
                 // 使用 $emit 触发 playMusic 事件，将 s_id 作为参数传递给父组件
-                this.$emit('playMusic', this.s_id);
+                // this.$emit('playMusic', this.s_id);
         
-                // 调用播放器组件的 playMusic 方法
-                this.$refs.player.playMusic();
+                 // 调用播放器组件的 playMusic 
+                this.$refs.player.playMusic(this.s_id);
             });
         },
-        
-        handlePlayMusic(s_id) {
-            // 在這裡處理 playMusic 事件
-            console.log("收到 playMusic 事件，s_id 為", s_id);
-            // 可以執行你希望的操作，例如播放指定的歌曲
-            
-        },
-
     },
     mounted() {
         this.fetchSongDetail();

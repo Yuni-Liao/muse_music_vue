@@ -33,7 +33,7 @@
                 <!-- 播放按钮 -->
                 <div id="play">
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
-                        v-if="!isPlaying" @click="playMusic" />
+                        v-if="!isPlaying" @click="goingMusic" />
                     <!-- 暫停按钮 -->
                     <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
                         v-else @click="pauseMusic" />
@@ -146,7 +146,7 @@ export default {
         AddSlBtn,
         AddFavBtn,
     },
-    emits: ['playMusic'],
+    // emits: ['playMusic'],
 
     props: {
         s_id: {
@@ -178,67 +178,77 @@ export default {
         }
     },
     methods: {
-        async playMusic() {
-                //顯示播放器
-                this.playerOpen = true;
-                // 获取歌曲数据
-                await this.fetchSong(this.s_id); 
-
-                this.$nextTick(() => {
-                    const audioElement = document.getElementById("myAudio");
-                    if (audioElement && typeof audioElement.play === 'function') {
-                        audioElement.play();
-                        this.isPlaying = true;
-                    } else {
-                        console.error('音樂無法播放。');
-                    }
-                });
-            },
         // async playMusic() {
-        //     if (this.s_id) { // 检查是否存在有效的 s_id
-        //         const s_id = this.s_id;
+        //         //顯示播放器
+        //     this.playerOpen = true;
+        //     // 获取歌曲数据
+        //     // await this.fetchSong(this.s_id); 
 
-        //         // 获取歌曲数据
-        //         await this.fetchSong(s_id);
-
-        //         this.$nextTick(() => {
-        //             const audioElement = document.getElementById("myAudio");
-        //             if (audioElement && typeof audioElement.play === 'function') {
-        //                 audioElement.addEventListener('canplaythrough', () => {
-        //                     // 检查从数据库中获取的歌曲的 s_id 是否与 props 中的 s_id 匹配
-        //                     if (this.currentSong && this.currentSong.s_id === s_id) {
-        //                         audioElement.play()
-        //                             .then(() => {
-        //                                 console.log('音乐已成功播放。');
-        //                                 // 使用 $emit 触发 playMusic 事件，传递 s_id 作为参数
-        //                                 this.$emit('playMusic', s_id);
-        //                                 this.isPlaying = true;
-        //                             })
-        //                             .catch((error) => {
-        //                                 console.error('音乐播放失败：', error);
-        //                             });
-        //                     } else {
-        //                         console.log('歌曲信息不匹配，不播放歌曲。');
-        //                     }
-        //                 });
-        //             } else {
-        //                 console.log('playMusic 被调用了，s_id 是', s_id);
-        //                 console.error('音乐无法播放。');
-        //             }
-        //         });
-        //     } else {
-        //         console.error('当前歌曲不存在。');
-        //     }
+        //     this.$nextTick(() => {
+        //         const audioElement = document.getElementById("myAudio");
+        //         if (audioElement && typeof audioElement.play === 'function') {
+        //             audioElement.play();
+        //             this.isPlaying = true;
+        //         } else {
+        //             console.error('音樂無法播放。');
+        //         }
+        //     });
         // },
 
+
+
+        async playMusic() {
+        //顯示播放器
+            this.playerOpen = true;
+
+            this.$nextTick(() => {
+                const audioElement = document.getElementById("myAudio");
+                if (audioElement && typeof audioElement.play === 'function') {
+                // 步骤1：檢查是否存在有效的 s_id
+                if (this.s_id) {
+                    // 步骤2：查找特定的 s_id 對應的歌曲信息
+                    const song = this.songList.find(item => item.s_id === this.s_id);
+                    console.log('步骤2：比對到的歌曲訊息:', song);
+                    if (song) {
+                    // 步骤3：检查從數據庫中獲取的歌曲 s_id 是否與 props 中的 s_id 匹配
+                    if (this.currentSong && this.currentSong.s_id === this.s_id) {
+                        // 重置歌曲当前时间
+                        audioElement.load();
+
+                        // 步骤4：播放音樂
+                        audioElement.play()
+                        .then(() => {
+                            // console.log('步骤4：音樂已成功播放。');
+                            this.isPlaying = true;
+                        })
+                        .catch((error) => {
+                            console.error('步骤4：音乐播放失败：', error);
+                        });
+                    } else {
+                        console.log('步骤3：歌曲信息不匹配，不播放歌曲。');
+                    }
+                    } else {
+                    console.warn('步骤2：找不到匹配的歌曲信息。');
+                    }
+                } else {
+                    console.error('步骤1：当前歌曲不存在。');
+                }
+                } else {
+                console.error('步骤3：音樂無法播放。');
+                }
+            });
+        },
+
+
+
         async fetchSong() {
-            // const s_id = this.$route.params.s_id;
             const apiURL = new URL(
                 `http://localhost/muse_music/public/api/getPlayerSong.php?`
             );
             fetch(apiURL)
             .then(async (response) => {
                 this.songList = await response.json();
+                // console.log('songList:', this.songList);
             })
             .catch((error) => {
                 console.error("發生錯誤:", error.message);
@@ -267,26 +277,33 @@ export default {
                 this.isPlaying = false;
             }
         },
-        nextSong() {
-            if (this.currentSongIndex < this.songList.length - 1) {
-                this.currentSongIndex += 1;//更新目前索引
-                this.playMusic();
-            } else {
-                this.currentSongIndex = 0;//回到第一首
-                this.playMusic();
+        goingMusic() {
+            const audioElement = document.getElementById("myAudio");
+            if (audioElement) {
+                audioElement.play();
+                this.isPlaying = true;
             }
-            this.loadAndPlayCurrentSong();
         },
-        prevSong() {
-            if (this.currentSongIndex > 0) {
-                this.currentSongIndex -= 1;
-                this.playMusic();
-            } else {
-                this.currentSongIndex = this.songList.length - 1;
-                this.playMusic();
-            }
-            this.loadAndPlayCurrentSong();
-        },
+        // nextSong() {
+        //     if (this.currentSongIndex < this.songList.length - 1) {
+        //         this.currentSongIndex += 1;//更新目前索引
+        //         this.playMusic();
+        //     } else {
+        //         this.currentSongIndex = 0;//回到第一首
+        //         this.playMusic();
+        //     }
+        //     this.loadAndPlayCurrentSong();
+        // },
+        // prevSong() {
+        //     if (this.currentSongIndex > 0) {
+        //         this.currentSongIndex -= 1;
+        //         this.playMusic();
+        //     } else {
+        //         this.currentSongIndex = this.songList.length - 1;
+        //         this.playMusic();
+        //     }
+        //     this.loadAndPlayCurrentSong();
+        // },
         toggleMute() {
             if (this.isMuted) {
                 this.$refs.music.volume = this.currentVolume;
@@ -367,7 +384,7 @@ export default {
     },
     computed: {
         currentSong() {
-            return this.songList[this.currentSongIndex];
+            return this.songList.find(item => item.s_id === this.s_id);
         },
         formatTime() {
             const format = (time) => {

@@ -194,11 +194,11 @@
                     width: 270px;
                     height: 270px;
                     overflow: hidden;
+                    margin: auto;
+                    display: flex;
+                    align-items: center;
                     img{
-                        background-repeat:no-repeat ;
                         // object-fit: cover;
-                        display: flex;
-                        align-items: center;
                         width: 100%;
                     }
                 }
