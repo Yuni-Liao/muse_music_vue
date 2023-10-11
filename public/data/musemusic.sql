@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2023-10-11 02:04:15
+-- 產生時間： 2023-10-11 07:03:59
 -- 伺服器版本： 8.0.31
 -- PHP 版本： 8.0.26
 
@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS `carousel` (
   `name` varchar(10) DEFAULT NULL,
   `img` varchar(25) DEFAULT NULL,
   `link` varchar(100) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`car_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='輪播資訊';
@@ -137,12 +138,12 @@ CREATE TABLE IF NOT EXISTS `carousel` (
 -- 傾印資料表的資料 `carousel`
 --
 
-INSERT INTO `carousel` (`car_id`, `name`, `img`, `link`, `update_time`) VALUES
-(1, '歌曲推薦', '1.jpg', 'https://tibamef2e.com/chd103/g2/home/singlemusic?q=4', NULL),
-(2, '專輯推薦', '2.jpg', 'https://tibamef2e.com/chd103/g2/home/singlealbum', NULL),
-(3, '歌單推薦', '3.jpg', 'https://tibamef2e.com/chd103/g2/home/singlesonglist?q=2', NULL),
-(4, '歌手推薦', '4.jpg', 'http://localhost:8080/home/profilepage', NULL),
-(5, '排行榜推薦', '5.jpg', 'https://tibamef2e.com/chd103/g2/home/ranking', NULL);
+INSERT INTO `carousel` (`car_id`, `name`, `img`, `link`, `status`, `update_time`) VALUES
+(1, '歌曲推薦', '1.jpg', 'https://tibamef2e.com/chd103/g2/home/singlemusic?q=4', 1, NULL),
+(2, '專輯推薦', '2.jpg', 'https://tibamef2e.com/chd103/g2/home/singlealbum', 1, NULL),
+(3, '歌單推薦', '3.jpg', 'https://tibamef2e.com/chd103/g2/home/singlesonglist?q=2', 1, NULL),
+(4, '歌手推薦', '4.jpg', 'http://localhost:8080/home/profilepage', 1, NULL),
+(5, '排行榜推薦', '5.jpg', 'https://tibamef2e.com/chd103/g2/home/ranking', 1, NULL);
 
 -- --------------------------------------------------------
 
