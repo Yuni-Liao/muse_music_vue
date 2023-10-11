@@ -65,7 +65,7 @@ export default {
   methods: {
     AddNewSl() {
       if (this.slname != "") {
-        const url = `http://localhost/muse_music/public/api/addNewSl.php`;
+        const url = `${this.$store.state.phpPublicPath}addNewSl.php`;
         let headers = {
           Accept: "application/json",
         };

@@ -53,10 +53,12 @@ export default {
       timerValue: null,
       showWeekTopmusic: false,
       // 首頁頂部Banner - 廖妍榛
-      topBanner: [{
-        img: '',
-        link: '',
-      }], // 存放輪播圖的空陣列
+      topBanner: [
+        {
+          img: "",
+          link: "",
+        },
+      ], // 存放輪播圖的空陣列
 
       // 本週熱門歌曲輪播 - 黃珮菁
       SongRank: [],
@@ -167,7 +169,7 @@ export default {
     //fetch 本週熱門歌曲
     const fetchSongRank = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getRankSong.php`
+        `${this.$store.state.phpPublicPath}getRankSong.php`
       );
 
       fetch(apiURL)

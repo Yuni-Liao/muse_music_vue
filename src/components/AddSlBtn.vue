@@ -78,7 +78,7 @@ export default {
     fetchMyallsonglist() {
       const loginMemId = this.login_mem_id;
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getMyCreateSonglists.php?loginMemId=${loginMemId}`
+        `${this.$store.state.phpPublicPath}getMyCreateSonglists.php?loginMemId=${loginMemId}`
       );
       fetch(apiURL)
         .then((res) => res.json())
@@ -105,7 +105,7 @@ export default {
 
       // 如果沒有選擇歌單，則alert提示
       if (selectedSls.length != 0) {
-        const url = `http://localhost/muse_music/public/api/addSongtoSl.php`;
+        const url = `${this.$store.state.phpPublicPath}addSongtoSl.php`;
         let headers = {
           Accept: "application/json",
         };
