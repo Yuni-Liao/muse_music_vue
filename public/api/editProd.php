@@ -10,13 +10,13 @@ try {
     require_once("./connectMusemusic.php");
 
     // 準備sql
+    // 先刪除了圖片
     $sql = "update `product` set 
     prod_name = :prod_name, 
     prod_singer=:prod_singer, 
     prod_price = :prod_price,
     prod_inf=:prod_inf, 
     prod_int=:prod_int,
-    prod_pic=:prod_pic, 
     show_stat=:show_stat, 
     prod_date = :prod_date, 
     chat_num=:chat_num,
