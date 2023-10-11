@@ -33,7 +33,7 @@
                 <!-- 播放按钮 -->
                 <div id="play">
                     <fontAwesome :icon="['fa', 'play']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
-                        v-if="!isPlaying" @click="playMusic" />
+                        v-if="!isPlaying" @click="goingMusic" />
                     <!-- 暫停按钮 -->
                     <fontAwesome :icon="['fa', 'pause']" size="2xl" style="color: #fff; margin: 15px; cursor: pointer;"
                         v-else @click="pauseMusic" />
@@ -62,11 +62,11 @@
     </div>
 
     <!-- -------------蓋板播放器範圍------------- -->
-    <div class="modal" v-if="isModalVisible" :style="{
+    <div class="modal" :s_id="currentSong.s_id" v-if="isModalVisible" :style="{
         backgroundImage: 
         `url(${publicPath}dataimage/song/${currentSong.s_img})`,
         backgroundSize: '100% auto',
-        backgroundRepeat: no - repeat,
+        backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center 20%',
     }">
 
@@ -85,8 +85,10 @@
             </div>
             <div class="playerBottom">
                 <div class="songSection">
-                    <img class="musicPic" 
-                    :src="`${publicPath}dataimage/song/${currentSong.s_img}`" alt="封面">
+                    <div class="pic">
+                        <img class="musicPic" 
+                        :src="`${publicPath}dataimage/song/${currentSong.s_img}`" alt="封面">
+                    </div>
                     <div class="titleBtns">
                         <h4>{{ currentSong.s_name }}</h4>
                         <div class="btns">
@@ -109,7 +111,7 @@
                             <fontAwesome :icon="['fa', 'fa-backward-step']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" @click="prevSong" />
                             <fontAwesome :icon="['fa', 'play']" size="2xl"
-                                style="color: #fff; margin: 15px; cursor: pointer;" v-if="!isPlaying" @click="playMusic"
+                                style="color: #fff; margin: 15px; cursor: pointer;" v-if="!isPlaying" @click="goingMusic"
                                 class="play_pause" />
                             <fontAwesome :icon="['fa', 'pause']" size="2xl"
                                 style="color: #fff; margin: 15px; cursor: pointer;" v-else @click="pauseMusic"
@@ -144,8 +146,8 @@ export default {
         AddSlBtn,
         AddFavBtn,
     },
-    emits: ['playMusic'],
-
+    // emits: ['playMusic'],
+    emits: ['change-s-id'],
     props: {
         s_id: {
             type: String, // 假設 s_id 是字符串
@@ -159,7 +161,7 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-            currentSongIndex: 0,
+            // currentSongIndex: 0,
             songList: [],
             //播放器狀態預設關閉
             playerOpen: false,
@@ -178,65 +180,69 @@ export default {
     methods: {
         // async playMusic() {
         //         //顯示播放器
-        //         this.playerOpen = true;
-        //         // 获取歌曲数据
-        //         await this.fetchSong(this.s_id); 
+        //     this.playerOpen = true;
+        //     // 获取歌曲数据
+        //     // await this.fetchSong(this.s_id); 
 
-        //         this.$nextTick(() => {
-        //             const audioElement = document.getElementById("myAudio");
-        //             if (audioElement && typeof audioElement.play === 'function') {
-        //                 audioElement.play();
-        //                 this.isPlaying = true;
-        //             } else {
-        //                 console.error('音樂無法播放。');
-        //             }
-        //         });
-        //     },
+        //     this.$nextTick(() => {
+        //         const audioElement = document.getElementById("myAudio");
+        //         if (audioElement && typeof audioElement.play === 'function') {
+        //             audioElement.play();
+        //             this.isPlaying = true;
+        //         } else {
+        //             console.error('音樂無法播放。');
+        //         }
+        //     });
+        // },
         async playMusic() {
-            if (this.s_id) { // 检查是否存在有效的 s_id
-                const s_id = this.s_id;
+        //顯示播放器
+            this.playerOpen = true;
 
-                // 获取歌曲数据
-                await this.fetchSong(s_id);
+            this.$nextTick(() => {
+                const audioElement = document.getElementById("myAudio");
+                if (audioElement && typeof audioElement.play === 'function') {
+                // 步骤1：檢查是否存在有效的 s_id
+                if (this.s_id) {
+                    // 步骤2：查找特定的 s_id 對應的歌曲信息
+                    const song = this.songList.find(item => item.s_id === this.s_id);
+                    console.log('步骤2：比對到的歌曲訊息:', song);
+                    if (song) {
+                    // 步骤3：檢查從數據庫中獲取的歌曲 s_id 是否與 props 中的 s_id 匹配
+                    if (this.currentSong && this.currentSong.s_id === this.s_id) {
+                        // 重置歌曲当前时间
+                        audioElement.load();
 
-                this.$nextTick(() => {
-                    const audioElement = document.getElementById("myAudio");
-                    if (audioElement && typeof audioElement.play === 'function') {
-                        audioElement.addEventListener('canplaythrough', () => {
-                            // 检查从数据库中获取的歌曲的 s_id 是否与 props 中的 s_id 匹配
-                            if (this.currentSong && this.currentSong.s_id === s_id) {
-                                audioElement.play()
-                                    .then(() => {
-                                        console.log('音乐已成功播放。');
-                                        // 使用 $emit 触发 playMusic 事件，传递 s_id 作为参数
-                                        this.$emit('playMusic', s_id);
-                                        this.isPlaying = true;
-                                    })
-                                    .catch((error) => {
-                                        console.error('音乐播放失败：', error);
-                                    });
-                            } else {
-                                console.log('歌曲信息不匹配，不播放歌曲。');
-                            }
+                        // 步骤4：播放音樂
+                        audioElement.play()
+                        .then(() => {
+                            // console.log('步骤4：音樂已成功播放。');
+                            this.isPlaying = true;
+                        })
+                        .catch((error) => {
+                            console.error('步骤4：音樂播放失敗：', error);
                         });
                     } else {
-                        console.log('playMusic 被调用了，s_id 是', s_id);
-                        console.error('音乐无法播放。');
+                        console.log('步骤3：歌曲信息不匹配，不播放歌曲。');
                     }
-                });
-            } else {
-                console.error('当前歌曲不存在。');
-            }
+                    } else {
+                    console.warn('步骤2：找不到匹配的歌曲信息。');
+                    }
+                } else {
+                    console.error('步骤1：當前歌曲不存在。');
+                }
+                } else {
+                console.error('步骤3：音樂無法播放。');
+                }
+            });
         },
-
         async fetchSong() {
-            // const s_id = this.$route.params.s_id;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getPlayerSong.php?`
+                `${this.$store.state.phpPublicPath}getPlayerSong.php?`
             );
             fetch(apiURL)
             .then(async (response) => {
                 this.songList = await response.json();
+                // console.log('songList:', this.songList);
             })
             .catch((error) => {
                 console.error("發生錯誤:", error.message);
@@ -265,25 +271,38 @@ export default {
                 this.isPlaying = false;
             }
         },
+        goingMusic() {
+            const audioElement = document.getElementById("myAudio");
+            if (audioElement) {
+                audioElement.play();
+                this.isPlaying = true;
+            }
+        },
+        // changeSId(newSId) {
+        //     // 使用從子組件接收的新 s_id 更新 s_id 數據
+        //     this.s_id = newSId;
+        // },
         nextSong() {
-            if (this.currentSongIndex < this.songList.length - 1) {
-                this.currentSongIndex += 1;//更新目前索引
-                this.playMusic();
-            } else {
-                this.currentSongIndex = 0;//回到第一首
+            const currentIndex = this.songList.findIndex(song => song.s_id === this.s_id);
+            const nextIndex = (currentIndex + 1) % this.songList.length;
+            const nextSId = this.songList[nextIndex].s_id;
+
+            if (nextIndex >= 0 && nextIndex < this.songList.length) {
+                // 只有當 nextIndex 在合理的範圍內時才更新 s_id
+                this.$emit('change-s-id', nextSId);
                 this.playMusic();
             }
-            this.loadAndPlayCurrentSong();
         },
         prevSong() {
-            if (this.currentSongIndex > 0) {
-                this.currentSongIndex -= 1;
-                this.playMusic();
-            } else {
-                this.currentSongIndex = this.songList.length - 1;
+            const currentIndex = this.songList.findIndex(song => song.s_id === this.s_id);
+            const nextIndex = (currentIndex - 1 + this.songList.length) % this.songList.length;
+            const nextSId = this.songList[nextIndex].s_id;
+
+            if (nextIndex >= 0 && nextIndex < this.songList.length) {
+                // 只有當 nextIndex 在合理的範圍內時才更新 s_id
+                this.$emit('change-s-id', nextSId);
                 this.playMusic();
             }
-            this.loadAndPlayCurrentSong();
         },
         toggleMute() {
             if (this.isMuted) {
@@ -365,7 +384,7 @@ export default {
     },
     computed: {
         currentSong() {
-            return this.songList[this.currentSongIndex];
+            return this.songList.find(item => item.s_id === this.s_id);
         },
         formatTime() {
             const format = (time) => {

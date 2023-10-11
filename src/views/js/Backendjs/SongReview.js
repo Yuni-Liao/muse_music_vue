@@ -4,108 +4,67 @@ export default {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
       //
+      searchdata: "",
       columns: [
         {
-          title: "編號",
+          title: "#",
           key: "no",
           width: 80,
           align: "center",
         },
         {
+          title: "歌曲編號",
+          key: "s_id",
+          width: 100,
+          align: "center",
+        },
+        {
           title: "提交時間",
-          key: "submitTime",
+          key: "s_length",
           width: 160,
           align: "center",
         },
         {
           title: "歌曲名稱",
-          key: "songName",
+          key: "s_name",
           width: 250,
           align: "center",
         },
         {
-          title: " ",
-          key: "playMuz",
-          width: 30,
-          //slot插槽,播放音樂鈕
-        },
-        {
-          title: "時長",
-          key: "timeRange",
+          title: "歌曲長度",
+          key: "s_length",
           width: 100,
           align: "center",
         },
         {
           title: "會員帳號",
-          key: "memberAcc",
+          key: "mem_acc",
           width: 200,
           align: "center",
         },
         {
-          title: "歌曲狀態",
-          key: "songStatus",
-          width: 100,
-          align: "center",
-        },
-        {
           title: "操作",
-          slot: "editBtn",
+          slot: "reviewBtn",
           width: 100,
           align: "center",
         },
-      ],
+      ], //待審核歌曲
       data: [],
-      //   data: [
-      //     {
-      //       no: 1,
-      //       submitTime: "2023-09-15 00:23:00",
-      //       songName: "天黑黑",
-      //       albumName: "天氣晴朗",
-      //       timeRange: "03:02:01",
-      //       memberAcc: "yuniqaq",
-      //       songStatus: "待審核",
-      //     },
-      //     {
-      //       no: 2,
-      //       submitTime: "2023-09-15 00:23:00",
-      //       songName: "天亮亮",
-      //       albumName: "地球漫步",
-      //       timeRange: "02:02:58",
-      //       memberAcc: "yuni70217",
-      //       songStatus: "待審核",
-      //     },
-      //     {
-      //       no: 3,
-      //       submitTime: "2023-09-15 00:23:00",
-      //       songName: "小黑人",
-      //       albumName: "",
-      //       timeRange: "01:30:26",
-      //       memberAcc: "yuniqqq",
-      //       songStatus: "待審核",
-      //     },
-      //     {
-      //       no: 4,
-      //       submitTime: "2023-09-15 00:23:00",
-      //       songName: "賀新年",
-      //       albumName: "",
-      //       timeRange: "02:30:11",
-      //       memberAcc: "yuniliao7",
-      //       songStatus: "待審核",
-      //     },
-      //     {
-      //       no: 5,
-      //       submitTime: "2023-09-15 00:23:00",
-      //       songName: "只是一首歌",
-      //       albumName: "紀念溫蒂",
-      //       timeRange: "01:02:01",
-      //       memberAcc: "yuni70wwq",
-      //       songStatus: "待審核",
-      //     },
-      //   ],
+      editBox: false,
+      //編輯彈窗中的歌曲資訊
+      editItem: {
+        no: "",
+        s_id: "",
+        s_name: "",
+        s_src: "",
+      },
+      //編輯彈窗中，該歌的歌曲類別
+      editSongCat: [],
+      isplay: false,
     };
   },
   mounted() {
-    //fetch 個人主頁會員資料
+    //fetch 待審核歌曲資料
     const fetchReviewSong = () => {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getReviewSong.php`
@@ -113,7 +72,13 @@ export default {
 
       fetch(apiURL)
         .then((res) => res.json())
-        .then((res) => (this.data = res))
+        .then((res) => {
+          //把陣列中每個物件都添加編號
+          for (let i = 0; i < res.length; i++) {
+            res[i].no = i + 1;
+          }
+          this.data = res;
+        })
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
@@ -121,11 +86,95 @@ export default {
     fetchReviewSong();
   },
   methods: {
-    editBtn() {
-      alert("編輯審核");
+    editBtn(e) {
+      this.editBox = true;
+      this.editItem.no = e.no;
+      this.editItem.s_id = e.s_id;
+      this.editItem.s_name = e.s_name;
+      this.editItem.s_src = e.s_src;
+
+      //取得歌曲類別
+
+      const apiURL = new URL(
+        `${this.$store.state.phpPublicPath}getSongReviewSongCat.php?s_id=${e.s_id}`
+      );
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => {
+          this.editSongCat = res.map((item) => item[0]);
+          //console.log(this.editSongCat)
+          this.editSongCat.forEach((id) => {
+            const checkbox = document.querySelector(
+              `input[name="songcat" ][value="${id}"]`
+            );
+            if (checkbox) {
+              checkbox.checked = true;
+            }
+          });
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    },
+    play() {
+      let audioElement = document.querySelector("#myAudio");
+      audioElement.play();
+      this.isplay = true;
+    },
+    pause() {
+      let audioElement = document.querySelector("#myAudio");
+      audioElement.pause();
+      this.isplay = false;
     },
     songReviewSearchBtn() {
       alert("搜尋歌曲");
+    },
+    //點擊空白處關閉彈窗
+    closeBtn(e) {
+      if (e.target.classList.contains("editwrap")) {
+        this.isplay = false;
+        this.editBox = false;
+      }
+    },
+    approve() {
+      // 獲取所有已選擇的歌單的 sl_id
+      const selectedSongCats = Array.from(
+        document.querySelectorAll("input[name='songcat']:checked")
+      ).map((check) => check.value);
+      console.log(selectedSongCats);
+      if (selectedSongCats) {
+        const url = `${this.$store.state.phpPublicPath}postReviewSong.php`;
+        let headers = {
+          Accept: "application/json",
+        };
+
+        const formData = new FormData();
+        formData.append("s_id", this.albumData.alb_id);
+        formData.append("reviewtype", 1);
+        formData.append("selectedSongCats", JSON.stringify(selectedSongCats));
+
+        fetch(url, {
+          method: "POST",
+          headers: headers,
+          body: formData,
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then(() => {
+            // this.$router.push({
+            //   name: "profilepageedit",
+            // });
+          })
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      } else {
+        alert("不可無歌曲類別");
+      }
+    },
+    reject() {
+      alert("駁回");
     },
   },
 };

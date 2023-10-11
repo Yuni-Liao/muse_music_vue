@@ -19,7 +19,8 @@ main{
     .editcarousel{
         @include rect(300px, 350px);
         padding: 1%;
-        background-color: #d9d9d9;
+        background-color: #333;
+        color: $white;
         border: $green 3px solid;
         position: absolute;
         top: 30%;
@@ -28,12 +29,9 @@ main{
         display: flex;
         flex-flow: column wrap;
         justify-content: space-evenly;
-        .carno{
-            @include rect(100px, auto);
-            margin: auto;    
-            text-align: center;
+        input{
+            padding: 2%;
             border: 0px;
-            background-color: #d9d9d9;
         }
         .btngroup{
             display: flex;

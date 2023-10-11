@@ -99,7 +99,7 @@ export default {
             const selectedSongId = this.selectedSong.s_id;
             const songExists = this.songRankGroup.some(song => song.s_id === selectedSongId);
             if (!songExists) {
-                const url = `http://localhost/muse_music/public/api/editSongRankMgmt.php`;
+                const url = `${this.$store.state.phpPublicPath}editSongRankMgmt.php`;
                 let headers = {
                     "Content-Type": "application/json",
                     Accept: "application/json",
@@ -136,7 +136,7 @@ export default {
             const selectedAlbumId = this.selectedAlbum.alb_id;
             const albumExists = this.albumRankGroup.some(album => album.alb_id === selectedAlbumId);
             if (!albumExists) {
-                const url = `http://localhost/muse_music/public/api/editAlbumRankMgmt.php`;
+                const url = `${this.$store.state.phpPublicPath}editAlbumRankMgmt.php`;
                 let headers = {
                     "Content-Type": "application/json",
                     Accept: "application/json",
@@ -176,7 +176,7 @@ export default {
     mounted() {
         //先檢查資料格式是否符合DB規則
         // 單曲排行渲染
-        const url = `http://localhost/muse_music/public/api/postSongRankMgmt.php`;
+        const url = `${this.$store.state.phpPublicPath}postSongRankMgmt.php`;
         let headers = {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -200,7 +200,7 @@ export default {
             });
 
         // 專輯排行渲染
-        const alburl = `http://localhost/muse_music/public/api/postAlbumRankMgmt.php`;
+        const alburl = `${this.$store.state.phpPublicPath}postAlbumRankMgmt.php`;
         let albHeaders = {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -225,7 +225,7 @@ export default {
         // fetch 全部單曲
         const fetchAllSingleMusic = () => {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getAllSingleMusic.php`
+                `${this.$store.state.phpPublicPath}getAllSingleMusic.php`
             );
 
             fetch(apiURL)
@@ -239,7 +239,7 @@ export default {
         // fetch 全部專輯
         const fetchAllAlbum = () => {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getAllAlbum.php`
+                `${this.$store.state.phpPublicPath}getAllAlbum.php`
             );
 
             fetch(apiURL)
