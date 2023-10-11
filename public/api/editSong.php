@@ -11,7 +11,7 @@ try {
     //準備sql
     $sql = "
     UPDATE `song` SET 
-    s_name=:s_name, s_intro=:s_intro, show_stat=:show_stat
+    s_name=:s_name, s_intro=:s_intro, show_stat=:show_stat, update_date = CURRENT_TIMESTAMP
     WHERE 
     s_id =:s_id;";
     $editSong = $pdo->prepare($sql);
