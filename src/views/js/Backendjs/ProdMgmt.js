@@ -56,7 +56,18 @@ export default {
             ],
             productData: [], // 渲染資料的陣列
             editBox: false, // 預設跳窗隱藏
-            editItem: [],
+            editItem: {
+                prod_id: '',
+                prod_type: '',
+                prod_name: '',
+                prod_singer: '',
+                prod_inf: '',
+                prod_int: '',
+                prod_price: '',
+                prod_date: '',
+                show_stat: '',
+                chat_num: ''
+            },
             privacy: "公開",
         }
     },
@@ -70,9 +81,9 @@ export default {
         prodSearchBtn() {
             alert('搜索');
         },
-        // addProdBtn() {
-        //     alert('新增商品');
-        // }
+        addProdBtn() {
+            alert('新增商品');
+        },
 
         // 點擊編輯按鈕後跳窗出現
         editProd(row) {
@@ -97,8 +108,8 @@ export default {
             formData.append("prod_inf", this.editItem.prod_inf);
             formData.append("prod_int", this.editItem.prod_int);
             formData.append("show_stat", this.editItem.show_stat);
-            
-
+            console.log(this.editItem);
+            console.log("formData", formData);
             fetch(url, {
                 method: "POST",
                 headers: headers,
@@ -112,6 +123,20 @@ export default {
                     }
                 })
                 .then(() => {
+                    //update this.productData
+                    let index = this.productData.findIndex((product) => {
+                        return product.prod_id == this.editItem.prod_id
+                    });
+                    if (index >= 0) {
+                        //this.productData[index] = { ...this.editItem }
+                        this.productData.splice(index, 1, this.editItem);
+                        console.log(index, "-------------", this.productData);
+                        //alert("NNNNNNNNNN");
+                    } else {
+                        console.log("---error");
+                    }
+
+                    //----------------
                     this.$router.push({
                         name: "prodmgmt",
                     });
@@ -121,7 +146,7 @@ export default {
                 });
 
             this.editBox = false; // 關閉編輯跳窗
-            console.log("formData", formData);
+
         },
     },
     mounted() {

@@ -33,6 +33,9 @@
             <label for="prod_name" class="label">商品名稱:</label>
             <input type="text" id="prod_name" name="name" v-model="editItem.prod_name"
                 style="margin-bottom: 10px; width: 268px;" />
+            <label for="prod_singer" class="label">歌手名稱:</label>
+            <input type="text" id="prod_singer" name="name" v-model="editItem.prod_singer"
+                style="margin-bottom: 10px; width: 268px;" />
             <label for="prod_price" class="label">商品售價:</label>
             <input type="text" id="prod_price" name="name" v-model="editItem.prod_price"
                 style="margin-bottom: 10px; width: 268px;" />
@@ -42,13 +45,6 @@
             <label for="prod_type" class="label">商品分類:</label>
             <input type="text" id="prod_type" name="name" v-model="editItem.prod_type"
                 style="margin-bottom: 10px; width: 268px;" />
-            <!-- <Select id="prod_type" v-model="editItem.prod_type" style="width: 268px;">
-                <option value='男藝人'>男藝人</option>
-                <option value="女藝人">女藝人</option>
-                <option value="錄音帶">錄音帶</option>
-                <option value="黑膠唱片">黑膠唱片</option>
-                <option value="樂團團體">樂團團體</option>
-            </Select> -->
             <p>商品詳情:</p>
             <textarea id="prod_inf" name="name" v-model="editItem.prod_inf"
                 style="margin-bottom: 10px; width: 268px; height: 80px;"></textarea>
