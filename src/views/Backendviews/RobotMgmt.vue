@@ -1,7 +1,8 @@
 <template>
     <div class="robotmgmt_box">
         <h1>網站資訊管理 | 機器人管理</h1>
-        <Table highlight-row stripe class="robotmgmt_table cellHeight" width="1000" :columns="columns" :data="data">
+        <Button type="primary" @click="addfaqBtn()" style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增問題</Button>
+        <Table highlight-row stripe class="robotmgmt_table cellHeight" width="1200" :columns="columns" :data="data">
             <template #editBtn="{ row }">
                 <fontAwesome @click="editBtn()" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
