@@ -19,8 +19,9 @@ try {
     s.s_length as time,
     s.s_img as songPic,
     s.s_name as name,
-    s.s_intro,
-    s.show_stat
+    s.s_intro, 
+    s.show_stat,
+    s.update_date as s_update_date
     from album al
     join song s on al.alb_id = s.alb_id
     join member m on al.mem_id = m.mem_id

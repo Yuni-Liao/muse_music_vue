@@ -7,19 +7,11 @@ export default {
             emailInvalid: false,
             passwordInvalid: false,
             showPassword: false,
-            predefinedCredentials: [
-                {
-                    email: "chd103@gmail.com",
-                    password: "11111111",
-                },
-            ]
-            
         };
-        
     },
     methods: {
         loginBtn() {
-            alert('送出');
+            alert("送出");
         },
         togglePasswordVisibility() {
             this.showPassword = !this.showPassword;
@@ -27,52 +19,57 @@ export default {
         login() {
             console.log("登入中...");
 
+            // 錯誤驗證 暫定
             if (!this.validateEmail(this.email)) {
                 this.emailInvalid = true;
-                alert("請輸入有效的電子信箱，需有6-10個英文或數字");
+                alert("請輸入有效的電子信箱，需有1個英文或數字");
                 return;
-            }
-            else {
+            } else {
                 this.emailInvalid = false;
             }
 
             if (!this.validatePassword(this.password)) {
                 this.passwordInvalid = true;
-                alert("請輸入有效的密碼，需有8-20個英文或數字");
+                alert("請輸入有效的密碼，需有1個英文或數字");
                 return;
             } else {
                 this.passwordInvalid = false;
             }
 
-            const matchingCredentials = this.predefinedCredentials.find(
-                (credentials) =>
-                    credentials.email === this.email && credentials.password === this.password
-            );
-        
-            if (matchingCredentials) {
-                alert("登入成功");
-                this.$router.push("/home");
-            } else {
-                alert("帳號或密碼不正確");
-            }
+            const dataToSend = new FormData();
+            dataToSend.append("username", this.email);
+            dataToSend.append("password", this.password);
 
-            fetch('https://fakestoreapi.com/auth/login', {
-                method: 'POST',
-                body: JSON.stringify({
-                    username: this.email,
-                    password: this.password
-                })
+            fetch("http://localhost/muse_music/public/api/logIn.php", {
+                method: "POST",
+                body: dataToSend,
             })
-                .then(res => res.json())
-                .then(json => console.log(json))
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.message === "登入成功") {
+                        alert("登入成功");
+
+                        // 從資料庫撈會員姓名
+                        const userName = data.mem_name;
+
+                        // 彈出對應會員訊息~~~
+                        alert(`Hi! ${userName} 歡迎回到MuseMusic！`);
+
+                        // 導回首頁
+                        this.$router.push("/home");
+
+                    } else {
+                        alert("帳戶密碼不正確");
+                    }
+                })
         },
         validateEmail(email) {
-            const emailRegex = /^[a-zA-Z0-9]{6,10}@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
+            const emailRegex = /^[a-zA-Z0-9]{1,10}@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);  // 原先驗證和資料庫衝突，帳號驗證先調成@前1位英文或數字，之後隨時可以再改
         },
         validatePassword(password) {
-            const passwordRegex = /^[a-zA-Z0-9]{8,20}$/;
-            return passwordRegex.test(password);
-        }
-    }
+            const passwordRegex = /^[a-zA-Z0-9]{1,20}$/;
+            return passwordRegex.test(password);  // 原先驗證和資料庫衝突，密碼驗證先調成1位英文或數字，之後隨時可以再改
+        },
+    },
 };

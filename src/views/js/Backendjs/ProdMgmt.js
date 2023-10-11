@@ -3,110 +3,61 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            //
+            uploadedImg: null, // 上傳圖片暫存
             columns: [
                 {
                     title: 'No',
-                    key: 'no',
+                    key: 'prod_id',
                     width: 60,
                     align: 'center'
                 },
-                {
-                    title: '商品編號',
-                    key: 'prodNo',
-                    width: 100,
-                    align: 'center'
-                },
+                // {
+                //     title: '商品編號',
+                //     key: 'prodNo',
+                //     width: 100,
+                //     align: 'center'
+                // },
                 {
                     title: '商品名稱',
-                    key: 'prodName',
-                    width: 150,
+                    key: 'prod_name',
+                    width: 250,
                     align: 'center'
                 },
                 {
                     title: '商品分類',
-                    key: 'prodType',
-                    width: 100,
+                    key: 'prod_type',
+                    width: 140,
                     align: 'center'
                 },
                 {
                     title: '商品售價',
-                    key: 'amount',
-                    width: 100,
-                    align: 'center'
-                },
-                {
-                    title: '更新者',
-                    key: 'adminAcc',
-                    width: 150,
+                    key: 'prod_price',
+                    width: 140,
                     align: 'center'
                 },
                 {
                     title: '更新時間',
-                    key: 'updateTime',
+                    key: 'prod_date',
                     width: 200,
                     align: 'center'
                 },
                 {
-                    title: '操作',
+                    title: '上/下架',
                     slot: 'upDownBtn',
-                    width: 70,
+                    width: 100,
                     align: 'center'
                 },
                 {
-                    title: ' ',
+                    title: '編輯',
                     slot: 'editBtn',
-                    width: 60,
+                    width: 100,
                     align: 'center'
                 }
             ],
-            data: [
-                {
-                    no: 1,
-                    prodNo: '#9453',
-                    prodName: 'Lisa 黑膠',
-                    prodType: '女藝人',
-                    amount: 1200,
-                    adminAcc: 'admin01',
-                    updateTime: '2023-09-15 00:30:22',
-                },
-                {
-                    no: 2,
-                    prodNo: '#9453',
-                    prodName: 'Lisa 黑膠',
-                    prodType: '女藝人',
-                    amount: 1200,
-                    adminAcc: 'admin01',
-                    updateTime: '2023-09-15 00:30:22',
-                },
-                {
-                    no: 3,
-                    prodNo: '#9453',
-                    prodName: 'Lisa 黑膠',
-                    prodType: '女藝人',
-                    amount: 1200,
-                    adminAcc: 'admin01',
-                    updateTime: '2023-09-15 00:30:22',
-                },
-                {
-                    no: 4,
-                    prodNo: '#9453',
-                    prodName: 'Lisa 黑膠',
-                    prodType: '女藝人',
-                    amount: 1200,
-                    adminAcc: 'admin01',
-                    updateTime: '2023-09-15 00:30:22',
-                },
-                {
-                    no: 5,
-                    prodNo: '#9453',
-                    prodName: 'Lisa 黑膠',
-                    prodType: '女藝人',
-                    amount: 1200,
-                    adminAcc: 'admin01',
-                    updateTime: '2023-09-15 00:30:22',
-                },
-            ],
+            productData: [], // 渲染資料的陣列
+            editBox: false, // 預設跳窗隱藏
+            editItem: [],
+            privacy: "公開",
         }
     },
     methods: {
@@ -119,9 +70,103 @@ export default {
         prodSearchBtn() {
             alert('搜索');
         },
-        addProdBtn() {
-            alert('新增商品');
-        }
+        // addProdBtn() {
+        //     alert('新增商品');
+        // }
+
+        // 點擊編輯按鈕後跳窗出現
+        editProd(row) {
+            this.editItem = { ...row }; // 傳入編輯數據
+            this.editBox = true; // 顯示編輯跳窗
+        },
+
+        // 編輯確認按鈕點擊事件
+        prodEdit() {
+            const url = `http://localhost/muse_music/public/api/editProd.php`;
+            let headers = {
+                Accept: "application/json",
+            };
+
+            const formData = new FormData();
+            formData.append("prod_id", this.editItem.prod_id);
+            // formData.append("prod_pic", this.editItem.prod_pic);
+            formData.append("prod_name", this.editItem.prod_name);
+            formData.append("prod_price", this.editItem.prod_price);
+            formData.append("prod_date", this.editItem.prod_date);
+            formData.append("prod_type", this.editItem.prod_type);
+            formData.append("prod_inf", this.editItem.prod_inf);
+            formData.append("prod_int", this.editItem.prod_int);
+            formData.append("show_stat", this.editItem.show_stat);
+            
+
+            fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("新增失敗");
+                    }
+                })
+                .then(() => {
+                    this.$router.push({
+                        name: "prodmgmt",
+                    });
+                })
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
+
+            this.editBox = false; // 關閉編輯跳窗
+            console.log("formData", formData);
+        },
     },
+    mounted() {
+        //先檢查資料格式是否符合DB規則
+        const url = `http://localhost/muse_music/public/api/postProdMgmt.php`;
+        let headers = {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        };
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.error('API 錯誤回應:', response);
+                    throw new Error("取得 dta 失敗");
+                }
+            })
+            .then((json) => {
+                console.log('API 成功回應:', json);
+                this.productData = json;
+                // 將 prod_type 設定為正確的值
+            })
+            .catch((error) => {
+                console.error('API 請求失敗:', error);
+            });
+
+        //接值，把值放入 this.editItem 中
+        const puteditItem = () => {
+            const obj = {};
+            obj.prod_id = this.$route.query.prod_id;
+            obj.prod_pic = this.$route.query.prod_pic;
+            obj.prod_name = this.$route.query.prod_name;
+            obj.prod_price = this.$route.query.prod_price;
+            obj.prod_type = this.$route.query.prod_type;
+            obj.prod_date = this.$route.query.prod_date;
+            obj.prod_inf = this.$route.query.prod_inf;
+            obj.prod_int = this.$route.query.prod_int;
+            obj.show_stat = this.$route.query.show_stat;
+            this.editItem = obj;
+        };
+        puteditItem();
+    }
 }
 

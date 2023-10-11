@@ -11,96 +11,48 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '來源',
-                    key: 'source',
+                    title: '編號',
+                    key: 'msgrep_id',
                     width: 100,
                     align: 'center'
                 },
                 {
-                    title: '留言帳號',
-                    key: 'msgAcc',
+                    title: '留言內容',
+                    key: 'msg_con',
+                    align: 'center',
+                },
+                {
+                    title: '檢舉人',
+                    key: 'mem_name',
                     width: 150,
                     align: 'center',
                 },
-                {
-                    title: '留言內容',
-                    key: 'msgContent',
-                    align: 'center',
-                },
+
                 {
                     title: '檢舉原因',
-                    key: 'reason',
+                    key: 'rep_rsn',
                     align: 'center'
                 },
                 {
                     title: '檢舉日期',
-                    key: 'reasonDate',
+                    key: 'rep_date',
                     align: 'center'
                 },
                 {
-                    title: '操作',
+                    title: '下架',
                     slot: 'acceptBtn',
                     width: 100,
                     align: 'center'
                 },
                 {
-                    title: ' ',
+                    title: '駁回',
                     slot: 'rejectBtn',
                     width: 100,
                     align: 'center'
                 }
             ],
-            data: [
-                {
-                    source: '音樂快訊',
-                    msgAcc: 'yuni70217',
-                    msgContent: 'Lisa瘋馬秀上空嗎?期待期待啦😍😍😍😍😍',
-                    reason: '豬哥不要汙染Lisa!!!!',
-                    reasonDate: '2023-09-15'
-                },
-                {
-                    source: '歌曲',
-                    msgAcc: 'yuni70217',
-                    msgContent: '這首比我媽還屌ㄟ',
-                    reason: '沒文化的人',
-                    reasonDate: '2023-09-15'
-                },
-                {
-                    source: '歌曲',
-                    msgAcc: 'yuni70217',
-                    msgContent: '這首比我媽還屌ㄟ',
-                    reason: '粗鄙言論',
-                    reasonDate: '2023-09-15'
-                },
-                {
-                    source: '歌曲',
-                    msgAcc: 'yuni70217',
-                    msgContent: '這首比我媽還屌ㄟ',
-                    reason: '他媽是多屌?講話很難聽',
-                    reasonDate: '2023-09-15'
-                },
-                {
-                    source: '歌曲',
-                    msgAcc: 'yuni70217',
-                    msgContent: '這首比我媽還屌ㄟ',
-                    reason: '他媽是多屌?講話很難聽',
-                    reasonDate: '2023-09-15'
-                },
-                {
-                    source: '歌曲',
-                    msgAcc: 'yuni70217',
-                    msgContent: '這首比我媽還屌ㄟ',
-                    reason: '他媽是多屌?講話很難聽',
-                    reasonDate: '2023-09-15'
-                },
-                {
-                    source: '歌曲',
-                    msgAcc: 'yuni70217',
-                    msgContent: '這首比我媽還屌ㄟ',
-                    reason: '他媽是多屌?講話很難聽',
-                    reasonDate: '2023-09-15'
-                }
-            ]
+            msgDate:[],
+            editBox: false,
         }
     },
     methods: {
@@ -119,5 +71,30 @@ export default {
         allReject() {
             alert('批次駁回');
         }
+    },
+    mounted() {
+        //先檢查資料格式是否符合DB規則
+        const url = `http://localhost/muse_music/public/api/postMsgMgmt.php`;
+        let headers = {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        };
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("取得 data 失敗");
+                }
+            })
+            .then((json) => {
+                this.msgDate = json;
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
     }
 }

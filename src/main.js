@@ -11,6 +11,8 @@ import {
   faCircleCheck,
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
+import VueClipboard from 'vue-clipboard3';
+
 // import {  } from '@fortawesome/free-brands-svg-icons' //目前沒用到這種類的icon,有用到再把註解開啟 {} 填入icon駝峰式名稱
 import {
   faMagnifyingGlass,
@@ -65,7 +67,7 @@ import {
   faBagShopping,
   faBolt,
   faEye,
-  
+
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -78,7 +80,7 @@ library.add(
   faUserGroup,
   faComment,
   faUserLarge,
-  
+
   faCircleUser,
   faCamera,
   faImage,
@@ -132,7 +134,7 @@ const vueApp = createApp(App)
   .use(router)
   .component("fontAwesome", FontAwesomeIcon)
   .use(ViewUIPlus, {
-    locale,
+    locale, VueClipboard
   })
   .mount("#app");
 

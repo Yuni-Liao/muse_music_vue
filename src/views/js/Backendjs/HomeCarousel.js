@@ -6,15 +6,7 @@ export default {
             //
             // bannerBox: false, //新增輪播按鈕先隱藏-yuni
             editBox: false,
-            // editBanner: [ // 編輯資料的暫存陣列
-            //     {
-            //         carId: '',
-            //         nameValue: '',
-            //         bannerLink: '',
-            //         // uploadImg: '',
-            //     }
-            // ],
-            imageData: null, // 圖片編譯Base64
+            uploadedImg: null, // 上傳圖片暫存
             carouselItem: [], // 渲染資料的暫存陣列
             columns: [
                 {
@@ -64,7 +56,7 @@ export default {
                 car_id: '',
                 nameValue: '',
                 bannerLink: '',
-                uploadImg: '',
+                // uploadImg: '',
             },
         }
     },
@@ -75,41 +67,102 @@ export default {
         upDownBtn(row) {
             alert('上/下架');
         },
+        // 圖片還沒寫進DB 壞的~~ 
+        imgChange(file) {
+            console.log('文件名稱:', file.name);
+            console.log('文件大小:', file.size);
+
+            console.log('uploadedImg 值:', this.uploadedImg);
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                this.uploadedImg = e.target.result;
+                console.log('上傳後的 uploadedImg 值:', this.uploadedImg);
+            };
+
+            reader.onerror = (error) => {
+                console.error('上傳失敗:', error);
+            };
+
+            reader.readAsDataURL(file);
+        },
         editCarousel(row) {
             this.editBox = true;
             this.editItem.car_id = row.car_id;
             this.editItem.nameValue = row.nameValue;
             this.editItem.bannerLink = row.bannerLink;
-            this.editItem.uploadImg = row.uploadImg;
+            // this.editItem.uploadImg = row.uploadImg;
         },
         confirmEdit() {
+            const formData = new FormData();
             const url = `http://localhost/muse_music/public/api/editIndexCarousel.php`;
             let headers = {
-                "Content-Type": "application/json",
                 Accept: "application/json",
             };
-            const dataToSend = {
-                car_id: this.editItem.car_id,
-                name: this.editItem.nameValue,
-                link: this.editItem.bannerLink,
-                img: this.editItem.uploadImg,
-            };
+            formData.append('car_id', this.editItem.car_id);
+            formData.append('name', this.editItem.nameValue);
+            formData.append('link', this.editItem.bannerLink);
+            // formData.append('img', tthis.uploadedImg);
+            if (this.uploadedImg) {
+                formData.append('img', this.uploadedImg);
+            }
             fetch(url, {
                 method: "POST",
                 headers: headers,
-                body: JSON.stringify(dataToSend),
+                body: formData,
             })
                 .then((response) => {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        throw new Error("取得 data 失敗");
+                        throw new Error("新增失敗");
                     }
+                })
+                .then((json) => {
+                    // alert(json);
+                    console.log(formData.get('car_id'));
+                    console.log(formData.get('name'));
+                    console.log(formData.get('link'));
+                    console.log(formData.get('img'));
+                    console.log(JSON.stringify(json));
+                    // window.location.reload();
                 })
                 .catch((error) => {
                     console.log(error.message);
                 });
-            console.log(dataToSend);
+
+            // const url = `http://localhost/muse_music/public/api/editIndexCarousel.php`;
+            // let headers = {
+            //     "Content-Type": "application/json",
+            //     Accept: "application/json",
+            // };
+            // const dataToSend = {
+            //     car_id: this.editItem.car_id,
+            //     name: this.editItem.nameValue,
+            //     link: this.editItem.bannerLink,
+            //     img: this.editItem.uploadImg,
+            // };
+            // console.log(this.editItem.uploadImg)
+            // fetch(url, {
+            //     method: "POST",
+            //     headers: headers,
+            //     body: JSON.stringify(dataToSend),
+            // })
+            // .then((response) => {
+            //     if (response.ok) {
+            //         return response.json();
+            //     } else {
+            //         throw new Error("新增失敗");
+            //     }
+            // })
+            // .then((json) => {
+            //     alert(json);
+            //     window.location.reload();
+            // })
+            // .catch((error) => {
+            //     console.log(error.message);
+            // });
+            // console.log(dataToSend);
         },
     },
     mounted() {

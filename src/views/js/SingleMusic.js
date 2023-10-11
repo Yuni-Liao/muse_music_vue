@@ -69,55 +69,48 @@ export default {
                 // 獲取當前日期的年月日時分秒
                 const currentDate = new Date();
                 const year = currentDate.getFullYear();
-                const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // 補零
-                const day = currentDate.getDate().toString().padStart(2, '0'); // 補零
-                const hours = currentDate.getHours().toString().padStart(2, '0'); // 補零
-                const minutes = currentDate.getMinutes().toString().padStart(2, '0'); // 補零
-                const seconds = currentDate.getSeconds().toString().padStart(2, '0'); // 補零
-        
-                // 創建新留言對象，使用 Date.now() 作為唯一的 id
+                const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+                const day = currentDate.getDate().toString().padStart(2, '0');
+                const hours = currentDate.getHours().toString().padStart(2, '0');
+                const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+                const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+
+                // 創建新留言對象
                 const newMessageItem = {
-                    id: Date.now(),
-                    userPic: "pre.jpg", // 假設默認的用戶圖片
-                    userName: "Your Name", // 假設新留言的用戶名
-                    date: `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`, // 使用當前日期時間
+                    userPic: "pre.jpg",
+                    userName: "Your Name",
+                    date: `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`,
                     message: this.newMessage,
-                    like: "0", // 初始點讚數為0
+                    like: "0",
                     showReportBtn: false,
                 };
-        
-                // 添加下面的调试语句
-                console.log("Attempting to send a message:", newMessageItem);
-        
-                // 使用 POST 將數據發送给後端
+
+                // 發送新留言到後端
                 fetch('http://localhost/muse_music/public/api/postSingleMusicMsg.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ message: newMessageItem }), // 將 newMessageItem 作為對象傳遞給 JSON.stringify
+                    body: JSON.stringify({ message: newMessageItem }),
                 })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log("Response from server:", data); 
-                    if (data.success) {
-                        // 清空新留言的内容
-                        this.newMessage = "";
-        
-                        // 更新前台留言列表
-                        this.messages.unshift(newMessageItem);
-                    } else {
-                        // 留言失敗
-                        console.error(data.msg);
-                    }
-                })
-                .catch((error) => {
-                    console.error('留言發送失敗:', error);
-                });
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            // 清空新留言的内容
+                            this.newMessage = "";
+
+                            // 更新前台留言列表
+                            this.messages.unshift(data.message); // 假设后端返回整个新留言对象
+                        } else {
+                            // 留言失敗
+                            console.error(data.msg);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('留言發送失敗:', error);
+                    });
             }
         },
-        
-        
 
         // 預設只顯示前三筆留言
         showMore() {
@@ -190,9 +183,9 @@ export default {
                 .then(async (response) => {
                     this.messages = await response.json();
                 })
-                .catch((error) => {
-                    console.error("發生錯誤:", error);
-                });
+            // .catch((error) => {
+            //     console.error("發生錯誤:", error);
+            // });
         };
         //相關歌曲 (fetch) otherSongs:[]
         const fetchSingleMusicSong = () => {

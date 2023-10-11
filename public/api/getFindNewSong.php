@@ -9,6 +9,7 @@ try {
     //SQL指令: 查詢新歌推薦前10名
     $sql = "
         select
+            s.s_id,
             s.mem_id,
             s.s_img , 
             s.s_name, 

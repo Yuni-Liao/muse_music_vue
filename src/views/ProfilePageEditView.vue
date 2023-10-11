@@ -1,11 +1,19 @@
 <template>
   <div class="profilepageedit">
     <div class="cover-container">
-      <img class="cover" alt="Cover Image" :src="member.coverimgURL" />
+      <img
+        class="cover"
+        alt="CoverImage"
+        :src="`${publicPath}dataimage/member/` + member[0].cover_pic"
+      />
       <input class="coverupdate" type="file" @change="coverImgChange($event)" />
       <!-- 頭貼 -->
       <div class="profile-container">
-        <img class="profile" alt="Profile Image" :src="member.profileImgURL" />
+        <img
+          class="profile"
+          alt="ProfileImage"
+          :src="`${publicPath}dataimage/member/` + member[0].mem_pic"
+        />
         <input
           type="file"
           @change="profileImgChange($event)"
@@ -69,25 +77,23 @@
                 type="text"
                 style=""
                 id="name"
-                v-model="name"
-                :placeholder="member.name"
+                v-model="member[0].mem_name"
               />
             </div>
+
             <div class="form-group">
               <label for="inst" class="label">介紹</label>
               <textarea
                 name=""
                 id="inst"
-                v-model="inst"
+                v-model="member[0].intro"
                 rows="10"
                 wrap="hard"
-                :placeholder="member.introduction"
               ></textarea>
             </div>
             <div class="form-group">
               <label for="location" class="label">位置</label>
-              <select id="location" v-model="location">
-                <option value="" disabled>請選擇縣市</option>
+              <select id="location" v-model="member[0].county">
                 <option value="基隆市">基隆市,台灣</option>
                 <option value="台北市">台北市,台灣</option>
                 <option value="新北市">新北市,台灣</option>
@@ -114,12 +120,7 @@
             </div>
             <div class="form-group">
               <label for="social" class="label">社群網站</label>
-              <input
-                type="text"
-                id="social"
-                v-model="social"
-                placeholder="社群網站"
-              />
+              <input type="text" id="social" v-model="member[0].social_media" />
             </div>
           </form>
           <router-link to="profilepageedit"
@@ -132,15 +133,13 @@
             </button></router-link
           >
 
-          <router-link to="profilepageedit"
-            ><button
-              class="button"
-              style="margin-bottom: 150px"
-              @click="complete"
-            >
-              儲存變更
-            </button></router-link
+          <button
+            @click="saveBtn()"
+            class="button"
+            style="margin-bottom: 150px"
           >
+            儲存變更
+          </button>
         </div>
 
         <div v-show="activeTab === 2" class="page">
@@ -189,11 +188,14 @@
 
             <div class="form-group">
               <label for="newalbumname" class="label">歌曲名稱</label>
-              <input type="text" id="newalbumname" v-model="newalbumname" />
+              <!-- <input type="text" id="newalbumname" v-model="newalbumname" /> -->
+              <input type="text" id="newalbumname" />
             </div>
             <div class="form-group">
               <label for="songintro" class="label">歌曲介紹</label>
-              <input type="text" id="songintro" v-model="newalbuminfo" />
+
+              <!-- <input type="text" id="songintro" v-model="newalbuminfo" /> -->
+              <input type="text" id="songintro" />
             </div>
             <div class="form-group">
               <label for="songclass" class="label">分類</label>
@@ -361,15 +363,13 @@
             </button></router-link
           >
 
-          <router-link to="profilepageedit"
-            ><button
-              class="button"
-              style="margin-bottom: 150px"
-              @click="complete"
-            >
-              儲存變更
-            </button></router-link
+          <button
+            @click="saveBtn()"
+            class="button"
+            style="margin-bottom: 150px"
           >
+            儲存變更
+          </button>
         </div>
         <div v-show="activeTab === 3" class="page">
           <div class="top">
@@ -397,7 +397,9 @@
                 <th class="tintro">歌曲簡介</th>
                 <th class="show">瀏覽權限</th>
                 <th class="date">更新日期</th>
-                <th class="time"><fontAwesome :icon="['fa', 'fa-clock']" /></th>
+                <th class="time">
+                  <fontAwesome :icon="['fa', 'fa-clock']" />
+                </th>
                 <th class="edit">編輯</th>
               </tr>
             </thead>
@@ -449,16 +451,16 @@
               </tr>
             </tbody>
           </table>
-          <Page :total="100" show-elevator /><br />
+          <!-- <Page :total="100" show-elevator /><br /> -->
         </div>
 
         <div v-show="activeTab === 4" class="page">
           <div class="top">
-            <router-link to="newalbum" class="newalbum"
-              ><fontAwesome class="i" :icon="['fa', 'plus']" /><span
+            <router-link to="newalbum" class="newalbum">
+              <fontAwesome class="i" :icon="['fa', 'plus']" /><span
                 >新增專輯</span
-              ></router-link
-            >
+              >
+            </router-link>
           </div>
           <table class="song-table">
             <thead>
@@ -516,7 +518,7 @@
               </tr>
             </tbody>
           </table>
-          <Page :total="100" show-elevator /><br />
+          <!-- <Page :total="100" show-elevator /><br /> -->
         </div>
       </div>
     </div>

@@ -4,21 +4,20 @@ export default {
     return {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
+      //
       activeTab: 1,
       currentStep: 0,
-      login_mem_id: 1, //這個之後要再改
-      member: {
-        coverimgURL: require(`/public/dataimage/member/1-2.jpg`),
-        profileImgURL: require(`/public/dataimage/member/1-1.jpg`),
-        name: "Anonyous",
-        introduction:
-          "桃園人，喜歡古典樂，最近嘗試個人創作，將古典樂結合搖滾，如果各位還喜歡，請追蹤我會不定時更新創作，謝謝支持~~~",
-        location: "",
-        socialMedia: "",
-        privacy: "公開",
-      },
+      member: [{
+        cover_pic: '',
+        mem_pic: '',
+        mem_name: '',
+        intro: '',
+        county: '',
+        social_media: '',
+      }],
       profileSongs: [],
       profileAlbums: [],
+      login_mem_id: 1,
     };
   },
   methods: {
@@ -32,7 +31,7 @@ export default {
       readFile.addEventListener("load", this.coverloadImage);
     },
     coverloadImage(e) {
-      this.member.coverimgURL = e.target.result;
+      this.member.cover_pic = e.target.result;
     },
     //頭貼相片
     profileImgChange(e) {
@@ -49,9 +48,45 @@ export default {
         body: fd,
       });
     },
-    profileloadImage(e) {
-      this.member.profileImgURL = e.target.result;
+
+    // 個人檔案 - 編輯 
+    saveBtn() {
+      const url = `http://localhost/muse_music/public/api/editProfileData.php`;
+      let headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      };
+      const dataToSend = {
+        mem_name: this.member[0].mem_name,
+        intro: this.member[0].intro,
+        county: this.member[0].county,
+        social_media: this.member[0].social_media,
+        mem_id: this.member[0].mem_id,
+      };
+
+      fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(dataToSend),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("編輯失敗");
+          }
+        })
+        // .then(() => {
+        //   window.location.reload();
+        // })
+        .catch((error) => {
+          console.log(error.message);
+        });
+      console.log(dataToSend);
     },
+
+
+
     editSong(s_id, s_img, s_name, s_intro, show_stat) {
       this.$router.push({
         name: "editsong",
@@ -77,7 +112,22 @@ export default {
     },
   },
   mounted() {
-    //fetch 會員歌曲
+    //fetch 會員基本資料
+    const fetchMemberInfo = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getProfileDetail.php`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.member = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchMemberInfo();
+
+    // //fetch 會員歌曲
     const fetchSongData = () => {
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getProfileSong.php?memid=${this.login_mem_id}&stat=0`

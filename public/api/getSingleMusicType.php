@@ -22,9 +22,6 @@ try {
     if ($singleMusicType->rowCount() === 0) {
         echo "查無專輯資料";
     } else {
-        // $row = $singleMusicType->fetch(PDO::FETCH_ASSOC);
-        // $types = explode(",", $row["types"]);
-        // echo json_encode($types); //送出json字串
         $row = $singleMusicType->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($row); //送出json字串
     }

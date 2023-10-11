@@ -4,7 +4,7 @@
       <router-link to="editalbum">專輯管理</router-link> &nbsp/&nbsp
       新增單曲至專輯
     </form>
-    <div class="selcetcheck">已勾選 {{ checked }} 首歌曲</div>
+    <div class="selcetcheck">已勾選 {{ this.checked }} 首歌曲</div>
     <div class="content">
       <table class="song-table">
         <thead>
@@ -20,32 +20,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(song, index) in songs" :key="index">
+          <tr v-for="(item, index) in noAlbumsongs" :key="index">
             <td>{{ index + 1 }}</td>
             <td class="simg">
               <div class="pic">
                 <img
                   class="profile"
-                  alt="Profile Image"
-                  src="@/assets/image/profileeditimage/song.jpg"
+                  alt="歌曲照片"
+                  :src="`${publicPath}dataimage/song/${item.songPic}`"
                 />
               </div>
             </td>
-            <td class="sname">{{ song.title }}</td>
+            <td class="sname">{{ item.name }}</td>
             <td class="sintro">
-              <p>{{ song.description }}</p>
+              <p>{{ item.s_intro }}</p>
             </td>
-            <td>{{ song.privacy }}</td>
-            <td>{{ song.date }}</td>
-            <td>{{ song.time }}</td>
+            <td>{{ item.show_stat }}</td>
+            <td>{{ item.s_update_date }}</td>
+            <td>{{ item.time }}</td>
             <td>
               <br />
               <label class="checkboxLabel">
                 <input
+                  @click="updateCount($event)"
                   type="checkbox"
                   name="songclass"
-                  @click="updateCount($event)"
-                  v-model="song.isChecked"
+                  v-model="item.isChecked"
                 />
                 <fontAwesome class="i" :icon="['fa', 'fa-check']" />
               </label>
@@ -62,96 +62,30 @@
 </template>
 <script>
 export default {
+  props: {
+    noAlbumsongs: [Object],
+  },
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       isAddSongOpen: false,
       checked: 0,
-      songs: [
-        {
-          title: "新增加的歌1",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-        {
-          title: "新增加的歌2",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-        {
-          title: "新增加的歌3",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-        {
-          title: "新增加的歌4",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-        {
-          title: "新增加的歌5",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-        {
-          title: "新增加的歌6",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-        {
-          title: "新增加的歌7",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-        {
-          title: "新增加的歌8",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-        {
-          title: "新增加的歌9",
-          description:
-            "《你是我的唯一》是一首充滿浪漫和溫馨氛圍的流行歌曲，和知名製作人邱比特組合「夢幻之音」打造。歌曲以柔和的鋼琴旋律開篇，隨後逐漸引入輕柔的吉他和溫暖的弦樂編排。",
-          privacy: "公開",
-          date: "2023-08-22",
-          time: "03:58",
-          isChecked: false,
-        },
-      ],
     };
   },
+
+  mounted() {
+    //計算已勾選歌曲數字
+    let checkcount = 0;
+    for (let i = 0; i < this.noAlbumsongs.length; i++) {
+      if (this.noAlbumsongs[i].isChecked) {
+        checkcount += 1;
+      }
+    }
+    this.checked = checkcount;
+  },
+
   methods: {
+    //更新以勾選歌曲數量
     updateCount(e) {
       e.target.isChecked = e.target.checked;
       if (e.target.checked == true) {
@@ -165,8 +99,7 @@ export default {
       this.$emit("isAddSongOpenupdate", this.isAddSongOpen);
     },
     submitAddSong() {
-      const NewData = this.songs.filter((e) => e.isChecked);
-      //   console.log(NewData);
+      const NewData = this.noAlbumsongs;
       this.isAddSongOpen = false;
       this.$emit("isAddSongOpenupdate", this.isAddSongOpen);
       this.$emit("NewDataupdate", NewData);
@@ -360,6 +293,7 @@ export default {
       overflow: hidden;
       img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
       }
     }

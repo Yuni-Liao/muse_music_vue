@@ -13,6 +13,7 @@
             type="email"
             id="email"
             v-model="email"
+            name="username"
             required
             placeholder="請輸電子信箱"
             class="emailinput"
@@ -24,6 +25,7 @@
         <input
             id="password"
             v-model="password"
+            name="password"
             required
             placeholder="請輸入密碼"
             class="logininput"
