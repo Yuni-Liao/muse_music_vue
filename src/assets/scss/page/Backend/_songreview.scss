@@ -20,36 +20,137 @@ main {
     }
   }
   // 編輯彈窗
-  .edit {
-    @include rect(300px, 350px);
-    padding: 1%;
-    background-color: #d9d9d9;
-    border: $green 3px solid;
+  .editwrap {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     z-index: 100;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-evenly;
-    .btngroup {
+    width: 100vw;
+    height: 100vh;
+    background-color: $tp;
+    top: 0;
+    left: 0;
+    .edit {
+      width: 800px;
+      padding: 30px;
+      background-color: #333;
+      color: #fff;
+      border: $green 3px solid;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
       display: flex;
+      flex-flow: column wrap;
       justify-content: space-evenly;
-      .saveBtn {
-        @include rect(50px, auto);
-        @include btnColor($green, false);
-        margin: auto;
-        font-size: 14px;
-        line-height: 1.5;
+
+      .i {
+        width: fit-content;
+        margin: 0 20px;
+        cursor: pointer;
+        color: $green;
       }
-      .closeBtn {
-        @include rect(50px, auto);
-        margin: auto;
-        font-size: 14px;
-        line-height: 1.5;
-        border: 0px;
-        @include btnColor($white, false);
+      .group {
+        text-align: center;
+        input[type="text"] {
+          padding: 5px 0;
+          width: 100%;
+          text-align: center;
+          cursor: default;
+          &:focus {
+            outline: none;
+          }
+        }
+        margin: 20px 0;
+      }
+      .checkbox {
+        padding: 0 10px;
+        border: 1px solid #ffffff40;
+        border-radius: 5px;
+        .songclass {
+          // width: 100%;
+          text-align: left;
+          // background-color: black;
+          padding: 0 0 10px 0;
+          // border-radius: 10px;
+          // margin: 20px 10px;
+          .label {
+            font-size: 14px;
+            margin: 10px 0;
+            width: 100%;
+          }
+
+          .opt {
+            text-align: left;
+            display: inline-block;
+            margin: 5px 5px;
+            min-width: 90px;
+            color: $white;
+            font-size: 14px;
+            .checkboxLabel {
+              display: inline-block;
+              position: relative;
+              margin-right: 5px;
+              input[type="checkbox"] {
+                cursor: pointer;
+                vertical-align: baseline;
+                color: $white;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                /*清除預設樣式*/
+                appearance: none;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                border: 2px solid #ffffff80;
+                margin-bottom: -4px;
+              }
+
+              .i {
+                position: absolute;
+                z-index: 10;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -40%);
+                font-size: 9px;
+                color: $green;
+                margin: 0;
+                opacity: 0;
+                pointer-events: none;
+              }
+              input[type="checkbox"]:hover,
+              input[type="checkbox"]:checked {
+                border: 2px solid $green;
+              }
+              input[type="checkbox"]:checked ~ .i {
+                opacity: 1;
+              }
+            }
+            .classname {
+              line-height: 23px;
+              vertical-align: top;
+            }
+          }
+        }
+      }
+      .btngroup {
+        margin: 5px 0 -5px 0;
+        display: flex;
+        justify-content: space-evenly;
+        .saveBtn {
+          @include rect(50px, auto);
+          @include btnColor($green, false);
+          margin: auto;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+        .closeBtn {
+          @include rect(50px, auto);
+          margin: auto;
+          font-size: 14px;
+          line-height: 1.5;
+          border: 0px;
+          @include btnColor($white, false);
+        }
       }
     }
   }
