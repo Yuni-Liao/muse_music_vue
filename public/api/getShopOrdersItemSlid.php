@@ -6,11 +6,7 @@ try{
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    
     $slid = $_GET['slid'];
-    // $slid = isset($_GET['slid']) ? $_GET['slid'] : null;
-    // echo "slid的值: $slid";
-    // $slid = 1;
 
     //SQL指令: 查詢orderitem
     $sql = "select oi.ord_id, oi.prod_id, oi.ord_price, oi.ord_pcs, p.prod_name, p.prod_pic, o.ord_date, o.ord_name, o.ord_tel, o.ord_add, o.ord_pay, o.ord_ship, o.ord_total_price, o.ord_stat 

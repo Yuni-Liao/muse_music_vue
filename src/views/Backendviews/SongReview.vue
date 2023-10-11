@@ -17,6 +17,7 @@
     </Input>
     <div class="content">
       <Table
+        width="1000"
         highlight-row
         stripe
         class="song_review_table cellHeight"
@@ -25,12 +26,48 @@
       >
         <template #editBtn="{ row }">
           <fontAwesome
-            @click="editBtn()"
+            @click="editBtn(row)"
             :icon="['far', 'pen-to-square']"
             style="cursor: pointer"
           />
         </template>
       </Table>
+    </div>
+  </div>
+  <!-- 編輯彈窗 -->
+  <div v-if="editBox" class="edit obj_Radius">
+    <!-- 輪播id -->
+    <!-- 更新輪播名稱 -->
+    <span>編號</span>
+    <input
+      type="text"
+      id="sid"
+      v-model="editItem.s_id"
+      style="margin-bottom: 10px; width: 250px"
+    />
+    <!-- 更新網址 -->
+    <p>歌曲名稱</p>
+    <input
+      type="text"
+      id="bannerLink"
+      v-model="editItem.s_name"
+      style="margin-bottom: 10px; width: 250px"
+    />
+    <!-- 播放歌曲 -->
+    <p>播放</p>
+    <input
+      type="text"
+      id="playsong"
+      v-model="editItem.s_src"
+      style="margin-bottom: 10px; width: 250px"
+    />
+    <div class="btngroup">
+      <button @click="closeBtn()" class="default_Btn obj_Radius closeBtn">
+        取消
+      </button>
+      <button @click="saveBtn()" class="saveBtn default_Btn obj_Radius">
+        儲存
+      </button>
     </div>
   </div>
 </template>

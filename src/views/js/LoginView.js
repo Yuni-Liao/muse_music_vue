@@ -42,6 +42,7 @@ export default {
             }
 
             const dataToSend = new FormData();
+            
             dataToSend.append("mem_acc", this.member.mem_acc);
             dataToSend.append("mem_psw", this.member.mem_psw);
 
@@ -59,6 +60,9 @@ export default {
                         const mem_id = data.mem_id;
                         alert(`Hi! ${mem_name}  歡迎回到 MuseMusic！ 會員編號 (ID: ${mem_id})`);
 
+                        //會員id localStorage暫存
+                        localStorage.setItem('mem_id', mem_id);
+                        localStorage.setItem('mem_name', mem_name);
                         // 導回首頁
                         this.$router.push("/home");
                     } else {

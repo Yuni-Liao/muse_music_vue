@@ -1,7 +1,7 @@
 .shoporderdetail{
     background-color: $white;
     color: $dark;
-    padding: 140px 0 80px;
+    padding: 170px 0 80px;
     .warp{
         max-width: 1200px;
         width: 100%;
@@ -58,8 +58,10 @@
                 }
                 .active{
                     border-bottom: 3px solid $dark;
+                //     :last-child + .item .frame {
+                //     border: 3px solid #f07e7e;
+                //  }
                 }
-
             }
             .menu{
                 display: flex;
@@ -77,7 +79,10 @@
                 }
             }
             .order_item{
-                width: 18%;
+                width: 16%;
+            }
+            .product{
+                width: 25%;
             }
             .product_pic{
                 width: 28%;
