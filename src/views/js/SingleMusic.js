@@ -35,7 +35,7 @@ export default {
     },
     data() {
         return {
-            id: '', 
+            id: '',
             // 新留言的內容
             newMessage: "",
             // 讓圖片 build 之後能顯示
@@ -65,14 +65,14 @@ export default {
         //     this.$refs.player.playMusic();
         // },
         openPlayer(song) {
-            
+
             this.id = song;
-            
+
             this.$nextTick(() => {
                 // 打印歌曲的 id
                 // console.log("點擊的歌曲id:", this.id);
 
-                 // 调用播放器组件的 playMusic 
+                // 调用播放器组件的 playMusic 
                 this.$refs.player.playMusic(this.id);
             });
         },

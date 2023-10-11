@@ -10,6 +10,7 @@ export default {
     components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn, player },
     data() {
         return {
+            id: '',
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             salid: null,
@@ -20,8 +21,21 @@ export default {
     },
     methods: {
         //播放器
-        openPlayer() {
-            this.$refs.player.playMusic();
+        openPlayer(song) {
+            
+            this.id = song;
+            
+            this.$nextTick(() => {
+                // 打印歌曲的 id
+                // console.log("點擊的歌曲id:", this.id);
+
+                 // 调用播放器组件的 playMusic 
+                this.$refs.player.playMusic(this.id);
+            });
+        },
+        changeSId(newSId) {
+            // 切換上下首--使用從子組件接收的新 id 更新 id prop
+            this.id = newSId;
         },
         toggleMoreBtn(albumItem) {
             albumItem.showMoreBtn = !albumItem.showMoreBtn;

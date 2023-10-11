@@ -1,5 +1,6 @@
 <template>
-  <player ref="player"></player>
+  <!-- 目前撥放器可切換下一首 但不是抓同張專輯 -->
+  <player :s_id="id" @change-s-id="changeSId" ref="player"></player>
   <main class="singleAlbum">
     <!-- 上方大圖 -->
     <div class="banner" v-for="albumItem in album" :key="albumItem.id">
@@ -81,7 +82,7 @@
                 <span class="id">{{ index + 1 }}</span>
                 <span class="pic">
                   <img :src="`${publicPath}dataimage/song/${item.songPic}`" />
-                  <div class="play" @click="openPlayer()">
+                  <div class="play" @click="openPlayer(item.id)">
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </span>
