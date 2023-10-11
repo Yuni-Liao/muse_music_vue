@@ -188,13 +188,19 @@
           }
           ol{
             margin: 0px 20px;
-            
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100%;
             li{
               display: flex;
               flex-direction: row;
               border-bottom: 1px solid $white;
               padding: 5px 0px;
               margin: 10px 0px;
+              font-size: 36px;
+              color: $pink;
               @media screen and (min-width: 413px){
                 justify-content: space-evenly;
                 width: 430px;
@@ -208,16 +214,13 @@
               img{
                 width: 70px;
                 height: 70px;
+                cursor: pointer;
               }
-              .order{
-                font-size: $superBig;
-                color: $pink;
-                font-weight: bold;
-                margin-right: 30px;
-                
-              }
+              
               .txt {
+                min-width: 150px;
                 text-align: left;
+                cursor: pointer;
                 @include s(){
                   margin-left: 10px;
                 }
@@ -295,8 +298,15 @@
           }
           ol{
             margin: 50px 20px 0px 20px;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100%;
           }
           li{
+            font-size: 36px;
+            color: $pink;
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
@@ -315,17 +325,13 @@
               width: 70px;
               height: 70px;
               margin-right: 20px;
-            }
-            .order{
-              font-size: $superBig;
-              color: $pink;
-              font-weight: bold;
-              
-              margin-right: 30px;
+              margin-left: 30px;
+              cursor: pointer;
             }
           }
           
           .txt {
+            min-width: 150px;
             text-align: left;
             @include s(){
               margin-left: 10px;
@@ -334,6 +340,7 @@
               color: $white;
               font-size: $default;
               font-weight: normal;
+              cursor: pointer;
             }
             p{
               margin-top: 10px;
@@ -341,6 +348,7 @@
               font-size: 12px;
               font-weight: 400;
               line-height: 15px;
+              cursor: pointer;
             }
           }
           .follow_icon{

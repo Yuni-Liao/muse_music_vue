@@ -4,15 +4,17 @@
             <div class="return">
                 <router-link :to="`/home/shoporders`">
                     <div class="pic">
-                        <img :src="`${publicPath}image/ShopOrders/shoporderdetail_return.png`" alt="shoporderdetail_return">
+                        <fontAwesome :icon="['fa', 'angle-left']" class="arrow" />
                     </div>
                     <div class="txt">回到總覽頁面</div>
                 </router-link>
             </div>
             <div class="order">
-                <div class="serial">訂單編號：{{ foundObject.serial }}</div>
+                <!-- 直接使用shopOrdersItem[0].ord_id抓會找不到值報錯 -->
+                <div class="serial">訂單編號：FK-348593{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_id : '' }}</div>
 
                 <div class="course">
+                    <div class="active"></div>
                     <div class="item">
                         <div class="frame">
                             <div class="pic">
@@ -66,35 +68,35 @@
                     <div class="pcs order_item">數量</div>
                     <div class="date order_item">商品小計</div>
                 </div>
-                <div class="main">
+                <div class="main" v-for="(item, id) in shopOrdersItem" :key="id">
                     <div class="product_pic order_item">
-                        <img :src="`${publicPath}/image/ShopImage/${foundObject.prodpic}`" alt="prod">
+                        <img :src="`${publicPath}image/ShopImage/${item.prod_pic}`" alt="item.prod_name">
                     </div>
                     <div class="product order_item">
-                        {{ foundObject.prod }}
+                        {{ item.prod_name }}
                     </div>
-                    <div class="price order_item">{{ foundObject.price }}</div>
-                    <div class="pcs order_item">{{ foundObject.pcs }}</div>
-                    <div class="projectprice order_item">{{ foundObject.projectprice }}</div>
+                    <div class="price order_item">{{ item.ord_price }}</div>
+                    <div class="pcs order_item">{{ item.ord_pcs }}</div>
+                    <div class="projectprice order_item">{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_price*shopOrdersItem[0].ord_pcs : '' }}</div>
                 </div>
                 <div class="content">
                     <div class="list">
                         <div class="totalprice item">
-                            總金額：{{ foundObject.totalprice }}
+                            總金額：{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_total_price: ''}}
                         </div>
                         <div class="totalpcs item">
-                            共 {{ foundObject.pcs }} 件商品
+                            共 {{ shopOrdersItem.length }} 件商品
                         </div>
                     </div>
                     <div class="list">
-                        <div class="ship item">運送方式：{{ foundObject.ship }}</div>
-                        <div class="pay item">付款方式：{{ foundObject.pay }}</div>
-                        <div class="stat item">訂單狀態：{{ foundObject.stat }}</div>
+                        <div class="ship item">運送方式：{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_ship : '' }}</div>
+                        <div class="pay item">付款方式：{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_pay : '' }}</div>
+                        <div class="stat item">訂單狀態：{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_stat : '' }}</div>
                     </div>
                     <div class="list item">
-                        <div class="name item">收件者：{{ foundObject.name }}</div>
-                        <div class="add item">收件地址：{{ foundObject.add }}</div>
-                        <div class="tel item">聯絡電話：{{ foundObject.tel }}</div>
+                        <div class="name item">收件者：{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_name : '' }}</div>
+                        <div class="add item">收件地址：{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_add : '' }}</div>
+                        <div class="tel item">聯絡電話：{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_tel : '' }}</div>
                     </div>
                 </div>
             </div>

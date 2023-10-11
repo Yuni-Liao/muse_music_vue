@@ -103,7 +103,7 @@
                             </div>
                             <div class="message" v-for="messageItem in messages.slice(0, num)" :key="messageItem.msg_id">
                                 <div class="infBar">
-                                    <div class="user">
+                                    <!-- <div class="user">
                                         <div class="pic">
                                             <img :src="`${publicPath}dataimage/member/${messageItem.userpic}`"
                                                 :alt="messageItem.username">
@@ -111,9 +111,9 @@
                                         <router-link :to="`/home/profilepage/${messageItem.userid}`">
                                             <p class="userName">{{ messageItem.username }}</p>
                                         </router-link>
-                                    </div>
+                                    </div> -->
                                     <p class="date">
-                                        {{ messageItem.date }}
+                                        {{ messageItem.msg_date }}
                                     <div tabindex="0" class="more-group">
                                         <button class="more">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
@@ -123,12 +123,12 @@
                                     </p>
                                 </div>
                                 <p class="txt">
-                                    {{ messageItem.message }}
+                                    {{ messageItem.msg_con }}
                                 </p>
-                                <div class="likeMes" v-if="messageItem">
-                                    <p class="likeCount">{{ messageItem.liked }}</p>
+                                <!-- <div class="likeMes" v-if="messageItem">
+                                    <p class="likeCount">{{ messageItem.msg_like }}</p>
                                     <LikeMesBtn :messageItem="messageItem"></LikeMesBtn>
-                                </div>
+                                </div> -->
                             </div>
                             <button v-if="messages.length > 3" class="readMore" @click.prevent="showMore">
                                 {{ txt }}

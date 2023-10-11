@@ -25,18 +25,29 @@ export default {
         ...this.albumSongsData,
       ];
     },
-
     submit() {
-      //編輯專輯歌曲------
-      const url = `http://localhost/muse_music/public/api/editAlbum.php`;
+      //編輯專輯歌曲 & 未有歌曲做新增(在該歌曲資訊中 update 上 alb_id 的值) & 已有歌曲做刪除(alb_id set null)------
+      const selectedAddSongs = this.noAlbumsongs
+        .filter((obj) => obj.isChecked === true)
+        .map((obj) => obj.id);
+      console.log(selectedAddSongs);
+
+      const selectedDelSongs = this.albumSongsData
+        .filter((obj) => obj.isChecked === false)
+        .map((obj) => obj.id);
+
+      const url = `${this.$store.state.phpPublicPath}editAlbumAndsong.php`;
       let headers = {
         Accept: "application/json",
       };
+
       const formData = new FormData();
       formData.append("alb_id", this.albumData.alb_id);
       formData.append("alb_img", this.albumData.alb_img);
       formData.append("alb_name", this.albumData.alb_name);
       formData.append("alb_intro", this.albumData.alb_intro);
+      formData.append("selectedAddSongs", JSON.stringify(selectedAddSongs));
+      formData.append("selectedDelSongs", JSON.stringify(selectedDelSongs));
 
       fetch(url, {
         method: "POST",
@@ -44,89 +55,16 @@ export default {
         body: formData,
       })
         .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error("新增失敗");
-          }
+          return response.json();
+        })
+        .then(() => {
+          this.$router.push({
+            name: "profilepageedit",
+          });
         })
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
-
-      //未有歌曲做新增(在該歌曲資訊中 update 上 alb_id 的值)------
-      const selectedAddSongs = this.noAlbumsongs
-        .filter((obj) => obj.isChecked === true)
-        .map((obj) => obj.id);
-
-      //假如有值，就執行 fetch 動作
-      if (selectedAddSongs.length != 0) {
-        const url = `http://localhost/muse_music/public/api/editSongofAlbum.php`;
-        let headers = {
-          Accept: "application/json",
-        };
-        const formData = new FormData();
-        formData.append("acttype", "1"); //PHP做新增動作
-        formData.append("alb_id", this.albumData.alb_id);
-        formData.append("selectedSongs", JSON.stringify(selectedAddSongs));
-        fetch(url, {
-          method: "POST",
-          headers: headers,
-          body: formData,
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error("新增歌曲失敗");
-            }
-          })
-          .catch((error) => {
-            console.error("發生錯誤:", error);
-          });
-      }
-
-      //已有歌曲做刪除(alb_id set null)------
-
-      const selectedDelSongs = this.albumSongsData
-        .filter((obj) => obj.isChecked === false)
-        .map((obj) => obj.id);
-
-      //假如有值，就執行 fetch 動作
-      if (selectedDelSongs.length != 0) {
-        const url = `http://localhost/muse_music/public/api/editSongofAlbum.php`;
-        let headers = {
-          Accept: "application/json",
-        };
-        const formData = new FormData();
-        formData.append("acttype", "2"); //PHP做刪除動作
-        formData.append("alb_id", this.albumData.alb_id);
-        formData.append("selectedSongs", JSON.stringify(selectedDelSongs));
-        fetch(url, {
-          method: "POST",
-          headers: headers,
-          body: formData,
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error("setnull失敗");
-            }
-          })
-          .then(() => {
-            // window.location.reload();
-          })
-          .catch((error) => {
-            console.error("發生錯誤:", error);
-            console.log(error);
-          });
-      }
-
-      //頁面跳轉
-      this.$router.push({
-        name: "profilepageedit",
-      });
     },
   },
   mounted() {
@@ -142,7 +80,7 @@ export default {
     const salid = this.albumData.alb_id;
     if (salid) {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getSingleAlbumSong.php?salid=${salid}`
+        `${this.$store.state.phpPublicPath}getSingleAlbumSong.php?salid=${salid}`
       );
 
       fetch(apiURL)
@@ -163,7 +101,7 @@ export default {
     // fetch 該會員未有 alb_id 的歌曲 ( 表示可以被加入專輯中 ) ，放入 noAlbumsongs 中
     const memid = this.login_mem_id;
     const apiURL = new URL(
-      `http://localhost/muse_music/public/api/getNoAlbumsong.php?memid=${memid}`
+      `${this.$store.state.phpPublicPath}getNoAlbumsong.php?memid=${memid}`
     );
     fetch(apiURL)
       .then((res) => res.json())
