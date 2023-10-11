@@ -48,12 +48,11 @@ export default {
                 .then((data) => {
                     if (data.message === "登入成功") {
                         alert("登入成功");
-
                         // 從資料庫撈會員姓名
                         const userName = data.mem_name;
-
-                        // 彈出對應會員訊息~~~
-                        alert(`Hi! ${userName} 歡迎回到MuseMusic！`);
+                        // 綁定id
+                        const userId = data.mem_id;
+                        alert(`Hi! ${userName}  歡迎回到MuseMusic！ 會員編號 (ID: ${userId})`);
 
                         // 導回首頁
                         this.$router.push("/home");
