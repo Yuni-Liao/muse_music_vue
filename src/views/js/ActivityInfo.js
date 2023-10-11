@@ -8,26 +8,31 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            foundObject: {},
             newsList: [],
         }
     },
-
+    methods: {
+        gotoNewsDetail(nid) {
+            this.$router.push({
+              name: "activityInfo",
+              params: {
+                nid,
+              },
+            });
+          },
+    },
     mounted() {
-        this.pageid = parseInt(this.$route.params.nid);
-        const fetchnewsDetail = () => {
-            const nid = this.$route.params.nid;
-            const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getNewsDetail.php?slid=${nid}`
-            );
-            fetch(apiURL)
-                .then(async (response) => {
-                this.newsList = await response.json();
-                })
-                .catch((error) => {
-                console.error("發生錯誤:", error);
-                });
+        const fetchNewsDetail = () => {
+          const nid = this.$route.params.nid;
+          const apiURL = new URL("http://localhost/muse_music/public/api/getNewsDetail.php?nid=" + encodeURIComponent(nid));
+          fetch(apiURL)
+          .then((res) => res.json())
+          .then((res) => (this.newsList= res))
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
         };
-        fetchnewsDetail();
+        fetchNewsDetail();
+
     },
 }
