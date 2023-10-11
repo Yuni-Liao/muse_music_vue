@@ -6,6 +6,8 @@
         require_once("./connectMusemusic.php");
 
         //執行sql指令並取得pdoStatement
+       
+
         $sql = "select news_id,
                 singer,
                 news_name,
