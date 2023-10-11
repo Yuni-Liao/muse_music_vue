@@ -17,7 +17,8 @@ main{
         .popSongSelect, .popAlbumSelect{
             @include rect(150px, 130px);
             padding: 1%;
-            background-color: #d9d9d9;
+            background-color: #333;
+        color: $white;
             border: $green 3px solid;
             position: absolute;
             top: 30%;
@@ -33,7 +34,6 @@ main{
             .selectedrank{
                 text-align: center;
                 border: 0px;
-                background-color: #d9d9d9;
             }
             .btngroup{
                 display: flex;

@@ -8,14 +8,15 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 try {
     require_once("./connectMusemusic.php");
 
-    $sql = "select * from member where mem_id = 1";
-    $carousel = $pdo->query($sql);
+    $mem_id = $_GET['mem_id'];
+    $sql = "select * from member where mem_id = " . $mem_id;
+    $member = $pdo->query($sql);
 
-    if($carousel->rowCount()===0){
+    if($member->rowCount()===0){
         echo json_encode(["message" => "查無資料"]);
     }else{
-        $carouselData = $carousel->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($carouselData);
+        $memberData = $member->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($memberData);
     }
 } catch (PDOException $e) {
     // 返回 JSON 錯誤響應

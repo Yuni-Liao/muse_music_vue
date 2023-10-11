@@ -1,7 +1,7 @@
-main{
+main {
     position: relative;
-    
-    .prodmgmt_box{
+
+    .prodmgmt_box {
         display: flex;
         flex-flow: column wrap;
         @include layout(80%);
@@ -11,14 +11,60 @@ main{
         display: flex;
         justify-content: center;
         padding-bottom: 5%;
-        h1{
+
+        h1 {
             font-size: $big;
             text-align: left;
             padding-bottom: 3%;
         }
     }
+
+    // 輪播編輯彈窗
+    .editprod {
+        @include rect(300px, 700px);
+        padding: 1%;
+        background-color: #d9d9d9;
+        border: $green 3px solid;
+        position: absolute;
+        top: 30%;
+        left: 35%;
+        z-index: 100;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-evenly;
+
+        .carno {
+            @include rect(100px, auto);
+            margin: auto;
+            text-align: center;
+            border: 0px;
+            background-color: #d9d9d9;
+        }
+
+        .btngroup {
+            // display: flex;
+            // justify-content: space-evenly;
+            .saveBtn {
+                @include rect(100px, auto);
+                @include btnColor($green, false);
+                margin: 0 0px 0 70px;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .closeBtn {
+                @include rect(100px, auto);
+                margin: auto;
+                font-size: 14px;
+                line-height: 1.5;
+                border: 0px;
+                @include btnColor($white, false);
+            }
+        }
+    }
 }
 
-.cellHeight{
+
+.cellHeight {
     line-height: $fh;
 }

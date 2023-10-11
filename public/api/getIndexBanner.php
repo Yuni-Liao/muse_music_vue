@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 try {
     require_once("./connectMusemusic.php");
 
-    $sql = "select img, link from carousel";
+    $sql = "select * from carousel";
     $carousel = $pdo->query($sql);
 
     if($carousel->rowCount()===0){

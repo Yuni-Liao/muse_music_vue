@@ -6,7 +6,6 @@ export default {
             //
             // bannerBox: false, //新增輪播按鈕先隱藏-yuni
             editBox: false,
-            // uploadedImg: '', // 上傳圖片暫存
             carouselItem: [], // 渲染資料的暫存陣列
             columns: [
                 {
@@ -57,17 +56,11 @@ export default {
                 name: '',
                 link: '',
                 img: '',
+                status: '',
             },
-            selectedCarRank: '',
         }
     },
     methods: {
-        // addBannerBtn() {
-        //     this.bannerBox = true; //新增輪播按鈕先隱藏-yuni
-        // },
-        upDownBtn(row) {
-            alert('上/下架');
-        },
         imgChange(e) {
             let that = this;
             let files = e.target.files[0];
@@ -86,16 +79,13 @@ export default {
             this.editItem.link = row.link;
             this.editItem.img = row.img;
         },
-
         saveBtn() {
-            const url = `http://localhost/muse_music/public/api/editIndexCarousel.php`;
-
+            const url = `${this.$store.state.phpPublicPath}editIndexCarousel.php`;
             const formData = new FormData();
             formData.append("car_id", this.editItem.car_id);
             formData.append("name", this.editItem.name);
             formData.append("link", this.editItem.link);
             formData.append("img", document.getElementById("fileImg").files[0]);
-            console.log(document.getElementById("fileImg").files[0]);
 
             fetch(url, {
                 method: "POST",
@@ -104,13 +94,13 @@ export default {
                 .then((response) => {
                     if (response.ok) {
                         console.log(response);
-                        return response.json();
+                        // return response.json();
                     } else {
-                        throw new Error("新增失敗");
+                        throw new Error("編輯失敗");
                     }
                 })
-                .then((json) => {
-                    alert(json);
+                .then(() => {
+                    // alert(json);
                     window.location.reload();
                 })
                 .catch((error) => {
@@ -119,11 +109,98 @@ export default {
         },
         closeBtn() {
             this.editBox = false;
+        },
+        // toggleBtn(row) {
+        //     this.editItem.car_id = row.car_id;
+
+        //     if (this.editItem.status === 0) {
+        //         this.editItem.status = 1;
+        //     } else {
+        //         this.editItem.status = 0;
+        //     }
+
+        //     row.status = this.editItem.status;
+        //     this.changeStatus();
+
+        //     console.log("列:", row.status);
+        //     console.log("此列:", this.editItem.status);
+        // },
+        toggleBtn(row) {
+            const originalStatus = row.status;
+            this.editItem.car_id = row.car_id;
+
+            if (this.editItem.status === 0) {
+                this.editItem.status = 1;
+            } else {
+                this.editItem.status = 0;
+            }
+
+            row.status = this.editItem.status;
+
+            this.changeStatus(row, originalStatus);
+        },
+        changeStatus(row, originalStatus) {
+            const url = `${this.$store.state.phpPublicPath}editIndexCarouselOnOff.php`;
+            const formData = new FormData();
+            formData.append("car_id", row.car_id);
+            formData.append("status", row.status);
+            formData.append("originalStatus", originalStatus);
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("編輯失敗");
+                    }
+                })
+                // .then(() => {
+                //     window.location.reload();
+                // })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        },
+        // changeStatus() {
+        //     const url = `${this.$store.state.phpPublicPath}editIndexCarouselOnOff.php`;
+        //     const formData = new FormData();
+        //     formData.append("car_id", this.editItem.car_id);
+        //     formData.append("status", this.editItem.status);
+        //     fetch(url, {
+        //         method: "POST",
+        //         body: formData,
+        //     })
+        //         .then((response) => {
+        //             if (response.ok) {
+        //                 return response.json();
+        //             } else {
+        //                 throw new Error("編輯失敗");
+        //             }
+        //         })
+        //         // .then(() => {
+        //         //     window.location.reload();
+        //         // })
+        //         .catch((error) => {
+        //             console.log(error.message);
+        //         });
+        // },
+        confirmBeforeChange() {
+            return new Promise((resolve) => {
+                this.$Modal.confirm({
+                    title: '提示',
+                    content: '確定要更改狀態嗎 ?',
+                    onOk: () => {
+                        resolve();
+                    }
+                });
+            });
         }
     },
     mounted() {
         //先檢查資料格式是否符合DB規則
-        const url = `http://localhost/muse_music/public/api/postIndexCarousel.php`;
+        const url = `${this.$store.state.phpPublicPath}postIndexCarousel.php`;
         let headers = {
             "Content-Type": "application/json",
             Accept: "application/json",

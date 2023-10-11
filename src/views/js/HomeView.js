@@ -53,12 +53,7 @@ export default {
       timerValue: null,
       showWeekTopmusic: false,
       // 首頁頂部Banner - 廖妍榛
-      topBanner: [
-        {
-          img: "",
-          link: "",
-        },
-      ], // 存放輪播圖的空陣列
+      topBanner: [], // 存放輪播圖的空陣列
 
       // 本週熱門歌曲輪播 - 黃珮菁
       SongRank: [],
@@ -184,7 +179,7 @@ export default {
     // fetch 本週熱門專輯 - 廖妍榛
     const fetchAlbumRank = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getIndexPopularAlbum.php`
+        `${this.$store.state.phpPublicPath}getIndexPopularAlbum.php`
       );
 
       fetch(apiURL)
@@ -198,13 +193,15 @@ export default {
     // fetch 首頁輪播圖 - 廖妍榛
     const fetchCarousel = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getIndexBanner.php`
+        `${this.$store.state.phpPublicPath}getIndexBanner.php`
       );
 
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => {
           this.topBanner = res;
+          console.log(this.topBanner);
+
         })
         .catch((error) => {
           console.error("發生錯誤:", error);
