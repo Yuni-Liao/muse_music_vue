@@ -23,7 +23,8 @@ main {
     .editprod {
         @include rect(300px, 700px);
         padding: 1%;
-        background-color: #d9d9d9;
+        background-color: #333;
+        color: $white;
         border: $green 3px solid;
         position: absolute;
         top: 30%;
@@ -32,6 +33,10 @@ main {
         display: flex;
         flex-flow: column wrap;
         justify-content: space-evenly;
+        input{
+            //padding: 2%;
+            border: 0px;
+        }
 
         .carno {
             @include rect(100px, auto);

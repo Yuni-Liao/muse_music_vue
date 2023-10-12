@@ -9,7 +9,7 @@ export default {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
       //
-      login_mem_id: "", //這個之後要再改
+      login_mem_id: "", 
       morecurrent: -1,
       currentType: 0, //0,1,2
       isNewSlOpen: false,
