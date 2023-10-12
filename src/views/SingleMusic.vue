@@ -38,7 +38,7 @@
                         </div>
                         <div class="buttonArea">
                             <ShareBtn></ShareBtn>
-                            <AddSlBtn  :addSlSid="songItem.id"></AddSlBtn>
+                            <AddSlBtn :addSlSid="songItem.id"></AddSlBtn>
                             <AddFavBtn></AddFavBtn>
                             <PlayBtnBig @click="openPlayer(songItem.id)"></PlayBtnBig>
                         </div>
@@ -109,7 +109,7 @@
                                                 :alt="messageItem.mem_name">
                                         </div>
                                         <router-link :to="`/home/profilepage/${messageItem.mem_id}`">
-                                            <p class="userName">{{ messageItem.mem_name}}</p>
+                                            <p class="userName">{{ messageItem.mem_name }}</p>
                                         </router-link>
                                     </div>
                                     <p class="date">
@@ -156,7 +156,7 @@
                                         </div>
                                     </div>
                                     <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
-                                            {{ songItem.songname }}
+                                        {{ songItem.songname }}
                                     </router-link>
                                 </div>
                                 <div class="btnArea">
