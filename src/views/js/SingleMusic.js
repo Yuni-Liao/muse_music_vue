@@ -12,20 +12,16 @@ const clickOutside = {
             if (el.contains(e.target)) {
                 return false
             }
-            // 如果绑定的参数是函数，正常情况也应该是函数，执行
             if (binding.value && typeof binding.value === 'function') {
                 binding.value(e)
             }
         }
-        // 用于销毁前注销事件监听
+
         el.__click_outside__ = eventHandler
         document.addEventListener('click', eventHandler)
     },
     beforeUnmount(el) {
-        // 移除事件监听
-        //document.removeEventListener('click', el.__click_outside__)
-
-        // 移除全局点击事件的监听
+        // 移除全局點擊事件監聽
         window.removeEventListener("click", this.handleGlobalClick);
     }
 }
@@ -93,7 +89,6 @@ export default {
                 //formData.append("msg_like", this.msg_like);
                 console.log(this.msg_con);
 
-
                 // 發送新留言到後端
                 fetch(url, {
                     method: "POST",
@@ -108,15 +103,13 @@ export default {
                         }
                     })
                     .then(() => {
-                        //window.location.reload();
-                        this.$forceupdate();
+                        window.location.reload();
                     })
                     .catch((error) => {
                         console.error("發生錯誤:", error);
                     });
             }
         },
-
 
     // gotosinglemusic(sid) {
     //     this.$router.push({
@@ -126,6 +119,7 @@ export default {
     //         },
     //     });
     // },
+
     // 預設只顯示前三筆留言
     showMore() {
             //console.log('1', this.isShow);
@@ -199,10 +193,10 @@ export default {
                 .then(async (response) => {
                     this.messages = await response.json();
                 })
-            console.log(this.messages);
-            // .catch((error) => {
-            //     console.error("發生錯誤:", error);
-            // });
+            //console.log(this.messages);
+            .catch((error) => {
+                console.error("發生錯誤:", error);
+            });
         };
         //相關歌曲 (fetch) otherSongs:[]
         const fetchSingleMusicSong = () => {
@@ -214,9 +208,9 @@ export default {
                 .then(async (response) => {
                     this.otherSongs = await response.json();
                 })
-            // .catch((error) => {
-            //     console.error("發生錯誤:", error);
-            // });
+            .catch((error) => {
+                console.error("發生錯誤:", error);
+            });
         };
 
         // 執行 fetch
