@@ -4,8 +4,8 @@
         <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" :columns="columns"
             :data="carouselItem">
             <template #upDownBtn="{ row }">
-                <Switch @on-change="toggleBtn(row)" :false-color="editItem.status === 0 ? '#ff4949' : '#13ce66'"
-                    :true-color="editItem.status === 1 ? '#13ce66' : '#ff4949'" :before-change="confirmBeforeChange" />
+                <Switch v-model="row.status" @on-change="toggleBtn(row)" false-color="#ff4949" true-color="#13ce66"
+                    :before-change="confirmBeforeChange" true-value="1" false-value="0" />
             </template>
             <template #editBtn="{ row }">
                 <fontAwesome @click="editCarousel(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />

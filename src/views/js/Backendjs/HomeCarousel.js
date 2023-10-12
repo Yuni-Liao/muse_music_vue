@@ -112,18 +112,10 @@ export default {
         },
         toggleBtn(row) {
             this.editItem.car_id = row.car_id;
+            this.editItem.status = row.status;
+            console.log("指定此列的值:", this.editItem.status);
 
-            if (this.editItem.status === 0) {
-                this.editItem.status = 1;
-            } else {
-                this.editItem.status = 0;
-            }
-
-            row.status = this.editItem.status;
             this.changeStatus();
-
-            console.log("列:", row.status);
-            console.log("此列:", this.editItem.status);
         },
         changeStatus() {
             const url = `${this.$store.state.phpPublicPath}editIndexCarouselOnOff.php`;
@@ -141,9 +133,9 @@ export default {
                         throw new Error("編輯失敗");
                     }
                 })
-                // .then(() => {
-                //     window.location.reload();
-                // })
+                .then(() => {
+                    window.location.reload();
+                })
                 .catch((error) => {
                     console.log(error.message);
                 });
