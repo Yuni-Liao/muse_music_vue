@@ -115,10 +115,12 @@
                                     <p class="date">
                                         {{ messageItem.msg_date }}
                                     <div tabindex="0" class="more-group">
-                                        <button class="more">
-                                            <fontAwesome :icon="['fa', 'ellipsis-vertical']" style="color:#aaa;" />
+                                        <button class="more" @click="showReportBtn = !showReportBtn">
+                                            <fontAwesome :icon="['fa', 'ellipsis-vertical']"
+                                                style="color:#aaa;cursor: pointer;" />
                                         </button>
-                                        <ReportBtn class="report-btn"></ReportBtn>
+                                        <!-- 檢舉按鈕 -->
+                                        <ReportBtn class="report-btn" v-if="showReportBtn" @close-report-btn="showReportBtn = false"></ReportBtn>
                                     </div>
                                     </p>
                                 </div>
