@@ -15,6 +15,45 @@ main{
             padding-bottom: 3%;
         }
     }
+    // 輪播編輯彈窗
+    .editfaq{
+        @include rect(400px, 650px);
+        padding: 1%;
+        background-color: #333;
+        color: $white;
+        border: $green 3px solid;
+        position: absolute;
+        top: 30%;
+        left: 40%;
+        z-index: 100;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-evenly;
+        input{
+            padding: 2%;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .btngroup{
+            display: flex;
+            justify-content: space-evenly;
+            .saveBtn{
+                @include rect(50px, auto);
+                @include btnColor($green, false);
+                margin: auto;    
+                font-size: 14px;
+                line-height: 1.5;
+            }
+                .closeBtn{
+                @include rect(50px, auto);
+                margin: auto;    
+                font-size: 14px;
+                line-height: 1.5;
+                border: 0px;
+                @include btnColor($white, false);
+            }
+        }
+    }
 }
 
 .cellHeight{

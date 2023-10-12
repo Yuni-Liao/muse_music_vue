@@ -6,8 +6,11 @@ try{
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
+    $loginMemId = $_GET['loginMemId'];
+
     //SQL指令: 查詢orders
     $sql = "select * from orders 
+    where mem_id = $loginMemId
     order by ord_id desc;";
 
     $orders = $pdo->query($sql);
