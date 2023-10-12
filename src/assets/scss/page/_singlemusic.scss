@@ -245,6 +245,7 @@
 
         .memInf {
             font-size: $default;
+            margin: 0 0 50px;
 
             @media screen and (max-width: 768px) {
                 width: 70%;
@@ -392,6 +393,7 @@
                     .txt {
                         @include layout(80%);
                         text-align: left;
+                        margin-bottom:30px;
                     }
 
                     .likeMes {

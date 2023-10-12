@@ -10,6 +10,8 @@ export default {
             // 訂單分頁初始狀態
             isRecentOrdersVisible: true,
             isHistoryOrdersVisible: false,
+
+            login_mem_id: '',
         };
     },
 
@@ -41,10 +43,13 @@ export default {
     },
 
     mounted() {
+        this.login_mem_id = localStorage.getItem('mem_id');
+        const loginMemId = this.login_mem_id;
+
         // fetch orders 訂單資訊
         const fetchOrdersArray = () => {
             const apiURL = new URL(
-            `${this.$store.state.phpPublicPath}getShopOrders.php?`
+            `${this.$store.state.phpPublicPath}getShopOrders.php?loginMemId=${loginMemId}`
             );
             fetch(apiURL).then(async (response) => {
                 this.shopOrders = await response.json();

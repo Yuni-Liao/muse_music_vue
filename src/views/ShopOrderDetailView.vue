@@ -77,7 +77,7 @@
                     </div>
                     <div class="price order_item">{{ item.ord_price }}</div>
                     <div class="pcs order_item">{{ item.ord_pcs }}</div>
-                    <div class="projectprice order_item">{{ shopOrdersItem.length > 0 ? shopOrdersItem[0].ord_price*shopOrdersItem[0].ord_pcs : '' }}</div>
+                    <div class="projectprice order_item">{{ item.ord_price * item.ord_pcs }}</div>
                 </div>
                 <div class="content">
                     <div class="list">
