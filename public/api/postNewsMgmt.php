@@ -1,21 +1,21 @@
-<?php 
+<?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-// header("Content-Type: application/json"); 
+header("Content-Type: application/json");
 
-// 前台 - 首頁輪播渲染 - 廖妍榛
+
 try {
     require_once("./connectMusemusic.php");
+    // 取得所有資料
+    $sql = "select * from news";
+    $news = $pdo->query($sql);
 
-    $sql = "select * from carousel where status = 1";
-    $carousel = $pdo->query($sql);
-
-    if($carousel->rowCount()===0){
-        echo json_encode(["message" => "查無輪播圖"]);
-    }else{
-        $carouselData = $carousel->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($carouselData);
+    if ($news->rowCount() === 0) {
+        echo json_encode(["message" => "查無商品"]);
+    } else {
+        $newsData = $news->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($newsData);
     }
 } catch (PDOException $e) {
     // 返回 JSON 錯誤響應
@@ -23,4 +23,3 @@ try {
     echo json_encode($errorResponse);
 }
 ?>
-

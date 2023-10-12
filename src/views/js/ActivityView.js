@@ -85,7 +85,7 @@ export default {
   methods: {
     //獲取news資訊
     fetchNews(){
-      const apiURL = new URL(`http://localhost/muse_music/public/api/getNews.php?`);
+      const apiURL = new URL(`${this.$store.state.phpPublicPath}getNews.php?`);
       fetch(apiURL)
       .then(async (response) => {
         this.news = await response.json();
