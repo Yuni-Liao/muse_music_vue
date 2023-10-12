@@ -42,4 +42,3 @@ try {
     $errorResponse = ["success" => false, "msg" => "留言失敗：" . $e->getMessage()];
     echo json_encode($errorResponse);
 }
-?>

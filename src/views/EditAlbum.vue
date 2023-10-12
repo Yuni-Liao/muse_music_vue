@@ -10,24 +10,31 @@
     <label for="name" class="label"></label>
     <form class="form1">
       <div class="form-group">
-        <label for="name" class="label" color="white" margin-top="100px"
-          >專輯編輯</label
-        >
-        <Upload type="drag" action="//jsonplaceholder.typicode.com/posts/">
-          <div style="padding: 60px 0; background-color: black">
-            <img
-              class="songpic"
-              alt="Update Image"
-              src="@/assets/image/icon/upload.jpg"
-            />
-            <p style="color: white">上傳封面相片</p>
-            <br />
-            <p style="color: white">
-              ☸ 建議尺寸:500x500px以上，圖片檔案大小不可超過2MB
-              {{ albumData.alb_img }}
-            </p>
+        <label for="name" class="label" color="white">專輯編輯</label>
+        <div class="uploadImgWrap">
+          <div class="uploadImg">
+            <input id="inputimg" type="file" @change="coverImgChange($event)" />
+            <label for="inputimg" class="inputimg">
+              <div v-if="updateimg == false" class="pic">
+                <img
+                  class="uploadpic"
+                  alt="原本專輯封面"
+                  :src="`${publicPath}dataimage/song/${albumData.alb_img}`"
+                />
+              </div>
+              <div v-else class="pic">
+                <img class="uploadpic" alt="更新後之專輯封面" :src="showimg" />
+              </div>
+            </label>
+            <div>
+              <p style="color: white">專輯封面上傳</p>
+              <br />
+              <p style="color: white">
+                ☸ 建議尺寸:500x500px以上，圖片檔案大小不可超過2MB
+              </p>
+            </div>
           </div>
-        </Upload>
+        </div>
       </div>
 
       <div class="form-group">
