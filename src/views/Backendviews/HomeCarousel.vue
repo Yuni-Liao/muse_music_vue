@@ -4,7 +4,7 @@
         <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" :columns="columns"
             :data="carouselItem">
             <template #upDownBtn="{ row }">
-                <Switch @on-change="upDownBtn(row)" :false-color="editItem.status === 0 ? '#ff4949' : '#13ce66'"
+                <Switch @on-change="toggleBtn(row)" :false-color="editItem.status === 0 ? '#ff4949' : '#13ce66'"
                     :true-color="editItem.status === 1 ? '#13ce66' : '#ff4949'" :before-change="confirmBeforeChange" />
             </template>
             <template #editBtn="{ row }">
