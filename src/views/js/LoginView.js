@@ -7,11 +7,13 @@ export default {
                 mem_psw: '',
                 mem_name: '',
             }],
+            login_mem_id: '',
             emailInvalid: false,
             passwordInvalid: false,
             showPassword: false,
             memberData: {},
         };
+        
 
     },
     methods: {
