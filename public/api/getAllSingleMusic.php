@@ -8,7 +8,7 @@ header("Content-Type:application/json;charset=utf-8");
 try {
     require_once("./connectMusemusic.php");
 
-    $sql = "select s_id, s_name from song";
+    $sql = "select s_id, s_name from song where show_stat = 1";
 
     
     $albumRank = $pdo->query($sql);
