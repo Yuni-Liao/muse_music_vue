@@ -107,26 +107,29 @@ export default {
                         }
                     })
                     .then(() => {
-                        window.location.reload();
+                        //window.location.reload();
+                        this.$forceupdate();
                     })
                     .catch((error) => {
                         console.error("發生錯誤:", error);
                     });
             }
         },
-        gotosinglemusic(sid) {
-            this.$router.push({
-                name: "singlemusic",
-                params: {
-                    sid,
-                },
-            });
-        },
+
+
+        // gotosinglemusic(sid) {
+        //     this.$router.push({
+        //         name: "singlemusic",
+        //         params: {
+        //             sid,
+        //         },
+        //     });
+        // },
         // 預設只顯示前三筆留言
         showMore() {
-            console.log('1', this.isShow);
+            //console.log('1', this.isShow);
             this.isShow = !this.isShow;
-            console.log('2', this.isShow);
+            //console.log('2', this.isShow);
             this.num = this.isShow ? 3 : this.messages.length;
             this.txt = this.isShow ? '查看更多' : '收起留言'
         },
@@ -151,7 +154,7 @@ export default {
         },
         toggleIcon() {
             this.isShowSong = !this.isShowSong;
-        }
+        },
     },
     mounted() {
         this.login_mem_id = localStorage.getItem('mem_id');
@@ -187,18 +190,19 @@ export default {
         };
         //留言資訊 (fetch) messages:[]
         const fetchSingleMusicMsg = () => {
-            const msgid = this.$route.params.sid;
+            const msg_id = this.$route.params.sid;
             const apiURL = new URL(
-                `${this.$store.state.phpPublicPath}getSingleMusicMsg.php?msgid=${msgid}`
+                `${this.$store.state.phpPublicPath}getSingleMusicMsg.php?msgid=${msg_id}`
             );
             fetch(apiURL)
                 .then(async (response) => {
                     this.messages = await response.json();
                     console.log(this.messages)
                 })
-                .catch((error) => {
-                    console.error("發生錯誤:", error);
-                });
+            console.log(this.messages);
+            // .catch((error) => {
+            //     console.error("發生錯誤:", error);
+            // });
         };
         //相關歌曲 (fetch) otherSongs:[]
         const fetchSingleMusicSong = () => {
