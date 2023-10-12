@@ -6,9 +6,9 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 try {
     require_once("./connectMusemusic.php");
 
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = validate($_POST['username']);
-        $password = validate($_POST['password']);
+    if (isset($_POST['mem_acc']) && isset($_POST['mem_psw'])) { 
+        $username = validate($_POST['mem_acc']);
+        $password = validate($_POST['mem_psw']);
 
         // 帳密輸入時，自動去掉空格~~~
         $username = trim($username);

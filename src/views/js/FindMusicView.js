@@ -19,7 +19,7 @@ export default {
     data() {
         return {
             // 設置初始值
-            s_id: '1', 
+            s_id: '', 
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //用來存儲查找到的風格
@@ -30,8 +30,11 @@ export default {
         }
     },
     methods: {
+        stopPropagation(event) {
+            event.stopPropagation(); // 阻止事件冒泡，子元素的点击不会触发父元素的点击事件
+        },
         fetchSongDetail() {
-            fetch(`http://localhost/muse_music/public/api/getFindStyle.php?`)
+            fetch(`${this.$store.state.phpPublicPath}getFindStyle.php?`)
             .then(async (response) => {
                 this.styles = await response.json();
                 const idToFind = this.$route.params.mcat_id;
@@ -54,34 +57,28 @@ export default {
         //     this.$refs.player.playMusic();
         // },
         openPlayer(song) {
-            // 使用 Vue.nextTick 来等待 Vue 更新 DOM
+            
             this.s_id = song;
+            
             this.$nextTick(() => {
                 // 打印歌曲的 s_id
-                console.log("點擊的歌曲s_id:", this.s_id);
-        
-                // 使用 $emit 触发 playMusic 事件，将 s_id 作为参数传递给父组件
-                // this.$emit('playMusic', this.s_id);
-        
-                // 调用播放器组件的 playMusic 方法
-                this.$refs.player.playMusic();
+                // console.log("點擊的歌曲s_id:", this.s_id);
+
+                 // 调用播放器组件的 playMusic 
+                this.$refs.player.playMusic(this.s_id);
             });
         },
-        
-        handlePlayMusic(s_id) {
-            // 在這裡處理 playMusic 事件
-            console.log("收到 playMusic 事件，s_id 為", s_id);
-            // 可以執行你希望的操作，例如播放指定的歌曲
-            
+        changeSId(newSId) {
+            // 切換上下首--使用從子組件接收的新 s_id 更新 s_id prop
+            this.s_id = newSId;
         },
-
     },
     mounted() {
         this.fetchSongDetail();
         const fetchSongList = () => {
             const mcat_id = this.$route.params.mcat_id;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindSongList.php?mcat_id=${mcat_id}`
+                `${this.$store.state.phpPublicPath}getFindSongList.php?mcat_id=${mcat_id}`
             );
             fetch(apiURL)
             .then(async (response) => {
@@ -93,7 +90,6 @@ export default {
         };
         fetchSongList();
 
-        
         //建立事件聆聽:點空白處關閉
         document.addEventListener('click', this.closeMoreSpace);
     },

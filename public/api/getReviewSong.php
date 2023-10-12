@@ -8,8 +8,8 @@ try {
 
     //執行sql指令並取得pdoStatement
 
-    $sql = "select(@sno=@sno=1) as no, s.upload_date as submitTime, s.s_name as songName, s.s_length as timeRange, s.mem_id ,m.mem_acc as memberAcc, s.s_stat as songStatus, s.s_id
-    from song s join member m on s.mem_id = m.mem_id,(select @sno:=0) as sno
+    $sql = "select s.upload_date , s.s_name , s.s_length , s.mem_id ,m.mem_acc, s.s_stat , s.s_id, s.s_src
+    from song s join member m on s.mem_id = m.mem_id
     where s_stat = false
     order by  upload_date desc;";
 

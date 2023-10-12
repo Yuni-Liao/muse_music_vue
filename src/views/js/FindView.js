@@ -56,33 +56,30 @@ export default {
     methods: {
         fetchType() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindStyle.php?`
+                `${this.$store.state.phpPublicPath}getFindStyle.php?`
             );
             fetch(apiURL).then(async (response) => {
                 this.styleList = await response.json();
             });
-            console.log(this.styleList);
+            // console.log(this.styleList);
         },
         fetchMember() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindMember.php?`
+                `${this.$store.state.phpPublicPath}getFindMember.php?`
             );
             fetch(apiURL).then(async (response) => {
                 this.singers = await response.json();
             });
-            console.log(this.singers);
+            // console.log(this.singers);
         },
         fetchSong() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getFindNewSong.php?`
+                `${this.$store.state.phpPublicPath}getFindNewSong.php?`
             );
             fetch(apiURL).then(async (response) => {
                 this.songs = await response.json();
             });
-            console.log(this.songs);
-        },
-        openPlayer() {
-            this.$refs.player.playMusic();
+            // console.log(this.songs);
         },
         //  更換父組件背景圖 -- 廖妍榛
         spaceHover(imgUrl) {
