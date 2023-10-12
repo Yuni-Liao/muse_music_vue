@@ -7,16 +7,18 @@ export default {
       //
       activeTab: 1,
       currentStep: 0,
-    
-      member: [{
-        cover_pic: '',
-        mem_pic: '',
-        mem_name: '',
-        intro: '',
-        county: '',
-        social_media: '',
-      }],
-      login_mem_id: '',
+
+      member: [
+        {
+          cover_pic: "",
+          mem_pic: "",
+          mem_name: "",
+          intro: "",
+          county: "",
+          social_media: "",
+        },
+      ],
+      login_mem_id: "",
       profileSongs: [],
       profileAlbums: [],
     };
@@ -29,7 +31,8 @@ export default {
       let file = e.target.files[0];
       let readFile = new FileReader();
       readFile.readAsDataURL(file);
-      readFile.addEventListener("load", this.coverloadImage);
+
+      readFile.addEventListener("load", console.log(file));
     },
     coverloadImage(e) {
       this.member.cover_pic = e.target.result;
@@ -86,7 +89,7 @@ export default {
       console.log(dataToSend);
     },
 
-    editSong(s_id, s_img, s_name, s_intro, show_stat) {
+    editSong(s_id, s_img, s_name, s_intro) {
       this.$router.push({
         name: "editsong",
         query: {
@@ -94,7 +97,6 @@ export default {
           s_img,
           s_name,
           s_intro,
-          show_stat,
         },
       });
     },
@@ -111,52 +113,48 @@ export default {
     },
   },
   mounted() {
-    this.login_mem_id = localStorage.getItem('mem_id');
+    this.login_mem_id = localStorage.getItem("mem_id");
 
-    // Fetch 會員資料
-    const fetchMemberInfo = () => {
+    if (this.login_mem_id != undefined) {
+      // Fetch 會員資料
       const apiURL = new URL(
         `http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=${this.login_mem_id}`
       );
-  
+
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.member = res))
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
-    };
-    fetchMemberInfo();
-  
+    }
+
     // Fetch 歌曲資訊
-    const fetchSongData = () => {
+
+    if (this.login_mem_id != undefined) {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getProfileSong.php?memid=${this.login_mem_id}&stat=0`
       );
-  
+
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.profileSongs = res))
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
-    };
-  
-    const fetchAlbumData = () => {
+    }
+    // Fetch 專輯資訊
+    if (this.login_mem_id != undefined) {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getProfileAlbum.php?memid=${this.login_mem_id}`
       );
-  
+
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.profileAlbums = res))
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
-    };
-  
-    fetchSongData();
-    fetchAlbumData();
+    }
   },
-  
 };

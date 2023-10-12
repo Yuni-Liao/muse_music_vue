@@ -311,7 +311,57 @@ button.active {
   }
 }
 //---------------------
+//圖片上傳
+.uploadImgWrap {
+  margin: 0 10px;
+  width: 100%;
+  height: 400px;
+  background-color: black;
+  border: 3px dashed #d9d9d950;
+  border-radius: 10px;
+  &:hover {
+    //border: 3px dashed #74ebd560;
+    border: 3px dashed #ffffff;
+  }
+  .uploadImg {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #inputimg {
+      display: none;
+    }
+    .inputimg {
+      display: inline-block;
+      // width: 100%;
+      // height: 75%;
+      .pic {
+        @include rect(230px);
+        margin-bottom: 30px;
+        .uploadpic {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .pre {
+        margin: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        @include rect(60px);
+      }
+    }
+    p {
+      text-align: center;
+    }
+  }
+}
 
+//-------------------
 #privacy {
   color: $green;
   background-color: black;

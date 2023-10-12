@@ -425,13 +425,7 @@
                 <td class="edit">
                   <button
                     @click="
-                      editSong(
-                        item.s_id,
-                        item.s_img,
-                        item.s_name,
-                        item.s_intro,
-                        item.show_stat
-                      )
+                      editSong(item.s_id, item.s_img, item.s_name, item.s_intro)
                     "
                   >
                     <fontAwesome
