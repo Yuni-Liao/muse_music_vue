@@ -106,6 +106,7 @@ export default {
 
         // 編輯確認按鈕點擊事件
         saveBtn() {
+            
             const url = `${this.$store.state.phpPublicPath}editProd.php`;
             let headers = {
                 Accept: "application/json",
@@ -150,13 +151,11 @@ export default {
                         this.productData.splice(index, 1, this.editItem);
                         //console.log(index, "-------------", this.productData);
                         //window.location.reload();
+                        this.fetchProdMgmt();
                     } else {
                         console.log("---error");
                     }
-                    this.$router.push({
-                        name: "prodmgmt",
-                    });
-                    this.editBox = false;
+                    
                 })
                 .catch((error) => {
                     console.error("發生錯誤:", error);
@@ -164,10 +163,9 @@ export default {
         },
         closeBtn() {
             this.editBox = false;
-        } // 關閉編輯跳窗
-    },
-    mounted() {
-        //先檢查資料格式是否符合DB規則
+        }, // 關閉編輯跳窗
+        fetchProdMgmt(){
+            //先檢查資料格式是否符合DB規則
         const url = `${this.$store.state.phpPublicPath}postProdMgmt.php`;
         let headers = {
             "Content-Type": "application/json",
@@ -193,23 +191,10 @@ export default {
             .catch((error) => {
                 console.error('API 請求失敗:', error);
             });
-
-        //接值，把值放入 this.editItem 中
-        // const puteditItem = () => {
-        //     const obj = {};
-        //     obj.prod_id = this.$route.query.prod_id;
-        //     //obj.prod_pic = this.$route.query.prod_pic;
-        //     obj.prod_name = this.$route.query.prod_name;
-        //     obj.prod_price = this.$route.query.prod_price;
-        //     obj.prod_type = this.$route.query.prod_type;
-        //     obj.prod_date = this.$route.query.prod_date;
-        //     obj.prod_inf = this.$route.query.prod_inf;
-        //     obj.prod_int = this.$route.query.prod_int;
-        //     obj.prod_pic = this.$route.query.prod_pic;
-        //     obj.show_stat = this.$route.query.show_stat;
-        //     this.editItem = obj;
-        // };
-        // puteditItem();
+        }
+    },
+    mounted() {
+        this.fetchProdMgmt();
     }
 }
 
