@@ -15,9 +15,9 @@ try {
             }
             $from = $_FILES["prod_pic"]["tmp_name"];
 
-            $filename = basename($_FILES['prod_pic']['prod_name']);
+            $filename = basename($_FILES['prod_pic']['name']);
         
-            $to = $dir . basename($_FILES['prod_pic']['prod_name']);
+            $to = $dir . basename($_FILES['prod_pic']['name']);
             copy($from, $to);
             echo json_encode("上傳成功");    
             break;
@@ -49,7 +49,7 @@ try {
                 prod_inf = :prod_inf,
                 prod_int = :prod_int,
                 prod_date = :prod_date,
-
+                prod_pic = :prod_pic,
                 show_stat = :show_stat,
                 chat_num = :chat_num
                 where prod_id = :prod_id";
