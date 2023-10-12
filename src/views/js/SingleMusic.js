@@ -62,7 +62,6 @@ export default {
         // 監聽點擊事件
         window.removeEventListener("click", this.handleGlobalClick);
     },
-
     methods: {
         openPlayer(song) {
             this.id = song;
@@ -114,46 +113,45 @@ export default {
                         console.error("發生錯誤:", error);
                     });
             }
+        },
+        gotosinglemusic(sid) {
+            this.$router.push({
+                name: "singlemusic",
+                params: {
+                    sid,
+                },
+            });
+        },
+        // 預設只顯示前三筆留言
+        showMore() {
+            console.log('1', this.isShow);
+            this.isShow = !this.isShow;
+            console.log('2', this.isShow);
+            this.num = this.isShow ? 3 : this.messages.length;
+            this.txt = this.isShow ? '查看更多' : '收起留言'
+        },
+        // 預設只顯示前三首歌曲
+        showMoreSong() {
+            //console.log('1', this.isShowSong);
+            this.isShowSong = !this.isShowSong;
+            //console.log('2', this.isShowSong);
+            this.num2 = this.isShowSong ? 3 : this.otherSongs.length;
+            this.txt2 = this.isShowSong ? '查看更多' : '收起歌曲'
+        },
+        toggleSongs() {
+            this.showAllSongs = !this.showAllSongs;
+        },
+        toggleReportBtn(messageItem) {
+            // 切換按鈕模式
+            messageItem.showReportBtn = !messageItem.showReportBtn;
+        },
+        closeReportBtn(messageItem) {
+            console.log(messageItem)
+            messageItem.showReportBtn = false
+        },
+        toggleIcon() {
+            this.isShowSong = !this.isShowSong;
         }
-    },
-
-    gotosinglemusic(sid) {
-        this.$router.push({
-            name: "singlemusic",
-            params: {
-                sid,
-            },
-        });
-    },
-    // 預設只顯示前三筆留言
-    showMore() {
-        //console.log('1', this.isShow);
-        this.isShow = !this.isShow;
-        //console.log('2', this.isShow);
-        this.num = this.isShow ? 3 : this.messages.length;
-        this.txt = this.isShow ? '查看更多' : '收起留言'
-    },
-    // 預設只顯示前三首歌曲
-    showMoreSong() {
-        //console.log('1', this.isShowSong);
-        this.isShowSong = !this.isShowSong;
-        //console.log('2', this.isShowSong);
-        this.num2 = this.isShowSong ? 3 : this.otherSongs.length;
-        this.txt2 = this.isShowSong ? '查看更多' : '收起歌曲'
-    },
-    toggleSongs() {
-        this.showAllSongs = !this.showAllSongs;
-    },
-    toggleReportBtn(messageItem) {
-        // 切換按鈕模式
-        messageItem.showReportBtn = !messageItem.showReportBtn;
-    },
-    closeReportBtn(messageItem) {
-        console.log(messageItem)
-        messageItem.showReportBtn = false
-    },
-    toggleIcon() {
-        this.isShowSong = !this.isShowSong;
     },
     mounted() {
         this.login_mem_id = localStorage.getItem('mem_id');
@@ -196,10 +194,11 @@ export default {
             fetch(apiURL)
                 .then(async (response) => {
                     this.messages = await response.json();
+                    console.log(this.messages)
                 })
-            // .catch((error) => {
-            //     console.error("發生錯誤:", error);
-            // });
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
         };
         //相關歌曲 (fetch) otherSongs:[]
         const fetchSingleMusicSong = () => {
