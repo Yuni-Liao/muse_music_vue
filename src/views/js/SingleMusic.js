@@ -58,7 +58,6 @@ export default {
         // 監聽點擊事件
         window.removeEventListener("click", this.handleGlobalClick);
     },
-
     methods: {
         openPlayer(song) {
             this.id = song;
@@ -192,6 +191,7 @@ export default {
             fetch(apiURL)
                 .then(async (response) => {
                     this.messages = await response.json();
+                    console.log(this.messages)
                 })
             //console.log(this.messages);
             .catch((error) => {
