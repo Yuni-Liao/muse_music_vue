@@ -48,14 +48,14 @@
         <div class="user_dropdown_reaction">
           <router-link to="/home/login"
             ><img
-              style="margin-top: -1px"
+               style="margin-top: -1px"
               alt="user_icon"
               src="~@/assets/image/icon/user.png"
           /></router-link>
 
-          <div class="user_dropdown">
-            <router-link to="/home/shoporders"
-              ><img
+          <div class="user_dropdown" v-if="login_mem_id != null">
+            <router-link to="/home/shoporders">
+              <img
                 src="~@/assets/image/icon/clipboard.png"
                 alt=""
               />訂單資訊</router-link
@@ -180,7 +180,8 @@ const Animations = {
 export default {
   data() {
     return {
-      login_mem_id: 1, //這個之後要再改，等zac寫好登入後到暫存去抓
+      login_mem_id: '',
+      // member: null,
       isNavVisible: false,
       notifyList: [
         {
@@ -195,6 +196,24 @@ export default {
     };
   },
   mounted() {
+
+    this.login_mem_id = localStorage.getItem('mem_id');
+
+    // Fetch 會員資料
+    const fetchMemberInfo = () => {
+      const apiURL = new URL(
+        `${this.$store.state.phpPublicPath}getLoginData.php?mem_id=${this.login_mem_id}`
+      );
+  
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.member = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchMemberInfo();
+    
     let scrollold = 0;
     window.addEventListener("scroll", function () {
       if (this.scrollY > scrollold) {
@@ -207,8 +226,10 @@ export default {
       scrollold = this.scrollY;
     });
   },
-  methods: {},
+  methods: {
+  },
 };
+
 </script>
 
 <style scoped lang="scss">
