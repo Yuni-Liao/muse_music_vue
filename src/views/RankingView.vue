@@ -61,37 +61,7 @@
         </div>
       </swiper-slide>
 
-      <swiper-slide>
-        <div class="topSongList">
-          <div class="topSongListTitle">
-            <h1>歌單排行榜</h1>
-            <section></section>
-          </div>
-          <div class="topSongListRanking">
-            <!-- 1-5名 -->
-            <ol>
-              
-              <li v-for="(item, index) in SLRank" :key="index">
-                {{ (index < 5 ? index + 1 : index - 4 + 5) }}.
-                <img @click.self.prevent="gotosonglist(item.sl_id)" :src="`${publicPath}dataimage/album/${item.sl_pic}`" alt="" />
-                
-                <div class="txt">
-                  <h3 @click.self.prevent="gotosonglist(item.sl_id)">{{ item.sl_name }}</h3>
-                  <p @click="gotosinger(item.creater_id)">
-                    {{ item.creater_name }}<span><br>追蹤次數:&nbsp;{{ item.fol_num }}&nbsp;次</span>
-                  </p>
-                </div>
-                
-                <div class="follow_icon">
-                  <FolBtnBig :functype="0" />
-                </div>
-              </li>
-            </ol>
-          </div>
-
-        </div>
-
-      </swiper-slide>
+      
     </swiper>
   </div>
   

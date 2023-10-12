@@ -110,41 +110,18 @@ export default {
         closeBtn() {
             this.editBox = false;
         },
-        // toggleBtn(row) {
-        //     this.editItem.car_id = row.car_id;
-
-        //     if (this.editItem.status === 0) {
-        //         this.editItem.status = 1;
-        //     } else {
-        //         this.editItem.status = 0;
-        //     }
-
-        //     row.status = this.editItem.status;
-        //     this.changeStatus();
-
-        //     console.log("列:", row.status);
-        //     console.log("此列:", this.editItem.status);
-        // },
         toggleBtn(row) {
-            const originalStatus = row.status;
             this.editItem.car_id = row.car_id;
+            this.editItem.status = row.status;
+            console.log("指定此列的值:", this.editItem.status);
 
-            if (this.editItem.status === 0) {
-                this.editItem.status = 1;
-            } else {
-                this.editItem.status = 0;
-            }
-
-            row.status = this.editItem.status;
-
-            this.changeStatus(row, originalStatus);
+            this.changeStatus();
         },
-        changeStatus(row, originalStatus) {
+        changeStatus() {
             const url = `${this.$store.state.phpPublicPath}editIndexCarouselOnOff.php`;
             const formData = new FormData();
-            formData.append("car_id", row.car_id);
-            formData.append("status", row.status);
-            formData.append("originalStatus", originalStatus);
+            formData.append("car_id", this.editItem.car_id);
+            formData.append("status", this.editItem.status);
             fetch(url, {
                 method: "POST",
                 body: formData,
@@ -156,36 +133,13 @@ export default {
                         throw new Error("編輯失敗");
                     }
                 })
-                // .then(() => {
-                //     window.location.reload();
-                // })
+                .then(() => {
+                    window.location.reload();
+                })
                 .catch((error) => {
                     console.log(error.message);
                 });
         },
-        // changeStatus() {
-        //     const url = `${this.$store.state.phpPublicPath}editIndexCarouselOnOff.php`;
-        //     const formData = new FormData();
-        //     formData.append("car_id", this.editItem.car_id);
-        //     formData.append("status", this.editItem.status);
-        //     fetch(url, {
-        //         method: "POST",
-        //         body: formData,
-        //     })
-        //         .then((response) => {
-        //             if (response.ok) {
-        //                 return response.json();
-        //             } else {
-        //                 throw new Error("編輯失敗");
-        //             }
-        //         })
-        //         // .then(() => {
-        //         //     window.location.reload();
-        //         // })
-        //         .catch((error) => {
-        //             console.log(error.message);
-        //         });
-        // },
         confirmBeforeChange() {
             return new Promise((resolve) => {
                 this.$Modal.confirm({

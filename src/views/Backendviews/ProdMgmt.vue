@@ -60,39 +60,6 @@
             <button @click="saveBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
         </div>
     </div>
-    <!-- <Modal v-model:modelValue="editBox" title="編輯商品" width="300" okText="確認" @on-ok="prodEdit()">
-        <Form enctype="multipart/form-data">
-            <label for="prod_id" class="label">商品編號:</label>
-            <input type="text" id="prod_id" name="id" v-model="editItem.prod_id"
-                style="margin-bottom: 10px; width: 268px;" />
-            <label for="prod_name" class="label">商品名稱:</label>
-            <input type="text" id="prod_name" name="name" v-model="editItem.prod_name"
-                style="margin-bottom: 10px; width: 268px;" />
-            <label for="prod_singer" class="label">歌手名稱:</label>
-            <input type="text" id="prod_singer" name="name" v-model="editItem.prod_singer"
-                style="margin-bottom: 10px; width: 268px;" />
-            <label for="prod_price" class="label">商品售價:</label>
-            <input type="text" id="prod_price" name="name" v-model="editItem.prod_price"
-                style="margin-bottom: 10px; width: 268px;" />
-            <label for="prod_date" class="label">上架時間:</label>
-            <input type="text" id="prod_date" name="name" v-model="editItem.prod_date"
-                style="margin-bottom: 10px; width: 268px;" />
-            <label for="prod_type" class="label">商品分類:</label>
-            <input type="text" id="prod_type" name="name" v-model="editItem.prod_type"
-                style="margin-bottom: 10px; width: 268px;" />
-            <p>商品詳情:</p>
-            <textarea id="prod_inf" name="name" v-model="editItem.prod_inf"
-                style="margin-bottom: 10px; width: 268px; height: 80px;"></textarea>
-            <p>商品介紹:</p>
-            <textarea id="prod_int" name="name" v-model="editItem.prod_int"
-                style="margin-bottom: 10px; width: 268px; height: 80px;"></textarea>
-            <label for="show_stat" class="label">預設狀態:</label>
-            <select id="show_stat" style="margin:0 10px 10px;" v-model="editItem.show_stat">
-                <option value="1">公開</option>
-                <option value="0">私人</option>
-            </select>
-        </Form>
-    </Modal> -->
 </template>
 
 <!-- 補分頁按鈕、下拉式選單按鈕、調整字距 -->

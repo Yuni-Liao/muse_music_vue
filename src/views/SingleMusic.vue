@@ -38,7 +38,7 @@
                         </div>
                         <div class="buttonArea">
                             <ShareBtn></ShareBtn>
-                            <AddSlBtn  :addSlSid="songItem.id"></AddSlBtn>
+                            <AddSlBtn :addSlSid="songItem.id"></AddSlBtn>
                             <AddFavBtn></AddFavBtn>
                             <PlayBtnBig @click="openPlayer(songItem.id)"></PlayBtnBig>
                         </div>
@@ -96,7 +96,7 @@
                         <div class="board">
                             <h3>留言板</h3>
                             <div class="sendArea">
-                                <input type="text" v-model="newMessage" placeholder="  我想對創作者說...">
+                                <input type="text" v-model="msg_con" placeholder="  我想對創作者說...">
                                 <button class="send" @click="addNewMessage">
                                     <fontAwesome :icon="['fa', 'paper-plane']" style="color:#74EBD5;" size="2xl" />
                                 </button>
@@ -109,7 +109,7 @@
                                                 :alt="messageItem.mem_name">
                                         </div>
                                         <router-link :to="`/home/profilepage/${messageItem.mem_id}`">
-                                            <p class="userName">{{ messageItem.mem_name}}</p>
+                                            <p class="userName">{{ messageItem.mem_name }}</p>
                                         </router-link>
                                     </div>
                                     <p class="date">
@@ -125,12 +125,13 @@
                                 <p class="txt">
                                     {{ messageItem.msg_con }}
                                 </p>
-                                <div class="likeMes" v-if="messageItem">
+                                <!-- 按讚留言先隱藏 -->
+                                <!-- <div class="likeMes" v-if="messageItem">
                                     <p class="likeCount">{{ messageItem.msg_like }}</p>
                                     <LikeMesBtn :messageItem="messageItem"></LikeMesBtn>
-                                </div>
+                                </div> -->
                             </div>
-                            <button v-if="messages.length > 3" class="readMore" @click.prevent="showMore">
+                            <button v-if="messages.length > 3" class="readMore" @click.capture="showMore">
                                 {{ txt }}
                                 <fontAwesome v-if="isShow" :icon="['fa', 'angle-down']" style="color:#fff;" />
                                 <fontAwesome v-else :icon="['fa', 'angle-up']" style="color:#fff;" />
@@ -155,9 +156,18 @@
                                             <fontAwesome class="i" :icon="['fa', 'play']" color="#fff" />
                                         </div>
                                     </div>
+<<<<<<< HEAD
                                     <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
-                                            {{ songItem.songname }}
+                                        {{ songItem.songname }}
                                     </router-link>
+=======
+                                    <!-- <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
+                                        {{ songItem.songname }}
+                                    </router-link> -->
+                                    <p class="songName" @click="gotosinglemusic()">
+                                        {{ songItem.songname }}
+                                    </p>
+>>>>>>> 7f1f3ea0506e129511c43d4f88486cd0e758d7b9
                                 </div>
                                 <div class="btnArea">
                                     <ShareBtn></ShareBtn>
@@ -165,11 +175,12 @@
                                     <AddFavBtn></AddFavBtn>
                                 </div>
                             </div>
-                            <button v-if="otherSongs.length > 3" class="readMore" @click.prevent="showMoreSong">
+                            <button v-if="otherSongs.length > 3" class="readMore" @click.capture="showMoreSong">
                                 {{ txt2 }}
                                 <fontAwesome v-if="isShowSong" :icon="['fa', 'angle-down']" style="color:#fff;" />
                                 <fontAwesome v-else :icon="['fa', 'angle-up']" style="color:#fff;" />
                             </button>
+
                         </div>
                     </div>
                 </div>

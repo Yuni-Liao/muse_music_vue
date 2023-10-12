@@ -11,12 +11,12 @@ export default {
                     width: 60,
                     align: 'center'
                 },
-                // {
-                //     title: '商品圖片',
-                //     key: 'prod_pic',
-                //     width: 150,
-                //     align: 'center'
-                // },
+                {
+                    title: '商品圖片',
+                    key: 'prod_pic',
+                    width: 150,
+                    align: 'center'
+                },
                 {
                     title: '商品名稱',
                     key: 'prod_name',
@@ -110,18 +110,20 @@ export default {
             let headers = {
                 Accept: "application/json",
             };
+            console.log('1');
 
             const formData = new FormData();
             formData.append("prod_id", this.editItem.prod_id);
             formData.append("prod_name", this.editItem.prod_name);
             formData.append("prod_price", this.editItem.prod_price);
+            formData.append("prod_singer", this.editItem.prod_singer);
             formData.append("prod_date", this.editItem.prod_date);
             formData.append("prod_type", this.editItem.prod_type);
             formData.append("prod_inf", this.editItem.prod_inf);
             formData.append("prod_int", this.editItem.prod_int);
             formData.append("show_stat", this.editItem.show_stat);
             formData.append("prod_pic", document.getElementById("fileImg").files[0]);
-            // console.log(document.getElementById("fileImg").files[0]);
+            //console.log(document.getElementById("fileImg").files[0]);
 
             //console.log(this.editItem);
             //console.log("formData", formData);
@@ -147,13 +149,14 @@ export default {
                         //this.productData[index] = { ...this.editItem }
                         this.productData.splice(index, 1, this.editItem);
                         //console.log(index, "-------------", this.productData);
-                        window.location.reload();
+                        //window.location.reload();
                     } else {
                         console.log("---error");
                     }
                     this.$router.push({
                         name: "prodmgmt",
                     });
+                    this.editBox = false;
                 })
                 .catch((error) => {
                     console.error("發生錯誤:", error);
@@ -192,21 +195,21 @@ export default {
             });
 
         //接值，把值放入 this.editItem 中
-        const puteditItem = () => {
-            const obj = {};
-            obj.prod_id = this.$route.query.prod_id;
-            //obj.prod_pic = this.$route.query.prod_pic;
-            obj.prod_name = this.$route.query.prod_name;
-            obj.prod_price = this.$route.query.prod_price;
-            obj.prod_type = this.$route.query.prod_type;
-            obj.prod_date = this.$route.query.prod_date;
-            obj.prod_inf = this.$route.query.prod_inf;
-            obj.prod_int = this.$route.query.prod_int;
-            obj.prod_pic = this.$route.query.prod_pic;
-            obj.show_stat = this.$route.query.show_stat;
-            this.editItem = obj;
-        };
-        puteditItem();
+        // const puteditItem = () => {
+        //     const obj = {};
+        //     obj.prod_id = this.$route.query.prod_id;
+        //     //obj.prod_pic = this.$route.query.prod_pic;
+        //     obj.prod_name = this.$route.query.prod_name;
+        //     obj.prod_price = this.$route.query.prod_price;
+        //     obj.prod_type = this.$route.query.prod_type;
+        //     obj.prod_date = this.$route.query.prod_date;
+        //     obj.prod_inf = this.$route.query.prod_inf;
+        //     obj.prod_int = this.$route.query.prod_int;
+        //     obj.prod_pic = this.$route.query.prod_pic;
+        //     obj.show_stat = this.$route.query.show_stat;
+        //     this.editItem = obj;
+        // };
+        // puteditItem();
     }
 }
 
