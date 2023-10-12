@@ -41,7 +41,7 @@
                         <fontAwesome @click="editAlbumBtn(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
                     </template>
                 </Table>
-            </TabPane>
+            </TabPane>       
         </Tabs>
     </div>
 </template>

@@ -21,7 +21,7 @@ export default {
                 alb_id: ''
             },
             allSong: [], // 全部歌曲暫存陣列
-            allAlbum: [], // 全部專輯暫存陣列
+            allAlbum: [],// 全部專輯暫存陣列
             songRankGroup: [], // 渲染單曲排行資料的暫存陣列
             albumRankGroup: [], // 渲染專輯排行資料的暫存陣列
             songColumns: [

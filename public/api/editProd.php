@@ -4,7 +4,7 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header("Content-Type: application/json; charset=utf-8");
 
-// 後台 - 商品管理 - 編輯商品 - 郭凱芸 (上傳圖片功能還沒好)
+// 後台 - 商品管理 - 編輯商品 - 郭凱芸 (上傳圖片功能有點bug)
 try {
 
     switch ($_FILES["prod_pic"]["error"]) {
@@ -15,9 +15,9 @@ try {
             }
             $from = $_FILES["prod_pic"]["tmp_name"];
 
-            $filename = basename($_FILES['prod_pic']['prod_name']);
+            $filename = basename($_FILES['prod_pic']['name']);
         
-            $to = $dir . basename($_FILES['prod_pic']['prod_name']);
+            $to = $dir . basename($_FILES['prod_pic']['name']);
             copy($from, $to);
             echo json_encode("上傳成功");    
             break;
@@ -40,7 +40,7 @@ try {
     if (isset($_POST["prod_type"]) && isset($_POST["prod_name"])) {
         require_once("./connectMusemusic.php");
 
-        // 準備sql prod_pic = :prod_pic,
+        // 準備sql
         $sql = "update product set
                 prod_type = :prod_type,
                 prod_name = :prod_name, 
@@ -49,7 +49,7 @@ try {
                 prod_inf = :prod_inf,
                 prod_int = :prod_int,
                 prod_date = :prod_date,
-
+                prod_pic = :prod_pic,
                 show_stat = :show_stat,
                 chat_num = :chat_num
                 where prod_id = :prod_id";

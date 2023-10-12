@@ -1,6 +1,7 @@
 export default {
     data() {
         return {
+            login_mem_id: "", 
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             // 將 localStorage 儲存在 storage 變數中
@@ -167,6 +168,7 @@ export default {
         },
     },
     mounted() {
+        this.login_mem_id = localStorage.getItem('mem_id');
         this.fetchprod();
     }
 }

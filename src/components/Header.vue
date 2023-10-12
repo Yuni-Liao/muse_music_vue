@@ -5,11 +5,7 @@
     <nav>
       <div class="header_nav_left">
         <router-link to="/home">
-          <img
-            class="logo_header"
-            alt="Vue logo"
-            src="~@/assets/image/muse_logo.png"
-          />
+          <img class="logo_header" alt="Vue logo" src="~@/assets/image/muse_logo.png" />
         </router-link>
         <router-link to="/home/find" class="find">探索</router-link>
         <router-link to="/home/ranking" class="ranking">排行榜</router-link>
@@ -30,54 +26,27 @@
           <div class="notify_dropdown">
             <p>通知中心</p>
             <hr />
-            <div
-              class="notify"
-              v-for="(item, index) in notifyList"
-              :key="index"
-            >
+            <div class="notify" v-for="(item, index) in notifyList" :key="index">
               <div class="pic">
-                <img
-                  :src="require(`@/assets/image/creator/${item.src}`)"
-                  alt=""
-                />
+                <img :src="require(`@/assets/image/creator/${item.src}`)" alt="" />
               </div>
               <p>{{ item.notifytxt }}</p>
             </div>
           </div>
         </div>
         <div class="user_dropdown_reaction">
-          <router-link to="/home/login"
-            ><img
-              style="margin-top: -1px"
-              alt="user_icon"
-              src="~@/assets/image/icon/user.png"
-          /></router-link>
+          <router-link to="/home/login"><img style="margin-top: -1px" alt="user_icon"
+              src="~@/assets/image/icon/user.png" /></router-link>
 
-          <div class="user_dropdown">
-            <router-link to="/home/shoporders"
-              ><img
-                src="~@/assets/image/icon/clipboard.png"
-                alt=""
-              />訂單資訊</router-link
-            ><br />
-            <router-link to="/home/accsetting"
-              ><img
-                src="~@/assets/image/icon/settingicon.png"
-                alt=""
-              />帳號設定</router-link
-            ><br />
-            <router-link :to="`/home/profilepage/${login_mem_id}`"
-              ><img
-                src="~@/assets/image/icon/personalPage.png"
-                alt=""
-              />個人主頁</router-link
-            ><br />
-            <router-link to="/home/profilepageedit"
-              ><img
-                src="~@/assets/image/icon/development.png"
-                alt=""
-              />個人主頁管理</router-link
-            ><br />
+          <div class="user_dropdown" v-if="login_mem_id !== null">
+            <router-link to="/home/shoporders">
+              <img src="~@/assets/image/icon/clipboard.png" alt="" />訂單資訊</router-link><br />
+            <router-link to="/home/accsetting"><img src="~@/assets/image/icon/settingicon.png"
+                alt="" />帳號設定</router-link><br />
+            <router-link :to="`/home/profilepage/${login_mem_id}`"><img src="~@/assets/image/icon/personalPage.png"
+                alt="" />個人主頁</router-link><br />
+            <router-link to="/home/profilepageedit"><img src="~@/assets/image/icon/development.png"
+                alt="" />個人主頁管理</router-link><br />
             <!-- <router-link to="/home/shoppingsteps"><img src="~@/assets/image/icon/development.png"
                 alt="" />購物車流程</router-link><br /> -->
             <p>我的音樂庫</p>
@@ -87,12 +56,7 @@
                 alt=""
               />播放紀錄</router-link
             ><br /> -->
-            <router-link to="/home/mysonglist"
-              ><img
-                src="~@/assets/image/icon/list.png"
-                alt=""
-              />我的歌單</router-link
-            ><br />
+            <router-link to="/home/mysonglist"><img src="~@/assets/image/icon/list.png" alt="" />我的歌單</router-link><br />
             <!-- <router-link to="/home"
               ><img
                 src="~@/assets/image/icon/heart.png"
@@ -106,7 +70,9 @@
               />我的追蹤</router-link
             > -->
             <hr style="margin: 20px 0px 10px 0px" />
-            <div class="loginbtn"><p>登出</p></div>
+            <div class="loginbtn">
+              <p>登出</p>
+            </div>
           </div>
         </div>
         <div class="hamburger" @click="isNavVisible = !isNavVisible">
@@ -117,13 +83,8 @@
     <div class="phone-show-nav" v-show="isNavVisible">
       <div class="headshot">
         <img src="@/assets/image/profileeditimage/profileimage.jpg" />
-        <fontAwesome
-          @click="isNavVisible = !isNavVisible"
-          class="close"
-          :icon="['fa', 'xmark']"
-          size="2xl"
-          style="color: #fff"
-        />
+        <fontAwesome @click="isNavVisible = !isNavVisible" class="close" :icon="['fa', 'xmark']" size="2xl"
+          style="color: #fff" />
       </div>
       <router-link to="/home/shoporders" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/clipboard.png" />
@@ -180,7 +141,8 @@ const Animations = {
 export default {
   data() {
     return {
-      login_mem_id: 1, //這個之後要再改，等zac寫好登入後到暫存去抓
+      login_mem_id: '',
+      // member: null,
       isNavVisible: false,
       notifyList: [
         {
@@ -195,6 +157,24 @@ export default {
     };
   },
   mounted() {
+
+    this.login_mem_id = localStorage.getItem('mem_id');
+
+    // Fetch 會員資料
+    const fetchMemberInfo = () => {
+      const apiURL = new URL(
+        `${this.$store.state.phpPublicPath}getLoginData.php?mem_id=${this.login_mem_id}`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.member = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchMemberInfo();
+
     let scrollold = 0;
     window.addEventListener("scroll", function () {
       if (this.scrollY > scrollold) {
@@ -207,8 +187,10 @@ export default {
       scrollold = this.scrollY;
     });
   },
-  methods: {},
+  methods: {
+  },
 };
+
 </script>
 
 <style scoped lang="scss">
