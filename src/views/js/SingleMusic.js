@@ -110,17 +110,17 @@ export default {
             }
         },
 
-    // gotosinglemusic(sid) {
-    //     this.$router.push({
-    //         name: "singlemusic",
-    //         params: {
-    //             sid,
-    //         },
-    //     });
-    // },
 
-    // 預設只顯示前三筆留言
-    showMore() {
+        // gotosinglemusic(sid) {
+        //     this.$router.push({
+        //         name: "singlemusic",
+        //         params: {
+        //             sid,
+        //         },
+        //     });
+        // },
+        // 預設只顯示前三筆留言
+        showMore() {
             //console.log('1', this.isShow);
             this.isShow = !this.isShow;
             //console.log('2', this.isShow);
