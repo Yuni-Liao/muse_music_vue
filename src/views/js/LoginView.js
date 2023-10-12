@@ -65,8 +65,10 @@ export default {
                         //會員id localStorage暫存
                         localStorage.setItem('mem_id', mem_id);
                         localStorage.setItem('mem_name', mem_name);
-                        // 導回首頁
-                        this.$router.push("/home");
+                        window.location.reload();
+
+                        // 導回首頁 錨點在homepage
+                        window.location.href = "/home";
                     } else {
                         alert("帳戶密碼不正確");
                     }
