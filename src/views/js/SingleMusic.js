@@ -121,8 +121,10 @@ export default {
                 },
 
             });
-            // 導回首頁 錨點在homepage
-            //window.location.href = "singlemusic/:sid";
+            console.log(sid)
+            // 導回該單曲頁面
+            window.location.reload();
+            window.location.href = `${sid}`;
         },
 
         // 預設只顯示前三筆留言
