@@ -51,6 +51,7 @@ export default {
             txt: '查看更多',
             txt2: '查看更多',
             icon: 'arrayIcon',
+            showReportBtn: false,
         };
     },
 
@@ -59,6 +60,7 @@ export default {
         window.removeEventListener("click", this.handleGlobalClick);
     },
     methods: {
+
         openPlayer(song) {
             this.id = song;
             this.$nextTick(() => {
@@ -142,9 +144,8 @@ export default {
             // 切換按鈕模式
             messageItem.showReportBtn = !messageItem.showReportBtn;
         },
-        closeReportBtn(messageItem) {
-            console.log(messageItem)
-            messageItem.showReportBtn = false
+        closeReportBtn() {
+            this.showReportBtn = false;
         },
         toggleIcon() {
             this.isShowSong = !this.isShowSong;
@@ -193,10 +194,10 @@ export default {
                     this.messages = await response.json();
                     console.log(this.messages)
                 })
-            //console.log(this.messages);
-            .catch((error) => {
-                console.error("發生錯誤:", error);
-            });
+                //console.log(this.messages);
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
         };
         //相關歌曲 (fetch) otherSongs:[]
         const fetchSingleMusicSong = () => {
@@ -208,9 +209,9 @@ export default {
                 .then(async (response) => {
                     this.otherSongs = await response.json();
                 })
-            .catch((error) => {
-                console.error("發生錯誤:", error);
-            });
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
         };
 
         // 執行 fetch

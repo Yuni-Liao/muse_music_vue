@@ -1,5 +1,5 @@
 <template>
-  <button id="AddSlBtn" @click="isAddSlOpen = true">
+  <button id="AddSlBtn" @click="openAddSl()">
     <fontAwesome class="i" :icon="['fa', 'plus']" :style="AddSlBtnStyle" />
   </button>
 
@@ -74,6 +74,16 @@ export default {
     },
   },
   methods: {
+    openAddSl() {
+      if (this.login_mem_id == undefined) {
+        alert("使用會員功能，請先進行登入");
+        this.$router.push({
+          name: "login",
+        });
+      } else {
+        this.isAddSlOpen = true;
+      }
+    },
     //fetch我的歌單(僅我創建的)
     fetchMyallsonglist() {
       const loginMemId = this.login_mem_id;
@@ -151,8 +161,12 @@ export default {
     },
   },
   mounted() {
-    // 執行fetch
-    this.fetchMyallsonglist();
+    this.login_mem_id = localStorage.getItem("mem_id");
+    //判斷是否登入
+    if (this.login_mem_id != undefined) {
+      // 執行fetch
+      this.fetchMyallsonglist();
+    }
   },
 };
 </script>
