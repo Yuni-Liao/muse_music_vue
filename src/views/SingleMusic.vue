@@ -158,12 +158,13 @@
                                             <fontAwesome class="i" :icon="['fa', 'play']" color="#fff" />
                                         </div>
                                     </div>
-                                    <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
+                                    <!-- 切換到其他單曲頁面 -->
+                                    <!-- <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
                                         {{ songItem.songname }}
-                                    </router-link>
-                                    <!-- <p class="songName" @click="gotosinglemusic()">
+                                    </router-link> -->
+                                    <p class="songName" @click="gotosinglemusic()">
                                         {{ songItem.songname }}
-                                    </p> -->
+                                    </p>
                                 </div>
                                 <div class="btnArea">
                                     <ShareBtn></ShareBtn>
