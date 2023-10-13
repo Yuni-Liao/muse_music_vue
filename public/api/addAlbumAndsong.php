@@ -105,8 +105,8 @@ try {
 } catch (Exception $e) {
     $pdo->rollBack(); //捨棄交易
     $result = [
-        "msg" => [
-            "message" => "新增失敗",
+        "error" => [
+            "msg" => "新增失敗",
             "line" => $e->getLine(),
             "details" => $e->getMessage(),
         ],

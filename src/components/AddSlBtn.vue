@@ -107,6 +107,7 @@ export default {
     },
     //加入歌單動作
     addSongtoSl() {
+      this.fetchMyallsonglist();
       // 獲取所有已選擇的歌單的 sl_id
       const selectedSls = Array.from(
         document.querySelectorAll("input[name='slid']:checked")
@@ -163,10 +164,10 @@ export default {
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
     //判斷是否登入
-    if (this.login_mem_id != undefined) {
-      // 執行fetch
-      this.fetchMyallsonglist();
-    }
+    // if (this.login_mem_id != undefined) {
+    //   // 執行fetch
+    //   this.fetchMyallsonglist();
+    // }
   },
 };
 </script>
