@@ -35,6 +35,7 @@ export default {
         },
         submitReport() {
             this.$emit('report-submitted');
+            this.$emit('close-report-btn'); 
             this.showReportWindow = false;
         }
     }

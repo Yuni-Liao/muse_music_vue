@@ -10,7 +10,7 @@ try {
     // 引入連線工作的檔案
     require_once("./connectMusemusic.php");
 
-    // 通过 $_POST 获取 POST 参数
+    // 通過 $_POST 取得 POST 参数
     $msg_id = $_POST["msg_id"];
     $mem_id = $_POST["mem_id"];
     $s_id = $_POST["s_id"];
@@ -24,11 +24,11 @@ try {
     (:msg_id, :mem_id, :s_id, :msg_con, CURRENT_TIMESTAMP, :msg_like)";
 
     $newMessage = $pdo->prepare($sql);
-    $newMessage->bindValue(":msg_id", $msg_id); // 使用正确的变量名
-    $newMessage->bindValue(":mem_id", $mem_id); // 使用正确的变量名
-    $newMessage->bindValue(":s_id", $s_id); // 使用正确的变量名
-    $newMessage->bindValue(":msg_con", $msg_con); // 使用正确的变量名
-    $newMessage->bindValue(":msg_like", $msg_like); // 使用正确的变量名
+    $newMessage->bindValue(":msg_id", $msg_id);
+    $newMessage->bindValue(":mem_id", $mem_id);
+    $newMessage->bindValue(":s_id", $s_id);
+    $newMessage->bindValue(":msg_con", $msg_con);
+    $newMessage->bindValue(":msg_like", $msg_like);
 
     if ($newMessage->execute()) {
         $successResponse = [

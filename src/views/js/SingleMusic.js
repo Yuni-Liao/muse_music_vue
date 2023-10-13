@@ -113,14 +113,18 @@ export default {
         },
 
 
-        // gotosinglemusic(sid) {
-        //     this.$router.push({
-        //         name: "singlemusic",
-        //         params: {
-        //             sid,
-        //         },
-        //     });
-        // },
+        gotosinglemusic(sid) {
+            this.$router.push({
+                name: "singlemusic",
+                params: {
+                    sid,
+                },
+
+            });
+            // 導回首頁 錨點在homepage
+            //window.location.href = "singlemusic/:sid";
+        },
+
         // 預設只顯示前三筆留言
         showMore() {
             //console.log('1', this.isShow);
