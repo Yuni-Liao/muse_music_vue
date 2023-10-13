@@ -4,7 +4,7 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header("Content-Type: application/json; charset=utf-8");
 
-// 後台 - 商品管理 - 編輯商品 - 郭凱芸 (上傳圖片功能有點bug)
+// 後台 - 商品管理 - 編輯商品 - 郭凱芸
 try {
     if (isset($_FILES["prod_pic"])) {
 
