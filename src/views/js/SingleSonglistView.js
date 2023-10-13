@@ -152,7 +152,7 @@ export default {
 
     //判斷是否已登入，歌單擁有者是否為登入會員
     setTimeout(() => {
-      console.log(this.login_mem_id, this.songlist.creater_id);
+      //console.log(this.login_mem_id, this.songlist.creater_id);
       if (
         this.login_mem_id != undefined &&
         this.login_mem_id == this.songlist.creater_id
