@@ -480,7 +480,9 @@ p.plus {
       color: $green;
       margin-left: 20px;
       outline: none;
-      font-size: $tag;
+      font-size: 14px;
+      padding: 10px 0;
+      overflow: visible;
     }
     button {
       @include btnBgNone;
@@ -564,6 +566,12 @@ p.plus {
 .editsong,
 .newalbum {
   padding: 130px 0;
+}
+.newalbum {
+  span {
+    font-size: 1.125rem;
+    line-height: 30px;
+  }
 }
 
 .editsong {
