@@ -1,5 +1,5 @@
 <template>
-  <player ref="player"></player>
+  <player :s_id="playerId" @change-s-id="changeSId" ref="player"></player>
   <div class="singlesonglist">
     <!-- 上方大圖 -->
     <section class="banner">
@@ -100,7 +100,7 @@
                 ><span class="pic">
                   <img :src="`${publicPath}dataimage/song/${item.s_img}`" />
                   <!-- :src="require(`/public/image/SingleMusic/${item.image}`)" -->
-                  <div class="play" @click="openPlayer()">
+                  <div class="play" @click="openPlayer(item.s_id)">
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </span>
