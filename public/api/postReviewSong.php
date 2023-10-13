@@ -6,45 +6,46 @@ header("Content-Type:application/json;charset=utf-8");
 try {
     //引入連線工作的檔案
     require_once("./connectMusemusic.php");
+
     //開啟一個交易
     $pdo->beginTransaction();
+
     $s_id = $_POST["s_id"];
     $reviewtype = $_POST["reviewtype"]; //1:批准 2:拒絕
+
     //把歌曲加入alb_id
     $SongCatsArray = json_decode($_POST["selectedSongCats"]); //從前端獲取的已選擇歌曲的 mcat_id 陣列
+    //修改審核結果
+    if ($reviewtype == 1) {
+        //批准-> 審核狀態s_stat = 1 已審核，審核結果 show_stat= 1 審核通過 
+        $sql1 = "UPDATE song SET s_stat = '1', show_stat = '1' WHERE s_id = :s_id;";
+    } elseif ($reviewtype == 2) {
+        //駁回-> 審核狀態s_stat = 1 已審核，審核結果 show_stat= 0 未過 
+        $sql1 = "UPDATE song SET s_stat = '1', show_stat = '0' WHERE s_id = :s_id;";
+    }
+    $reviewsong = $pdo->prepare($sql1);
+    $reviewsong->bindValue(":s_id", $s_id);
+    $reviewsong->execute();
 
-    // if ($reviewtype = 1) {
-    //     //批准
-    //     $sql = "UPDATE song SET s_stat = '1', show_stat = '1' WHERE song.s_id = $s_id;";
-    // } elseif ($reviewtype = 2) {
-    //     //審核->審核狀態0 
-    //     $sql = "UPDATE song SET s_stat = '1', show_stat = '0' WHERE song.s_id = $s_id;";
-    // }
+    //覆寫歌曲類別
 
-    //新增專輯
-    // $sql1 = "
-    // INSERT INTO album (`alb_id`, `alb_name`, `alb_intro`, `alb_img`, `upload_date`, `update_date`, `mem_id`, `share_num`) 
-    // VALUES (:alb_id, :alb_name, :alb_intro, :alb_img, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, :memid, '0');
-    // ";
-    // $addAlbum = $pdo->prepare($sql1);
-    // $addAlbum->bindValue(":alb_id", $alb_id);
-    // $addAlbum->bindValue(":alb_name", $alb_name);
-    // $addAlbum->bindValue(":alb_intro", $alb_intro);
-    // $addAlbum->bindValue(":alb_img", $alb_img);
-    // $addAlbum->bindValue(":memid", $memid);
-    // $addAlbum->execute();
+    if ($reviewtype = 1) {
 
-    // if (count($sidAddArray) > 0) {
-    //     foreach ($sidAddArray as $i => $s_id1) {
+        $sql2 = " DELETE FROM song_cat WHERE s_id =:s_id";
+        $delSongCats = $pdo->prepare($sql2);
+        $delSongCats->bindValue(":s_id", $s_id);
+        $delSongCats->execute();
 
+        foreach ($SongCatsArray as $i => $SongCat) {
 
-    //         $sql2 = "UPDATE song SET alb_id=:alb_id WHERE s_id=:s_id;";
-    //         $addSongofAlbum = $pdo->prepare($sql2);
-    //         $addSongofAlbum->bindValue(":s_id", $s_id1);
-    //         $addSongofAlbum->bindValue(":alb_id", $alb_id);
-    //         $addSongofAlbum->execute();
-    //     }
-    // }
+            $sql3 = "INSERT INTO song_cat ( s_id , mcat_id) VALUES (:s_id, :mcat_id)";
+            $editSongCats = $pdo->prepare($sql3);
+            $editSongCats->bindValue(":s_id", $s_id);
+            $editSongCats->bindValue(":mcat_id", $SongCat);
+            $editSongCats->execute();
+        }
+    }
+
 
     $pdo->commit();
     $result = ["error" => false, "msg" => "交易成功"];
@@ -53,12 +54,12 @@ try {
     $pdo->rollBack(); //捨棄交易
     // $result = ["error" => true, "msg" => "系統錯誤, 請通知系統維護人員"];
     // echo json_encode($result);
-    $errorResponse = [
+    $result = [
         "error" => [
-            "message" => "新增失敗",
+            "msg" => "新增失敗",
             "line" => $e->getLine(),
             "details" => $e->getMessage(),
         ],
     ];
-    echo json_encode($errorResponse);
+    echo json_encode($result);
 }
