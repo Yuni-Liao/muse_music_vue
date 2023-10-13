@@ -6,7 +6,13 @@
     </form>
     <div class="selcetcheck">已勾選 {{ this.checked }} 首歌曲</div>
     <div class="content">
-      <table class="song-table">
+      <div
+        v-if="noAlbumsongs.length == 0"
+        style="text-align: center; color: white; margin-top: 100px"
+      >
+        目前無可選歌曲
+      </div>
+      <table v-else class="song-table">
         <thead>
           <tr>
             <th></th>
@@ -63,7 +69,7 @@
 <script>
 export default {
   props: {
-    noAlbumsongs: [Object],
+    noAlbumsongs: [Array],
   },
   data() {
     return {

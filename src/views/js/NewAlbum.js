@@ -43,7 +43,7 @@ export default {
       this.updateimg = true;
     },
     submit() {
-      //編輯專輯歌曲 & 未有歌曲做新增(在該歌曲資訊中 update 上 alb_id 的值) & 已有歌曲做刪除(alb_id set null)------
+      //新增專輯歌曲 & 未有歌曲做新增(在該歌曲資訊中 update 上 alb_id 的值) & 已有歌曲做刪除(alb_id set null)------
       const selectedAddSongs = this.noAlbumsongs
         .filter((obj) => obj.isChecked === true)
         .map((obj) => obj.id);
@@ -70,10 +70,15 @@ export default {
           .then((response) => {
             return response.json();
           })
-          .then(() => {
-            this.$router.push({
-              name: "profilepageedit",
-            });
+          .then((data) => {
+            if (data.error) {
+              alert(data.msg); // 显示错误消息
+            } else {
+              alert("編輯完成");
+              this.$router.push({
+                name: "profilepageedit",
+              });
+            }
           })
           .catch((error) => {
             console.error("發生錯誤:", error);
