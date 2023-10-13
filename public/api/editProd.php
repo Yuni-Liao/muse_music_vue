@@ -33,7 +33,6 @@ try {
         case UPLOAD_ERR_NO_FILE :
             echo json_encode("檔案未選");
             break;
-    
     }
 
     // 引入連線工作的檔案

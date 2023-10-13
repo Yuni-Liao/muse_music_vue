@@ -78,7 +78,7 @@
                 <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
                 <li
                   v-if="item.creater_id == login_mem_id"
-                  @click="deletesonglist(index, item.sl_id)"
+                  @click="deleSl(item.sl_id)"
                 >
                   刪除此歌單
                 </li>
@@ -131,7 +131,7 @@
                 <!-- 歌單擁有者是我，則顯示 刪除此歌單 -->
                 <li
                   v-if="item.creater_id == login_mem_id"
-                  @click="deletesonglist(index, item.sl_id)"
+                  @click="deleSl(item.sl_id)"
                 >
                   刪除此歌單
                 </li>

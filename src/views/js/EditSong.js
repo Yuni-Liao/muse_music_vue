@@ -1,13 +1,28 @@
 export default {
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       privacy: "公開",
       songData: {},
+      updateimg: false,
+      showimg: [], //用於顯示
     };
   },
   methods: {
     changeTab(tabNumber) {
       this.activeTab = tabNumber;
+    }, //照片及時更換
+    coverImgChange(e) {
+      let file = e.target.files[0];
+      this.songData.s_img = file;
+      let readFile = new FileReader();
+      readFile.readAsDataURL(file);
+      readFile.addEventListener("load", this.changeimg);
+    },
+
+    changeimg(e) {
+      this.showimg = e.target.result;
+      this.updateimg = true;
     },
     editSong() {
       const url = `${this.$store.state.phpPublicPath}editSong.php`;
@@ -16,7 +31,7 @@ export default {
       };
       const formData = new FormData();
       formData.append("s_id", this.songData.s_id);
-      // formData.append("s_img", this.songData.s_img);
+      formData.append("s_img", this.songData.s_img); //圖片檔案
       formData.append("s_name", this.songData.s_name);
       formData.append("s_intro", this.songData.s_intro);
       formData.append("show_stat", this.songData.show_stat);
@@ -27,11 +42,7 @@ export default {
         body: formData,
       })
         .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error("新增失敗");
-          }
+          return response.json();
         })
         .then(() => {
           this.$router.push({
@@ -45,15 +56,11 @@ export default {
   },
   mounted() {
     //接值，把值放入 this.songData 中
-    const putSongData = () => {
-      const obj = {};
-      obj.s_id = this.$route.query.s_id;
-      obj.s_img = this.$route.query.s_img;
-      obj.s_name = this.$route.query.s_name;
-      obj.s_intro = this.$route.query.s_intro;
-      obj.show_stat = this.$route.query.show_stat;
-      this.songData = obj;
-    };
-    putSongData();
+    const obj = {};
+    obj.s_id = this.$route.query.s_id;
+    obj.s_img = this.$route.query.s_img;
+    obj.s_name = this.$route.query.s_name;
+    obj.s_intro = this.$route.query.s_intro;
+    this.songData = obj;
   },
 };

@@ -2,20 +2,6 @@
   @include layout(1200px);
   padding: 130px 0;
 }
-.songpic {
-  border-radius: 50%;
-  margin: 20px;
-}
-
-.songpicupload {
-  border-radius: 50%;
-  margin: 20px;
-  width: 60px;
-  height: 60px;
-  display: inline-block;
-  align-items: left;
-  justify-content: left;
-}
 
 .page-options {
   display: flex;
@@ -84,76 +70,54 @@ button.active {
   align-items: left;
   margin: 10px;
 }
-
-// .checkbox {
-//   margin: 10px;
-
-//   .songclass {
-//     width: 100%;
-//     text-align: left;
-//     background-color: black;
-//     padding: 20px 20px 40px 20px;
-//     border-radius: 10px;
-//     margin: 20px 10px;
-
-//     .label {
-//       font-size: $default;
-//       margin: 20px 10px;
-//     }
-
-//     .opt {
-//       display: inline-block;
-//       margin: 5px 10px;
-//       min-width: 125px;
-//       color: $white;
-
-//       .checkboxLabel {
-//         position: relative;
-//         margin-right: 10px;
-//         padding-top: 2px;
-
-//         input[type="checkbox"] {
-//           cursor: pointer;
-//           vertical-align: sub;
-//           color: $white;
-//           width: 23px;
-//           height: 23px;
-//           border-radius: 50%;
-//           /*清除預設樣式*/
-//           appearance: none;
-//           -moz-appearance: none;
-//           -webkit-appearance: none;
-//           border: 2px solid #ffffff80;
-//         }
-
-//         .i {
-//           position: absolute;
-//           z-index: 10;
-//           top: 40%;
-//           left: 50%;
-//           transform: translate(-50%, -40%);
-//           font-size: 12px;
-//           color: $green;
-//           margin: 0;
-//           opacity: 0;
-//           pointer-events: none;
-//         }
-
-//         input[type="checkbox"]:hover {
-//           border: 2px solid #74ebd520;
-//         }
-//         input[type="checkbox"]:checked {
-//           border: 2px solid $green;
-//         }
-
-//         input[type="checkbox"]:hover ~ .i,
-//         input[type="checkbox"]:checked ~ .i {
-//           opacity: 1;
-//         }
-//       }
-//     }
-//   }
-// }
+.uploadImgWrap {
+  margin: 0 10px;
+  width: 100%;
+  height: 400px;
+  background-color: black;
+  border: 3px dashed #d9d9d950;
+  border-radius: 10px;
+  &:hover {
+    //border: 3px dashed #74ebd560;
+    border: 3px dashed #ffffff;
+  }
+  .uploadImg {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #inputimg {
+      display: none;
+    }
+    .inputimg {
+      display: inline-block;
+      // width: 100%;
+      // height: 75%;
+      .pic {
+        @include rect(230px);
+        margin-bottom: 30px;
+        .uploadpic {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .pre {
+        margin: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        @include rect(60px);
+      }
+    }
+    p {
+      text-align: center;
+    }
+  }
+}
 
 .checkboxLabel {
   display: inline-block;
