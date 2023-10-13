@@ -35,8 +35,22 @@
           </div>
         </div>
         <div class="user_dropdown_reaction">
-          <router-link to="/home/login"><img style="margin-top: -1px" alt="user_icon"
-              src="~@/assets/image/icon/user.png" /></router-link>
+          
+          <router-link to="/home">
+            <img v-if="login_mem_id !== null"
+              class="profile"
+              alt="ProfileImage"
+              :src="`${publicPath}dataimage/member/` + member[0].mem_pic"
+              style="border-radius: 50%;width: 40px; height: 35px;"
+            />
+     
+          </router-link>
+            <router-link to="/home/login"
+              ><img v-if="login_mem_id === null"
+                style="margin-top: -1px"
+                alt="user_icon"
+                src="~@/assets/image/icon/user.png"
+            /></router-link>
 
           <div class="user_dropdown" v-if="login_mem_id !== null">
             <router-link to="/home/shoporders">
@@ -68,11 +82,14 @@
                 src="~@/assets/image/icon/targeticon.png"
                 alt=""
               />我的追蹤</router-link
+              
             > -->
             <hr style="margin: 20px 0px 10px 0px" />
-            <div class="loginbtn">
+            <router-link to="/home">
+            <div class="loginbtn" @click="logout">
               <p>登出</p>
             </div>
+          </router-link>
           </div>
         </div>
         <div class="hamburger" @click="isNavVisible = !isNavVisible">
@@ -141,6 +158,11 @@ const Animations = {
 export default {
   data() {
     return {
+      publicPath: process.env.BASE_URL,
+
+      member: [{
+        mem_pic: '',
+      }],
       login_mem_id: '',
       // member: null,
       isNavVisible: false,
@@ -163,9 +185,9 @@ export default {
     // Fetch 會員資料
     const fetchMemberInfo = () => {
       const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getLoginData.php?mem_id=${this.login_mem_id}`
+        `http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=${this.login_mem_id}`
       );
-
+  
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.member = res))
@@ -187,8 +209,16 @@ export default {
       scrollold = this.scrollY;
     });
   },
+
+  // 會員登出
   methods: {
-  },
+  logout() {
+    this.login_mem_id = null;
+    localStorage.removeItem('mem_id');
+    alert("會員已登出~");
+    window.location.href = "/home/login";
+  }
+}
 };
 
 </script>

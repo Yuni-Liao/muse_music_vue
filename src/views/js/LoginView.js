@@ -58,6 +58,7 @@ export default {
                         alert("登入成功");
                         // 從資料庫撈會員姓名
                         const mem_name = data.mem_name;
+                        
                         // 綁定id
                         const mem_id = data.mem_id;
                         alert(`Hi! ${mem_name}  歡迎回到 MuseMusic！ 會員編號 (ID: ${mem_id})`);
