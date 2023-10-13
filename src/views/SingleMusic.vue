@@ -120,7 +120,8 @@
                                                 style="color:#aaa;cursor: pointer;" />
                                         </button>
                                         <!-- 檢舉按鈕 -->
-                                        <ReportBtn class="report-btn" v-if="showReportBtn" @close-report-btn="showReportBtn = false"></ReportBtn>
+                                        <ReportBtn class="report-btn" v-if="showReportBtn"
+                                            @close-report-btn="showReportBtn = false"></ReportBtn>
                                     </div>
                                     </p>
                                 </div>
