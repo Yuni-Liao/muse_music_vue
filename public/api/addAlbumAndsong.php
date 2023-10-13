@@ -14,6 +14,7 @@ try {
 
     //開啟一個交易
     $pdo->beginTransaction();
+
     $memid = $_POST["memid"];
     $alb_img = ""; //先把圖片名稱設空字串
     $alb_name = $_POST["alb_name"];
@@ -58,20 +59,18 @@ try {
                 $to = $dir . $filename;
 
                 move_uploaded_file($from, $to);
+                break;
+
             case UPLOAD_ERR_INI_SIZE:
-                // echo json_encode("上傳檔案太大, 不得超過", ini_get("upload_max_filesize"));
-                $result = ["error" => true, "msg" => "上傳檔案太大, 不得超過1MB"];
-                echo json_encode($result);
-                break;
+                echo json_encode(["error" => true, "msg" => "上傳檔案太大, 不得超過 " . ini_get("upload_max_filesize")]);
+                exit();
             case UPLOAD_ERR_FORM_SIZE:
-                //echo json_encode("上傳檔案太大, 不得超過", $_POST["MAX_FILE_SIZE"], "位元組");
-                $result = ["error" => true, "msg" => "上傳檔案太大"];
-                echo json_encode($result);
-                break;
+                json_encode(["error" => true, "msg" => "上傳檔案太大, 不得超過", $_POST["MAX_FILE_SIZE"], "位元組"]);
+                exit();
             case UPLOAD_ERR_PARTIAL:
                 $result = ["error" => true, "msg" => "上傳檔案不完整, 請再試一次"];
                 echo json_encode($result);
-                break;
+                exit();
         }
     } else {
         $filename = "pre.jpg"; //預設圖片
@@ -105,12 +104,12 @@ try {
     echo json_encode($result);
 } catch (Exception $e) {
     $pdo->rollBack(); //捨棄交易
-    $errorResponse = [
-        "error" => [
+    $result = [
+        "msg" => [
             "message" => "新增失敗",
             "line" => $e->getLine(),
             "details" => $e->getMessage(),
         ],
     ];
-    echo json_encode($errorResponse);
+    echo json_encode($result);
 }

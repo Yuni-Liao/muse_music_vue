@@ -60,7 +60,7 @@ export default {
       isAddSlBtn: false,
       isAddSlOpen: false,
       isNewSlOpen: false,
-      login_mem_id: 1, //這個之後要再改
+      login_mem_id: "",
 
       //撈取該會員的歌單清單
       slData: [],

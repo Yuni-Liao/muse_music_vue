@@ -58,10 +58,12 @@ export default {
       isNewSlOpen: false,
       slname: "",
       public: 1,
-      login_mem_id: 1, //這個之後要再改
+      login_mem_id: "",
     };
   },
-  mounted() {},
+  mounted() {
+    this.login_mem_id = localStorage.getItem("mem_id");
+  },
   methods: {
     AddNewSl() {
       if (this.slname != "") {

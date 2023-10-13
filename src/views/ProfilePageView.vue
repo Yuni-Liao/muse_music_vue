@@ -1,5 +1,5 @@
 <template>
-  <player ref="player"></player>
+  <player :s_id="playerId" @change-s-id="changeSId" ref="player"></player>
   <div class="profilepage">
     <section class="hd">
       <div
@@ -280,7 +280,7 @@
                     :src="`${publicPath}dataimage/song/${item.s_img}`"
                     :alt="item.s_name"
                   />
-                  <div class="play" @click="openPlayer()">
+                  <div class="play" @click="openPlayer(item.s_id)">
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </div>

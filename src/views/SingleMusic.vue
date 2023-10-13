@@ -163,7 +163,7 @@
                                     <!-- <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
                                         {{ songItem.songname }}
                                     </router-link> -->
-                                    <p class="songName" @click="gotosinglemusic()">
+                                    <p class="songName" @click="gotosinglemusic(songItem.id)">
                                         {{ songItem.songname }}
                                     </p>
                                 </div>

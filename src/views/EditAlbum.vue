@@ -19,7 +19,7 @@
                 <img
                   class="uploadpic"
                   alt="原本專輯封面"
-                  :src="`${publicPath}dataimage/song/${albumData.alb_img}`"
+                  :src="`${publicPath}dataimage/album/${albumData.alb_img}`"
                 />
               </div>
               <div v-else class="pic">
