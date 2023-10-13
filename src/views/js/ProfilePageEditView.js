@@ -127,6 +127,8 @@ export default {
         });
     };
     fetchMemberInfo();
+
+
   
     // Fetch 歌曲資訊
     const fetchSongData = () => {
