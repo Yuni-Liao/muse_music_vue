@@ -408,6 +408,9 @@
       position: relative;
       color: $pink;
       line-height: $fh;
+      img{
+        @include rect(100%);
+      }
       .ranking {
         @include l {
           @include layout(100%);
