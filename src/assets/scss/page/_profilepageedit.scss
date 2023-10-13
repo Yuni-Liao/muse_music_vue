@@ -567,6 +567,12 @@ p.plus {
 .newalbum {
   padding: 130px 0;
 }
+.newalbum {
+  span {
+    font-size: 1.125rem;
+    line-height: 30px;
+  }
+}
 
 .editsong {
   #privacy {

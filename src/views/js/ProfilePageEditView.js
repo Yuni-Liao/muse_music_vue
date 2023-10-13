@@ -21,6 +21,7 @@ export default {
       profileSongs: [],
       profileAlbums: [],
       searchsong: "",
+      searchalbum: "",
     };
   },
   computed: {
@@ -33,6 +34,22 @@ export default {
       strArr.forEach((str) => {
         this.profileSongs.forEach((item) => {
           if (item.s_name.includes(str) || item.s_intro.includes(str)) {
+            arr.push(item);
+          }
+        });
+      });
+      // 如果輸入兩個關鍵字就會出現重複的資料，所以需要刪除重複資料。
+      // 過濾出重複的元素
+      return [...new Set(arr)];
+    },
+    //專輯搜尋
+    filterprofileAlbum() {
+      const strArr = this.searchalbum.split(" "); // 以空白格切分字串
+      const arr = [];
+      // 比對字串
+      strArr.forEach((str) => {
+        this.profileAlbums.forEach((item) => {
+          if (item.alb_name.includes(str) || item.alb_intro.includes(str)) {
             arr.push(item);
           }
         });

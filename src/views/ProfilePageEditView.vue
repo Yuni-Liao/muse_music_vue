@@ -455,6 +455,18 @@
                 >新增專輯</span
               >
             </router-link>
+            <!-- 專輯搜尋 -->
+            <label class="search" for="albumsearch"
+              ><input
+                type="search"
+                v-model.lazy.trim="searchalbum"
+                id="albumsearch" />
+              <button>
+                <img
+                  alt="search_icon"
+                  :src="`${publicPath}image/icon/search.svg`"
+                /></button
+            ></label>
           </div>
           <table class="song-table">
             <thead>
@@ -467,7 +479,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, index) in profileAlbums" :key="item.alb_id">
+              <tr
+                v-for="(item, index) in filterprofileAlbum"
+                :key="item.alb_id"
+              >
                 <td class="timg">
                   <img
                     class="albumn"
