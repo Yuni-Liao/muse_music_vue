@@ -74,17 +74,16 @@ export default {
             if (data.error) {
               alert(data.msg); // 显示错误消息
             } else {
-              alert("編輯完成");
-              this.$router.push({
-                name: "profilepageedit",
-              });
+              alert("新增完成");
+              window.location.reload();
+              window.location.href = "/home/profilepageedit";
             }
           })
           .catch((error) => {
             console.error("發生錯誤:", error);
           });
       } else {
-        alert("請新增至少一首歌曲至專輯");
+        alert("請至少選擇一首歌曲至專輯");
       }
     },
   },

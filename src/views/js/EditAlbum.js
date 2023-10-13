@@ -77,9 +77,8 @@ export default {
             alert(data.msg); // 显示错误消息
           } else {
             alert("編輯完成");
-            this.$router.push({
-              path: "profilepageedit",
-            });
+            window.location.reload();
+            window.location.href = "/home/profilepageedit";
           }
         })
         .catch((error) => {
