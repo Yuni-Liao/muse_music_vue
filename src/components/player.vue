@@ -146,7 +146,6 @@ export default {
         AddSlBtn,
         AddFavBtn,
     },
-    // emits: ['playMusic'],
     emits: ['change-s-id'],
     props: {
         s_id: {
