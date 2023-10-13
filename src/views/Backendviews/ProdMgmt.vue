@@ -2,7 +2,7 @@
     <div class="prodmgmt_box">
         <h1>周邊販售管理 | 商品管理</h1>
         <!-- 以下是新增欄位 -->
-        <Button type="primary" @click="addProdBtn()" style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增商品</Button>
+        <Button type="primary" @click="addProd(row)" style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增商品</Button>
 
         <!--以下是搜尋欄位-->
         <!-- <Input v-model="productData" placeholder="輸入商品名稱" style="width: 180px; margin-bottom: 1%; margin-left: 70%;"
@@ -71,6 +71,53 @@
         <div class="btngroup">
             <button @click="closeBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
             <button @click="saveBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
+        </div>
+    </div>
+
+        <!-- 以下是跳窗編輯區 -->
+        <div v-if="addBox == true" class="addprod obj_Radius">
+        <!-- <label for="prod_id" class="label">商品編號:</label>
+        <input type="text" id="prod_id" name="id" v-model="addItem.prod_id" style="margin-bottom: 10px; width: 268px;" /> -->
+        <label for="prod_name" class="label">商品名稱:</label>
+        <input type="text" id="prod_name" name="name" v-model="addItem.prod_name"
+            style="margin-bottom: 10px; width: 268px;" />
+        <label for="prod_singer" class="label">歌手名稱:</label>
+        <input type="text" id="prod_singer" name="name" v-model="addItem.prod_singer"
+            style="margin-bottom: 10px; width: 268px;" />
+        <label for="prod_price" class="label">商品售價:</label>
+        <input type="text" id="prod_price" name="name" v-model="addItem.prod_price"
+            style="margin-bottom: 10px; width: 268px;" />
+        <!-- <label for="prod_date" class="label">上架時間:</label>
+        <input type="text" id="prod_date" name="name" v-model="addItem.prod_date"
+            style="margin-bottom: 10px; width: 268px;" /> -->
+        <label for="prod_type" class="label">商品分類:</label>
+        <input type="text" id="prod_type" name="name" v-model="addItem.prod_type"
+            style="margin-bottom: 10px; width: 268px;" />
+        <p>商品詳情:</p>
+        <textarea id="prod_inf" name="name" v-model="addItem.prod_inf"
+            style="margin-bottom: 10px; width: 268px; height: 80px;"></textarea>
+        <p>商品介紹:</p>
+        <textarea id="prod_int" name="name" v-model="addItem.prod_int"
+            style="margin-bottom: 10px; width: 268px; height: 80px;"></textarea>
+        <label for="show_stat" class="label">預設狀態:</label>
+        <select id="show_stat" style="margin-bottom: 10px;width: 268px;" v-model="addItem.show_stat">
+            <option value="1">公開</option>
+            <option value="0">私人</option>
+        </select>
+        <p>圖片:</p>
+        <div class="uploadblock">
+            <label for="fileimg">
+                <p v-if="addItem.prod_pic == null">上傳圖片</p>
+                <p v-else>{{ addItem.prod_pic }}</p>
+
+                <input @change="img2($event)" type="file" id="fileimg" name="img" style="display: none" />
+                <img v-if="addItem.prod_pic == null" :src="`${publicPath}image/ShopImage/shop_album0.jpg`" />
+                <img v-else :src="`${publicPath}image/ShopImage/${addItem.prod_pic}`" />
+            </label>
+        </div>
+        <div class="btngroup">
+            <button @click="closeAddBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
+            <button @click="saveAddBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
         </div>
     </div>
 </template>

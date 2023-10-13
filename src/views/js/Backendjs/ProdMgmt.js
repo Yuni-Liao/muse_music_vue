@@ -55,7 +55,9 @@ export default {
                 }
             ],
             productData: [], // 渲染資料的陣列
-            editBox: false, // 預設跳窗隱藏
+            editBox: false, // 預設編輯跳窗隱藏
+            addBox: false, //預設新增跳窗隱藏
+            //編輯商品
             editItem: {
                 prod_id: '',
                 prod_type: '',
@@ -65,6 +67,20 @@ export default {
                 prod_int: '',
                 prod_price: '',
                 prod_date: '',
+                show_stat: '',
+                chat_num: '',
+                prod_pic: '',
+            },
+            //新增商品
+            addItem: {
+                //prod_id: '',
+                prod_type: '',
+                prod_name: '',
+                prod_singer: '',
+                prod_inf: '',
+                prod_int: '',
+                prod_price: '',
+                //prod_date: '',
                 show_stat: '',
                 chat_num: '',
                 prod_pic: '',
@@ -85,7 +101,7 @@ export default {
         addProdBtn() {
             alert('新增商品');
         },
-        //變更圖片
+        //編輯商品 圖片
         img(e) {
             let that = this;
             let files = e.target.files[0];
@@ -98,10 +114,29 @@ export default {
             };
         },
 
+        //新增商品 圖片
+        img2(e) {
+            let that = this;
+            let files = e.target.files[0];
+            if (!e || !window.FileReader) return;
+            let reader = new FileReader();
+            reader.readAsDataURL(files);
+
+            reader.onloadend = function () {
+                that.addItem.prod_pic = files.name;
+            };
+        },
+
         // 點擊編輯按鈕後跳窗出現
         editProd(row) {
             this.editItem = { ...row }; // 傳入編輯數據
             this.editBox = true; // 顯示編輯跳窗
+        },
+
+        // 點擊新增按鈕後跳窗出現
+        addProd(row) {
+            this.addItem = { ...row }; // 傳入編輯數據
+            this.addBox = true; // 顯示編輯跳窗
         },
 
         // 編輯確認按鈕點擊事件
@@ -154,30 +189,56 @@ export default {
                     .catch((error) => {
                         console.log(error.message);
                     });
-                // then(() => {
-                //     //update this.productData
-                //     let index = this.productData.findIndex((product) => {
-                //         return product.prod_id == this.editItem.prod_id
-                //     });
-                //     if (index >= 0) {
-                //         //this.productData[index] = { ...this.editItem }
-                //         this.productData.splice(index, 1, this.editItem);
-                //         //console.log(index, "-------------", this.productData);
-                //         //window.location.reload();
-                //         this.fetchProdMgmt();
-                //     } else {
-                //         console.log("error.message");
-                //     }
-
-                // })
-                // .catch((error) => {
-                //     console.error("發生錯誤:", error);
-                // });
             }
         },
+        // 編輯新增按鈕點擊事件-----------------------------
+        saveAddBtn() {
+            const url = `${this.$store.state.phpPublicPath}addProd.php`;
+
+            // 創建新產品
+            const formData = new FormData();
+            //formData.append("prod_id", this.addItem.prod_id);
+            formData.append("prod_name", this.addItem.prod_name);
+            formData.append("prod_price", this.addItem.prod_price);
+            formData.append("prod_singer", this.addItem.prod_singer);
+            //formData.append("prod_date", this.addItem.prod_date);
+            formData.append("prod_type", this.addItem.prod_type);
+            formData.append("prod_inf", this.addItem.prod_inf);
+            formData.append("prod_int", this.addItem.prod_int);
+            formData.append("show_stat", this.addItem.show_stat);
+            formData.append("prod_pic", document.getElementById("fileimg").files[0]);
+
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                    // console.log(response);
+                } else {
+                    throw new Error("編輯失敗");
+                }
+            })
+            .then(() => {
+                this.success(true, json);
+                this.addItem = [];
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+
+        },
+        // 關閉編輯跳窗
         closeBtn() {
             this.editBox = false;
-        }, // 關閉編輯跳窗
+        },
+        // 關閉新增跳窗
+        closeAddBtn() {
+            this.addBox = false;
+        },
+
+        //fetch 商品
         fetchProdMgmt() {
             //先檢查資料格式是否符合DB規則
             const url = `${this.$store.state.phpPublicPath}postProdMgmt.php`;

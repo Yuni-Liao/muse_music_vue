@@ -20,7 +20,7 @@ main {
     }
 
     // 輪播編輯彈窗
-    .editprod {
+    .editprod,.addprod {
         @include rect(300px, auto);
         padding: 1%;
         background-color: #333;
