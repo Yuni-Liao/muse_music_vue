@@ -30,8 +30,9 @@ export default {
         }
     },
     methods: {
+        // 阻止事件冒泡，子元素的點擊不會觸發父元素的點擊事件
         stopPropagation(event) {
-            event.stopPropagation(); // 阻止事件冒泡，子元素的点击不会触发父元素的点击事件
+            event.stopPropagation(); 
         },
         fetchSongDetail() {
             fetch(`${this.$store.state.phpPublicPath}getFindStyle.php?`)
