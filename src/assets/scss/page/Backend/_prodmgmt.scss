@@ -21,7 +21,7 @@ main {
 
     // 輪播編輯彈窗
     .editprod {
-        @include rect(300px, 700px);
+        @include rect(300px, auto);
         padding: 1%;
         background-color: #333;
         color: $white;
@@ -33,7 +33,11 @@ main {
         display: flex;
         flex-flow: column wrap;
         justify-content: space-evenly;
-        input{
+        p,label{
+            margin: 10px 0;
+        }
+
+        input {
             //padding: 2%;
             border: 0px;
         }
@@ -47,8 +51,9 @@ main {
         }
 
         .btngroup {
-            // display: flex;
-            // justify-content: space-evenly;
+            display: flex;
+            justify-content: space-evenly;
+            margin: 10px 0 0 0;
             .saveBtn {
                 @include rect(100px, auto);
                 @include btnColor($green, false);
@@ -72,4 +77,25 @@ main {
 
 .cellHeight {
     line-height: $fh;
+}
+
+.uploadblock {
+    //margin-top: 1.5rem;
+    border: 1px solid #009ca8;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    border-radius: 10px;
+    //padding: 1rem;
+    line-height: 2;
+
+    input {
+        border: none;
+    }
+
+    img {
+        width: 90%;
+        height: 60%;
+        object-fit: contain;
+    }
 }

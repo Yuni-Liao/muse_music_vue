@@ -54,7 +54,20 @@
             <option value="0">私人</option>
         </select>
         <p>圖片:</p>
-        <input type="file" style="margin-bottom: 10px;" name="img" id="fileImg" @change="imgChange($event)">
+        <!-- <input type="file" style="margin-bottom: 10px;" name="img" id="fileImg" @change="imgChange($event)"> -->
+        <div class="uploadblock">
+            <label for="fileimg">
+                <p v-if="editItem.prod_pic == null">上傳圖片</p>
+                <p v-else>{{ editItem.prod_pic }}</p>
+
+                <input @change="img($event)" type="file" id="fileimg" name="img" style="display: none" />
+                <img v-if="editItem.prod_pic == null" :src="`${publicPath}image/ShopImage/shop_album0.jpg`" />
+                <img v-else :src="`${publicPath}image/ShopImage/${editItem.prod_pic}`" />
+            </label>
+        </div>
+
+
+
         <div class="btngroup">
             <button @click="closeBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
             <button @click="saveBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
