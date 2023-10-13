@@ -373,8 +373,12 @@
               />
               <span>上傳歌曲</span>
             </div>
-            <label class="search"
-              ><input type="search" name="" id="" />
+            <!-- 歌曲搜尋 -->
+            <label class="search" for="songsearch"
+              ><input
+                type="search"
+                v-model.lazy.trim="searchsong"
+                id="songsearch" />
               <button>
                 <img
                   alt="search_icon"
@@ -388,7 +392,7 @@
                 <th class="timg"></th>
                 <th class="tname">歌曲</th>
                 <th class="tintro">歌曲簡介</th>
-                <th class="show">瀏覽權限</th>
+                <th class="show">審核狀態</th>
                 <th class="date">更新日期</th>
                 <th class="time">
                   <fontAwesome :icon="['fa', 'fa-clock']" />
@@ -397,7 +401,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, index) in profileSongs" :key="item.s_id">
+              <tr v-for="(item, index) in filterprofileSongs" :key="item.s_id">
                 <td class="timg">
                   <img
                     class="song"
@@ -414,7 +418,10 @@
                   </p>
                 </td>
                 <td class="show">
-                  {{ Number(item.show_stat) ? "公開" : "私人" }}
+                  <span v-if="item.s_stat == 0"> 待審核 </span>
+                  <span v-else>
+                    {{ Number(item.show_stat) ? "已上架" : "審核未過" }}
+                  </span>
                 </td>
                 <td class="date">
                   {{ item.update_date }}
@@ -429,7 +436,7 @@
                     "
                   >
                     <fontAwesome
-                      v-if="item.s_stat == 1"
+                      v-if="item.s_stat == 1 && item.show_stat == 1"
                       :icon="['fas', 'pen']"
                       style="color: #fdfbfb"
                     />
