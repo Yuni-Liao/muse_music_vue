@@ -360,12 +360,10 @@
 
                         .more {
                             @include btnBgNone;
-                            //position: relative;
                             margin-right: 10px;
                         }
 
                         #ReportBtn {
-                            position: absolute;
                             top: 0;
                             right: 20px;
                         }
@@ -493,7 +491,6 @@
                 align-items: center;
                 gap: 10px;
                 display: flex;
-                //margin: 0px 0 50px;
                 margin: auto;
             }
         }
