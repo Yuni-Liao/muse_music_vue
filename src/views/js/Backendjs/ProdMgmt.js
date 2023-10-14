@@ -3,7 +3,7 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            //uploadedImg: null, // 上傳圖片暫存
+
             columns: [
                 {
                     title: 'No',
@@ -54,9 +54,12 @@ export default {
                     align: 'center'
                 }
             ],
-            productData: [], // 渲染資料的陣列
-            editBox: false, // 預設編輯跳窗隱藏
-            addBox: false, //預設新增跳窗隱藏
+
+            // 渲染資料的陣列
+            productData: [],
+
+            // 預設編輯跳窗隱藏
+            editBox: false,
             //編輯商品
             editItem: {
                 prod_id: '',
@@ -71,18 +74,17 @@ export default {
                 chat_num: '',
                 prod_pic: '',
             },
+            //預設新增跳窗隱藏
+            addBox: false,
             //新增商品
             addItem: {
-                //prod_id: '',
-                prod_type: '',
-                prod_name: '',
-                prod_singer: '',
-                prod_inf: '',
-                prod_int: '',
-                prod_price: '',
-                //prod_date: '',
-                show_stat: '',
-                chat_num: '',
+                addprod_type: '',
+                addprod_name: '',
+                addprod_singer: '',
+                addprod_inf: '',
+                addprod_int: '',
+                addprod_price: '',
+                addshow_stat: '',
                 prod_pic: '',
             },
             privacy: "公開",
@@ -135,7 +137,7 @@ export default {
                 });
             });
         },
-        
+
         // 以下編輯功能相關----------------------------------------------------
         // 編輯圖片
         img(e) {
@@ -151,16 +153,15 @@ export default {
         },
         // 編輯跳窗
         editProd(row) {
-            this.editItem = { ...row }; // 傳入編輯數據
-            this.editBox = true; // 顯示編輯跳窗
+            // 顯示編輯跳窗
+            this.editBox = true;
+            // 傳入編輯數據
+            this.editItem = { ...row };
         },
         // 編輯商品 - 確認按鈕
-        saveBtn() {
+        saveEditBtn() {
             if (prod_id != undefined) {
                 const url = `${this.$store.state.phpPublicPath}editProd.php`;
-                // let headers = {
-                //     Accept: "application/json",
-                // };
                 const formData = new FormData();
                 formData.append("prod_id", this.editItem.prod_id);
                 formData.append("prod_name", this.editItem.prod_name);
@@ -171,34 +172,23 @@ export default {
                 formData.append("prod_inf", this.editItem.prod_inf);
                 formData.append("prod_int", this.editItem.prod_int);
                 formData.append("show_stat", this.editItem.show_stat);
-                //formData.append("prod_pic", document.getElementById("fileImg").files[0]);
-
                 if (document.getElementById("fileimg").files[0]) {
                     formData.append("prod_pic", document.getElementById("fileimg").files[0]);
                 } else {
                     formData.append("prod_pic", this.editItem.prod_pic);
                 }
-
-                //console.log(document.getElementById("fileImg").files[0]);
-
-                //console.log(this.editItem);
-                //console.log("formData", formData);
                 fetch(url, {
                     method: "POST",
-                    //headers: headers,
                     body: formData,
                 })
                     .then((response) => {
                         if (response.ok) {
                             console.log(response);
-                            // return response.json();
                         } else {
                             throw new Error("編輯失敗");
                         }
                     })
                     .then(() => {
-                        //this.success(true, json);
-                        //this.fetchnew();
                         this.editItem = [];
                         window.location.reload();
                     })
@@ -207,48 +197,43 @@ export default {
                     });
             }
         },
-        // 關閉編輯跳窗
+        // 關閉 新增/修改 跳窗
         closeBtn() {
             this.editBox = false;
-            window.location.reload();
+            this.addBox = false;
         },
 
         // 以下新增功能相關-----------------------------------------------------
-        // 新增圖片
+        // 新增跳窗
+        addProd(row) {
+            this.addItem = { ...row }; // 傳入編輯數據
+            this.addBox = true; // 顯示編輯跳窗
+        },
+        //編輯圖片
         img2(e) {
-            let that2 = this;
+            let that = this;
             let files = e.target.files[0];
             if (!e || !window.FileReader) return;
             let reader = new FileReader();
             reader.readAsDataURL(files);
 
             reader.onloadend = function () {
-                that2.addItem.prod_pic = files.name;
+                that.addItem.prod_pic = files.name;
             };
         },
-        // 新增跳窗
-        addProd(row) {
-            this.addItem = { ...row }; // 傳入編輯數據
-            this.addBox = true; // 顯示編輯跳窗
-        },
-        // 新增商品 - 確認按鈕 這邊要再修改-----------------------------
+
+        // 新增商品 - 確認按鈕 需修改-----------------------------
         saveAddBtn() {
             const url = `${this.$store.state.phpPublicPath}addProd.php`;
-
-            // 創建新產品
             const formData = new FormData();
-            //formData.append("prod_id", this.addItem.prod_id);
-            formData.append("prod_name", this.addItem.prod_name);
-            formData.append("prod_price", this.addItem.prod_price);
-            formData.append("prod_singer", this.addItem.prod_singer);
-            //formData.append("prod_date", this.addItem.prod_date);
-            formData.append("prod_type", this.addItem.prod_type);
-            formData.append("prod_inf", this.addItem.prod_inf);
-            formData.append("prod_int", this.addItem.prod_int);
-            formData.append("show_stat", this.addItem.show_stat);
-            formData.append("prod_pic", document.getElementById("fileimg").files[0]);
-
-            console.log("Form data:", formData);
+            formData.append("addprod_name", this.addItem.addprod_name);
+            formData.append("addprod_price", this.addItem.addprod_price);
+            formData.append("addprod_singer", this.addItem.addprod_singer);
+            formData.append("addprod_type", this.addItem.addprod_type);
+            formData.append("addprod_inf", this.addItem.addprod_inf);
+            formData.append("addprod_int", this.addItem.addprod_int);
+            formData.append("addshow_stat", this.addItem.addshow_stat);
+            formData.append("prod_pic", document.getElementById("addfileimg").files[0]);
 
             fetch(url, {
                 method: "POST",
@@ -256,26 +241,21 @@ export default {
             })
                 .then((response) => {
                     if (response.ok) {
-                        return response.json();
-                        // console.log(response);
+                        console.log(response);
                     } else {
-                        throw new Error("編輯失敗");
+                        throw new Error("新增失敗");
                     }
                 })
                 .then(() => {
-                    this.success(true, json);
                     this.addItem = [];
+                    window.location.reload();
                 })
                 .catch((error) => {
                     console.log(error.message);
                 });
 
         },
-        // 關閉新增跳窗
-        closeAddBtn() {
-            this.addBox = false;
-        },
-        
+
     },
     mounted() {
         //fetch postProdMgmt.php;
