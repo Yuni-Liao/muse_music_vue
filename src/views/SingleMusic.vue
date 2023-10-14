@@ -112,23 +112,6 @@
                                             <p class="userName">{{ messageItem.mem_name }}</p>
                                         </router-link>
                                     </div>
-                                    <!-- <p class="date">
-                                        {{ messageItem.msg_date }}
-                                    <div tabindex="0" class="more-group">
-                                        <button class="more" @click="showReportBtn = !showReportBtn">
-                                            <fontAwesome :icon="['fa', 'ellipsis-vertical']"
-                                                style="color:#aaa;cursor: pointer;" />
-                                        </button>
-<<<<<<< HEAD
-                                        
-                                        <ReportBtn class="report-btn" v-if="showReportBtn" @close-report-btn="showReportBtn = false"></ReportBtn>
-=======
-                                        <!-- 檢舉按鈕 -->
-                                        <ReportBtn class="report-btn" v-if="showReportBtn"
-                                            @close-report-btn="showReportBtn = false"></ReportBtn>
->>>>>>> fb348c9046f5433a9c277aaa8f71c5fb60cb4c23
-                                    </div>
-                                    </p> -->
                                     <p class="date">{{ messageItem.msg_date }}</p>
                                     <div tabindex="0" class="more-group">
                                         <button class="more" @click="toggleReportBtn(messageItem)">
