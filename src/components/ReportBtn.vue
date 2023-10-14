@@ -8,16 +8,18 @@
         <p class="title">檢舉留言</p>
         <div class="repInf">
             <label for="rep_rsn" class="label">檢舉原因:</label>
-            <input type="text" v-model="rep_rsn" placeholder="  我想檢舉...">
-            <!-- <textarea type="textarea" v-model="rep_rsn"></textarea> -->
+            <!-- <input type="text" v-model="rep_rsn" placeholder="  我想檢舉..."> -->
+            <input type="text" v-model="rep_rsn" placeholder="  檢舉內容需超過3個字">
+
         </div>
         <div class="btngroup">
             <button class="closeBtn default_Btn obj_Radius" @click="closeReportWindow">取消</button>
-            <button class="saveBtn default_Btn obj_Radius" @click="submitReport">送出</button>
+            <button class="saveBtn default_Btn obj_Radius" @click="submitReport" :disabled="rep_rsn.length < 3">送出</button>
 
         </div>
     </div>
 </template>
+
 <script setup>
 import { ref, defineProps, onMounted, defineEmits } from 'vue';
 import { useStore } from 'vuex';
@@ -27,7 +29,6 @@ const props = defineProps({
 })
 const emits = defineEmits(['closeReportBtn']);
 const store = useStore();
-console.log(props.msg_id);
 const showReportWindow = ref(false);
 const login_mem_id = localStorage.getItem('mem_id');
 const rep_rsn = ref('');
@@ -42,7 +43,7 @@ function closeReportWindow() {
 }
 
 function submitReport() {
-    if (rep_rsn.value !== '') {
+    if (rep_rsn.value.length > 3) {
         const url = `${store.state.phpPublicPath}postReportMsg.php`;
         const headers = {
             Accept: 'application/json',
@@ -61,6 +62,7 @@ function submitReport() {
             .then((response) => {
                 if (response.ok) {
                     console.log('完成！');
+                    window.location.reload();
                 } else {
                     throw new Error('檢舉失敗');
                 }
@@ -68,75 +70,13 @@ function submitReport() {
             .catch((error) => {
                 console.error('發生錯誤:', error);
             });
+    } else {
+        //只有等於3才出現跳窗???
+        alert('內文需要超過三個字');
+        window.location.reload();
     }
 }
 </script>
-<!-- <script>
-export default {
-    emits: ['closeReportBtn'], // 声明可以触发的自定义事件
-    props: {
-        msg_id: Number,
-    },
-    data() {
-        return {
-            showReportWindow: false,
-            login_mem_id: "",
-            rep_rsn: '',
-        };
-    },
-    methods: {
-        toggleReportWindow() {
-            this.showReportWindow = !this.showReportWindow;
-        },
-        closeReportWindow() {
-            this.$emit('close-report-btn');
-            this.showReportWindow = false;
-        },
-        //送出檢舉訊息
-        submitReport() {
-            // this.$emit('report-submitted');
-            // this.$emit('close-report-btn'); 
-            // this.showReportWindow = false;
-
-            if (this.rep_rsn !== "") {
-                const url = `${this.$store.state.phpPublicPath}postReportMsg.php`;
-                let headers = {
-                    Accept: "application/json",
-                };
-
-                // 創建新留言對象
-                const formData = new FormData();
-                formData.append("mem_id", this.login_mem_id);
-                formData.append("msg_id", this.msg_id);
-                formData.append("rep_rsn", this.rep_rsn);
-
-                // 發送新留言到後端
-                fetch(url, {
-                    method: "POST",
-                    headers: headers,
-                    body: formData,
-                })
-                    .then((response) => {
-                        if (response.ok) {
-                            console.log('完成！');
-                        } else {
-                            throw new Error("檢舉失敗");
-                        }
-                    })
-                    .then(() => {
-                        //window.location.reload();
-                    })
-                    .catch((error) => {
-                        console.error("發生錯誤:", error);
-                    });
-            }
-        }
-    },
-    mounted() {
-        this.login_mem_id = localStorage.getItem('mem_id');
-    }
-};
-</script> -->
 
 <style scoped lang="scss">
 #ReportBtn {
@@ -179,10 +119,6 @@ export default {
             margin: 10px 0;
             padding: 0 10px;
         }
-
-        // textarea {
-        //     height: 80px;
-        // }
     }
 
     .btngroup {

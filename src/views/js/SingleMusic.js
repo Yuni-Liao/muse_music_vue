@@ -200,7 +200,6 @@ export default {
                     this.messages = await response.json();
                     console.log(this.messages)
                 })
-                //console.log(this.messages);
                 .catch((error) => {
                     console.error("發生錯誤:", error);
                 });
