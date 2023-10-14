@@ -84,7 +84,6 @@ export default {
                 addprod_inf: '',
                 addprod_int: '',
                 addprod_price: '',
-                addshow_stat: '',
                 prod_pic: '',
             },
             privacy: "公開",
@@ -232,7 +231,6 @@ export default {
             formData.append("addprod_type", this.addItem.addprod_type);
             formData.append("addprod_inf", this.addItem.addprod_inf);
             formData.append("addprod_int", this.addItem.addprod_int);
-            formData.append("addshow_stat", this.addItem.addshow_stat);
             formData.append("prod_pic", document.getElementById("addfileimg").files[0]);
 
             fetch(url, {
@@ -248,7 +246,7 @@ export default {
                 })
                 .then(() => {
                     this.addItem = [];
-                    window.location.reload();
+                    //window.location.reload();
                 })
                 .catch((error) => {
                     console.log(error.message);

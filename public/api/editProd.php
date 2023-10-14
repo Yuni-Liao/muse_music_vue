@@ -51,7 +51,7 @@ try {
                 prod_price = :prod_price,
                 prod_inf = :prod_inf,
                 prod_int = :prod_int,
-                prod_date = :prod_date,
+                prod_date = CURRENT_TIMESTAMP,
                 prod_pic = :prod_pic,
                 show_stat = :show_stat,
                 chat_num = :chat_num
@@ -62,7 +62,6 @@ try {
     $editProd->bindValue(":prod_id", $_POST["prod_id"]);
     $editProd->bindValue(":prod_name", $_POST["prod_name"]);
     $editProd->bindValue(":prod_price", $_POST["prod_price"]);
-    $editProd->bindValue(":prod_date", $_POST["prod_date"]);
     $editProd->bindValue(":prod_type", $_POST["prod_type"]);
     $editProd->bindValue(":prod_singer", $_POST["prod_singer"]);
     $editProd->bindValue(":prod_inf", $_POST["prod_inf"]);

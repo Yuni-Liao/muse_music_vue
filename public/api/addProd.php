@@ -36,22 +36,20 @@ try {
     }
     // 引入連線工作的檔案
     require_once("./connectMusemusic.php");
-
     //準備sql
     $sql = "insert into product
-    (prod_pic, prod_type, prod_name, prod_singer, prod_price, prod_inf,prod_int,show_stat) 
+    (prod_id,prod_type, prod_name, prod_singer, prod_inf,prod_int,prod_pic, prod_price,prod_date,show_stat,chat_num) 
     values 
-    (:prod_pic, :prod_type, :prod_name, :prod_singer,:prod_price, :prod_inf,:prod_int,'1')";
+    (21,:prod_type, :prod_name, :prod_singer,:prod_int, :prod_inf,:prod_pic,:prod_price,CURRENT_TIMESTAMP,'1','0')";
 
     $addProd = $pdo->prepare($sql);
     $addProd->bindValue(":prod_type", $_POST["addprod_type"]);
     $addProd->bindValue(":prod_name", $_POST["addprod_name"]);
     $addProd->bindValue(":prod_singer", $_POST["addprod_singer"]);
-    $addProd->bindValue(":prod_price", $_POST["addprod_price"]);
     $addProd->bindValue(":prod_inf", $_POST["addprod_inf"]);
     $addProd->bindValue(":prod_int", $_POST["addprod_int"]);
-    $addProd->bindValue(":show_stat", $_POST["addshow_stat"]);
     $addProd->bindValue(":prod_pic", $filename);
+    $addProd->bindValue(":prod_price", $_POST["addprod_price"]);
 
     // 執行 SQL 更新
     $addProd->execute();
