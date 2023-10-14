@@ -112,11 +112,6 @@
                                             <p class="userName">{{ messageItem.mem_name }}</p>
                                         </router-link>
                                     </div>
-
-                                        <!-- 檢舉按鈕 -->
-                                        <ReportBtn class="report-btn" v-if="showReportBtn"
-                                            @close-report-btn="showReportBtn = false"></ReportBtn>
-                                    </div>
                                     <p class="date">{{ messageItem.msg_date }}</p>
                                     <div tabindex="0" class="more-group">
                                         <button class="more" @click="toggleReportBtn(messageItem)">
@@ -181,6 +176,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
     </main>
 </template>

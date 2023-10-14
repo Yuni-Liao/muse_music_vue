@@ -40,7 +40,7 @@ try {
     $sql = "insert into product
     (prod_id,prod_type, prod_name, prod_singer, prod_inf,prod_int,prod_pic, prod_price,prod_date,show_stat,chat_num) 
     values 
-    (21,:prod_type, :prod_name, :prod_singer,:prod_int, :prod_inf,:prod_pic,:prod_price,CURRENT_TIMESTAMP,'1','0')";
+    (22,:prod_type, :prod_name, :prod_singer,:prod_int, :prod_inf,:prod_pic,:prod_price,CURRENT_TIMESTAMP,'1','0')";
 
     $addProd = $pdo->prepare($sql);
     $addProd->bindValue(":prod_type", $_POST["addprod_type"]);
