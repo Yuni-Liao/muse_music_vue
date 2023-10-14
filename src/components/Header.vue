@@ -46,16 +46,26 @@
           </div>
         </div>
         <div class="user_dropdown_reaction">
+          <router-link to="/home">
+            <img
+              v-if="login_mem_id !== null"
+              class="profile"
+              alt="ProfileImage"
+              :src="`${publicPath}dataimage/member/` + member[0].mem_pic"
+              style="border-radius: 50%; width: 40px; height: 35px"
+            />
+          </router-link>
           <router-link to="/home/login"
             ><img
+              v-if="login_mem_id === null"
               style="margin-top: -1px"
               alt="user_icon"
               src="~@/assets/image/icon/user.png"
           /></router-link>
 
-          <div class="user_dropdown">
-            <router-link to="/home/shoporders"
-              ><img
+          <div class="user_dropdown" v-if="login_mem_id !== null">
+            <router-link to="/home/shoporders">
+              <img
                 src="~@/assets/image/icon/clipboard.png"
                 alt=""
               />訂單資訊</router-link
@@ -104,9 +114,14 @@
                 src="~@/assets/image/icon/targeticon.png"
                 alt=""
               />我的追蹤</router-link
+              
             > -->
             <hr style="margin: 20px 0px 10px 0px" />
-            <div class="loginbtn"><p>登出</p></div>
+            <router-link to="/home">
+              <div class="loginbtn" @click="logout">
+                <p>登出</p>
+              </div>
+            </router-link>
           </div>
         </div>
         <div class="hamburger" @click="isNavVisible = !isNavVisible">
@@ -133,7 +148,10 @@
         <img src="~@/assets/image/icon/settingicon.png" />
         <p>帳號設定</p>
       </router-link>
-      <router-link to="/home/profilepage" @click="isNavVisible = false">
+      <router-link
+        :to="`/home/profilepage/${login_mem_id}`"
+        @click="isNavVisible = false"
+      >
         <img src="~@/assets/image/icon/personalPage.png" />
         <p>個人主頁</p>
       </router-link>
@@ -180,7 +198,15 @@ const Animations = {
 export default {
   data() {
     return {
-      login_mem_id: 1, //這個之後要再改，等zac寫好登入後到暫存去抓
+      publicPath: process.env.BASE_URL,
+
+      member: [
+        {
+          mem_pic: "",
+        },
+      ],
+      login_mem_id: "",
+      // member: null,
       isNavVisible: false,
       notifyList: [
         {
@@ -195,6 +221,23 @@ export default {
     };
   },
   mounted() {
+    this.login_mem_id = localStorage.getItem("mem_id");
+
+    // Fetch 會員資料
+    const fetchMemberInfo = () => {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=${this.login_mem_id}`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.member = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    };
+    fetchMemberInfo();
+
     let scrollold = 0;
     window.addEventListener("scroll", function () {
       if (this.scrollY > scrollold) {
@@ -207,7 +250,18 @@ export default {
       scrollold = this.scrollY;
     });
   },
-  methods: {},
+
+  // 會員登出
+  methods: {
+    logout() {
+      this.login_mem_id = null;
+      localStorage.removeItem("mem_id");
+      localStorage.removeItem("sl_fol");
+      localStorage.removeItem("mem_name");
+      alert("會員已登出~");
+      window.location.href = "/home/login";
+    },
+  },
 };
 </script>
 

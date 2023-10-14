@@ -4,8 +4,9 @@ $dbname = "musemusic";
 $user = "root";
 $password = "";
 // $dbname = "tibamefe_chd103g2";
-  // $user = "tibamefe_since2021";
-  // $password = "vwRBSb.j&K#E";
+// $user = "tibamefe_since2021";
+// $password = "vwRBSb.j&K#E";
+
 $port = 3306;
 
 $dsn = "mysql:host=localhost;port=$port;dbname=$dbname;charset=UTF8";

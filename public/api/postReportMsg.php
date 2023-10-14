@@ -1,5 +1,5 @@
 <?php
-//前台 - 單曲頁面 - 留言區新增留言 - 郭凱芸
+//前台 - 單曲頁面 - 檢舉留言 - 郭凱芸
 header("Access-Control-Allow-Origin: http://localhost:8080");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
@@ -11,24 +11,24 @@ try {
     require_once("./connectMusemusic.php");
 
     // 通過 $_POST 取得 POST 参数
-    $msg_id = $_POST["msg_id"];
+    $msgrep_id = $_POST["msgrep_id"];
     $mem_id = $_POST["mem_id"];
-    $s_id = $_POST["s_id"];
-    $msg_con = $_POST["msg_con"];
-    $msg_like = $_POST["msg_like"];
+    $msg_id = $_POST["msg_id"];
+    $rep_rsn = $_POST["rep_rsn"];
+    $rep_date = $_POST["rep_date"];
 
     $sql = "
     INSERT INTO msg 
-    (msg_id, mem_id, s_id, msg_con, msg_date, msg_like) 
+    (msgrep_id, mem_id, msg_id, rep_rsn, rep_date) 
     VALUES 
-    (:msg_id, :mem_id, :s_id, :msg_con, CURRENT_TIMESTAMP, :msg_like)";
+    (:msgrep_id, :mem_id, :msg_id, :rep_rsn,CURRENT_TIMESTAMP)";
 
     $newMessage = $pdo->prepare($sql);
-    $newMessage->bindValue(":msg_id", $msg_id);
+    $newMessage->bindValue(":msgrep_id", $msgrep_id);
     $newMessage->bindValue(":mem_id", $mem_id);
-    $newMessage->bindValue(":s_id", $s_id);
-    $newMessage->bindValue(":msg_con", $msg_con);
-    $newMessage->bindValue(":msg_like", $msg_like);
+    $newMessage->bindValue(":msg_id", $msg_id);
+    $newMessage->bindValue(":rep_rsn", $rep_rsn);
+    $newMessage->bindValue(":rep_date", $rep_date);
 
     if ($newMessage->execute()) {
         $successResponse = [

@@ -58,7 +58,7 @@ export default {
       }, 100);
     },
   },
-  unmounted() {
+  beforeUnmount() {
     clearInterval(this.typingInterval);
   },
 };

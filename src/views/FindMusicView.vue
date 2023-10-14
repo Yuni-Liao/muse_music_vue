@@ -25,7 +25,7 @@
             <table>
                 <thead>
                     <tr class="listTitle">
-                        <th></th>
+                        <th>#</th>
                         <th></th>
                         <th>歌曲名稱</th>
                         <th>創作者</th>
@@ -62,22 +62,21 @@
                             <div class="moreBtnAlert" v-if="s.showMoreBtn" >
                                 <a class="shareBtn" >
                                     <ShareBtn></ShareBtn>
-                                    <!-- <img src="../../public/image/icon/share.png"> -->
                                     <p>分享</p>
                                 </a>
                                 <a class="addFav">
                                     <AddFavBtn></AddFavBtn>
-                                    <!-- <img src="../../public/image/icon/addFav.png"> -->
                                     <p>加入我的最愛</p>
                                 </a>
                                 <a class="addSl"  @click.stop>
                                     <AddSlBtn @click.stop></AddSlBtn>
-                                    <!-- <img src="../../public/image/icon/addSl.png"> -->
                                     <p>加入歌單</p>
                                 </a>
                                 <a class="readSong">
-                                    <img src="../../public/image/icon/eyeopen.png" alt="" class="eyeopen">
-                                    <p>檢視歌曲</p>
+                                    <router-link  :to="`/home/singlemusic/${s.s_id}`">
+                                        <img src="../../public/image/icon/eyeopen.png" alt="" class="eyeopen">
+                                        <p>檢視歌曲</p>
+                                    </router-link>
                                 </a>
                             </div>
                         </td>

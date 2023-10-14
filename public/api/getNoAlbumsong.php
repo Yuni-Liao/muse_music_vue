@@ -21,9 +21,7 @@ try {
         $result = $songs->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result);; //送出json
     } else {
-        $nosongResponse = [
-            "message" => "沒有歌曲",
-        ];
+        $nosongResponse = [];
         echo json_encode($nosongResponse);
     }
 } catch (Exception $e) {

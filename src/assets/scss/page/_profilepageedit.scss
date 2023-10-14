@@ -311,7 +311,57 @@ button.active {
   }
 }
 //---------------------
+//圖片上傳
+.uploadImgWrap {
+  margin: 0 10px;
+  width: 100%;
+  height: 400px;
+  background-color: black;
+  border: 3px dashed #d9d9d950;
+  border-radius: 10px;
+  &:hover {
+    //border: 3px dashed #74ebd560;
+    border: 3px dashed #ffffff;
+  }
+  .uploadImg {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #inputimg {
+      display: none;
+    }
+    .inputimg {
+      display: inline-block;
+      // width: 100%;
+      // height: 75%;
+      .pic {
+        @include rect(230px);
+        margin-bottom: 30px;
+        .uploadpic {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .pre {
+        margin: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        @include rect(60px);
+      }
+    }
+    p {
+      text-align: center;
+    }
+  }
+}
 
+//-------------------
 #privacy {
   color: $green;
   background-color: black;
@@ -430,7 +480,9 @@ p.plus {
       color: $green;
       margin-left: 20px;
       outline: none;
-      font-size: $tag;
+      font-size: 14px;
+      padding: 10px 0;
+      overflow: visible;
     }
     button {
       @include btnBgNone;
@@ -469,11 +521,43 @@ p.plus {
   line-height: 1.4;
   .timg {
     width: 10%;
-    img {
-      @include rect(100px);
-      object-fit: cover;
-      overflow: hidden;
-      margin: auto;
+    .pic {
+      width: fit-content;
+      height: fit-content;
+      position: relative;
+      img {
+        @include rect(100px);
+        object-fit: cover;
+        overflow: hidden;
+        margin: auto;
+        vertical-align: top;
+      }
+
+      .play {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #00000030;
+        cursor: pointer;
+
+        .i {
+          font-size: 20px;
+          position: relative;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &:hover,
+      &:focus {
+        .play {
+          opacity: 1;
+        }
+      }
     }
   }
   .tname {
@@ -514,6 +598,12 @@ p.plus {
 .editsong,
 .newalbum {
   padding: 130px 0;
+}
+.newalbum {
+  span {
+    font-size: 1.125rem;
+    line-height: 30px;
+  }
 }
 
 .editsong {
