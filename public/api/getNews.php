@@ -29,7 +29,7 @@
                 END AS month_abbr,
                 DAY(news_date) AS day,
                 news_place,
-                news_update,
+                NOW() AS news_update,
                 news_con,
                 news_pic,
                 news_area,

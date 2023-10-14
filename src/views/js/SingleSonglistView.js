@@ -18,13 +18,20 @@ export default {
       login_mem_id: "",
       showDelSl: false, //顯示刪除歌單按鈕和移除歌單按鈕
       playerId: "", //播放器使用
+      allSid: [],//存放所有歌曲的id
     };
   },
   methods: {
     //播放器使用------------------------------------------------------------------
     openPlayer(sid) {
       this.playerId = sid;
-      this.$refs.player.playMusic(this.playerId);
+      this.$nextTick(() => {
+        this.$refs.player.playMusic();
+      })
+    },
+    changeSId(newSId) {
+      // 切換上下首--使用從子組件接收的新 s_id 更新 s_id prop
+      this.playerId = newSId;
     },
     //切換 more 開啟------------------------------------------------------------------
     showtoggle(e, index) {
@@ -144,6 +151,9 @@ export default {
       fetch(apiURL)
         .then(async (response) => {
           this.slSongs = await response.json();
+          this.allSid = this.slSongs.map((slSongs) => slSongs.s_id);
+          // console.log("此專輯歌曲的s_id:",this.allSid);
+
         })
         .catch((error) => {
           console.error("發生錯誤:", error);
@@ -168,4 +178,10 @@ export default {
     //移除事件聆聽:點空白處關閉
     document.removeEventListener("click", this.closemore);
   },
+  computed: {
+    //如果 slSongs 有數據，他才會顯示，否則不會顯示
+    showLastButton() {
+        return this.slSongs.length > 0;
+    },
+},
 };

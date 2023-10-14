@@ -94,13 +94,13 @@ export default {
     },
     computed: {
         language() {
-            return this.styleList.filter(v => v.mcat_type === '0')
+            return this.styleList.filter(item => item.mcat_type === '0')
         },
         style() {
-            return this.styleList.filter(v => v.mcat_type === '1')
+            return this.styleList.filter(item => item.mcat_type === '1')
         },
         emotion() {
-            return this.styleList.filter(v => v.mcat_type === '2')
+            return this.styleList.filter(item => item.mcat_type === '2')
         },
     }
 }

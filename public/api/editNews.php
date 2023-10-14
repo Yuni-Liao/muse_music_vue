@@ -6,8 +6,10 @@ header("Content-Type:application/json;charset=utf-8");
 
 
 try {   
+        date_default_timezone_set('Asia/Taipei');
+        $localTime = date('Y-m-d H:i:s');
     
-    
+
         require_once("./connectMusemusic.php");
         
         $sql = "update news set
@@ -29,7 +31,7 @@ try {
         $editNews->bindValue(":singer", $_POST["singer"]);
         $editNews->bindValue(":news_date", $_POST["news_date"]);
         $editNews->bindValue(":news_place", $_POST["news_place"]);
-        $editNews->bindValue(":news_update", $_POST["news_update"]);
+        $editNews->bindValue(":news_update", $localTime);
         $editNews->bindValue(":news_con", $_POST["news_con"]);
         //$editNews->bindValue(":news_pic", $filename);
         $editNews->bindValue(":news_area", $_POST["news_area"]);

@@ -150,7 +150,15 @@ export default {
     props: {
         s_id: {
             type: String, // 假設 s_id 是字符串
-            required: true // 如果需要 s_id，則將其標記為必需
+            required: true, // 如果需要 s_id，則將其標記為必需
+        },
+        alb_id:{
+            type: String,
+            required: false,
+        },
+        allSid:{
+            type: Array,
+            required:false,
         }
     },
     data() {
@@ -177,60 +185,49 @@ export default {
         }
     },
     methods: {
-        // async playMusic() {
-        //         //顯示播放器
-        //     this.playerOpen = true;
-        //     // 获取歌曲数据
-        //     // await this.fetchSong(this.s_id); 
-
-        //     this.$nextTick(() => {
-        //         const audioElement = document.getElementById("myAudio");
-        //         if (audioElement && typeof audioElement.play === 'function') {
-        //             audioElement.play();
-        //             this.isPlaying = true;
-        //         } else {
-        //             console.error('音樂無法播放。');
-        //         }
-        //     });
-        // },
         async playMusic() {
-        //顯示播放器
+
+            await this.filterSarr();
+
+            // console.log("filterSarr後", this.songList);
+
+            // 顯示播放器
             this.playerOpen = true;
 
             this.$nextTick(() => {
                 const audioElement = document.getElementById("myAudio");
                 if (audioElement && typeof audioElement.play === 'function') {
-                // 步骤1：檢查是否存在有效的 s_id
-                if (this.s_id) {
-                    // 步骤2：查找特定的 s_id 對應的歌曲信息
-                    const song = this.songList.find(item => item.s_id === this.s_id);
-                    console.log('步骤2：比對到的歌曲訊息:', song);
-                    if (song) {
-                    // 步骤3：檢查從數據庫中獲取的歌曲 s_id 是否與 props 中的 s_id 匹配
-                    if (this.currentSong && this.currentSong.s_id === this.s_id) {
-                        // 重置歌曲当前时间
-                        audioElement.load();
-
-                        // 步骤4：播放音樂
-                        audioElement.play()
-                        .then(() => {
-                            // console.log('步骤4：音樂已成功播放。');
-                            this.isPlaying = true;
-                        })
-                        .catch((error) => {
-                            console.error('步骤4：音樂播放失敗：', error);
-                        });
+                    // 步骤3：檢查是否存在有效的 s_id
+                    if (this.s_id) {
+                        // 步骤4：查找特定的 s_id 對應的歌曲
+                        const song = this.songList.find(item => item.s_id === this.s_id);
+                        // console.log('步骤4：比對到的歌曲:', song);
+                        if (song) {
+                            // 步骤5：檢查陣列的歌曲 s_id是否與 props中的 s_id匹配
+                            if (this.currentSong && this.currentSong.s_id === this.s_id) {
+                                // 重置歌曲時間
+                                audioElement.load();
+                                
+                                // 步骤6：播放音樂
+                                audioElement.play()
+                                .then(() => {
+                                    // console.log('步骤6：音樂已成功播放。');
+                                    this.isPlaying = true;
+                                })
+                                .catch((error) => {
+                                    console.error('步骤5：音樂播放失敗：', error);
+                                });
+                            } else {
+                                console.log('步骤4：歌曲信息不匹配，不播放歌曲。');
+                            }
+                        } else {
+                            console.warn('步骤3：找不到匹配的歌曲信息。');
+                        }
                     } else {
-                        console.log('步骤3：歌曲信息不匹配，不播放歌曲。');
-                    }
-                    } else {
-                    console.warn('步骤2：找不到匹配的歌曲信息。');
+                        console.error('步骤2：當前歌曲不存在。');
                     }
                 } else {
-                    console.error('步骤1：當前歌曲不存在。');
-                }
-                } else {
-                console.error('步骤3：音樂無法播放。');
+                    console.error('步骤1：音樂無法播放。');
                 }
             });
         },
@@ -241,28 +238,24 @@ export default {
             fetch(apiURL)
             .then(async (response) => {
                 this.songList = await response.json();
-                // console.log('songList:', this.songList);
+                // console.log('原songList:', this.songList);
             })
             .catch((error) => {
                 console.error("發生錯誤:", error.message);
             });
         },
-        // async fetchSong(s_id) {
-        //     console.log('Fetching song with s_id:', s_id);
-        //     const apiURL = new URL(
-        //         `http://localhost/muse_music/public/api/getPlayerSong.php?s_id=${s_id}`
-        //     );
-        //     try {
-        //         const response = await fetch(apiURL);
-        //         if (response.ok) {
-        //             this.songList = await response.json();
-        //         } else {
-        //             console.error("獲取歌曲數據失敗:", response.status);
-        //         }
-        //     } catch (error) {
-        //         console.error("發生錯誤:", error.message);
-        //     }
-        // },
+        filterSarr() {
+            if (this.allSid && this.allSid.length > 0) {
+                // 假如 allSid 存在且包含 s_id
+                // 根據 allSid 篩選歌曲列表
+                this.songList = this.songList.filter(item =>
+                    this.allSid.includes(item.s_id)
+                );
+
+                // 篩選後的結果
+                // console.log('篩選後的歌曲列表:', this.songList);
+            }
+        },
         pauseMusic() {
             const audioElement = document.getElementById("myAudio");
             if (audioElement) {
@@ -340,20 +333,20 @@ export default {
         loadAndPlayCurrentSong() {
             const audioElement = document.getElementById("myAudio");
             if (audioElement) {
-                // 暂停当前播放的音乐
+                // 暂停當前播放的音樂
                 audioElement.pause();
 
-                // 更新音乐
+                // 更新音樂
                 audioElement.src = `${this.publicPath}audio/${this.currentSong.s_src}`;
 
-                // 重新加载新的音乐
+                // 重新加载新的音樂
                 audioElement.load();
 
-                // 播放新的音乐
+                // 播放新的音樂
                 audioElement.play()
                     .then(() => {
                         this.isPlaying = true;
-                        // 音乐准备好后重置时间
+                        // 音樂準備好後重置時間
                         audioElement.onloadedmetadata = () => {
                             this.totalTime = audioElement.duration;
                         };
@@ -402,7 +395,6 @@ export default {
     },
     mounted() {
         this.fetchSong();
-        // fetchSong();
     },
 };
 </script>
