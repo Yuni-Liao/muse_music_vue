@@ -211,14 +211,14 @@ export default {
         },
         //編輯圖片
         img2(e) {
-            let that = this;
-            let files = e.target.files[0];
+            let that2 = this;
+            let files2 = e.target.files[0];
             if (!e || !window.FileReader) return;
             let reader = new FileReader();
-            reader.readAsDataURL(files);
+            reader.readAsDataURL(files2);
 
             reader.onloadend = function () {
-                that.addItem.prod_pic = files.name;
+                that2.addItem.prod_pic = files2.name;
             };
         },
 
