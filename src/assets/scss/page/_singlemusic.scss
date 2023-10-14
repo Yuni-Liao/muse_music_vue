@@ -356,23 +356,45 @@
                             }
                         }
 
+                        // .date {
+                        //     font-size: $tag;
+                        //     position: relative;
+                        //     display: flex;
+                        //     align-items: center;
+                        //     margin-right: 4%;
+
+                        //     .more {
+                        //         @include btnBgNone;
+                        //     }
+
+                        //     .report-btn-container {
+                        //         position: absolute;
+                        //         top: 8px;
+                        //         right: -25px;
+                        //     }
+                        // }
+
                         .date {
                             font-size: $tag;
-                            position: relative;
                             display: flex;
                             align-items: center;
                             margin-right: 4%;
 
-                            .more {
-                                @include btnBgNone;
-                            }
-
-                            .report-btn-container {
-                                position: absolute;
-                                top: 8px;
-                                right: -25px;
-                            }
                         }
+
+                        .more {
+                            @include btnBgNone;
+                            position: relative;
+
+                            
+                        }
+                        .report-btn {
+                                position: absolute;
+                                top: -10px;
+                                /* 调整垂直位置，根据需要 */
+                                right: 0;
+                                /* 使其在 "更多" 按钮的右边 */
+                            }
                     }
 
                     .txt {
