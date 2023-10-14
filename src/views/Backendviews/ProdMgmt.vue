@@ -15,15 +15,18 @@
 
         <!-- 以下是表格資料區 -->
         <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1000" :columns="columns" :data="productData">
+            <!-- 上下架按鈕 -->
             <template #upDownBtn="{ row }">
-                <Switch @click="upDownBtn(row)" true-color="#13ce66" false-color="#ff4949" />
+                <Switch v-model="row.show_stat" @on-change="toggleBtn(row)" false-color="#ff4949" true-color="#13ce66"
+                    :before-change="prodBeforeChange" true-value="1" false-value="0" />
             </template>
+            <!-- 編輯按鈕 -->
             <template #editBtn="{ row }">
                 <font-awesome @click="editProd(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
             </template>
         </Table>
     </div>
-    <!-- 以下是跳窗編輯區 -->
+    <!-- 以下是跳窗"編輯"區 -->
     <div v-if="editBox == true" class="editprod obj_Radius">
         <label for="prod_id" class="label">商品編號:</label>
         <input type="text" id="prod_id" name="id" v-model="editItem.prod_id" style="margin-bottom: 10px; width: 268px;" />
@@ -65,17 +68,13 @@
                 <img v-else :src="`${publicPath}image/ShopImage/${editItem.prod_pic}`" />
             </label>
         </div>
-
-
-
         <div class="btngroup">
             <button @click="closeBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
             <button @click="saveBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
         </div>
     </div>
-
-        <!-- 以下是跳窗編輯區 -->
-        <div v-if="addBox == true" class="addprod obj_Radius">
+    <!-- 以下是跳窗"新增"區 -->
+    <div v-if="addBox == true" class="addprod obj_Radius">
         <!-- <label for="prod_id" class="label">商品編號:</label>
         <input type="text" id="prod_id" name="id" v-model="addItem.prod_id" style="margin-bottom: 10px; width: 268px;" /> -->
         <label for="prod_name" class="label">商品名稱:</label>

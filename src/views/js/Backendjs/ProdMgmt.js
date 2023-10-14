@@ -89,19 +89,55 @@ export default {
         }
     },
     methods: {
-        upDownBtn(row) {
-            alert('上/下架');
-        },
-        editBtn(row) {
-            alert('編輯');
-        },
         prodSearchBtn() {
             alert('搜索');
         },
-        addProdBtn() {
-            alert('新增商品');
+
+        // 以下 上/下架功能相關------------------------------------------------
+        toggleBtn(row) {
+            this.editItem.prod_id = row.prod_id;
+            this.editItem.show_stat = row.show_stat;
+            console.log("指定此列的值:", this.editItem.show_stat);
+
+            this.changeStatus();
         },
-        //編輯商品 圖片
+        changeStatus() {
+            const url = `${this.$store.state.phpPublicPath}editProdOnOff.php`;
+            const formData = new FormData();
+            formData.append("prod_id", this.editItem.prod_id);
+            formData.append("show_stat", this.editItem.show_stat);
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("編輯失敗");
+                    }
+                })
+                .then(() => {
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        },
+        prodBeforeChange() {
+            return new Promise((resolve) => {
+                this.$Modal.confirm({
+                    title: '提示',
+                    content: '確定要更改狀態嗎 ?',
+                    onOk: () => {
+                        resolve();
+                    }
+                });
+            });
+        },
+        
+        // 以下編輯功能相關----------------------------------------------------
+        // 編輯圖片
         img(e) {
             let that = this;
             let files = e.target.files[0];
@@ -113,33 +149,12 @@ export default {
                 that.editItem.prod_pic = files.name;
             };
         },
-
-        //新增商品 圖片
-        img2(e) {
-            let that = this;
-            let files = e.target.files[0];
-            if (!e || !window.FileReader) return;
-            let reader = new FileReader();
-            reader.readAsDataURL(files);
-
-            reader.onloadend = function () {
-                that.addItem.prod_pic = files.name;
-            };
-        },
-
-        // 點擊編輯按鈕後跳窗出現
+        // 編輯跳窗
         editProd(row) {
             this.editItem = { ...row }; // 傳入編輯數據
             this.editBox = true; // 顯示編輯跳窗
         },
-
-        // 點擊新增按鈕後跳窗出現
-        addProd(row) {
-            this.addItem = { ...row }; // 傳入編輯數據
-            this.addBox = true; // 顯示編輯跳窗
-        },
-
-        // 編輯確認按鈕點擊事件
+        // 編輯商品 - 確認按鈕
         saveBtn() {
             if (prod_id != undefined) {
                 const url = `${this.$store.state.phpPublicPath}editProd.php`;
@@ -191,7 +206,30 @@ export default {
                     });
             }
         },
-        // 編輯新增按鈕點擊事件-----------------------------
+        // 關閉編輯跳窗
+        closeBtn() {
+            this.editBox = false;
+        },
+
+        // 以下新增功能相關-----------------------------------------------------
+        // 新增圖片
+        img2(e) {
+            let that2 = this;
+            let files = e.target.files[0];
+            if (!e || !window.FileReader) return;
+            let reader = new FileReader();
+            reader.readAsDataURL(files);
+
+            reader.onloadend = function () {
+                that2.addItem.prod_pic = files.name;
+            };
+        },
+        // 新增跳窗
+        addProd(row) {
+            this.addItem = { ...row }; // 傳入編輯數據
+            this.addBox = true; // 顯示編輯跳窗
+        },
+        // 新增商品 - 確認按鈕 這邊要再修改-----------------------------
         saveAddBtn() {
             const url = `${this.$store.state.phpPublicPath}addProd.php`;
 
@@ -208,68 +246,63 @@ export default {
             formData.append("show_stat", this.addItem.show_stat);
             formData.append("prod_pic", document.getElementById("fileimg").files[0]);
 
+            console.log("Form data:", formData);
+
             fetch(url, {
                 method: "POST",
                 body: formData,
             })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                    // console.log(response);
-                } else {
-                    throw new Error("編輯失敗");
-                }
-            })
-            .then(() => {
-                this.success(true, json);
-                this.addItem = [];
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                        // console.log(response);
+                    } else {
+                        throw new Error("編輯失敗");
+                    }
+                })
+                .then(() => {
+                    this.success(true, json);
+                    this.addItem = [];
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
 
-        },
-        // 關閉編輯跳窗
-        closeBtn() {
-            this.editBox = false;
         },
         // 關閉新增跳窗
         closeAddBtn() {
             this.addBox = false;
         },
-
-        //fetch 商品
-        fetchProdMgmt() {
-            //先檢查資料格式是否符合DB規則
-            const url = `${this.$store.state.phpPublicPath}postProdMgmt.php`;
-            let headers = {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            };
-            fetch(url, {
-                method: "POST",
-                headers: headers,
-            })
-                .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        console.error('API 錯誤回應:', response);
-                        throw new Error("取得 dta 失敗");
-                    }
-                })
-                .then((json) => {
-                    console.log('API 成功回應:', json);
-                    this.productData = json;
-                    // 將 prod_type 設定為正確的值
-                })
-                .catch((error) => {
-                    console.error('API 請求失敗:', error);
-                });
-        }
+        
     },
     mounted() {
-        this.fetchProdMgmt();
+        //fetch postProdMgmt.php;
+        //先檢查資料格式是否符合DB規則
+        const url = `${this.$store.state.phpPublicPath}postProdMgmt.php`;
+        let headers = {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        };
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.error('API 錯誤回應:', response);
+                    throw new Error("取得 dta 失敗");
+                }
+            })
+            .then((json) => {
+                console.log('API 成功回應:', json);
+                this.productData = json;
+                // 將 prod_type 設定為正確的值
+            })
+            .catch((error) => {
+                console.error('API 請求失敗:', error);
+            });
     }
 }
 
