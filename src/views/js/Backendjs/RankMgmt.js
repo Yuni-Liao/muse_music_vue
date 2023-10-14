@@ -8,10 +8,14 @@ export default {
             //
             editSingleSongRank: false,
             editAlbumRank: false,
+            editSLRank: false,
             selectedSongRank: {
                 rank_id: ''
             },
             selectedAlbumRank: {
+                rank_id: ''
+            },
+            selectedSLRank: {
                 rank_id: ''
             },
             selectedSong: {
@@ -20,10 +24,15 @@ export default {
             selectedAlbum: {
                 alb_id: ''
             },
+            selectedSL: {
+                sl_id: ''
+            },
             allSong: [], // 全部歌曲暫存陣列
             allAlbum: [],// 全部專輯暫存陣列
+            allSL: [],
             songRankGroup: [], // 渲染單曲排行資料的暫存陣列
             albumRankGroup: [], // 渲染專輯排行資料的暫存陣列
+            SLRankGroup: [],
             songColumns: [
                 {
                     title: 'No',
@@ -76,6 +85,32 @@ export default {
                     align: 'center'
                 }
             ],
+            SLColumns: [
+                {
+                    title: 'No',
+                    key: 'rank_id',
+                    width: 230,
+                    align: 'center'
+                },
+                {
+                    title: '會員編號',
+                    key: 'mem_id',
+                    width: 250,
+                    align: 'center'
+                },
+                {
+                    title: '歌單名稱',
+                    key: 'sl_name',
+                    width: 250,
+                    align: 'center'
+                },
+                {
+                    title: '操作',
+                    slot: 'editBtn',
+                    width: 250,
+                    align: 'center'
+                }
+            ],
         }
     },
     methods: {
@@ -94,6 +129,15 @@ export default {
             console.log("Row s_name:", row.s_name);
             console.log("Row s_id:", row.s_id);
             console.log(this.selectedSongRank)
+        },
+        editSLBtn(row) {
+            this.editSLRank = true
+            this.editAlbumRank = false
+            this.editSingleSongRank = false
+            this.selectedSLRank = row.rank_id;
+            console.log("Row sl_name:", row.sl_name);
+            console.log("Row sl_id:", row.sl_id);
+            console.log(this.selectedSLRank)
         },
         saveSongBtn() {
             const selectedSongId = this.selectedSong.s_id;
@@ -168,9 +212,46 @@ export default {
                 alert("此專輯已在排行榜內，請選擇不同專輯");
             }
         },
+        saveSLBtn() {
+            const selectedSLId = this.selectedSL.sl_id;
+            const SLExists = this.SLRankGroup.some(SL => SL.sl_id === selectedSLId);
+            if (!SLExists) {
+                const url = `${this.$store.state.phpPublicPath}editSLRankMgmt.php.php`;
+                let headers = {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                };
+                const slDataToSend = {
+                    rank_id: this.selectedSLRank,
+                    sl_id: this.selectedSL.sl_id,
+                }
+                fetch(url, {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify(slDataToSend),
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error("編輯失敗");
+                        }
+                    })
+                    .then(() => {
+                        window.location.reload();
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+                console.log(slDataToSend);
+            } else {
+                alert("此歌單已在排行榜內，請選擇不同歌單");
+            }
+        },
         closeBtn() {
             this.editSingleSongRank = false
             this.editAlbumRank = false
+            this.editSLRank = false
         },
     },
     mounted() {
@@ -222,6 +303,38 @@ export default {
             .catch((error) => {
                 console.log(error.message);
             });
+
+        // 歌單排行渲染
+        const slurl = `${this.$store.state.phpPublicPath}postSLRankMgmt.php`;
+        let slHeaders = {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        };
+        fetch(slurl, {
+            method: "POST",
+            headers: slHeaders,
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("取得 data 失敗");
+                }
+            })
+            .then((json) => {
+                this.SLRankGroup = json;
+                 this.SLRankGroup.forEach((item, index) => {
+                item.index = index + 1;
+                
+                
+            });
+                
+
+                console.log(this.SLRankGroup);
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
         // fetch 全部單曲
         const fetchAllSingleMusic = () => {
             const apiURL = new URL(
@@ -250,5 +363,20 @@ export default {
                 });
         };
         fetchAllAlbum();
+
+          // fetch 全部歌單
+          const fetchAllSL = () => {
+            const apiURL = new URL(
+                `${this.$store.state.phpPublicPath}getAllSL.php`
+            );
+
+            fetch(apiURL)
+                .then((res) => res.json())
+                .then((res) => (this.allSL = res))
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
+        };
+        fetchAllSL();
     },
 }
