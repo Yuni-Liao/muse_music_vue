@@ -39,44 +39,28 @@ try {
 
     //準備sql
     $sql = "insert into product
-    (prod_id, prod_type, prod_name, prod_singer, prod_price, prod_inf,prod_date,show_stat,chat_num) values 
-    (NULL, :prod_type, :prod_name, :prod_singer,:prod_price, :prod_inf, CURRENT_TIMESTAMP,'1','0')";
+    (prod_pic, prod_type, prod_name, prod_singer, prod_price, prod_inf,prod_int,show_stat) 
+    values 
+    (:prod_pic, :prod_type, :prod_name, :prod_singer,:prod_price, :prod_inf,:prod_int,'1')";
 
     $addProd = $pdo->prepare($sql);
-    $addProd->bindValue(":prod_id", $_POST["prod_id"]);
-    $addProd->bindValue(":prod_type", $_POST["prod_type"]);
-    $addProd->bindValue(":prod_name", $_POST["prod_name"]);
-    $addProd->bindValue(":prod_singer", $_POST["prod_singer"]);
-    $addProd->bindValue(":prod_price", $_POST["prod_price"]);
-    $addProd->bindValue(":prod_inf", $_POST["prod_inf"]);
-    $addProd->bindValue(":prod_date", $_POST["prod_date"]);
-    $addProd->bindValue(":show_stat", $_POST["show_stat"]);
+    $addProd->bindValue(":prod_type", $_POST["addprod_type"]);
+    $addProd->bindValue(":prod_name", $_POST["addprod_name"]);
+    $addProd->bindValue(":prod_singer", $_POST["addprod_singer"]);
+    $addProd->bindValue(":prod_price", $_POST["addprod_price"]);
+    $addProd->bindValue(":prod_inf", $_POST["addprod_inf"]);
+    $addProd->bindValue(":prod_int", $_POST["addprod_int"]);
+    $addProd->bindValue(":show_stat", $_POST["addshow_stat"]);
     $addProd->bindValue(":prod_pic", $filename);
 
-    // 執行sql
-    if ($addProd->execute()) {
-        $successResponse = [
-            "message" => "新增成功",
-        ];
-        echo json_encode($successResponse);
-    } else {
-        // 如果執行失敗，可以生成一個錯誤響應
-        $errorResponse = [
-            "error" => [
-                "message" => "新增失敗",
-                "details" => "無法執行 SQL 語句",
-            ],
-        ];
-        echo json_encode($errorResponse);
-    }
-} catch (Exception $e) {
-    $errorResponse = [
-        "error" => [
-            "message" => "新增失敗",
-            "line" => $e->getLine(),
-            "details" => $e->getMessage(),
-        ],
-    ];
+    // 執行 SQL 更新
+    $addProd->execute();
 
-    echo json_encode($errorResponse);
+    // 如果更新成功
+    $responseMessage = "更新成功";
+
+    echo json_encode($responseMessage);
+} catch (Exception $e) {
+    echo "錯誤行號 : ", $e->getLine(), "<br>";
+    echo "錯誤原因 : ", $e->getMessage(), "<br>";
 }
