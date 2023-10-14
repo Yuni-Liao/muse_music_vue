@@ -68,7 +68,7 @@ export default {
             //會員id localStorage暫存
             localStorage.setItem("mem_id", mem_id);
             localStorage.setItem("mem_name", mem_name);
-            window.location.reload();
+            //window.location.reload();
 
             // 導回首頁 錨點在homepage
             window.location.href = "/home";
@@ -101,16 +101,16 @@ export default {
     },
 
     //取得會員追蹤歌單名單
-    //黃珮菁  -  獲取歌單追蹤用
+    //黃珮菁  -  獲取歌單/創作者/音樂快訊追蹤用
     fetchMemSlFol(mem_id) {
       fetch(
         `http://localhost/muse_music/public/api/getMemFol.php?mem_id=${mem_id}`
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          //   localStorage.setItem("mem_name", mem_name);
-          localStorage.setItem("sl_fol", data);
+          localStorage.setItem("sl_fol", data.sl_fol);
+          localStorage.setItem("cre_fol", data.cre_fol);
+          localStorage.setItem("news_fol", data.news_fol);
         })
         .catch((error) => {
           console.error("資料取得失敗:", error);
