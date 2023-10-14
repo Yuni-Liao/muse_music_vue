@@ -112,7 +112,7 @@
                                             <p class="userName">{{ messageItem.mem_name }}</p>
                                         </router-link>
                                     </div>
-                                    <p class="date">{{ messageItem.msg_date }}</p>
+                                    
                                     <div tabindex="0" class="more-group">
                                         <button class="more" @click="toggleReportBtn(messageItem)">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']"
@@ -126,6 +126,7 @@
                                 <p class="txt">
                                     {{ messageItem.msg_con }}
                                 </p>
+                                <p class="date">{{ messageItem.msg_date }}</p>
                                 <!-- 按讚留言先隱藏 -->
                                 <!-- <div class="likeMes" v-if="messageItem">
                                     <p class="likeCount">{{ messageItem.msg_like }}</p>
@@ -176,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
         </section>
     </main>
 </template>
