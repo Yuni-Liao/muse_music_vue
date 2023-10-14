@@ -200,6 +200,7 @@ export default {
                         //this.success(true, json);
                         //this.fetchnew();
                         this.editItem = [];
+                        window.location.reload();
                     })
                     .catch((error) => {
                         console.log(error.message);
@@ -209,6 +210,7 @@ export default {
         // 關閉編輯跳窗
         closeBtn() {
             this.editBox = false;
+            window.location.reload();
         },
 
         // 以下新增功能相關-----------------------------------------------------
