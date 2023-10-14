@@ -22,22 +22,21 @@ try {
                 $filename = "";
                 $filename = $_POST["alb_id"] . "." . $fileExtension;
                 $to = $dir . $filename;
+                //copy($from, $to);
 
                 move_uploaded_file($from, $to);
+                break;
+
             case UPLOAD_ERR_INI_SIZE:
-                // echo json_encode("上傳檔案太大, 不得超過", ini_get("upload_max_filesize"));
-                $result = ["error" => true, "msg" => "上傳檔案太大, 不得超過1MB"];
-                echo json_encode($result);
-                break;
+                echo json_encode(["error" => true, "msg" => "上傳檔案太大, 不得超過 " . ini_get("upload_max_filesize")]);
+                exit();
             case UPLOAD_ERR_FORM_SIZE:
-                //echo json_encode("上傳檔案太大, 不得超過", $_POST["MAX_FILE_SIZE"], "位元組");
-                $result = ["error" => true, "msg" => "上傳檔案太大"];
-                echo json_encode($result);
-                break;
+                json_encode(["error" => true, "msg" => "上傳檔案太大, 不得超過", $_POST["MAX_FILE_SIZE"], "位元組"]);
+                exit();
             case UPLOAD_ERR_PARTIAL:
                 $result = ["error" => true, "msg" => "上傳檔案不完整, 請再試一次"];
                 echo json_encode($result);
-                break;
+                exit();
         }
     } else {
         $filename = $_POST["alb_img"];
@@ -99,12 +98,12 @@ try {
     $pdo->rollBack(); //捨棄交易
     // $result = ["error" => true, "msg" => "系統錯誤, 請通知系統維護人員"];
     // echo json_encode($result);
-    $errorResponse = [
+    $result = [
         "error" => [
-            "message" => "新增失敗",
+            "msg" => "新增失敗",
             "line" => $e->getLine(),
             "details" => $e->getMessage(),
         ],
     ];
-    echo json_encode($errorResponse);
+    echo json_encode($result);
 }

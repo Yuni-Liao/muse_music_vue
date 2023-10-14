@@ -529,7 +529,7 @@ export default {
     }, 1000); // 六秒後執行函式1
   },
   methods: {},
-  unmounted() {
+  beforeUnmount() {
     clearInterval(this.museboytTimer);
   },
 };

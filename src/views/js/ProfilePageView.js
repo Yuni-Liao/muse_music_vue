@@ -28,7 +28,7 @@ export default {
     return {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
-      login_mem_id: 1, //這個之後要再改
+      login_mem_id: "",
       pageMemid: 0,
       //swiper
       modules: [Scrollbar],
@@ -46,6 +46,7 @@ export default {
       albData: [],
       songData: [],
       slData: [],
+      playerId: "", //播放器使用
       //活動
       act: [
         {
@@ -80,7 +81,7 @@ export default {
   },
   mounted() {
     this.pageMemid = this.$route.params.memid;
-
+    this.login_mem_id = localStorage.getItem("mem_id");
     //fetch 個人主頁會員資料
     const fetchProfileMemData = () => {
       const apiURL = new URL(
@@ -185,8 +186,10 @@ export default {
         }
       }
     },
-    openPlayer() {
-      this.$refs.player.playMusic();
+    //播放器使用------------------------------------
+    openPlayer(sid) {
+      this.playerId = sid;
+      this.$refs.player.playMusic(this.playerId);
     },
     //頁面切換----------------------
     gotosinglealbum(abid) {

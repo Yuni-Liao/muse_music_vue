@@ -1,5 +1,5 @@
 <template>
-  <player ref="player"></player>
+  <player :s_id="playerId" @change-s-id="changeSId" ref="player"></player>
   <div class="profilepage">
     <section class="hd">
       <div
@@ -29,6 +29,7 @@
               <FolBtnBig
                 v-if="login_mem_id != pageMemid"
                 :functype="1"
+                :folnum="pageMemid"
               ></FolBtnBig>
             </h1>
             <p class="loc">
@@ -280,7 +281,7 @@
                     :src="`${publicPath}dataimage/song/${item.s_img}`"
                     :alt="item.s_name"
                   />
-                  <div class="play" @click="openPlayer()">
+                  <div class="play" @click="openPlayer(item.s_id)">
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </div>

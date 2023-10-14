@@ -17,9 +17,15 @@ export default {
       slSongs: [], //歌單歌曲 (fetch)
       login_mem_id: "",
       showDelSl: false, //顯示刪除歌單按鈕和移除歌單按鈕
+      playerId: "", //播放器使用
     };
   },
   methods: {
+    //播放器使用------------------------------------------------------------------
+    openPlayer(sid) {
+      this.playerId = sid;
+      this.$refs.player.playMusic(this.playerId);
+    },
     //切換 more 開啟------------------------------------------------------------------
     showtoggle(e, index) {
       // console.log(e.target.nextElementSibling);
@@ -32,9 +38,6 @@ export default {
     //關閉 more------------------------------------------------------------------
     closemore(e) {
       this.morecurrent = -1;
-    },
-    openPlayer() {
-      this.$refs.player.playMusic();
     },
     share(e) {
       alert(`分享歌曲，歌曲ID${e}`);
@@ -149,7 +152,7 @@ export default {
 
     //判斷是否已登入，歌單擁有者是否為登入會員
     setTimeout(() => {
-      console.log(this.login_mem_id, this.songlist.creater_id);
+      //console.log(this.login_mem_id, this.songlist.creater_id);
       if (
         this.login_mem_id != undefined &&
         this.login_mem_id == this.songlist.creater_id

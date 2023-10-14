@@ -41,13 +41,17 @@ export default {
         headers: headers,
         body: formData,
       })
-        .then((response) => {
-          return response.json();
-        })
-        .then(() => {
-          this.$router.push({
-            name: "profilepageedit",
-          });
+        .then((data) => {
+          if (data.error) {
+            alert(data.msg); // 显示错误消息
+          } else {
+            alert("編輯完成");
+            window.location.reload();
+            window.location.href = "/home/profilepageedit";
+            // this.$router.push({
+            //   path: "profilepageedit",
+            // });
+          }
         })
         .catch((error) => {
           console.error("發生錯誤:", error);

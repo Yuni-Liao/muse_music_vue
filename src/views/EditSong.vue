@@ -1,8 +1,6 @@
 <template>
   <div class="editsong">
     <div class="main-wrapper">
-      <label for="" class="label"></label>
-
       <form class="form1">
         <div class="form-group">
           <p class="label" color="white" margin-top="100px">歌曲編輯</p>
