@@ -9,7 +9,6 @@
         <div class="repInf">
             <label for="rep_rsn" class="label">檢舉原因:</label>
             <input type="text" v-model="rep_rsn" placeholder="  我想檢舉...">
-            <!-- <textarea type="textarea" v-model="rep_rsn"></textarea> -->
         </div>
         <div class="btngroup">
             <button class="closeBtn default_Btn obj_Radius" @click="closeReportWindow">取消</button>
@@ -18,6 +17,7 @@
         </div>
     </div>
 </template>
+
 <script setup>
 import { ref, defineProps, onMounted, defineEmits } from 'vue';
 import { useStore } from 'vuex';
@@ -27,7 +27,7 @@ const props = defineProps({
 })
 const emits = defineEmits(['closeReportBtn']);
 const store = useStore();
-console.log(props.msg_id);
+//console.log(props.msg_id);
 const showReportWindow = ref(false);
 const login_mem_id = localStorage.getItem('mem_id');
 const rep_rsn = ref('');
@@ -61,6 +61,7 @@ function submitReport() {
             .then((response) => {
                 if (response.ok) {
                     console.log('完成！');
+                    window.location.reload();
                 } else {
                     throw new Error('檢舉失敗');
                 }
@@ -71,6 +72,7 @@ function submitReport() {
     }
 }
 </script>
+
 <!-- <script>
 export default {
     emits: ['closeReportBtn'], // 声明可以触发的自定义事件
