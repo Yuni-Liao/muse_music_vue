@@ -58,7 +58,11 @@
               >
                 刪除歌單
               </button>
-              <FolBtnBig v-if="showDelSl == false" :functype="0"></FolBtnBig>
+              <FolBtnBig
+                v-if="showDelSl == false"
+                :functype="0"
+                :folnum="songlist.sl_id"
+              ></FolBtnBig>
               <ShareBtn></ShareBtn>
               <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
             </div>

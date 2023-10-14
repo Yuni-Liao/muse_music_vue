@@ -8,7 +8,7 @@ try {
 
     //執行sql指令並取得pdoStatement
     //SQL指令: 抓取商城商品
-    $sql = "select * from product";
+    $sql = "select * from product where show_stat = 1";
     $prods = $pdo->prepare($sql);
     $prods->execute();
 

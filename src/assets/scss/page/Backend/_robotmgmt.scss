@@ -1,57 +1,98 @@
-main{
-    position: relative;
-    .robotmgmt_box{
+.robotmgmt_box{
+    display: flex;
+    flex-flow: column wrap;
+    @include layout(80%);
+    position: absolute;
+    top: 23%;
+    left: 18%;
+    display: flex;
+    justify-content: center;
+    h1{
+        font-size: $big;
+        text-align: left;
+        padding-bottom: 3%;
+    }
+}
+// 編輯、新增彈窗
+.editfaq, .addfaq{
+    @include rect(400px, 650px);
+    padding: 1%;
+    background-color: #333;
+    color: $white;
+    border: $green 3px solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 100;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    input{
+        padding: 2%;
+        overflow-y: auto;
+        white-space: pre-wrap;
+    }
+    .btngroup{
         display: flex;
-        flex-flow: column wrap;
-        @include layout(80%);
-        position: absolute;
-        top: 23%;
-        left: 18%;
-        display: flex;
-        justify-content: center;
-        h1{
-            font-size: $big;
-            text-align: left;
-            padding-bottom: 3%;
+        justify-content: space-evenly;
+        .saveBtn{
+            @include rect(50px, auto);
+            @include btnColor($green, false);
+            margin: auto;    
+            font-size: 14px;
+            line-height: 1.5;
+        }
+            .closeBtn{
+            @include rect(50px, auto);
+            margin: auto;    
+            font-size: 14px;
+            line-height: 1.5;
+            border: 0px;
+            @include btnColor($white, false);
         }
     }
-    // 輪播編輯彈窗
-    .editfaq{
-        @include rect(400px, 650px);
-        padding: 1%;
-        background-color: #333;
-        color: $white;
-        border: $green 3px solid;
-        position: absolute;
-        top: 30%;
-        left: 40%;
-        z-index: 100;
+}
+
+// 刪除彈窗
+.deletefaq{
+    @include rect(300px, 130px);
+    padding: 1%;
+    background-color: #333;
+    color: $white;
+    border: $green 3px solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 100;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    p{
+        margin: auto;
+    }
+    .btngroup{
         display: flex;
-        flex-flow: column wrap;
         justify-content: space-evenly;
-        input{
-            padding: 2%;
-            overflow-y: auto;
-            white-space: pre-wrap;
+        .saveBtn{
+            @include rect(50px, auto);
+            @include btnColor($green, false);
+            margin: auto;    
+            font-size: 14px;
+            line-height: 1.5;
         }
-        .btngroup{
-            display: flex;
-            justify-content: space-evenly;
-            .saveBtn{
-                @include rect(50px, auto);
-                @include btnColor($green, false);
-                margin: auto;    
-                font-size: 14px;
-                line-height: 1.5;
-            }
-                .closeBtn{
-                @include rect(50px, auto);
-                margin: auto;    
-                font-size: 14px;
-                line-height: 1.5;
-                border: 0px;
-                @include btnColor($white, false);
-            }
+            .closeBtn{
+            @include rect(50px, auto);
+            margin: auto;    
+            font-size: 14px;
+            line-height: 1.5;
+            border: 0px;
+            @include btnColor($white, false);
         }
     }
 }

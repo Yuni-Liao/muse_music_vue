@@ -29,6 +29,7 @@
               <FolBtnBig
                 v-if="login_mem_id != pageMemid"
                 :functype="1"
+                :folnum="pageMemid"
               ></FolBtnBig>
             </h1>
             <p class="loc">
