@@ -14,11 +14,21 @@ try {
         a.alb_id, 
         a.alb_name,
         s.s_name,
+        s.s_src,
         s.s_id,
-        s.s_src
+        s.s_img,
+        m.mem_name,
+        s.s_name,
+        s.s_length,
+        s.s_src,
+        s.s_lyrics
     from 
         song s
-    join album a on a.alb_id = s.alb_id
+    join 
+        album a on a.alb_id = s.alb_id
+    join
+        member m on m.mem_id = s.mem_id
+
     ";
 
     
