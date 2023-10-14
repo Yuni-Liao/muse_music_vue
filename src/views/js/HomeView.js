@@ -163,7 +163,7 @@ export default {
     },
   },
   mounted() {
-    //fetch 本週熱門歌曲
+    //fetch 本週熱門歌曲 黃珮菁
     const fetchSongRank = () => {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getRankSong.php`
@@ -171,7 +171,10 @@ export default {
 
       fetch(apiURL)
         .then((res) => res.json())
-        .then((res) => (this.SongRank = res))
+        .then((res) => {
+          this.SongRank = res;
+          this.showWeekTopmusic = true;
+        })
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
@@ -209,10 +212,6 @@ export default {
         });
     };
     fetchCarousel();
-
-    setTimeout(() => {
-      this.showWeekTopmusic = true;
-    }, 100);
   },
   beforeUnmount() {
     // 清除計時器

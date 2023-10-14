@@ -82,64 +82,6 @@ export default {
   mounted() {
     this.pageMemid = this.$route.params.memid;
     this.login_mem_id = localStorage.getItem("mem_id");
-    //fetch 個人主頁會員資料
-    const fetchProfileMemData = () => {
-      const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getMemDetail.php?memid=${this.pageMemid}`
-      );
-
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => (this.memData = res))
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
-    };
-    //fetch 會員專輯
-    const fetchalbData = () => {
-      const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getProfileAlbum.php?memid=${this.pageMemid}`
-      );
-
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => (this.albData = res))
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
-    };
-    //fetch 會員歌曲
-    const fetchsongData = () => {
-      const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getProfileSong.php?memid=${this.pageMemid}&stat=1`
-      );
-
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => (this.songData = res))
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
-    };
-    //fetch 會員公開歌單
-    const fetchslData = () => {
-      const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getProfilePublicSonglist.php?memid=${this.pageMemid}`
-      );
-
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => (this.slData = res))
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
-    };
-
-    //執行fetch
-    fetchProfileMemData();
-    fetchslData();
-    fetchalbData();
-    fetchsongData();
 
     //是否顯示"顯示更多"按鈕
     const readmoreBtn = () => {
@@ -151,12 +93,71 @@ export default {
       }
     };
 
-    setTimeout(() => {
-      readmoreBtn();
-    }, 300);
-    setTimeout(() => {
-      this.showCountUp = true;
-    }, 300);
+    //fetch 會員資料
+    if (this.pageMemid) {
+      const apiURL = new URL(
+        `${this.$store.state.phpPublicPath}getMemDetail.php?memid=${this.pageMemid}`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.memData = res))
+        .then(() => {
+          readmoreBtn();
+          this.showCountUp = true;
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    }
+
+    //fetch 會員專輯
+    if (this.pageMemid) {
+      const apiURL = new URL(
+        `${this.$store.state.phpPublicPath}getProfileAlbum.php?memid=${this.pageMemid}`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.albData = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    }
+    //fetch 會員歌曲
+    if (this.pageMemid) {
+      const apiURL = new URL(
+        `${this.$store.state.phpPublicPath}getProfileSong.php?memid=${this.pageMemid}&stat=1`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.songData = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    }
+
+    //fetch 會員公開歌單
+    if (this.pageMemid) {
+      const apiURL = new URL(
+        `${this.$store.state.phpPublicPath}getProfilePublicSonglist.php?memid=${this.pageMemid}`
+      );
+
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.slData = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
+    }
+
+    // setTimeout(() => {
+    //   readmoreBtn();
+    // }, 300);
+    // setTimeout(() => {
+    //   this.showCountUp = true;
+    // }, 300);
   },
   computed: {},
   methods: {
