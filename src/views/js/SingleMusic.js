@@ -146,8 +146,8 @@ export default {
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;
         },
+
         toggleReportBtn(messageItem) {
-            // 切換按鈕模式
             messageItem.showReportBtn = !messageItem.showReportBtn;
         },
         closeReportBtn() {
