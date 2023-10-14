@@ -2,7 +2,8 @@
     <div class="prodmgmt_box">
         <h1>周邊販售管理 | 商品管理</h1>
         <!-- 以下是新增欄位 -->
-        <Button type="primary" @click="addProd(row)" style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增商品</Button>
+        <Button type="primary" @click.stop="addProd(row)"
+            style="width:100px; margin-bottom: 1%;margin-left: 70%;">新增商品</Button>
 
         <!--以下是搜尋欄位-->
         <!-- <Input v-model="productData" placeholder="輸入商品名稱" style="width: 180px; margin-bottom: 1%; margin-left: 70%;"
@@ -69,7 +70,7 @@
         </div>
         <div class="btngroup">
             <button @click="closeBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
-            <button @click="saveEditBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
+            <button @click.stop="saveEditBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
         </div>
     </div>
     <!-- 以下是跳窗"新增"區 -->
@@ -109,7 +110,7 @@
         </div>
         <div class="btngroup">
             <button @click="closeBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
-            <button @click="saveAddBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
+            <button @click.prevent="saveAddBtn()" class="saveBtn default_Btn  obj_Radius">儲存</button>
         </div>
     </div>
 </template>
