@@ -60,11 +60,9 @@
             <Page :total="catList.length" show-sizer :page-size-opts="[20, 16, 12, 8]" :page-size="selectedPageSize"
                 @on-page-size-change="handlePageChange" v-model="currentPage" />
         </div>
-        <router-link to="/home/shoppingsteps">
-            <button class="shopcart">
-                <img :src="`${publicPath}image/icon/shopcart.png`" alt="shopcart">
-            </button>
-        </router-link>
+        <button class="shopcart" @click="checkLogin">
+            <img :src="`${publicPath}image/icon/shopcart.png`" alt="shopcart">
+        </button>
     </div>
 </template>
 

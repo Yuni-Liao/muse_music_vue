@@ -11,8 +11,8 @@
             </template>
 
             <!-- 駁回按鈕 -->
-            <template  #deleteBtn="{ row }">
-                <Button type="success" @click="deleteBtn(row) ">
+            <template #deleteBtn="{ row }">
+                <Button type="success" @click="deleteBtn(row)">
                     駁回
                 </Button>
             </template>
@@ -20,7 +20,6 @@
 
         <!-- 批次按鈕 -->
         <!-- <space :size="size" style="margin: 30px 0px;">
-           
             <Button type="success" @click="alldelete(row)">批次駁回</Button>
             <Button type="error" @click="allAccept(row)">批次下架</Button>
         </space> -->
