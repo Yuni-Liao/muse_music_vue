@@ -25,19 +25,24 @@ export default {
     folnum: {
       immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
-        this.BtnShow();
+        if (this.login_mem_id != undefined) {
+          this.BtnShow();
+        }
       },
     },
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
-
-    if (this.functype == 0) {
-      this.folList = localStorage.getItem("sl_fol").split(",");
-    } else if (this.functype == 1) {
-      this.folList = localStorage.getItem("cre_fol").split(",");
-    } else if (this.functype == 2) {
-      this.folList = localStorage.getItem("news_fol").split(",");
+    if (this.login_mem_id != undefined) {
+      if (this.functype == 0) {
+        this.folList = localStorage.getItem("sl_fol").split(",");
+      } else if (this.functype == 1) {
+        this.folList = localStorage.getItem("cre_fol").split(",");
+      } else if (this.functype == 2) {
+        this.folList = localStorage.getItem("news_fol").split(",");
+      }
+    } else {
+      this.isFol = false;
     }
 
     //追蹤歌單處理
@@ -128,31 +133,6 @@ export default {
           .catch((error) => {
             console.error("發生錯誤:", error);
           });
-        // } else if (this.functype === 1) {
-        //   //創作者追蹤功能 (有餘力再寫)--------------------------
-
-        //   if (this.isFol) {
-        //     this.isFol = !this.isFol;
-        //     //測試用，以下撰寫功能
-        //     alert("取消追蹤創作者");
-        //   } else {
-        //     this.isFol = !this.isFol;
-        //     //測試用，以下撰寫功能
-        //     alert("追蹤創作者");
-        //   }
-        // } else if (this.functype === 2) {
-        //   //音樂快訊追蹤功能 (有餘力再寫)--------------------------
-
-        //   if (this.isFol) {
-        //     this.isFol = !this.isFol;
-        //     //測試用，以下撰寫功能
-        //     alert("取消追蹤音樂快訊");
-        //   } else {
-        //     this.isFol = !this.isFol;
-        //     //測試用，以下撰寫功能
-        //     alert("追蹤音樂快訊");
-        //   }
-        //   }
       }
     },
   },
