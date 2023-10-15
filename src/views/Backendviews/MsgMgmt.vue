@@ -4,33 +4,43 @@
         <Table ref="selection" highlight-row stripe class="msgmgmt_table cellHeight" width="1000" :columns="columns"
             :data="msgDate">
             <!-- 下架按鈕 -->
-            <template #deleteBtn="{ row }">
-                <Button type="error" @click="deleteBtn(row)">
+            <template #rejectBtn="{ row }">
+                <Button type="error" @click="acceptBtn(row)">
                     下架
                 </Button>
             </template>
 
             <!-- 駁回按鈕 -->
-            <template #rejectBtn="{ row }">
-                <Button type="success" @click="rejectBtn(row)">
+            <template  #deleteBtn="{ row }">
+                <Button type="success" @click="deleteBtn(row) ">
                     駁回
                 </Button>
             </template>
         </Table>
 
         <!-- 批次按鈕 -->
-        <space :size="size" style="margin: 30px 0px;">
+        <!-- <space :size="size" style="margin: 30px 0px;">
+           
+            <Button type="success" @click="alldelete(row)">批次駁回</Button>
             <Button type="error" @click="allAccept(row)">批次下架</Button>
-            <Button type="success" @click="allReject(row)">批次駁回</Button>
-        </space>
+        </space> -->
     </div>
 
-    <!-- 下架彈窗 -->
+    <!-- 駁回檢舉 彈窗 -->
     <div v-if="deleteBox == true" class="deleteRep obj_Radius">
-        <p>確定下架留言嗎？</p>
+        <p>確定駁回檢舉嗎？</p>
         <div class="btngroup">
             <button @click="closeBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
             <button @click="deleteSaveBtn()" class="saveBtn default_Btn obj_Radius">確定</button>
+        </div>
+    </div>
+
+    <!-- 下架留言 彈窗 -->
+    <div v-if="acceptBox == true" class="acceptRep obj_Radius">
+        <p>確定下架這則留言嗎？</p>
+        <div class="btngroup">
+            <button @click="closeBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
+            <button @click="acceptSaveBtn()" class="saveBtn default_Btn obj_Radius">確定</button>
         </div>
     </div>
 </template>

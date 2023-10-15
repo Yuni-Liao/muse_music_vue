@@ -18,8 +18,8 @@ main{
     }
 }
 
-// 刪除彈窗
-.deleteRep{
+// 駁回 & 下架 彈窗
+.deleteRep,.acceptRep{
     @include rect(300px, 130px);
     padding: 1%;
     background-color: #333;
