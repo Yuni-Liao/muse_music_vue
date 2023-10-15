@@ -44,13 +44,13 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '下架留言',
+                    title: '駁回檢舉',
                     slot: 'deleteBtn',
                     width: 100,
                     align: 'center'
                 },
                 {
-                    title: '駁回檢舉',
+                    title: '下架留言',
                     slot: 'rejectBtn',
                     width: 100,
                     align: 'center'
@@ -60,6 +60,9 @@ export default {
 
             //確認下架彈窗
             deleteBox: false,
+
+            //確認駁回彈窗
+            //acceptBox: false,
         };
     },
     methods: {
@@ -73,6 +76,15 @@ export default {
         //--------------------------------------------------------
         //下架 刪掉這筆資料 且刪除該筆留言
 
+        acceptBtn(){
+            alert('下架');
+        },
+        allAccept() {
+            alert('批次下架');
+        },
+
+        //--------------------------------------------------------
+        //駁回 刪掉這筆資料 但不刪除該筆留言
         deleteBtn(row) {
             // 顯示刪除彈窗
             this.deleteBox = true;
@@ -111,22 +123,12 @@ export default {
             }
         },
 
-
-        allAccept() {
-            alert('批次下架');
-        },
-
-        //--------------------------------------------------------
-        //駁回 刪掉這筆資料 但不刪除留言
-        rejectBtn(row) {
-            alert('駁回');
-        },
-
-
-        allReject() {
+        allDelete() {
             alert('批次駁回');
         }
     },
+
+    //------------------------------------------------------------
     mounted() {
         //先檢查資料格式是否符合DB規則
         const url = `${this.$store.state.phpPublicPath}postMsgMgmt.php`;
