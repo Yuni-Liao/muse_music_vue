@@ -9,18 +9,20 @@ try {
 
     //SQL指令: 查詢歌單資料
     //含抓歌單圖片(歌單中第一首歌的歌曲圖片)
-    $sql = "select  sl.sl_id,sl.sl_name, sl.fol_num,m.mem_name as creater_name,sl.mem_id as creater_id,
-    (select s_img
-    from song
-    where s_id = (select s_id 
-                   from slitem 
-                   where sl_id = sl.sl_id 
-                   limit 1)
-   ) as sl_pic
-    
-    FROM song_list sl
-    JOIN member m on sl.mem_id = m.mem_id
-    ORDER BY sl.fol_num DESC LIMIT 10";
+    $sql = "SELECT sl.sl_id, sl.sl_name, sl.fol_num, m.mem_name AS creater_name, sl.mem_id AS creater_id,
+    (SELECT s_img
+     FROM song
+     WHERE s_id = (SELECT s_id
+                   FROM slitem
+                   WHERE sl_id = sl.sl_id
+                   LIMIT 1)
+    ) AS sl_pic,
+    r.rank_id  -- Add the rank_id column from sl_rank
+FROM song_list sl
+JOIN member m ON sl.mem_id = m.mem_id
+LEFT JOIN sl_rank r ON sl.sl_id = r.sl_id -- Assuming there is a relationship between sl_list and sl_rank
+ORDER BY sl.fol_num DESC
+LIMIT 10";
 
     $SLRank = $pdo->query($sql);
 

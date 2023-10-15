@@ -2,16 +2,17 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header("Content-Type:application/json;charset=utf-8");
 
 
 try {
     require_once("./connectMusemusic.php");
 
-    $sql = "update sl_rank set sl_id = :s_id where rank_id = :rank_id";
+    $sql = "update sl_rank set sl_id = :sl_id where rank_id = :rank_id";
 
     $data = json_decode(file_get_contents('php://input'), true);
 
-    if (isset($data["sl_id"])) {
+    if (isset($data["sl_id"], $data["rank_id"])) {
         $editSL = $pdo->prepare($sql);
         $editSL->bindValue(":sl_id", $data["sl_id"]);
         $editSL->bindValue(":rank_id", $data["rank_id"]);

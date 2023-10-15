@@ -117,6 +117,7 @@ export default {
         editAlbumBtn(row) {
             this.editAlbumRank = true
             this.editSingleSongRank = false
+            this.editSLRank = false
             this.selectedAlbumRank = row.rank_id
             console.log("Row alb_name:", row.alb_name);
             console.log("Row alb_id:", row.alb_id);
@@ -125,6 +126,7 @@ export default {
         editSongBtn(row) {
             this.editSingleSongRank = true
             this.editAlbumRank = false
+            this.editSLRank = false
             this.selectedSongRank = row.rank_id
             console.log("Row s_name:", row.s_name);
             console.log("Row s_id:", row.s_id);
@@ -137,7 +139,7 @@ export default {
             this.selectedSLRank = row.rank_id;
             console.log("Row sl_name:", row.sl_name);
             console.log("Row sl_id:", row.sl_id);
-            console.log(this.selectedSLRank)
+            console.log(this.selectedSLRank);
         },
         saveSongBtn() {
             const selectedSongId = this.selectedSong.s_id;
@@ -216,7 +218,7 @@ export default {
             const selectedSLId = this.selectedSL.sl_id;
             const SLExists = this.SLRankGroup.some(SL => SL.sl_id === selectedSLId);
             if (!SLExists) {
-                const url = `${this.$store.state.phpPublicPath}editSLRankMgmt.php.php`;
+                const url = `${this.$store.state.phpPublicPath}editSLRankMgmt.php`;
                 let headers = {
                     "Content-Type": "application/json",
                     Accept: "application/json",
@@ -323,18 +325,11 @@ export default {
             })
             .then((json) => {
                 this.SLRankGroup = json;
-                 this.SLRankGroup.forEach((item, index) => {
-                item.index = index + 1;
-                
-                
-            });
-                
-
-                console.log(this.SLRankGroup);
             })
             .catch((error) => {
                 console.log(error.message);
             });
+
         // fetch 全部單曲
         const fetchAllSingleMusic = () => {
             const apiURL = new URL(
