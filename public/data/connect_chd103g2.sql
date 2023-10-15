@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2023-10-14 19:23:50
+-- 產生時間： 2023-10-15 10:18:45
 -- 伺服器版本： 8.0.31
 -- PHP 版本： 8.0.26
 
@@ -451,11 +451,11 @@ INSERT INTO `news` (`news_id`, `singer`, `news_name`, `news_date`, `news_place`,
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `news_fo`
+-- 資料表結構 `news_fol`
 --
 
-DROP TABLE IF EXISTS `news_fo`;
-CREATE TABLE IF NOT EXISTS `news_fo` (
+DROP TABLE IF EXISTS `news_fol`;
+CREATE TABLE IF NOT EXISTS `news_fol` (
   `mem_id` int NOT NULL,
   `news_id` int NOT NULL,
   `fol_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -464,10 +464,10 @@ CREATE TABLE IF NOT EXISTS `news_fo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='音樂快訊追蹤';
 
 --
--- 傾印資料表的資料 `news_fo`
+-- 傾印資料表的資料 `news_fol`
 --
 
-INSERT INTO `news_fo` (`mem_id`, `news_id`, `fol_date`) VALUES
+INSERT INTO `news_fol` (`mem_id`, `news_id`, `fol_date`) VALUES
 (1, 1, '2023-10-15 02:47:48'),
 (1, 2, '2023-10-15 02:47:48'),
 (1, 6, '2023-10-15 02:47:48'),
@@ -1255,11 +1255,11 @@ ALTER TABLE `msg_rep`
   ADD CONSTRAINT `msg_rep_ibfk_2` FOREIGN KEY (`msg_id`) REFERENCES `msg` (`msg_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 資料表的限制式 `news_fo`
+-- 資料表的限制式 `news_fol`
 --
-ALTER TABLE `news_fo`
-  ADD CONSTRAINT `news_fo_ibfk_1` FOREIGN KEY (`mem_id`) REFERENCES `member` (`mem_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `news_fo_ibfk_2` FOREIGN KEY (`news_id`) REFERENCES `news` (`news_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `news_fol`
+  ADD CONSTRAINT `news_fol_ibfk_1` FOREIGN KEY (`mem_id`) REFERENCES `member` (`mem_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `news_fol_ibfk_2` FOREIGN KEY (`news_id`) REFERENCES `news` (`news_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `orders`
