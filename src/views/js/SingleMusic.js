@@ -74,44 +74,80 @@ export default {
         // },
 
         // 創建新留言
+        // addNewMessage() {
+        //     if (this.msg_con !== "") {
+        //         const url = `${this.$store.state.phpPublicPath}postSingleMusicMsg.php`;
+        //         let headers = {
+        //             Accept: "application/json",
+        //         };
+
+        //         // 創建新留言對象
+        //         const formData = new FormData();
+        //         formData.append("mem_id", this.login_mem_id);
+        //         //formData.append("msg_id", this.msg_id);
+        //         formData.append("s_id", this.sid);
+        //         formData.append("msg_con", this.msg_con);
+        //         //formData.append("msg_like", this.msg_like);
+        //         console.log(this.msg_con);
+
+        //         // 發送新留言到後端
+        //         fetch(url, {
+        //             method: "POST",
+        //             headers: headers,
+        //             body: formData,
+        //         })
+        //             .then((response) => {
+        //                 if (response.ok) {
+        //                     console.log('完成！');
+        //                 } else {
+        //                     throw new Error("新增失敗");
+        //                 }
+        //             })
+        //             .then(() => {
+        //                 window.location.reload();
+        //             })
+        //             .catch((error) => {
+        //                 console.error("發生錯誤:", error);
+        //             });
+        //     }
+        // },
         addNewMessage() {
-            if (this.msg_con !== "") {
-                const url = `${this.$store.state.phpPublicPath}postSingleMusicMsg.php`;
-                let headers = {
-                    Accept: "application/json",
-                };
+            if (this.login_mem_id === null) {
+                alert("使用會員功能，請先進行登入");
+                this.$router.push({ name: "login" });
+            } else {
+                // 登入後執行新增留言的操作
+                if (this.msg_con !== "") {
+                    // 將新增留言的邏輯放在這裡
+                    const url = `${this.$store.state.phpPublicPath}postSingleMusicMsg.php`;
+                    let headers = {
+                        Accept: "application/json",
+                    };
+                    const formData = new FormData();
+                    formData.append("mem_id", this.login_mem_id);
+                    formData.append("s_id", this.sid);
+                    formData.append("msg_con", this.msg_con);
 
-                // 創建新留言對象
-                const formData = new FormData();
-                formData.append("mem_id", this.login_mem_id);
-                //formData.append("msg_id", this.msg_id);
-                formData.append("s_id", this.sid);
-                formData.append("msg_con", this.msg_con);
-                //formData.append("msg_like", this.msg_like);
-                console.log(this.msg_con);
-
-                // 發送新留言到後端
-                fetch(url, {
-                    method: "POST",
-                    headers: headers,
-                    body: formData,
-                })
-                    .then((response) => {
-                        if (response.ok) {
-                            console.log('完成！');
-                        } else {
-                            throw new Error("新增失敗");
-                        }
+                    // 發送新增留言請求到後端
+                    fetch(url, {
+                        method: "POST",
+                        headers: headers,
+                        body: formData,
                     })
-                    .then(() => {
-                        window.location.reload();
-                    })
-                    .catch((error) => {
-                        console.error("發生錯誤:", error);
-                    });
+                        .then((response) => {
+                            if (response.ok) {
+                                // 重新載入頁面
+                                window.location.reload();
+                            } else {
+                                throw new Error("新增失敗");
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("發生錯誤:", error);
+                        });
+                }
             }
         },
-
 
         gotosinglemusic(sid) {
             this.$router.push({

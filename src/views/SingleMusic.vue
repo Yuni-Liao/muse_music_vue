@@ -112,7 +112,7 @@
                                             <p class="userName">{{ messageItem.mem_name }}</p>
                                         </router-link>
                                     </div>
-                                    
+
                                     <div tabindex="0" class="more-group">
                                         <button class="more" @click="toggleReportBtn(messageItem)">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']"
@@ -177,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
     </main>
 </template>
