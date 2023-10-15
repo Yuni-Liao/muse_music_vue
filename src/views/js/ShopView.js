@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            login_mem_id: "", 
+            login_mem_id: "",
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             // 將 localStorage 儲存在 storage 變數中
@@ -97,6 +97,17 @@ export default {
         },
     },
     methods: {
+        checkLogin() {
+            if (this.login_mem_id === null) {
+                alert("使用會員功能，請先進行登入");
+                this.$router.push({ name: "login" });
+            } else {
+                // 執行預期的操作
+                // 例如，導向到購物車頁面或執行其他操作
+                this.$router.push({ name: "shoppingsteps" });
+            }
+        },
+
         fetchprod() {
             const apiURL = new URL(
                 `http://localhost/muse_music/public/api/getProducts.php`

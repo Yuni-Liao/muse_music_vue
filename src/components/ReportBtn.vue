@@ -23,6 +23,7 @@
 <script setup>
 import { ref, defineProps, onMounted, defineEmits } from 'vue';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
     msg_id: Number
@@ -33,8 +34,19 @@ const showReportWindow = ref(false);
 const login_mem_id = localStorage.getItem('mem_id');
 const rep_rsn = ref('');
 
+// function toggleReportWindow() {
+//     showReportWindow.value = !showReportWindow.value;
+// }
+
 function toggleReportWindow() {
-    showReportWindow.value = !showReportWindow.value;
+    const router = useRouter();
+    if (login_mem_id === null) {
+        // 限制登入才可使用檢舉功能
+        alert("使用會員功能，請先進行登入");
+        window.location.reload();
+    } else {
+        showReportWindow.value = !showReportWindow.value;
+    }
 }
 
 function closeReportWindow() {
