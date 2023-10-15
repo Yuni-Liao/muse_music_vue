@@ -26,7 +26,7 @@
             </div>
         </div>
         <div v-if="editSLRank == true" class="popSLSelect obj_Radius">
-            <input class="allSong obj_Radius selectedrank" type="text" readonly :value="'No. ' + selectedSLRank">
+            <input class="allSong obj_Radius selectedrank" type="text" readonly :value="`No. ` + selectedSLRank">
             <select class="allSL obj_Radius" id="allSL" v-model="selectedSL.sl_id">
                 <option v-for="(item, index) in allSL" :key="index" :value="item.sl_id">{{ item.sl_name
                 }}
