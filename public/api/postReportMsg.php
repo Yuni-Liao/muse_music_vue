@@ -15,20 +15,17 @@ try {
     $mem_id = $_POST["mem_id"];
     $msg_id = $_POST["msg_id"];
     $rep_rsn = $_POST["rep_rsn"];
-    $rep_date = $_POST["rep_date"];
 
     $sql = "
-    INSERT INTO msg 
-    (msgrep_id, mem_id, msg_id, rep_rsn, rep_date) 
-    VALUES 
-    (:msgrep_id, :mem_id, :msg_id, :rep_rsn,CURRENT_TIMESTAMP)";
+    INSERT INTO `msg_rep`(`msgrep_id`, `mem_id`, `msg_id`, `rep_rsn`, `rep_date`) 
+    VALUES (:msgrep_id, :mem_id,:msg_id,:rep_rsn,CURRENT_TIMESTAMP);
+    ";
 
     $newMessage = $pdo->prepare($sql);
     $newMessage->bindValue(":msgrep_id", $msgrep_id);
     $newMessage->bindValue(":mem_id", $mem_id);
     $newMessage->bindValue(":msg_id", $msg_id);
     $newMessage->bindValue(":rep_rsn", $rep_rsn);
-    $newMessage->bindValue(":rep_date", $rep_date);
 
     if ($newMessage->execute()) {
         $successResponse = [

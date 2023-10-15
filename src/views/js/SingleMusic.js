@@ -146,8 +146,8 @@ export default {
         toggleSongs() {
             this.showAllSongs = !this.showAllSongs;
         },
+
         toggleReportBtn(messageItem) {
-            // 切換按鈕模式
             messageItem.showReportBtn = !messageItem.showReportBtn;
         },
         closeReportBtn() {
@@ -200,7 +200,6 @@ export default {
                     this.messages = await response.json();
                     console.log(this.messages)
                 })
-                //console.log(this.messages);
                 .catch((error) => {
                     console.error("發生錯誤:", error);
                 });

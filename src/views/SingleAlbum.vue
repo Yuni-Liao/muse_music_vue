@@ -1,6 +1,9 @@
 <template>
-  <!-- 目前撥放器可切換下一首 但不是抓同張專輯 -->
-  <player :s_id="id" @change-s-id="changeSId" ref="player"></player>
+  <!-- 目前撥放器可切換下一首 但不是抓同張專輯-->
+  <player 
+  :s_id="id"
+  :allSid="allSid"
+  @change-s-id="changeSId" ref="player"></player>
   <main class="singleAlbum">
     <!-- 上方大圖 -->
     <div class="banner" v-for="albumItem in album" :key="albumItem.id">
@@ -39,7 +42,7 @@
             </div>
             <div class="buttonArea">
               <ShareBtn></ShareBtn>
-              <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
+              <PlayBtnBig @click="openPlayer(songs[0].id)"></PlayBtnBig>
             </div>
           </div>
         </div>
@@ -78,7 +81,7 @@
                 </span>
                 <span class="more"></span>
               </li>
-              <li v-for="(item, index) in songs" :key="id" class="songArea">
+              <li v-for="(item, index) in songs" :key="item.id" class="songArea">
                 <span class="id">{{ index + 1 }}</span>
                 <span class="pic">
                   <img :src="`${publicPath}dataimage/song/${item.songPic}`" />
