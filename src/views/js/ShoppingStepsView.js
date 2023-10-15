@@ -407,6 +407,7 @@ const database = {
 export default {
     data() {
         return {
+            login_mem_id: "",
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
@@ -572,5 +573,6 @@ export default {
     //凱芸 加載購物車商品資訊
     mounted() {
         this.loadCartItems();
+        this.login_mem_id = localStorage.getItem('mem_id');
     },
 };
