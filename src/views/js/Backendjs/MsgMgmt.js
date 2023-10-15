@@ -4,11 +4,11 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             columns: [
-                {
-                    type: 'selection',
-                    width: 60,
-                    align: 'center'
-                },
+                // {
+                //     type: 'selection',
+                //     width: 60,
+                //     align: 'center'
+                // },
                 {
                     title: "#",
                     key: "no",
@@ -62,31 +62,65 @@ export default {
             deleteBox: false,
 
             //確認駁回彈窗
-            //acceptBox: false,
+            acceptBox: false,
         };
     },
     methods: {
         closeBtn() {
             this.deleteBox = false;
+            this.acceptBox = false;
         },
 
         handleSelectAll(status) {
             this.$refs.selection.selectAll(status);
         },
-        //--------------------------------------------------------
-        //下架 刪掉這筆資料 且刪除該筆留言
 
-        acceptBtn(){
-            alert('下架');
+        //下架 刪掉這筆資料 且刪除該筆留言--------------------------
+        acceptBtn(row){
+            // 顯示下架彈窗
+            this.acceptBox = true;
+            // 存儲當前行數據以便在確定時使用
+            this.currentAcceptRow = row;
         },
-        allAccept() {
-            alert('批次下架');
+        acceptSaveBtn(){
+            if (this.currentAcceptRow) {
+                const url = `${this.$store.state.phpPublicPath}deleteRepMsgAndMsg.php`;
+                const formData = new FormData();
+                // 傳遞參數
+                formData.append("msg_id", this.currentAcceptRow.msg_id);
+
+                fetch(url, {
+                    method: "POST",
+                    body: formData,
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            console.log(response);
+                            window.location.reload();
+                        } else {
+                            throw new Error("刪除失敗");
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    })
+                    .finally(() => {
+                        // 重置彈窗狀態
+                        this.acceptBox = false;
+                        // 重置當前行數據
+                        this.currentAcceptRow = null;
+                    });
+            }
         },
 
-        //--------------------------------------------------------
-        //駁回 刪掉這筆資料 但不刪除該筆留言
+
+        // allAccept() {
+        //     alert('批次下架');
+        // },
+
+        //駁回 刪掉這筆資料 但不刪除該筆留言-----------------------
         deleteBtn(row) {
-            // 顯示刪除彈窗
+            // 顯示駁回彈窗
             this.deleteBox = true;
             // 存儲當前行數據以便在確定時使用
             this.currentDeleteRow = row;
@@ -123,9 +157,9 @@ export default {
             }
         },
 
-        allDelete() {
-            alert('批次駁回');
-        }
+        // allDelete() {
+        //     alert('批次駁回');
+        // }
     },
 
     //------------------------------------------------------------
