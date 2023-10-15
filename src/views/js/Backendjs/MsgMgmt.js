@@ -10,11 +10,17 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '編號',
-                    key: 'msgrep_id',
-                    width: 100,
-                    align: 'center'
+                    title: "#",
+                    key: "no",
+                    width: 80,
+                    align: "center",
                 },
+                // {
+                //     title: '編號',
+                //     key: 'msgrep_id',
+                //     width: 100,
+                //     align: 'center'
+                // },
                 {
                     title: '留言內容',
                     key: 'msg_con',
@@ -57,7 +63,7 @@ export default {
         };
     },
     methods: {
-        closeBtn(){
+        closeBtn() {
             this.deleteBox = false;
         },
 
@@ -140,10 +146,15 @@ export default {
                 }
             })
             .then((json) => {
+                //把陣列中每個物件都添加編號
+                for (let i = 0; i < json.length; i++) {
+                    json[i].no = i + 1;
+                }
                 this.msgDate = json;
             })
             .catch((error) => {
                 console.log(error.message);
             });
+
     }
 }
