@@ -4,9 +4,14 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-            modal: false,
+            addBox: false,
             login_admin_id: '', // 暫存登入管理員id
             adminList: [],
+            addItem: {
+                name: '',
+                acc: '',
+                admin_psw: '',
+            }, // 新增管理員資料
             columns: [
                 {
                     title: '編號',
@@ -43,13 +48,44 @@ export default {
     },
     methods: {
         createAdmin() {
-            this.modal = true;
+            this.addBox = true;
+        },
+        saveBtn() {
+            const url = new URL(`${this.$store.state.phpPublicPath}addAdmMgmt.php`)
+
+            const formData = new FormData();
+            formData.append("admin_id", this.addItem.admin_id);
+            formData.append("name", this.addItem.name);
+            formData.append("acc", this.addItem.acc);
+            formData.append("admin_psw", this.addItem.admin_psw);
+
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(response);
+                    } else {
+                        throw new Error("新增失敗");
+                    }
+                })
+                .then(() => {
+                    this.addItem = [];
+                    //window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        },
+        closeBtn() {
+            this.addBox = false;
         },
         deleteBtn(row) {
             this.adminList[0].admin_id = row.admin_id;
 
-            // const url = new URL(`${this.$store.state.phpPublicPath}deleteAdmMgmt.php`);
-            const url = new URL(`http://localhost/muse_music/public/api/deleAdmMgmt.php`)
+            const url = new URL(`${this.$store.state.phpPublicPath}deleteAdmMgmt.php`);
+
             let headers = {
                 "Content-Type": "application/json",
                 Accept: "application/json",
