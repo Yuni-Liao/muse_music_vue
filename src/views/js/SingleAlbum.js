@@ -11,6 +11,8 @@ export default {
     data() {
         return {
             id: '',
+            //存放所有歌曲的id
+            allSid: [],
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             salid: null,
@@ -24,13 +26,14 @@ export default {
         openPlayer(song) {
             
             this.id = song;
-            
+
             this.$nextTick(() => {
                 // 打印歌曲的 id
                 // console.log("點擊的歌曲id:", this.id);
+                // console.log("點擊的專輯歌曲allSid:", this.allSid);
 
                  // 调用播放器组件的 playMusic 
-                this.$refs.player.playMusic(this.id);
+                this.$refs.player.playMusic();
             });
         },
         changeSId(newSId) {
@@ -78,6 +81,9 @@ export default {
             fetch(apiURL)
                 .then(async (response) => {
                     this.songs = await response.json();
+                    // 提取所有歌曲的 s_id 并存储在一个数组中
+                    this.allSid = this.songs.map((songs) => songs.id);
+                    // console.log("此專輯歌曲的s_id:",this.allSid);
                 })
                 .catch((error) => {
                     console.error("發生錯誤:", error);

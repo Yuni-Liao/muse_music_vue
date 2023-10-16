@@ -1,8 +1,7 @@
 <template>
   <button id="AddSlBtn" @click="openAddSl()">
-    <fontAwesome class="i" :icon="['fa', 'plus']" :style="AddSlBtnStyle" />
+    <fontAwesome class="i" :icon="['fa', 'plus']" />
   </button>
-
   <div class="AddSl_close" v-if="isAddSlOpen" @click.stop="closeAddSl($event)">
     <div id="AddSl">
       <form action="">
@@ -57,21 +56,20 @@ export default {
   name: "AddSlBtn",
   data() {
     return {
-      isAddSlBtn: false,
       isAddSlOpen: false,
       isNewSlOpen: false,
-      login_mem_id: 1, //這個之後要再改
+      login_mem_id: "",
 
       //撈取該會員的歌單清單
       slData: [],
     };
   },
   computed: {
-    AddSlBtnStyle() {
-      return {
-        color: this.isAddSlBtn ? "#FE1C6C" : "#252525",
-      };
-    },
+    // AddSlBtnStyle() {
+    //   return {
+    //     color: this.isAddSlBtn ? "#FE1C6C" : "#252525",
+    //   };
+    // },
   },
   methods: {
     openAddSl() {
@@ -83,21 +81,6 @@ export default {
       } else {
         this.isAddSlOpen = true;
       }
-    },
-    //fetch我的歌單(僅我創建的)
-    fetchMyallsonglist() {
-      const loginMemId = this.login_mem_id;
-      const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getMyCreateSonglists.php?loginMemId=${loginMemId}`
-      );
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => {
-          this.slData = res;
-        })
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
     },
     //關閉加入歌單彈窗 (點擊空白處)
     closeAddSl(e) {
@@ -157,15 +140,26 @@ export default {
     isNewSlOpenupdate(val) {
       this.isNewSlOpen = val;
       this.isAddSlOpen = true;
-      this.fetchMyallsonglist();
     },
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
     //判斷是否登入
     if (this.login_mem_id != undefined) {
-      // 執行fetch
-      this.fetchMyallsonglist();
+      //fetch我的歌單(僅我創建的)
+
+      const loginMemId = this.login_mem_id;
+      const apiURL = new URL(
+        `${this.$store.state.phpPublicPath}getMyCreateSonglists.php?loginMemId=${loginMemId}`
+      );
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => {
+          this.slData = res;
+        })
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
     }
   },
 };
@@ -174,7 +168,11 @@ export default {
 <style scoped lang="scss">
 #AddSlBtn {
   @include music_btn_circle(35px);
+  &:hover {
+    color: $pink;
+  }
 }
+
 .AddSl_close {
   position: fixed;
   width: 100vw;

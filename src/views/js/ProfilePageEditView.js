@@ -1,5 +1,7 @@
+import player from "@/components/player.vue";
+
 export default {
-  // 重推again
+  components: { player },
   data() {
     return {
       // 讓圖片 build 之後能顯示
@@ -22,10 +24,11 @@ export default {
       profileAlbums: [],
       searchsong: "",
       searchalbum: "",
+      playerId: "", //播放器使用
     };
   },
   computed: {
-    //歌曲搜尋
+    //歌曲搜尋------------------------------------------------------------------
     //https://hackmd.io/@Zihyin/B1SwD-Gmq
     filterprofileSongs() {
       const strArr = this.searchsong.split(" "); // 以空白格切分字串
@@ -42,7 +45,8 @@ export default {
       // 過濾出重複的元素
       return [...new Set(arr)];
     },
-    //專輯搜尋
+
+    //專輯搜尋------------------------------------------------------------------
     filterprofileAlbum() {
       const strArr = this.searchalbum.split(" "); // 以空白格切分字串
       const arr = [];
@@ -123,6 +127,7 @@ export default {
         });
       console.log(dataToSend);
     },
+    //編輯歌曲------------------------------------------------------------------
     editSong(s_id, s_img, s_name, s_intro, show_stat) {
       this.$router.push({
         name: "editsong",
@@ -135,6 +140,7 @@ export default {
         },
       });
     },
+    //編輯專輯------------------------------------------------------------------
     editalbum(alb_id, alb_img, alb_name, alb_intro) {
       this.$router.push({
         name: "editalbum",
@@ -145,6 +151,11 @@ export default {
           alb_intro,
         },
       });
+    },
+    //播放器使用------------------------------------------------------------------
+    openPlayer(sid) {
+      this.playerId = sid;
+      this.$refs.player.playMusic(this.playerId);
     },
   },
   mounted() {

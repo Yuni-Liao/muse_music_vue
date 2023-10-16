@@ -1,5 +1,8 @@
 <template>
-  <player ref="player"></player>
+  <player 
+  :s_id="playerId" 
+  :allSid="allSid"
+  @change-s-id="changeSId" ref="player"></player>
   <div class="singlesonglist">
     <!-- 上方大圖 -->
     <section class="banner">
@@ -58,9 +61,15 @@
               >
                 刪除歌單
               </button>
-              <FolBtnBig v-if="showDelSl == false" :functype="0"></FolBtnBig>
+              <FolBtnBig
+                v-if="showDelSl == false"
+                :functype="0"
+                :folnum="songlist.sl_id"
+              ></FolBtnBig>
               <ShareBtn></ShareBtn>
-              <PlayBtnBig @click="openPlayer()"></PlayBtnBig>
+              <PlayBtnBig 
+              v-if="showLastButton"
+              @click="openPlayer(slSongs[0].s_id)"></PlayBtnBig>
             </div>
           </div>
         </div>
@@ -100,7 +109,7 @@
                 ><span class="pic">
                   <img :src="`${publicPath}dataimage/song/${item.s_img}`" />
                   <!-- :src="require(`/public/image/SingleMusic/${item.image}`)" -->
-                  <div class="play" @click="openPlayer()">
+                  <div class="play" @click="openPlayer(item.s_id)">
                     <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </span>

@@ -138,6 +138,7 @@
     justify-content: space-between;
     width: 100%;
     position: relative;
+
     @media screen and (max-width: 768px) {
         display: flex;
         flex-direction: column;
@@ -355,60 +356,31 @@
                             }
                         }
 
-                        .date {
-                            font-size: $tag;
-                            position: relative;
-                            display: flex;
-                            align-items: center;
-                            margin-right: 4%;
 
-                            // .more-group {
-                            //     position: relative;
-                            //     &:focus,
-                            //     &:focus-within {
-                            //         .report-btn {
-                            //             opacity: 1;
-                            //             pointer-events: auto;
-                            //         }
-                            //     }
-                            // }
 
-                            .more {
-                                @include btnBgNone;
-                            }
+                        .more {
+                            @include btnBgNone;
+                            margin-right: 10px;
+                        }
 
-                            // .report-btn {
-                            //     opacity: 0;
-                            //     pointer-events: none;
-                            // }
-
-                            // #ReportBtn {
-                            //     top: 10px;
-                            //     right: -25px;
-                            //     position: absolute;
-                            // }
+                        #ReportBtn {
+                            top: 0;
+                            right: 20px;
                         }
                     }
 
                     .txt {
-                        @include layout(80%);
-                        text-align: left;
-                        margin-bottom: 30px;
+                        margin-bottom: 40px;
                     }
 
-                    .likeMes {
-                        justify-content: flex-end;
-                        align-items: center;
-                        gap: 10px;
+                    .date {
+                        font-size: $tag;
                         display: flex;
+                        justify-content: flex-end;
                         margin: 20px;
-
-                        .likeCount {
-                            font-size: $tag;
-                        }
                     }
-
                 }
+
 
                 .readMore {
                     @include btnBgNone;
@@ -494,6 +466,7 @@
                         color: $dark;
                         font-size: $default;
                         padding-left: 20px;
+                        cursor: pointer;
                     }
                 }
 
@@ -519,10 +492,8 @@
                 align-items: center;
                 gap: 10px;
                 display: flex;
-                //margin: 0px 0 50px;
                 margin: auto;
             }
         }
     }
 }
-

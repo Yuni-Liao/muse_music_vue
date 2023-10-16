@@ -21,6 +21,7 @@
                 margin: 5% 0;
                 padding: 2%;
                 border: 2px solid $green;
+                color: $dark;
             }
             button{
                 width: 75%;
@@ -56,7 +57,7 @@
 }
 /* 步驟區塊 */
 .ivu-steps-item{
-    width: 25%;
+    width: 33.33%;
     display: flex;
     flex-direction: column;
 }

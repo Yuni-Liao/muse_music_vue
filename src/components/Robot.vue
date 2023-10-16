@@ -236,9 +236,7 @@ export default {
                 type: "leftinfo",
                 time: this.getTodayTime(),
                 name: "robot",
-                content: robotAnswer.short_ans +
-                    // `<br><a href='/home/about#faq${id}'>逼！點這看更多答案</a>`
-                    `<br><a href='/chd103/g2/home/about#faq${id}'>逼！點這看更多答案</a>`,
+                content: robotAnswer.short_ans + `<br><a href='/chd103/g2/home/about#faq${id}'>逼！點這看更多答案</a>`,
             };
 
             // 添加對話至列表

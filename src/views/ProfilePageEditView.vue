@@ -1,4 +1,5 @@
 <template>
+  <player :s_id="playerId" @change-s-id="changeSId" ref="player"></player>
   <div class="profilepageedit">
     <div class="cover-container">
       <img
@@ -403,11 +404,16 @@
             <tbody>
               <tr v-for="(item, index) in filterprofileSongs" :key="item.s_id">
                 <td class="timg">
-                  <img
-                    class="song"
-                    :src="`${publicPath}dataimage/song/${item.s_img}`"
-                    :alt="item.s_name"
-                  />
+                  <div class="pic">
+                    <img
+                      class="song"
+                      :src="`${publicPath}dataimage/song/${item.s_img}`"
+                      :alt="item.s_name"
+                    />
+                    <div class="play" @click="openPlayer(item.s_id)">
+                      <fontAwesome class="i" :icon="['fa', 'play']" />
+                    </div>
+                  </div>
                 </td>
                 <td class="tname">
                   {{ item.s_name }}
@@ -484,11 +490,13 @@
                 :key="item.alb_id"
               >
                 <td class="timg">
-                  <img
-                    class="albumn"
-                    alt="專輯照片"
-                    :src="`${publicPath}dataimage/album/${item.alb_img}`"
-                  />
+                  <div class="pic">
+                    <img
+                      class="albumn"
+                      alt="專輯照片"
+                      :src="`${publicPath}dataimage/album/${item.alb_img}`"
+                    />
+                  </div>
                 </td>
                 <td class="tname">
                   {{ item.alb_name }}

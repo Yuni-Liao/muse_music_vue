@@ -40,7 +40,7 @@ export default {
             //
             bgImage: '', // 存放背景圖 -- 廖妍榛
             //
-            hover: false, // 鼠标悬停状态
+            hover: false, // 游標懸停狀態
             styleList: [],
             singers: [],
             songs: [],
@@ -54,33 +54,6 @@ export default {
         }
     },
     methods: {
-        fetchType() {
-            const apiURL = new URL(
-                `${this.$store.state.phpPublicPath}getFindStyle.php?`
-            );
-            fetch(apiURL).then(async (response) => {
-                this.styleList = await response.json();
-            });
-            // console.log(this.styleList);
-        },
-        fetchMember() {
-            const apiURL = new URL(
-                `${this.$store.state.phpPublicPath}getFindMember.php?`
-            );
-            fetch(apiURL).then(async (response) => {
-                this.singers = await response.json();
-            });
-            // console.log(this.singers);
-        },
-        fetchSong() {
-            const apiURL = new URL(
-                `${this.$store.state.phpPublicPath}getFindNewSong.php?`
-            );
-            fetch(apiURL).then(async (response) => {
-                this.songs = await response.json();
-            });
-            // console.log(this.songs);
-        },
         //  更換父組件背景圖 -- 廖妍榛
         spaceHover(imgUrl) {
             this.bgImage = `url(${this.publicPath}dataimage/find/${imgUrl})`;
@@ -88,19 +61,49 @@ export default {
         },
     },
     mounted() {
-        this.fetchType();
-        this.fetchMember();
-        this.fetchSong();
+        const fetchType = () => {
+            const apiURL = new URL(
+                `${this.$store.state.phpPublicPath}getFindStyle.php?`
+            );
+            fetch(apiURL).then(async (response) => {
+                this.styleList = await response.json();
+            });
+            // console.log(this.styleList);
+        };
+        fetchType();
+
+        const fetchMember = () => {
+            const apiURL = new URL(
+                `${this.$store.state.phpPublicPath}getFindMember.php?`
+            );
+            fetch(apiURL).then(async (response) => {
+                this.singers = await response.json();
+            });
+            // console.log(this.singers);
+        };
+        fetchMember();
+
+        const fetchSong = () => {
+            const apiURL = new URL(
+                `${this.$store.state.phpPublicPath}getFindNewSong.php?`
+            );
+            fetch(apiURL).then(async (response) => {
+                this.songs = await response.json();
+            });
+            // console.log(this.songs);
+        };
+        fetchSong();
+
     },
     computed: {
         language() {
-            return this.styleList.filter(v => v.mcat_type === '0')
+            return this.styleList.filter(item => item.mcat_type === '0')
         },
         style() {
-            return this.styleList.filter(v => v.mcat_type === '1')
+            return this.styleList.filter(item => item.mcat_type === '1')
         },
         emotion() {
-            return this.styleList.filter(v => v.mcat_type === '2')
+            return this.styleList.filter(item => item.mcat_type === '2')
         },
     }
 }

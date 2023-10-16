@@ -1,3 +1,11 @@
+.noneMsg{
+    font-size: 3rem;
+    color: $dark;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+}
+
 main{
     background-color: $white;
     position: relative;
@@ -10,10 +18,50 @@ main{
         left: 18%;
         display: flex;
         justify-content: center;
+        padding-bottom: 20%;
         h1{
             font-size: $big;
             text-align: left;
             padding-bottom: 3%;
+        }
+    }
+}
+
+// 駁回 & 下架 彈窗
+.deleteRep,.acceptRep{
+    @include rect(300px, 130px);
+    padding: 1%;
+    background-color: #333;
+    color: $white;
+    border: $green 3px solid;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    p{
+        margin: auto;
+    }
+    .btngroup{
+        display: flex;
+        justify-content: space-evenly;
+        .saveBtn{
+            @include rect(100px, auto);
+            @include btnColor($green, false);
+            margin: auto;    
+            font-size: 14px;
+            line-height: 1.5;
+        }
+            .closeBtn{
+            @include rect(100px, auto);
+            margin: auto;    
+            font-size: 14px;
+            line-height: 1.5;
+            border: 0px;
+            @include btnColor($white, false);
         }
     }
 }

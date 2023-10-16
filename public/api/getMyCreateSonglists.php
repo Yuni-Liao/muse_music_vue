@@ -7,8 +7,8 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    // $loginMemId = $_GET['loginMemId'];
-    $loginMemId = 1;
+    $loginMemId = $_GET['loginMemId'];
+    //$loginMemId = 1;
 
 
     //SQL指令: 查詢我創建的歌單

@@ -112,21 +112,21 @@
                                             <p class="userName">{{ messageItem.mem_name }}</p>
                                         </router-link>
                                     </div>
-                                    <p class="date">
-                                        {{ messageItem.msg_date }}
+
                                     <div tabindex="0" class="more-group">
-                                        <button class="more" @click="showReportBtn = !showReportBtn">
+                                        <button class="more" @click="toggleReportBtn(messageItem)">
                                             <fontAwesome :icon="['fa', 'ellipsis-vertical']"
                                                 style="color:#aaa;cursor: pointer;" />
                                         </button>
-                                        <!-- 檢舉按鈕 -->
-                                        <ReportBtn class="report-btn" v-if="showReportBtn" @close-report-btn="showReportBtn = false"></ReportBtn>
+                                        <ReportBtn :msg_id="messageItem.msg_id" class="report-btn"
+                                            v-if="messageItem.showReportBtn"
+                                            @close-report-btn="toggleReportBtn(messageItem)"></ReportBtn>
                                     </div>
-                                    </p>
                                 </div>
                                 <p class="txt">
                                     {{ messageItem.msg_con }}
                                 </p>
+                                <p class="date">{{ messageItem.msg_date }}</p>
                                 <!-- 按讚留言先隱藏 -->
                                 <!-- <div class="likeMes" v-if="messageItem">
                                     <p class="likeCount">{{ messageItem.msg_like }}</p>
@@ -158,10 +158,6 @@
                                             <fontAwesome class="i" :icon="['fa', 'play']" color="#fff" />
                                         </div>
                                     </div>
-                                    <!-- 切換到其他單曲頁面 -->
-                                    <!-- <router-link :to="`/home/singlemusic/${songItem.id}`" class="songName">
-                                        {{ songItem.songname }}
-                                    </router-link> -->
                                     <p class="songName" @click="gotosinglemusic(songItem.id)">
                                         {{ songItem.songname }}
                                     </p>

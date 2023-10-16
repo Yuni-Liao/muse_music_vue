@@ -52,23 +52,24 @@ export default {
             newsData: [],
             editBox: false, // 預設跳窗隱藏
             editItem: [],
+            addBox: false,
             
         }
     },
     methods: {
         upDownBtn(row) {
-            alert('上/下架');
+            row.isActive = !row.isActive;
         },
-        editBtn(row) {
-            alert('編輯');
-        },
-
         editNews(row) {
             this.editItem = { ...row }; // 傳入編輯數據
             this.editBox = true; // 顯示編輯跳窗
         },
+        addNews(row) {
+            this.addItem = { ...row }; // 傳入編輯數據
+            this.addBox = true; // 顯示編輯跳窗
+        },
 
-        newsEdit() {
+        saveBtn() {
             const url = `${this.$store.state.phpPublicPath}editNews.php`;
             let headers = {
                 Accept: "application/json",
@@ -80,7 +81,7 @@ export default {
             formData.append("singer", this.editItem.singer);
             formData.append("news_date", this.editItem.news_date);
             formData.append("news_place", this.editItem.news_place);
-            formData.append("news_update", this.editItem.news_update);
+            formData.append("news_update", new Date().toISOString());
             formData.append("news_con", this.editItem.news_con);
             //formData.append("news_pic", this.editItem.news_pic);
             formData.append("news_area", this.editItem.news_area);
@@ -110,6 +111,40 @@ export default {
             console.log("formData", formData);
         
         },
+        closeBtn() {
+            this.editBox = false;
+        },
+        closeAddBtn() {
+            this.addBox = false;
+        },
+        saveAddBtn() {
+            const url = `${this.$store.state.phpPublicPath}addNews.php`;
+            const formData = new FormData();
+            formData.append("add_singer", this.addItem.add_singer);
+            formData.append("add_news_name", this.addItem.add_news_name);
+            formData.append("add_news_date", this.addItem.add_news_date);
+            formData.append("add_news_place", this.addItem.add_news_place);
+            formData.append("add_news_con", this.addItem.add_news_con);
+            formData.append("add_news_area", this.addItem.add_news_area);
+        
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+            .then((response) => {
+                if (response.ok) {
+                    console.log(response);
+                } else {
+                    throw new Error("新增失敗");
+                }
+            })
+            .then(() => {
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+        }
     },
     mounted() {
         //先檢查資料格式是否符合DB規則

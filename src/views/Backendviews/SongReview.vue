@@ -22,7 +22,7 @@
         stripe
         class="song_review_table cellHeight"
         :columns="columns"
-        :data="data"
+        :data="filterdata"
       >
         <template #reviewBtn="{ row }">
           <Button type="warning" @click="editBtn(row)"> 審核 </Button>

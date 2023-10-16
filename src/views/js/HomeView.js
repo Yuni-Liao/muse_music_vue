@@ -41,6 +41,7 @@ export default {
   data() {
     return {
       publicPath: process.env.BASE_URL,
+      playerId: "", //播放器使用
       // 音樂測驗換下一頁 - 廖妍榛
       quesOne: false,
       quesTwo: false,
@@ -112,9 +113,10 @@ export default {
         },
       });
     },
-    openplayer() {
-      // alert("呼叫懸浮播放器");
-      this.$refs.player.playMusic();
+    //播放器使用------------------------------------------------------------------
+    openPlayer(sid) {
+      this.playerId = sid;
+      this.$refs.player.playMusic(this.playerId);
     },
     //各題音樂測驗按鈕 - 廖妍榛
     gameStart() {
@@ -161,7 +163,7 @@ export default {
     },
   },
   mounted() {
-    //fetch 本週熱門歌曲
+    //fetch 本週熱門歌曲 黃珮菁
     const fetchSongRank = () => {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getRankSong.php`
@@ -169,7 +171,10 @@ export default {
 
       fetch(apiURL)
         .then((res) => res.json())
-        .then((res) => (this.SongRank = res))
+        .then((res) => {
+          this.SongRank = res;
+          this.showWeekTopmusic = true;
+        })
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
@@ -201,17 +206,12 @@ export default {
         .then((res) => {
           this.topBanner = res;
           console.log(this.topBanner);
-
         })
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
     };
     fetchCarousel();
-
-    setTimeout(() => {
-      this.showWeekTopmusic = true;
-    }, 100);
   },
   beforeUnmount() {
     // 清除計時器

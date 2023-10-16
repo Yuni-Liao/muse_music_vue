@@ -25,6 +25,18 @@
                 <button @click="saveAlbumBtn()" class="rankBtn default_Btn obj_Radius">儲存</button>
             </div>
         </div>
+        <div v-if="editSLRank == true" class="popSLSelect obj_Radius">
+            <input class="allSong obj_Radius selectedrank" type="text" readonly :value="`No. ` + selectedSLRank">
+            <select class="allSL obj_Radius" id="allSL" v-model="selectedSL.sl_id">
+                <option v-for="(item, index) in allSL" :key="index" :value="item.sl_id">{{ item.sl_name
+                }}
+                </option>
+            </select>
+            <div class="btngroup">
+                <button @click="closeBtn()" class=" default_Btn obj_Radius closeBtn">取消</button>
+                <button @click="saveSLBtn()" class="rankBtn default_Btn obj_Radius">儲存</button>
+            </div>
+        </div>
         <Tabs value="name" capture-focus v-width="1000" style="overflow-x: hidden;">
             <TabPane label="單曲排行" name="singleSongRanking" width="1000" height="450">
                 <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1000" height="450"
@@ -41,7 +53,7 @@
                         <fontAwesome @click="editAlbumBtn(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
                     </template>
                 </Table>
-            </TabPane>       
+            </TabPane>
         </Tabs>
     </div>
 </template>

@@ -9,11 +9,14 @@ export default {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
       //
-      login_mem_id: "", 
+      login_mem_id: "",
       morecurrent: -1,
       currentType: 0, //0,1,2
       isNewSlOpen: false,
       Myallsonglists: [],
+      playerId: "", //播放器使用
+      allSid: [], //存放所有歌曲的id，播放器使用
+      AllSlSong: "",
     };
   },
   computed: {
@@ -27,6 +30,36 @@ export default {
     },
   },
   methods: {
+    //播放器使用------------------------------------------------------------------
+    async openPlayer(slid) {
+      await this.$refs.player.putallsong();
+
+      let m = this.getSIdListBySlId(slid);
+      this.allSid = m;
+      this.playerId = m[0];
+
+      this.$nextTick(() => {
+        this.$refs.player.playMusic();
+      });
+    },
+    //查詢歌單歌曲，回傳一陣列
+    getSIdListBySlId(slId) {
+      for (let i = 0; i < this.AllSlSong.length; i++) {
+        if (this.AllSlSong[i].sl_id === slId) {
+          return this.AllSlSong[i].s_id_list_all;
+
+          //let m = this.AllSlSong[i].s_id_list_all;
+          // alert(m);
+        }
+      }
+      // 若未找到匹配的sl_id，則回傳一個空陣列
+      this.allSid = [];
+    },
+    changeSId(newSId) {
+      // 切換上下首--使用從子組件接收的新 s_id 更新 s_id prop
+      this.playerId = newSId;
+    },
+    //更多選單------------------------------------------------------------------
     //更多選單 顯示隱藏
     showtoggle(e, index) {
       if (e.target.nextElementSibling.classList.contains("show")) {
@@ -42,6 +75,9 @@ export default {
     //     e.target.nextElementSibling.classList.add("hidden");
     //   }
     // },
+    closemore(e) {
+      this.morecurrent = -1;
+    },
     gotosonglist(slid) {
       // this.$router.push("/singlesonglist/:slid");
       this.$router.push({
@@ -70,16 +106,9 @@ export default {
       this.Myallsonglists.splice(index, 1);
       alert(`取消追蹤歌單，歌單編號:${slid}`);
     },
-    closemore(e) {
-      this.morecurrent = -1;
-    },
     isNewSlOpenupdate(val) {
       this.isNewSlOpen = val;
       // alert("已新增一個新歌單");
-    },
-    openplayer() {
-      // alert("呼叫懸浮播放器");
-      this.$refs.player.playMusic();
     },
   },
   mounted() {
@@ -107,6 +136,17 @@ export default {
               return a.update_date < b.update_date ? 1 : -1;
             });
           })
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      }
+      if (loginMemId) {
+        const apiURL = new URL(
+          `http://localhost/muse_music/public/api/getAllSlSong.php`
+        );
+        fetch(apiURL)
+          .then((res) => res.json())
+          .then((res) => (this.AllSlSong = res))
           .catch((error) => {
             console.error("發生錯誤:", error);
           });

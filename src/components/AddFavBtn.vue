@@ -31,5 +31,8 @@ export default {
 <style scoped lang="scss">
 #AddFavBtn {
   @include music_btn_circle(35px);
+  &:hover {
+    color: $pink;
+  }
 }
 </style>

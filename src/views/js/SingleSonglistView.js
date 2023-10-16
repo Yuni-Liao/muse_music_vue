@@ -17,9 +17,22 @@ export default {
       slSongs: [], //歌單歌曲 (fetch)
       login_mem_id: "",
       showDelSl: false, //顯示刪除歌單按鈕和移除歌單按鈕
+      playerId: "", //播放器使用
+      allSid: [],//存放所有歌曲的id
     };
   },
   methods: {
+    //播放器使用------------------------------------------------------------------
+    openPlayer(sid) {
+      this.playerId = sid;
+      this.$nextTick(() => {
+        this.$refs.player.playMusic();
+      })
+    },
+    changeSId(newSId) {
+      // 切換上下首--使用從子組件接收的新 s_id 更新 s_id prop
+      this.playerId = newSId;
+    },
     //切換 more 開啟------------------------------------------------------------------
     showtoggle(e, index) {
       // console.log(e.target.nextElementSibling);
@@ -32,9 +45,6 @@ export default {
     //關閉 more------------------------------------------------------------------
     closemore(e) {
       this.morecurrent = -1;
-    },
-    openPlayer() {
-      this.$refs.player.playMusic();
     },
     share(e) {
       alert(`分享歌曲，歌曲ID${e}`);
@@ -141,6 +151,9 @@ export default {
       fetch(apiURL)
         .then(async (response) => {
           this.slSongs = await response.json();
+          this.allSid = this.slSongs.map((slSongs) => slSongs.s_id);
+          // console.log("此專輯歌曲的s_id:",this.allSid);
+
         })
         .catch((error) => {
           console.error("發生錯誤:", error);
@@ -149,7 +162,7 @@ export default {
 
     //判斷是否已登入，歌單擁有者是否為登入會員
     setTimeout(() => {
-      console.log(this.login_mem_id, this.songlist.creater_id);
+      //console.log(this.login_mem_id, this.songlist.creater_id);
       if (
         this.login_mem_id != undefined &&
         this.login_mem_id == this.songlist.creater_id
@@ -165,4 +178,10 @@ export default {
     //移除事件聆聽:點空白處關閉
     document.removeEventListener("click", this.closemore);
   },
+  computed: {
+    //如果 slSongs 有數據，他才會顯示，否則不會顯示
+    showLastButton() {
+        return this.slSongs.length > 0;
+    },
+},
 };

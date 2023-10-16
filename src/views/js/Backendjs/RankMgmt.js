@@ -222,6 +222,7 @@ export default {
             .catch((error) => {
                 console.log(error.message);
             });
+
         // fetch 全部單曲
         const fetchAllSingleMusic = () => {
             const apiURL = new URL(
