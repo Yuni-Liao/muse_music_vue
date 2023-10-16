@@ -13,11 +13,11 @@
             </template>
         </Table>
 
-        <!-- 批次按鈕 -->
-        <!-- <space :size="size" style="margin: 30px 0px;">
-            <Button type="success" @click="alldelete(row)">批次駁回</Button>
-            <Button type="error" @click="allAccept(row)">批次下架</Button>
-        </space> -->
+        <!-- 批次按鈕 批次駁回還沒完成-->
+        <space :size="size" style="margin: 30px 0px;">
+            <Button type="success" @click="batchAction('delete')">批次駁回</Button>
+            <Button type="error" @click="batchAction('accept')">批次下架</Button>
+        </space>
     </div>
     <div v-else class="noneMsg">
         <p>没有被檢舉的資料！</p>

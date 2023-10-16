@@ -114,10 +114,33 @@ export default {
             }
         },
 
+        acceptBatch(selectedIds) {
+            // 在這裡處理批次下架操作，selectedIds 是選中的項目的ID陣列
+            for (const id of selectedIds) {
+                // 根據每個 ID 執行下架操作
+                const url = `${this.$store.state.phpPublicPath}deleteRepMsgAndMsg.php`;
+                const formData = new FormData();
+                formData.append("msg_id", id);
+        
+                fetch(url, {
+                    method: "POST",
+                    body: formData,
+                })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(`下架成功，ID: ${id}`);
+                        // 可以選擇執行其他操作，如更新畫面等
+                        window.location.reload();
+                    } else {
+                        throw new Error(`下架失敗，ID: ${id}`);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+            }
+        },
 
-        // allAccept() {
-        //     alert('批次下架');
-        // },
 
         //駁回 刪掉這筆資料 但不刪除該筆留言-----------------------
         deleteBtn(row) {
@@ -158,9 +181,42 @@ export default {
             }
         },
 
-        // allDelete() {
-        //     alert('批次駁回');
-        // }
+        deleteBatch(selectedIds) {
+            // 在這裡處理批次駁回操作，selectedIds 是選中的項目的ID陣列
+            for (const id of selectedIds) {
+                // 根據每個 ID 執行駁回操作
+                const url = `${this.$store.state.phpPublicPath}deleteReportMsg.php`;
+                const formData = new FormData();
+                formData.append("msgrep_id", id);
+        
+                fetch(url, {
+                    method: "POST",
+                    body: formData,
+                })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(`駁回成功，ID: ${id}`);
+                        // 可以選擇執行其他操作，如更新畫面等
+                    } else {
+                        throw new Error(`駁回失敗，ID: ${id}`);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+            }
+        },
+        batchAction(actionType) {
+            const selectedRows = this.$refs.selection.getSelection(); // 獲取選中的行
+            if (selectedRows.length > 0) {
+                const selectedIds = selectedRows.map(row => row.msg_id); // 提取選中的項目的ID，根據您的資料結構
+                if (actionType === 'accept') {
+                    this.acceptBatch(selectedIds); // 執行批次下架操作
+                } else if (actionType === 'delete') {
+                    this.deleteBatch(selectedIds); // 執行批次駁回操作
+                }
+            }
+        }
     },
 
     //------------------------------------------------------------
