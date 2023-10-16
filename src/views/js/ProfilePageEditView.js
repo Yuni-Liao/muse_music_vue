@@ -200,9 +200,6 @@ export default {
       audioPlayer.load();
       audioPlayer.addEventListener("loadedmetadata", this.uploadSonglength);
     },
-
-    //這裡有bug! 無法把值代入this.newsong.s_length
-
     uploadSonglength() {
       // 获取音频持续时间（以秒为单位）
       const durationInSeconds = audioPlayer.duration;
