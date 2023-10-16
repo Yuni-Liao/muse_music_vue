@@ -30,13 +30,9 @@ try {
 
     $s = $pdo->query($sql);
 
-    //如果找得資料，取回資料，送出json
-    if ($s->rowCount() === 0) {
-        echo "查無資料";
-    } else {
-        $result = $s->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result); //送出json字串
-    }
+    $result = $s->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($result); //送出json字串
+
 } catch (Exception $e) {
     $errorResponse = [
         "error" => [

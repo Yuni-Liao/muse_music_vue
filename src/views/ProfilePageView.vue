@@ -1,5 +1,10 @@
 <template>
-  <player :s_id="playerId" @change-s-id="changeSId" ref="player"></player>
+  <player
+    :s_id="playerId"
+    :allSid="allSid"
+    @change-s-id="changeSId"
+    ref="player"
+  ></player>
   <div class="profilepage">
     <section class="hd">
       <div
@@ -144,91 +149,116 @@
       </div>
       <div class="line"></div>
       <!-- 由tab切換之顯示內容 -->
-
       <!-- 活動 -->
       <section v-show="tabtype === 0" class="activity container">
-        <h3>天氣推歌</h3>
-        <section class="content">
-          <div class="card">
-            <div class="weathercard">
-              <div class="begin" v-show="weatherRShow == false">
-                <div class="typewrap">
-                  <Typed
-                    v-if="typeshow == true"
-                    :initialques="`今天天氣如何？`"
-                    :initialopt1="`來首和窗外天空相配的好歌吧！ `"
-                  ></Typed>
-                </div>
-                <div class="aftertype">
-                  <div>
-                    <select v-model="weatherLoc" required>
-                      <option value="" disabled>請選擇你的所在地點</option>
-                      <option value="基隆">基隆</option>
-                      <option value="臺北">台北</option>
-                      <option value="新北">新北</option>
-                      <option value="桃園市">桃園</option>
-                      <option value="新竹">新竹</option>
-                      <option value="臺中">台中</option>
-                      <option value="彰師大">彰化</option>
-                      <option value="嘉義">嘉義</option>
-                      <option value="臺南">台南</option>
-                      <option value="高雄">高雄</option>
-                      <option value="恆春">屏東</option>
-                      <option value="臺東">臺東</option>
-                      <option value="花蓮">花蓮</option>
-                      <option value="宜蘭">宜蘭</option>
-                      <option value="澎湖">澎湖</option>
-                      <option value="金門">金門</option>
-                      <option value="馬祖">馬祖</option>
-                    </select>
+        <div v-show="this.songData.length > 0">
+          <h3>天氣推歌</h3>
+          <section class="content">
+            <div class="card">
+              <div class="weathercard">
+                <div class="begin" v-show="weatherRShow == false">
+                  <div class="typewrap">
+                    <Typed
+                      v-if="typeshow == true"
+                      :initialques="`今天天氣如何？`"
+                      :initialopt1="`來首和窗外天空相配的好歌吧！ `"
+                    ></Typed>
                   </div>
-                  <div>
-                    <button class="obj_Radius" @click="fetchWeather">
-                      天氣發現好歌
-                    </button>
+                  <div class="aftertype">
+                    <div>
+                      <select
+                        v-model="weatherLoc"
+                        required
+                        id="selectweatherLoc"
+                      >
+                        <option value="" disabled>請選擇你的所在地點</option>
+                        <option value="基隆">基隆</option>
+                        <option value="臺北">台北</option>
+                        <option value="新北">新北</option>
+                        <option value="桃園市">桃園</option>
+                        <option value="新竹">新竹</option>
+                        <option value="臺中">台中</option>
+                        <option value="彰師大">彰化</option>
+                        <option value="嘉義">嘉義</option>
+                        <option value="臺南">台南</option>
+                        <option value="高雄">高雄</option>
+                        <option value="恆春">屏東</option>
+                        <option value="臺東">臺東</option>
+                        <option value="花蓮">花蓮</option>
+                        <option value="宜蘭">宜蘭</option>
+                        <option value="澎湖">澎湖</option>
+                        <option value="金門">金門</option>
+                        <option value="馬祖">馬祖</option>
+                      </select>
+                    </div>
+                    <div>
+                      <button class="obj_Radius" @click="fetchWeather">
+                        天氣發現好歌
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- 天氣結果 -->
+                <div v-if="weatherRShow" class="result">
+                  <!-- <h4>目前天氣</h4> -->
+                  <div class="pic">
+                    <div>
+                      <img
+                        :src="`${publicPath}image/weather/${weather.resultImg}`"
+                        :alt="weather.result"
+                        style="width: 128px; height: 128px"
+                      />
+                      <div style="font-size: 40px; margin-left: 50px">
+                        {{ weather.temp }}
+                        <span style="font-size: 20px">°C</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p>我在{{ weatherLoc }}，天氣{{ weather.result }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <!-- 天氣結果 -->
-              <div v-if="weatherRShow" class="result">
-                <!-- <h4>目前天氣</h4> -->
+              <div class="song" :class="{ bg: weatherRShow }">
                 <div class="pic">
                   <img
-                    :src="`${publicPath}image/weather/${weather.resultImg}`"
-                    alt=""
+                    :src="`${publicPath}dataimage/song/${weatherSong.s_img}`"
+                    alt="天氣推歌"
                   />
-                  <div>
-                    <p>{{ weather.showResult }}</p>
-                    <p>溫度 {{ weather.temp }} 度</p>
+
+                  <div
+                    v-if="weatherRShow"
+                    class="play"
+                    @click="openPlayer(weatherSong.s_id)"
+                  >
+                    <fontAwesome class="i" :icon="['fa', 'play']" />
                   </div>
                 </div>
-                <div class="inf">
-                  <h4>推薦歌曲</h4>
-                  <span class="txt">{{ weatherSong.s_name }}</span>
-                  <span class="btn">
-                    <AddSlBtn :addSlSid="weatherSong.s_id"></AddSlBtn
-                  ></span>
-                  <span class="btn"> <AddFavBtn></AddFavBtn></span>
+                <div class="inf" v-if="weatherRShow">
+                  <h4>{{ weatherNoSong.msg }}</h4>
+                  <div class="txt">
+                    <span>{{ weatherSong.s_name }}</span>
+                  </div>
+                  <p>
+                    <fontAwesome class="i" :icon="['fa', 'tags']" /><span>{{
+                      weatherSong.mcat_name
+                    }}</span>
+                  </p>
+                  <p>
+                    <fontAwesome class="i" :icon="['fa', 'user-large']" />
+                    <span>{{ memData.mem_name }}</span>
+                  </p>
+                  <div>
+                    <span class="btn"
+                      ><AddSlBtn :addSlSid="weatherSong.s_id"></AddSlBtn
+                    ></span>
+                    <span class="btn"><AddFavBtn></AddFavBtn></span>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="song">
-              <div class="pic">
-                <img
-                  :src="`${publicPath}dataimage/song/${weatherSong.s_img}`"
-                  alt="天氣推歌"
-                />
-                <div
-                  v-if="weatherRShow"
-                  class="play"
-                  @click="openPlayer(item.s_id)"
-                >
-                  <fontAwesome class="i" :icon="['fa', 'play']" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
         <h3>有話想說</h3>
         <section class="content">
           <div v-for="(item, index) in act" class="act">
@@ -261,7 +291,7 @@
       <!-- 音樂 -->
       <section v-show="tabtype === 1" class="music container">
         <!-- 假如沒有專輯就不顯示專輯區塊 -->
-        <div v-if="albData" class="album">
+        <div v-if="albData.length > 0" class="album">
           <h3>專輯． Album</h3>
           <div class="content">
             <!-- 假如專輯數量 <4 就不渲染輪播 -->
@@ -430,7 +460,7 @@
                     <span>{{ item.creater_name }}</span>
                   </div>
                 </div>
-                <PlayBtnBig></PlayBtnBig>
+                <PlayBtnBig @click="openPlayerSl(item.sl_id)"></PlayBtnBig>
               </div>
             </div>
           </div>

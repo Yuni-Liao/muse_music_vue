@@ -2,8 +2,8 @@
     <div class="shoporders">
         <div class="orders_change">
             <h2 class="recent" @click="showRecentOrders" :class="{ 'active': isRecentOrdersVisible }">最近訂單</h2>
-            <div class="change"><img :src="`${publicPath}image/ShopOrders/shoporderschange.png`" alt="shoporderschange">
-            </div>
+            <div class="change" @click="toggleOrdersVisibility"><fontAwesome :icon="['fa','fa-arrow-right-arrow-left']"/></div>
+            
             <h2 class="history" @click="showHistoryOrders" :class="{ 'active': isHistoryOrdersVisible }"> 歷史訂單</h2>
         </div>
         <div class="orders orders_recent" v-show="isRecentOrdersVisible">
@@ -11,7 +11,6 @@
                 <div class="menu">
                     <div class="serial order_item">
                         <div class="title">訂單編號</div>
-                        <!-- <div class="id"></div> -->
                     </div>                   
                     <div class="date order_item">訂購日期</div>
                     <div class="ship order_item">運送方式</div>                    

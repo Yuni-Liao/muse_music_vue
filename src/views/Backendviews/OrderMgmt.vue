@@ -2,17 +2,17 @@
     <div class="ordermgmt_box">
         <h1>周邊販售管理 | 訂單管理</h1>
         <div class="search_warp">
-            <Input v-model="value3" placeholder="輸入訂單編號"
-                style="width: 180px; margin-bottom: 2%; margin-left: 60%; padding: 10px;">
-            <Input v-model="value" />
-            <template #append>
-                <Button icon="ios-search" @click="value3 && value3.trim() !== '' ? orderSearchBtn() : null"
-                    style="background-color: #515a6e; color: #fff;"></Button>
-            </template>
-            </Input>
-            <Select v-model="model" placeholder="選擇訂單狀態" style="width:165px;  padding: 10px;" class="select_stat">
+            <Select v-model="model" placeholder="選擇訂單狀態" style="width:165px; margin-left: 60%;  padding: 10px;" class="select_stat">
                 <Option v-for="item in cityList" :value="item.value" :key="item.value" class="select_into">{{ item.label }}</Option>
             </Select>
+            <Input v-model="value3" placeholder="輸入訂單編號"
+                style="width: 180px; margin-bottom: 2%; padding: 10px;">
+            <Input v-model="value" />
+            <template #append>
+                <Button icon="ios-search" style="background-color: #515a6e; color: #fff;"></Button>
+                <!-- @click="value3 && value3.trim() !== '' ? orderSearchBtn() : null"     -->
+            </template>
+            </Input>
         </div>
         <Table highlight-row stripe class="order_mgmt_table cellHeight" width="1150" height="500" :columns="ordercolumns"
             :data="getSelectData()">
@@ -63,7 +63,7 @@
             </div>
             <div class="item">
                 <p>訂單狀態：</p>
-                <Select v-model="model" style="width:200px; ">
+                <Select v-model="editItem.ord_stat" :disabled="editItem.ord_stat === '已取消' || editItem.ord_stat === '已完成'" style="width:200px;">
                     <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
             </div>

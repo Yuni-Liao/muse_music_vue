@@ -47,8 +47,15 @@ export default {
 
       dataToSend.append("mem_acc", this.member.mem_acc);
       dataToSend.append("mem_psw", this.member.mem_psw);
-
-      fetch("http://localhost/muse_music/public/api/logIn.php", {
+      // 加這邊 - 廖妍榛
+      const url = new URL(
+        `${this.$store.state.phpPublicPath}logIn.php`);
+      // fetch("http://localhost/muse_music/public/api/logIn.php", {
+      //   method: "POST",
+      //   body: dataToSend,
+      // })
+      // 加這邊 - 廖妍榛
+      fetch(url, {
         method: "POST",
         body: dataToSend,
       })
@@ -90,7 +97,8 @@ export default {
 
     // 取得會員資料庫
     fetchMemberData(mem_id) {
-      fetch(`http://localhost/muse_music/public/api/logIn.php?mem_id=${mem_id}`)
+      // 加這邊 - 廖妍榛
+      fetch(`${this.$store.state.phpPublicPath}logIn.php?mem_id=${mem_id}`)
         .then((response) => response.json())
         .then((memberData) => {
           this.memberData = memberData;
@@ -104,7 +112,8 @@ export default {
     //黃珮菁  -  獲取歌單/創作者/音樂快訊追蹤用
     fetchMemSlFol(mem_id) {
       fetch(
-        `http://localhost/muse_music/public/api/getMemFol.php?mem_id=${mem_id}`
+        // 加這邊 - 廖妍榛
+        `${this.$store.state.phpPublicPath}getMemFol.php?mem_id=${mem_id}`
       )
         .then((res) => res.json())
         .then((data) => {
