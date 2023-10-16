@@ -15,8 +15,8 @@ main{
             padding-bottom: 3%;
         }
     }
-    // 輪播編輯彈窗
-    .editcarousel{
+    // 輪播新增、編輯彈窗
+    .editcarousel, .addCar{
         @include rect(300px, 350px);
         padding: 1%;
         background-color: #333;
