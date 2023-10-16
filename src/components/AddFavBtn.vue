@@ -1,6 +1,6 @@
 <template>
   <button id="AddFavBtn" @click="toggleFavorite">
-    <fontAwesome :icon="['fa', 'heart']" :style="favButtonStyle" />
+    <fontAwesome class="i" :icon="['fa', 'heart']" :style="favButtonStyle" />
   </button>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   computed: {
     favButtonStyle() {
       return {
-        color: this.isFavorited ? "#FE1C6C" : "#252525",
+        color: this.isFavorited ? "#FE1C6C" : "",
       };
     },
   },
@@ -31,8 +31,8 @@ export default {
 <style scoped lang="scss">
 #AddFavBtn {
   @include music_btn_circle(35px);
-  &:hover {
-    color: $pink;
-  }
+}
+#AddFavBtn:hover > .i {
+  color: $pink;
 }
 </style>

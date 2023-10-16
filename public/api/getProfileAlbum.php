@@ -18,12 +18,9 @@ try {
     $alb = $pdo->query($sql);
 
     //如果找得資料，取回資料，送出json
-    if ($alb->rowCount() === 0) {
-        echo "查無資料";
-    } else {
-        $result = $alb->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result); //送出json字串
-    }
+    $result = $alb->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($result); //送出json字串
+
 } catch (Exception $e) {
     $errorResponse = [
         "error" => [
