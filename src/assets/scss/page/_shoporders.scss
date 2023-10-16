@@ -7,15 +7,13 @@
         justify-content: center;        
         padding: 0 50px 60px;
         color: $dark;
-        .recent, .history{
+        .recent, .history, .change{
             cursor: pointer;
         }
         .change{
-            margin: 0 100px;
-            width: 40px;
-            img{
-                width: 100%;
-            }
+            margin: 0 60px;
+            font-size: 25px;
+            color: $dark;
         }
     }
     .active{
@@ -52,15 +50,16 @@
                     }
                 }
             }
+            .main:hover .order_item .arrow{
+                color: $pink;
+            }
 
             .order_item{
                 width: 18%;
                 text-align: center;
                 transition: all .3s;
             }
-            .order_item:hover{
-                color: #55a899;
-            }
+            
             .serial, .date{
                 width: 23%;
             }             

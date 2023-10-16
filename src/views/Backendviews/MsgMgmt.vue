@@ -20,7 +20,6 @@
         </space>
     </div>
     <div v-else class="noneMsg">
-        <p>没有被檢舉的資料！</p>
     </div>
 
     <!-- 駁回檢舉 彈窗 -->

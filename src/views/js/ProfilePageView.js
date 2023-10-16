@@ -48,19 +48,22 @@ export default {
       songData: [],
       slData: [],
       playerId: "", //播放器使用
+      AllSlSong: "",
       typeshow: false,
       weatherLoc: "",
       weatherRShow: false,
       weather: {
         result: "", //天氣結果
         temp: "", //溫度
-        showResult: "",
-        resultImg: "",
+        resultImg: "noweather.png",
       },
       weatherSong: {
         s_img: "weather.jpg",
       },
-
+      weatherNoSong: {
+        isNotfind: false,
+        msg: "推薦歌曲",
+      },
       //活動
       act: [
         {
@@ -160,7 +163,10 @@ export default {
 
       fetch(apiURL)
         .then((res) => res.json())
-        .then((res) => (this.slData = res))
+        .then((res) => {
+          this.slData = res;
+          this.fetchSlSong();
+        })
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
@@ -175,14 +181,25 @@ export default {
   },
   computed: {},
   methods: {
-    changeSId() {}, //除去播放器報錯用
     changTab(num) {
       this.tabtype = num;
       if (num == 0) {
         setTimeout(() => {
           this.typeshow = true;
-        }, 300);
+        }, 100);
       }
+    },
+    //歌單撥放器使用
+    fetchSlSong() {
+      const apiURL = new URL(
+        `http://localhost/muse_music/public/api/getAllSlSong.php`
+      );
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((res) => (this.AllSlSong = res))
+        .catch((error) => {
+          console.error("發生錯誤:", error);
+        });
     },
     fetchWeather() {
       if (this.weatherLoc == "") {
@@ -196,29 +213,22 @@ export default {
         )
           .then((response) => response.json())
           .then((data) => {
-            console.log("data", data);
             this.weather.result =
               data.records.location[0].weatherElement[20].elementValue; //天氣結果
             this.weather.temp =
               data.records.location[0].weatherElement[3].elementValue; //溫度
-            console.log(this.weather);
           })
           .then(() => {
             if (this.weather.result == "陰") {
-              this.weather.showResult = "天氣陰";
               this.weather.resultImg = "rainy.png";
               this.findWeatherSong(14);
             } else if (this.weather.result == "晴") {
-              this.weather.showResult = "晴天";
               this.weather.resultImg = "sun.png";
               this.findWeatherSong(19);
             } else if (this.weather.result == "多雲") {
-              this.weather.showResult = "多雲";
               this.weather.resultImg = "cloud.png";
               this.findWeatherSong(13);
             }
-
-            this.weatherRShow = true;
           });
       }
     },
@@ -228,7 +238,20 @@ export default {
       );
       fetch(apiURL)
         .then((res) => res.json())
-        .then((res) => (this.weatherSong = res))
+        // .then((res) => (this.weatherSong = res))
+        .then((res) => {
+          if (res == "") {
+            this.weatherSong.s_name = this.songData[0].s_name;
+            this.weatherSong.s_img = this.songData[0].s_img;
+            this.weatherSong.s_id = this.songData[0].s_id;
+            this.weatherSong.mcat_name = "";
+            this.weatherNoSong.isNotfind = true;
+            this.weatherNoSong.msg = "沒有找到合適歌曲　但這首歌也很好聽!";
+          } else {
+            this.weatherSong = res;
+          }
+          this.weatherRShow = true;
+        })
         .catch((error) => {
           console.error("發生錯誤:", error);
         });
@@ -261,8 +284,40 @@ export default {
     },
     //播放器使用------------------------------------
     openPlayer(sid) {
+      this.allSid = [sid];
+      this.$refs.player.putallsong();
       this.playerId = sid;
-      this.$refs.player.playMusic(this.playerId);
+      this.$nextTick(() => {
+        this.$refs.player.playMusic();
+      });
+    },
+    async openPlayerSl(slid) {
+      await this.$refs.player.putallsong();
+
+      let m = this.getSIdListBySlId(slid);
+      this.allSid = m;
+      this.playerId = m[0];
+
+      this.$nextTick(() => {
+        this.$refs.player.playMusic();
+      });
+    },
+    //查詢歌單歌曲，回傳一陣列
+    getSIdListBySlId(slId) {
+      for (let i = 0; i < this.AllSlSong.length; i++) {
+        if (this.AllSlSong[i].sl_id === slId) {
+          return this.AllSlSong[i].s_id_list_all;
+
+          //let m = this.AllSlSong[i].s_id_list_all;
+          // alert(m);
+        }
+      }
+      // 若未找到匹配的sl_id，則回傳一個空陣列
+      this.allSid = [];
+    },
+    changeSId(newSId) {
+      // 切換上下首--使用從子組件接收的新 s_id 更新 s_id prop
+      this.playerId = newSId;
     },
     //頁面切換----------------------
     gotosinglealbum(abid) {

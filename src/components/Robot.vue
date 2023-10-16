@@ -2,10 +2,11 @@
     <div class="pageTop_robot">
         <img id="pageTop" alt="pagetop_icon" :src="`${publicPath}image/icon/pageTop.svg`" href="#top"
             @click="scrollToTop" />
-        <img alt="robot_icon" :src="`${publicPath}image/icon/robot.svg`" @click="openRobot" />
+        <img id="robot_icon" alt="robot_icon" :src="`${publicPath}image/icon/robot.svg`" @click="openRobot" />
     </div>
 
     <div class="robot_warp" v-show="isOpen" @click="closeRobot" ref="robotWarp">
+        <div class="robot_back" @click="closeBtn()"></div>
         <div class="robot">
             <div class="container">
                 <div class="main">
@@ -133,6 +134,11 @@ export default {
                     },
                 ];
             }
+        },
+
+        // 點空白處關閉
+        closeBtn() {
+            this.isOpen = false;
         },
 
         // 發送使用者的訊息並將其附加到聊天歷史記錄中

@@ -3,7 +3,6 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            
             //orders title
             ordercolumns: [
                 {
@@ -79,17 +78,19 @@ export default {
                     align: 'center'
                 }
             ],
-            
             // orders 渲染資料
             orderData: [],
             // orders_item 渲染資料
             data:[],
-
             // Select: ord_stat
             cityList: [
                 {
-                    value: '請選擇',
-                    label: '請選擇'
+                    value: '訂單總覽',
+                    label: '= 訂單總覽 ='
+                },
+                {
+                    value: '未完成訂單',
+                    label: '= 未完成訂單 ='
                 },
                 {
                     value: '已成立',
@@ -117,10 +118,8 @@ export default {
                 }
             ],
             model: '',
-
             // 編輯彈窗預設關閉
             editBox: false,
-
             // 編輯彈窗資料
             editItem: {
                 ord_date: '',
@@ -135,37 +134,50 @@ export default {
                 ord_add: '',
                 ord_total_price:'',
             },
+            // Search input
+            value3: '',
+            originalOrderData: 'null',
+
 
         }
     },
 
-    methods: {
-        orderSearchBtn() {
-            // 如果 value3 不為空，則進行搜尋
-            if (this.value3.trim() !== '') {
-                // 如果還沒有保存原始 orderData，則保存一次
-                if (!this.originalOrderData) {
-                    this.originalOrderData = [...this.orderData];
-                }
-    
-                // 過濾 orderData，只保留符合條件的項目
+    watch: {
+        value3(newVal, oldVal) {
+            if (newVal.trim() === '') {
+                // 如果 value3 變為空白，則回到原始的 getSelectData() 數據
+                this.orderData = this.getSelectData();
+            } else {
+                // 如果 value3 不為空，則進行搜尋
                 const filteredData = this.originalOrderData.filter(item => {
                     const ordId = item.ord_id || '';
-                    return (ordId.includes(this.value3.trim()) ||
-                        ('FK-348593' + ordId).includes(this.value3.trim()));
+                    return (ordId.includes(newVal.trim()) ||
+                        ('FK-348593' + ordId).includes(newVal.trim()));
                 });
-    
                 // 將過濾後的結果設置為要顯示的數據
                 this.orderData = filteredData;
-            } else {
-                // 如果 value3 為空，則重置為原始的 orderData
-                this.orderData = this.originalOrderData || [];
             }
         },
+    },
 
+    methods: {
         // Select: ord_stat
         getSelectData() {
-            if (this.model === '' || this.model === '請選擇') {
+            if (this.model === '') {
+                return this.orderData.filter(item => item.ord_stat !== '已完成' && item.ord_stat !== '已取消').map((item, index) => {
+                    return {
+                        ...item,
+                        orderNumber: index + 1,
+                    };
+                });
+            } else if (this.model === '' || this.model === '訂單總覽') {
+                return this.orderData.map((item, index) => {
+                    return {
+                        ...item,
+                        orderNumber: index + 1,
+                    };
+                });
+            } else if (this.model === '未完成訂單') {
                 return this.orderData.filter(item => item.ord_stat !== '已完成' && item.ord_stat !== '已取消').map((item, index) => {
                     return {
                         ...item,
@@ -196,12 +208,10 @@ export default {
 
         // 編輯
         editSaveBtn() {
-            const url = `${this.$store.state.phpPublicPath}editOrderMgmt.php`;
+            const editurl = `${this.$store.state.phpPublicPath}editOrderMgmt.php`;
             const formData = new FormData();
             formData.append("ord_date", this.editItem.ord_date);
             formData.append("ord_id", this.editItem.ord_id);
-            formData.append("mem_acc", this.editItem.mem_acc);
-            formData.append("mem_name", this.editItem.mem_name);
             formData.append("ord_pay", this.editItem.ord_pay);
             formData.append("ord_ship", this.editItem.ord_ship);
             formData.append("ord_name", this.editItem.ord_name);
@@ -209,18 +219,20 @@ export default {
             formData.append("ord_stat", this.editItem.ord_stat);
             formData.append("ord_add", this.editItem.ord_add);
             formData.append("ord_total_price", this.editItem.ord_total_price);
-            fetch(url, {
+            
+            fetch(editurl, {
                 method: "POST",
                 body: formData,
             })
             .then((response) => {
                 if (response.ok) {
-                    console.log(response);
+                    return response.json();
                 } else {
                     throw new Error("編輯失敗");
                 }
             })
-            .then(() => {
+            .then((json) => {
+                console.log(json);
                 window.location.reload();
             })
             .catch((error) => {
@@ -237,12 +249,12 @@ export default {
 
     mounted() {
         //Orders
-        const url = `${this.$store.state.phpPublicPath}postOrderMgmt.php`;
+        const Ordersurl = `${this.$store.state.phpPublicPath}postOrderMgmt.php`;
         let headers = {
             "Content-Type": "application/json",
             Accept: "application/json",
         };
-        fetch(url, {
+        fetch(Ordersurl, {
             method: "POST",
             headers: headers,
         })
@@ -257,14 +269,15 @@ export default {
             .then((json) => {
                 console.log('API 成功回應:', json);
                 this.orderData = json;
+                this.originalOrderData = [...this.orderData];
             })
             .catch((error) => {
                 console.error('API 請求失敗:', error);
             });
 
         //OrdersItem
-        const apiurl = `${this.$store.state.phpPublicPath}postOrdersitemMgmt.php`;
-        fetch(apiurl, {
+        const OrdersItemurl = `${this.$store.state.phpPublicPath}postOrdersitemMgmt.php`;
+        fetch(OrdersItemurl, {
             method: "POST",
             headers: headers,
         })
