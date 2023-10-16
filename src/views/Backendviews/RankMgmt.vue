@@ -54,14 +54,6 @@
                     </template>
                 </Table>
             </TabPane>
-            <TabPane label="歌單排行" name="songListRanking">
-                <Table highlight-row stripe size="large" class="rankmgmt_table cellHeight" width="1000" height="450"
-                    :columns="SLColumns" :data="SLRankGroup">
-                    <template #editBtn="{ row }">
-                        <fontAwesome @click="editSLBtn(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
-                    </template>
-                </Table>
-            </TabPane>
         </Tabs>
     </div>
 </template>

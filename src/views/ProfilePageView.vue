@@ -121,21 +121,21 @@
       <!-- tab -->
       <div class="tabs">
         <button
-          @click="tabtype = 0"
+          @click="changTab(0)"
           class="tab"
           :class="{ active: tabtype == 0 }"
         >
-          <h2>活動</h2>
+          <h2>動態</h2>
         </button>
         <button
-          @click="tabtype = 1"
+          @click="changTab(1)"
           class="tab"
           :class="{ active: tabtype == 1 }"
         >
           <h2>音樂</h2>
         </button>
         <button
-          @click="tabtype = 2"
+          @click="changTab(2)"
           class="tab"
           :class="{ active: tabtype == 2 }"
         >
@@ -147,30 +147,115 @@
 
       <!-- 活動 -->
       <section v-show="tabtype === 0" class="activity container">
-        <div v-for="(item, index) in act" class="act">
-          <div class="pic">
-            <img
-              :src="`${publicPath}dataimage/member/${memData.mem_pic}`"
-              :alt="`${memData.mem_name}照片`"
-            />
-          </div>
-          <div class="text">
-            <span class="date">{{ item.date }}</span>
-            <p>
-              <span class="txt">{{ item.content }}</span>
-            </p>
-            <div class="likespan">
-              <button id="like" @click="like($event, index)">
-                <fontAwesome
-                  :icon="['fa', 'thumbs-up']"
-                  class="i"
-                  style="color: #ffffff"
+        <h3>天氣推歌</h3>
+        <section class="content">
+          <div class="card">
+            <div class="weathercard">
+              <div class="begin" v-show="weatherRShow == false">
+                <div class="typewrap">
+                  <Typed
+                    v-if="typeshow == true"
+                    :initialques="`今天天氣如何？`"
+                    :initialopt1="`來首和窗外天空相配的好歌吧！ `"
+                  ></Typed>
+                </div>
+                <div class="aftertype">
+                  <div>
+                    <select v-model="weatherLoc" required>
+                      <option value="" disabled>請選擇你的所在地點</option>
+                      <option value="基隆">基隆</option>
+                      <option value="臺北">台北</option>
+                      <option value="新北">新北</option>
+                      <option value="桃園市">桃園</option>
+                      <option value="新竹">新竹</option>
+                      <option value="臺中">台中</option>
+                      <option value="彰師大">彰化</option>
+                      <option value="嘉義">嘉義</option>
+                      <option value="臺南">台南</option>
+                      <option value="高雄">高雄</option>
+                      <option value="恆春">屏東</option>
+                      <option value="臺東">臺東</option>
+                      <option value="花蓮">花蓮</option>
+                      <option value="宜蘭">宜蘭</option>
+                      <option value="澎湖">澎湖</option>
+                      <option value="金門">金門</option>
+                      <option value="馬祖">馬祖</option>
+                    </select>
+                  </div>
+                  <div>
+                    <button class="obj_Radius" @click="fetchWeather">
+                      天氣發現好歌
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- 天氣結果 -->
+              <div v-if="weatherRShow" class="result">
+                <!-- <h4>目前天氣</h4> -->
+                <div class="pic">
+                  <img
+                    :src="`${publicPath}image/weather/${weather.resultImg}`"
+                    alt=""
+                  />
+                  <div>
+                    <p>{{ weather.showResult }}</p>
+                    <p>溫度 {{ weather.temp }} 度</p>
+                  </div>
+                </div>
+                <div class="inf">
+                  <h4>推薦歌曲</h4>
+                  <span class="txt">{{ weatherSong.s_name }}</span>
+                  <span class="btn">
+                    <AddSlBtn :addSlSid="weatherSong.s_id"></AddSlBtn
+                  ></span>
+                  <span class="btn"> <AddFavBtn></AddFavBtn></span>
+                </div>
+              </div>
+            </div>
+            <div class="song">
+              <div class="pic">
+                <img
+                  :src="`${publicPath}dataimage/song/${weatherSong.s_img}`"
+                  alt="天氣推歌"
                 />
-              </button>
-              {{ item.num }}
+                <div
+                  v-if="weatherRShow"
+                  class="play"
+                  @click="openPlayer(item.s_id)"
+                >
+                  <fontAwesome class="i" :icon="['fa', 'play']" />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+        <h3>有話想說</h3>
+        <section class="content">
+          <div v-for="(item, index) in act" class="act">
+            <div class="pic">
+              <img
+                :src="`${publicPath}dataimage/member/${memData.mem_pic}`"
+                :alt="`${memData.mem_name}照片`"
+              />
+            </div>
+            <div class="text">
+              <span class="date">{{ item.date }}</span>
+              <p>
+                <span class="txt">{{ item.content }}</span>
+              </p>
+              <div class="likespan">
+                <button id="like" @click="like($event, index)">
+                  <fontAwesome
+                    :icon="['fa', 'thumbs-up']"
+                    class="i"
+                    style="color: #ffffff"
+                  />
+                </button>
+                {{ item.num }}
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
 
       <!-- 音樂 -->

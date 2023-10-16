@@ -1,14 +1,15 @@
 export default {
     data() {
         return {
+            hasData: false,
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             columns: [
-                // {
-                //     type: 'selection',
-                //     width: 60,
-                //     align: 'center'
-                // },
+                {
+                    type: 'selection',
+                    width: 60,
+                    align: 'center'
+                },
                 {
                     title: "#",
                     key: "no",
@@ -76,13 +77,13 @@ export default {
         },
 
         //下架 刪掉這筆資料 且刪除該筆留言--------------------------
-        acceptBtn(row){
+        acceptBtn(row) {
             // 顯示下架彈窗
             this.acceptBox = true;
             // 存儲當前行數據以便在確定時使用
             this.currentAcceptRow = row;
         },
-        acceptSaveBtn(){
+        acceptSaveBtn() {
             if (this.currentAcceptRow) {
                 const url = `${this.$store.state.phpPublicPath}deleteRepMsgAndMsg.php`;
                 const formData = new FormData();
@@ -113,10 +114,33 @@ export default {
             }
         },
 
+        acceptBatch(selectedIds) {
+            // 在這裡處理批次下架操作，selectedIds 是選中的項目的ID陣列
+            for (const id of selectedIds) {
+                // 根據每個 ID 執行下架操作
+                const url = `${this.$store.state.phpPublicPath}deleteRepMsgAndMsg.php`;
+                const formData = new FormData();
+                formData.append("msg_id", id);
 
-        // allAccept() {
-        //     alert('批次下架');
-        // },
+                fetch(url, {
+                    method: "POST",
+                    body: formData,
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            console.log(`下架成功，ID: ${id}`);
+                            // 更新畫面
+                            //window.location.reload();
+                        } else {
+                            throw new Error(`下架失敗，ID: ${id}`);
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+            }
+        },
+
 
         //駁回 刪掉這筆資料 但不刪除該筆留言-----------------------
         deleteBtn(row) {
@@ -157,14 +181,51 @@ export default {
             }
         },
 
-        // allDelete() {
-        //     alert('批次駁回');
-        // }
+        deleteBatch(selectedIds) {
+            console.log('進入 deleteBatch 方法');
+            // 在這裡處理批次駁回操作，selectedIds 是選中的項目的ID陣列
+            for (const id of selectedIds) {
+                // 根據每個 ID 執行駁回操作
+                const url = `${this.$store.state.phpPublicPath}deleteReportMsg.php`;
+                const formData = new FormData();
+                formData.append("msgrep_id", id);
+
+                fetch(url, {
+                    method: "POST",
+                    body: formData,
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            console.log(`駁回成功，ID: ${id}`);
+                            // 可以選擇執行其他操作，如更新畫面等
+                            //window.location.reload();
+                        } else {
+                            throw new Error(`駁回失敗，ID: ${id}`);
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+            }
+        },
+        batchAction(actionType) {
+            const selectedRows = this.$refs.selection.getSelection(); // 获取选中的行
+            if (selectedRows.length > 0) {
+                let selectedIds;
+                if (actionType === 'accept') {
+                    selectedIds = selectedRows.map(row => row.msg_id); // 提取选中的项的 msg_id
+                    this.acceptBatch(selectedIds); // 执行批量下架操作
+                } else if (actionType === 'delete') {
+                    selectedIds = selectedRows.map(row => row.msgrep_id); // 提取选中的项的 msgrep_id
+                    this.deleteBatch(selectedIds); // 执行批量駁回操作
+                }
+            }
+        }
     },
 
     //------------------------------------------------------------
     mounted() {
-        //先檢查資料格式是否符合DB規則
+        // 先檢查資料格式是否符合DB規則
         const url = `${this.$store.state.phpPublicPath}postMsgMgmt.php`;
         let headers = {
             "Content-Type": "application/json",
@@ -182,15 +243,20 @@ export default {
                 }
             })
             .then((json) => {
-                //把陣列中每個物件都添加編號
-                for (let i = 0; i < json.length; i++) {
-                    json[i].no = i + 1;
+                if (json.length > 0) {
+                    // 如果有資料，設定 hasData 为 true
+                    this.hasData = true;
+                    // 把陣列中每個物件都添加編號
+                    for (let i = 0; i < json.length; i++) {
+                        json[i].no = i + 1;
+                    }
+                    this.msgDate = json;
+                } else {
+                    alert("沒有被檢舉的留言！");
                 }
-                this.msgDate = json;
             })
             .catch((error) => {
                 console.log(error.message);
             });
-
-    }
-}
+    },
+};

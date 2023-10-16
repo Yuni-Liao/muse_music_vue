@@ -490,11 +490,13 @@
                 :key="item.alb_id"
               >
                 <td class="timg">
-                  <img
-                    class="albumn"
-                    alt="專輯照片"
-                    :src="`${publicPath}dataimage/album/${item.alb_img}`"
-                  />
+                  <div class="pic">
+                    <img
+                      class="albumn"
+                      alt="專輯照片"
+                      :src="`${publicPath}dataimage/album/${item.alb_img}`"
+                    />
+                  </div>
                 </td>
                 <td class="tname">
                   {{ item.alb_name }}

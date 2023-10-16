@@ -36,17 +36,6 @@ export default {
         stopPropagation(event) {
             event.stopPropagation(); 
         },
-        fetchSongDetail() {
-            fetch(`${this.$store.state.phpPublicPath}getFindStyle.php?`)
-            .then(async (response) => {
-                this.styles = await response.json();
-                const idToFind = this.$route.params.mcat_id;
-                this.foundObject = this.styles.find((item) => item.mcat_id === idToFind);
-            })
-            .catch((error) => {
-                console.error('發生錯誤:', error);
-            });
-        },
         toggleMoreBtn(albumItem, event) {
             if (this.openAlbumItem && this.openAlbumItem !== albumItem) {
                 this.openAlbumItem.showMoreBtn = false; // 關閉之前打開的
@@ -74,7 +63,19 @@ export default {
         },
     },
     mounted() {
-        this.fetchSongDetail();
+        const fetchSongDetail = () => {
+            fetch(`${this.$store.state.phpPublicPath}getFindStyle.php?`)
+            .then(async (response) => {
+                this.styles = await response.json();
+                const idToFind = this.$route.params.mcat_id;
+                this.foundObject = this.styles.find((item) => item.mcat_id === idToFind);
+            })
+            .catch((error) => {
+                console.error('發生錯誤:', error);
+            });
+        };
+        fetchSongDetail();
+
         const fetchSongList = () => {
             const mcat_id = this.$route.params.mcat_id;
             const apiURL = new URL(
