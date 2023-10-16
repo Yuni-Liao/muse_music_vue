@@ -4,6 +4,8 @@ export default {
       // 讓圖片 build 之後能顯示
       publicPath: process.env.BASE_URL,
 
+      searchKeyword: '',
+
       columns: [
         {
           title: "No",
@@ -92,11 +94,17 @@ export default {
     };
   },
   methods: {
-    prodSearchBtn() {
-      alert("搜索");
-    },
 
-    // 以下 上/下架功能相關------------------------------------------------
+    // 搜尋功能
+    prodSearchBtn() {
+      const searchKeyword = this.searchKeyword.toLowerCase();
+      const originalProductData = [...this.originalProductData];
+      this.productData = originalProductData.filter((item) => {
+        return item.prod_name.toLowerCase().includes(searchKeyword);
+      });
+    },
+    
+    // 以下 上/下架功能------------------------------------------------
     toggleBtn(row) {
       this.editItem.prod_id = row.prod_id;
       this.editItem.show_stat = row.show_stat;
@@ -139,7 +147,7 @@ export default {
       });
     },
 
-    // 以下編輯功能相關----------------------------------------------------
+    // 以下 編輯功能----------------------------------------------------
     // 編輯圖片
     img(e) {
       let that = this;
@@ -213,7 +221,7 @@ export default {
       this.addBox = false;
     },
 
-    // 以下新增功能相關-----------------------------------------------------
+    // 以下 新增功能-----------------------------------------------------
     // 新增跳窗
     addProd(row) {
       this.addItem = { ...row }; // 傳入編輯數據
@@ -292,7 +300,7 @@ export default {
       .then((json) => {
         console.log("API 成功回應:", json);
         this.productData = json;
-        // 將 prod_type 設定為正確的值
+        this.originalProductData = [...json];
       })
       .catch((error) => {
         console.error("API 請求失敗:", error);

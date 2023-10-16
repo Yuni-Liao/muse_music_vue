@@ -10,13 +10,12 @@
     >
 
     <!--以下是搜尋欄位-->
-    <!-- <Input v-model="productData" placeholder="輸入商品名稱" style="width: 180px; margin-bottom: 1%; margin-left: 70%;"
-            id="prod_search">
+    <Input v-model="searchKeyword" placeholder="輸入商品名稱" style="width: 180px; margin-bottom: 2%; margin-left: 60%; padding: 10px;">
         <Input v-model="productData" />
         <template #append>
             <Button icon="ios-search" @click="prodSearchBtn()" style="background-color: #515a6e; color: #fff;"></Button>
         </template>
-        </Input> -->
+        </Input>
 
     <!-- 以下是表格資料區 -->
     <Table
