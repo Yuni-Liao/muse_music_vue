@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-group">
-          <label for="newalbumname" class="label">輸入專輯名稱</label>
+          <label for="newalbumname" class="label">專輯名稱 *</label>
           <input
             type="text"
             id="newalbumname"
@@ -55,7 +55,7 @@
         </div>
         <div class="form-group">
           <label for="newalbuminfo" class="label"
-            >輸入專輯介紹 （限300字以下）</label
+            >專輯介紹 （限300字以下）</label
           >
           <textarea
             name=""

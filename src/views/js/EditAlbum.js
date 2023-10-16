@@ -42,48 +42,55 @@ export default {
       ];
     },
     submit() {
-      //編輯專輯歌曲 & 未有歌曲做新增(在該歌曲資訊中 update 上 alb_id 的值) & 已有歌曲做刪除(alb_id set null)------
-      const selectedAddSongs = this.noAlbumsongs
-        .filter((obj) => obj.isChecked === true)
-        .map((obj) => obj.id);
-
-      const selectedDelSongs = this.albumSongsData
-        .filter((obj) => obj.isChecked === false)
-        .map((obj) => obj.id);
-
-      const url = `${this.$store.state.phpPublicPath}editAlbumAndsong.php`;
-      let headers = {
-        Accept: "application/json",
-      };
-
-      const formData = new FormData();
-      formData.append("alb_id", this.albumData.alb_id);
-      formData.append("alb_img", this.albumData.alb_img); //圖片檔案
-      formData.append("alb_name", this.albumData.alb_name);
-      formData.append("alb_intro", this.albumData.alb_intro);
-      formData.append("selectedAddSongs", JSON.stringify(selectedAddSongs));
-      formData.append("selectedDelSongs", JSON.stringify(selectedDelSongs));
-
-      fetch(url, {
-        method: "POST",
-        headers: headers,
-        body: formData,
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          if (data.error) {
-            alert(data.msg); // 显示错误消息
-          } else {
-            alert("編輯完成");
-            window.location.reload();
-            window.location.href = "/home/profilepageedit";
-          }
-        })
-        .catch((error) => {
-          console.error("發生錯誤:", error);
+      if (this.login_mem_id == undefined) {
+        alert("使用會員功能，請先進行登入");
+        this.$router.push({
+          name: "login",
         });
+      } else {
+        //編輯專輯歌曲 & 未有歌曲做新增(在該歌曲資訊中 update 上 alb_id 的值) & 已有歌曲做刪除(alb_id set null)------
+        const selectedAddSongs = this.noAlbumsongs
+          .filter((obj) => obj.isChecked === true)
+          .map((obj) => obj.id);
+
+        const selectedDelSongs = this.albumSongsData
+          .filter((obj) => obj.isChecked === false)
+          .map((obj) => obj.id);
+
+        const url = `${this.$store.state.phpPublicPath}editAlbumAndsong.php`;
+        let headers = {
+          Accept: "application/json",
+        };
+
+        const formData = new FormData();
+        formData.append("alb_id", this.albumData.alb_id);
+        formData.append("alb_img", this.albumData.alb_img); //圖片檔案
+        formData.append("alb_name", this.albumData.alb_name);
+        formData.append("alb_intro", this.albumData.alb_intro);
+        formData.append("selectedAddSongs", JSON.stringify(selectedAddSongs));
+        formData.append("selectedDelSongs", JSON.stringify(selectedDelSongs));
+
+        fetch(url, {
+          method: "POST",
+          headers: headers,
+          body: formData,
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            if (data.error) {
+              alert(data.msg); // 显示错误消息
+            } else {
+              alert("編輯完成");
+              window.location.reload();
+              window.location.href = "/home/profilepageedit";
+            }
+          })
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      }
     },
   },
   mounted() {

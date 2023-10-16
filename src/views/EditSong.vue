@@ -39,11 +39,11 @@
         </div>
 
         <div class="form-group">
-          <label for="search" class="label">輸入歌曲名稱</label>
+          <label for="search" class="label">歌曲名稱 *</label>
           <input type="text" id="search" v-model="songData.s_name" />
         </div>
         <div class="form-group">
-          <label for="songinfo" class="label">輸入歌曲介紹</label>
+          <label for="songinfo" class="label">歌曲介紹 （限300字以下）</label>
           <textarea
             name=""
             id="songinfo"
