@@ -76,13 +76,13 @@ export default {
         },
 
         //下架 刪掉這筆資料 且刪除該筆留言--------------------------
-        acceptBtn(row){
+        acceptBtn(row) {
             // 顯示下架彈窗
             this.acceptBox = true;
             // 存儲當前行數據以便在確定時使用
             this.currentAcceptRow = row;
         },
-        acceptSaveBtn(){
+        acceptSaveBtn() {
             if (this.currentAcceptRow) {
                 const url = `${this.$store.state.phpPublicPath}deleteRepMsgAndMsg.php`;
                 const formData = new FormData();
