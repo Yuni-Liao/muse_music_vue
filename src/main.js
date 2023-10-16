@@ -67,6 +67,13 @@ import {
   faBagShopping,
   faBolt,
   faEye,
+  faTruckFast,
+  faCommentDollar,
+  faFileCircleCheck,
+  faBox,
+  faFileLines,
+  faFileExcel,
+  faArrowRightArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -126,7 +133,14 @@ library.add(
   faBagShopping,
   faBolt,
   faBell,
-  faEye
+  faEye,
+  faTruckFast,
+  faCommentDollar,
+  faFileCircleCheck,
+  faBox,
+  faFileLines,
+  faFileExcel,
+  faArrowRightArrowLeft,
 );
 
 const vueApp = createApp(App)

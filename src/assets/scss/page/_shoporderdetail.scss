@@ -40,12 +40,11 @@
                         justify-content: center;
                         align-items: center;
                         .pic{
-                            width: 50px;
-                            img{
-                                width: 100%;
-                            }                            
+                            color: $dark;
+                            font-size: 35px;
                         }
                     }
+                    
                     .txt{
                         font-size: $small;
                         padding-top: 30px;
@@ -58,9 +57,18 @@
                 }
                 .active{
                     border-bottom: 3px solid $dark;
-                //     :last-child + .item .frame {
-                //     border: 3px solid #f07e7e;
-                //  }
+                }
+                .active_stat{
+                    .frame{
+                        border: 3px solid #5555c8;
+                        .pic{
+                            color: $blue;
+                        }
+                    }
+                    .txt{
+                        color: $blue;
+                    }
+                        
                 }
             }
             .menu{
@@ -74,6 +82,7 @@
                 display: flex;
                 align-items: center;
                 font-size: $default;
+                border-bottom: 2px solid #eee;
                 .product_pic{
                     padding: 40px 60px;
                 }
@@ -86,7 +95,6 @@
             }
             .product_pic{
                 width: 28%;
-                
                 img{
                     width: 100%;
                 }                    
@@ -98,7 +106,7 @@
                 box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.25);
                 border-radius: 10px;
                 padding: 40px 0;
-                margin: 50px 0;
+                margin: 90px 0 50px;
                 .list{
                     text-align: left;
                     .item{

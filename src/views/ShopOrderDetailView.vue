@@ -15,46 +15,48 @@
 
                 <div class="course">
                     <div class="active"></div>
-                    <div class="item">
+                    <div class="item" :class="{ 'active_stat': isStatActive('已成立') || isStatActive('已取消') }">
                         <div class="frame">
                             <div class="pic">
-                                <img :src="`${publicPath}image/ShopOrders/shopordersbuild.png`" alt="shopordersbuild">
+                                <fontAwesome :icon="['fa','fa-file-lines']" v-if="shopOrdersItem.length > 0 && shopOrdersItem[0].ord_stat !== '已取消'"/>
+                                <fontAwesome :icon="['fa','fa-file-excel']" v-else/>
                             </div>
                         </div>
-                        <div class="txt">訂單成立</div>
+                        <div v-if="shopOrdersItem.length > 0 && shopOrdersItem[0].ord_stat !== '已取消'" class="txt">訂單成立</div>
+                        <div class="txt" v-else>訂單取消</div>
                     </div>
                     <div class="line" :class="{ 'active': isStatActive('已付款') || isStatActive('已出貨') || isStatActive('已送達') || isStatActive('已完成') }"></div>
-                    <div class="item">
+                    <div class="item" :class="{ 'active_stat': isStatActive('已付款')}">
                         <div class="frame">
                             <div class="pic">
-                                <img :src="`${publicPath}image/ShopOrders/shoporderspay.png`" alt="shoporderspay">
+                                <fontAwesome :icon="['fa','fa-comment-dollar']"/>
                             </div>
                         </div>
                         <div class="txt">確認付款</div>
                     </div>
                     <div class="line" :class="{ 'active': isStatActive('已出貨') || isStatActive('已送達') || isStatActive('已完成') }"></div>
-                    <div class="item">
+                    <div class="item"  :class="{ 'active_stat': isStatActive('已出貨')}">
                         <div class="frame">
                             <div class="pic">
-                                <img :src="`${publicPath}image/ShopOrders/shopordersship.png`" alt="shopordersship">
+                                <fontAwesome :icon="['fa', 'fa-truck-fast']"/>
                             </div>
                         </div>
                         <div class="txt">訂單出貨</div>
                     </div>
                     <div class="line" :class="{ 'active': isStatActive('已送達') || isStatActive('已完成') }"></div>
-                    <div class="item">
+                    <div class="item"  :class="{ 'active_stat': isStatActive('已送達')}">
                         <div class="frame">
                             <div class="pic">
-                                <img :src="`${publicPath}image/ShopOrders/shopordersarrive.png`" alt="shopordersarrive">
+                                <fontAwesome :icon="['fa', 'fa-box']"/>
                             </div>    
                         </div>
                         <div class="txt">訂單送達</div>
                     </div>
                     <div class="line" :class="{ 'active': isStatActive('已完成') }"></div>
-                    <div class="item">
+                    <div class="item"  :class="{ 'active_stat': isStatActive('已完成')}">
                         <div class="frame">
                             <div class="pic">
-                                <img :src="`${publicPath}image/ShopOrders/shopordersfinish.png`" alt="shopordersfinish">
+                                <fontAwesome :icon="['fa','fa-file-circle-check']"/>
                             </div>
                         </div>
                         <div class="txt">訂單完成</div>
