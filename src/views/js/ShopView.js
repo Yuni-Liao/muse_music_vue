@@ -110,7 +110,7 @@ export default {
 
         fetchprod() {
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getProducts.php`
+                `${this.$store.state.phpPublicPath}getProducts.php`
             );
             fetch(apiURL).then(async (response) => {
                 this.products = await response.json();
