@@ -209,13 +209,15 @@ export default {
             }
         },
         batchAction(actionType) {
-            const selectedRows = this.$refs.selection.getSelection(); // 獲取選中的行
+            const selectedRows = this.$refs.selection.getSelection(); // 获取选中的行
             if (selectedRows.length > 0) {
-                const selectedIds = selectedRows.map(row => row.msg_id); // 提取選中的項目的ID，根據您的資料結構
+                let selectedIds;
                 if (actionType === 'accept') {
-                    this.acceptBatch(selectedIds); // 執行批次下架操作
+                    selectedIds = selectedRows.map(row => row.msg_id); // 提取选中的项的 msg_id
+                    this.acceptBatch(selectedIds); // 执行批量下架操作
                 } else if (actionType === 'delete') {
-                    this.deleteBatch(selectedIds); // 執行批次駁回操作
+                    selectedIds = selectedRows.map(row => row.msgrep_id); // 提取选中的项的 msgrep_id
+                    this.deleteBatch(selectedIds); // 执行批量駁回操作
                 }
             }
         }
@@ -249,7 +251,7 @@ export default {
                         json[i].no = i + 1;
                     }
                     this.msgDate = json;
-                }else{
+                } else {
                     alert("沒有被檢舉的留言！");
                 }
             })
