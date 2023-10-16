@@ -3,7 +3,6 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-
             // title
             columns: [
                 {
@@ -56,31 +55,8 @@ export default {
                     align: 'center'
                 }
             ],
-
-            // data: [
-            //     {
-            //         no: 1,
-            //         QuesTitle: '如何上傳音樂',
-            //         createAdminAcc: 'admin01',
-            //         createTime: '2023-09-12 12:00:30',
-            //         updateAdminAcc: 'admin02',
-            //         updateTime: '2023-09-15 00:30:22'
-            //     },
-
             // 渲染資料
             faqData: [],
-
-            // 編輯彈窗預設關閉
-            editBox: false,
-            editItem: {
-                faq_id: '',
-                que: '',
-                ans: '',
-                short_ans: '',
-                keyword: '',
-                open: '',
-            },
-
             // 新增彈窗預設關閉
             addBox: false,
             addItem: {
@@ -90,16 +66,25 @@ export default {
                 add_keyword: '',
                 add_open: '',
             },
-            
-            // updateTime: '',
-
+            // 編輯彈窗預設關閉
+            editBox: false,
+            // 編輯彈窗資料
+            editItem: {
+                faq_id: '',
+                que: '',
+                ans: '',
+                short_ans: '',
+                keyword: '',
+                open: '',
+            },
+            // 刪除彈窗預設關閉
             deleteBox: false,
         }
     },
     methods: {
-        // 新增跳窗
+        // 新增彈窗
         addBtn(row) {
-            // 顯示跳窗
+            // 顯示彈窗
             this.addBox = true;
         },
 
@@ -132,9 +117,9 @@ export default {
             });
         },
 
-        // 編輯跳窗
+        // 編輯彈窗
         editBtn(row) {
-            // 顯示跳窗
+            // 顯示彈窗
             this.editBox = true;
             // 傳入編輯數據
             this.editItem = { ...row };
@@ -177,13 +162,7 @@ export default {
             });
         },
 
-        // 跳窗取消btn：關閉跳窗
-        closeBtn() {
-            this.editBox = false;
-            this.addBox = false;
-            this.deleteBox = false;
-        },
-
+        // 刪除彈窗
         deleteBtn(row) {
             // 顯示刪除彈窗
             this.deleteBox = true;
@@ -191,6 +170,7 @@ export default {
             this.currentDeleteRow = row;
         },
 
+        // 刪除
         deleteSaveBtn() {
             if (this.currentDeleteRow) {
                 const url = `${this.$store.state.phpPublicPath}deleteFaqsMgmt.php`;
@@ -221,6 +201,13 @@ export default {
                 });
             }
         },
+
+        // 彈窗取消btn：關閉彈窗
+        closeBtn() {
+            this.editBox = false;
+            this.addBox = false;
+            this.deleteBox = false;
+        },
     },
     mounted() {
         //先檢查資料格式是否符合DB規則
@@ -238,7 +225,7 @@ export default {
                     return response.json();
                 } else {
                     console.error('API 錯誤回應:', response);
-                    throw new Error("取得 dta 失敗");
+                    throw new Error("取得 data 失敗");
                 }
             })
             .then((json) => {
