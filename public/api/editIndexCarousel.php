@@ -6,6 +6,7 @@
     header("Content-Type:application/json;charset=utf-8");
 
     try {
+        if(isset($_FILES["img"])){
             switch ($_FILES["img"]["error"]) {
                 case UPLOAD_ERR_OK:
                     $dir = "../dataimage/index/carousel/";
@@ -35,6 +36,10 @@
                     break;
             
             }
+        }else{
+            $filename = $_POST["img"];
+            echo json_encode("更新成功"); 
+        }
     
             // 連線
             require_once("./connectMusemusic.php");
