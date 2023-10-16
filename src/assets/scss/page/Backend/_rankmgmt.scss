@@ -14,7 +14,7 @@ main{
             text-align: left;
             padding-bottom: 3%;
         }
-        .popSongSelect, .popAlbumSelect{
+        .popSongSelect, .popAlbumSelect, .popSLSelect{
             @include rect(150px, 130px);
             padding: 1%;
             background-color: #333;
@@ -27,7 +27,7 @@ main{
             display: flex;
             flex-flow: column wrap;
             justify-content: space-evenly;
-            .allSong, .allAlbum{
+            .allSong, .allAlbum, .allSL{
                 @include rect(100px, auto);
                 margin: auto;    
             }

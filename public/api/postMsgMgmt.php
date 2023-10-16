@@ -18,7 +18,9 @@ try {
     msg.msg_con
     from msg_rep as mr
     join member as m on mr.mem_id = m.mem_id
-    join msg on mr.msg_id = msg.msg_id;";
+    join msg on mr.msg_id = msg.msg_id
+    order by 
+    mr.rep_date desc;";
     $msg = $pdo->query($sql);
 
     if($msg->rowCount()===0){

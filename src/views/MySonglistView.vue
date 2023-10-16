@@ -1,5 +1,10 @@
 <template>
-  <player ref="player"></player>
+  <player
+    ref="player"
+    :s_id="playerId"
+    :allSid="allSid"
+    @change-s-id="changeSId"
+  ></player>
   <teleport to="body">
     <NewSl
       v-if="isNewSlOpen"
@@ -105,7 +110,7 @@
                   <span v-line-clamp="1">{{ item.creater_name }}</span>
                 </div>
               </div>
-              <PlayBtnBig @click="openplayer()"></PlayBtnBig>
+              <PlayBtnBig @click="openPlayer(item.sl_id)"></PlayBtnBig>
             </div>
           </div>
 
@@ -158,7 +163,7 @@
                   <span v-line-clamp="1">{{ item.creater_name }}</span>
                 </div>
               </div>
-              <PlayBtnBig @click="openplayer()"></PlayBtnBig>
+              <PlayBtnBig @click="openPlayer(item.sl_id)"></PlayBtnBig>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@
       <div v-if="currentStep === 1">
         <!-- <p>已加入購物車商品</p> -->
 
-        <!-- ▼ 凱芸 測試帶入暫存的商品資訊 -->
+        <!-- ▼ 凱芸 帶入暫存的商品資訊 -->
         <div id="myCart">
           <div class="cartArea">
             <h2>購物清單</h2>
@@ -28,7 +28,7 @@
               <table>
                 <tr v-for="(item, index)  in cartItems" :key="item.prod_id" class="item">
                   <td class="itemNum">
-                    {{ index + 1 }} <!-- 自動生成編號 -->
+                    {{ index + 1 }}
                   </td>
                   <td class="pic">
                     <div class="image-wrapper">
@@ -51,7 +51,7 @@
             <p class="count">全館免運！<br>總金額： $ {{ total }}</p>
           </div>
         </div>
-        <!-- ▲ 凱芸 測試帶入暫存的商品資訊 -->
+        <!-- ▲ 凱芸 帶入暫存的商品資訊 -->
 
         <button @click="completeStep">
           <router-link to="/home/shop">◄ 繼續選購其他商品</router-link>

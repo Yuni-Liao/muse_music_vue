@@ -1,5 +1,8 @@
 <template>
-    <player :s_id="s_id" @change-s-id="changeSId" ref="player"></player>
+    <player 
+    :s_id="s_id"
+    :allSid="allSid"
+    @change-s-id="changeSId" ref="player"></player>
     <div class="banner" v-if="foundObject && foundObject.mcat_pic"
     :style="{
         backgroundImage: `url(${publicPath}dataimage/find/${foundObject.mcat_pic})`
@@ -15,7 +18,7 @@
                     <p>共首歌</p>
                 </div>
                 <div class="btn">
-                    <!-- <PlayBtnBig @click="openPlayer"></PlayBtnBig> -->
+                    <PlayBtnBig @click="openPlayer(songs[0].s_id)"></PlayBtnBig>
                 </div>
             </div>
         </div>

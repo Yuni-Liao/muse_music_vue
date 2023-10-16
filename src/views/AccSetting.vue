@@ -6,7 +6,7 @@
                 <li @click="setCurrentTab('showMe')" :class="{ active: currentTabType === 'showMe' }">
                     個人檔案</li>
                 <li @click="setCurrentTab('showMyAcc')" :class="{ active: currentTabType === 'showMyAcc' }">帳號資訊</li>
-                <li @click="setCurrentTab('showAccSafe')" :class="{ active: currentTabType === 'showAccSafe' }">安全驗證</li>
+                <!-- <li @click="setCurrentTab('showAccSafe')" :class="{ active: currentTabType === 'showAccSafe' }">安全驗證</li> -->
                 <li @click="setCurrentTab('showChangePsw')" :class="{ active: currentTabType === 'showChangePsw' }">更改密碼
                 </li>
             </ul>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <!-- 帳號安全驗證 -->
-        <div v-else-if="currentTab == 'showAccSafe'" class="  obj_Radius acc_safe_wrap">
+        <!-- <div v-else-if="currentTab == 'showAccSafe'" class="  obj_Radius acc_safe_wrap">
             <h1>帳號安全驗證
             </h1>
             <div class="acc_safe_box acc_item">
@@ -90,7 +90,7 @@
                     <button @click="setSafeBtn()" class="acc_savebtn default_Btn obj_Rounded btn_XS_NoBorder">設定</button>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- 更改密碼 -->
         <div v-else class="acc_editprofile obj_Radius">
             <h1>更改密碼</h1>

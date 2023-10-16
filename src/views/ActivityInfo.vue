@@ -13,7 +13,7 @@
             />
             <p>{{ newsList.singer }}</p>
           </div>
-          <FolBtnBig :functype="2" :folnum="newsList.news_id" />
+          <!-- <FolBtnBig :functype="2" :folnum="newsList.news_id" /> -->
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
               />
               <p>造夢人</p>
             </div>
-            <FolBtnBig :functype="2" :folnum="0" />
+            <!-- <FolBtnBig :functype="2" :folnum="0" /> -->
             <!-- 如果有渲染，再幫忙於:folnum處放上new_id，我先放0，讓他不報錯 -->
           </div>
         </div>
@@ -75,7 +75,7 @@
               />
               <p>醉心吉他</p>
             </div>
-            <FolBtnBig :functype="2" :folnum="0" />
+            <!-- <FolBtnBig :functype="2" :folnum="0" /> -->
             <!-- 如果有渲染，再幫忙於:folnum處放上new_id，我先放0，讓他不報錯 -->
           </div>
         </div>
