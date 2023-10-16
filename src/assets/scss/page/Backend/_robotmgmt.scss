@@ -35,6 +35,9 @@
         overflow-y: auto;
         white-space: pre-wrap;
     }
+    .readonly{
+        background-color: #ccc;
+    }
     .btngroup{
         display: flex;
         justify-content: space-evenly;

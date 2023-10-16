@@ -27,9 +27,9 @@ try {
         $rowCount = $deleteFaq->rowCount();
 
         if ($rowCount > 0) {
-            $responseMessage = "删除成功";
+            $responseMessage = "刪除成功";
         } else {
-            $responseMessage = "未找到符合条件的记录";
+            $responseMessage = "未找到符合條件的紀錄";
         }
 
         echo json_encode($responseMessage);
@@ -38,6 +38,6 @@ try {
     }
 
 } catch (Exception $e) {
-    echo "错误行号: ", $e->getLine(), "<br>";
-    echo "错误原因: ", $e->getMessage(), "<br>";
+    echo "錯誤行號 : ", $e->getLine(), "<br>";
+    echo "錯誤原因 : ", $e->getMessage(), "<br>";
 }
