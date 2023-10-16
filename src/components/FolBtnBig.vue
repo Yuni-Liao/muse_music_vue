@@ -44,8 +44,6 @@ export default {
     } else {
       this.isFol = false;
     }
-
-    //追蹤歌單處理
   },
   methods: {
     //最初判斷追蹤按鈕顯示
