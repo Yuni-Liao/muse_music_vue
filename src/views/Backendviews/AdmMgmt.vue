@@ -2,7 +2,7 @@
     <div class="admin_table_box">
         <h1>管理員管理</h1>
         <Table size="large" highlight-row stripe class="admin_table cellHeight" width="1000" :columns="columns"
-            :data="data">
+            :data="adminList">
             <template #deleteBtn="{ row }">
                 <fontAwesome @click="deleteBtn()" :icon="['fa', 'trash']" style="cursor: pointer;" />
             </template>

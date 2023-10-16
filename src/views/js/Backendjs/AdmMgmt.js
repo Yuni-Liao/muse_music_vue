@@ -5,10 +5,12 @@ export default {
             publicPath: process.env.BASE_URL,
             //
             modal: false,
+            login_admin_id: '',
+            adminList: [],
             columns: [
                 {
                     title: '編號',
-                    key: 'no',
+                    key: 'admin_id',
                     width: 80,
                     align: 'center'
                 },
@@ -26,7 +28,7 @@ export default {
                 },
                 {
                     title: '管理員密碼',
-                    key: 'adminPsw',
+                    key: 'admin_psw',
                     width: 250,
                     align: 'center'
                 },
@@ -36,38 +38,6 @@ export default {
                     width: 80,
                     align: 'center'
                 }
-            ],
-            data: [
-                {
-                    no: 1,
-                    acc: 'admin01',
-                    name: 'John Brown',
-                    adminPsw: '129usd%@',
-                },
-                {
-                    no: 2,
-                    acc: 'admin02',
-                    name: 'John Brown',
-                    adminPsw: '129usd%@',
-                },
-                {
-                    no: 3,
-                    acc: 'admin03',
-                    name: 'John Brown',
-                    adminPsw: '129usd%@',
-                },
-                {
-                    no: 4,
-                    acc: 'admin04',
-                    name: 'John Brown',
-                    adminPsw: '329usd%@',
-                },
-                {
-                    no: 5,
-                    acc: 'admin05',
-                    name: 'John Brown',
-                    adminPsw: '129usd%@',
-                },
             ],
         }
     },
@@ -79,5 +49,27 @@ export default {
             alert('刪除管理員');
         },
     },
+    mounted() {
+        //fetch 管理員資料 
+        // 之後要改動態 - 廖妍榛
+        // this.login_admin_id = localStorage.getItem('login_admin_id');
+        const fetchAdminList = () => {
+            // const apiURL = new URL(
+            //     `${this.$store.state.phpPublicPath}getAdmMgmt.php?admin_id=${this.login_admin_id}`);
+            const apiURL = new URL(
+                `${this.$store.state.phpPublicPath}getAdmMgmt.php`);
+
+            fetch(apiURL)
+                .then((res) => res.json())
+                .then((res) => {
+                    this.adminList = res;
+                })
+                .catch((error) => {
+                    console.error("發生錯誤:", error);
+                });
+        };
+        console.log(this.adminList)
+        fetchAdminList();
+    }
 }
 
