@@ -1,7 +1,7 @@
 <template>
     <div v-if="hasData" class="msgmgmt_box">
         <h1>檢舉留言管理</h1>
-        <Table ref="selection" highlight-row stripe class="msgmgmt_table cellHeight" width="1000" :columns="columns"
+        <Table ref="selection" highlight-row stripe class="msgmgmt_table cellHeight" width="1000" height="600" :columns="columns"
             :data="msgDate">
             <!-- 下架按鈕 -->
             <template #rejectBtn="{ row }">
