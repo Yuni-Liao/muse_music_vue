@@ -5,7 +5,7 @@ export default {
             publicPath: process.env.BASE_URL,
             //
             modal: false,
-            login_admin_id: '',
+            login_admin_id: '', // 暫存登入管理員id
             adminList: [],
             columns: [
                 {
@@ -45,8 +45,40 @@ export default {
         createAdmin() {
             this.modal = true;
         },
-        deleteBtn() {
-            alert('刪除管理員');
+        deleteBtn(row) {
+            this.adminList[0].admin_id = row.admin_id;
+
+            // const url = new URL(`${this.$store.state.phpPublicPath}deleteAdmMgmt.php`);
+            const url = new URL(`http://localhost/muse_music/public/api/deleAdmMgmt.php`)
+            let headers = {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            };
+            const dataToSend = {
+                admin_id: this.adminList[0].admin_id,
+            };
+            console.log(this.adminList[0].admin_id)
+            fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(dataToSend)
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        // return response.json();
+                        console.log('完成刪除')
+                    } else {
+                        throw new Error("刪除 data 失敗");
+                    }
+                })
+                .then((data) => {
+                    console.log('已刪除', data);
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+            console.log(dataToSend)
         },
     },
     mounted() {

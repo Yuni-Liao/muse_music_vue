@@ -4,7 +4,7 @@
         <Table size="large" highlight-row stripe class="admin_table cellHeight" width="1000" :columns="columns"
             :data="adminList">
             <template #deleteBtn="{ row }">
-                <fontAwesome @click="deleteBtn()" :icon="['fa', 'trash']" style="cursor: pointer;" />
+                <fontAwesome @click="deleteBtn(row)" :icon="['fa', 'trash']" style="cursor: pointer;" />
             </template>
         </Table>
         <div class="btn_box">
