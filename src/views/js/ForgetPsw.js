@@ -8,7 +8,7 @@ export default {
             email: '',
             verificationCode: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',    
         }
     },
     methods: {
@@ -26,6 +26,34 @@ export default {
                 this.current -= 1;
             }
         },
+        saveBtn() {
+            const url = `${this.$store.state.phpPublicPath}editForgetPsw.php`;
+            const formData = new FormData();
+            formData.append("password", this.password);
+            formData.append("email", this.email);
+
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(response);
+                        // return response.json();
+                    } else {
+                        throw new Error("編輯失敗");
+                    }
+                })
+                .then(() => {
+                    // window.location.reload();
+                    alert("已完成修改");
+                    this.$router.push("/home")
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        },
+
     },
     computed: {
         isEmailValid(){
