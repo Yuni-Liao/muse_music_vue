@@ -9,15 +9,16 @@
             </Steps>
             <form class="step_1" action="" v-if="current === 0">
                 <h2>會員註冊</h2>
-                <input type="email" placeholder="請輸入電子信箱" v-model="email1" required>
-                <input type="password" placeholder="請輸入密碼" v-model="password" required>
-                <input type="password" placeholder="確認密碼" v-model="confirmpassword" required>
+                <input type="text" placeholder="請輸入姓名" v-model="mem_name" required>
+                <input type="text" placeholder="請輸入暱稱" v-model="mem_aka" required>
+                <input type="email" placeholder="請輸入信箱" v-model="email1" required>
                 <label>
                     <input class="policy" type="checkbox" id="text">
                     同意MUSE的會員服務條款與隱私權保護政策，<br>包括cookies的使用、其他人能夠在本站上瀏覽你的相關公開資訊。
                 </label>
-                <button class="btn_L_NoBorder obj_Radius submit" @click="next" :disabled="!email1">信箱收取驗證碼</button>
+                <button class="btn_L_NoBorder obj_Radius submit" @click="registerAccountToDatabase" :disabled="!email1">註冊</button>
             </form>
+            
             <form class="step_2" action="" v-if="current === 1">
                 <h2>信箱驗證</h2>
                 <input type="text" placeholder="請輸入驗證碼" v-model="verificationCode" required>
@@ -31,8 +32,8 @@
             </form>
             <form class="step_3" action="" v-if="current === 2">
                 <h2>帳號密碼設定</h2>
-                <input type="account" placeholder="請設定帳號" v-model="account" required>
-                <input type="password" placeholder="請設定密碼" v-model="password" required>
+                <input type="account" placeholder="請設定帳號" v-model="mem_acc" required>
+                <input type="password" placeholder="請設定密碼" v-model="mem_psw" required>
                 <input type="password" placeholder="請確認密碼" v-model="confirmPassword" required>
                 <br>
                 <button class="btn_L_NoBorder obj_Radius" @click="prev">返回上一步</button>

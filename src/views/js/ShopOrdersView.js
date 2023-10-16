@@ -27,6 +27,12 @@ export default {
             this.isRecentOrdersVisible = false;
             this.isHistoryOrdersVisible = true;
         },
+
+        // 圖標切換訂單分頁狀態
+        toggleOrdersVisibility() {
+            this.isRecentOrdersVisible = !this.isRecentOrdersVisible;
+            this.isHistoryOrdersVisible = !this.isHistoryOrdersVisible;
+          },
     },
 
     computed: {

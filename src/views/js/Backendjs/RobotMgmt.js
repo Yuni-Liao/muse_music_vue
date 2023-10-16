@@ -90,7 +90,7 @@ export default {
 
         // 新增
         addsaveBtn(){
-            const url = `${this.$store.state.phpPublicPath}addFaqsMgmt.php`;
+            const addurl = `${this.$store.state.phpPublicPath}addFaqsMgmt.php`;
             const formData = new FormData();
             formData.append("add_que", this.addItem.add_que);
             formData.append("add_ans", this.addItem.add_ans);
@@ -98,7 +98,7 @@ export default {
             formData.append("add_keyword", this.addItem.add_keyword);
             formData.append("add_open", this.addItem.add_open);
             console.log(this.addItem);
-            fetch(url, {
+            fetch(addurl, {
                 method: "POST",
                 body: formData,
             })
@@ -135,7 +135,7 @@ export default {
             // this.editItem.updateTime = formattedDate;
             // this.updateTime = formattedDate;
 
-            const url = `${this.$store.state.phpPublicPath}editFaqsMgmt.php`;
+            const editurl = `${this.$store.state.phpPublicPath}editFaqsMgmt.php`;
             const formData = new FormData();
             formData.append("faq_id", this.editItem.faq_id);
             formData.append("que", this.editItem.que);
@@ -143,7 +143,7 @@ export default {
             formData.append("short_ans", this.editItem.short_ans);
             formData.append("keyword", this.editItem.keyword);
             formData.append("open", this.editItem.open);
-            fetch(url, {
+            fetch(editurl, {
                 method: "POST",
                 body: formData,
             })
@@ -173,12 +173,12 @@ export default {
         // 刪除
         deleteSaveBtn() {
             if (this.currentDeleteRow) {
-                const url = `${this.$store.state.phpPublicPath}deleteFaqsMgmt.php`;
+                const deleteurl = `${this.$store.state.phpPublicPath}deleteFaqsMgmt.php`;
                 const formData = new FormData();
                 // 傳遞參數
                 formData.append("faq_id", this.currentDeleteRow.faq_id);
         
-                fetch(url, {
+                fetch(deleteurl, {
                     method: "POST",
                     body: formData,
                 })
