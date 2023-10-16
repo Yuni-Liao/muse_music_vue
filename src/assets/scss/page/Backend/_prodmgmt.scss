@@ -10,14 +10,14 @@ main {
         left: 18%;
         display: flex;
         justify-content: center;
-        padding-bottom: 20%;
 
         h1 {
             font-size: $big;
             text-align: left;
             padding-bottom: 3%;
         }
-        .topbtn{
+
+        .topbtn {
             display: flex;
             align-items: center;
             margin-left: 50%;
@@ -26,28 +26,38 @@ main {
     }
 
     // 輪播編輯彈窗
-    
+
     .editprod,
     .addprod {
-        @include rect(600px, auto);
+        @include rect(800px, auto);
         padding: 1%;
         background-color: #333;
         color: $white;
         border: $green 3px solid;
         position: absolute;
-        top: 100%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 100;
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: row;
         justify-content: space-evenly;
+
+        .fir {
+            display: flex;
+            flex-direction: column;
+            align-content: start;
+            align-content: flex-start;
+        }
 
         p,
         label {
             margin: 10px 0;
         }
 
+        .state {
+            display: flex;
+        }
 
         input,
         select,
@@ -55,6 +65,10 @@ main {
             padding: 2%;
             overflow-y: auto;
             white-space: pre-wrap;
+        }
+
+        input[readonly] {
+            background-color: #ccc;
         }
 
         .btngroup {
@@ -78,37 +92,31 @@ main {
                 border: 0px;
                 @include btnColor($white, false);
             }
+
+
+        }
+
+        .uploadblock {
+            border: 1px solid #009ca8;
+            width: 300px;
+            height: 150px;
+            text-align: center;
+            border-radius: 10px;
+            line-height: 2;
+
+            input {
+                border: none;
+            }
+
+            img {
+                width: 90%;
+                height: 50%;
+                object-fit: contain;
+            }
         }
     }
 }
 
-
 .cellHeight {
     line-height: $fh;
-}
-
-.uploadblock {
-    //margin-top: 1.5rem;
-    border: 1px solid #009ca8;
-    width: 100%;
-    height: 200px;
-    text-align: center;
-    border-radius: 10px;
-    //padding: 1rem;
-    line-height: 2;
-
-    input {
-        border: none;
-    }
-
-    img {
-        width: 90%;
-        height: 70%;
-        object-fit: contain;
-    }
-}
-
-input[readonly] {
-    background-color: #ccc;
-    /* 或其他您喜歡的灰色值 */
 }
