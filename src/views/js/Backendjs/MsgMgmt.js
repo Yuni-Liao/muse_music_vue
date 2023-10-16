@@ -121,23 +121,23 @@ export default {
                 const url = `${this.$store.state.phpPublicPath}deleteRepMsgAndMsg.php`;
                 const formData = new FormData();
                 formData.append("msg_id", id);
-        
+
                 fetch(url, {
                     method: "POST",
                     body: formData,
                 })
-                .then((response) => {
-                    if (response.ok) {
-                        console.log(`下架成功，ID: ${id}`);
-                        // 可以選擇執行其他操作，如更新畫面等
-                        window.location.reload();
-                    } else {
-                        throw new Error(`下架失敗，ID: ${id}`);
-                    }
-                })
-                .catch((error) => {
-                    console.log(error.message);
-                });
+                    .then((response) => {
+                        if (response.ok) {
+                            console.log(`下架成功，ID: ${id}`);
+                            // 更新畫面
+                            //window.location.reload();
+                        } else {
+                            throw new Error(`下架失敗，ID: ${id}`);
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
             }
         },
 
@@ -182,38 +182,42 @@ export default {
         },
 
         deleteBatch(selectedIds) {
+            console.log('進入 deleteBatch 方法');
             // 在這裡處理批次駁回操作，selectedIds 是選中的項目的ID陣列
             for (const id of selectedIds) {
                 // 根據每個 ID 執行駁回操作
                 const url = `${this.$store.state.phpPublicPath}deleteReportMsg.php`;
                 const formData = new FormData();
                 formData.append("msgrep_id", id);
-        
+
                 fetch(url, {
                     method: "POST",
                     body: formData,
                 })
-                .then((response) => {
-                    if (response.ok) {
-                        console.log(`駁回成功，ID: ${id}`);
-                        // 可以選擇執行其他操作，如更新畫面等
-                    } else {
-                        throw new Error(`駁回失敗，ID: ${id}`);
-                    }
-                })
-                .catch((error) => {
-                    console.log(error.message);
-                });
+                    .then((response) => {
+                        if (response.ok) {
+                            console.log(`駁回成功，ID: ${id}`);
+                            // 可以選擇執行其他操作，如更新畫面等
+                            //window.location.reload();
+                        } else {
+                            throw new Error(`駁回失敗，ID: ${id}`);
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
             }
         },
         batchAction(actionType) {
-            const selectedRows = this.$refs.selection.getSelection(); // 獲取選中的行
+            const selectedRows = this.$refs.selection.getSelection(); // 获取选中的行
             if (selectedRows.length > 0) {
-                const selectedIds = selectedRows.map(row => row.msg_id); // 提取選中的項目的ID，根據您的資料結構
+                let selectedIds;
                 if (actionType === 'accept') {
-                    this.acceptBatch(selectedIds); // 執行批次下架操作
+                    selectedIds = selectedRows.map(row => row.msg_id); // 提取选中的项的 msg_id
+                    this.acceptBatch(selectedIds); // 执行批量下架操作
                 } else if (actionType === 'delete') {
-                    this.deleteBatch(selectedIds); // 執行批次駁回操作
+                    selectedIds = selectedRows.map(row => row.msgrep_id); // 提取选中的项的 msgrep_id
+                    this.deleteBatch(selectedIds); // 执行批量駁回操作
                 }
             }
         }
@@ -247,6 +251,8 @@ export default {
                         json[i].no = i + 1;
                     }
                     this.msgDate = json;
+                } else {
+                    alert("沒有被檢舉的留言！");
                 }
             })
             .catch((error) => {
