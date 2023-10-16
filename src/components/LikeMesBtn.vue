@@ -34,7 +34,7 @@ export default {
         const fetchSingleMusicMsg = () => {
             const msgid = this.$route.params.msgid;
             const apiURL = new URL(
-                `http://localhost/muse_music/public/api/getSingleMusicMsg.php?$msgid=${msgid}`
+                `${this.$store.state.phpPublicPath}getSingleMusicMsg.php?$msgid=${msgid}`
             );
             fetch(apiURL)
                 .then(async (response) => {

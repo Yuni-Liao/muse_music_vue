@@ -4,11 +4,11 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             columns: [
-                // {
-                //     type: 'selection',
-                //     width: 60,
-                //     align: 'center'
-                // },
+                {
+                    type: 'selection',
+                    width: 60,
+                    align: 'center'
+                },
                 {
                     title: "#",
                     key: "no",

@@ -35,7 +35,7 @@ main {
         color: $white;
         border: $green 3px solid;
         position: absolute;
-        top: 95%;
+        top: 100%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 100;
@@ -50,7 +50,8 @@ main {
 
 
         input,
-        select {
+        select,
+        textarea {
             padding: 2%;
             overflow-y: auto;
             white-space: pre-wrap;

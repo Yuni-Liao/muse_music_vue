@@ -17,7 +17,7 @@
     </div>
 
     <!-- 以下是表格資料區 -->
-    <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1000" :columns="columns" :data="productData">
+    <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1000" height="900" :columns="columns" :data="productData">
       <!-- 上下架按鈕 -->
       <template #upDownBtn="{ row }">
         <Switch v-model="row.show_stat" @on-change="toggleBtn(row)" false-color="#ff4949" true-color="#13ce66"
