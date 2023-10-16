@@ -53,6 +53,44 @@ main{
             }
         }
     }
+        // 新增輪播彈窗
+        .addCar{
+            @include rect(300px, 350px);
+            padding: 1%;
+            background-color: #333;
+            color: $white;
+            border: $green 3px solid;
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            z-index: 100;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-evenly;
+            input{
+                padding: 2%;
+                border: 0px;
+            }
+            .btngroup{
+                display: flex;
+                justify-content: space-evenly;
+                .saveBtn{
+                    @include rect(50px, auto);
+                    @include btnColor($green, false);
+                    margin: auto;    
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+                    .closeBtn{
+                    @include rect(50px, auto);
+                    margin: auto;    
+                    font-size: 14px;
+                    line-height: 1.5;
+                    border: 0px;
+                    @include btnColor($white, false);
+                }
+            }
+        }
 }
 
 .cellHeight{

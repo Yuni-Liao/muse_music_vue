@@ -6,6 +6,7 @@ export default {
             //
             // bannerBox: false, //新增輪播按鈕先隱藏-yuni
             editBox: false,
+            addBox: false,
             carouselItem: [], // 渲染資料的暫存陣列
             columns: [
                 {
@@ -57,6 +58,11 @@ export default {
                 link: '',
                 img: '',
                 status: '',
+            },
+            addItem: {
+                name: '',
+                link: '',
+                img: '',
             },
         }
     },
@@ -111,6 +117,7 @@ export default {
                 });
         },
         closeBtn() {
+            this.addBox = false;
             this.editBox = false;
         },
         toggleBtn(row) {
@@ -119,6 +126,37 @@ export default {
             console.log("指定此列的值:", this.editItem.status);
 
             this.changeStatus();
+        },
+        createCar() {
+            this.addBox = true;
+        },
+        saveAddCarBtn() {
+            const url = new URL(`${this.$store.state.phpPublicPath}addIndexCarousel.php`)
+
+            const formData = new FormData();
+            formData.append("car_id", this.addItem.admin_id);
+            formData.append("name", this.addItem.name);
+            formData.append("link", this.addItem.link);
+            formData.append("img", document.getElementById("addFileImg").files[0]);
+
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(response);
+                    } else {
+                        throw new Error("新增失敗");
+                    }
+                })
+                .then(() => {
+                    this.addItem = [];
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
         },
         changeStatus() {
             const url = `${this.$store.state.phpPublicPath}editIndexCarouselOnOff.php`;
