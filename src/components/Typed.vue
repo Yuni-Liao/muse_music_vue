@@ -12,7 +12,12 @@
 <script>
 export default {
   name: "Typed",
-  props: ["initialques", "initialopt1", "initialopt2", "initialopt3"],
+  props: {
+    initialques: { type: String, required: true, default: "" },
+    initialopt1: { type: String, required: false, default: "" },
+    initialopt2: { type: String, required: false, default: "" },
+    initialopt3: { type: String, required: false, default: "" },
+  },
   data() {
     return {
       index: 0,
