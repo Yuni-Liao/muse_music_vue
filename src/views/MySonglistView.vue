@@ -141,7 +141,7 @@
                   刪除此歌單
                 </li>
                 <!-- 歌單擁有者非我，則顯示 取消追蹤此歌單 -->
-                <li v-else @click="unfolsonglist(index, item.sl_id)">
+                <li v-else @click="unfolsonglist(item.sl_id)">
                   取消追蹤此歌單
                 </li>
               </ul>

@@ -102,9 +102,59 @@ export default {
           });
       }
     },
-    unfolsonglist(index, slid) {
-      this.Myallsonglists.splice(index, 1);
-      alert(`取消追蹤歌單，歌單編號:${slid}`);
+    //取消追蹤歌單
+    unfolsonglist(slid) {
+      // this.Myallsonglists.splice(index, 1);
+      // alert(`取消追蹤歌單，歌單編號:${slid}`);
+      if (this.login_mem_id == undefined) {
+        // 先判斷是否有登入
+        alert("使用會員功能，請先進行登入");
+        this.$router.push({
+          name: "login",
+        });
+      } else {
+        const url = `${this.$store.state.phpPublicPath}postFol.php`;
+        let headers = {
+          Accept: "application/json",
+        };
+        const formData = new FormData();
+        formData.append("mem_id", this.login_mem_id);
+        formData.append("fol_id", slid);
+        formData.append("fol_type", 0); // 0追蹤歌單, 1追蹤創作者, 2追蹤音樂快訊
+        formData.append("is_fol", true); //布林值
+
+        fetch(url, {
+          method: "POST",
+          headers: headers,
+          body: formData,
+        })
+          .then((data) => {
+            if (data.error) {
+              alert(data.msg); // 显示错误消息
+            } else {
+              let localStoragename = "sl_fol";
+              let existingValue = localStorage.getItem(`${localStoragename}`);
+              let updatedValue;
+              // 将值拆分为数组，以逗号作为分隔符
+              existingValue = existingValue.split(",");
+              // 要删除的值
+              let valueToRemove = slid;
+              // 使用 filter 方法从数组中删除特定的值
+              let updatedexistingValue = existingValue.filter(
+                (item) => item !== valueToRemove
+              );
+              // 将数组重新组合为字符串，以逗号作为分隔符
+              updatedValue = updatedexistingValue.join(",");
+              localStorage.setItem(`${localStoragename}`, updatedValue);
+
+              localStorage.setItem(`${localStoragename}`, updatedValue);
+            }
+          })
+          .then(() => location.reload())
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      }
     },
     isNewSlOpenupdate(val) {
       this.isNewSlOpen = val;
@@ -152,7 +202,6 @@ export default {
             console.error("發生錯誤:", error);
           });
       }
-
       //建立事件聆聽:點空白處關閉
       document.addEventListener("click", this.closemore, true);
     }
