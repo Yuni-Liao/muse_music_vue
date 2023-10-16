@@ -57,7 +57,8 @@
       id="prod_id"
       name="id"
       v-model="editItem.prod_id"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
+      readonly
     />
     <label for="prod_name" class="label">商品名稱:</label>
     <input
@@ -65,7 +66,7 @@
       id="prod_name"
       name="name"
       v-model="editItem.prod_name"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
     />
     <label for="prod_singer" class="label">歌手名稱:</label>
     <input
@@ -73,7 +74,7 @@
       id="prod_singer"
       name="name"
       v-model="editItem.prod_singer"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
     />
     <label for="prod_price" class="label">商品售價:</label>
     <input
@@ -81,15 +82,16 @@
       id="prod_price"
       name="name"
       v-model="editItem.prod_price"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
     />
-    <label for="prod_date" class="label">上架時間:</label>
+    <label for="prod_date" class="label">更新時間:</label>
     <input
       type="text"
       id="prod_date"
       name="name"
       v-model="editItem.prod_date"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
+      readonly
     />
     <label for="prod_type" class="label">商品分類:</label>
     <input
@@ -97,26 +99,26 @@
       id="prod_type"
       name="name"
       v-model="editItem.prod_type"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
     />
     <p>商品詳情:</p>
     <textarea
       id="prod_inf"
       name="name"
       v-model="editItem.prod_inf"
-      style="margin-bottom: 10px; width: 268px; height: 80px"
+      style="margin-bottom: 10px; width: 550px; height: 80px"
     ></textarea>
     <p>商品介紹:</p>
     <textarea
       id="prod_int"
       name="name"
       v-model="editItem.prod_int"
-      style="margin-bottom: 10px; width: 268px; height: 80px"
+      style="margin-bottom: 10px; width: 550px; height: 80px"
     ></textarea>
     <label for="show_stat" class="label">預設狀態:</label>
     <select
       id="show_stat"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
       v-model="editItem.show_stat"
     >
       <option value="1">公開</option>
@@ -166,7 +168,7 @@
       id="addprod_name"
       name="name"
       v-model="addItem.addprod_name"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
     />
     <label for="addprod_singer" class="label">歌手名稱:</label>
     <input
@@ -174,7 +176,7 @@
       id="addprod_singer"
       name="name"
       v-model="addItem.addprod_singer"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
     />
     <label for="addprod_price" class="label">商品售價:</label>
     <input
@@ -182,7 +184,7 @@
       id="addprod_price"
       name="name"
       v-model="addItem.addprod_price"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
     />
     <label for="addprod_type" class="label">商品分類:</label>
     <input
@@ -190,26 +192,26 @@
       id="addprod_type"
       name="name"
       v-model="addItem.addprod_type"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
     />
     <p>商品詳情:</p>
     <textarea
       id="addprod_inf"
       name="name"
       v-model="addItem.addprod_inf"
-      style="margin-bottom: 10px; width: 268px; height: 80px"
+      style="margin-bottom: 10px; width: 550px; height: 80px"
     ></textarea>
     <p>商品介紹:</p>
     <textarea
       id="addprod_int"
       name="name"
       v-model="addItem.addprod_int"
-      style="margin-bottom: 10px; width: 268px; height: 80px"
+      style="margin-bottom: 10px; width: 550px; height: 80px"
     ></textarea>
     <label for="addshow_stat" class="label">預設狀態:</label>
     <select
       id="addshow_stat"
-      style="margin-bottom: 10px; width: 268px"
+      style="margin-bottom: 10px; width: 550px"
       v-model="addItem.addshow_stat"
     >
       <option value="1">公開</option>

@@ -10,7 +10,7 @@ main {
         left: 18%;
         display: flex;
         justify-content: center;
-        padding-bottom: 5%;
+        padding-bottom: 20%;
 
         h1 {
             font-size: $big;
@@ -20,44 +20,45 @@ main {
     }
 
     // 輪播編輯彈窗
-    .editprod,.addprod {
-        @include rect(300px, auto);
+    
+    .editprod,
+    .addprod {
+        @include rect(600px, auto);
         padding: 1%;
         background-color: #333;
         color: $white;
         border: $green 3px solid;
         position: absolute;
-        top: 30%;
-        left: 35%;
+        top: 95%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         z-index: 100;
         display: flex;
         flex-flow: column wrap;
         justify-content: space-evenly;
-        p,label{
+
+        p,
+        label {
             margin: 10px 0;
         }
 
-        input {
-            //padding: 2%;
-            border: 0px;
-        }
 
-        .carno {
-            @include rect(100px, auto);
-            margin: auto;
-            text-align: center;
-            border: 0px;
-            background-color: #d9d9d9;
+        input,
+        select {
+            padding: 2%;
+            overflow-y: auto;
+            white-space: pre-wrap;
         }
 
         .btngroup {
             display: flex;
             justify-content: space-evenly;
             margin: 10px 0 0 0;
+
             .saveBtn {
                 @include rect(100px, auto);
                 @include btnColor($green, false);
-                margin: 0 0px 0 70px;
+                margin: auto;
                 font-size: 14px;
                 line-height: 1.5;
             }
@@ -95,7 +96,12 @@ main {
 
     img {
         width: 90%;
-        height: 60%;
+        height: 70%;
         object-fit: contain;
     }
+}
+
+input[readonly] {
+    background-color: #ccc;
+    /* 或其他您喜歡的灰色值 */
 }
