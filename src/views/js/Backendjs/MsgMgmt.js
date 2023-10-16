@@ -1,6 +1,7 @@
 export default {
     data() {
         return {
+            hasData: false,
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             columns: [
@@ -76,13 +77,13 @@ export default {
         },
 
         //下架 刪掉這筆資料 且刪除該筆留言--------------------------
-        acceptBtn(row){
+        acceptBtn(row) {
             // 顯示下架彈窗
             this.acceptBox = true;
             // 存儲當前行數據以便在確定時使用
             this.currentAcceptRow = row;
         },
-        acceptSaveBtn(){
+        acceptSaveBtn() {
             if (this.currentAcceptRow) {
                 const url = `${this.$store.state.phpPublicPath}deleteRepMsgAndMsg.php`;
                 const formData = new FormData();
@@ -164,7 +165,7 @@ export default {
 
     //------------------------------------------------------------
     mounted() {
-        //先檢查資料格式是否符合DB規則
+        // 先檢查資料格式是否符合DB規則
         const url = `${this.$store.state.phpPublicPath}postMsgMgmt.php`;
         let headers = {
             "Content-Type": "application/json",
@@ -182,15 +183,18 @@ export default {
                 }
             })
             .then((json) => {
-                //把陣列中每個物件都添加編號
-                for (let i = 0; i < json.length; i++) {
-                    json[i].no = i + 1;
+                if (json.length > 0) {
+                    // 如果有資料，設定 hasData 为 true
+                    this.hasData = true;
+                    // 把陣列中每個物件都添加編號
+                    for (let i = 0; i < json.length; i++) {
+                        json[i].no = i + 1;
+                    }
+                    this.msgDate = json;
                 }
-                this.msgDate = json;
             })
             .catch((error) => {
                 console.log(error.message);
             });
-
-    }
-}
+    },
+};
