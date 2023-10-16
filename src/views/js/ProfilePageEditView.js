@@ -92,40 +92,71 @@ export default {
       });
     },
 
+
     // 個人檔案 - 編輯
     saveBtn() {
+      // 1016 - 廖妍榛
       const url = `${this.$store.state.phpPublicPath}editProfileData.php`;
-      let headers = {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      };
-      const dataToSend = {
-        mem_name: this.member[0].mem_name,
-        intro: this.member[0].intro,
-        county: this.member[0].county,
-        social_media: this.member[0].social_media,
-        mem_id: this.member[0].mem_id,
-      };
+      const formData = new FormData();
+      formData.append("mem_name", this.member[0].mem_name);
+      formData.append("intro", this.member[0].intro);
+      formData.append("county", this.member[0].county);
+      formData.append("social_media", this.member[0].social_media);
+      formData.append("mem_id", this.member[0].mem_id);
 
       fetch(url, {
         method: "POST",
-        headers: headers,
-        body: JSON.stringify(dataToSend),
+        body: formData,
       })
         .then((response) => {
           if (response.ok) {
-            return response.json();
+            console.log(response);
+            // return response.json();
           } else {
             throw new Error("編輯失敗");
           }
         })
         // .then(() => {
+        //   // alert(json);
         //   window.location.reload();
         // })
         .catch((error) => {
           console.log(error.message);
         });
-      console.log(dataToSend);
+      ////////////////////////////
+      // 以下是原本的 - 廖妍榛
+      // const url = `${this.$store.state.phpPublicPath}editProfileData.php`;
+      // let headers = {
+      //   "Content-Type": "application/json",
+      //   Accept: "application/json",
+      // };
+      // const dataToSend = {
+      //   mem_name: this.member[0].mem_name,
+      //   intro: this.member[0].intro,
+      //   county: this.member[0].county,
+      //   social_media: this.member[0].social_media,
+      //   mem_id: this.member[0].mem_id,
+      // };
+
+      // fetch(url, {
+      //   method: "POST",
+      //   headers: headers,
+      //   body: JSON.stringify(dataToSend),
+      // })
+      //   .then((response) => {
+      //     if (response.ok) {
+      //       return response.json();
+      //     } else {
+      //       throw new Error("編輯失敗");
+      //     }
+      //   })
+      //   // .then(() => {
+      //   //   window.location.reload();
+      //   // })
+      //   .catch((error) => {
+      //     console.log(error.message);
+      //   });
+      // console.log(dataToSend);
     },
     //編輯歌曲------------------------------------------------------------------
     editSong(s_id, s_img, s_name, s_intro, show_stat) {
