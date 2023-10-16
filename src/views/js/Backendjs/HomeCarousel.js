@@ -79,14 +79,18 @@ export default {
             this.editItem.link = row.link;
             this.editItem.img = row.img;
         },
-        saveBtn() {
+        saveBtn(car_id) {
+
             const url = `${this.$store.state.phpPublicPath}editIndexCarousel.php`;
             const formData = new FormData();
             formData.append("car_id", this.editItem.car_id);
             formData.append("name", this.editItem.name);
             formData.append("link", this.editItem.link);
-            formData.append("img", document.getElementById("fileImg").files[0]);
-
+            if (car_id !== undefined) {
+                formData.append("img", document.getElementById("fileImg").files[0]);
+            } else {
+                formData.append("img", this.editItem.img);
+            }
             fetch(url, {
                 method: "POST",
                 body: formData,
