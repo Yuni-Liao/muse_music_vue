@@ -130,7 +130,7 @@ export default {
                         if (response.ok) {
                             console.log(`下架成功，ID: ${id}`);
                             // 更新畫面
-                            //window.location.reload();
+                            window.location.reload();
                         } else {
                             throw new Error(`下架失敗，ID: ${id}`);
                         }
@@ -198,7 +198,7 @@ export default {
                         if (response.ok) {
                             console.log(`駁回成功，ID: ${id}`);
                             // 可以選擇執行其他操作，如更新畫面等
-                            //window.location.reload();
+                            window.location.reload();
                         } else {
                             throw new Error(`駁回失敗，ID: ${id}`);
                         }
