@@ -80,7 +80,6 @@ export default {
             this.editItem.img = row.img;
         },
         saveBtn(car_id) {
-
             const url = `${this.$store.state.phpPublicPath}editIndexCarousel.php`;
             const formData = new FormData();
             formData.append("car_id", this.editItem.car_id);

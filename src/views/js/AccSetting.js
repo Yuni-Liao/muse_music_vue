@@ -132,7 +132,7 @@ export default {
         },
     },
     mounted() {
-        //fetch 會員資料 - 編號 1 , 之後改動態
+        //fetch 會員資料 
         this.login_mem_id = localStorage.getItem('mem_id');
         const fetchMemberInfo = () => {
             const apiURL = new URL(
