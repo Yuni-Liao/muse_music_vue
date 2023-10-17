@@ -78,12 +78,10 @@ export default {
         function timeqq(time) {
           let timee;
           const minutes = Math.floor(time / 60);
-          const seconds = Math.floor(time % 60);
-          const hr = 0;
-          timee = `${String(hr).padStart(2, "0")}:${String(minutes).padStart(
-            2,
-            "0"
-          )}:${String(seconds).padStart(2, "0")}`;
+          const seconds = Math.round(time % 60);
+          timee = `${String(minutes).padStart(2, "0")}:${String(
+            seconds
+          ).padStart(2, "0")}`;
           return timee;
         }
 

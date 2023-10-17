@@ -1,6 +1,7 @@
 export default {
   data() {
     return {
+      login_mem_id: "",
       publicPath: process.env.BASE_URL,
       privacy: "公開",
       songData: {},
@@ -25,40 +26,48 @@ export default {
       this.updateimg = true;
     },
     editSong() {
-      const url = `${this.$store.state.phpPublicPath}editSong.php`;
-      let headers = {
-        Accept: "application/json",
-      };
-      const formData = new FormData();
-      formData.append("s_id", this.songData.s_id);
-      formData.append("s_img", this.songData.s_img); //圖片檔案
-      formData.append("s_name", this.songData.s_name);
-      formData.append("s_intro", this.songData.s_intro);
-      formData.append("show_stat", this.songData.show_stat);
-
-      fetch(url, {
-        method: "POST",
-        headers: headers,
-        body: formData,
-      })
-        .then((data) => {
-          if (data.error) {
-            alert(data.msg); // 显示错误消息
-          } else {
-            alert("編輯完成");
-            window.location.reload();
-            window.location.href = "/home/profilepageedit";
-            // this.$router.push({
-            //   path: "profilepageedit",
-            // });
-          }
-        })
-        .catch((error) => {
-          console.error("發生錯誤:", error);
+      if (this.login_mem_id == undefined) {
+        alert("使用會員功能，請先進行登入");
+        this.$router.push({
+          name: "login",
         });
+      } else {
+        const url = `${this.$store.state.phpPublicPath}editSong.php`;
+        let headers = {
+          Accept: "application/json",
+        };
+        const formData = new FormData();
+        formData.append("s_id", this.songData.s_id);
+        formData.append("s_img", this.songData.s_img); //圖片檔案
+        formData.append("s_name", this.songData.s_name);
+        formData.append("s_intro", this.songData.s_intro);
+        formData.append("show_stat", this.songData.show_stat);
+
+        fetch(url, {
+          method: "POST",
+          headers: headers,
+          body: formData,
+        })
+          .then((data) => {
+            if (data.error) {
+              alert(data.msg); // 显示错误消息
+            } else {
+              alert("編輯完成");
+              window.location.reload();
+              window.location.href = "/home/profilepageedit";
+              // this.$router.push({
+              //   path: "profilepageedit",
+              // });
+            }
+          })
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      }
     },
   },
   mounted() {
+    this.login_mem_id = localStorage.getItem("mem_id");
     //接值，把值放入 this.songData 中
     const obj = {};
     obj.s_id = this.$route.query.s_id;
