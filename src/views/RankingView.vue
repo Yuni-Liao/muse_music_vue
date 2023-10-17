@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="follow_icon">
-                  <!-- <FolBtnBig :functype="0" :folnum="item.sl_id" /> -->
+                  <FolBtnBig :functype="0" :folnum="item.sl_id" />
                 </div>
               </li>
             </ol>
