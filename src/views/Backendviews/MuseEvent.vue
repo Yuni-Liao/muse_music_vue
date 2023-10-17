@@ -33,17 +33,7 @@
                 <option value="東部">東部</option>
             </select>
         
-            <!-- <p>圖片:</p>
-            <div class="uploadblock">
-                <label for="fileimg">
-                    <p v-if="addItem.news_pic == null">上傳圖片</p>
-                    <p v-else>{{ addItem.news_pic }}</p>
-
-                    <input @change="img2($event)" type="file" id="fileimg" name="img" style="display: none" />
-                    <img v-if="addItem.news_pic == null" :src="`${publicPath}image/ShopImage/shop_album0.jpg`" />
-                    <img v-else :src="`${publicPath}image/ShopImage/${addItem.news_pic}`" />
-                </label>
-            </div> -->
+            <p>圖片:</p><input type="file" name="addFileImg" id="addFileImg" class="obj_Radius">
 
             <div class="btngroup">
                 <button @click="closeAddBtn()" class="default_Btn obj_Radius closeBtn">取消</button>
@@ -92,31 +82,7 @@
                     <option value="南部">南部</option>
                     <option value="東部">東部</option>
                 </select>
-
-                <p>圖片:</p>
-                <div class="uploadblock">
-                    <label for="fileimg">
-                        <p v-if="editItem.news_pic == null">上傳圖片</p>
-                        <p v-else>{{ editItem.news_pic }}</p>
-
-                        <input
-                        @change="img($event)"
-                        type="file"
-                        id="fileimg"
-                        name="img"
-                        style="display: none"
-                        />
-                        <img
-                        v-if="editItem.news_pic == null"
-                        :src="`${publicPath}dataimage/news/0.jpg`"
-                        />
-                        <img
-                        v-else-if="editItem.news_pic != null && editItem.updateimg == false"
-                        :src="`${publicPath}dataimage/news/${editItem.news_pic}`"
-                        />
-                        <img v-else-if="editItem.updateimg" :src="editItem.showimg" />
-                    </label>
-    </div>
+                <p>圖片:</p><input type="file" name="img" id="fileImg" class="obj_Radius" @change="imgChange($event)">
             </Form>
 
             <div class="btngroup">

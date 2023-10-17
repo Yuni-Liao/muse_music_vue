@@ -55,39 +55,48 @@ export default {
             editItem: [],
             addBox: false,
             deleteBox: false,
+            editItem: {
+                news_id: '',
+                singer: '',
+                news_name: '',
+                news_date: '',
+                news_place: '',
+                news_con: '',
+                news_area: '',
+                news_pic: '',
+            },
+            addItem: {
+                add_singer: '',
+                add_news_name: '',
+                add_news_date: '',
+                add_news_place: '',
+                add_news_con: '',
+                add_news_area: '',
+                news_pic: '',
+            },
         }
     },
     methods: {
-        upDownBtn(row) {
-            row.isActive = !row.isActive;
-        },
         addNews(row) {
             this.addItem = { ...row }; // 傳入編輯數據
             this.addBox = true; // 顯示編輯跳窗
         },
-        img(e) {
+        imgChange(e) {
             let that = this;
             let files = e.target.files[0];
             if (!e || !window.FileReader) return;
             let reader = new FileReader();
             reader.readAsDataURL(files);
-      
-            reader.onloadend = function (e) {
-              that.editItem.news_pic = files.name;
-              that.editItem.showimg = e.target.result;
-              that.editItem.updateimg = true;
+
+            reader.onloadend = function () {
+                that.editItem.news_pic = files;
             };
         },
         editNews(row) {
-            const showimg = {
-              showimg: "", 
-              updateimg: false,
-            };
             this.editBox = true;
-            this.editItem = { ...row, ...showimg };
+            this.editItem =  { ...row };
           },
           saveEditBtn() {
-            if (news_id != undefined) {
               const url = `${this.$store.state.phpPublicPath}editnews.php`;
               const formData = new FormData();
               formData.append("news_id", this.editItem.news_id);
@@ -97,33 +106,31 @@ export default {
               formData.append("news_place", this.editItem.news_place);
               formData.append("news_con", this.editItem.news_con);
               formData.append("news_area", this.editItem.news_area);
-              if (document.getElementById("fileimg").files[0]) {
-                formData.append(
-                  "news_pic",
-                  document.getElementById("fileimg").files[0]
-                );
-              } else {
+              if (news_id !== undefined) {
+                formData.append("news_pic", document.getElementById("fileImg").files[0]);
+            } else {
                 formData.append("news_pic", this.editItem.news_pic);
-              }
-              fetch(url, {
+            }
+            fetch(url, {
                 method: "POST",
                 body: formData,
-              })
+            })
                 .then((response) => {
-                  if (response.ok) {
-                    console.log(response);
-                  } else {
-                    throw new Error("編輯失敗");
-                  }
+                    if (response.ok) {
+                        console.log(response);
+                        // return response.json();
+                    } else {
+                        throw new Error("編輯失敗");
+                    }
                 })
                 .then(() => {
-                  this.editItem = [];
-                  window.location.reload();
+                    // alert(json);
+                    window.location.reload();
                 })
                 .catch((error) => {
-                  console.log(error.message);
+                    console.log(error.message);
                 });
-            }
+            
           },
         closeBtn() {
             this.editBox = false;
@@ -146,7 +153,7 @@ export default {
             formData.append("add_news_place", this.addItem.add_news_place);
             formData.append("add_news_con", this.addItem.add_news_con);
             formData.append("add_news_area", this.addItem.add_news_area);
-        
+            formData.append("news_pic", document.getElementById("addFileImg").files[0]);
             fetch(url, {
                 method: "POST",
                 body: formData,
@@ -159,6 +166,7 @@ export default {
                 }
             })
             .then(() => {
+                this.addItem = [];
                 window.location.reload();
             })
             .catch((error) => {
