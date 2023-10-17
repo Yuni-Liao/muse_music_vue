@@ -57,9 +57,9 @@
       }"
       :slidesPerView="1"
       :slidesPerGroup="1"
-      :speed="4"
+      :speed="1"
       :autoplay="{
-        disableOnInteraction: false,
+        disableOnInteraction: true,
       }"
       :modules="modules"
     >
