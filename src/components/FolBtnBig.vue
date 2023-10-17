@@ -25,33 +25,32 @@ export default {
     functype: {
       immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
-        if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
-        this.getFolList();
-       }
+        if (this.login_mem_id != undefined && this.login_mem_id != "") {
+          this.getFolList();
+        }
       },
     },
     folnum: {
       //immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
-          this.BtnShow();
-          console.log("執行一次判斷");
+        this.BtnShow();
+        console.log("執行一次判斷");
       },
     },
-    login_mem_id:{
+    login_mem_id: {
       handler(newVal, oldVal) {
-        if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
-        this.getFolList();
-        this.BtnShow();
+        if (this.login_mem_id != undefined && this.login_mem_id != "") {
+          this.getFolList();
+          this.BtnShow();
         }
       },
-    }
+    },
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
-    if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
-        this.getFolList();
- 
-      }
+    if (this.login_mem_id != undefined && this.login_mem_id != "") {
+      this.getFolList();
+    }
   },
   methods: {
     getFolList() {
@@ -163,6 +162,7 @@ export default {
   @include btnColor($green, false, false);
   font-size: 14px;
   padding: 4px 13px;
+  line-height: 1.5;
 }
 
 #FolBtnBig.active {
