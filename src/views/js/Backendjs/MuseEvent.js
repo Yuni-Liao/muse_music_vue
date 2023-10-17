@@ -31,92 +31,112 @@ export default {
                     width: 150,
                 },
                 {
-                    title: '上/下架',
-                    slot: 'upDownBtn',
-                    width: 100,
-                    align: 'center'
-                },
-                {
                     title: '更新時間',
                     key: 'news_update',
                     width: 200,
                     align: 'center'
                 },
                 {
-                    title: '操作',
+                    title: '修改',
                     slot: 'editBtn',
                     width: 80,
                     align: 'center'
-                }
+                },
+                {
+                    title: '刪除',
+                    slot: 'deleteBtn',
+                    width: 80,
+                    align: 'center'
+                },
+                
             ],
             newsData: [],
             editBox: false, // 預設跳窗隱藏
             editItem: [],
             addBox: false,
-            
+            deleteBox: false,
         }
     },
     methods: {
         upDownBtn(row) {
             row.isActive = !row.isActive;
         },
-        editNews(row) {
-            this.editItem = { ...row }; // 傳入編輯數據
-            this.editBox = true; // 顯示編輯跳窗
-        },
         addNews(row) {
             this.addItem = { ...row }; // 傳入編輯數據
             this.addBox = true; // 顯示編輯跳窗
         },
-
-        saveBtn() {
-            const url = `${this.$store.state.phpPublicPath}editNews.php`;
-            let headers = {
-                Accept: "application/json",
+        img(e) {
+            let that = this;
+            let files = e.target.files[0];
+            if (!e || !window.FileReader) return;
+            let reader = new FileReader();
+            reader.readAsDataURL(files);
+      
+            reader.onloadend = function (e) {
+              that.editItem.news_pic = files.name;
+              that.editItem.showimg = e.target.result;
+              that.editItem.updateimg = true;
             };
-
-            const formData = new FormData();
-            formData.append("news_id", this.editItem.news_id);
-            formData.append("news_name", this.editItem.news_name);
-            formData.append("singer", this.editItem.singer);
-            formData.append("news_date", this.editItem.news_date);
-            formData.append("news_place", this.editItem.news_place);
-            formData.append("news_update", new Date().toISOString());
-            formData.append("news_con", this.editItem.news_con);
-            //formData.append("news_pic", this.editItem.news_pic);
-            formData.append("news_area", this.editItem.news_area);
-
-            fetch(url, {
+        },
+        editNews(row) {
+            const showimg = {
+              showimg: "", 
+              updateimg: false,
+            };
+            this.editBox = true;
+            this.editItem = { ...row, ...showimg };
+          },
+          saveEditBtn() {
+            if (news_id != undefined) {
+              const url = `${this.$store.state.phpPublicPath}editnews.php`;
+              const formData = new FormData();
+              formData.append("news_id", this.editItem.news_id);
+              formData.append("singer", this.editItem.singer);
+              formData.append("news_name", this.editItem.news_name);
+              formData.append("news_date", this.editItem.news_date);
+              formData.append("news_place", this.editItem.news_place);
+              formData.append("news_con", this.editItem.news_con);
+              formData.append("news_area", this.editItem.news_area);
+              if (document.getElementById("fileimg").files[0]) {
+                formData.append(
+                  "news_pic",
+                  document.getElementById("fileimg").files[0]
+                );
+              } else {
+                formData.append("news_pic", this.editItem.news_pic);
+              }
+              fetch(url, {
                 method: "POST",
-                headers: headers,
                 body: formData,
-            })
+              })
                 .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error("新增失敗");
-                    }
+                  if (response.ok) {
+                    console.log(response);
+                  } else {
+                    throw new Error("編輯失敗");
+                  }
                 })
                 .then(() => {
-                    this.$router.push({
-                        name: "museevent",
-                    });
+                  this.editItem = [];
+                  window.location.reload();
                 })
                 .catch((error) => {
-                    console.error("發生錯誤:", error);
+                  console.log(error.message);
                 });
-
-            this.editBox = false; // 關閉編輯跳窗
-            console.log("formData", formData);
-        
-        },
+            }
+          },
         closeBtn() {
             this.editBox = false;
+            this.deleteBox = false;
         },
         closeAddBtn() {
             this.addBox = false;
         },
+        deleteBtn(row) {
+            this.deleteBox = true;
+            this.currentDeleteRow = row;
+        },
+        
         saveAddBtn() {
             const url = `${this.$store.state.phpPublicPath}addNews.php`;
             const formData = new FormData();
@@ -144,7 +164,34 @@ export default {
             .catch((error) => {
                 console.log(error.message);
             });
-        }
+        },
+        deleteSaveBtn() {
+            if (this.currentDeleteRow) {
+                const url = `${this.$store.state.phpPublicPath}deleteNews.php`;
+                const formData = new FormData();
+                formData.append("news_id", this.currentDeleteRow.news_id);
+        
+                fetch(url, {
+                    method: "POST",
+                    body: formData,
+                })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(response);
+                        window.location.reload();
+                    } else {
+                        throw new Error("刪除失敗");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                })
+                .finally(() => {
+                    this.deleteBox = false;
+                    this.currentDeleteRow = null;
+                });
+            }
+        },
     },
     mounted() {
         //先檢查資料格式是否符合DB規則
