@@ -1,7 +1,7 @@
 <template>
     <nav>
         <ul>
-            <Menu accordion mode="vertical" active-name="1-2" :open-names="['0']" width="100%">
+            <Menu accordion mode="vertical" active-name="1-2" :open-names="['0']" width="100%" height="100vh" id="menubar">
                 <MenuItem name="0-1" to="/backend/memmgmt" type="primary" class="sidebar_item">會員管理</MenuItem>
                 <MenuItem name=" 1" to="/backend/songreview" class="sidebar_item" style="margin-bottom: 15px;">歌曲審核管理
                 </MenuItem>
