@@ -25,14 +25,15 @@ export default {
     functype: {
       immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
+        if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
         this.getFolList();
-        console.log("執行一次獲取資訊");
+        console.log("執行一次獲取資訊");}
       },
     },
     folnum: {
       immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
-        if (this.login_mem_id != undefined) {
+        if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
           this.BtnShow();
           console.log("執行一次判斷");
         }
@@ -44,7 +45,7 @@ export default {
   },
   methods: {
     getFolList() {
-      if (this.login_mem_id == undefined) {
+      if (this.login_mem_id == undefined || this.login_mem_id == "") {
         this.isFol = false;
       } else {
         if (this.functype == 0) {
@@ -66,7 +67,7 @@ export default {
       }
     },
     toggleFol() {
-      if (this.login_mem_id == undefined) {
+      if (this.login_mem_id == undefined || this.login_mem_id == "") {
         // 先判斷是否有登入
 
         alert("使用會員功能，請先進行登入");

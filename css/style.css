@@ -234,7 +234,7 @@ button {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  z-index: 150;
+  z-index: 1000;
   width: 70px;
 }
 .pageTop_robot #pageTop {
@@ -244,13 +244,27 @@ button {
 .pageTop_robot img {
   margin: 10px 0px;
   cursor: pointer;
+  width: 130%;
 }
 
+.robot_warp {
+  z-index: 500;
+}
+.robot_warp .robot_back {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 500;
+}
 .robot_warp .robot {
   position: fixed;
   right: 100px;
   bottom: 20px;
-  z-index: 150;
+  z-index: 501;
 }
 .robot_warp .robot .main {
   width: 414px;

@@ -14,111 +14,159 @@ main{
             text-align: left;
             padding-bottom: 3%;
         }
-    }
-    .editnews {
-        @include rect(500px, auto);
-        padding: 1%;
-        background-color: #333;
-        color: $white;
-        border: $green 3px solid;
-        position: absolute;
-        top: 40%;
-        left: 30%;
-        z-index: 100;
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: space-evenly;
-        p,label{
-            margin: 10px 0;
+        .muse_event_table{
+            max-height: 550px;
+            max-width: 900px;
+            overflow-y:scroll;
         }
-
-        input {
-            //padding: 2%;
-            border: 0px;
-        }
-
-        .carno {
-            @include rect(100px, auto);
-            margin: auto;
-            text-align: center;
-            border: 0px;
-            background-color: #d9d9d9;
-        }
-
-        .btngroup {
+        .addnews {
+            @include rect(500px, auto);
+            padding: 1%;
+            background-color: #333;
+            color: $white;
+            border: $green 3px solid;
+            position: absolute;
+            top: 10%;
+            left: 16%;
+            z-index: 100;
             display: flex;
+            flex-flow: column wrap;
             justify-content: space-evenly;
-            margin: 10px 0 0 0;
-            .saveBtn {
-                @include rect(100px, auto);
-                @include btnColor($green, false);
-                margin: 0 0px 0 70px;
-                font-size: 14px;
-                line-height: 1.5;
+            p,label{
+                margin: 10px 0;
             }
-
-            .closeBtn {
+    
+            input {
+                //padding: 2%;
+                border: 0px;
+            }
+    
+            .carno {
                 @include rect(100px, auto);
                 margin: auto;
-                font-size: 14px;
-                line-height: 1.5;
+                text-align: center;
                 border: 0px;
-                @include btnColor($white, false);
+                background-color: #d9d9d9;
+            }
+    
+            .btngroup {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 10px 0 0 0;
+                .saveBtn {
+                    @include rect(100px, auto);
+                    @include btnColor($green, false);
+                    margin: 0 0px 0 70px;
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+    
+                .closeBtn {
+                    @include rect(100px, auto);
+                    margin: auto;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    border: 0px;
+                    @include btnColor($white, false);
+                }
             }
         }
-    }
-    .addnews {
-        @include rect(500px, auto);
-        padding: 1%;
-        background-color: #333;
-        color: $white;
-        border: $green 3px solid;
-        position: absolute;
-        top: 10%;
-        left: 16%;
-        z-index: 100;
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: space-evenly;
-        p,label{
-            margin: 10px 0;
-        }
-
-        input {
-            //padding: 2%;
-            border: 0px;
-        }
-
-        .carno {
-            @include rect(100px, auto);
-            margin: auto;
-            text-align: center;
-            border: 0px;
-            background-color: #d9d9d9;
-        }
-
-        .btngroup {
+        .editnews {
+            @include rect(500px, auto);
+            padding: 1%;
+            background-color: #333;
+            color: $white;
+            border: $green 3px solid;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            z-index: 100;
             display: flex;
+            flex-flow: column wrap;
             justify-content: space-evenly;
-            margin: 10px 0 0 0;
-            .saveBtn {
-                @include rect(100px, auto);
-                @include btnColor($green, false);
-                margin: 0 0px 0 70px;
-                font-size: 14px;
-                line-height: 1.5;
+            p,label{
+                margin: 10px 0;
             }
-
-            .closeBtn {
+    
+            input {
+                //padding: 2%;
+                border: 0px;
+            }
+    
+            .carno {
                 @include rect(100px, auto);
                 margin: auto;
-                font-size: 14px;
-                line-height: 1.5;
+                text-align: center;
                 border: 0px;
-                @include btnColor($white, false);
+                background-color: #d9d9d9;
+            }
+    
+            .btngroup {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 10px 0 0 0;
+                .saveBtn {
+                    @include rect(100px, auto);
+                    @include btnColor($green, false);
+                    margin: 0 0px 0 70px;
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+    
+                .closeBtn {
+                    @include rect(100px, auto);
+                    margin: auto;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    border: 0px;
+                    @include btnColor($white, false);
+                }
+            }
+        }
+        .deletenews{
+            @include rect(300px, 130px);
+            background-color: red;
+            padding: 1%;
+            background-color: #333;
+            color: $white;
+            border: $green 3px solid;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+             z-index: 100;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-evenly;
+            p{
+                margin: auto;
+            }
+            .btngroup{
+                display: flex;
+                justify-content: space-evenly;
+                .saveBtn{
+                    @include rect(50px, auto);
+                    @include btnColor($green, false);
+                    margin: auto;    
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+                    .closeBtn{
+                    @include rect(50px, auto);
+                    margin: auto;    
+                    font-size: 14px;
+                    line-height: 1.5;
+                    border: 0px;
+                    @include btnColor($white, false);
+                }
             }
         }
     }
+    
+    
+    
 }
 
 .cellHeight{
