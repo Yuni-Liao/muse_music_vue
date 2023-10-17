@@ -64,6 +64,7 @@ export default {
                 link: '',
                 img: '',
             },
+            showImg: null, // 圖片暫存,
         }
     },
     methods: {
@@ -76,6 +77,23 @@ export default {
 
             reader.onloadend = function () {
                 that.editItem.img = files;
+                that.showImg = e.target.result;
+            };
+            console.log(this.showImg)
+        },
+        imgAdd(e) {
+            let that = this;
+            let files = e.target.files[0];
+            if (!e || !window.FileReader) return;
+            let reader = new FileReader();
+            reader.readAsDataURL(files);
+
+            reader.onloadend = function (e) {
+                // that.addItem.img = e.target.result;
+                // that.addItem.showImg = e.target.result;
+                that.addItem.img = files;
+                that.showImg = e.target.result;
+                console.log(this.showImg)
             };
         },
         editCarousel(row) {
