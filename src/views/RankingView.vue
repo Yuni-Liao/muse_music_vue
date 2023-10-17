@@ -1,5 +1,5 @@
 <template>
-  <player ref="player"></player>
+  <player ref="player" :s_id="s_id" ></player>
   <div class="ranking">
     <swiper
       :direction="'vertical'"
@@ -14,6 +14,10 @@
           <div class="weekTopTitle">
             <h1>當週單曲排行榜</h1>
             <section></section>
+            <div class="scroll">
+              <p>SCROLL</p>
+            <img :src="`${publicPath}image/Activity/scroll.svg`" alt="">
+            </div>
           </div>
 
           <div class="weekRanking">
@@ -22,13 +26,13 @@
                 {{ index < 5 ? index + 1 : index - 4 + 5 }}.
                 <div class="image">
                   <img
-                    @click="openPlayer"
+                    @click="openPlayer( item.s_id)"
                     :src="`${publicPath}dataimage/song/${item.s_img}`"
                     alt=""
                   />
                   <div class="play">
                     <fontAwesome
-                      @click="openPlayer"
+                      @click="openPlayer( item.s_id)"
                       class="faPlay"
                       :icon="['fa', 'play']"
                     />
@@ -58,6 +62,10 @@
           <div class="topAlbumsTitle">
             <h1>專輯排行榜</h1>
             <section></section>
+            <div class="scroll">
+              <p>SCROLL</p>
+            <img :src="`${publicPath}image/Activity/scroll.svg`" alt="">
+            </div>
           </div>
 
           <div class="topAlbumsRanking">
@@ -114,7 +122,7 @@
                 </div>
 
                 <div class="follow_icon">
-                  <FolBtnBig :functype="0" :folnum="item.sl_id" />
+                  <!-- <FolBtnBig :functype="0" :folnum="item.sl_id" /> -->
                 </div>
               </li>
             </ol>
