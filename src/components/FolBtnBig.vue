@@ -27,21 +27,31 @@ export default {
       handler(newVal, oldVal) {
         if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
         this.getFolList();
-        console.log("執行一次獲取資訊");}
+       }
       },
     },
     folnum: {
-      immediate: true, // 立即执行一次
+      //immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
-        if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
           this.BtnShow();
           console.log("執行一次判斷");
-        }
       },
     },
+    login_mem_id:{
+      handler(newVal, oldVal) {
+        if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
+        this.getFolList();
+        this.BtnShow();
+        }
+      },
+    }
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
+    if ((this.login_mem_id != undefined) && (this.login_mem_id != "")) {
+        this.getFolList();
+ 
+      }
   },
   methods: {
     getFolList() {
@@ -59,7 +69,6 @@ export default {
     },
     //最初判斷追蹤按鈕顯示
     BtnShow() {
-      console.log("執行一次判斷");
       if (this.folList.includes(this.folnum)) {
         this.isFol = true;
       } else {
