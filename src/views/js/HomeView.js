@@ -165,7 +165,6 @@ export default {
   },
   mounted() {
     //fetch 本週熱門歌曲 黃珮菁
-    setTimeout(this.startTimer, 300);
     const apiURL = new URL(`${this.$store.state.phpPublicPath}getRankSong.php`);
 
     fetch(apiURL)
@@ -177,7 +176,7 @@ export default {
       .catch((error) => {
         console.error("發生錯誤:", error);
       });
-
+    this.startTimer();
     // fetch 本週熱門專輯 - 廖妍榛
     const fetchAlbumRank = () => {
       const apiURL = new URL(
