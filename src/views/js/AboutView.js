@@ -87,7 +87,11 @@ export default {
 
         // 常見問題-收合
         toggleQuestion(index) {
+            console.log('Index:', index);
             this.faqArray[index].open = !this.faqArray[index].open;
+            // if (index = !isNaN) {
+            //     this.faqArray[index].open = !this.faqArray[index].open;
+            // }
         },
 
         //謬思創作者-輪播狀態切換
@@ -111,10 +115,19 @@ export default {
                 this.timer = setTimeout(() => {
                     if (!top || top < 0) return;
                     window.scrollTo({
-                        top: top - 100,
+                        top: top - 150,
                         behavior: 'smooth'
                     })
-                    this.toggleQuestion(hash.split('#faq')[1])
+                    // this.toggleQuestion(hash.split('#faq')[1])
+                    // this.toggleQuestion(parseInt(hash.split('#faq')[1], 10) - 1)
+                    // 如果 hash:[ ] 不存在，不執行 toggleQuestion
+                    if (!hash) {
+                        return;
+                    }
+                    const index = parseInt(hash.split('#faq')[1], 10) - 1;
+                    if (!isNaN(index)) {
+                        this.toggleQuestion(index);
+                    }                
                 }, 200)
             }
         },
@@ -135,6 +148,11 @@ export default {
                 })
             }
         },
+    },
+    beforeRouteUpdate(to, from, next) {
+        // 在這裡處理 hash 變化
+        this.scrollToTarget(to.hash);
+        next();
     },
 
     mounted() {
