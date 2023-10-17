@@ -270,7 +270,7 @@
                 />
                 <p>{{ news.singer }}</p>
               </div>
-              <!-- <FolBtnBig :functype="2" :folnum="news.news_id" /> -->
+              <FolBtnBig :functype="2" :folnum="news.news_id" />
             </div>
           </div>
         </div>

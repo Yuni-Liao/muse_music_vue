@@ -37,7 +37,7 @@ export default {
                     title: '連結網址',
                     key: 'link',
                     align: 'center',
-                    width: 300,
+                    width: 200,
                 },
                 {
                     title: '更新時間',
@@ -46,10 +46,16 @@ export default {
                     width: 200,
                 },
                 {
-                    title: '操作',
+                    title: '編輯',
                     slot: 'editBtn',
                     align: 'center',
-                    width: 100,
+                    width: 80,
+                },
+                {
+                    title: '刪除',
+                    slot: 'deleteBtn',
+                    align: 'center',
+                    width: 80,
                 }
             ],
             editItem: {
@@ -58,44 +64,43 @@ export default {
                 link: '',
                 img: '',
                 status: '',
+                src: '', // 圖片src暫存
             },
             addItem: {
                 name: '',
                 link: '',
                 img: '',
+                src: '', // 圖片src暫存
             },
-            showImg: null, // 圖片暫存,
         }
     },
     methods: {
+        // 這邊還在處理圖片上傳即時預覽的問題
         imgChange(e) {
             let that = this;
             let files = e.target.files[0];
-            if (!e || !window.FileReader) return;
+            if (!files || !window.FileReader) return;
             let reader = new FileReader();
             reader.readAsDataURL(files);
 
             reader.onloadend = function () {
-                that.editItem.img = files;
-                that.showImg = e.target.result;
+                that.editItem.src = this.result;
+                that.editItem.img = files.name;
             };
-            console.log(this.showImg)
         },
         imgAdd(e) {
             let that = this;
             let files = e.target.files[0];
-            if (!e || !window.FileReader) return;
+            if (!files || !window.FileReader) return;
             let reader = new FileReader();
             reader.readAsDataURL(files);
 
-            reader.onloadend = function (e) {
-                // that.addItem.img = e.target.result;
-                // that.addItem.showImg = e.target.result;
-                that.addItem.img = files;
-                that.showImg = e.target.result;
-                console.log(this.showImg)
+            reader.onloadend = function () {
+                that.addItem.src = this.result;
+                that.addItem.img = files.name;
             };
         },
+
         editCarousel(row) {
             this.editBox = true;
             this.editItem.car_id = row.car_id;
@@ -137,6 +142,48 @@ export default {
         closeBtn() {
             this.addBox = false;
             this.editBox = false;
+
+            if (this.addItem.src !== '') {
+                this.addItem.src = '';
+            }
+            if (this.editItem.src !== '') {
+                this.editItem.src = '';
+            }
+        },
+        deleteBtn(row) {
+            const url = `${this.$store.state.phpPublicPath}deleIndexCarousel.php`;
+
+            this.editItem.car_id = row.car_id;
+
+            let headers = {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            };
+            const dataToSend = {
+                car_id: this.editItem.car_id,
+            };
+            console.log(this.editItem.car_id)
+            fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(dataToSend)
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        // return response.json();
+                        console.log('完成刪除')
+                    } else {
+                        throw new Error("刪除 data 失敗");
+                    }
+                })
+                .then((data) => {
+                    console.log('已刪除', data);
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+            console.log(dataToSend)
         },
         toggleBtn(row) {
             this.editItem.car_id = row.car_id;
