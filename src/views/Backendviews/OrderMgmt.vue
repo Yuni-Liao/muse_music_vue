@@ -2,7 +2,7 @@
     <div class="ordermgmt_box">
         <h1>周邊販售管理 | 訂單管理</h1>
         <div class="search_warp">
-            <Select v-model="model" placeholder="選擇訂單狀態" style="width:165px; margin-left: 60%;  padding: 10px;" class="select_stat">
+            <Select v-model="model" @change="getSelectData" placeholder="選擇訂單狀態" style="width:165px; margin-left: 60%;  padding: 10px;" class="select_stat">
                 <Option v-for="item in cityList" :value="item.value" :key="item.value" class="select_into">{{ item.label }}</Option>
             </Select>
             <Input v-model="value3" placeholder="輸入訂單編號"
