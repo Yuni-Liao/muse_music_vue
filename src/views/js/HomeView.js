@@ -118,6 +118,7 @@ export default {
       this.playerId = sid;
       this.$refs.player.playMusic(this.playerId);
     },
+    changeSId() {}, //避免播放報錯用
     //各題音樂測驗按鈕 - 廖妍榛
     gameStart() {
       this.quesOne = true;
