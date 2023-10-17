@@ -7,16 +7,16 @@
                 <Step title="帳號密碼設定"></Step>
                 <Step title="完成註冊"></Step>
             </Steps>
-            <form class="step_1" action="/home/register" method="POST" @submit.prevent="registerAccountToDatabase">
+            <form class="step_1" action="" method="POST" >
                 <h2>會員註冊</h2>
                 <input type="text" placeholder="請輸入姓名" v-model="member.mem_name" required>
                 <input type="text" placeholder="請輸入暱稱" v-model="member.mem_aka" required>
                 <input type="email" placeholder="請輸入信箱" v-model="member.email" required>
                 <label>
                     <input class="policy" type="checkbox" id="text">
-                    同意MUSE的會員服務條款與隱私權保護政策，<br>包括cookies的使用、其他人能夠在本站上瀏覽你的相關公開資訊.
+                    同意MUSE的會員服務條款與隱私權保護政策，<br>包括cookies的使用、其他人能夠在本站上瀏覽你的相關公開資訊。
                 </label>
-                <button class="btn_L_NoBorder obj_Radius submit" type="submit">註冊</button>
+                <button class="btn_L_NoBorder obj_Radius submit" @click="registerAccountToDatabase">註冊</button>
             </form>
             
             <form class="step_2" action="" v-if="current === 1">
