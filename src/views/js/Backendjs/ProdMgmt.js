@@ -282,7 +282,7 @@ export default {
     //先檢查資料格式是否符合DB規則
     const url = `${this.$store.state.phpPublicPath}postProdMgmt.php`;
     let headers = {
-      "Content-Type": "application/json",
+      "Content-Type": "applicat ion/json",
       Accept: "application/json",
     };
     fetch(url, {
