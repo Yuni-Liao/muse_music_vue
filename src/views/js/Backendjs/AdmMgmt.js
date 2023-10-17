@@ -84,7 +84,7 @@ export default {
         deleteBtn(row) {
             this.adminList[0].admin_id = row.admin_id;
 
-            const url = new URL(`${this.$store.state.phpPublicPath}deleteAdmMgmt.php`);
+            const url = new URL(`${this.$store.state.phpPublicPath}deleAdmMgmt.php`);
 
             let headers = {
                 "Content-Type": "application/json",
@@ -136,7 +136,6 @@ export default {
                     console.error("發生錯誤:", error);
                 });
         };
-        console.log(this.adminList)
         fetchAdminList();
     }
 }
