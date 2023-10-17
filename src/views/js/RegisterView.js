@@ -5,11 +5,11 @@ export default {
             publicPath: process.env.BASE_URL,
             //
             current: 0,
-            member: {
+            member: [{
                 mem_name: '',
                 mem_aka: '',
                 email: '',
-              },
+            }],
 
             // mem_psw: '',
 
@@ -37,25 +37,34 @@ export default {
             })
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error("Network response was not ok");
+                    // 可能會有的error
+                    if (response.status === 400) {
+                        throw new Error("註冊失敗: 伺服器請求無效 (HTTP 400)");
+                    } else if (response.status === 500) {
+                        throw new Error("註冊失敗: 伺服器內部錯誤 (HTTP 500)");
+                    } else {
+                        throw new Error("註冊失敗: 網路錯誤 (HTTP " + response.status + ")");
+                    }
                 }
                 return response.json();
             })
             .then((data) => {
                 if (data.mem_id) {
-                    alert("註冊成功2");
+                    alert("註冊成功");
                     // 在這裡處理成功註冊後的操作，例如導向到登入頁面
                     // data.mem_id 是新註冊的用戶的 mem_id
-                } else {
-                    alert("註冊失敗2");
-                    // 處理註冊失敗的情況
+                } else if (data.error) {
+                    alert("註冊失敗: " + data.error);
+                    // 處理註冊失敗的情況，顯示從伺服器收到的錯誤訊息
                 }
             })
             .catch((error) => {
                 console.error("Network error:", error);
-                alert("註冊失敗2 - 網路錯誤");
+                alert("註冊失敗 - 無法連接到伺服器");
             });
         },
+        
+        
 
         next() {
             if (this.current === 3) {

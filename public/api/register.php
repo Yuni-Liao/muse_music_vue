@@ -15,25 +15,29 @@ try {
         if (empty($mem_name) || empty($mem_aka) || empty($email)) {
             echo json_encode(["error" => "姓名、暱稱、信箱為必填欄位"]);
         } else {
-            // Prepare an SQL statement to insert data into the database
+            // sql 新增會員資料
             $sql = "INSERT INTO member (mem_name, mem_aka, email) VALUES (:mem_name, :mem_aka, :email)";
+            $data = json_decode(file_get_contents('php://input'), true);
             $register = $pdo->prepare($sql);
-            $register->bindValue(":mem_name", $mem_name);
-            $register->bindValue(":mem_aka", $mem_aka);
-            $register->bindValue(":email", $email);
-
+            $register->bindValue(":mem_name", $data["mem_name"]);
+            $register->bindValue(":mem_aka",$data["mem_aka"]);
+            $register->bindValue(":email", $data["email"]);
+            
             if ($register->execute()) {
                 $mem_id = $pdo->lastInsertId();
                 echo json_encode(["message" => "註冊成功", "mem_id" => $mem_id]);
             } else {
-                echo json_encode(["error" => "註冊失敗"]);
+              
+                $errorInfo = $pdo->errorInfo();
+                echo json_encode(["error" => "註冊失敗", "message" => $errorInfo[2]]);
             }
         }
     } else {
-        echo json_encode(["error" => "請使用 POST 请求註冊"]);
+        
+        echo json_encode(["error" => "請填寫姓名、暱稱、信箱"]);
     }
 } catch (PDOException $e) {
-    $errorResponse = ["error" => "失敗", "message" => "Database Error: " . $e->getMessage()];
+    $errorResponse = ["message" => "查詢失敗：" . $e->getMessage()];
     echo json_encode($errorResponse);
 }
 ?>

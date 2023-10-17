@@ -12,7 +12,7 @@ try {
     $news = $pdo->query($sql);
 
     if ($news->rowCount() === 0) {
-        echo json_encode(["message" => "查無商品"]);
+        echo json_encode(["message" => "查無活動"]);
     } else {
         $newsData = $news->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($newsData);
