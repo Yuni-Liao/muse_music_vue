@@ -47,9 +47,18 @@ export default {
       const selectedAddSongs = this.noAlbumsongs
         .filter((obj) => obj.isChecked === true)
         .map((obj) => obj.id);
-      this.albumData.alb_id = 44;
 
-      if (selectedAddSongs != 0) {
+      //fetch 前先判斷欄位是否有填寫
+      if (this.login_mem_id == undefined) {
+        alert("使用會員功能，請先進行登入");
+        this.$router.push({
+          name: "login",
+        });
+      } else if (this.albumData.alb_name == "") {
+        alert("請確認所需欄位均已填寫完畢");
+      } else if (selectedAddSongs == 0) {
+        alert("請至少選擇一首歌曲至專輯");
+      } else {
         const url = `${this.$store.state.phpPublicPath}addAlbumAndsong.php`;
         let headers = {
           Accept: "application/json",
@@ -82,8 +91,6 @@ export default {
           .catch((error) => {
             console.error("發生錯誤:", error);
           });
-      } else {
-        alert("請至少選擇一首歌曲至專輯");
       }
     },
   },

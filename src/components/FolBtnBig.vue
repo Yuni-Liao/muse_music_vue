@@ -22,32 +22,43 @@ export default {
     };
   },
   watch: {
+    functype: {
+      immediate: true, // 立即执行一次
+      handler(newVal, oldVal) {
+        this.getFolList();
+        console.log("執行一次獲取資訊");
+      },
+    },
     folnum: {
       immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
         if (this.login_mem_id != undefined) {
           this.BtnShow();
+          console.log("執行一次判斷");
         }
       },
     },
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
-    if (this.login_mem_id != undefined) {
-      if (this.functype == 0) {
-        this.folList = localStorage.getItem("sl_fol").split(",");
-      } else if (this.functype == 1) {
-        this.folList = localStorage.getItem("cre_fol").split(",");
-      } else if (this.functype == 2) {
-        this.folList = localStorage.getItem("news_fol").split(",");
-      }
-    } else {
-      this.isFol = false;
-    }
   },
   methods: {
+    getFolList() {
+      if (this.login_mem_id == undefined) {
+        this.isFol = false;
+      } else {
+        if (this.functype == 0) {
+          this.folList = localStorage.getItem("sl_fol").split(",");
+        } else if (this.functype == 1) {
+          this.folList = localStorage.getItem("cre_fol").split(",");
+        } else if (this.functype == 2) {
+          this.folList = localStorage.getItem("news_fol").split(",");
+        }
+      }
+    },
     //最初判斷追蹤按鈕顯示
     BtnShow() {
+      console.log("執行一次判斷");
       if (this.folList.includes(this.folnum)) {
         this.isFol = true;
       } else {

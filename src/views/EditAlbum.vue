@@ -38,7 +38,7 @@
       </div>
 
       <div class="form-group">
-        <label for="editalbumname" class="label">編輯專輯名稱</label>
+        <label for="editalbumname" class="label">編輯專輯名稱 *</label>
         <input
           type="text"
           id="editalbumname"
