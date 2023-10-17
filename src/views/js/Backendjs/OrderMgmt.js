@@ -85,12 +85,12 @@ export default {
             // Select: ord_stat
             cityList: [
                 {
-                    value: '訂單總覽',
-                    label: '= 訂單總覽 ='
+                    value: '未結案訂單',
+                    label: '未結案訂單'
                 },
                 {
-                    value: '未完成訂單',
-                    label: '= 未完成訂單 ='
+                    value: '訂單總覽',
+                    label: '訂單總覽'
                 },
                 {
                     value: '已成立',
@@ -136,7 +136,8 @@ export default {
             },
             // Search input
             value3: '',
-            originalOrderData: 'null',
+            originalValue3: '',
+            originalOrderData: [],
 
 
         }
@@ -148,22 +149,29 @@ export default {
                 // 如果 value3 變為空白，則回到原始的 getSelectData() 數據
                 this.orderData = this.getSelectData();
             } else {
-                // 如果 value3 不為空，則進行搜尋
-                const filteredData = this.originalOrderData.filter(item => {
-                    const ordId = item.ord_id || '';
-                    return (ordId.includes(newVal.trim()) ||
-                        ('FK-348593' + ordId).includes(newVal.trim()));
-                });
-                // 將過濾後的結果設置為要顯示的數據
-                this.orderData = filteredData;
+                this.filterData(newVal);
             }
         },
     },
+    
 
     methods: {
+        filterData(newVal) {
+            // 如果 value3 不為空，則進行搜尋
+            const filteredData = this.originalOrderData.filter(item => {
+                const ordId = item.ord_id || '';
+                return (ordId.includes(newVal.trim()) ||
+                    ('FK-348593' + ordId).includes(newVal.trim()));
+            });
+            // 將過濾後的結果設置為要顯示的數據
+            this.orderData = filteredData;
+        },      
+
         // Select: ord_stat
         getSelectData() {
-            if (this.model === '') {
+            console.log('getSelectData called');
+            console.log('model：', this.model);
+            if (this.model === '' || this.model === '未結案訂單') {
                 return this.orderData.filter(item => item.ord_stat !== '已完成' && item.ord_stat !== '已取消').map((item, index) => {
                     return {
                         ...item,
@@ -172,13 +180,6 @@ export default {
                 });
             } else if (this.model === '' || this.model === '訂單總覽') {
                 return this.orderData.map((item, index) => {
-                    return {
-                        ...item,
-                        orderNumber: index + 1,
-                    };
-                });
-            } else if (this.model === '未完成訂單') {
-                return this.orderData.filter(item => item.ord_stat !== '已完成' && item.ord_stat !== '已取消').map((item, index) => {
                     return {
                         ...item,
                         orderNumber: index + 1,
