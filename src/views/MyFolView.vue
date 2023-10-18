@@ -50,6 +50,11 @@
             <div class="info" @click="gotoNewsDetail(news.news_id)">
               <p>{{ news.news_name }}</p>
               <p>{{ news.news_place }}</p>
+              <p>
+                {{ news.month }}/{{ news.day }}日 ({{
+                  news.chinese_day_of_week
+                }})
+              </p>
               <div class="followSinger">
                 <div class="singer">
                   <fontAwesome
@@ -112,14 +117,19 @@ export default {
       login_mem_id: "",
       cre_fol: [],
       news_fol: [],
+      PC: false,
     };
   },
   computed: {},
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
-    if (this.login_mem_id != undefined) {
+    if (this.login_mem_id == undefined) {
+      alert("使用會員功能，請先進行登入");
+      this.$router.push({
+        name: "login",
+      });
+    } else {
       fetch(
-        // 加這邊 - 廖妍榛
         `${this.$store.state.phpPublicPath}getMemFol.php?mem_id=${this.login_mem_id}`
       )
         .then((res) => res.json())

@@ -24,8 +24,10 @@
       justify-content: center;
       align-items: flex-end;
       @media screen and (max-width: 800px) {
+        height: 100vh;
         flex-wrap: wrap;
         margin-bottom: 100px;
+        // justify-content: start;
       }
       position: relative;
       &:after {
@@ -53,12 +55,13 @@
           object-fit: cover;
           object-position: top;
           @media screen and (max-width: 800px) {
-            @include rect(200px);
+            @include rect(150px);
           }
         }
       }
       .txt {
-        width: 55%;
+        // width: 55%;
+        width: fit-content;
         position: relative;
         bottom: -130px;
         z-index: 90;

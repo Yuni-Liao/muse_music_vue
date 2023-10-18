@@ -264,9 +264,9 @@ export default {
     logout() {
       this.login_mem_id = null;
       localStorage.removeItem("mem_id");
-      // localStorage.removeItem("sl_fol");
-      // localStorage.removeItem("cre_fol");
-      // localStorage.removeItem("news_fol");
+      localStorage.removeItem("sl_fol");
+      localStorage.removeItem("cre_fol");
+      localStorage.removeItem("news_fol");
       //localStorage.removeItem("mem_name");
       alert("會員已登出~");
       window.location.href = "/home/login";
