@@ -429,7 +429,7 @@
       // transition: .3s ease-in-out;
       img {
         @include rect(100%);
-        filter: blur(1px);
+        filter: blur(1.5px);
         -webkit-transition: 0.3s ease-in-out;
         transition: 0.3s ease-in-out;
       }
