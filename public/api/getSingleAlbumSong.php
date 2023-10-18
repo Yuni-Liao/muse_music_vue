@@ -7,7 +7,6 @@ try {
 
     //執行sql指令並取得pdoStatement
     $salid = $_GET['salid'];
-    //$salid = 1;
     //SQL指令: 查詢專輯歌曲資料
     $sql = "select
     al.alb_id,
@@ -29,12 +28,11 @@ try {
     order by s.s_id;";
 
     $singleAlbumSong = $pdo->query($sql);
-    //如果找得資料，取回資料，送出json
     if ($singleAlbumSong->rowCount() === 0) {
         echo "查無歌曲資料";
     } else {
         $sRow = $singleAlbumSong->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($sRow); //送出json字串
+        echo json_encode($sRow);
     }
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";

@@ -1,7 +1,7 @@
 <template>
     <div class="homecarousel_box">
         <h1>網站資訊管理 | 首頁輪播管理</h1>
-        <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" :columns="columns"
+        <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" height="450" :columns="columns"
             :data="carouselItem">
             <template #upDownBtn="{ row }">
                 <Switch v-model="row.status" @on-change="toggleBtn(row)" false-color="#ff4949" true-color="#13ce66"
@@ -9,6 +9,9 @@
             </template>
             <template #editBtn="{ row }">
                 <fontAwesome @click="editCarousel(row)" :icon="['far', 'pen-to-square']" style="cursor: pointer;" />
+            </template>
+            <template #deleteBtn="{ row }">
+                <fontAwesome @click="deleteBtn(row)" :icon="['fa', 'trash']" style="cursor: pointer;" />
             </template>
         </Table>
         <div class="btn_box">
@@ -22,15 +25,13 @@
             style="margin-bottom:10px; width: 250px;">
         <p>連結網址:</p><input type="text" id="carLink" name="carLink" class="obj_Radius" v-model="addItem.link"
             style="margin-bottom:10px; width: 250px;">
-        <!-- <p>圖片:</p><input type="file" name="addImg" id="addFileImg" class="obj_Radius"> -->
         <label for="addFileImg" class="uploadblock">
             <div>
-                <!-- 這邊還沒改 -->
-                <input @change="imgAdd($event)" style="display: none;" type="file" id="addFileImg" name="addImg" />
-                <p v-if="!addItem.img">上傳圖片</p>
-                <img v-else-if="!addItem.img && addBox == false"
-                    :src="`${publicPath}dataimage/index/carousel/${editItem.prod_pic}`" alt="預計上傳的圖片">
-                <img v-else-if="addItem.img" :src="editItem.showImg" alt="圖片">
+                <fontAwesome v-if="!addItem.src" :icon="['fa', 'cloud-arrow-up']"
+                    style="cursor: pointer; width: 50%; height: 100%; padding: 6%;" />
+                <img v-else-if="!addItem.src" :src="`${publicPath}dataimage/index/carousel/${addItem.img}`" />
+                <img v-else :src="addItem.src" />
+                <input @change="imgAdd($event)" style="display: none;" type="file" id="addFileImg" name="img" />
             </div>
         </label>
 
@@ -46,13 +47,14 @@
             style="margin-bottom:10px; width: 250px;">
         <p>連結網址:</p><input type="text" id="bannerLink" name="link" class="obj_Radius" v-model="editItem.link"
             style="margin-bottom:10px; width: 250px;">
-        <!-- <p>圖片:</p><input type="file" name="img" id="fileImg" class="obj_Radius" @change="imgChange($event)"> -->
         <label for="fileImg" class="uploadblock">
             <div>
+                <p v-if="editItem.src == null">上傳圖片
+                    <fontAwesome :icon="['far', 'cloud-arrow-up']" />
+                </p>
+                <img v-else-if="!editItem.src" :src="`${publicPath}dataimage/index/carousel/${editItem.img}`">
+                <img v-else :src="editItem.src" />
                 <input @change="imgChange($event)" style="display: none;" type="file" id="fileImg" name="img" />
-                <img v-if="editItem.img" :src="`${publicPath}dataimage/index/carousel/${editItem.img} `" alt="圖片">
-                <!-- 這邊還沒改 -->
-                <img v-else-if="!editItem.img" :src="`${publicPath}dataimage/index/carousel/${editItem.img} `" alt="圖片">
             </div>
         </label>
         <div class="btngroup">

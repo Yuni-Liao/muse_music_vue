@@ -7,7 +7,8 @@
             <Button icon="ios-search" @click="searchMembers()" style="background-color: #515a6e; color: #fff;"></Button>
         </template>
         </Input>
-        <Table size="large" highlight-row stripe class="mem_table cellHeight" width="1000" :columns="columns" :data="filteredData">
+        <Table size="large" highlight-row stripe class="mem_table cellHeight" width="1000" height="510" :columns="columns"
+            :data="filteredData">
             <template #pauseBtn="{ row }">
                 <Button :type="row.paused ? 'success' : 'error'" @click="togglePause(row)" id="pauseBtn" v-padding="5">
                     {{ row.paused ? '復權' : '停權' }}

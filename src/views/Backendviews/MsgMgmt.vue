@@ -1,8 +1,8 @@
 <template>
     <div v-if="hasData" class="msgmgmt_box">
         <h1>檢舉留言管理</h1>
-        <Table ref="selection" highlight-row stripe class="msgmgmt_table cellHeight" width="1000" height="600" :columns="columns"
-            :data="msgDate">
+        <Table ref="selection" highlight-row stripe class="msgmgmt_table cellHeight" width="1000" height="450"
+            :columns="columns" :data="msgDate">
             <!-- 下架按鈕 -->
             <template #rejectBtn="{ row }">
                 <Button type="error" @click="acceptBtn(row)">下架</Button>
@@ -13,7 +13,7 @@
             </template>
         </Table>
 
-        <!-- 批次按鈕 批次駁回還沒完成-->
+        <!-- 批次按鈕 -->
         <space :size="size" style="margin: 30px 0px;">
             <Button type="success" @click="batchAction('delete')">批次駁回</Button>
             <Button type="error" @click="batchAction('accept')">批次下架</Button>

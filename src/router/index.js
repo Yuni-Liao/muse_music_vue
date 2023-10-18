@@ -1,3 +1,4 @@
+import { param } from "jquery";
 import { createRouter, createWebHistory } from "vue-router";
 // import FrontEnd from "../views/FrontEnd.vue";
 
@@ -188,6 +189,18 @@ const routes = [
           title: "我的歌單",
         },
       },
+      //以下是我的音樂庫-我的追蹤
+      {
+        path: "myfol",
+        name: "myfol",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilepageedit" */ "../views/MyFolView.vue"
+          ),
+        meta: {
+          title: "我的追蹤",
+        },
+      },
       //以下歌單頁面
       //設定動態路由參數":slid"
       {
@@ -300,20 +313,6 @@ const routes = [
           title: "test",
         },
       },
-
-      // {
-      //   path: "editsdsong",
-      //   name: "editsdsong",
-      //   component: () =>
-      //     import(
-      //       /* webpackChunkName: "profilepage" */ "../views/EditSdSong.vue"
-      //     ),
-      //   meta: {
-      //     title: "編輯專輯歌曲",
-
-      //   },
-
-      // },
 
       //以下是探索音樂內頁頁面
       {

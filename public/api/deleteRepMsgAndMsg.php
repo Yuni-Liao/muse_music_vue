@@ -10,21 +10,17 @@ try {
     require_once("./connectMusemusic.php");
 
     // 從GET請求中獲取msg_id
-    //$msg_id = $_GET['msg_id'];
     $msg_id = $_POST["msg_id"];
 
     // 準備sql
-    // 刪除msg_rep表中msg_id等於15的記錄
     $sqlDeleteMsgRep = "DELETE FROM msg_rep WHERE msg_id = :msg_id";
     $delMsgRep = $pdo->prepare($sqlDeleteMsgRep);
     $delMsgRep->bindValue(":msg_id", $msg_id);
 
-    // 刪除msg表中msg_id等於15的記錄
     $sqlDeleteMsg = "DELETE FROM msg WHERE msg_id = :msg_id";
     $delMsg = $pdo->prepare($sqlDeleteMsg);
     $delMsg->bindValue(":msg_id", $msg_id);
 
-    // 開始事務
     $pdo->beginTransaction();
 
     // 執行sql
@@ -36,7 +32,6 @@ try {
         echo json_encode($successResponse);
     } else {
         $pdo->rollBack();
-        // 如果執行失敗，可以生成一個錯誤響應
         $errorResponse = [
             "error" => [
                 "message" => "刪除失敗",

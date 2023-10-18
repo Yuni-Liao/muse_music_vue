@@ -38,8 +38,8 @@
             </div>
         </div>
 
-
-        <h2 id="faq">常見問題．FAQ</h2>
+        <div id="faqlist">
+        <h2>常見問題．FAQ</h2>
         <div v-for="(item, index) in faqArray" :key="index" class="faq" :id="`faq${index}`">
             <!-- Q -->
             <div class="question" @click="toggleQuestion(index)">
@@ -55,6 +55,7 @@
                 <div class="faqtitle">A：</div>
                 <div class="faqcontent">{{ item.ans }}</div>
             </div>
+        </div>
         </div>
 
         <h2>聯絡謬思．Contact MUSE</h2>

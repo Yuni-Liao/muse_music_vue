@@ -37,12 +37,18 @@ export default {
       SongRank: [],
       albumRank: [],
       SLRank: [],
+      s_id: '',
     };
   },
   methods: {
-    openPlayer() {
-      this.$refs.player.playMusic();
+    openPlayer(song) {
+      this.s_id = song;
+      this.$nextTick(() => {
+        this.$refs.player.playMusic(this.s_id);
+      });
+      
     },
+    
     gotosinglemusic(sid) {
       this.$router.push({
         name: "singlemusic",
@@ -79,7 +85,7 @@ export default {
   mounted() {
     const fetchSongRank = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getRankSong.php`
+        `${this.$store.state.phpPublicPath}getRankSong.php`
       );
 
       fetch(apiURL)
@@ -95,7 +101,7 @@ export default {
 
     const fetchAlbumRank = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getRankAlbum.php`
+        `${this.$store.state.phpPublicPath}getRankAlbum.php`
       );
 
       fetch(apiURL)
@@ -109,7 +115,7 @@ export default {
 
     const fetchSLRank = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getRankSL.php`
+        `${this.$store.state.phpPublicPath}getRankSL.php`
       );
 
       fetch(apiURL)

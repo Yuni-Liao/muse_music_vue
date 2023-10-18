@@ -118,6 +118,7 @@ export default {
       this.playerId = sid;
       this.$refs.player.playMusic(this.playerId);
     },
+    changeSId() {}, //避免播放報錯用
     //各題音樂測驗按鈕 - 廖妍榛
     gameStart() {
       this.quesOne = true;
@@ -164,22 +165,17 @@ export default {
   },
   mounted() {
     //fetch 本週熱門歌曲 黃珮菁
-    const fetchSongRank = () => {
-      const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getRankSong.php`
-      );
+    const apiURL = new URL(`${this.$store.state.phpPublicPath}getRankSong.php`);
 
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => {
-          this.SongRank = res;
-          this.showWeekTopmusic = true;
-        })
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
-    };
-    fetchSongRank();
+    fetch(apiURL)
+      .then((res) => res.json())
+      .then((res) => {
+        this.SongRank = res;
+        this.showWeekTopmusic = true;
+      })
+      .catch((error) => {
+        console.error("發生錯誤:", error);
+      });
     this.startTimer();
     // fetch 本週熱門專輯 - 廖妍榛
     const fetchAlbumRank = () => {
