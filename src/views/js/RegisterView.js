@@ -26,9 +26,9 @@ export default {
         registerAccountToDatabase() {
             // 準備要發送到伺服器的資料
             const dataToSend = new FormData();
-            dataToSend.append("mem_name", this.member.mem_name);
-            dataToSend.append("mem_aka", this.member.mem_aka);
-            dataToSend.append("email", this.member.email);
+            dataToSend.append("mem_name", this.member[0].mem_name);
+            dataToSend.append("mem_aka", this.member[0].mem_aka);
+            dataToSend.append("email", this.member[0].email);
         
             // 使用 fetch 送出 POST 請求到伺服器
             fetch("http://localhost/muse_music/public/api/register.php", {
