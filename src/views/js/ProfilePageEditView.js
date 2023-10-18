@@ -14,12 +14,15 @@ export default {
       //編輯個人主頁------
       member: [
         {
+          mem_id: '',
           cover_pic: "",
           mem_pic: "",
-          mem_name: "",
+          mem_aka: "",
           intro: "",
           county: "",
           social_media: "",
+          src: '',// 暫存
+          coverSrc: '' // 暫存
         },
       ],
       //歌曲上傳------
@@ -84,36 +87,92 @@ export default {
     changeTab(tabNumber) {
       this.activeTab = tabNumber;
     },
+
     //編輯個人主頁------------------------------------------------------------------
-    //封面相片
+
+
+    //更新背景圖片------------------------------------------------------------------
     coverImgChange(e) {
-      let file = e.target.files[0];
-      let readFile = new FileReader();
-      readFile.readAsDataURL(file);
-      readFile.addEventListener("load", this.coverloadImage);
+
+      let that = this;
+      let coverPic = e.target.files[0];
+      if (!coverPic || !window.FileReader) return;
+      let reader = new FileReader();
+      reader.readAsDataURL(coverPic);
+
+      reader.onloadend = function () {
+        that.member[0].coverSrc = this.result;
+        that.member[0].cover_pic = coverPic.name;
+        console.log(this.result)
+      };
+      const cover_pic = new FormData();
+      cover_pic.append("cover_pic", coverPic);
+      cover_pic.append("mem_id", this.member[0].mem_id);
+      fetch(`${this.$store.state.phpPublicPath}editProfileCover.php`, {
+        method: "POST",
+        body: cover_pic,
+      })
+        .then((response) => {
+          if (response.ok) {
+            alert('背景更新成功')
+          } else {
+            throw new Error("編輯失敗");
+          }
+        })
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+
     },
     coverloadImage(e) {
       this.member.cover_pic = e.target.result;
     },
-    //頭貼相片
-    profileImgChange(e) {
-      let file = e.target.files[0];
-      let readFile = new FileReader();
-      readFile.readAsDataURL(file);
-      readFile.addEventListener("load", this.profileloadImage);
 
-      //再加FormData
-      const fd = new FormData();
-      fd.append("member_imageURL", file);
-      fetch("http://localhost/muse_music/public/api/getProfileDetail.php", {
+
+    //更新大頭貼------------------------------------------------------------------
+    profileImgChange(e) {
+      let that = this;
+      let files = e.target.files[0];
+      if (!files || !window.FileReader) return;
+      let reader = new FileReader();
+      reader.readAsDataURL(files);
+
+      reader.onloadend = function () {
+        that.member[0].src = this.result;
+        that.member[0].mem_pic = files.name;
+        console.log(this.result)
+      };
+
+      const mem_pic = new FormData();
+      mem_pic.append("mem_pic", files);
+      mem_pic.append("mem_id", this.member[0].mem_id);
+      console.log(files);
+      fetch(`${this.$store.state.phpPublicPath}editProfilePic.php`, {
         method: "POST",
-        body: fd,
-      });
+        body: mem_pic,
+      })
+        .then((response) => {
+          if (response.ok) {
+            alert('大頭貼更新成功')
+          } else {
+            throw new Error("編輯失敗");
+          }
+        })
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error.message);
+        })
+
     },
+
 
     // 個人檔案 - 編輯
     saveBtn() {
-      // 1016 - 廖妍榛
       const url = `${this.$store.state.phpPublicPath}editProfileData.php`;
       const formData = new FormData();
       formData.append("mem_name", this.member[0].mem_name);
@@ -134,47 +193,13 @@ export default {
             throw new Error("編輯失敗");
           }
         })
-        // .then(() => {
-        //   // alert(json);
-        //   window.location.reload();
-        // })
+        .then(() => {
+          // alert(json);
+          window.location.reload();
+        })
         .catch((error) => {
           console.log(error.message);
         });
-      ////////////////////////////
-      // 以下是原本的 - 廖妍榛
-      // const url = `${this.$store.state.phpPublicPath}editProfileData.php`;
-      // let headers = {
-      //   "Content-Type": "application/json",
-      //   Accept: "application/json",
-      // };
-      // const dataToSend = {
-      //   mem_name: this.member[0].mem_name,
-      //   intro: this.member[0].intro,
-      //   county: this.member[0].county,
-      //   social_media: this.member[0].social_media,
-      //   mem_id: this.member[0].mem_id,
-      // };
-
-      // fetch(url, {
-      //   method: "POST",
-      //   headers: headers,
-      //   body: JSON.stringify(dataToSend),
-      // })
-      //   .then((response) => {
-      //     if (response.ok) {
-      //       return response.json();
-      //     } else {
-      //       throw new Error("編輯失敗");
-      //     }
-      //   })
-      //   // .then(() => {
-      //   //   window.location.reload();
-      //   // })
-      //   .catch((error) => {
-      //     console.log(error.message);
-      //   });
-      // console.log(dataToSend);
     },
     //歌曲上傳歌曲------------------------------------------------------------------
     //歌曲封面上傳
@@ -314,14 +339,17 @@ export default {
       this.playerId = sid;
       this.$refs.player.playMusic(this.playerId);
     },
-    changeSId() {}, //避免播放器報錯用
+    changeSId() { }, //避免播放器報錯用
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
     if (this.login_mem_id) {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=${this.login_mem_id}`
+        `${this.$store.state.phpPublicPath}getProfileDetail.php?mem_id=${this.login_mem_id}`
       );
+      // const apiURL = new URL(
+      //   `${this.$store.state.phpPublicPath}getProfileDetail.php`
+      // );
 
       fetch(apiURL)
         .then((res) => res.json())

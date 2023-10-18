@@ -29,3 +29,6 @@ try {
     $errorResponse = ["message" => "查詢失敗：" . $e->getMessage()];
     echo json_encode($errorResponse);
 }
+
+?>
+

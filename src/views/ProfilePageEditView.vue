@@ -74,12 +74,12 @@
         <div v-show="activeTab === 1" class="page">
           <form class="form1">
             <div class="form-group">
-              <label for="name" class="label">顯示名稱</label>
+              <label for="name" class="label">暱稱</label>
               <input
                 type="text"
                 style=""
                 id="name"
-                v-model="member[0].mem_name"
+                v-model="member[0].mem_aka"
               />
             </div>
 

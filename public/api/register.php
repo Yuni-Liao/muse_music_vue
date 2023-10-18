@@ -17,11 +17,11 @@ try {
         } else {
             // sql 新增會員資料
             $sql = "INSERT INTO member (mem_name, mem_aka, email) VALUES (:mem_name, :mem_aka, :email)";
-            $data = json_decode(file_get_contents('php://input'), true);
+            // $data = json_decode(file_get_contents('php://input'), true);
             $register = $pdo->prepare($sql);
-            $register->bindValue(":mem_name", $data["mem_name"]);
-            $register->bindValue(":mem_aka",$data["mem_aka"]);
-            $register->bindValue(":email", $data["email"]);
+            $register->bindValue(":mem_name",$mem_name);
+            $register->bindValue(":mem_aka",$mem_aka);
+            $register->bindValue(":email",  $email);
             
             if ($register->execute()) {
                 $mem_id = $pdo->lastInsertId();
