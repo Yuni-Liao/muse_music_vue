@@ -16,12 +16,6 @@ export default {
                     width: 80,
                     align: "center",
                 },
-                // {
-                //     title: '編號',
-                //     key: 'msgrep_id',
-                //     width: 100,
-                //     align: 'center'
-                // },
                 {
                     title: '留言內容',
                     key: 'msg_con',
@@ -58,11 +52,9 @@ export default {
                 }
             ],
             msgDate: [],
-
-            //確認下架彈窗
+            //確認下架 彈窗
             deleteBox: false,
-
-            //確認駁回彈窗
+            //確認駁回 彈窗
             acceptBox: false,
         };
     },
@@ -115,7 +107,7 @@ export default {
         },
 
         acceptBatch(selectedIds) {
-            // 在這裡處理批次下架操作，selectedIds 是選中的項目的ID陣列
+            // 批次下架，selectedIds 是選中的項目的ID陣列
             for (const id of selectedIds) {
                 // 根據每個 ID 執行下架操作
                 const url = `${this.$store.state.phpPublicPath}deleteRepMsgAndMsg.php`;
@@ -183,7 +175,7 @@ export default {
 
         deleteBatch(selectedIds) {
             console.log('進入 deleteBatch 方法');
-            // 在這裡處理批次駁回操作，selectedIds 是選中的項目的ID陣列
+            // 批次駁回操作，selectedIds 是選中的項目的ID陣列
             for (const id of selectedIds) {
                 // 根據每個 ID 執行駁回操作
                 const url = `${this.$store.state.phpPublicPath}deleteReportMsg.php`;
@@ -197,7 +189,7 @@ export default {
                     .then((response) => {
                         if (response.ok) {
                             console.log(`駁回成功，ID: ${id}`);
-                            // 可以選擇執行其他操作，如更新畫面等
+                            // 更新畫面等
                             window.location.reload();
                         } else {
                             throw new Error(`駁回失敗，ID: ${id}`);
@@ -209,15 +201,19 @@ export default {
             }
         },
         batchAction(actionType) {
-            const selectedRows = this.$refs.selection.getSelection(); // 获取选中的行
+            const selectedRows = this.$refs.selection.getSelection();
             if (selectedRows.length > 0) {
                 let selectedIds;
                 if (actionType === 'accept') {
-                    selectedIds = selectedRows.map(row => row.msg_id); // 提取选中的项的 msg_id
-                    this.acceptBatch(selectedIds); // 执行批量下架操作
+                    // 提取選中的 msg_id
+                    selectedIds = selectedRows.map(row => row.msg_id); 
+                    // 執行批量下架
+                    this.acceptBatch(selectedIds); 
                 } else if (actionType === 'delete') {
-                    selectedIds = selectedRows.map(row => row.msgrep_id); // 提取选中的项的 msgrep_id
-                    this.deleteBatch(selectedIds); // 执行批量駁回操作
+                    // 提取選中的 msgrep_id
+                    selectedIds = selectedRows.map(row => row.msgrep_id); 
+                    // 執行批量駁回
+                    this.deleteBatch(selectedIds); 
                 }
             }
         }
@@ -244,7 +240,7 @@ export default {
             })
             .then((json) => {
                 if (json.length > 0) {
-                    // 如果有資料，設定 hasData 为 true
+                    // 如果有資料，設定 hasData 為 true
                     this.hasData = true;
                     // 把陣列中每個物件都添加編號
                     for (let i = 0; i < json.length; i++) {
