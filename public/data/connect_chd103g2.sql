@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2023-10-18 03:41:19
+-- 產生時間： 2023-10-18 06:00:40
 -- 伺服器版本： 8.0.31
 -- PHP 版本： 8.0.26
 
@@ -237,7 +237,7 @@ DROP TABLE IF EXISTS `member`;
 CREATE TABLE IF NOT EXISTS `member` (
   `mem_id` int NOT NULL AUTO_INCREMENT,
   `mem_name` varchar(10) DEFAULT NULL,
-  `mem_acc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `mem_acc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `mem_psw` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `bind_acc` varchar(100) DEFAULT NULL,
