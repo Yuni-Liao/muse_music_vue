@@ -53,6 +53,12 @@ export default {
       // 倒數計時器
       timerValue: null,
       showWeekTopmusic: false,
+      // 測驗歌曲存放陣列
+      quesMuzGroup: [
+        { 'src': 'https://cms-public-artifacts.artlist.io/content/music/aac/851064_850435_Sean_Leslie_Fischer_-_Go_Pro_TLV_-_AO-001329-1_-_Master_V1_-_75_Bpm_-_130623_-_BOV_-_ORG_-_2444_-_From_Stems.aac' },
+        { 'src': 'https://cms-public-artifacts.artlist.io/content/music/aac/858010_857968_Wesley_Eugene_Smith_-_Blah_Blah_Blah_-_Camille_Alyssa_de_la_Cruz_-_AO-001309-1_-_Master_V2_-_110_Bpm_-_310723_-_BOV_-_ORG_-_2444.aac' },
+        { 'src': 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Leo%20-%20Trying.mp3' },
+      ],
       // 首頁頂部Banner - 廖妍榛
       topBanner: [], // 存放輪播圖的空陣列
 
@@ -104,6 +110,13 @@ export default {
       modules: [Autoplay, EffectCoverflow, Pagination, EffectFade, EffectCards],
     };
   },
+  created() {
+    this.$watch('startMuz', (newVal) => {
+      if (newVal === true) {
+        this.playRandomMusic();
+      }
+    });
+  },
   methods: {
     gotosinglemusic(sid) {
       this.$router.push({
@@ -118,7 +131,8 @@ export default {
       this.playerId = sid;
       this.$refs.player.playMusic(this.playerId);
     },
-    changeSId() {}, //避免播放報錯用
+    changeSId() { }, //避免播放報錯用
+
     //各題音樂測驗按鈕 - 廖妍榛
     gameStart() {
       this.quesOne = true;
@@ -140,6 +154,14 @@ export default {
     },
     startMuzBtn() {
       this.startMuz = true;
+    },
+    playRandomMusic() {
+      // 隨機選擇一首歌
+      const randomIndex = Math.floor(Math.random() * this.quesMuzGroup.length);
+      const selectedMusic = this.quesMuzGroup[randomIndex];
+
+      this.$refs.myMuz.src = selectedMusic.src;
+      this.$refs.myMuz.play();
     },
     startTimer() {
       //  倒數計時 2 秒換下一頁
