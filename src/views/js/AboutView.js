@@ -3,64 +3,16 @@ export default {
         return {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            //
             // 謬思創作者
-            userList: [
-                {
-                    id: 1,
-                    prodPic: "aboutUser1.png",
-                    link: "/profilepage",
-
-                },
-                {
-                    id: 2,
-                    prodPic: "aboutUser2.png",
-                    link: "/profilepage",
-                },
-                {
-                    id: 3,
-                    prodPic: "aboutUser3.png",
-                    link: "/profilepage",
-                },
-                {
-                    id: 4,
-                    prodPic: "aboutUser4.png",
-                    link: "/profilepage",
-                },
-                {
-                    id: 5,
-                    prodPic: "aboutUser5.png",
-                    link: "/profilepage",
-                },
-                {
-                    id: 6,
-                    prodPic: "aboutUser6.png",
-                    link: "/profilepage",
-                },
-                {
-                    id: 7,
-                    prodPic: "aboutUser7.png",
-                    link: "/profilepage",
-                },
-                {
-                    id: 8,
-                    prodPic: "aboutUser8.png",
-                    link: "/profilepage",
-                },
-            ],
-
+            memList: [],
             //謬思創作者-初始輪播狀態
             isActive: true,
-
             // 常見問題
             faqArray: [],
-
             //常見問題icon
             isShow: false,
-
             //機器人導向問題
             timer: null,
-
         }
     },
 
@@ -76,6 +28,7 @@ export default {
                 this.faqArray.forEach((faq) => {
                     faq.open = faq.open === 1; // 將 1 設置為 true，0 設置為 false
                 });
+                // scroll
                 this.$nextTick(() => {
                     this.scrollToTarget(this.$route.hash)
                 })
@@ -85,13 +38,23 @@ export default {
             });
         },
 
+        // 獲取member資料庫資訊
+        fetchMemberArray(){
+            const memURL = new URL(
+                `${this.$store.state.phpPublicPath}getAboutMem.php?`
+              );
+              fetch(memURL).then(async (response) => {
+                this.memList = await response.json();
+                // console.log(this.memList)
+            })
+            .catch((error) => {
+                console.error('獲取FAQ時發生錯誤', error);
+            });
+        },
+
         // 常見問題-收合
         toggleQuestion(index) {
-            console.log('Index:', index);
             this.faqArray[index].open = !this.faqArray[index].open;
-            // if (index = !isNaN) {
-            //     this.faqArray[index].open = !this.faqArray[index].open;
-            // }
         },
 
         //謬思創作者-輪播狀態切換
@@ -106,12 +69,12 @@ export default {
         async scrollToTarget(hash) {
             if (!hash) return;
             const el = document.querySelector(hash)
-            console.log(el)
+            // console.log(el)
             await this.$nextTick()
             if (el) {
                 clearTimeout(this.timer)
                 const top = el.getBoundingClientRect().y;
-                console.log(top)
+                // console.log(top)
                 this.timer = setTimeout(() => {
                     if (!top || top < 0) return;
                     window.scrollTo({
@@ -119,7 +82,6 @@ export default {
                         behavior: 'smooth'
                     })
                     // this.toggleQuestion(hash.split('#faq')[1])
-                    // this.toggleQuestion(parseInt(hash.split('#faq')[1], 10) - 1)
                     // 如果 hash:[ ] 不存在，不執行 toggleQuestion
                     if (!hash) {
                         return;
@@ -157,9 +119,11 @@ export default {
 
     mounted() {
         //抓取機器人導向網址的hash
-        console.log('mounted');
+        // console.log('mounted');
         this.scrollToTarget(this.$route.hash);
 
+        // 獲取member資料庫資訊
+        this.fetchMemberArray();
         // 獲取faq資料庫資訊
         this.fetchFaqArray();
     },

@@ -28,15 +28,21 @@ export default {
         const fetchOrdersItemArray = () => {
             const slid = this.$route.params.slid;
             const apiURL = new URL(
-                `${this.$store.state.phpPublicPath}getShopOrdersItemSlid.php?slid=${slid}`
+                `${this.$store.state.phpPublicPath}getShopOrdersItemSlid.php?slid=${slid}&mem_id=${localStorage.getItem('mem_id')}`
             );
             fetch(apiURL)
             .then(async (response) => {
-                this.shopOrdersItem = await response.json();
-                // console.log(this.shopOrdersItem);
+                const res = await response.json()
+                // console.log(res)
+                if (Array.isArray(res)) {
+                    this.shopOrdersItem = res
+                    // console.log(this.shopOrdersItem);
+                } else {
+                    this.$router.replace('/home/shoporders');
+                }
             })
             .catch((error) => {
-                console.error('獲取OrdersItem時發生錯誤', error);
+                this.$router.replace('/home/shoporders');
             });
         };
 
