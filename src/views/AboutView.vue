@@ -19,17 +19,17 @@
                 <div class="partnerwrap">
                     <div class="partnerwall" @mouseenter="pauseAnimation" @mouseleave="resumeAnimation">
                         <div class="partnerwrapper" :class="{ 'active': isActive }">
-                            <div v-for="(item, user) in userList" :key="user" class="partnerpic">
-                                <router-link :to="`/home/profilepage`">
-                                    <img :src="require(`/public/image/About/${item.prodPic}`)" :alt="item.id">
+                            <div v-for="(item, index) in memList" :key="index" class="partnerpic">
+                                <router-link :to="`/home/profilepage/${item.mem_id}`">
+                                    <img :src="`${publicPath}dataimage/member/${item.mem_pic}`" :alt="item.mem_id">
                                 </router-link>
                             </div>
                         </div>
 
                         <div class="partnerwrapper" :class="{ 'active': isActive }">
-                            <div v-for="(item, user) in userList" :key="user" class="partnerpic">
-                                <router-link :to="`/home/profilepage`">
-                                    <img :src="require(`/public/image/About/${item.prodPic}`)" :alt="item.id">
+                            <div v-for="(item, index) in memList" :key="index" class="partnerpic">
+                                <router-link :to="`/home/profilepage/${item.mem_id}`">
+                                    <img :src="`${publicPath}dataimage/member/${item.mem_pic}`" :alt="item.mem_id">
                                 </router-link>
                             </div>
                         </div>
@@ -39,23 +39,23 @@
         </div>
 
         <div id="faqlist">
-        <h2>常見問題．FAQ</h2>
-        <div v-for="(item, index) in faqArray" :key="index" class="faq" :id="`faq${index}`">
-            <!-- Q -->
-            <div class="question" @click="toggleQuestion(index)">
-                <div class="faqtitle">Q：</div>
-                <div class="faqcontent">{{ item.que }}</div>
-                <button class="arrow">
-                    <fontAwesome v-if="!item.open" :icon="['fa', 'angle-down']" />
-                    <fontAwesome v-else :icon="['fa', 'angle-up']" />
-                </button>
+            <h2>常見問題．FAQ</h2>
+            <div v-for="(item, index) in faqArray" :key="index" class="faq" :id="`faq${index}`">
+                <!-- Q -->
+                <div class="question" @click="toggleQuestion(index)">
+                    <div class="faqtitle">Q：</div>
+                    <div class="faqcontent">{{ item.que }}</div>
+                    <button class="arrow">
+                        <fontAwesome v-if="!item.open" :icon="['fa', 'angle-down']" />
+                        <fontAwesome v-else :icon="['fa', 'angle-up']" />
+                    </button>
+                </div>
+                <!-- A -->
+                <div class="answer" v-if="item.open">
+                    <div class="faqtitle">A：</div>
+                    <div class="faqcontent">{{ item.ans }}</div>
+                </div>
             </div>
-            <!-- A -->
-            <div class="answer" v-if="item.open">
-                <div class="faqtitle">A：</div>
-                <div class="faqcontent">{{ item.ans }}</div>
-            </div>
-        </div>
         </div>
 
         <h2>聯絡謬思．Contact MUSE</h2>

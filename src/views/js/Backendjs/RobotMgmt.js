@@ -8,7 +8,6 @@ export default {
                 {
                     title: 'No',
                     key: 'faq_id',
-                    // key值是資料庫表格抬頭名字
                     width: 60,
                     align: 'center'
                 },
@@ -210,7 +209,6 @@ export default {
         },
     },
     mounted() {
-        //先檢查資料格式是否符合DB規則
         const url = `${this.$store.state.phpPublicPath}postFaqsMgmt.php`;
         let headers = {
             "Content-Type": "application/json",
@@ -229,25 +227,12 @@ export default {
                 }
             })
             .then((json) => {
-                console.log('API 成功回應:', json);
+                // console.log('API 成功回應:', json);
                 this.faqData = json;
-                // 將 prod_type 設定為正確的值
             })
             .catch((error) => {
                 console.error('API 請求失敗:', error);
             });
-
-
-
-        //建立事件聆聽:點空白處關閉
-        // document.addEventListener("click", this.closeBtn, true);
     },
-
-    
-    beforeUnmount() {
-    //移除事件聆聽:點空白處關閉
-    // document.removeEventListener("click", this.closeBtn);
-    },
-
 }
 
