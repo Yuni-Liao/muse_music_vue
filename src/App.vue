@@ -7,7 +7,7 @@
 /* 隱藏全站scrollbar */
 html {
   overflow-y: -moz-hidden-unscrollable;
-  height: 100%;
+  /* height: 100%; */
 }
 
 body::-webkit-scrollbar {
@@ -29,8 +29,10 @@ body::-webkit-scrollbar-thumb {
 
 body {
   -ms-overflow-style: scrollbar;
-  height: 100%;
-  width: calc(100vw + 18px);
+  /* height: 100%; */
+  /* width: 100%; */
+  box-sizing: border-box;
+  /* width: calc(100vw + 18px); */
   overflow-y: scroll;
   overflow-x: hidden;
 }
