@@ -531,7 +531,6 @@
     text-align: start;
     margin: 40px;
   }
-  // 裝飾區待處理
   .step {
     display: flex;
     justify-content: space-evenly;
@@ -694,8 +693,6 @@
             $dark 2%
           );
           border: 2px solid $green;
-          animation: run 2s linear infinite;
-          animation-play-state: paused;
           box-shadow: 1px 1px $white;
           position: relative;
           top: 40%;
@@ -704,7 +701,7 @@
             @include rect(140px);
             background-image: url("/public/image/index/vinyl.png");
             background-size: contain;
-            animation: run 7s 0s linear infinite;
+            animation: rotate 7s 0s linear infinite;
             position: absolute;
             top: 13%;
             left: 13.5%;
@@ -716,6 +713,14 @@
             position: absolute;
             top: 15%;
             right: -50%;
+          }
+          .tag_text{
+            color: $white;
+            font-size: $default;
+            position: absolute;
+            width: 400px;
+            top: 115%;
+            left: -30%;
           }
           #musicOff {
             @include rect(135px);
