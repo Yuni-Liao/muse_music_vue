@@ -16,7 +16,7 @@ export default {
                     title: '帳號',
                     key: 'mem_acc',
                     align: 'center',
-                    width: 250,
+                    width: 200,
                 },
                 {
                     title: '使用者名稱',
@@ -57,7 +57,7 @@ export default {
             //資料裡撈到的
             data: [],
             // 搜尋
-            value3: '', 
+            value3: '',
             //搜尋用
             filteredData: [],
         }
@@ -65,18 +65,18 @@ export default {
     methods: {
         searchMembers() {
             const keyword1 = this.value3.trim().toLowerCase();
-        
+
             console.log('Keyword 1:', keyword1);
-        
+
             // 使用關鍵字進行過濾
             this.filteredData = this.data.filter(member => {
 
                 const memIdMatch = member.mem_id.toLowerCase().includes(keyword1);
                 const memAccMatch = member.mem_acc.toLowerCase().includes(keyword1);
-        
+
                 return memIdMatch || memAccMatch;
             });
-        
+
             // console.log('Filtered Data:', this.filteredData);
         },
         togglePause(row) {
@@ -102,7 +102,7 @@ export default {
                 .then((res) => {
                     this.data = res;
                     // 初始化时设置 filteredData
-                    this.filteredData = res; 
+                    this.filteredData = res;
                 })
                 .catch((error) => {
                     console.error("發生錯誤:", error);

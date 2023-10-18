@@ -25,26 +25,36 @@ export default {
     functype: {
       immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
-        this.getFolList();
-        console.log("執行一次獲取資訊");
+        if (this.login_mem_id != undefined && this.login_mem_id != "") {
+          this.getFolList();
+        }
       },
     },
     folnum: {
-      immediate: true, // 立即执行一次
+      //immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
-        if (this.login_mem_id != undefined) {
+        this.BtnShow();
+        console.log("執行一次判斷");
+      },
+    },
+    login_mem_id: {
+      handler(newVal, oldVal) {
+        if (this.login_mem_id != undefined && this.login_mem_id != "") {
+          this.getFolList();
           this.BtnShow();
-          console.log("執行一次判斷");
         }
       },
     },
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
+    if (this.login_mem_id != undefined && this.login_mem_id != "") {
+      this.getFolList();
+    }
   },
   methods: {
     getFolList() {
-      if (this.login_mem_id == undefined) {
+      if (this.login_mem_id == undefined || this.login_mem_id == "") {
         this.isFol = false;
       } else {
         if (this.functype == 0) {
@@ -58,7 +68,6 @@ export default {
     },
     //最初判斷追蹤按鈕顯示
     BtnShow() {
-      console.log("執行一次判斷");
       if (this.folList.includes(this.folnum)) {
         this.isFol = true;
       } else {
@@ -66,7 +75,7 @@ export default {
       }
     },
     toggleFol() {
-      if (this.login_mem_id == undefined) {
+      if (this.login_mem_id == undefined || this.login_mem_id == "") {
         // 先判斷是否有登入
 
         alert("使用會員功能，請先進行登入");
@@ -153,6 +162,7 @@ export default {
   @include btnColor($green, false, false);
   font-size: 14px;
   padding: 4px 13px;
+  line-height: 1.5;
 }
 
 #FolBtnBig.active {

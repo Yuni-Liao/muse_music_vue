@@ -7,21 +7,23 @@
   position: relative;
   //這裡是系統內建的
   //RWD 手機文字尺寸
-  @include s{
-    h1{
+  @include s {
+    h1 {
       font-size: $pL;
-    };
-    h2{
-      font-size: $pM;
-    };
-    h3{
+    }
+    h2 {
       font-size: $pM;
     }
-    h4,h5,p{
+    h3 {
+      font-size: $pM;
+    }
+    h4,
+    h5,
+    p {
       font-size: $pS;
     }
-    span{
-      font-size: $pXS
+    span {
+      font-size: $pXS;
     }
   }
 }
@@ -68,7 +70,7 @@
   justify-content: center;
   align-items: center;
   // RWD
-  @include s{
+  @include s {
     height: 100%;
     background-size: cover;
   }
@@ -76,7 +78,7 @@
   .index_centerP {
     width: 800px;
     // RWD
-    @include s{
+    @include s {
       width: 100%;
     }
   }
@@ -110,7 +112,7 @@
     text-align: right;
     color: $white;
     // RWD
-    @include s{
+    @include s {
       display: none;
     }
     span {
@@ -169,6 +171,7 @@
     margin: 40px;
   }
   .swiper {
+    position: relative;
     margin-top: 150px;
     width: 100%;
     height: 80vh;
@@ -185,6 +188,7 @@
         display: flex;
         align-content: center;
         .card {
+          transition: 0.5s;
           width: 190px;
           margin: auto;
           .pic {
@@ -253,28 +257,51 @@
           }
         }
       }
-      .swiper-slide-active {
-        //旋轉黑膠
-        .card::before {
-          content: "";
-          width: 150px;
-          height: 150px;
-          background-image: url("/public/image/index/vinyl.png");
-          background-size: contain;
-          background-repeat: no-repeat;
-          position: absolute;
-          top: -7%;
-          left: -28%;
-          z-index: -10;
-          transform: translate(-50%, 0);
-          animation: rotate360 10s 0s linear infinite;
-          // pointer-events: none;
-        }
-      }
+      // .swiper-slide-active {
+      //   //旋轉黑膠
+      //   .card::before {
+      //     content: "";
+      //     width: 150px;
+      //     height: 150px;
+      //     background-image: url("/public/image/index/vinyl.png");
+      //     background-size: contain;
+      //     background-repeat: no-repeat;
+      //     position: absolute;
+      //     top: -85px;
+      //     left: 20px;
+      //     border: 3px solid red;
+      //     z-index: -10;
+      //     opacity: 0;
+      //     //transform: translate(50%, 0);
+      //     animation: rotate 10s linear 0.1s infinite forwards;
+      //     // pointer-events: none;
+      //   }
+      // }
     }
   }
 
   .swiper::after {
+    content: "";
+    width: 230px;
+    height: 230px;
+    background-image: url("/public/image/index/vinyl.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: calc(50% - 115px);
+    top: -50px;
+    z-index: -10;
+    animation: rotate 10s linear infinite forwards;
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg); /* 从0度开始旋转 */
+    }
+    100% {
+      transform: rotate(360deg); /* 旋转到360度 */
+    }
+  }
+  .swiper::before {
     content: "";
     width: 345px;
     height: 600px;
@@ -304,10 +331,10 @@
   z-index: 0;
 }
 .index_wave {
-      // RWD
-      @include s{
-        display: none;
-      }
+  // RWD
+  @include s {
+    display: none;
+  }
   height: 100px;
   .wave {
     margin: auto;
@@ -379,7 +406,7 @@
   @include layout(100%);
   margin: 5% 0;
   // RWD
-  @include s{
+  @include s {
     @include layout(80%);
   }
   h2 {
@@ -388,7 +415,7 @@
     text-align: start;
     margin: 40px;
     // RWD
-  @include s{
+    @include s {
       @include layout(80%);
       text-align: left;
       margin: 0px;
@@ -399,8 +426,8 @@
     @include rect(40%);
     margin: auto;
     position: relative;
-     // RWD
-    @include s{
+    // RWD
+    @include s {
       @include rect(110%);
       margin-left: -5%;
     }
@@ -408,7 +435,7 @@
       position: relative;
       color: $pink;
       line-height: $fh;
-      img{
+      img {
         @include rect(100%);
       }
       .ranking {
@@ -422,7 +449,7 @@
           left: 0%;
           margin: auto;
           // RWD
-          @include s{
+          @include s {
             top: -30%;
           }
         }
@@ -472,7 +499,7 @@
   left: -130px;
   top: 30px;
   // RWD
-  @include s{
+  @include s {
     display: none;
   }
 }
@@ -484,10 +511,10 @@
   position: absolute;
   right: -130px;
   bottom: 120px;
-    // RWD
-    @include s{
-      display: none;
-    }
+  // RWD
+  @include s {
+    display: none;
+  }
 }
 
 // 混出你的音樂 - 廖妍榛
@@ -498,7 +525,7 @@
   justify-content: space-around;
   flex-flow: column wrap;
   // RWD
-  @include s{
+  @include s {
     display: none;
   }
   h2 {
@@ -515,7 +542,7 @@
     width: 100%;
     p {
       font-size: 1rem;
-      color: $white
+      color: $white;
     }
   }
 }
@@ -525,7 +552,7 @@
   @include layout(100%);
   padding-bottom: 5%;
   // RWD
-  @include s{
+  @include s {
     display: none;
   }
   h2 {
@@ -834,11 +861,11 @@
 @keyframes love_bling {
   0% {
     opacity: 0;
-    transform: translate(-180px, -485px) 
+    transform: translate(-180px, -485px);
   }
   100% {
     opacity: 1;
-    transform: translate(-180px, -485px)
+    transform: translate(-180px, -485px);
   }
 }
 

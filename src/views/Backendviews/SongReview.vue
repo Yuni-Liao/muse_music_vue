@@ -4,7 +4,7 @@
     <Input
       v-model="searchdata"
       placeholder="輸入歌曲編號或名稱"
-      style="width: 180px; margin-bottom: 5%; margin-left: 80%"
+      style="width: 180px; margin-bottom: 5%; margin-left: 60%"
     >
       <Input v-model="value" />
       <template #append>

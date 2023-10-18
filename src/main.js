@@ -10,6 +10,7 @@ import {
   faPenToSquare,
   faCircleCheck,
   faCircleXmark,
+
 } from "@fortawesome/free-regular-svg-icons";
 import VueClipboard from "vue-clipboard3";
 // import {  } from '@fortawesome/free-brands-svg-icons' //目前沒用到這種類的icon,有用到再把註解開啟 {} 填入icon駝峰式名稱
@@ -74,6 +75,7 @@ import {
   faFileLines,
   faFileExcel,
   faArrowRightArrowLeft,
+  faCloudArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -86,7 +88,6 @@ library.add(
   faUserGroup,
   faComment,
   faUserLarge,
-
   faCircleUser,
   faCamera,
   faImage,
@@ -141,6 +142,7 @@ library.add(
   faFileLines,
   faFileExcel,
   faArrowRightArrowLeft,
+  faCloudArrowUp
 );
 
 const vueApp = createApp(App)
