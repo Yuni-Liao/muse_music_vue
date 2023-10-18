@@ -272,6 +272,9 @@
             <audio id="myMuz" ref="myMuz" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Leo%20-%20Trying.mp3"
               autoplay></audio>
             <button @click="turnMusic()" id="musicOff">Off or On</button>
+            <div class="tag_text">
+              <p>完成測驗，聽首歌小憩一下 ^_^</p>
+            </div>
           </div>
         </li>
       </ul>
