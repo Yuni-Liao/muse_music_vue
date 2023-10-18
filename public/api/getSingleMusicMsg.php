@@ -30,12 +30,11 @@ try {
     $stmt->bindParam(':msgid', $msgid, PDO::PARAM_INT);
     $stmt->execute();
 
-    //如果找得資料，取回資料，送出json
     if ($stmt->rowCount() === 0) {
         echo "查無歌曲資料";
     } else {
         $mRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($mRow); //送出json字串
+        echo json_encode($mRow);
     }
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";

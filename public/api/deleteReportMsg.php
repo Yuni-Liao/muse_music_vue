@@ -25,7 +25,6 @@ try {
         ];
         echo json_encode($successResponse);
     } else {
-        // 如果執行失敗，可以生成一個錯誤響應
         $errorResponse = [
             "error" => [
                 "message" => "刪除失敗",

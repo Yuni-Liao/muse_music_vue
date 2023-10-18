@@ -13,7 +13,7 @@
             </template>
         </Table>
 
-        <!-- 批次按鈕 批次駁回還沒完成-->
+        <!-- 批次按鈕 -->
         <space :size="size" style="margin: 30px 0px;">
             <Button type="success" @click="batchAction('delete')">批次駁回</Button>
             <Button type="error" @click="batchAction('accept')">批次下架</Button>

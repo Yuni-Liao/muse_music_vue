@@ -7,7 +7,6 @@ try {
 
     //執行sql指令並取得pdoStatement
     $sid = $_GET['sid'];
-    //$sid = 6;
 
     //SQL指令: 單曲頁面 查詢同專輯的其他歌曲資料
     $sql = "select
@@ -23,12 +22,11 @@ try {
 
     $singleMusicSong = $pdo->query($sql);
 
-    //如果找得資料，取回資料，送出json
     if ($singleMusicSong->rowCount() === 0) {
         echo "查無歌曲資料";
     } else {
         $sRow = $singleMusicSong->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($sRow); //送出json字串
+        echo json_encode($sRow); 
     }
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";
