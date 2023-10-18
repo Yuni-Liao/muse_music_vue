@@ -45,6 +45,17 @@ try {
     $addfolsl->bindValue(":mem_id", $mem_id);
     $addfolsl->execute();
 
+    if ($fol_type == 0) {
+        if ($is_Fol == "false") {
+            $sqlfol = " UPDATE song_list SET fol_num = fol_num + 1 WHERE song_list.sl_id = :fol_id;";
+        } else {
+            $sqlfol = " UPDATE song_list SET fol_num = fol_num - 1 WHERE song_list.sl_id = :fol_id;";
+        }
+        $changeslfol = $pdo->prepare($sqlfol);
+        $changeslfol->bindValue(":fol_id", $fol_id);
+        $changeslfol->execute();
+    }
+
     // 執行交易
     if ($pdo->commit()) {
         $result = ["error" => false, "msg" => "交易成功"];
