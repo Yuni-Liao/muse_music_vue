@@ -4,7 +4,7 @@ export default {
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
-            
+
             columns: [
                 {
                     title: 'No',
@@ -48,7 +48,7 @@ export default {
                     width: 80,
                     align: 'center'
                 },
-                
+
             ],
             newsData: [],
             editBox: false, // 預設跳窗隱藏
@@ -94,19 +94,19 @@ export default {
         },
         editNews(row) {
             this.editBox = true;
-            this.editItem =  { ...row };
-          },
-          saveEditBtn() {
-              const url = `${this.$store.state.phpPublicPath}editnews.php`;
-              const formData = new FormData();
-              formData.append("news_id", this.editItem.news_id);
-              formData.append("singer", this.editItem.singer);
-              formData.append("news_name", this.editItem.news_name);
-              formData.append("news_date", this.editItem.news_date);
-              formData.append("news_place", this.editItem.news_place);
-              formData.append("news_con", this.editItem.news_con);
-              formData.append("news_area", this.editItem.news_area);
-              if (news_id !== undefined) {
+            this.editItem = { ...row };
+        },
+        saveEditBtn() {
+            const url = `${this.$store.state.phpPublicPath}editnews.php`;
+            const formData = new FormData();
+            formData.append("news_id", this.editItem.news_id);
+            formData.append("singer", this.editItem.singer);
+            formData.append("news_name", this.editItem.news_name);
+            formData.append("news_date", this.editItem.news_date);
+            formData.append("news_place", this.editItem.news_place);
+            formData.append("news_con", this.editItem.news_con);
+            formData.append("news_area", this.editItem.news_area);
+            if (news_id !== undefined) {
                 formData.append("news_pic", document.getElementById("fileImg").files[0]);
             } else {
                 formData.append("news_pic", this.editItem.news_pic);
@@ -130,8 +130,8 @@ export default {
                 .catch((error) => {
                     console.log(error.message);
                 });
-            
-          },
+
+        },
         closeBtn() {
             this.editBox = false;
             this.deleteBox = false;
@@ -143,7 +143,7 @@ export default {
             this.deleteBox = true;
             this.currentDeleteRow = row;
         },
-        
+
         saveAddBtn() {
             const url = `${this.$store.state.phpPublicPath}addNews.php`;
             const formData = new FormData();
@@ -158,46 +158,46 @@ export default {
                 method: "POST",
                 body: formData,
             })
-            .then((response) => {
-                if (response.ok) {
-                    console.log(response);
-                } else {
-                    throw new Error("新增失敗");
-                }
-            })
-            .then(() => {
-                this.addItem = [];
-                window.location.reload();
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(response);
+                    } else {
+                        throw new Error("新增失敗");
+                    }
+                })
+                .then(() => {
+                    this.addItem = [];
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
         },
         deleteSaveBtn() {
             if (this.currentDeleteRow) {
                 const url = `${this.$store.state.phpPublicPath}deleteNews.php`;
                 const formData = new FormData();
                 formData.append("news_id", this.currentDeleteRow.news_id);
-        
+
                 fetch(url, {
                     method: "POST",
                     body: formData,
                 })
-                .then((response) => {
-                    if (response.ok) {
-                        console.log(response);
-                        window.location.reload();
-                    } else {
-                        throw new Error("刪除失敗");
-                    }
-                })
-                .catch((error) => {
-                    console.log(error.message);
-                })
-                .finally(() => {
-                    this.deleteBox = false;
-                    this.currentDeleteRow = null;
-                });
+                    .then((response) => {
+                        if (response.ok) {
+                            console.log(response);
+                            window.location.reload();
+                        } else {
+                            throw new Error("刪除失敗");
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    })
+                    .finally(() => {
+                        this.deleteBox = false;
+                        this.currentDeleteRow = null;
+                    });
             }
         },
     },
@@ -225,13 +225,13 @@ export default {
             .then((json) => {
                 console.log('API 成功回應:', json);
                 this.newsData = json;
-                
+
             })
             .catch((error) => {
                 console.error('API 請求失敗:', error);
             });
 
-        
+
         const puteditItem = () => {
             const obj = {};
             obj.news_id = this.$route.query.news_id;
