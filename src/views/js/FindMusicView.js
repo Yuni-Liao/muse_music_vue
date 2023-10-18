@@ -53,7 +53,7 @@ export default {
                 // 打印歌曲的 s_id
                 // console.log("點擊的歌曲s_id:", this.s_id);
 
-                // 调用播放器组件的 playMusic 
+                // 調用播放器组件的 playMusic 
                 this.$refs.player.playMusic();
             });
         },
@@ -91,7 +91,6 @@ export default {
             });
         };
         fetchSongList();
-
         //建立事件聆聽:點空白處關閉
         document.addEventListener('click', this.closeMoreSpace);
     },
