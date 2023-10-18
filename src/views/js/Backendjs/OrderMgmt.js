@@ -135,66 +135,66 @@ export default {
                 ord_total_price:'',
             },
             // Search input
-            value3: '',
-            originalValue3: '',
-            originalOrderData: [],
-
-
+            inputvalue: '',
         }
     },
-
-    watch: {
-        value3(newVal, oldVal) {
-            if (newVal.trim() === '') {
-                // 如果 value3 變為空白，則回到原始的 getSelectData() 數據
-                this.orderData = this.getSelectData();
-            } else {
-                this.filterData(newVal);
-            }
-        },
-    },
-    
-
-    methods: {
-        filterData(newVal) {
-            // 如果 value3 不為空，則進行搜尋
-            const filteredData = this.originalOrderData.filter(item => {
-                const ordId = item.ord_id || '';
-                return (ordId.includes(newVal.trim()) ||
-                    ('FK-348593' + ordId).includes(newVal.trim()));
-            });
-            // 將過濾後的結果設置為要顯示的數據
-            this.orderData = filteredData;
-        },      
-
-        // Select: ord_stat
-        getSelectData() {
-            console.log('getSelectData called');
-            console.log('model：', this.model);
+    computed: {
+        // Select
+        filterWithCat() {
+            // 如果Select無值、Input有值情況下，以完整資料搜尋顯示
+            if (this.model === '' && this.inputvalue) {
+                return this.orderData.map((item, index) => {
+                    return {
+                        ...item,
+                        orderNumber: ++index,
+                    };
+                });
+            } 
+            // (1) 如果Select有值先篩選第1次
             if (this.model === '' || this.model === '未結案訂單') {
                 return this.orderData.filter(item => item.ord_stat !== '已完成' && item.ord_stat !== '已取消').map((item, index) => {
                     return {
                         ...item,
-                        orderNumber: index + 1,
+                        orderNumber: ++index,
                     };
                 });
             } else if (this.model === '' || this.model === '訂單總覽') {
                 return this.orderData.map((item, index) => {
                     return {
                         ...item,
-                        orderNumber: index + 1,
+                        orderNumber: ++index,
                     };
                 });
             } else {
                 return this.orderData.filter(item => item.ord_stat === this.model).map((item, index) => {
                     return {
                         ...item,
-                        orderNumber: index + 1,
+                        orderNumber: ++index,
                     };
                 });
             }
         },
 
+        // Input (data放最後篩選結果)
+        filterWithInput() {
+            // 如果Select有值、Input無值情況下，直接回傳filterWithCat
+            if (!this.inputvalue) return this.filterWithCat;
+            // (2) 如果Input有值情況下再篩選第2次
+            return this.filterWithCat
+            .filter(item => {
+                const ordId = item.ord_id || '';
+                return ('FK-348593' + ordId).includes(this.inputvalue);
+            })
+            .map((item, index) => {
+                return {
+                    ...item,
+                    orderNumber: ++index,
+                };
+            });
+        },
+    },
+
+    methods: {
         // 編輯彈窗
         editBtn(row) {
             this.editBox = true;
@@ -268,9 +268,8 @@ export default {
                 }
             })
             .then((json) => {
-                console.log('API 成功回應:', json);
+                // console.log('API 成功回應:', json);
                 this.orderData = json;
-                this.originalOrderData = [...this.orderData];
             })
             .catch((error) => {
                 console.error('API 請求失敗:', error);
@@ -291,7 +290,7 @@ export default {
                 }
             })
             .then((json) => {
-                console.log('API 成功回應:', json);
+                // console.log('API 成功回應:', json);
                 this.data = json;
             })
             .catch((error) => {

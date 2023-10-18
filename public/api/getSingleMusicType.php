@@ -7,7 +7,6 @@ try {
 
     //執行sql指令並取得pdoStatement
     $sid = $_GET['sid'];
-    //$sid = 6;
     //SQL指令: 單曲頁面：抓取該首歌曲分類
     $sql = "select
     mc.mcat_name as type,
@@ -28,5 +27,4 @@ try {
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";
     echo "錯誤原因 : ", $e->getMessage(), "<br>";
-    //echo "系統暫時不能正常運行，請稍後再試<br>";	
 }

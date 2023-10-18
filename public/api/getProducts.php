@@ -7,7 +7,6 @@ try {
     require_once("./connectMusemusic.php");
 
     //執行sql指令並取得pdoStatement
-    //SQL指令: 抓取商城商品
     $sql = "select * from product where show_stat = 1";
     $prods = $pdo->prepare($sql);
     $prods->execute();
@@ -17,7 +16,7 @@ try {
         echo "查無資料";
     } else {
         $prodRow = $prods->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($prodRow); //送出json字串
+        echo json_encode($prodRow);
     }
 } catch (Exception $e) {
     echo "錯誤行號 : ", $e->getLine(), "<br>";

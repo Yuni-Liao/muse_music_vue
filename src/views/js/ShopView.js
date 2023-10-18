@@ -4,7 +4,6 @@ export default {
             login_mem_id: "",
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
-            // 將 localStorage 儲存在 storage 變數中
             storage: localStorage,
             // 分類篩選
             items: [
@@ -102,8 +101,7 @@ export default {
                 alert("使用會員功能，請先進行登入");
                 this.$router.push({ name: "login" });
             } else {
-                // 執行預期的操作
-                // 例如，導向到購物車頁面或執行其他操作
+                // 導向到購物車頁面
                 this.$router.push({ name: "shoppingsteps" });
             }
         },
@@ -115,7 +113,6 @@ export default {
             fetch(apiURL).then(async (response) => {
                 this.products = await response.json();
             });
-            //console.log(this.products);
         },
         setCurrentKind(kind) {
             console.log('Clicked on kind:', kind);
@@ -140,7 +137,6 @@ export default {
         },
 
         handlePageSize(page) {
-            // console.log('handlePageSize', page)
             this.selectedPageSize = page;
         },
 

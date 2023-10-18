@@ -10,7 +10,6 @@ try {
     // 引入連線工作的檔案
     require_once("./connectMusemusic.php");
 
-    // 通過 $_POST 取得 POST 参数
     $msg_id = $_POST["msg_id"];
     $mem_id = $_POST["mem_id"];
     $s_id = $_POST["s_id"];
@@ -36,7 +35,6 @@ try {
         ];
         echo json_encode($successResponse);
     } else {
-        // 如果執行失敗，可以生成一個錯誤響應
         $errorResponse = [
             "error" => [
                 "message" => "新增失敗",

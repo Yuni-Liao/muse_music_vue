@@ -33,12 +33,6 @@ main{
             padding: 2%;
             border: 0px;
         }
-        label{
-            p{
-                @include center(150px);
-            }
-        }
-        
         
         .btngroup{
             display: flex;

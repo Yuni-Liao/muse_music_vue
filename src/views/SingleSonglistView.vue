@@ -1,8 +1,12 @@
 <template>
-  <player 
-  :s_id="playerId" 
-  :allSid="allSid"
-  @change-s-id="changeSId" ref="player"></player>
+  <div v-title :data-title="songlist.sl_name"></div>
+  .
+  <player
+    :s_id="playerId"
+    :allSid="allSid"
+    @change-s-id="changeSId"
+    ref="player"
+  ></player>
   <div class="singlesonglist">
     <!-- 上方大圖 -->
     <section class="banner">
@@ -67,9 +71,10 @@
                 :folnum="songlist.sl_id"
               ></FolBtnBig>
               <ShareBtn></ShareBtn>
-              <PlayBtnBig 
-              v-if="showLastButton"
-              @click="openPlayer(slSongs[0].s_id)"></PlayBtnBig>
+              <PlayBtnBig
+                v-if="showLastButton"
+                @click="openPlayer(slSongs[0].s_id)"
+              ></PlayBtnBig>
             </div>
           </div>
         </div>
