@@ -5,15 +5,18 @@ try{
     header("Content-Type:application/json;charset=utf-8");
     require_once("./connectMusemusic.php");
 
+
+
     //執行sql指令並取得pdoStatement
     $slid = $_GET['slid'];
+    $id = $_GET['mem_id'];
 
     //SQL指令: 查詢orderitem
-    $sql = "select oi.ord_id, oi.prod_id, oi.ord_price, oi.ord_pcs, p.prod_name, p.prod_pic, o.ord_date, o.ord_name, o.ord_tel, o.ord_add, o.ord_pay, o.ord_ship, o.ord_total_price, o.ord_stat 
+    $sql = "select oi.ord_id, oi.prod_id, oi.ord_price, oi.ord_pcs, p.prod_name, p.prod_pic, o.ord_date, o.ord_name, o.ord_tel, o.ord_add, o.ord_pay, o.ord_ship, o.ord_total_price, o.ord_stat, o.mem_id
     from orders_item oi 
         join product p on oi.prod_id = p.prod_id 
         join orders o on oi.ord_id = o.ord_id 
-    where oi.ord_id = $slid;";
+    where oi.ord_id = $slid and o.mem_id = $id;";
 
     $orderItem = $pdo->query($sql);
 

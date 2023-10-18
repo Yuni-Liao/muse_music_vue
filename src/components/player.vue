@@ -15,9 +15,10 @@
       />
       <img
         class="musicPic"
+        @click="showModal"
         :src="`${publicPath}dataimage/song/${currentSong.s_img}`"
       />
-      <div class="songInfo">
+      <div class="songInfo" @click="showModal">
         <p>{{ currentSong.s_name }}</p>
         <span>{{ currentSong.mem_name }}</span>
       </div>
@@ -138,9 +139,6 @@
     v-if="isModalVisible"
     :style="{
       backgroundImage: `url(${publicPath}dataimage/song/${currentSong.s_img})`,
-      backgroundSize: '100% auto',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center 20%',
     }"
   >
     <!-- 歌曲信息和控制按钮 -->

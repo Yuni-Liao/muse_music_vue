@@ -87,7 +87,7 @@ export default {
         addprod_int: "",
         addprod_price: "",
         prod_pic: "",
-        showimg: "", //用於顯示
+        showimg: "", 
         updateimg: false,
       },
       privacy: "公開",
@@ -104,7 +104,7 @@ export default {
       });
     },
     
-    // 以下 上/下架功能------------------------------------------------
+    // 上/下架功能------------------------------------------------
     toggleBtn(row) {
       this.editItem.prod_id = row.prod_id;
       this.editItem.show_stat = row.show_stat;
@@ -147,7 +147,7 @@ export default {
       });
     },
 
-    // 以下 編輯功能----------------------------------------------------
+    // 編輯功能----------------------------------------------------
     // 編輯圖片
     img(e) {
       let that = this;
@@ -165,7 +165,7 @@ export default {
     // 編輯跳窗
     editProd(row) {
       const showimg = {
-        showimg: "", //用於顯示
+        showimg: "",
         updateimg: false,
       };
       // 顯示編輯跳窗
@@ -221,7 +221,7 @@ export default {
       this.addBox = false;
     },
 
-    // 以下 新增功能-----------------------------------------------------
+    // 新增功能-----------------------------------------------------
     // 新增跳窗
     addProd(row) {
       this.addItem = { ...row }; // 傳入編輯數據
@@ -242,7 +242,7 @@ export default {
       };
     },
 
-    // 新增商品 - 確認按鈕 需修改-----------------------------
+    // 新增商品 - 確認按鈕 -----------------------------
     saveAddBtn() {
       const url = `${this.$store.state.phpPublicPath}addProd.php`;
       const formData = new FormData();
@@ -270,7 +270,6 @@ export default {
         })
         .then(() => {
           this.addItem = [];
-          //window.location.reload();
         })
         .catch((error) => {
           console.log(error.message);

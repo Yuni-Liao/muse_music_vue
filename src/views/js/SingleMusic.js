@@ -68,49 +68,6 @@ export default {
             });
         },
 
-        // changeSId(newSId) {
-        //     // 切換上下首--使用從子組件接收的新 id 更新 id prop
-        //     this.id = newSId;
-        // },
-
-        // 創建新留言
-        // addNewMessage() {
-        //     if (this.msg_con !== "") {
-        //         const url = `${this.$store.state.phpPublicPath}postSingleMusicMsg.php`;
-        //         let headers = {
-        //             Accept: "application/json",
-        //         };
-
-        //         // 創建新留言對象
-        //         const formData = new FormData();
-        //         formData.append("mem_id", this.login_mem_id);
-        //         //formData.append("msg_id", this.msg_id);
-        //         formData.append("s_id", this.sid);
-        //         formData.append("msg_con", this.msg_con);
-        //         //formData.append("msg_like", this.msg_like);
-        //         console.log(this.msg_con);
-
-        //         // 發送新留言到後端
-        //         fetch(url, {
-        //             method: "POST",
-        //             headers: headers,
-        //             body: formData,
-        //         })
-        //             .then((response) => {
-        //                 if (response.ok) {
-        //                     console.log('完成！');
-        //                 } else {
-        //                     throw new Error("新增失敗");
-        //                 }
-        //             })
-        //             .then(() => {
-        //                 window.location.reload();
-        //             })
-        //             .catch((error) => {
-        //                 console.error("發生錯誤:", error);
-        //             });
-        //     }
-        // },
         addNewMessage() {
             if (this.login_mem_id === null) {
                 alert("使用會員功能，請先進行登入");
@@ -165,17 +122,14 @@ export default {
 
         // 預設只顯示前三筆留言
         showMore() {
-            //console.log('1', this.isShow);
             this.isShow = !this.isShow;
-            //console.log('2', this.isShow);
             this.num = this.isShow ? 3 : this.messages.length;
             this.txt = this.isShow ? '查看更多' : '收起留言'
         },
+        
         // 預設只顯示前三首歌曲
         showMoreSong() {
-            //console.log('1', this.isShowSong);
             this.isShowSong = !this.isShowSong;
-            //console.log('2', this.isShowSong);
             this.num2 = this.isShowSong ? 3 : this.otherSongs.length;
             this.txt2 = this.isShowSong ? '查看更多' : '收起歌曲'
         },
@@ -195,8 +149,8 @@ export default {
     },
     mounted() {
         this.login_mem_id = localStorage.getItem('mem_id');
-        //this.login_mem_pic = localStorage.getItem('mem_pic');
         this.sid = parseInt(this.$route.params.sid);
+
         //歌曲資訊 (fetch) songs:[]
         const fetchSingleMusic = () => {
             const sid = this.$route.params.sid;
@@ -211,6 +165,7 @@ export default {
                     console.error("發生錯誤:", error);
                 });
         };
+
         //歌曲類別 (fetch) songTypes:[]
         const fetchSingleMusicType = () => {
             const sid = this.$route.params.sid;
@@ -225,6 +180,7 @@ export default {
                     console.error("發生錯誤:", error);
                 });
         };
+
         //留言資訊 (fetch) messages:[]
         const fetchSingleMusicMsg = () => {
             const msg_id = this.$route.params.sid;
@@ -240,6 +196,7 @@ export default {
                     console.error("發生錯誤:", error);
                 });
         };
+
         //相關歌曲 (fetch) otherSongs:[]
         const fetchSingleMusicSong = () => {
             const sid = this.$route.params.sid;
