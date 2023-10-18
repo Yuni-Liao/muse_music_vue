@@ -24,15 +24,9 @@ export default {
     methods: {
         //播放器
         openPlayer(song) {
-            
             this.id = song;
-
             this.$nextTick(() => {
-                // 打印歌曲的 id
-                // console.log("點擊的歌曲id:", this.id);
-                // console.log("點擊的專輯歌曲allSid:", this.allSid);
-
-                 // 调用播放器组件的 playMusic 
+                // 调用播放器组件的 playMusic 
                 this.$refs.player.playMusic();
             });
         },
@@ -57,6 +51,7 @@ export default {
     },
     mounted() {
         this.salid = parseInt(this.$route.params.salid);
+
         // fetch 專輯資訊 album:[]
         const fetchSingleAlbum = () => {
             const salid = this.$route.params.salid;
@@ -81,9 +76,7 @@ export default {
             fetch(apiURL)
                 .then(async (response) => {
                     this.songs = await response.json();
-                    // 提取所有歌曲的 s_id 并存储在一个数组中
                     this.allSid = this.songs.map((songs) => songs.id);
-                    // console.log("此專輯歌曲的s_id:",this.allSid);
                 })
                 .catch((error) => {
                     console.error("發生錯誤:", error);
