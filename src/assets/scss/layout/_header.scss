@@ -239,6 +239,8 @@ header {
     img {
       width: 100px;
       height: 100px;
+      object-fit: cover;
+      object-position: top center;
       border-radius: 100%;
       box-shadow: 2px 2px 5px #eee;
 
