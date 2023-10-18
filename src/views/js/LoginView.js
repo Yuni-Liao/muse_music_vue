@@ -78,7 +78,7 @@ export default {
             //window.location.reload();
 
             // 導回首頁 錨點在homepage
-            window.location.href = "/home";
+            window.location.href = `${this.$store.state.linkPublicPath}home`;
           } else {
             alert("帳戶密碼不正確");
           }
