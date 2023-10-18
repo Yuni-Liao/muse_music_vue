@@ -245,8 +245,15 @@
             />
           </div>
         </div>
-        <!-- 歌詞 -->
+        <!-- 網頁版歌詞 -->
         <div v-show="showLyrics" class="lyricsSection">
+          <p>
+            {{ currentSong.s_lyrics }}
+          </p>
+        </div>
+        <!-- 手機版歌詞 -->
+        <div  class="phonelyricsSection">
+          <h1>歌詞</h1>
           <p>
             {{ currentSong.s_lyrics }}
           </p>
