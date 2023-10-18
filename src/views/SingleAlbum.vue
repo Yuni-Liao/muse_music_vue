@@ -1,5 +1,4 @@
 <template>
-  <!-- 目前撥放器可切換下一首 但不是抓同張專輯-->
   <player 
   :s_id="id"
   :allSid="allSid"

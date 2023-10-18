@@ -2,10 +2,10 @@
   <div class="prodmgmt_box">
     <h1>周邊販售管理 | 商品管理</h1>
     <div class="topbtn">
-      <!-- 以下是新增欄位 -->
+      <!-- 新增欄位 -->
       <Button type="primary" @click.stop="addProd(row)" style="width: 100px; margin-bottom: 2%;">新增商品</Button>
 
-      <!--以下是搜尋欄位-->
+      <!-- 搜尋欄位-->
       <Input v-model="searchKeyword" placeholder="輸入商品名稱" style="width: 180px; margin-bottom: 2%;padding: 10px;">
       <Input v-model="productData" />
       <template #append>
@@ -14,7 +14,7 @@
       </Input>
     </div>
 
-    <!-- 以下是表格資料區 -->
+    <!--  表格資料區 -->
     <Table highlight-row stripe class="prodmgmt_table cellHeight" width="1000" height="510" :columns="columns"
       :data="productData">
       <!-- 上下架按鈕 -->
@@ -28,7 +28,7 @@
       </template>
     </Table>
   </div>
-  <!-- 以下是跳窗"編輯"區 -->
+  <!-- 跳窗"編輯"區 -->
   <div v-if="editBox == true" class="editprod obj_Radius">
     <div class="fir">
       <label for="prod_id" class="label">商品編號:</label>
@@ -88,7 +88,7 @@
 
 
 
-  <!-- 以下是跳窗"新增"區 -->
+  <!-- 跳窗"新增"區 -->
   <div v-if="addBox == true" class="addprod obj_Radius">
     <div class="fir">
       <label for="addprod_name" class="label">商品名稱:</label>
@@ -144,7 +144,6 @@
   </div>
 </template>
 
-<!-- 補分頁按鈕、下拉式選單按鈕、調整字距 -->
 <style scoped lang="scss">
 @import "~@/assets/scss/page/Backend/prodmgmt.scss";
 </style>

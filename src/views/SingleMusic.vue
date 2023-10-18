@@ -146,7 +146,6 @@
                         <div v-if="otherSongs.length === 0">
                             沒有其他相關歌曲
                         </div>
-                        <!-- 如果 otherSongs 長度不為 0，則顯示歌曲列表 -->
                         <div v-else>
                             <div class="song" v-for="(songItem, index) in otherSongs.slice(0, num2)" :key="songItem.id">
                                 <div class="list">
