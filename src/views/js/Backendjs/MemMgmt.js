@@ -16,13 +16,13 @@ export default {
                     title: '帳號',
                     key: 'mem_acc',
                     align: 'center',
-                    width: 200,
+                    width: 240,
                 },
                 {
                     title: '使用者名稱',
                     key: 'mem_name',
                     align: 'center',
-                    width: 170,
+                    width: 210,
                 },
                 {
                     title: '粉絲數量',
@@ -45,14 +45,14 @@ export default {
                     title: '操作',
                     slot: 'pauseBtn',
                     align: 'center',
-                    width: 80,
-                },
-                {
-                    title: '更多',
-                    slot: 'viewBtn',
-                    align: 'center',
-                    width: 80,
-                },
+                    width: 90,
+                }
+                // {
+                //     title: '更多',
+                //     slot: 'viewBtn',
+                //     align: 'center',
+                //     width: 80,
+                // },
             ],
             //資料裡撈到的
             data: [],
@@ -83,9 +83,9 @@ export default {
             // 切换停權狀態
             row.paused = !row.paused;
         },
-        viewBtn() {
-            this.modal = true;
-        },
+        // viewBtn() {
+        //     this.modal = true;
+        // },
         // memSearchBtn() {
         //     alert('搜尋會員');
         // }

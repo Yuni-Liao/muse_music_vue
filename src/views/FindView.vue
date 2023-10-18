@@ -41,7 +41,7 @@
         <div class="hot_creator">
             <h2>熱門創作者．Hot Creator</h2>
             <section>
-                <swiper class="find_swiper" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
+                <swiper class="find_swiper" v-if="memDataLoaded" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
                     :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
                     :coverflowEffect="{
                         rotate: 0,
@@ -71,7 +71,7 @@
         <div class="new_release">
             <h2>新歌推薦．New Release</h2>
             <section class="find_newsong">
-                <swiper class="find_swiper" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
+                <swiper class="find_swiper" v-if="songDataLoaded" :loop="true" :loopedSlides="3" :initialSlide="4" :slideToClickedSlide="false"
                     :grabCursor="false" :centeredSlides="true" :slidesPerView="5" :slidesPerGroup="1" :effect="'coverflow'"
                     :coverflowEffect="{
                         rotate: 0,

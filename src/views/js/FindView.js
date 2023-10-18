@@ -16,11 +16,8 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import {
-    Autoplay,
     EffectCoverflow,
     Pagination,
-    EffectFade,
-    EffectCards,
 } from "swiper/modules";
 // -----------------------------------
 
@@ -34,7 +31,6 @@ export default {
     },
     data() {
         return {
-            
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //
@@ -45,12 +41,13 @@ export default {
             singers: [],
             songs: [],
             modules: [
-                Autoplay,
                 EffectCoverflow,
                 Pagination,
-                EffectFade,
-                EffectCards
             ],
+            //創作者輪播
+            memDataLoaded: false,
+            //新歌輪播
+            songDataLoaded: false,
         }
     },
     methods: {
@@ -78,6 +75,7 @@ export default {
             );
             fetch(apiURL).then(async (response) => {
                 this.singers = await response.json();
+                this.memDataLoaded = true;
             });
             // console.log(this.singers);
         };
@@ -89,6 +87,7 @@ export default {
             );
             fetch(apiURL).then(async (response) => {
                 this.songs = await response.json();
+                this.songDataLoaded = true;
             });
             // console.log(this.songs);
         };
