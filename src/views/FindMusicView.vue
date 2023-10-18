@@ -15,7 +15,7 @@
             <div class="container1">
                 <div class="title">
                     <h1>{{ foundObject.mcat_name }}</h1>
-                    <p>共首歌</p>
+                    <p>共{{ allSid.length }}首歌</p>
                 </div>
                 <div class="btn">
                     <PlayBtnBig @click="openPlayer(songs[0].s_id)"></PlayBtnBig>
@@ -31,7 +31,7 @@
                         <th>#</th>
                         <th></th>
                         <th>歌曲名稱</th>
-                        <th>創作者</th>
+                        <th class="member">創作者</th>
                         <th>時長</th>
                         <th></th>
                     </tr>

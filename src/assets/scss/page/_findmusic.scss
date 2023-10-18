@@ -1,6 +1,3 @@
-*{
-    color: $white;
-}
 h1{
     font-size: $big;
     margin: 0 2% 0 0;
@@ -18,6 +15,7 @@ h1{
         width: 70%;
         display: block;
         margin: 0 0 1.5%;
+        color: $white;
         .find{
             width: 100%;
             font-size: $medium;
@@ -38,16 +36,31 @@ h1{
 }
 
 .listWrapper {
-    @include layout(80%);
+    width: 80%;
     margin: auto;
+    @include s{
+        width: 100%;
+    }
+
     .songList {
         @include layout(100%);
         margin: 5% 0;
         color: $white;
+        @include s{
+            padding: 0 0 45% 0;
+        }
         table {
             @include layout(70%);
             .listTitle th{
                 padding: 1%;
+                @include s{
+                    font-size: $pXS;
+                }
+            }
+            .member{
+                @include s{
+                    display: none;
+                }
             }
             .songArea {
                 border-bottom: 1px solid $white;
@@ -56,6 +69,9 @@ h1{
                 
                 td {
                     padding-top: 20px;
+                    @include s{
+                        padding: 0 2px;
+                    }
                 }
                 .id,
                 .time {
@@ -67,10 +83,22 @@ h1{
                     a {
                         color: $white;
                         padding: 3%;
+                        @include s{
+                            font-size: $pXS;
+                        }
+                    }
+                }
+                .singer{
+                    @include s{
+                        display: none;
                     }
                 }
                 .pic{
                     position: relative;
+                    @include s{
+                        display: block;
+                        margin: 50% auto;
+                    }
                 }
                 .pic .f_play{
                     opacity: 0;
@@ -99,7 +127,7 @@ h1{
                         width: 25px;
                         height: 25px;
                         margin: 5px;
-                        border: 1px $dark solid;
+                        border: 1px  solid;
                     }
                     .moreBtn {
                         @include btnBgNone;
@@ -118,6 +146,11 @@ h1{
                         top: 15%;
                         left: 120%;
                         border-radius: 6px;
+                        z-index: 1;
+                        @include s{
+                            top: 65%;
+                            left: -410%;
+                        }
                         .close {
                             @include btnBgNone;
                             font-size: 25px;
@@ -127,6 +160,7 @@ h1{
                             display: flex;
                             flex-direction: row;
                             align-items: center;
+                            color: $white;
                             p {
                                 margin: 0 0 0 20px;
                                 font-size: $tag;
