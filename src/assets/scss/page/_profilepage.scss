@@ -58,15 +58,20 @@
         }
       }
       .txt {
-        max-width: 55%;
+        width: 55%;
         position: relative;
         bottom: -130px;
         z-index: 90;
+
         @media screen and (max-width: 880px) {
           margin: 0;
+          margin-top: 50px;
           max-width: 95%;
           .fol {
             justify-content: center;
+            h4 {
+              min-width: 60px;
+            }
           }
         }
         @media screen and (max-width: 800px) {
@@ -76,6 +81,10 @@
           text-shadow: 2px 3px 5px #4d4d4d60;
           text-align: start;
           padding: 0 30px;
+
+          @media screen and (max-width: 800px) {
+            width: 90vw;
+          }
           h1 {
             font-size: $big;
             line-height: 2.5;
@@ -123,6 +132,9 @@
             }
             h4 {
               font-size: $default;
+              @media screen and (max-width: 800px) {
+                width: 100%;
+              }
             }
           }
         }
