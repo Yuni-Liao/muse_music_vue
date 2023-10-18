@@ -9,21 +9,17 @@ export default {
                 mem_name: '',
                 mem_aka: '',
                 email: '',
+                mem_acc:'',
+                mem_psw:'',
             }],
 
-            // mem_psw: '',
 
-            // mem_id: ''
-
-
-            // member: [
-            //     {email1: '', mem_aka: '' ,mem_name: ''},
-            // ],
         }
     },
     methods: {
 
         registerAccountToDatabase() {
+           
             // 準備要發送到伺服器的資料
             const dataToSend = new FormData();
             dataToSend.append("mem_name", this.member[0].mem_name);
@@ -31,7 +27,7 @@ export default {
             dataToSend.append("email", this.member[0].email);
         
             // 使用 fetch 送出 POST 請求到伺服器
-            fetch("http://localhost/muse_music/public/api/register.php", {
+            fetch(`${this.$store.state.phpPublicPath}register.php`, {
                 method: "POST",
                 body: dataToSend,
             })
@@ -62,7 +58,51 @@ export default {
                 console.error("Network error:", error);
                 alert("註冊失敗 - 無法連接到伺服器");
             });
+            this.next();
         },
+
+       
+
+        registerPSWToDatabase() {
+            // 準備要發送到伺服器的資料
+            const pswToSend = new FormData();
+            pswToSend.append("mem_acc", this.member[0].mem_acc);
+            pswToSend.append("mem_psw", this.member[0].mem_psw);
+        
+            // 使用 fetch 送出 POST 請求到伺服器
+            fetch(`${this.$store.state.phpPublicPath}registerpsw.php`, {
+                method: "POST",
+                body: pswToSend,
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    // 可能會有的error
+                    if (response.status === 400) {
+                        throw new Error("註冊失敗: 伺服器請求無效 (HTTP 400)");
+                    } else if (response.status === 500) {
+                        throw new Error("註冊失敗: 伺服器內部錯誤 (HTTP 500)");
+                    } else {
+                        throw new Error("註冊失敗: 網路錯誤 (HTTP " + response.status + ")");
+                    }
+                }
+                return response.json();
+            })
+            .then((data) => {
+                if (data.mem_id) {
+                    alert("帳號創建成功");
+                } else if (data.error) {
+                    alert("帳號創建失敗: " + data.error);
+                }
+            })
+            .catch((error) => {
+                console.error("Network error:", error);
+                alert("帳號創建失敗 - 無法連接到伺服器");
+            });
+            this.next();
+        },
+
+        
+        
         
         
 
