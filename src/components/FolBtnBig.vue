@@ -163,6 +163,7 @@ export default {
   font-size: 14px;
   padding: 4px 13px;
   line-height: 1.5;
+  min-width: 72px;
 }
 
 #FolBtnBig.active {

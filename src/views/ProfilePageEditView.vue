@@ -601,7 +601,11 @@
                     </div>
                   </div>
                 </td>
-                <td class="tname">
+                <td
+                  class="tname"
+                  @click="gotosinglemusic(item.s_id)"
+                  style="cursor: pointer"
+                >
                   {{ item.s_name }}
                 </td>
                 <td class="tintro">
@@ -685,7 +689,11 @@
                     />
                   </div>
                 </td>
-                <td class="tname">
+                <td
+                  class="tname"
+                  @click="gotosinglealbum(item.alb_id)"
+                  style="cursor: pointer"
+                >
                   {{ item.alb_name }}
                 </td>
                 <td class="tintro">

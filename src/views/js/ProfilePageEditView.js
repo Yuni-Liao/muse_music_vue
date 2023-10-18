@@ -14,15 +14,15 @@ export default {
       //編輯個人主頁------
       member: [
         {
-          mem_id: '',
+          mem_id: "",
           cover_pic: "",
           mem_pic: "",
           mem_aka: "",
           intro: "",
           county: "",
           social_media: "",
-          src: '',// 暫存
-          coverSrc: '' // 暫存
+          src: "", // 暫存
+          coverSrc: "", // 暫存
         },
       ],
       //歌曲上傳------
@@ -87,13 +87,27 @@ export default {
     changeTab(tabNumber) {
       this.activeTab = tabNumber;
     },
-
+    //頁面切換----------------------
+    gotosinglemusic(sid) {
+      this.$router.push({
+        name: "singlemusic",
+        params: {
+          sid,
+        },
+      });
+    },
+    gotosinglealbum(abid) {
+      let aa = this.$router.push({
+        name: "singlealbum",
+        params: {
+          salid: abid,
+        },
+      });
+    },
     //編輯個人主頁------------------------------------------------------------------
-
 
     //更新背景圖片------------------------------------------------------------------
     coverImgChange(e) {
-
       let that = this;
       let coverPic = e.target.files[0];
       if (!coverPic || !window.FileReader) return;
@@ -103,7 +117,7 @@ export default {
       reader.onloadend = function () {
         that.member[0].coverSrc = this.result;
         that.member[0].cover_pic = coverPic.name;
-        console.log(this.result)
+        console.log(this.result);
       };
       const cover_pic = new FormData();
       cover_pic.append("cover_pic", coverPic);
@@ -114,7 +128,7 @@ export default {
       })
         .then((response) => {
           if (response.ok) {
-            alert('背景更新成功')
+            alert("背景更新成功");
           } else {
             throw new Error("編輯失敗");
           }
@@ -125,12 +139,10 @@ export default {
         .catch((error) => {
           console.log(error.message);
         });
-
     },
     coverloadImage(e) {
       this.member.cover_pic = e.target.result;
     },
-
 
     //更新大頭貼------------------------------------------------------------------
     profileImgChange(e) {
@@ -143,7 +155,7 @@ export default {
       reader.onloadend = function () {
         that.member[0].src = this.result;
         that.member[0].mem_pic = files.name;
-        console.log(this.result)
+        console.log(this.result);
       };
 
       const mem_pic = new FormData();
@@ -156,7 +168,7 @@ export default {
       })
         .then((response) => {
           if (response.ok) {
-            alert('大頭貼更新成功')
+            alert("大頭貼更新成功");
           } else {
             throw new Error("編輯失敗");
           }
@@ -166,10 +178,8 @@ export default {
         })
         .catch((error) => {
           console.log(error.message);
-        })
-
+        });
     },
-
 
     // 個人檔案 - 編輯
     saveBtn() {
@@ -237,12 +247,7 @@ export default {
         2,
         "0"
       )}`;
-      console.log(timee);
-      console.log(typeof timee);
       this.newsong.s_length = timee;
-      console.log(this.newsong.s_length);
-      // that.newsong.s_length = timee.toString();
-      //console.log(that.newsong.s_length);
     },
     uploadSong() {
       //新增歌曲(含上傳圖片及音檔)------
@@ -339,7 +344,7 @@ export default {
       this.playerId = sid;
       this.$refs.player.playMusic(this.playerId);
     },
-    changeSId() { }, //避免播放器報錯用
+    changeSId() {}, //避免播放器報錯用
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
@@ -347,10 +352,6 @@ export default {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getProfileDetail.php?mem_id=${this.login_mem_id}`
       );
-      // const apiURL = new URL(
-      //   `${this.$store.state.phpPublicPath}getProfileDetail.php`
-      // );
-
       fetch(apiURL)
         .then((res) => res.json())
         .then((res) => (this.member = res))
@@ -358,21 +359,6 @@ export default {
           console.error("發生錯誤:", error);
         });
     }
-
-    // Fetch 會員資料
-    // const fetchMemberInfo = () => {
-    //   const apiURL = new URL(
-    //     `http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=${this.login_mem_id}`
-    //   );
-
-    //   fetch(apiURL)
-    //     .then((res) => res.json())
-    //     .then((res) => (this.member = res))
-    //     .catch((error) => {
-    //       console.error("發生錯誤:", error);
-    //     });
-    // };
-    // fetchMemberInfo();
 
     if (this.login_mem_id) {
       const apiURL = new URL(
@@ -387,20 +373,6 @@ export default {
         });
     }
 
-    // // Fetch 歌曲資訊
-    // const fetchSongData = () => {
-    //   const apiURL = new URL(
-    //     `${this.$store.state.phpPublicPath}getProfileSong.php?memid=${this.login_mem_id}&stat=0`
-    //   );
-
-    //   fetch(apiURL)
-    //     .then((res) => res.json())
-    //     .then((res) => (this.profileSongs = res))
-    //     .catch((error) => {
-    //       console.error("發生錯誤:", error);
-    //     });
-    // };
-
     if (this.login_mem_id) {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getProfileAlbum.php?memid=${this.login_mem_id}`
@@ -413,21 +385,5 @@ export default {
           console.error("發生錯誤:", error);
         });
     }
-
-    // const fetchAlbumData = () => {
-    //   const apiURL = new URL(
-    //     `${this.$store.state.phpPublicPath}getProfileAlbum.php?memid=${this.login_mem_id}`
-    //   );
-
-    //   fetch(apiURL)
-    //     .then((res) => res.json())
-    //     .then((res) => (this.profileAlbums = res))
-    //     .catch((error) => {
-    //       console.error("發生錯誤:", error);
-    //     });
-    // };
-
-    // fetchSongData();
-    // fetchAlbumData();
   },
 };
