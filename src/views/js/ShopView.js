@@ -1,6 +1,7 @@
 export default {
     data() {
         return {
+            showPopup: false,
             login_mem_id: "",
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
@@ -147,32 +148,45 @@ export default {
         },
         //加入購物車
         addToCart(item) {
-            // 獲取已存儲的購物車數據或初始化一個空數組
-            const cartItemsJSON = localStorage.getItem('cartItems');
-            let cartItems = [];
-
-            if (cartItemsJSON) {
-                // 如果已經有購物車數據，則解析它
-                cartItems = JSON.parse(cartItemsJSON);
-            }
-
-            // 檢查購物車中是否已經存在相同的商品
-            const existingItem = cartItems.find(cartItem => cartItem.prod_name === item.prod_name);
-
-            if (existingItem) {
-                // 如果存在相同的商品，將它們的 inCart 數字相加
-                existingItem.chat_num += item.chat_num;
+            if (item.chat_num == 0) {
+                // 如果商品数量为0，显示警告信息
+                alert("請點選數量");
             } else {
-                // 如果不存在相同的商品，將商品添加到購物車數組
-                cartItems.push(item);
+                // 如果商品数量不为0
+                // 獲取已存儲的購物車數據或初始化一個空數組
+                const cartItemsJSON = localStorage.getItem('cartItems');
+                let cartItems = [];
+        
+                if (cartItemsJSON) {
+                    // 如果已經有購物車數據，則解析它
+                    cartItems = JSON.parse(cartItemsJSON);
+                }
+        
+                // 檢查購物車中是否已經存在相同的商品
+                const existingItem = cartItems.find(cartItem => cartItem.prod_name === item.prod_name);
+        
+                if (existingItem) {
+                    // 如果存在相同的商品，將它們的 inCart 數字相加
+                    existingItem.chat_num += item.chat_num;
+                } else {
+                    // 如果不存在相同的商品，將商品添加到購物車數組
+                    cartItems.push(item);
+                }
+        
+                // 將購物車數組轉換為 JSON 字符串
+                const updatedCartItemsJSON = JSON.stringify(cartItems);
+        
+                // 使用 localStorage 存購物車數據
+                localStorage.setItem('cartItems', updatedCartItemsJSON);
+        
+                // 跳窗提醒
+                alert("已加入購物車");
+        
+                // 將商品數量歸零
+                item.chat_num = 0;
             }
-
-            // 將購物車數組轉換為 JSON 字符串
-            const updatedCartItemsJSON = JSON.stringify(cartItems);
-
-            // 使用 localStorage 存購物車數據
-            localStorage.setItem('cartItems', updatedCartItemsJSON);
-        },
+        }
+        
     },
     mounted() {
         this.login_mem_id = localStorage.getItem('mem_id');
