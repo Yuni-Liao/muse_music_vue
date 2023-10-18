@@ -100,10 +100,16 @@
 
                 .timeline {
                     margin-right: 30px;
+                    @media screen and (max-width: 768px){
+                        display: none;
+                    }
                 }
 
                 .played {
                     margin-right: 30px;
+                    @media screen and (max-width: 768px){
+                        display: none;
+                    }
                 }
 
                 .liked {
