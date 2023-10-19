@@ -64,7 +64,8 @@
   @include layout(100%);
   height: 200px;
   background-image: url("/public/image/index/index_makingWave.png");
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -170,11 +171,14 @@
     text-align: start;
     margin: 40px;
   }
+  :deep(.swiper) {
+    width: 100vw;
+  }
   .swiper {
     position: relative;
     margin-top: 150px;
-    width: 100%;
-    height: 80vh;
+    width: 100vw;
+    height: fit-content;
     // padding-bottom: 50px;
     overflow-y: visible;
     .swiper-wrapper {
@@ -182,6 +186,8 @@
       background-color: transparent;
       margin-bottom: 30px;
       position: relative;
+      height: fit-content;
+      margin: 250px 0 150px 0;
       .swiper-slide {
         background-color: transparent;
         opacity: 0.7;
@@ -192,8 +198,12 @@
           width: 190px;
           margin: auto;
           .pic {
+            @media screen and (max-width: 800px) {
+              @include rect(150px);
+            }
             @include rect(190px);
             position: relative;
+            margin: auto;
 
             cursor: pointer;
             img {
@@ -257,29 +267,9 @@
           }
         }
       }
-      // .swiper-slide-active {
-      //   //旋轉黑膠
-      //   .card::before {
-      //     content: "";
-      //     width: 150px;
-      //     height: 150px;
-      //     background-image: url("/public/image/index/vinyl.png");
-      //     background-size: contain;
-      //     background-repeat: no-repeat;
-      //     position: absolute;
-      //     top: -85px;
-      //     left: 20px;
-      //     border: 3px solid red;
-      //     z-index: -10;
-      //     opacity: 0;
-      //     //transform: translate(50%, 0);
-      //     animation: rotate 10s linear 0.1s infinite forwards;
-      //     // pointer-events: none;
-      //   }
-      // }
     }
   }
-
+  //旋轉黑膠
   .swiper::after {
     content: "";
     width: 230px;
@@ -289,18 +279,25 @@
     background-repeat: no-repeat;
     position: absolute;
     left: calc(50% - 115px);
-    top: -50px;
+    top: -200px;
     z-index: -10;
     animation: rotate 10s linear infinite forwards;
+    @media screen and (max-width: 800px) {
+      width: 200px;
+      height: 200px;
+      left: calc(50% - 100px);
+      top: -170px;
+    }
   }
   @keyframes rotate {
     0% {
-      transform: rotate(0deg); /* 从0度开始旋转 */
+      transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg); /* 旋转到360度 */
+      transform: rotate(360deg);
     }
   }
+  //MP3
   .swiper::before {
     content: "";
     width: 345px;
@@ -314,28 +311,32 @@
     z-index: 10;
     transform: translate(-50%, -35%);
     pointer-events: none;
+    @media screen and (max-width: 800px) {
+      width: 276px;
+      height: 480px;
+    }
   }
 }
 .index_WeekTopmusic::after {
   //背景打燈裝飾
   content: "";
-  width: 1000px;
-  height: 1000px;
+  width: 80%;
+  height: 100%;
   background-image: url("/public/image/index/index_light.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top right;
   position: absolute;
   right: 0px;
-  top: 0px;
+  top: -10px;
   z-index: 0;
 }
 .index_wave {
-  // RWD
-  @include s {
+  width: 100%;
+  height: 100px;
+  @media screen and (max-width: 650px) {
     display: none;
   }
-  height: 100px;
   .wave {
     margin: auto;
     position: relative;
@@ -435,8 +436,16 @@
       position: relative;
       color: $pink;
       line-height: $fh;
+      // -webkit-filter: grayscale(100%);
+      // filter: brightness(0.7);
+      // filter: blur(1px);
+      // -webkit-transition: .3s ease-in-out;
+      // transition: .3s ease-in-out;
       img {
         @include rect(100%);
+        filter: blur(1.5px);
+        -webkit-transition: 0.3s ease-in-out;
+        transition: 0.3s ease-in-out;
       }
       .ranking {
         @include l {
@@ -475,17 +484,18 @@
       img {
         width: 120%;
         margin: -24px;
-        // -webkit-filter: grayscale(100%);
-        // filter: grayscale(100%);
-        // -webkit-transition: .3s ease-in-out;
-        // transition: .3s ease-in-out;
       }
-      // img:hover{
-      //   -webkit-filter: grayscale(0);
-      //   filter: grayscale(0);
-      //   -webkit-transition: .3s ease-in-out;
-      //   transition: .3s ease-in-out;
-      // }
+    }
+    .imgbox:hover {
+      filter: drop-shadow(0px 0px 10px $green);
+      -webkit-filter: drop-shadow(0px 0px 10px $green);
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      img {
+        filter: blur(0px);
+        -webkit-transition: 0.3s ease-in-out;
+        transition: 0.3s ease-in-out;
+      }
     }
   }
 }
@@ -535,14 +545,24 @@
     text-align: start;
     margin: 40px;
   }
-  // 裝飾區待處理
   .step {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    p {
-      font-size: 1rem;
-      color: $white;
+    .pic {
+      width: 150px;
+      height: 110px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .txt {
+        p {
+          padding-top: 2%;
+          text-align: center;
+          @include mini_Tag($tag);
+        }
+      }
     }
   }
 }
@@ -687,8 +707,6 @@
             $dark 2%
           );
           border: 2px solid $green;
-          animation: run 2s linear infinite;
-          animation-play-state: paused;
           box-shadow: 1px 1px $white;
           position: relative;
           top: 40%;
@@ -697,7 +715,7 @@
             @include rect(140px);
             background-image: url("/public/image/index/vinyl.png");
             background-size: contain;
-            animation: run 7s 0s linear infinite;
+            animation: rotate 7s 0s linear infinite;
             position: absolute;
             top: 13%;
             left: 13.5%;
@@ -709,6 +727,14 @@
             position: absolute;
             top: 15%;
             right: -50%;
+          }
+          .tag_text {
+            color: $white;
+            font-size: $default;
+            position: absolute;
+            width: 400px;
+            top: 115%;
+            left: -30%;
           }
           #musicOff {
             @include rect(135px);

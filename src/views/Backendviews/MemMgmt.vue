@@ -14,20 +14,8 @@
                     {{ row.paused ? '復權' : '停權' }}
                 </Button>
             </template>
-            <template #viewBtn="{ row }">
-                <Button id="viewBtn" @click="viewBtn()" v-padding="5">
-                    查閱
-                </Button>
-            </template>
         </Table>
-        <template>
-            <Page :modelValue="2" :total="50" simple />
-        </template>
     </div>
-    <!-- 會員明細蓋版彈窗 -->
-    <Modal v-model="modal" fullscreen title="會員管理 | 會員資料明細">
-        <div>這裡面要放會員資料!!!!!</div>
-    </Modal>
 </template>
 
 <!--待補 page分頁按鈕 -->

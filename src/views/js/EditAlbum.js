@@ -14,7 +14,7 @@ export default {
       showimg: [], //用於顯示
     };
   },
-  watch() {},
+  watch() { },
   methods: {
     //照片及時更換
     coverImgChange(e) {
@@ -84,7 +84,7 @@ export default {
             } else {
               alert("編輯完成");
               window.location.reload();
-              window.location.href = "/home/profilepageedit";
+              window.location.href = `${this.$store.state.linkPublicPath}home/profilepageedit`;
             }
           })
           .catch((error) => {

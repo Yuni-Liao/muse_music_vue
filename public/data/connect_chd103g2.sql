@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2023-10-16 16:04:54
+-- 產生時間： 2023-10-18 06:00:40
 -- 伺服器版本： 8.0.31
 -- PHP 版本： 8.0.26
 
@@ -237,15 +237,15 @@ DROP TABLE IF EXISTS `member`;
 CREATE TABLE IF NOT EXISTS `member` (
   `mem_id` int NOT NULL AUTO_INCREMENT,
   `mem_name` varchar(10) DEFAULT NULL,
-  `mem_acc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `mem_acc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `mem_psw` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `bind_acc` varchar(100) DEFAULT NULL,
   `stat` tinyint(1) DEFAULT '1',
   `county` varchar(10) DEFAULT NULL,
   `intro` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `mem_pic` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'pre.jpg',
-  `cover_pic` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'precover.jpg',
+  `mem_pic` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'pre.jpg',
+  `cover_pic` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'precover.jpg',
   `privacy` tinyint(1) DEFAULT '1',
   `r_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `mem_aka` varchar(10) DEFAULT NULL,
@@ -1168,17 +1168,17 @@ CREATE TABLE IF NOT EXISTS `song_list` (
 --
 
 INSERT INTO `song_list` (`sl_id`, `mem_id`, `sl_name`, `public`, `fol_num`, `share_num`, `song_count`, `update_date`) VALUES
-(1, 1, '公開假日歌單', 1, 236, 45, 0, '2023-10-02 15:05:28'),
-(2, 1, '讀書歌單', 0, 0, 0, 0, '2023-10-02 15:05:28'),
+(1, 1, '公開假日歌單', 1, 53, 45, 0, '2023-10-02 15:05:28'),
+(2, 1, '讀書歌單', 0, 72, 0, 0, '2023-10-02 15:05:28'),
 (3, 1, '嘻哈歌單', 1, 23, 12, 0, '2023-10-02 15:05:28'),
-(4, 5, '療癒歌單', 1, 34, 24, 0, '2023-10-02 15:05:28'),
-(5, 2, '聚會歌單', 1, 23, 23, 0, '2023-10-02 15:05:28'),
-(6, 10, 'friday night歌單', 1, 23, 23, 0, '2023-10-02 15:21:25'),
-(7, 7, 'date songlist', 1, 21, 2, 0, '2023-10-02 15:21:25'),
-(8, 5, 'sad songlist', 1, 26, 12, 0, '2023-10-02 15:21:25'),
-(9, 9, '夜晚療癒歌單', 1, 43, 23, 0, '2023-10-02 15:21:25'),
-(10, 6, 'love songlist', 1, 34, 12, 0, '2023-10-02 15:21:25'),
-(11, 9, '早晨歌單', 1, 23, 45, 0, '2023-10-02 15:21:25');
+(4, 5, '療癒歌單', 1, 68, 24, 0, '2023-10-02 15:05:28'),
+(5, 2, '聚會歌單', 1, 132, 23, 0, '2023-10-02 15:05:28'),
+(6, 10, 'friday night歌單', 1, 98, 23, 0, '2023-10-02 15:21:25'),
+(7, 7, 'date songlist', 1, 175, 2, 0, '2023-10-02 15:21:25'),
+(8, 5, 'sad songlist', 1, 65, 12, 0, '2023-10-02 15:21:25'),
+(9, 9, '夜晚療癒歌單', 1, 196, 23, 0, '2023-10-02 15:21:25'),
+(10, 6, 'love songlist', 1, 76, 12, 0, '2023-10-02 15:21:25'),
+(11, 9, '早晨歌單', 1, 251, 45, 0, '2023-10-02 15:21:25');
 
 -- --------------------------------------------------------
 

@@ -5,9 +5,12 @@
 .bannerpic {
     padding-bottom: 20px;
     @include layout(100%);
-
     img {
         width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+        display: none;
     }
 }
 
@@ -24,12 +27,19 @@
     .prodSort {
         width: 160px;
     }
+    @media screen and (max-width: 768px){
+        padding-top: 5%;
+    }
 }
 
 .ivu-breadcrumb {
     text-align: left;
     padding-left: 5%;
     padding-bottom: 50px;
+    @media screen and (max-width: 768px){
+        padding-top: 25%;
+        padding-bottom: 5px;
+    }
 }
 
 .ivu-page {
@@ -55,6 +65,9 @@ select {
         display: flex;
         flex-direction: column;
         margin: 0 1% 0 5%;
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
 
         h2 {
             color: $dark;
@@ -113,7 +126,6 @@ select {
             flex-wrap: wrap;
             justify-content: flex-start;
             gap: 4.5%;
-            //margin-left: 50px;
             margin-right: 50px;
 
             .prodCard {
@@ -125,6 +137,7 @@ select {
 
                 @media screen and (max-width: 768px) {
                     min-width: 40%;
+                    margin: 0 20px 110px;
                 }
 
                 .prodPic {
@@ -180,15 +193,20 @@ select {
 
 .shopcart {
     position: fixed;
-    bottom: 35px;
-    right: 100px;
+    bottom: 60px;
+    right: 25px;
     @include btnBgNone;
+    @media screen and (max-width: 768px){
+        bottom: 500px;
+        right: 25px;
+    }
 
     img {
         vertical-align: top;
         background-color: $tp;
         width: 70%;
     }
+    
 }
 
 .ivu-page {
