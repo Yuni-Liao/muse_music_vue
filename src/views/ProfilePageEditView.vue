@@ -7,7 +7,13 @@
         alt="CoverImage"
         :src="`${publicPath}dataimage/member/` + member[0].cover_pic"
       />
-      <input class="coverupdate" type="file" @change="coverImgChange($event)" />
+      <label for="coverImg" class="coverupdate"></label>
+      <input
+        id="coverImg"
+        style="display: none"
+        type="file"
+        @change="coverImgChange($event)"
+      />
       <!-- 頭貼 -->
       <div class="profile-container">
         <img
@@ -15,10 +21,12 @@
           alt="ProfileImage"
           :src="`${publicPath}dataimage/member/` + member[0].mem_pic"
         />
+        <label for="profileImg" class="profileupdate"></label>
         <input
+          id="profileImg"
           type="file"
           @change="profileImgChange($event)"
-          class="profileupdate"
+          style="display: none"
         />
       </div>
     </div>
