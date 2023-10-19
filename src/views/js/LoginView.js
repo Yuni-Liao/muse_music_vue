@@ -2,7 +2,7 @@ export default {
   data() {
     return {
       publicPath: process.env.BASE_URL,
-      
+
       member: [
         {
           mem_acc: "kimki@musemail.com",
@@ -49,13 +49,7 @@ export default {
       dataToSend.append("mem_acc", this.member[0].mem_acc);
       dataToSend.append("mem_psw", this.member[0].mem_psw);
       // 加這邊 - 廖妍榛
-      const url = new URL(
-        `${this.$store.state.phpPublicPath}logIn.php`);
-      // fetch("http://localhost/muse_music/public/api/logIn.php", {
-      //   method: "POST",
-      //   body: dataToSend,
-      // })
-      // 加這邊 - 廖妍榛
+      const url = new URL(`${this.$store.state.phpPublicPath}logIn.php`);
       fetch(url, {
         method: "POST",
         body: dataToSend,
