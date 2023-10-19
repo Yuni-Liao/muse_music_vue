@@ -14,12 +14,12 @@
       </div>
 
       <div class="header_nav_right">
-        <div class="search_reaction">
+        <!-- <div class="search_reaction">
           <div class="search_show">
             <input type="search" />
           </div>
           <img alt="search_icon" src="~@/assets/image/icon/search.png" />
-        </div>
+        </div> -->
         <div class="notify_dropdown_reaction">
           <img :alt="'bell_icon'" src="~@/assets/image/icon/bell.png" />
 
