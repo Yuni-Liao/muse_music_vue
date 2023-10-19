@@ -101,7 +101,7 @@ export default {
       // fetch 該會員未有專輯id的歌曲 ( 表示可以被加入專輯中 ) ，放入 noAlbumsongs 中
       const memid = this.login_mem_id;
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getNoAlbumsong.php?memid=${memid}`
+        `${this.$store.state.phpPublicPath}getNoAlbumsong.php?memid=${memid}`
       );
       fetch(apiURL)
         .then((res) => res.json())
