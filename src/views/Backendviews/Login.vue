@@ -1,36 +1,38 @@
 <template>
-    <div class="backend_login_wrap">
-        <div class="backend_login_logo">
-            <img src="../../../public/image/muse_logo_2.png" alt="">
-        </div>
-        <div class="backend_muse_login">
-            <Login @on-submit="login">
-                <UserName name="username" v-model="admin_acc[0].acc" />
-                <Password name="password" v-model="admin_acc[0].admin_psw" />
-                <Submit />
-            </Login>
-        </div>
+  <div class="backend_login_wrap">
+    <div class="backend_login_logo">
+      <img src="../../../public/image/muse_logo_2.png" alt="">
     </div>
+    <div class="backend_muse_login">
+      <Login @on-submit="login">
+        <UserName name="username" v-model="admin_acc[0].acc" />
+        <Password name="password" v-model="admin_acc[0].admin_psw" />
+        <!-- <Submit /> -->
+        <Submit>
+          <span slot="inner">登入</span>
+        </Submit>
+      </Login>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
-
 .backend_login_wrap {
-    height: 100vh;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: $dark;
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: $dark;
 
-    .backend_muse_login {
-        width: 400px !important;
-        margin: 60px auto;
-    }
+  .backend_muse_login {
+    width: 400px !important;
+    margin: 60px auto;
+  }
 
-    .backend_login_logo {
-        vertical-align: middle;
-    }
+  .backend_login_logo {
+    vertical-align: middle;
+  }
 }
 </style>
 
@@ -61,10 +63,10 @@ export default {
 
       dataToSend.append("acc", this.admin_acc[0].acc);
       dataToSend.append("admin_psw", this.admin_acc[0].admin_psw);
-  
+
       const url = new URL(
         `${this.$store.state.phpPublicPath}loginBackend.php`);
-     
+
       fetch(url, {
         method: "POST",
         body: dataToSend,
