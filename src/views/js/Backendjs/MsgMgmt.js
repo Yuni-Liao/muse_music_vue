@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            hasData: false,
+            // hasData: false,
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             columns: [
@@ -206,14 +206,14 @@ export default {
                 let selectedIds;
                 if (actionType === 'accept') {
                     // 提取選中的 msg_id
-                    selectedIds = selectedRows.map(row => row.msg_id); 
+                    selectedIds = selectedRows.map(row => row.msg_id);
                     // 執行批量下架
-                    this.acceptBatch(selectedIds); 
+                    this.acceptBatch(selectedIds);
                 } else if (actionType === 'delete') {
                     // 提取選中的 msgrep_id
-                    selectedIds = selectedRows.map(row => row.msgrep_id); 
+                    selectedIds = selectedRows.map(row => row.msgrep_id);
                     // 執行批量駁回
-                    this.deleteBatch(selectedIds); 
+                    this.deleteBatch(selectedIds);
                 }
             }
         }
@@ -239,17 +239,23 @@ export default {
                 }
             })
             .then((json) => {
-                if (json.length > 0) {
-                    // 如果有資料，設定 hasData 為 true
-                    this.hasData = true;
-                    // 把陣列中每個物件都添加編號
-                    for (let i = 0; i < json.length; i++) {
-                        json[i].no = i + 1;
-                    }
+                // 避免撈不到資料報錯 - 廖妍榛
+                if (Array.isArray(json)) {
                     this.msgDate = json;
                 } else {
-                    alert("沒有被檢舉的留言！");
+                    this.msgDate = [];
                 }
+                // if (json.length > 0) {
+                //     // 如果有資料，設定 hasData 為 true
+                //     this.hasData = true;
+                //     // 把陣列中每個物件都添加編號
+                //     for (let i = 0; i < json.length; i++) {
+                //         json[i].no = i + 1;
+                //     }
+                //     this.msgDate = json;
+                // } else {
+                //     alert("沒有被檢舉的留言！");
+                // }
             })
             .catch((error) => {
                 console.log(error.message);

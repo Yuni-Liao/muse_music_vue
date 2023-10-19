@@ -98,6 +98,7 @@ export default {
         submitForm() {
             const message = "將通過信箱回復您的詢問，請靜待回復並留意信箱訊息，謝謝您。";
             alert(message);
+            location.reload();
         },
     },
 

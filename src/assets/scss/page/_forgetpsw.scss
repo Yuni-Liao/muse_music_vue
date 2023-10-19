@@ -1,19 +1,32 @@
 .fog_wrapper{
     @include layout(100%);
     background: url(/public/image/Login/background_light.png) no-repeat center 78% / 100% ;
+    @include s{
+        background: none;
+    }
     .fog_inner{
         width: 62.5%;
         margin: auto;
         padding: 8% 0;
+        @include s{
+            width: 80%;
+        }
         form{
             font-size: $small;
             width: 35%;
             background-color: $white;
             margin: 5% auto;
             padding: 5% 0;
+            @include s{
+                width: 80%;
+                padding: 15% 0;
+            }
             h2{
                 font-size: $medium;
                 padding: 5% 0;
+                @include s{
+                    padding: 2% 0
+                }
             }
             input{
                 @include mini_Tag($tag);
@@ -41,8 +54,7 @@
             }
         }
         .step_2,
-        .step_3,
-        .step_4{
+        .step_3{
             button{
                 border:2px solid rgb(207, 207, 207);
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 3px;
@@ -54,6 +66,9 @@
 .ivu-steps {
     display: flex;
     width: 100%;
+    @include s{
+        margin: 25% 0;
+    }
 }
 /* 步驟區塊 */
 .ivu-steps-item{
@@ -68,6 +83,9 @@
     color:white;
     font-size: 20px;
     background-color: transparent;
+    @include s{
+        font-size: 16px;
+    }
 }
 /* 勾圖區塊 */
 .ivu-steps .ivu-steps-head,

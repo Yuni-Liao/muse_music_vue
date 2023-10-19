@@ -25,8 +25,7 @@ export default {
     const fetchNewsDetail = () => {
       const nid = this.$route.params.nid;
       const apiURL = new URL(
-        "${this.$store.state.phpPublicPath}getNewsDetail.php?nid=" +
-          encodeURIComponent(nid)
+        `${this.$store.state.phpPublicPath}getNewsDetail.php?nid=${encodeURIComponent(nid)}`
       );
       fetch(apiURL)
         .then((res) => res.json())
