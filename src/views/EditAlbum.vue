@@ -79,8 +79,7 @@
           <th class="timg"></th>
           <th class="tname">歌曲</th>
           <th class="tintro">歌曲簡介</th>
-          <th class="tshow">瀏覽權限</th>
-          <th class="tdate">更新日期</th>
+          <th class="tdate">更新時間</th>
           <th class="ttime"><fontAwesome :icon="['fa', 'fa-clock']" /></th>
           <th class="check"></th>
         </tr>
@@ -99,9 +98,6 @@
           </td>
           <td class="tname">{{ item.name }}</td>
           <td class="tintro">{{ item.s_intro }}</td>
-          <td class="tshow">
-            {{ Number(item.show_stat) ? "公開" : "私人" }}
-          </td>
           <td class="tdate">{{ item.s_update_date }}</td>
           <td class="ttime">{{ item.time }}</td>
           <td class="check">

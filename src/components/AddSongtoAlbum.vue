@@ -19,9 +19,8 @@
             <th class="simg"></th>
             <th>歌曲</th>
             <th>歌曲簡介</th>
-            <th>瀏覽權限</th>
-            <th></th>
-            <th></th>
+            <th>更新時間</th>
+            <th><fontAwesome :icon="['fa', 'fa-clock']" /></th>
             <th></th>
           </tr>
         </thead>
@@ -37,13 +36,18 @@
                 />
               </div>
             </td>
-            <td class="sname">{{ item.name }}</td>
+            <td class="sname">
+              <p style="text-align: center">{{ item.name }}</p>
+            </td>
             <td class="sintro">
               <p>{{ item.s_intro }}</p>
             </td>
-            <td>{{ item.show_stat }}</td>
-            <td>{{ item.s_update_date }}</td>
-            <td>{{ item.time }}</td>
+            <td>
+              <p style="text-align: center">{{ item.s_update_date }}</p>
+            </td>
+            <td>
+              <p style="text-align: center">{{ item.time }}</p>
+            </td>
             <td>
               <br />
               <label class="checkboxLabel">
@@ -137,7 +141,7 @@ export default {
   }
 
   .form1 {
-    text-align: left;
+    //text-align: left;
     align-items: left;
     justify-content: left;
     margin: auto;
@@ -262,11 +266,11 @@ export default {
     margin: auto;
     border-collapse: collapse;
   }
+
   .song-table th,
   .song-table td {
     border: 1px solid #ccc;
     padding: 10px;
-    text-align: left;
     margin-bottom: 20px;
     border-left: none;
     border-right: none;
@@ -277,7 +281,7 @@ export default {
 
   .song-table th {
     color: $white;
-    text-align: left;
+    text-align: center;
     height: 50%;
     white-space: nowrap;
     overflow: hidden;
@@ -307,6 +311,9 @@ export default {
   .sname {
     width: 15%;
     min-width: 100px;
+    p {
+      text-align: left;
+    }
   }
   .sintro {
     width: 40%;
@@ -318,6 +325,7 @@ export default {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
+      text-align: left;
     }
   }
   .song-table tr:hover {

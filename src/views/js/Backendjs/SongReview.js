@@ -20,7 +20,7 @@ export default {
         },
         {
           title: "提交時間",
-          key: "s_length",
+          key: "upload_date",
           width: 160,
           align: "center",
         },
