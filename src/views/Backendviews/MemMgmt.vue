@@ -9,11 +9,11 @@
         </Input>
         <Table size="large" highlight-row stripe class="mem_table cellHeight" width="1000" height="510" :columns="columns"
             :data="filteredData">
-            <template #pauseBtn="{ row }">
+            <!-- <template #pauseBtn="{ row }">
                 <Button :type="row.paused ? 'success' : 'error'" @click="togglePause(row)" id="pauseBtn" v-padding="5">
                     {{ row.paused ? '復權' : '停權' }}
                 </Button>
-            </template>
+            </template> -->
         </Table>
     </div>
 </template>
