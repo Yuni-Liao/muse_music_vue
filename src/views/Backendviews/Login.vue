@@ -4,18 +4,17 @@
             <img src="../../../public/image/muse_logo_2.png" alt="">
         </div>
         <div class="backend_muse_login">
-            <!-- 功能我先註解掉, 真正寫功能時要用可以解開 by yuni-->
-            <!-- <Login @on-submit="handleSubmit"> -->
-            <Login>
-                <UserName name="username" value="aresn" />
-                <Password name="password" value="iamadmin" />
-                <Submit to="/backend" />
+            <Login @on-submit="login">
+                <UserName name="username" v-model="admin_acc[0].acc" />
+                <Password name="password" v-model="admin_acc[0].admin_psw" />
+                <Submit />
             </Login>
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
+
 .backend_login_wrap {
     height: 100vh;
     display: flex;
@@ -35,17 +34,58 @@
 }
 </style>
 
-<!-- <script>
+<script>
 export default {
-    methods: {
-        handleSubmit(valid, { username, password }) {
-            if (valid) {
-                this.$Modal.info({
-                    title: '输入的内容如下：',
-                    content: 'username: ' + username + ' | password: ' + password
-                });
-            }
-        }
-    }
-}
-</script> -->
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+      admin_acc: [
+        {
+          acc: "admin2",
+          admin_psw: "678901",
+          name: "管理員2號",
+        },
+      ],
+      login_admin_id: "",
+      emailInvalid: false,
+      passwordInvalid: false,
+      showPassword: false,
+      adminData: {},
+    };
+  },
+  methods: {
+    login() {
+      console.log("登入中...");
+
+      const dataToSend = new FormData();
+
+      dataToSend.append("acc", this.admin_acc[0].acc);
+      dataToSend.append("admin_psw", this.admin_acc[0].admin_psw);
+  
+      const url = new URL(
+        `${this.$store.state.phpPublicPath}loginBackend.php`);
+     
+      fetch(url, {
+        method: "POST",
+        body: dataToSend,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === "登入成功") {
+            alert("登入成功");
+
+            const admin_id = data.admin_id;
+            const name = data.name;
+            localStorage.setItem("admin_id", admin_id);
+            localStorage.setItem("name", name);
+
+            window.location.href = `${this.$store.state.linkPublicPath}backend`;
+          } else {
+            alert(data.error || "帳號密碼不正確");
+          }
+        });
+    },
+
+  },
+};
+</script>
