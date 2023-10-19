@@ -24,7 +24,7 @@ export default {
     mounted() {
         const fetchNewsDetail = () => {
           const nid = this.$route.params.nid;
-          const apiURL = new URL("http://localhost/muse_music/public/api/getNewsDetail.php?nid=" + encodeURIComponent(nid));
+          const apiURL = new URL(`${this.$store.state.phpPublicPath}getNewsDetail.php?nid=${nid}`);
           fetch(apiURL)
           .then((res) => res.json())
           .then((res) => (this.newsList= res))
