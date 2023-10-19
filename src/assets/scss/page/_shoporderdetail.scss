@@ -2,6 +2,9 @@
     background-color: $white;
     color: $dark;
     padding: 170px 0 80px;
+    @include s {
+        padding: 140px 0 100px;
+    }
     .warp{
         max-width: 1200px;
         width: 100%;
@@ -9,14 +12,27 @@
         .return{
             padding-bottom: 50px;
             padding-left: 10px;
+            @include s {
+                padding-bottom: 30px;
+                padding-left: 25px;
+            }
             a{
                 display: flex;
                 align-items: center;
                 color: $dark;
+                transition: all .3s;
                 .txt{
                     font-size: $small;
                     padding-left: 15px;
+                    @include s {
+                        font-size: $pS;
+                        padding-left: 10px;
+                    }
                 }
+            }
+            a:hover{
+                transition: all .3s;
+                color: $pink;
             }
         }
         .order{
@@ -25,12 +41,21 @@
                 font-size: $medium;
                 padding: 50px 0 30px;
                 border-bottom: 2px solid $dark;
+                @include s {
+                    font-size: $pM;
+                    padding:30px 0 15px;
+                    width: 92%;
+                    margin: auto;
+                }
             }
             .course{
                 display: flex;
                 justify-content: center;
                 .item{
                     padding: 60px 0 100px;
+                    @include s {
+                        padding: 40px 0 70px;
+                    }
                     .frame{
                         width: 120px;
                         height: 120px;
@@ -39,21 +64,36 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        @include s {
+                            width: 70px;
+                            height: 70px;
+                        }
                         .pic{
                             color: $dark;
                             font-size: 35px;
+                            @include s {
+                                font-size: 30px;
+                            }
                         }
                     }
                     
                     .txt{
                         font-size: $small;
                         padding-top: 30px;
+                        @include s {
+                            font-size: $pS;
+                            padding-top: 20px;
+                        }
                     }
                 }
                 .line{
                     width: 120px;
                     height: 60px;
                     margin-top: 60px;
+                    @include s {
+                        width: 10px;
+                        margin-top: 20px;
+                    }
                 }
                 .active{
                     border-bottom: 3px solid $dark;
@@ -77,15 +117,30 @@
                 background-color: $dark;
                 color: $white;
                 padding: 20px 0;
+                @include s {
+                    font-size: $pXS;
+                    width: 95%;
+                    margin: auto;
+                }
+                
             }
             .main{
                 display: flex;
                 align-items: center;
                 font-size: $default;
                 border-bottom: 2px solid #eee;
+                @include s {
+                    width: 95%;
+                    font-size: $pS;
+                    margin: auto;
+                }
                 .product_pic{
                     padding: 40px 60px;
+                    @include s {
+                        padding: 15px 8px;
+                    }
                 }
+
             }
             .order_item{
                 width: 16%;
@@ -107,14 +162,27 @@
                 border-radius: 10px;
                 padding: 40px 0;
                 margin: 90px 0 50px;
+                @include s {
+                    width: 95%;
+                    font-size: $pS;
+                    display: block;
+                    margin: 50px auto 40px;
+                    padding: 20px 30px;
+                }
                 .list{
                     text-align: left;
                     .item{
                         padding: 20px 0;
+                        @include s {
+                            padding: 10px 0;
+                        }
                     }
                     .totalprice{
                         color: $pink;
                         font-size: $small;
+                        @include s {
+                            font-size: $pM;
+                        }
                     }
                 }
             }
