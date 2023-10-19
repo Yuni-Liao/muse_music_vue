@@ -19,7 +19,7 @@
         text-align: left;
 
         @media screen and (max-width: 768px) {
-            @include layout(100%);
+            @include layout(90%);
         }
 
         .mainInf {
@@ -27,10 +27,16 @@
             display: flex;
             margin-bottom: 10%;
             align-items: center;
+            @media screen and (max-width: 768px){
+                flex-direction: column;
+            }
 
             .pic {
                 width: 50%;
                 margin-right: 7%;
+                @media screen and (max-width: 768px){
+                    width: 95%;
+                }
 
                 .image-wrapper {
                     position: relative;
@@ -38,6 +44,9 @@
                     overflow: hidden;
                     border-radius: 6px 6px 0px 0px;
                     border: 1px solid $dark;
+                    @media screen and (max-width: 768px){
+                        margin-bottom: 10px;
+                    }
 
                     img {
                         position: absolute;
@@ -54,6 +63,9 @@
 
                 width: 50%;
                 line-height: $fh;
+                @media screen and (max-width: 768px){
+                    width: 100%;
+                }
 
                 .title {
                     font-size: $big;
@@ -94,6 +106,9 @@
 
                     display: flex;
                     justify-content: space-between;
+                    @media screen and (max-width: 768px){
+                        flex-direction: column;
+                    }
 
                     .prodCount {
                         display: flex;
@@ -114,6 +129,9 @@
 
                     .obj_Radius {
                         margin: 10px;
+                        @media screen and (max-width: 768px){
+                            margin: 10px 0;
+                        }
                     }
                 }
             }
@@ -145,9 +163,13 @@
 
 .shopcart {
     position: fixed;
-    bottom: 35px;
-    right: 100px;
+    bottom: 60px;
+    right: 25px;
     @include btnBgNone;
+    @media screen and (max-width: 768px){
+        bottom: 500px;
+        right: 25px;
+    }
 
     img {
         vertical-align: top;

@@ -35,7 +35,7 @@
           :key="news.news_id"
           class="activityInfo"
         >
-          <div class="calender">
+          <div class="calender phonehidden">
             <div class="month">{{ news.month }}月</div>
             <p>{{ news.day }}日</p>
             <p>星期{{ news.chinese_day_of_week }}</p>
@@ -48,8 +48,18 @@
               />
             </div>
             <div class="info" @click="gotoNewsDetail(news.news_id)">
-              <p>{{ news.news_name }}</p>
+              <p>
+                {{ news.news_name }}
+                <span class="btn phoneshow">
+                  <FolBtnBig :functype="2" :folnum="news.news_id" />
+                </span>
+              </p>
               <p>{{ news.news_place }}</p>
+              <p class="phoneshow">
+                {{ news.month }}/{{ news.day }}日 ({{
+                  news.chinese_day_of_week
+                }})
+              </p>
               <div class="followSinger">
                 <div class="singer">
                   <fontAwesome
@@ -61,7 +71,7 @@
               </div>
             </div>
           </div>
-          <div class="btn">
+          <div class="btn phonehidden">
             <FolBtnBig :functype="2" :folnum="news.news_id" />
           </div>
         </li>
@@ -83,13 +93,17 @@
                 <!-- 當AKA沒有和name同名或不是空值，則顯示AKA -->
                 {{ item.mem_name }}
                 <span
+                  class="phonehidden"
                   v-if="item.mem_aka != item.mem_name && item.mem_aka != null"
                   >（{{ item.mem_aka }}）</span
                 >
+                <span class="btn phoneshow">
+                  <FolBtnBig :functype="1" :folnum="item.cre_id" />
+                </span>
               </h2>
               <p>{{ item.mem_acc }}</p>
             </div>
-            <div class="btn">
+            <div class="btn phonehidden">
               <FolBtnBig :functype="1" :folnum="item.cre_id" />
             </div>
           </li>
@@ -112,14 +126,19 @@ export default {
       login_mem_id: "",
       cre_fol: [],
       news_fol: [],
+      PC: false,
     };
   },
   computed: {},
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
-    if (this.login_mem_id != undefined) {
+    if (this.login_mem_id == undefined) {
+      alert("使用會員功能，請先進行登入");
+      this.$router.push({
+        name: "login",
+      });
+    } else {
       fetch(
-        // 加這邊 - 廖妍榛
         `${this.$store.state.phpPublicPath}getMemFol.php?mem_id=${this.login_mem_id}`
       )
         .then((res) => res.json())
@@ -154,6 +173,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// RWD
+.phonehidden {
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+.phoneshow {
+  display: none;
+  @media screen and (max-width: 800px) {
+    display: inline-block;
+  }
+}
 .myfol {
   @include layout(1200px);
   padding: 150px 30px;
@@ -204,6 +235,9 @@ export default {
     padding: 60px 0px;
     .btn {
       margin: 0 20px 0 50px;
+      @media screen and (max-width: 800px) {
+        margin: 0 0 0 20px;
+      }
       #FolBtnBig {
         line-height: 1.5;
       }
@@ -251,6 +285,9 @@ export default {
         .pic {
           width: 160px;
           height: 110px;
+          @media screen and (max-width: 650px) {
+            display: none;
+          }
           img {
             width: 100%;
             height: 100%;
@@ -282,6 +319,9 @@ export default {
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
+            @media screen and (max-width: 650px) {
+              display: none;
+            }
             .singer {
               background-color: $pink;
               border-radius: 30px;
@@ -312,6 +352,11 @@ export default {
           overflow: hidden;
           margin-right: 50px;
           cursor: pointer;
+
+          @media screen and (max-width: 650px) {
+            @include rect(60px);
+            margin-right: 10px;
+          }
           img {
             width: 100%;
             height: 100%;
@@ -324,11 +369,18 @@ export default {
           color: #fff;
           line-height: 1.6;
           margin-right: 50px;
+          @media screen and (max-width: 650px) {
+            margin-right: 10px;
+          }
           h2 {
             font-weight: bolder;
             font-size: $small;
+            @media screen and (max-width: 650px) {
+              font-size: 12px;
+            }
             margin-bottom: 5px;
             cursor: pointer;
+            width: 100%;
           }
           p {
             font-size: $tag;

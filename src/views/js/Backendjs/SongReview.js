@@ -183,7 +183,7 @@ export default {
             } else {
               alert("歌曲審核通過");
               window.location.reload();
-              //window.location.href = "/home/profilepageedit";
+              //window.location.href = `${this.$store.state.publicURL}/home/profilepageedit`;
             }
           })
           .catch((error) => {
@@ -221,7 +221,7 @@ export default {
             } else {
               alert("歌曲駁回");
               window.location.reload();
-              //window.location.href = "/backend/songreview";
+              //window.location.href = `${this.$store.state.linkPublicPath}backend/songreview`;
             }
           })
           .catch((error) => {

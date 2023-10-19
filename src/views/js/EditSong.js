@@ -54,7 +54,7 @@ export default {
             } else {
               alert("編輯完成");
               window.location.reload();
-              window.location.href = "/home/profilepageedit";
+              window.location.href = `${this.$store.state.linkPublicPath}home/profilepageedit`;
               // this.$router.push({
               //   path: "profilepageedit",
               // });

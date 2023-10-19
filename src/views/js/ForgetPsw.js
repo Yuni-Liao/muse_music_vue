@@ -8,7 +8,8 @@ export default {
             email: '',
             verificationCode: '',
             password: '',
-            confirmPassword: '',    
+            confirmPassword: '',
+            fetchEmail:[]    
         }
     },
     methods: {
@@ -53,12 +54,23 @@ export default {
                     console.log(error.message);
                 });
         },
-
     },
     computed: {
         isEmailValid(){
-            const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-            return emailRegex.test(this.email);
+            return this.fetchEmail.some(item => item.email === this.email);
         }
+    },
+    mounted() {
+        const fetchMail = () => {
+            const apiURL = new URL(
+                `${this.$store.state.phpPublicPath}getFindMember.php?`
+            );
+            fetch(apiURL).then(async (response) => {
+                this.fetchEmail = await response.json();
+            });
+            // console.log('fetchEmail:', this.fetchEmail);
+        };
+        fetchMail();
+
     },
 }

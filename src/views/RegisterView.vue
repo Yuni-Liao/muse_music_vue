@@ -7,7 +7,7 @@
                 <Step title="帳號密碼設定"></Step>
                 <Step title="完成註冊"></Step>
             </Steps>
-            <form class="step_1" action="" method="POST" @submit.prevent >
+            <form class="step_1" action="" method="POST" v-if="current === 0" @submit.prevent >
                 <h2>會員註冊</h2>
                 <input type="text" placeholder="請輸入姓名" v-model="member[0].mem_name" required>
                 <input type="text" placeholder="請輸入暱稱" v-model="member[0].mem_aka" required>
@@ -19,26 +19,27 @@
                 <button class="btn_L_NoBorder obj_Radius submit" @click="registerAccountToDatabase">註冊</button>
             </form>
             
-            <form class="step_2" action="" v-if="current === 1" @submit.prevent>
+            <form class="step_2" v-if="current === 1" @submit.prevent="sendVerificationEmail">
                 <h2>信箱驗證</h2>
                 <input type="text" placeholder="請輸入驗證碼" v-model="verificationCode" required>
                 <br>
-                <button class="btn_L_NoBorder">重新發送驗證碼</button>
+                <button class="btn_L_NoBorder" @click="sendVerificationEmail">發送驗證碼</button>
                 <br>
                 <button class="btn_L_NoBorder" @click="prev">返回上一步</button>
                 <br>
-                <button class="btn_L_NoBorder obj_Radius submit" @click="next" :disabled="!verificationCode">進行驗證</button>
+                <button class="btn_L_NoBorder obj_Radius submit" type="submit"  @click="next">進行驗證</button>
                 <div class="error-message" v-if="!verificationCode">請輸入驗證碼</div>
             </form>
+            
             <form class="step_3" action="" v-if="current === 2" @submit.prevent>
                 <h2>帳號密碼設定</h2>
-                <input type="account" placeholder="請設定帳號" v-model="mem_acc" required>
-                <input type="password" placeholder="請設定密碼" v-model="mem_psw" required>
+                <input type="account" placeholder="請設定帳號" v-model="member[0].mem_acc" required>
+                <input type="password" placeholder="請設定密碼" v-model="member[0].mem_psw" required>
                 <input type="password" placeholder="請確認密碼" v-model="confirmPassword" required>
                 <br>
                 <button class="btn_L_NoBorder obj_Radius" @click="prev">返回上一步</button>
-                <button class="btn_L_NoBorder obj_Radius submit" @click="next"
-                    :disabled="!password || !confirmPassword || password !== confirmPassword">完成註冊</button>
+                <button class="btn_L_NoBorder obj_Radius submit" @click="registerPSWToDatabase"
+                   >完成註冊</button>
                 <div class="error-message" v-if="!password || !confirmPassword || password !== confirmPassword">請確認密碼是否一致
                 </div>
             </form>
@@ -55,6 +56,7 @@
 </template>
 
 <script src="./js/RegisterView.js"></script>
+
 <style lang="scss"> //註冊頁不下scoped
  @import "~@/assets/scss/page/_register.scss";
 </style>

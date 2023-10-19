@@ -5,19 +5,20 @@
 </template>
 <style>
 /* 隱藏全站scrollbar */
-html {
+/* html {
   overflow-y: -moz-hidden-unscrollable;
-  /* height: 100%; */
-}
+  height: 100%;
+} */
 
-@media screen and (max-width: 800px) {
-  body::-webkit-scrollbar {
-    /* width: 10px; */
+/* 隱藏滾軸 */
+@media screen and (min-width: 1200px) {
+  html::-webkit-scrollbar {
+    width: 10px;
     background-color: #23232330;
     border-radius: 10px;
   }
 
-  body::-webkit-scrollbar-thumb {
+  html::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-image: -webkit-gradient(
       linear,
@@ -28,13 +29,15 @@ html {
     );
   }
 }
-body {
+html {
   -ms-overflow-style: scrollbar;
+}
+body {
   /* height: 100%; */
   width: 100%;
   box-sizing: border-box;
   /* width: calc(100vw + 18px); */
-  overflow-y: scroll;
-  overflow-x: hidden;
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
 }
 </style>
