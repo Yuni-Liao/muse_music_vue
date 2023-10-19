@@ -15,6 +15,7 @@
         }
         .recent, .history, .change{
             cursor: pointer;
+            transition: all .3s;
         }
         .change{
             margin: 0 60px;
@@ -23,6 +24,10 @@
             @include s {
                 margin: 0 40px;
             }
+        }
+        .recent:hover, .history:hover{
+            transition: all .3s;
+            color: #ff5c95;
         }
     }
     .active{

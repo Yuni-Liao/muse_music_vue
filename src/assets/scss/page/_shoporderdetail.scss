@@ -20,6 +20,7 @@
                 display: flex;
                 align-items: center;
                 color: $dark;
+                transition: all .3s;
                 .txt{
                     font-size: $small;
                     padding-left: 15px;
@@ -28,6 +29,10 @@
                         padding-left: 10px;
                     }
                 }
+            }
+            a:hover{
+                transition: all .3s;
+                color: $pink;
             }
         }
         .order{

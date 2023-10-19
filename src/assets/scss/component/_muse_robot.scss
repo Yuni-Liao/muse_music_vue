@@ -110,6 +110,7 @@
                         position: absolute;
                         top: 10px;
                         right: 0;
+
                         @include s {
                             top: 5px;
                         }
@@ -130,6 +131,10 @@
                         .close:nth-child(2) {
                             rotate: -45deg;
                         }
+                    }
+                    .closebtn:hover .close{
+                        transition: background-color .2s;
+                        background-color: $blue;
                     }
                 }
 
