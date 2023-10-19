@@ -1,17 +1,19 @@
 .about{
-
     // banner圖
     .banner{
         position: relative;
         .bannerpic{
+            overflow-x: hidden;
             width: 100%;
             margin-top: 85px;
-            @include s {
-                transform: scale(1.5) translate(-60px, 0px);
-            }
             img{
                 width: 100%;
                 vertical-align: bottom;
+                @include s {
+                    width: 160%;
+                    margin-left: 0;
+                    transform:translate(-30%, 0px);
+                }
             }
             
         }
@@ -30,23 +32,23 @@
             top: 30%;
             left: 5%;
             @include s {
-                top: 155%;
+                top: 120%;
             }
         }
         .en{
             font-size: 60px;
             @include s {
                 font-size: 45px;
-                margin-left: 5px;
+                // margin-left: 5px;
             }
         }
         .ch{
             top: 50%;
             margin-left: 40px;
             @include s {
-                top: 202%;
+                top: 150%;
                 font-size: 23px;
-                margin-left: 22px;
+                margin-left: 5px;
             }
         }
     }
@@ -83,7 +85,7 @@
                 @include s {
                     letter-spacing: .8px;
                     line-height: 2;
-                    padding: 250px 0 50px;
+                    padding: 230px 0 50px;
                 }
             }
 
