@@ -1,29 +1,14 @@
 <template>
   <div class="song_review_table_box">
     <h1>歌曲管理 | 歌曲審核管理</h1>
-    <Input
-      v-model="searchdata"
-      placeholder="輸入歌曲編號或名稱"
-      style="width: 180px; margin-bottom: 5%; margin-left: 60%"
-    >
-      <Input v-model="value" />
-      <template #append>
-        <Button
-          icon="ios-search"
-          @click="songReviewSearchBtn()"
-          style="background-color: #515a6e; color: #fff"
-        ></Button>
-      </template>
+    <Input v-model="searchdata" placeholder="輸入歌曲編號或名稱" style="width: 180px; margin-bottom: 2%; margin-left: 60%">
+    <Input v-model="value" />
+    <template #append>
+      <Button icon="ios-search" @click="songReviewSearchBtn()" style="background-color: #515a6e; color: #fff"></Button>
+    </template>
     </Input>
     <div class="content">
-      <Table
-        width="1000"
-        highlight-row
-        stripe
-        class="song_review_table cellHeight"
-        :columns="columns"
-        :data="filterdata"
-      >
+      <Table width="1000" highlight-row stripe class="song_review_table cellHeight" :columns="columns" :data="filterdata">
         <template #reviewBtn="{ row }">
           <Button type="warning" @click="editBtn(row)"> 審核 </Button>
         </template>
@@ -43,35 +28,21 @@
         <!-- 歌曲名稱 -->
         <p>歌曲名稱</p>
         <div class="group">
-          <input
-            type="text"
-            id="bannerLink"
-            v-model="editItem.s_name"
-            readonly
-          />
+          <input type="text" id="bannerLink" v-model="editItem.s_name" readonly />
         </div>
 
         <!-- 播放歌曲 -->
         <p>試聽</p>
         <div class="play group">
-          <span>{{ editItem.s_src }}</span
-          ><span v-show="isplay == false"
-            ><fontAwesome
-              class="i"
-              :icon="['fa', 'play']"
-              type="text"
-              id="playsong"
-              @click="play()"
-          /></span>
+          <span>{{ editItem.s_src }}</span><span v-show="isplay == false">
+            <fontAwesome class="i" :icon="['fa', 'play']" type="text" id="playsong" @click="play()" />
+          </span>
           <span v-show="isplay == true">
-            <fontAwesome class="i" :icon="['fa', 'fa-stop']" @click="pause()"
-          /></span>
+            <fontAwesome class="i" :icon="['fa', 'fa-stop']" @click="pause()" />
+          </span>
 
           <audio id="myAudio" @ended="isplay = false">
-            <source
-              :src="`${publicPath}audio/${editItem.s_src}`"
-              type="audio/mpeg"
-            />
+            <source :src="`${publicPath}audio/${editItem.s_src}`" type="audio/mpeg" />
           </audio>
         </div>
         <!-- 類別 -->
@@ -223,17 +194,10 @@
           </div>
         </div>
         <div class="btngroup">
-          <button
-            @click.prevent="reject()"
-            class="default_Btn obj_Radius closeBtn"
-            type="warning"
-          >
+          <button @click.prevent="reject()" class="default_Btn obj_Radius closeBtn" type="warning">
             駁回
           </button>
-          <button
-            @click.prevent="approve()"
-            class="saveBtn default_Btn obj_Radius"
-          >
+          <button @click.prevent="approve()" class="saveBtn default_Btn obj_Radius">
             批准
           </button>
         </div>

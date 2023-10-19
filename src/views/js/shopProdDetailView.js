@@ -1,6 +1,7 @@
 export default {
     data() {
         return {
+            login_mem_id: "",
             // 讓圖片 build 之後能顯示
             publicPath: process.env.BASE_URL,
             //用來存儲查找到的商品物件
@@ -10,6 +11,15 @@ export default {
         };
     },
     methods: {
+        checkLogin() {
+            if (this.login_mem_id === null) {
+                alert("使用會員功能，請先進行登入");
+                this.$router.push({ name: "login" });
+            } else {
+                // 導向到購物車頁面
+                this.$router.push({ name: "shoppingsteps" });
+            }
+        },
         fetchProdDetail() {
             fetch(`http://localhost/muse_music/public/api/getProducts.php`).then(async (response) => {
                 this.products = await response.json();
@@ -72,6 +82,7 @@ export default {
     },
     //根據路由參數中的 id 值來查找並定位
     mounted() {
+        this.login_mem_id = localStorage.getItem('mem_id');
         this.fetchProdDetail();
     },
 }

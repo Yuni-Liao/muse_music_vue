@@ -1,5 +1,8 @@
 main{
     position: relative;
+    .btn_box{
+        width: 50px;
+    }
     .homecarousel_box{
         display: flex;
         flex-flow: column wrap;
