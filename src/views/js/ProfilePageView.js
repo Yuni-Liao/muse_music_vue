@@ -192,7 +192,7 @@ export default {
     //歌單撥放器使用
     fetchSlSong() {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getAllSlSong.php`
+        `${this.$store.state.phpPublicPath}getAllSlSong.php`
       );
       fetch(apiURL)
         .then((res) => res.json())
