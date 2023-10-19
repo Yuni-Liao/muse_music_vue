@@ -1,5 +1,5 @@
 <template>
-  <div class="topncenter">
+  <div class="topncenter" v-title :data-title="newsList.news_name">
     <div class="infoTop">
       <img :src="`${publicPath}dataimage/news/${newsList.news_pic}`" alt="" />
       <div class="intro">
