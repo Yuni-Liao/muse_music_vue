@@ -2,10 +2,11 @@ export default {
   data() {
     return {
       publicPath: process.env.BASE_URL,
+      
       member: [
         {
-          mem_acc: "",
-          mem_psw: "",
+          mem_acc: "kimki@musemail.com",
+          mem_psw: "123456",
           mem_name: "",
         },
       ],
@@ -27,7 +28,7 @@ export default {
       console.log("登入中...");
 
       // 錯誤驗證 暫定
-      if (!this.validateEmail(this.member.mem_acc)) {
+      if (!this.validateEmail(this.member[0].mem_acc)) {
         this.emailInvalid = true;
         alert("請輸入有效的電子信箱，需有1個英文或數字");
         return;
@@ -35,7 +36,7 @@ export default {
         this.emailInvalid = false;
       }
 
-      if (!this.validatePassword(this.member.mem_psw)) {
+      if (!this.validatePassword(this.member[0].mem_psw)) {
         this.passwordInvalid = true;
         alert("請輸入有效的密碼，需有1個英文或數字");
         return;
@@ -45,8 +46,8 @@ export default {
 
       const dataToSend = new FormData();
 
-      dataToSend.append("mem_acc", this.member.mem_acc);
-      dataToSend.append("mem_psw", this.member.mem_psw);
+      dataToSend.append("mem_acc", this.member[0].mem_acc);
+      dataToSend.append("mem_psw", this.member[0].mem_psw);
       // 加這邊 - 廖妍榛
       const url = new URL(
         `${this.$store.state.phpPublicPath}logIn.php`);

@@ -20,12 +20,12 @@ export default {
                 ord_add: '',
                 ord_ship: '',
                 ord_pay: '',
-                ord_id:'',
+                ord_id: '',
             }],
 
             //凱芸 購物車 ▼
             cartItems: [], // 存放購物車商品列表
-            total: 0, // 總金額預設0元
+            total: '', // 總金額預設0元
         };
     },
     computed: {
@@ -36,6 +36,9 @@ export default {
 
             return this.districts[this.selectedCounty];
         },
+        total(){
+            return JSON.parse(localStorage.getItem('total'))
+        }
     },
     watch: {
         selectedCounty: function () {
@@ -174,7 +177,9 @@ export default {
                 dataToSend.append("ord_add", this.orders[0].ord_add);
                 dataToSend.append("ord_ship", this.orders[0].ord_ship);
                 dataToSend.append("ord_pay", this.orders[0].ord_pay);
-                dataToSend.append("mem_id", this.login_mem_id); 
+                dataToSend.append("mem_id", this.login_mem_id);
+                // dataToSend.append("ord_total_price", localStorage.getItem("total")); 沒有computed可以用這個
+                dataToSend.append("ord_total_price", this.total);
 
                 // 使用 fetch 送出 POST 請求到伺服器
                 fetch(`${this.$store.state.phpPublicPath}postShoppingDetail.php`, {

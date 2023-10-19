@@ -95,9 +95,9 @@
           <label for="ship" class="label">運送方式</label>
           <select id="ship" v-model="orders[0].ord_ship">
             <option value="">請選擇運送方式</option>
-            <option value="standard">宅配</option>
-            <option value="express">郵局</option>
-            <option value="express">超商</option>
+            <option value="宅配">宅配</option>
+            <option value="郵局">郵局</option>
+            <option value="超商">超商</option>
           </select>
           <span v-if="errors.shippingMethod" class="error">{{
             errors.shippingMethod
@@ -106,9 +106,9 @@
           <label for="pay" class="label">付款方式</label>
           <select id="pay" v-model="orders[0].ord_pay">
             <option value="">請選擇付款方式</option>
-            <option value="credit_card">信用卡</option>
-            <option value="paypal">PayPal</option>
-            <option value="credit_card">貨到付款</option>
+            <option value="信用卡">信用卡</option>
+            <option value="PayPal">PayPal</option>
+            <option value="貨到付款">貨到付款</option>
           </select>
           <span v-if="errors.paymentMethod" class="error">{{
             errors.paymentMethod

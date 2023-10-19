@@ -13,7 +13,7 @@
             <input
               type="email"
               id="email"
-              v-model="member.mem_acc"
+              v-model="member[0].mem_acc"
               name="username"
               required
               placeholder="請輸電子信箱"
@@ -25,7 +25,7 @@
           <div class="form-group">
             <input
               id="password"
-              v-model="member.mem_psw"
+              v-model="member[0].mem_psw"
               name="password"
               required
               placeholder="請輸入密碼"
