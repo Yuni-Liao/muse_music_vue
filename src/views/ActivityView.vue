@@ -259,9 +259,9 @@
             @click="gotoNewsDetail(news.news_id)"
             :src="`${publicPath}dataimage/news/${news.news_pic}`"
           />
-          <div class="info" @click="gotoNewsDetail(news.news_id)">
-            <p>{{ news.news_name }}</p>
-            <p>{{ news.news_place }}</p>
+          <div class="info" >
+            <p @click="gotoNewsDetail(news.news_id)">{{ news.news_name }}</p>
+            <p @click="gotoNewsDetail(news.news_id)">{{ news.news_place }}</p>
             <div class="followSinger">
               <div class="singer">
                 <fontAwesome
