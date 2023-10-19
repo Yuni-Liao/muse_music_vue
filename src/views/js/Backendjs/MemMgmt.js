@@ -16,13 +16,13 @@ export default {
                     title: '帳號',
                     key: 'mem_acc',
                     align: 'center',
-                    width: 240,
+                    width: 285,
                 },
                 {
                     title: '使用者名稱',
                     key: 'mem_name',
                     align: 'center',
-                    width: 210,
+                    width: 255,
                 },
                 {
                     title: '粉絲數量',
@@ -41,12 +41,12 @@ export default {
                     align: 'center',
                     width: 120,
                 },
-                {
-                    title: '操作',
-                    slot: 'pauseBtn',
-                    align: 'center',
-                    width: 90,
-                }
+                // {
+                //     title: '操作',
+                //     slot: 'pauseBtn',
+                //     align: 'center',
+                //     width: 90,
+                // }
                 // {
                 //     title: '更多',
                 //     slot: 'viewBtn',

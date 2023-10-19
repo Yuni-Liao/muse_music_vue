@@ -50,7 +50,6 @@ h1{
     @include s{
         width: 100%;
     }
-
     .songList {
         @include layout(100%);
         margin: 5% 0 2% 0;
@@ -59,7 +58,7 @@ h1{
             padding: 0 0 45% 0;
         }
         table {
-            @include layout(70%);
+            @include layout(65%);
             .listTitle th{
                 padding: 1%;
                 @include s{
@@ -69,6 +68,15 @@ h1{
             .member{
                 @include s{
                     display: none;
+                }
+            }
+            //倒數兩個--更多按鈕
+            tbody .songArea:last-child,
+            tbody .songArea:nth-last-child(2){
+                .moreBtnAlert{
+                    @include s{
+                        top: -180%;
+                    }
                 }
             }
             .songArea {

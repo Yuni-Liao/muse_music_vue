@@ -63,7 +63,7 @@
             <div class="item">
                 <p>訂單狀態：</p>
                 <Select v-model="editItem.ord_stat" :disabled="editItem.ord_stat === '已取消' || editItem.ord_stat === '已完成'" style="width:200px;">
-                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                    <Option v-for="item in cityList" :value="item.value" :key="item.value" class="select_into">{{ item.label }}</Option>
                 </Select>
             </div>
         </div>
