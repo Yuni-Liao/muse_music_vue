@@ -10,7 +10,7 @@
         <div class="robot">
             <div class="container">
                 <div class="main">
-                    <div class="box">
+                    <div class="box_faq">
                         <div class="title">
                             <img :src="`${publicPath}image/icon/robot_in.svg`" alt="logo" class="logo" /> <!-- logo -->
                             <span class="title-hn">MUSE 智慧客服</span>
