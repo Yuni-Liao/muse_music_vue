@@ -108,6 +108,10 @@
         <img src="~@/assets/image/icon/development.png" />
         <p>個人管理頁面</p>
       </router-link>
+      <router-link to="/home/about" @click="isNavVisible = false">
+        <img src="~@/assets/image/icon/navlogo.png" />
+        <p>關於謬思</p>
+      </router-link>
 
       <p style="margin: 30px 0px 20px 25px; font-size: 20px">我的音樂庫</p>
 
