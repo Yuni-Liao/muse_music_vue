@@ -1,6 +1,9 @@
 <template>
     <div class="homecarousel_box">
         <h1>網站資訊管理 | 首頁輪播管理</h1>
+        <div class="btn_box" style="margin-bottom: 1%; margin-left: 60%">
+            <Button type="primary" @click="createCar()" class="car_add">新增</Button>
+        </div>
         <Table highlight-row stripe class="homecarousel_table cellHeight" width="1000" height="450" :columns="columns"
             :data="carouselItem">
             <template #upDownBtn="{ row }">
@@ -14,9 +17,9 @@
                 <fontAwesome @click="deleteBtn(row)" :icon="['fa', 'trash']" style="cursor: pointer;" />
             </template>
         </Table>
-        <div class="btn_box">
+        <!-- <div class="btn_box">
             <Button type="primary" @click="createCar()" class="car_add" style="margin: 50px 0px;">新增</Button>
-        </div>
+        </div> -->
     </div>
     <!-- 新增輪播彈窗 -->
     <div v-if="addBox == true" class="addCar obj_Radius">

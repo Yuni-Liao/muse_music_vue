@@ -215,6 +215,32 @@ p.plus {
   // margin: 100px;
   border-collapse: collapse;
   margin-top: 20px;
+
+  th,
+  td {
+    color: $white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    text-align: center;
+    vertical-align: top;
+    justify-content: space-evenly;
+  }
+  th {
+    height: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  td {
+    background-color: transparent;
+    font-size: 14px;
+    align-items: center;
+  }
+
   .tno,
   .ttime,
   .check {
@@ -223,7 +249,7 @@ p.plus {
     text-align: center;
   }
   .timg {
-    width: 130px;
+    width: 110px;
     .pic {
       width: 100px;
       height: 100px;
@@ -235,47 +261,14 @@ p.plus {
     }
   }
   .tname {
-    width: 20%;
+    width: 15%;
   }
   .tintro {
+    flex-grow: 1;
     width: 40%;
+    text-align: left;
   }
   .tdate {
-    width: 10%;
+    width: 15%;
   }
-}
-
-.song-table th,
-.song-table td {
-  border: 1px solid #ccc;
-  padding: 15px;
-  text-align: left;
-  margin-bottom: 20px;
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  vertical-align: top;
-  justify-content: space-evenly;
-}
-
-.song-table th {
-  color: $white;
-  text-align: left;
-  height: 50%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-// .album {
-//   width: 200px;
-//   height: 200px;
-// }
-
-.song-table td {
-  color: $white;
-  background-color: transparent;
-  font-size: 14px;
-  text-align: left;
-  align-items: center;
 }

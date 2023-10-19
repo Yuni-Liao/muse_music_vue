@@ -34,7 +34,6 @@ export default {
       //immediate: true, // 立即执行一次
       handler(newVal, oldVal) {
         this.BtnShow();
-        console.log("執行一次判斷");
       },
     },
     login_mem_id: {

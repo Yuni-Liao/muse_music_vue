@@ -122,7 +122,7 @@
         </div>
       </div>
     </section>
-    <main>
+    <main class="main">
       <!-- tab -->
       <div class="tabs">
         <button

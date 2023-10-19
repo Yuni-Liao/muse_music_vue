@@ -147,7 +147,7 @@
       }
     }
   }
-  main {
+  .main {
     @include layout(1200px);
 
     //tabs & tab
@@ -225,7 +225,7 @@
           .begin {
             display: flex;
             flex-direction: column;
-            justify-content: end;
+            justify-content: flex-end;
             .aftertype {
               opacity: 0;
               animation: delayAnimation 3s cubic-bezier(0.5, 0.2, 0.8, 0.8) 4s
@@ -424,18 +424,13 @@
         flex-wrap: wrap;
         color: $white;
         .pic {
-          position: absolute;
-          // bottom: -50px;
-          // left: -50px;
-          left: -120px;
-          bottom: 10px;
           @include rect(80px);
           min-width: 80px;
           min-height: 80px;
           border-radius: 50%;
           overflow: hidden;
-          margin: auto;
-          margin-bottom: auto;
+          margin: auto 35px auto auto;
+
           img {
             width: 100%;
             height: 100%;

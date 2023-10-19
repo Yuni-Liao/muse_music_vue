@@ -56,11 +56,14 @@
                 </div>
             </div>
         </section>
-        <router-link to="/home/shoppingsteps">
-            <button class="shopcart">
+        <!-- <router-link to="/home/shoppingsteps">
+            <button class="shopcart" @click="checkLogin">
                 <img :src="`${publicPath}image/icon/shopcart.png`" :alt="shopcart">
             </button>
-        </router-link>
+        </router-link> -->
+        <button class="shopcart" @click="checkLogin">
+            <img :src="`${publicPath}image/icon/shopcart.png`" alt="shopcart">
+        </button>
     </main>
 </template>
 

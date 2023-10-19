@@ -20,7 +20,7 @@ export default {
         },
         {
           title: "提交時間",
-          key: "s_length",
+          key: "upload_date",
           width: 160,
           align: "center",
         },
@@ -67,7 +67,7 @@ export default {
     //fetch 待審核歌曲資料
     const fetchReviewSong = () => {
       const apiURL = new URL(
-        `http://localhost/muse_music/public/api/getReviewSong.php`
+        `${this.$store.state.phpPublicPath}getReviewSong.php`
       );
 
       fetch(apiURL)
