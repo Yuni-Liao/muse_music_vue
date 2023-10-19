@@ -9,7 +9,7 @@ export default {
       publicPath: process.env.BASE_URL,
       //
       login_mem_id: "",
-      activeTab: 2, //1編輯個人主頁 2音樂上傳 3歌曲管理 4專輯管理
+      activeTab: 1, //1編輯個人主頁 2音樂上傳 3歌曲管理 4專輯管理
       //currentStep: 0,
       //編輯個人主頁------
       member: [
