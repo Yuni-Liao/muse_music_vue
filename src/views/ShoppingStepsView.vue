@@ -82,50 +82,29 @@
         <div class="shopline"></div>
         <div class="form-group">
           <label for="name" class="label">收件人</label>
-          <input type="text" id="name" v-model="name" placeholder="" />
+          <input type="text" id="name" v-model="orders[0].ord_name" placeholder="" />
           <span v-if="errors.name" class="error">{{ errors.name }}</span>
 
           <label for="phone" class="label">連絡電話</label>
-          <input type="phone" id="phone" v-model="phone" placeholder="" />
+          <input type="phone" id="phone" v-model="orders[0].ord_tel" placeholder="" />
           <span v-if="errors.phone" class="error">{{ errors.phone }}</span>
 
           <label for="addressf" class="label">收件地址</label>
-          <input type="text" id="address" v-model="address" placeholder="" />
-          <!-- <label for="county_box">請選取送貨地址</label>
-          <select name="county" id="county_box" v-model="selectedCounty">
-            <option value="">選擇縣市</option>
-            <option v-for="(value, key) in counties" :key="key" :value="key">
-              {{ value }}
-            </option>
-          </select>
-
-          <select name="district" id="district_box" v-model="selectedDistrict">
-            <option value="">選擇鄉鎮市區</option>
-            <option v-for="(value, key) in availableDistricts" :key="key" :value="key">
-              {{ value }}
-            </option>
-          </select>
-
-          <input
-            type="text"
-            id="zipcode_box"
-            placeholder="郵遞區號"
-            v-model="zipcode"
-          /> -->
+          <input type="text" id="address" v-model="orders[0].ord_add" placeholder="" />
 
           <label for="ship" class="label">運送方式</label>
-          <select id="ship" v-model="shippingMethod">
+          <select id="ship" v-model="orders[0].ord_ship">
             <option value="">請選擇運送方式</option>
-            <option value="standard">標準運送</option>
-            <option value="express">快遞運送</option>
-            <option value="express">急件運送</option>
+            <option value="standard">宅配</option>
+            <option value="express">郵局</option>
+            <option value="express">超商</option>
           </select>
           <span v-if="errors.shippingMethod" class="error">{{
             errors.shippingMethod
           }}</span>
 
           <label for="pay" class="label">付款方式</label>
-          <select id="pay" v-model="paymentMethod">
+          <select id="pay" v-model="orders[0].ord_pay">
             <option value="">請選擇付款方式</option>
             <option value="credit_card">信用卡</option>
             <option value="paypal">PayPal</option>
@@ -135,7 +114,8 @@
             errors.paymentMethod
           }}</span>
         </div>
-        <button @click="nextStep">確認結帳 ►</button>
+        <!-- <button @click="nextStep">確認結帳 ►</button> -->
+        <button @click="checkout">確認結帳 ►</button>
         <div class="shopinst">
           <div class="shoptitle">
             購物說明
