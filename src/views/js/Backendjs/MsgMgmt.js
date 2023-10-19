@@ -12,7 +12,7 @@ export default {
                 },
                 {
                     title: "#",
-                    key: "no",
+                    key: "msgrep_id",
                     width: 80,
                     align: "center",
                 },
