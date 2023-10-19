@@ -424,18 +424,13 @@
         flex-wrap: wrap;
         color: $white;
         .pic {
-          position: absolute;
-          // bottom: -50px;
-          // left: -50px;
-          left: -120px;
-          bottom: 10px;
           @include rect(80px);
           min-width: 80px;
           min-height: 80px;
           border-radius: 50%;
           overflow: hidden;
-          margin: auto;
-          margin-bottom: auto;
+          margin: auto 35px auto auto;
+
           img {
             width: 100%;
             height: 100%;
