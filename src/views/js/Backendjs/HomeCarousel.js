@@ -277,7 +277,12 @@ export default {
                 }
             })
             .then((json) => {
-                this.carouselItem = json;
+                // 避免撈不到資料報錯 - 廖妍榛
+                if (Array.isArray(json)) {
+                    this.carouselItem = json;
+                } else {
+                    this.carouselItem = [];
+                }
             })
             .catch((error) => {
                 console.log(error.message);

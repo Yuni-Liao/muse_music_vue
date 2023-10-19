@@ -1,15 +1,15 @@
 <template>
     <div class="admin_table_box">
         <h1>管理員管理</h1>
+        <div class="btn_box" style="margin-bottom: 2%; margin-left: 60%">
+            <Button type="primary" @click="createAdmin()" class="admin_add">新增</Button>
+        </div>
         <Table size="large" highlight-row stripe class="admin_table cellHeight" width="1000" :columns="columns"
             :data="adminList">
             <template #deleteBtn="{ row }">
                 <fontAwesome @click="deleteBtn(row)" :icon="['fa', 'trash']" style="cursor: pointer;" />
             </template>
         </Table>
-        <div class="btn_box">
-            <Button type="primary" @click="createAdmin()" class="admin_add" style="margin: 50px 0px;">新增</Button>
-        </div>
     </div>
 
     <!-- 新增管理員帳號 -->

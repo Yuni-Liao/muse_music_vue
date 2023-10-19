@@ -1,5 +1,5 @@
 <template>
-    <div v-if="hasData" class="msgmgmt_box">
+    <div class="msgmgmt_box">
         <h1>檢舉留言管理</h1>
         <Table ref="selection" highlight-row stripe class="msgmgmt_table cellHeight" width="1000" height="450"
             :columns="columns" :data="msgDate">
@@ -19,8 +19,8 @@
             <Button type="error" @click="batchAction('accept')">批次下架</Button>
         </space>
     </div>
-    <div v-else class="noneMsg">
-    </div>
+    <!-- <div v-else class="noneMsg"> -->
+    <!-- </div> -->
 
     <!-- 駁回檢舉 彈窗 -->
     <div v-if="deleteBox == true" class="deleteRep obj_Radius">

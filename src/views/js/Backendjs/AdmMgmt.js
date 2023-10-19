@@ -72,7 +72,7 @@ export default {
                 })
                 .then(() => {
                     this.addItem = [];
-                    //window.location.reload();
+                    window.location.reload();
                 })
                 .catch((error) => {
                     console.log(error.message);
@@ -118,19 +118,20 @@ export default {
         },
     },
     mounted() {
-        //fetch 管理員資料 
-        // 之後要改動態 - 廖妍榛
-        // this.login_admin_id = localStorage.getItem('login_admin_id');
+        //fetch 管理員資料  - 廖妍榛
+
         const fetchAdminList = () => {
-            // const apiURL = new URL(
-            //     `${this.$store.state.phpPublicPath}getAdmMgmt.php?admin_id=${this.login_admin_id}`);
             const apiURL = new URL(
                 `${this.$store.state.phpPublicPath}getAdmMgmt.php`);
-
             fetch(apiURL)
                 .then((res) => res.json())
                 .then((res) => {
-                    this.adminList = res;
+                    // 避免撈不到資料報錯 - 廖妍榛
+                    if (Array.isArray(res)) {
+                        this.adminList = res;
+                    } else {
+                        this.adminList = [];
+                    }
                 })
                 .catch((error) => {
                     console.error("發生錯誤:", error);
