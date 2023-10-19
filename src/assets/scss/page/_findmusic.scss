@@ -44,7 +44,7 @@ h1{
 
     .songList {
         @include layout(100%);
-        margin: 5% 0;
+        margin: 5% 0 2% 0;
         color: $white;
         @include s{
             padding: 0 0 45% 0;
