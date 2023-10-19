@@ -1,12 +1,14 @@
 <template>
     <div class="fog_wrapper">
         <div class="fog_inner">
-            <Steps :current="current">
-                <Step title="忘記密碼"></Step>
-                <Step title="信箱驗證"></Step>
-                <Step title="重設密碼"></Step>
-                <!-- <Step title="完成修改"></Step> -->
-            </Steps>
+            <div class="step">
+                <Steps :current="current">
+                    <Step title="忘記密碼"></Step>
+                    <Step title="信箱驗證"></Step>
+                    <Step title="重設密碼"></Step>
+                    <!-- <Step title="完成修改"></Step> -->
+                </Steps>
+            </div>
             <form class="step_1" action="" v-if="current === 0">
                 <!------------------------------------------------>
                 <h2>忘記密碼</h2>
@@ -42,14 +44,6 @@
                 <div class="error-message" v-if="!password || !confirmPassword || password !== confirmPassword">請確認密碼是否一致
                 </div>
             </form>
-            <!-- <form class="step_4" v-if="current === 3">
-                <h2>已完成修改</h2>
-                <router-link to="/home">
-                    <button class="btn_L_NoBorder obj_Radius submit">
-                        返回首頁
-                    </button>
-                </router-link>
-            </form> -->
         </div>
     </div>
 </template>
