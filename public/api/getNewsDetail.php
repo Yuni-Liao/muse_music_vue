@@ -8,7 +8,7 @@
         //執行sql指令並取得pdoStatement
         $nid = $_GET['nid'];
         //$nid = 1;
-        $sql = "select * 
+        $sql = "select news_id, news_name, news_pic, news_place, singer, news_con 
                 from news
                 WHERE news_id = $nid;";
 
