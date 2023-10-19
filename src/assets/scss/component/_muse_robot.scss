@@ -1,3 +1,8 @@
+.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 .pageTop_robot{
     display: flex;
     flex-direction: column;
@@ -7,14 +12,27 @@
     bottom: 15%;
     z-index: 1000;
     width: 70px;
+    @include s {
+        right: 10px;
+        width: 60px;
+        bottom: 25%;
+    }
     #pageTop{
         width: 60%;
         margin-right: 20px;
+        @include s {
+            width: 50%;
+            margin-right: 5px;
+        }
     }
     img{
         margin: 10px 0px;
         cursor: pointer;
         width: 130%;
+        @include s {
+            margin: 5px 0px;
+            width: 100%;
+        }
     }
 }
 
@@ -32,18 +50,29 @@
     }
     .robot{
         position: fixed;
-        right: 100px;
-        bottom: 20px;
+        right: 120px;
+        bottom: 5%;
         z-index: 501;
+        @include s {
+            right: 60px;
+            left: 10px;
+            bottom: 12%;
+        }
 
         .main {
             width: 414px;
+            @include s {
+                width: 100%;
+            }
             .box {
                 background-color: #000;
                 border-radius: 10px;
                 position: relative;
                 padding: 20px 15px 20px 20px;
                 box-shadow: 2px 2px 3px 4px rgba(116, 235, 213, 0.25);
+                @include s {
+                    padding: 15px 10px 15px 15px;
+                }
                 .title {
                     width: 370px;
                     border-bottom: 1px solid #bbbbbb;
@@ -52,6 +81,16 @@
                     position: relative;
                     text-align: left;
                     display: flex;
+                    @include s {
+                        width: 100%;
+                        padding-bottom: 12px;
+                        margin-bottom: 15px;
+                    }
+                    .logo{
+                        @include s {
+                            width: 35px;
+                        }
+                    }
 
                     .title-hn { // 客服標題
                         font-size: 20px;
@@ -59,6 +98,9 @@
                         margin-left: 20px;
                         display: flex;
                         align-items: center;
+                        @include s {
+                            font-size: $pS !important;
+                        }
                     }
                     
 
@@ -68,6 +110,9 @@
                         position: absolute;
                         top: 10px;
                         right: 0;
+                        @include s {
+                            top: 5px;
+                        }
                         cursor: pointer;
                         .close {
                             width: 25px;
@@ -77,6 +122,10 @@
                             position: absolute;
                             rotate: 45deg;
                             translate: 2px 12px;
+                            @include s {
+                                width: 20px;
+                                height: 4px;
+                            }
                         }
                         .close:nth-child(2) {
                             rotate: -45deg;
@@ -91,6 +140,9 @@
                     overflow-x: hidden;
                     font-size: 18px;
                     line-height: 22px;
+                    @include s {
+                        font-size: $pS;
+                    }
 
                     .info_r {   //客服對話框
                         position: relative;
@@ -104,11 +156,17 @@
                             padding: 15px;
                             border-radius: 0px 12px 12px 12px;
                             box-shadow: inset 0 0 50px rgb(86, 86, 86);
+                            @include s {
+                                padding: 10px;
+                            }
                         }
 
                         .con_text {    //客服對話框文字框 > div
                             color: #fff;
                             margin-bottom: 5px;
+                            @include s {
+                                margin-bottom: 2px;
+                            }
 
                             .con_que {
                                 .czkj-question-msg {    //輸入後可能想問robotQuestion > div
@@ -118,6 +176,9 @@
                                     padding-top: 5px;
                                     cursor: pointer;
                                     transition: all .3s;
+                                    @include s {
+                                        font-size: $pS;
+                                    }
                                 }
 
                                 .czkj-question-msg:hover {
@@ -131,6 +192,9 @@
                             font-size: 16px;
                             margin-left: 5px;
                             margin-bottom: 10px;
+                            @include s {
+                                font-size: $pXS;
+                            }
                         }
                     }
 
@@ -146,6 +210,9 @@
                             padding: 15px;
                             border-radius: 0px 12px 12px 12px;
                             box-shadow: inset 0 0 50px rgb(86, 86, 86);
+                            @include s {
+                                padding: 10px;
+                            }
                         }
 
                         .con_text {    //提問對話框 > div
@@ -161,6 +228,9 @@
                             .con_l {    //提問對話框 > div > span
                                 max-width: 70%;
                                 color: #fff;
+                                @include s {
+                                    font-size: $pS !important;
+                                }
                             }
                         }
 
@@ -169,6 +239,9 @@
                             font-size: 16px;
                             margin-right: 15px;
                             margin-bottom: 10px;
+                            @include s {
+                                font-size: $pXS;
+                            }
                         } 
                     }
                 }
@@ -192,6 +265,9 @@
                     margin: 10px 0;
                     font-size: 16px;
                     text-align: left; 
+                    @include s {
+                        font-size: $pXS;
+                    }
                 }
 
                 .question-container {   //問題小框
@@ -221,6 +297,10 @@
                         outline-offset: 0px;
                         text-shadow: none;
                         transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+                        @include s {
+                            font-size: $pS;
+                            margin-bottom: 10px;
+                        }
                     }
                     .question:hover {
                         color: #74EBD5;
@@ -251,6 +331,10 @@
                     position: relative;
                     padding-right: 10px;
                     margin-top: 20px;
+                    @include s {
+                        margin-top: 12px;
+                        height: 40px;
+                    }
 
                     #text { //輸入框文字
                         height: 100%;
@@ -261,6 +345,10 @@
                         padding: 15px 65px 15px 20px;
                         box-sizing: border-box;
                         font-size: 18px;
+                        @include s {
+                            font-size: $pS;
+                            padding: 10px 45px 0px 15px;
+                        }
                     }
 
                     .setproblems {  //發送btn
@@ -268,6 +356,10 @@
                         right: 35px;
                         top: 18px;
                         cursor: pointer;
+                        @include s {
+                            right: 30px;
+                            top: 12px;
+                        }
                     }
                 }
             }

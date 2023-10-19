@@ -11,7 +11,12 @@ export default {
                 email: '',
                 mem_acc:'',
                 mem_psw:'',
+               
             }],
+
+            mem_id:'',
+
+            
 
 
         }
@@ -45,10 +50,13 @@ export default {
                 return response.json();
             })
             .then((data) => {
+                // console.log(data); 傳回data值
                 if (data.mem_id) {
+                    this.mem_id=data.mem_id;
                     alert("註冊成功");
                     // 在這裡處理成功註冊後的操作，例如導向到登入頁面
                     // data.mem_id 是新註冊的用戶的 mem_id
+                    
                 } else if (data.error) {
                     alert("註冊失敗: " + data.error);
                     // 處理註冊失敗的情況，顯示從伺服器收到的錯誤訊息
@@ -66,6 +74,7 @@ export default {
         registerPSWToDatabase() {
             // 準備要發送到伺服器的資料
             const pswToSend = new FormData();
+            pswToSend.append("mem_id", this.mem_id);
             pswToSend.append("mem_acc", this.member[0].mem_acc);
             pswToSend.append("mem_psw", this.member[0].mem_psw);
         
@@ -101,10 +110,6 @@ export default {
             this.next();
         },
 
-        
-        
-        
-        
 
         next() {
             if (this.current === 3) {

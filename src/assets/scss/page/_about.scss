@@ -1,15 +1,21 @@
 .about{
-
     // banner圖
     .banner{
         position: relative;
         .bannerpic{
+            overflow-x: hidden;
             width: 100%;
             margin-top: 85px;
             img{
                 width: 100%;
                 vertical-align: bottom;
+                @include s {
+                    width: 160%;
+                    margin-left: 0;
+                    transform:translate(-30%, 0px);
+                }
             }
+            
         }
         // banner圖文字
         .bannertext{
@@ -25,16 +31,27 @@
             position: absolute;
             top: 30%;
             left: 5%;
+            @include s {
+                top: 120%;
+            }
         }
         .en{
             font-size: 60px;
+            @include s {
+                font-size: 45px;
+                // margin-left: 5px;
+            }
         }
         .ch{
             top: 50%;
             margin-left: 40px;
+            @include s {
+                top: 150%;
+                font-size: 23px;
+                margin-left: 5px;
+            }
         }
     }
-
 
     // 區段標題
     h2{
@@ -43,14 +60,17 @@
         color: $white;
         letter-spacing: 3.2px;
         margin: 150px auto 80px;
+        @include s {
+            margin: 70px auto 60px;
+        }
     }    
-
 
     // 關於我們描述
     .wrapper{
         background: $white;
         .wrap{
             background: linear-gradient(180deg, #252525 39.12%, rgba(37, 37, 37, 0.00) 100%);
+            
             .summary{
                 font-size: $default;
                 font-weight: bold;
@@ -58,14 +78,24 @@
                 text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.215);
                 letter-spacing: 1.8px;
                 line-height: 3.5;
-                display: inline-block;
+                display: block;
                 padding: 80px 0;
+                width: 88%;
+                margin: auto;
+                @include s {
+                    letter-spacing: .8px;
+                    line-height: 2;
+                    padding: 230px 0 50px;
+                }
             }
 
             //謬思創作者
             .partnerwrap{
             padding: 50px 0 200px;
             overflow: hidden;
+            @include s {
+                padding: 20px 0 90px;
+            }
                 .partnerwall {
                 display: flex;
                     .partnerwrapper {
@@ -90,6 +120,11 @@
                             align-items: center;
                             background: linear-gradient(to bottom right, #666, #fff);
                             vertical-align: bottom;
+                            @include s {
+                                width: 100px;
+                                height: 100px;
+                                margin: 0 20px;
+                            }
                             >a{
                                 display: inline-block;
                                 width: 100%;
@@ -98,11 +133,10 @@
                                     width: 100%;
                                 }
                             }
-                            >a:hover{
-                                box-shadow: 0px 0px 15px 5px #a9a9d0;
-                            }
-
-                        }            
+                        }
+                        .partnerpic:hover{
+                            box-shadow: 0px 0px 15px 5px #a9a9d0;
+                        }
                     }
                 }
             }
@@ -129,53 +163,79 @@
     }
 
     // 常見問題
-    .faq{
-        width: 80%;
-        margin: 30px auto;
-        .question{
-            width: 100%;
-            font-size: $small;
-            color: $dark;
-            background: linear-gradient(to right, $green, $green, #d3d3fd);
-            background-size: 200%;
-            transition: background-position .5s,right 0.3s; 
-            display: flex;
-            cursor: pointer;
-        &.open{
-          right: 0px;
+    #faqlist{
+        @include s {
+            padding-bottom: 15px;
         }
-            .arrow{
-                @include btnBgNone;
+        .faq{
+            width: 80%;
+            margin: 30px auto;
+            @include s {
+                width: 85%;
+                margin: 25px auto;
+            }
+
+            .question{
+                width: 100%;
+                font-size: $small;
                 color: $dark;
-                margin: auto;
+                letter-spacing: .5px;
+                background: linear-gradient(to right, $green, $green, #d3d3fd);
+                background-size: 200%;
+                transition: background-position .5s,right 0.3s; 
+                display: flex;
+                cursor: pointer;
+                @include s {
+                    font-size: $pS;
+                }
+            &.open{
+            right: 0px;
+            }
+                .arrow{
+                    @include btnBgNone;
+                    color: $dark;
+                    margin: auto;
+                    @include s {
+                        margin: auto 2%;
+                    }
+                }
+            }
+            .question:hover{
+                background-position: 100% 0;
+            }
+            .answer {
+                width: 100%;
+                font-size: $default;
+                color: $white;
+                letter-spacing: 1.8px;
+                white-space: pre-line;
+                display: flex;
+                margin-top: 10px;
+                @include s {
+                    letter-spacing: .8px;
+                    font-size: $pS;
+                }
             }
         }
-        .question:hover{
-            background-position: 100% 0;
-        }
-        .answer {
-            width: 100%;
-            font-size: $default;
-            color: $white;
-            letter-spacing: 1.8px;
-            white-space: pre-line;
-            display: flex;
-            margin-top: 10px;
-        }
     }
-
     .faqtitle{
         margin: auto 5%; 
+        @include s {
+            margin: auto 3%;
+        }
     }
-
     .faqcontent{
         width: 80%;
         justify-content: flex-start;
         text-align: left;
         padding: 15px 0;
         line-height: 1.5;
+        @include s {
+            width: 86%;
+            padding: 13px 0;
+            line-height: 1.4;
+        }
     }
-
 
     // 聯絡謬思
     .contact{
@@ -185,11 +245,20 @@
         padding-top: 50px;
         margin-bottom: 100px;
         background-color: #000;
+        @include s {
+            width: 90%;
+            padding-top: 10px;
+            margin-bottom: 120px;
+        }
         span{
             font-size: $default;
             color: $white;
-            width: 15%;             
+            width: 15%;
             display: inline-block;
+            @include s {
+                width: 20%;
+                font-size: $pS !important;
+            }
         }
         .describe{
             display: flex;
@@ -201,6 +270,14 @@
             font-size: $default;
             padding: 5px 10px;
             border: 5px solid $green;
+            @include s {
+                padding: 3px 5px;
+                font-size: $pXS;
+                width: 74%;
+                margin: 0 5px;
+                font-size: $pS !important;
+
+            }
         }
         textarea {
             height: 230px;
@@ -208,10 +285,16 @@
         }
         div{
             margin: 35px 0;
+            @include s {
+                margin: 25px 0;
+            }
         }
         div:nth-last-child(1){
             padding-bottom: 30px;
             margin-top: 50px;
+            @include s {
+                margin: 35px 0 5px;
+            }
         }
     }
 
@@ -219,6 +302,8 @@
         @include rect(160px !important, 50px !important);
         @include btnColor($green, $border: true, $hover: true);
         cursor: pointer;
+        @include s {
+            @include rect(130px !important, 45px !important);
+        }
     }
-
 }

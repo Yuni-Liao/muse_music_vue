@@ -133,6 +133,7 @@ export default {
                         content: "逼逼！您需要什麼幫助？",
                     },
                 ];
+                this.customerText = ""
             }
         },
 
