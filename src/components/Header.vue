@@ -5,7 +5,11 @@
     <nav>
       <div class="header_nav_left">
         <router-link to="/home">
-          <img class="logo_header" alt="Vue logo" src="~@/assets/image/muse_logo.png" />
+          <img
+            class="logo_header"
+            alt="Vue logo"
+            src="~@/assets/image/muse_logo.png"
+          />
         </router-link>
         <router-link to="/home/find" class="find">探索</router-link>
         <router-link to="/home/ranking" class="ranking">排行榜</router-link>
@@ -26,9 +30,16 @@
           <div class="notify_dropdown">
             <p>通知中心</p>
             <hr />
-            <div class="notify" v-for="(item, index) in notifyList" :key="index">
+            <div
+              class="notify"
+              v-for="(item, index) in notifyList"
+              :key="index"
+            >
               <div class="pic">
-                <img :src="require(`@/assets/image/creator/${item.src}`)" alt="" />
+                <img
+                  :src="require(`@/assets/image/creator/${item.src}`)"
+                  alt=""
+                />
               </div>
               <p>{{ item.notifytxt }}</p>
             </div>
@@ -36,26 +47,52 @@
         </div>
         <div class="user_dropdown_reaction">
           <router-link to="/home">
-            <img v-if="login_mem_id !== null" class="profile" alt="ProfileImage"
-              :src="`${publicPath}dataimage/member/` + member[0].mem_pic" style="
+            <img
+              v-if="login_mem_id !== null"
+              class="profile"
+              alt="ProfileImage"
+              :src="`${publicPath}dataimage/member/` + member[0].mem_pic"
+              style="
                 border-radius: 50%;
                 width: 35px;
                 height: 35px;
                 padding: 2px;
-              " />
+              "
+            />
           </router-link>
-          <router-link to="/home/login"><img v-if="login_mem_id === null" style="margin-top: -1px" alt="user_icon"
-              src="~@/assets/image/icon/user.png" /></router-link>
+          <router-link to="/home/login"
+            ><img
+              v-if="login_mem_id === null"
+              style="margin-top: -1px"
+              alt="user_icon"
+              src="~@/assets/image/icon/user.png"
+          /></router-link>
 
           <div class="user_dropdown" v-if="login_mem_id !== null">
             <router-link to="/home/shoporders">
-              <img src="~@/assets/image/icon/clipboard.png" alt="" />訂單資訊</router-link><br />
-            <router-link to="/home/accsetting"><img src="~@/assets/image/icon/settingicon.png"
-                alt="" />帳號設定</router-link><br />
-            <router-link :to="`/home/profilepage/${login_mem_id}`"><img src="~@/assets/image/icon/personalPage.png"
-                alt="" />個人主頁</router-link><br />
-            <router-link to="/home/profilepageedit"><img src="~@/assets/image/icon/development.png"
-                alt="" />個人主頁管理</router-link><br />
+              <img
+                src="~@/assets/image/icon/clipboard.png"
+                alt=""
+              />訂單資訊</router-link
+            ><br />
+            <router-link to="/home/accsetting"
+              ><img
+                src="~@/assets/image/icon/settingicon.png"
+                alt=""
+              />帳號設定</router-link
+            ><br />
+            <router-link :to="`/home/profilepage/${login_mem_id}`"
+              ><img
+                src="~@/assets/image/icon/personalPage.png"
+                alt=""
+              />個人主頁</router-link
+            ><br />
+            <router-link to="/home/profilepageedit"
+              ><img
+                src="~@/assets/image/icon/development.png"
+                alt=""
+              />個人主頁管理</router-link
+            ><br />
             <!-- <router-link to="/home/shoppingsteps"><img src="~@/assets/image/icon/development.png"
                 alt="" />購物車流程</router-link><br /> -->
             <p>我的音樂庫</p>
@@ -65,14 +102,24 @@
                 alt=""
               />播放紀錄</router-link
             ><br /> -->
-            <router-link to="/home/mysonglist"><img src="~@/assets/image/icon/list.png" alt="" />我的歌單</router-link><br />
+            <router-link to="/home/mysonglist"
+              ><img
+                src="~@/assets/image/icon/list.png"
+                alt=""
+              />我的歌單</router-link
+            ><br />
             <!-- <router-link to="/home"
               ><img
                 src="~@/assets/image/icon/heart.png"
                 alt=""
               />我的最愛</router-link
             ><br /> -->
-            <router-link to="/home/myfol"><img src="~@/assets/image/icon/targeticon.png" alt="" />我的追蹤</router-link>
+            <router-link to="/home/myfol"
+              ><img
+                src="~@/assets/image/icon/targeticon.png"
+                alt=""
+              />我的追蹤</router-link
+            >
             <hr style="margin: 20px 0px 10px 0px" />
             <router-link to="/home">
               <div class="loginbtn" @click="logout">
@@ -89,8 +136,13 @@
     <div class="phone-show-nav" v-show="isNavVisible">
       <div class="headshot">
         <img src="@/assets/image/profileeditimage/profileimage.jpg" />
-        <fontAwesome @click="isNavVisible = !isNavVisible" class="close" :icon="['fa', 'xmark']" size="2xl"
-          style="color: #fff" />
+        <fontAwesome
+          @click="isNavVisible = !isNavVisible"
+          class="close"
+          :icon="['fa', 'xmark']"
+          size="2xl"
+          style="color: #fff"
+        />
       </div>
       <router-link to="/home/shoporders" @click="isNavVisible = false">
         <img src="~@/assets/image/icon/clipboard.png" />
@@ -100,7 +152,10 @@
         <img src="~@/assets/image/icon/settingicon.png" />
         <p>帳號設定</p>
       </router-link>
-      <router-link :to="`/home/profilepage/${login_mem_id}`" @click="isNavVisible = false">
+      <router-link
+        :to="`/home/profilepage/${login_mem_id}`"
+        @click="isNavVisible = false"
+      >
         <img src="~@/assets/image/icon/personalPage.png" />
         <p>個人主頁</p>
       </router-link>
@@ -178,10 +233,6 @@ export default {
 
     // Fetch 會員資料
     const fetchMemberInfo = () => {
-      // const apiURL = new URL(
-      //   `http://localhost/muse_music/public/api/getProfileDetail.php?mem_id=${this.login_mem_id}`
-      // );
-      // 加這邊 - 廖妍榛
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getProfileDetail.php?mem_id=${this.login_mem_id}`
       );

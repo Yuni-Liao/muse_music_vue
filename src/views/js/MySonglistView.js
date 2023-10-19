@@ -174,7 +174,7 @@ export default {
       // fetch我的歌單(含追蹤創建及追蹤)
 
       const apiURL1 = new URL(
-        `http://localhost/muse_music/public/api/getMyAllsonglists.php?loginMemId=${loginMemId}`
+        `${this.$store.state.phpPublicPath}getMyAllsonglists.php?loginMemId=${loginMemId}`
       );
       let Myallsonglist;
       fetch(apiURL1)
@@ -193,7 +193,7 @@ export default {
       // fetch我的歌單歌曲
 
       const apiURL2 = new URL(
-        `http://localhost/muse_music/public/api/getAllSlSong.php`
+        `${this.$store.state.phpPublicPath}getAllSlSong.php`
       );
       fetch(apiURL2)
         .then((res) => res.json())
