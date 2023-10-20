@@ -143,7 +143,9 @@
             </button></router-link
           >
 
-          <button @click="saveBtn" class="button" style="margin-bottom: 150px">儲存變更</button>
+          <button @click="saveBtn" class="button" style="margin-bottom: 150px">
+            儲存變更
+          </button>
         </div>
         <!-- -----------------------------音樂上傳----------------------------- -->
         <div v-show="activeTab === 2" class="page">
@@ -687,7 +689,7 @@
                     <img
                       class="albumn"
                       alt="專輯照片"
-                      :src="`${publicPath}dataimage/album/${item.alb_img}`"
+                      :src="`${publicPath}dataimage/album/${item.alb_img}?${Date.now}`"
                     />
                   </div>
                 </td>
