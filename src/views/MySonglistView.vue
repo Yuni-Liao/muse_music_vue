@@ -97,7 +97,7 @@
             <div class="txt">
               <div>
                 <h3>
-                  {{ item.sl_name }}
+                  <p class="sl_name">{{ item.sl_name }}</p>
                   <!-- 歌單擁有者是我且狀態為私人，則顯示鎖頭 -->
                   <span v-if="item.creater_id == login_mem_id"
                     ><fontAwesome
