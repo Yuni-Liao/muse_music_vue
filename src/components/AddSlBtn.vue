@@ -64,6 +64,14 @@ export default {
       slData: [],
     };
   },
+  // watch: {
+  //   isAddSlOpen: function (oldval, newval) {
+  //     if (newval == true) {
+  //       console.log(newval);
+  //       this.fetchAllSonlist();
+  //     }
+  //   },
+  // },
   computed: {
     // AddSlBtnStyle() {
     //   return {
@@ -90,13 +98,14 @@ export default {
           });
       }
     },
-    openAddSl() {
+    async openAddSl() {
       if (this.login_mem_id == undefined) {
         alert("使用會員功能，請先進行登入");
         this.$router.push({
           name: "login",
         });
       } else {
+        await this.fetchAllSonlist();
         this.isAddSlOpen = true;
       }
     },
@@ -164,7 +173,7 @@ export default {
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
     //判斷是否登入
-    this.fetchAllSonlist();
+    // this.fetchAllSonlist();
   },
 };
 </script>

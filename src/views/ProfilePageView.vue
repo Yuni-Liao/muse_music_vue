@@ -444,6 +444,28 @@
           <div class="col" v-for="(item, index) in slData" :key="item.sl_id">
             <!-- 單一歌單 -->
             <div
+              v-if="item.sl_pic == null"
+              class="sl-item"
+              :style="{
+                backgroundImage: `url(${publicPath}dataimage/song/${item.sl_pic})`,
+              }"
+              @click.self.prevent="gotosonglist(item.sl_id)"
+            >
+              <div class="txt">
+                <div>
+                  <h4>
+                    {{ item.sl_name }}
+                  </h4>
+                  <div>
+                    <span>共有{{ item.song_count }}首歌</span>
+                    <span>{{ item.creater_name }}</span>
+                  </div>
+                </div>
+                <PlayBtnBig @click="openPlayerSl(item.sl_id)"></PlayBtnBig>
+              </div>
+            </div>
+            <div
+              v-else
               class="sl-item"
               :style="{
                 backgroundImage: `url(${publicPath}dataimage/song/${item.sl_pic})`,
