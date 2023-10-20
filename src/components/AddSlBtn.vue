@@ -72,6 +72,24 @@ export default {
     // },
   },
   methods: {
+    fetchAllSonlist() {
+      if (this.login_mem_id != undefined) {
+        //fetch我的歌單(僅我創建的)
+
+        const loginMemId = this.login_mem_id;
+        const apiURL = new URL(
+          `${this.$store.state.phpPublicPath}getMyCreateSonglists.php?loginMemId=${loginMemId}`
+        );
+        fetch(apiURL)
+          .then((res) => res.json())
+          .then((res) => {
+            this.slData = res;
+          })
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      }
+    },
     openAddSl() {
       if (this.login_mem_id == undefined) {
         alert("使用會員功能，請先進行登入");
@@ -137,7 +155,8 @@ export default {
       this.isNewSlOpen = true;
     },
     //關閉新增歌單彈窗(接子組件值)
-    isNewSlOpenupdate(val) {
+    async isNewSlOpenupdate(val) {
+      await this.fetchAllSonlist();
       this.isNewSlOpen = val;
       this.isAddSlOpen = true;
     },
@@ -145,22 +164,7 @@ export default {
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
     //判斷是否登入
-    if (this.login_mem_id != undefined) {
-      //fetch我的歌單(僅我創建的)
-
-      const loginMemId = this.login_mem_id;
-      const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getMyCreateSonglists.php?loginMemId=${loginMemId}`
-      );
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => {
-          this.slData = res;
-        })
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
-    }
+    this.fetchAllSonlist();
   },
 };
 </script>
