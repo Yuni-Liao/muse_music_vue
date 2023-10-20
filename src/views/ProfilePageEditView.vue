@@ -689,7 +689,7 @@
                     <img
                       class="albumn"
                       alt="專輯照片"
-                      :src="`${publicPath}dataimage/album/${item.alb_img}?${Date.now}`"
+                      :src="`${publicPath}dataimage/album/${item.alb_img}`"
                     />
                   </div>
                 </td>
