@@ -48,14 +48,14 @@ try {
         require_once("./connectMusemusic.php");
         
         $sql = "update news set
-                
+               
                 news_name = :news_name, 
                 singer = :singer,
                 news_date = :news_date,
                 news_place = :news_place,
                 news_update = :news_update,
                 news_con = :news_con,
-                news_pic = :news_pic
+                news_pic = :news_pic,
                 news_area = :news_area
                 WHERE news_id = :news_id";
 
