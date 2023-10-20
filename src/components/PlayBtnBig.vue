@@ -1,5 +1,5 @@
 <template>
-  <button id="PlayBtnBig" @click="playsong">
+  <button id="PlayBtnBig">
     <fontAwesome :icon="['fa', 'play']" size="xl" style="color: #252525" />
   </button>
 </template>
@@ -7,13 +7,7 @@
 <script>
 export default {
   name: "PlayBtnBig",
-  methods: {
-    playsong() {
-      // 此處撰寫功能code，測試用內容可清除
-      // alert("播放歌單/專輯");
-      
-    },
-  },
+  methods: {},
 };
 </script>
 

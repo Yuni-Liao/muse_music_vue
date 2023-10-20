@@ -99,10 +99,18 @@
                 <h3>
                   {{ item.sl_name }}
                   <!-- 歌單擁有者是我且狀態為私人，則顯示鎖頭 -->
-                  <span
-                    v-if="item.creater_id == login_mem_id && item.public == 0"
-                    ><fontAwesome :icon="['fa', 'lock']" class="lock"
-                  /></span>
+                  <span v-if="item.creater_id == login_mem_id"
+                    ><fontAwesome
+                      v-if="item.public == 0"
+                      :icon="['fa', 'lock']"
+                      class="lock"
+                    />
+                    <fontAwesome
+                      v-else-if="item.public == 1"
+                      :icon="['fa', 'lock-open']"
+                      class="lock"
+                    />
+                  </span>
                 </h3>
 
                 <div>

@@ -11,8 +11,8 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: "#",
-                    key: "no",
+                    title: "No",
+                    key: "msgrep_id",
                     width: 80,
                     align: "center",
                 },

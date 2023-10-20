@@ -16,7 +16,7 @@
 export default {
     methods: {
         logOut() {
-            alert('登出');
+            window.location.href = `${this.$store.state.linkPublicPath}backendLogin`;
         }
     },
 }

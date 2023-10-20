@@ -14,7 +14,7 @@
     width: 70px;
     @include s {
         right: 10px;
-        width: 60px;
+        width: 40px;
         bottom: 25%;
     }
     #pageTop{
@@ -54,7 +54,7 @@
         bottom: 5%;
         z-index: 501;
         @include s {
-            right: 60px;
+            right: 40px;
             left: 10px;
             bottom: 12%;
         }
