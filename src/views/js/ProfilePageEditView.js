@@ -183,28 +183,39 @@ export default {
 
     // 個人檔案 - 編輯
     saveBtn() {
-      const url = `${this.$store.state.phpPublicPath}editProfileData.php`;
-      const formData = new FormData();
-      formData.append("mem_name", this.member[0].mem_name);
-      formData.append("intro", this.member[0].intro);
-      formData.append("county", this.member[0].county);
-      formData.append("social_media", this.member[0].social_media);
-      formData.append("mem_id", this.member[0].mem_id);
+      // const formData = new FormData();
+      // formData.append("mem_aka", this.member[0].mem_aka);
+      // formData.append("intro", this.member[0].intro);
+      // formData.append("county", this.member[0].county);
+      // formData.append("social_media", this.member[0].social_media);
+      // formData.append("mem_id", this.member[0].mem_id);
+      let headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      };
+      const dataToSend = {
+        mem_aka: this.member[0].mem_aka,  // 请注意这里应该是 this.member，而不是 this.memeber
+        intro: this.member[0].intro,
+        county: this.member[0].county,
+        social_media: this.member[0].social_media,
+        mem_id: this.member[0].mem_id,
+      };
 
-      fetch(url, {
+      fetch(`${this.$store.state.phpPublicPath}editProfileData.php`, {
         method: "POST",
-        body: formData,
+        headers: headers,
+        body: JSON.stringify(dataToSend),
       })
         .then((response) => {
           if (response.ok) {
             console.log(response);
-            // return response.json();
+            return response.json();  // 返回 JSON 数据
           } else {
             throw new Error("編輯失敗");
           }
         })
-        .then(() => {
-          // alert(json);
+        .then((json) => {  // 这里应该是 json，而不是未定义的变量
+          alert("編輯成功"); // 显示成功消息
           window.location.reload();
         })
         .catch((error) => {
@@ -344,7 +355,7 @@ export default {
       this.playerId = sid;
       this.$refs.player.playMusic(this.playerId);
     },
-    changeSId() {}, //避免播放器報錯用
+    changeSId() { }, //避免播放器報錯用
   },
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");

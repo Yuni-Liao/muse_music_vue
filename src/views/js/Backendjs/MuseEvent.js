@@ -84,12 +84,21 @@ export default {
         imgChange(e) {
             let that = this;
             let files = e.target.files[0];
-            if (!e || !window.FileReader) return;
+            if (!files || !window.FileReader) return;
+        
+            if (files.name) {
+               
+                that.editItem.news_pic = files.name;
+            } else {
+                
+                that.editItem.news_pic = "没有选择文件";
+            }
+        
             let reader = new FileReader();
             reader.readAsDataURL(files);
-
+        
             reader.onloadend = function () {
-                that.editItem.news_pic = files;
+                that.editItem.src = this.result;
             };
         },
         editNews(row) {

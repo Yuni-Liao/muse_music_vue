@@ -89,7 +89,9 @@
                     <option value="南部">南部</option>
                     <option value="東部">東部</option>
                 </select>
-                <p>圖片:</p><input type="file" name="img" id="fileImg" class="obj_Radius" @change="imgChange($event)">
+                <p>圖片:</p>
+                <img :src="`${publicPath}dataimage/news/${editItem.news_pic}`" alt="">
+                <input type="file" name="img" id="fileImg" class="obj_Radius" @change="imgChange($event)">
             </Form>
 
             <div class="btngroup">

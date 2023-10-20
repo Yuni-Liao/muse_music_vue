@@ -1,7 +1,6 @@
 <template>
     <div class="pageTop_robot">
-        <img id="pageTop" alt="pagetop_icon" :src="`${publicPath}image/icon/pageTop.svg`" href="#top"
-            @click="scrollToTop" />
+        <img id="pageTop" alt="pagetop_icon" :src="pageTopImageSource" href="#top" @click="scrollToTop" />
         <img id="robot_icon" alt="robot_icon" :src="`${publicPath}image/icon/robot.svg`" @click="openRobot" />
     </div>
 
@@ -93,10 +92,24 @@ export default {
 
             //開關robot預設
             isOpen: false,
+
+            windowWidth: window.innerWidth,
         };
     },
     created() {
         this.showTimer();
+        window.addEventListener('resize', this.handleResize);
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize);
+    },
+
+    computed: {
+        pageTopImageSource() {
+            return this.windowWidth < 414
+                ? `${this.publicPath}image/icon/pageTopLittle.svg`
+                : `${this.publicPath}image/icon/pageTop.svg`;
+        },
     },
 
     methods: {
@@ -119,6 +132,10 @@ export default {
                 }
             };
             scrollToTop();
+        },
+
+        handleResize() {
+            this.windowWidth = window.innerWidth;
         },
 
         //開關robot

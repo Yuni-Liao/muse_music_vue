@@ -159,8 +159,8 @@
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: center 20%;
-    overflow: scroll;
     @include s{
+        overflow: scroll;
         background-size: 300% auto;
     }
     .modal-content{
