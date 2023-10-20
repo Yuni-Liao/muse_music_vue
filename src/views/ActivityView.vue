@@ -10,10 +10,12 @@
       class="mySwiper"
     >
       <swiper-slide v-for="(item, index) in actiTopBanner" :key="index">
+        <router-link :to="`${item.link}`">
         <img
           class="acti_pic"
           :src="require(`/public/image/Activity/${item.image}`)"
         />
+      </router-link>
         <div class="calender">
           <div class="month">
             {{ item.month }}
@@ -259,9 +261,9 @@
             @click="gotoNewsDetail(news.news_id)"
             :src="`${publicPath}dataimage/news/${news.news_pic}`"
           />
-          <div class="info" >
-            <p @click="gotoNewsDetail(news.news_id)">{{ news.news_name }}</p>
-            <p @click="gotoNewsDetail(news.news_id)">{{ news.news_place }}</p>
+          <div class="info">
+            <p  @click="gotoNewsDetail(news.news_id)">{{ news.news_name }}</p>
+            <p>{{ news.news_place }}</p>
             <div class="followSinger">
               <div class="singer">
                 <fontAwesome

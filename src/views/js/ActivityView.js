@@ -28,6 +28,7 @@ export default {
       //
       actiTopBanner: [
         {
+          link: "/home/activityInfo/2",
           image: "activityBanner01.jpg",
           month: "4月",
           day: "28日",
@@ -36,6 +37,7 @@ export default {
           info: "台北市・THE WALL 公館"
         },
         {
+          link: "/home/activityInfo/8",
           image: "activityBanner02.jpg",
           month: "9月",
           day: "12日",
@@ -44,6 +46,7 @@ export default {
           info: "臺北市・樂悠悠之口 光復南"
         },
         {
+          link: "/home/activityInfo/10",
           image: "activityBanner03.jpg",
           month: "9月",
           day: "24日",
