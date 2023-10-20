@@ -36,7 +36,7 @@ export default {
 
             return this.districts[this.selectedCounty];
         },
-        total(){
+        total() {
             return JSON.parse(localStorage.getItem('total'))
         }
     },
@@ -180,6 +180,9 @@ export default {
                 dataToSend.append("mem_id", this.login_mem_id);
                 // dataToSend.append("ord_total_price", localStorage.getItem("total")); 沒有computed可以用這個
                 dataToSend.append("ord_total_price", this.total);
+                const cartItemsJSON = JSON.stringify(this.cartItems);
+                dataToSend.append("prod_list", cartItemsJSON);
+
 
                 // 使用 fetch 送出 POST 請求到伺服器
                 fetch(`${this.$store.state.phpPublicPath}postShoppingDetail.php`, {

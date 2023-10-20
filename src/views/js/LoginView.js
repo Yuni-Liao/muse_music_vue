@@ -5,7 +5,7 @@ export default {
 
       member: [
         {
-          mem_acc: "kimki@musemail.com",
+          mem_acc: "test@musemail.com",
           mem_psw: "123456",
           mem_name: "",
         },
