@@ -118,7 +118,7 @@
                   <span v-line-clamp="1">{{ item.creater_name }}</span>
                 </div>
               </div>
-              <PlayBtnBig @click="openPlayer(item.sl_id)"></PlayBtnBig>
+              <!-- <PlayBtnBig @click="openPlayer(item.sl_id)"></PlayBtnBig> -->
             </div>
           </div>
 
@@ -160,10 +160,18 @@
                 <h3>
                   {{ item.sl_name }}
                   <!-- 歌單擁有者是我且狀態為私人，則顯示鎖頭 -->
-                  <span
-                    v-if="item.creater_id == login_mem_id && item.public == 0"
-                    ><fontAwesome :icon="['fa', 'lock']" class="lock"
-                  /></span>
+                  <span v-if="item.creater_id == login_mem_id"
+                    ><fontAwesome
+                      v-if="item.public == 0"
+                      :icon="['fa', 'lock']"
+                      class="lock"
+                    />
+                    <fontAwesome
+                      v-else-if="item.public == 1"
+                      :icon="['fa', 'lock-open']"
+                      class="lock"
+                    />
+                  </span>
                 </h3>
 
                 <div>
@@ -171,7 +179,7 @@
                   <span v-line-clamp="1">{{ item.creater_name }}</span>
                 </div>
               </div>
-              <PlayBtnBig @click="openPlayer(item.sl_id)"></PlayBtnBig>
+              <!-- <PlayBtnBig @click="openPlayer(item.sl_id)"></PlayBtnBig> -->
             </div>
           </div>
         </div>

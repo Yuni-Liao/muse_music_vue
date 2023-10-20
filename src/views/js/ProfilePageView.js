@@ -319,7 +319,7 @@ export default {
         }
       }
       // 若未找到匹配的sl_id，則回傳一個空陣列
-      this.allSid = [];
+      return [];
     },
     changeSId(newSId) {
       // 切換上下首--使用從子組件接收的新 s_id 更新 s_id prop

@@ -461,7 +461,7 @@
                     <span>{{ item.creater_name }}</span>
                   </div>
                 </div>
-                <PlayBtnBig @click="openPlayerSl(item.sl_id)"></PlayBtnBig>
+                <!-- <PlayBtnBig @click="openPlayerSl(item.sl_id)"></PlayBtnBig> -->
               </div>
             </div>
             <div
@@ -482,7 +482,7 @@
                     <span>{{ item.creater_name }}</span>
                   </div>
                 </div>
-                <PlayBtnBig @click="openPlayerSl(item.sl_id)"></PlayBtnBig>
+                <!-- <PlayBtnBig @click="openPlayerSl(item.sl_id)"></PlayBtnBig> -->
               </div>
             </div>
           </div>
