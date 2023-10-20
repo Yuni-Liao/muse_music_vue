@@ -143,13 +143,7 @@
             </button></router-link
           >
 
-          <button
-            @click="saveBtn()"
-            class="button"
-            style="margin-bottom: 150px"
-          >
-            儲存變更
-          </button>
+          <button @click="saveBtn" class="button" style="margin-bottom: 150px">儲存變更</button>
         </div>
         <!-- -----------------------------音樂上傳----------------------------- -->
         <div v-show="activeTab === 2" class="page">
