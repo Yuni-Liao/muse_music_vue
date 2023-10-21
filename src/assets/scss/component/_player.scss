@@ -281,6 +281,14 @@
                     .play_pause{
                         width: 13%;
                     }
+                    @include s{
+                        img{
+                            width: 6%;
+                        }
+                        .play_pause{
+                            width: 12%;
+                        }
+                    }
                 }
             }
             .lyricsSection{
