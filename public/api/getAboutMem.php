@@ -7,7 +7,9 @@ try{
 
     //執行sql指令並取得pdoStatement
     //SQL指令: 查詢mem
-    $sql = "select mem_id, mem_pic from member;";
+    $sql = "select mem_id, mem_pic from member
+    order by fol_num desc
+    limit 10";
 
     $mems = $pdo->query($sql);
 

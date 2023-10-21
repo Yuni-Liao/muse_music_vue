@@ -203,6 +203,7 @@
             .question:hover{
                 background-position: 100% 0;
             }
+            
             .answer {
                 width: 100%;
                 font-size: $default;
@@ -218,6 +219,7 @@
             }
         }
     }
+    
     .faqtitle{
         margin: auto 5%; 
         @include s {
