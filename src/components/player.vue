@@ -110,12 +110,12 @@
     <!-- 控制音量 -->
     <div class="player_right">
       <img
-        v-if="!isMuted"
+        v-show="!isMuted"
         :src="`${publicPath}image/icon/volume.svg`"
         @click="toggleMute"
       />
       <img
-        v-if="isMuted"
+        v-show="isMuted"
         :src="`${publicPath}image/icon/muted.svg`"
         @click="toggleMute"
       />

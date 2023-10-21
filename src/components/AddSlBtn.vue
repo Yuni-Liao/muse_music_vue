@@ -5,20 +5,20 @@
   <div class="AddSl_close" v-if="isAddSlOpen" @click.stop="closeAddSl($event)">
     <div id="AddSl">
       <form action="">
-        <div class="title">
+        <div class="AddSltitle">
           <span>加入歌單</span>
           <button class="addNewSl" type="button" @click="addNewSl()">
             <fontAwesome class="i" :icon="['fa', 'plus']" />
           </button>
         </div>
-        <ul>
-          <li v-for="(item, index) in slData" class="opt">
+        <ul class="AddSlList">
+          <li v-for="(item, index) in slData" class="AddSlListopt">
             <label class="checkboxLabel">
               <input type="checkbox" name="slid" :value="item.sl_id" />
               <fontAwesome class="i" :icon="['fa', 'fa-check']" />
             </label>
-            <span class="slname">{{ item.sl_name }}</span>
-            <span class="public">
+            <span class="AddSlslname">{{ item.sl_name }}</span>
+            <span class="AddSlpublic">
               <fontAwesome
                 v-if="item.public == 1"
                 class="i"
@@ -27,7 +27,7 @@
             /></span>
           </li>
         </ul>
-        <div class="submit">
+        <div class="AddSlsubmit">
           <button @click.prevent="addSongtoSl()">
             <fontAwesome class="i" :icon="['fa', 'fa-check']" />完成
           </button>
@@ -64,6 +64,14 @@ export default {
       slData: [],
     };
   },
+  // watch: {
+  //   isAddSlOpen: function (oldval, newval) {
+  //     if (newval == true) {
+  //       console.log(newval);
+  //       this.fetchAllSonlist();
+  //     }
+  //   },
+  // },
   computed: {
     // AddSlBtnStyle() {
     //   return {
@@ -72,13 +80,32 @@ export default {
     // },
   },
   methods: {
-    openAddSl() {
+    fetchAllSonlist() {
+      if (this.login_mem_id != undefined) {
+        //fetch我的歌單(僅我創建的)
+
+        const loginMemId = this.login_mem_id;
+        const apiURL = new URL(
+          `${this.$store.state.phpPublicPath}getMyCreateSonglists.php?loginMemId=${loginMemId}`
+        );
+        fetch(apiURL)
+          .then((res) => res.json())
+          .then((res) => {
+            this.slData = res;
+          })
+          .catch((error) => {
+            console.error("發生錯誤:", error);
+          });
+      }
+    },
+    async openAddSl() {
       if (this.login_mem_id == undefined) {
         alert("使用會員功能，請先進行登入");
         this.$router.push({
           name: "login",
         });
       } else {
+        await this.fetchAllSonlist();
         this.isAddSlOpen = true;
       }
     },
@@ -137,7 +164,8 @@ export default {
       this.isNewSlOpen = true;
     },
     //關閉新增歌單彈窗(接子組件值)
-    isNewSlOpenupdate(val) {
+    async isNewSlOpenupdate(val) {
+      await this.fetchAllSonlist();
       this.isNewSlOpen = val;
       this.isAddSlOpen = true;
     },
@@ -145,22 +173,7 @@ export default {
   mounted() {
     this.login_mem_id = localStorage.getItem("mem_id");
     //判斷是否登入
-    if (this.login_mem_id != undefined) {
-      //fetch我的歌單(僅我創建的)
-
-      const loginMemId = this.login_mem_id;
-      const apiURL = new URL(
-        `${this.$store.state.phpPublicPath}getMyCreateSonglists.php?loginMemId=${loginMemId}`
-      );
-      fetch(apiURL)
-        .then((res) => res.json())
-        .then((res) => {
-          this.slData = res;
-        })
-        .catch((error) => {
-          console.error("發生錯誤:", error);
-        });
-    }
+    // this.fetchAllSonlist();
   },
 };
 </script>
@@ -201,12 +214,11 @@ export default {
     color: $white;
     padding: 0 30px;
     box-shadow: 0px 0px 50px #00000030;
-    .title {
+    .AddSltitle {
       height: 70px;
       display: flex;
       justify-content: space-between;
       padding-top: 30px; //保留歌單內容與title的空間
-
       align-items: baseline;
       span {
         font-size: $default;
@@ -223,12 +235,12 @@ export default {
         color: $green;
       }
     }
-    ul {
+    .AddSlList {
       height: 220px;
       overflow-y: auto;
       overflow-x: hidden;
       padding-right: 20px;
-      .opt {
+      .AddSlListopt {
         margin: 20px 0;
         display: flex;
         align-items: center;
@@ -269,11 +281,11 @@ export default {
             opacity: 1;
           }
         }
-        .slname {
+        .AddSlslname {
           flex-grow: 1;
           text-align: start;
         }
-        .public {
+        .AddSlpublic {
           text-align: left;
           width: 20px;
           .i {
@@ -283,16 +295,16 @@ export default {
       }
     }
     //滾軸樣式
-    ul::-webkit-scrollbar {
+    .AddSlList::-webkit-scrollbar {
       width: 5px;
       background-color: #252525;
       border-radius: 10px;
     }
-    ul::-webkit-scrollbar-thumb {
+    .AddSlList::-webkit-scrollbar-thumb {
       border-radius: 10px;
       background-color: #ffffff20;
     }
-    .submit {
+    .AddSlsubmit {
       width: 100%;
       height: 70px;
       margin-top: 20px; //保留歌單內容與按鈕的空間

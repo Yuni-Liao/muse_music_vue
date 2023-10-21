@@ -189,7 +189,7 @@ export default {
         }, 100);
       }
     },
-    //歌單撥放器使用
+    //歌單播放器使用
     fetchSlSong() {
       const apiURL = new URL(
         `${this.$store.state.phpPublicPath}getAllSlSong.php`
@@ -213,10 +213,16 @@ export default {
         )
           .then((response) => response.json())
           .then((data) => {
-            this.weather.result =
-              data.records.location[0].weatherElement[20].elementValue; //天氣結果
-            this.weather.temp =
-              data.records.location[0].weatherElement[3].elementValue; //溫度
+            console.log(data);
+            if (data.records.location.length <= 0) {
+              alert("此地點目前氣象署無天氣資訊，換個地點試試吧！");
+              return;
+            } else {
+              this.weather.result =
+                data.records.location[0].weatherElement[20].elementValue; //天氣結果
+              this.weather.temp =
+                data.records.location[0].weatherElement[3].elementValue; //溫度
+            }
           })
           .then(() => {
             if (this.weather.result == "陰") {
@@ -313,7 +319,7 @@ export default {
         }
       }
       // 若未找到匹配的sl_id，則回傳一個空陣列
-      this.allSid = [];
+      return [];
     },
     changeSId(newSId) {
       // 切換上下首--使用從子組件接收的新 s_id 更新 s_id prop
