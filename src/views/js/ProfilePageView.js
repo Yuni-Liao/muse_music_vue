@@ -214,14 +214,18 @@ export default {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            if (data.records.location.length <= 0) {
-              alert("此地點目前氣象署無天氣資訊，換個地點試試吧！");
-              return;
-            } else {
+            if (
+              data.records.location.length > 0 &&
+              data.records.location[0].weatherElement != undefined &&
+              data.records.location[0].weatherElement[20].elementValue != "-99"
+            ) {
               this.weather.result =
                 data.records.location[0].weatherElement[20].elementValue; //天氣結果
               this.weather.temp =
                 data.records.location[0].weatherElement[3].elementValue; //溫度
+            } else {
+              alert("此地點目前氣象署無天氣資訊，換個地點試試吧！");
+              return;
             }
           })
           .then(() => {
