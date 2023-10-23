@@ -13,8 +13,8 @@ try {
 
     //SQL指令: 查詢會員資料(含會員上傳歌曲數量 及 會員追蹤之創作者數量)
     $sql = "select mem_id, mem_name, mem_aka, stat,county, intro, mem_pic, cover_pic, privacy, social_media, fol_num,
-    (select  count(*) from song where song.mem_id = mem_id )as song_count,
-    (select  count(*) from cre_fol where cre_fol.mem_id = mem_id )as crefol_count
+    (select  count(*) from song where song.mem_id = $memid )as song_count,
+    (select  count(*) from cre_fol where cre_fol.mem_id = $memid )as crefol_count
     from member 
     where mem_id = $memid;";
 

@@ -23,6 +23,27 @@ try {
                 copy($from, $to);
                 echo json_encode("上傳成功");    
                 break;
+
+                // 可以參考去修改filename
+
+                // $dir = "../dataimage/song/";
+                // if (!file_exists($dir)) {
+                //     mkdir($dir);
+                // }
+
+                // $from = $_FILES["s_img"]["tmp_name"];
+
+                // //取得副檔名
+                // $tempfrom = $_FILES["s_img"]["name"];
+                // $tempfileInfo = pathinfo($tempfrom);
+                // $fileExtension = $tempfileInfo['extension'];
+                // //檔案命名:ID+副檔名
+                // $imgfilename = $s_id . "." . $fileExtension;
+                // $to = $dir . $imgfilename;
+
+                // move_uploaded_file($from, $to);
+                // break;
+
             case UPLOAD_ERR_INI_SIZE :
                 echo json_encode("上傳檔案太大, 不得超過", ini_get("upload_max_filesize"));
                 break;

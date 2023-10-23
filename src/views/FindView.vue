@@ -1,4 +1,5 @@
 <template>
+    
     <div class="find_style">
         <div class="find_select" :style="{
             backgroundImage: bgImage,

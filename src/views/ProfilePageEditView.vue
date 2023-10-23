@@ -143,11 +143,7 @@
             </button></router-link
           >
 
-          <button
-            @click="saveBtn()"
-            class="button"
-            style="margin-bottom: 150px"
-          >
+          <button @click="saveBtn" class="button" style="margin-bottom: 150px">
             儲存變更
           </button>
         </div>
