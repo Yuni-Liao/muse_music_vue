@@ -194,7 +194,7 @@ export default {
         Accept: "application/json",
       };
       const dataToSend = {
-        mem_aka: this.member[0].mem_aka,  // 请注意这里应该是 this.member，而不是 this.memeber
+        mem_aka: this.member[0].mem_aka,  
         intro: this.member[0].intro,
         county: this.member[0].county,
         social_media: this.member[0].social_media,
@@ -214,8 +214,8 @@ export default {
             throw new Error("編輯失敗");
           }
         })
-        .then((json) => {  // 这里应该是 json，而不是未定义的变量
-          alert("編輯成功"); // 显示成功消息
+        .then((json) => {  
+          alert("編輯成功"); 
           window.location.reload();
         })
         .catch((error) => {

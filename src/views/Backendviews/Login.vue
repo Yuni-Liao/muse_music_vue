@@ -43,9 +43,9 @@ export default {
       publicPath: process.env.BASE_URL,
       admin_acc: [
         {
-          acc: "admin2",
-          admin_psw: "678901",
-          name: "管理員2號",
+          acc: "請輸入帳號",
+          admin_psw: "",
+          name: "",
         },
       ],
       login_admin_id: "",
