@@ -6,32 +6,8 @@ import ReportBtn from "@/components/ReportBtn.vue";
 import LikeMesBtn from "@/components/LikeMesBtn.vue";
 import player from "@/components/player.vue";
 
-const clickOutside = {
-    mounted(el, binding) {
-        function eventHandler(e) {
-            if (el.contains(e.target)) {
-                return false
-            }
-            if (binding.value && typeof binding.value === 'function') {
-                binding.value(e)
-            }
-        }
-
-        el.__click_outside__ = eventHandler
-        document.addEventListener('click', eventHandler)
-    },
-    beforeUnmount(el) {
-        // 移除全局點擊事件監聽
-        window.removeEventListener("click", this.handleGlobalClick);
-    }
-}
-
-
 export default {
     components: { PlayBtnBig, AddFavBtn, AddSlBtn, ShareBtn, ReportBtn, LikeMesBtn, player },
-    directives: {
-        clickOutside,
-    },
     data() {
         return {
             login_mem_id: "",
@@ -54,13 +30,7 @@ export default {
             showReportBtn: false,
         };
     },
-
-    beforeDestroy() {
-        // 監聽點擊事件
-        window.removeEventListener("click", this.handleGlobalClick);
-    },
     methods: {
-
         openPlayer(song) {
             this.id = song;
             this.$nextTick(() => {
@@ -73,9 +43,9 @@ export default {
                 alert("使用會員功能，請先進行登入");
                 this.$router.push({ name: "login" });
             } else {
-                // 登入後執行新增留言的操作
+                // 登入後才能留言
                 if (this.msg_con !== "") {
-                    // 將新增留言的邏輯放在這裡
+                    // 傳送留言
                     const url = `${this.$store.state.phpPublicPath}postSingleMusicMsg.php`;
                     let headers = {
                         Accept: "application/json",
@@ -112,9 +82,7 @@ export default {
                 params: {
                     sid,
                 },
-
             });
-            console.log(sid)
             // 導回該單曲頁面
             window.location.reload();
             window.location.href = `${sid}`;
@@ -142,9 +110,6 @@ export default {
         },
         closeReportBtn() {
             this.showReportBtn = false;
-        },
-        toggleIcon() {
-            this.isShowSong = !this.isShowSong;
         },
     },
     mounted() {

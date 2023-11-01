@@ -46,9 +46,6 @@
                     <p class="mainDesc">
                         {{ foundObject.prod_int }}
                     </p>
-                    <!-- <p class="list">
-                        {{ foundObject.list }}
-                    </p> -->
                     <p class="attention">
                         此商品為預購特殊商品，除無法發行外，否則下訂單後一律「無法取消」或「更改」訂單。<br>
                         如遇供貨量不足，將依訂購順序，強制取消訂單，請消費者確認之後再下訂單！敬請見諒！
@@ -56,11 +53,6 @@
                 </div>
             </div>
         </section>
-        <!-- <router-link to="/home/shoppingsteps">
-            <button class="shopcart" @click="checkLogin">
-                <img :src="`${publicPath}image/icon/shopcart.png`" :alt="shopcart">
-            </button>
-        </router-link> -->
         <button class="shopcart" @click="checkLogin">
             <img :src="`${publicPath}image/icon/shopcart.png`" alt="shopcart">
         </button>

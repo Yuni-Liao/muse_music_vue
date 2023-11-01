@@ -127,11 +127,6 @@
                                     {{ messageItem.msg_con }}
                                 </p>
                                 <p class="date">{{ messageItem.msg_date }}</p>
-                                <!-- 按讚留言先隱藏 -->
-                                <!-- <div class="likeMes" v-if="messageItem">
-                                    <p class="likeCount">{{ messageItem.msg_like }}</p>
-                                    <LikeMesBtn :messageItem="messageItem"></LikeMesBtn>
-                                </div> -->
                             </div>
                             <button v-if="messages.length > 3" class="readMore" @click.capture="showMore">
                                 {{ txt }}

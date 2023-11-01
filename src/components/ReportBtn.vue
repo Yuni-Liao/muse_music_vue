@@ -8,7 +8,6 @@
         <p class="title">檢舉留言</p>
         <div class="repInf">
             <label for="rep_rsn" class="label">檢舉原因:</label>
-            <!-- <input type="text" v-model="rep_rsn" placeholder="  我想檢舉..."> -->
             <input type="text" v-model="rep_rsn" placeholder="  檢舉內容需超過3個字">
 
         </div>
@@ -33,10 +32,6 @@ const store = useStore();
 const showReportWindow = ref(false);
 const login_mem_id = localStorage.getItem('mem_id');
 const rep_rsn = ref('');
-
-// function toggleReportWindow() {
-//     showReportWindow.value = !showReportWindow.value;
-// }
 
 function toggleReportWindow() {
     const router = useRouter();

@@ -96,17 +96,11 @@ export default {
 
         // ▼ 凱芸 加入購物車
         addToCart(item) {
-            // 獲得商品訊息
+            // 獲取購物車商品資訊
             const prod_pic = item.prod_pic;
             const prod_price = item.prod_price;
             const prod_name = item.prod_name;
             const chat_num = item.chat_num;
-
-            // 產生商品訊息字串
-            //const itemInfo = `${prod_name}|${prod_pic}|${prod_price}`;
-
-            // 將商品訊息儲存到localStorage
-            localStorage.setItem(item.prod_id, itemInfo);
 
             // 更新購物車列表
             this.cartItems.push({
@@ -117,17 +111,12 @@ export default {
                 chat_num,
             });
 
-            // 更新購物車總金額
-            this.total += prod_price * chat_num;
-
-            // 跳轉到購物車頁面
-            this.$router.push({ name: 'shoppingCart' });
         },
         // 載入購物車中的商品
         loadCartItems() {
             const cartItemsJSON = localStorage.getItem('cartItems');
             if (cartItemsJSON) {
-                // 如果 localStorage 中有購物車數據，將其解析並填充到 cartItems 中
+                // 如果有購物車資料 則把 JSON 字串轉成 js 物件存放[]中
                 this.cartItems = JSON.parse(cartItemsJSON);
 
                 // 計算總金額
@@ -137,18 +126,18 @@ export default {
             }
         },
         changeItemCount(itemId) {
-            // 查找要更改數量的項目
+            // 用 find() 找改變數量的商品
             const item = this.cartItems.find(item => item.prod_id === itemId);
 
             if (item) {
                 item.chat_num = Math.max(1, item.chat_num); // 最小為1
 
-                // 更新總金額
+                // reduce() 更新總金額
                 this.total = this.cartItems.reduce((acc, item) => {
                     return acc + item.prod_price * item.chat_num;
                 }, 0);
 
-                // 保存到 localStorage
+                // 將更新後的資料保存到 localStorage
                 localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
                 localStorage.setItem('total', this.total);
             }
@@ -156,10 +145,10 @@ export default {
         // 刪除購物車商品
         deleteItem(itemId) {
             const index = this.cartItems.findIndex((v) => v.prod_id === itemId);
-            // 使用 splice 方法刪除對應id產品
+            // 使用 splice() 刪除對應id產品
             this.cartItems.splice(index, 1);
 
-            // 更新總金額
+            // reduce() 更新總金額
             this.total = this.cartItems.reduce((acc, item) => {
                 return acc + item.prod_price * item.chat_num;
             }, 0);
